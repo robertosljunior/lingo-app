@@ -3,9 +3,11 @@ import { useApp } from '../store.jsx'
 import { StatusBar, Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { analyze } from '../lib/nlp-client.js'
+import { speak, speechSupported } from '../lib/speech.js'
+import { AnswerDiff, TypoNote } from '../components/answer-diff.jsx'
 
 export default function Exercise() {
-  const { activeLesson, session, submitAnswer, nextQuestion, back, settings } = useApp()
+  const { activeLesson, session, submitAnswer, rateAnswer, nextQuestion, back, settings } = useApp()
   const total = activeLesson.questions.length
   const q = activeLesson.questions[session.qIdx]
 
@@ -56,8 +58,8 @@ export default function Exercise() {
       analysis.is_probably_correct = correct
       analysis.possible_mistake_type = correct ? null : q.mistake_focus
     }
-    await submitAnswer({ question: q, user_answer: ans, analysis })
-    setFeedback(analysis)
+    const entry = await submitAnswer({ question: q, user_answer: ans, analysis })
+    setFeedback({ ...analysis, answerKey: entry.key, user_answer: ans })
     setAnalyzing(false)
   }
 
@@ -101,6 +103,9 @@ export default function Exercise() {
         {(q.type === 'fill_blank' || q.type === 'choose_best') && (
           <ChoiceBody q={q} choice={choice} setChoice={setChoice} disabled={!!feedback} />
         )}
+        {q.type === 'listen_type' && (
+          <DictationBody q={q} user={user} setUser={setUser} disabled={!!feedback} showHint={showHint} />
+        )}
       </div>
 
       {!feedback && (
@@ -117,7 +122,12 @@ export default function Exercise() {
         </div>
       )}
 
-      {feedback && <FeedbackSheet result={feedback} q={q} onNext={handleNext} onRetry={handleRetry} />}
+      {feedback && (
+        <FeedbackSheet
+          result={feedback} q={q} onNext={handleNext} onRetry={handleRetry}
+          onRate={(confidence) => rateAnswer(feedback.answerKey, confidence)}
+        />
+      )}
     </div>
   )
 }
@@ -161,6 +171,53 @@ function TranslateBody({ q, user, setUser, disabled, showHint }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10, fontSize: 12, color: 'var(--ink-3)' }}>
           <span>{words} {words === 1 ? 'palavra' : 'palavras'}</span>
           <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><I.mic s={14} /> gravar</span>
+        </div>
+      </div>
+    </>
+  )
+}
+
+// Dictation: TTS speaks the expected sentence, the student types what they
+// heard. Where TTS is unavailable the sentence is shown as text so the
+// exercise still works (as a copy/attention drill).
+function DictationBody({ q, user, setUser, disabled, showHint }) {
+  const words = user.trim().split(/\s+/).filter(Boolean).length
+  return (
+    <>
+      <div>
+        <div className="label-eyebrow" style={{ color: 'var(--indigo-700)' }}>ouça e escreva</div>
+        <p className="muted" style={{ margin: '8px 0 0', fontSize: 13 }}>
+          {q.prompt || 'Toque para ouvir e digite exatamente o que você ouvir.'}
+        </p>
+      </div>
+
+      {speechSupported ? (
+        <button className="btn btn-secondary" onClick={() => speak(q.expected_answer)}
+          style={{ alignSelf: 'center', display: 'flex', alignItems: 'center', gap: 10, padding: '18px 26px', borderRadius: 999, marginTop: 8 }}>
+          <I.speaker s={22} /> Ouvir frase
+        </button>
+      ) : (
+        <div className="card" style={{ padding: 14, background: 'var(--bg-alt)' }}>
+          <div className="label-eyebrow" style={{ marginBottom: 6 }}>sem áudio neste navegador — copie a frase</div>
+          <div style={{ fontSize: 16, fontWeight: 700 }}>{q.expected_answer}</div>
+        </div>
+      )}
+
+      {showHint && !disabled && <HintCard text={q.prompt_pt ? `Tradução: "${q.prompt_pt}"` : hintFor(q)} />}
+
+      <div style={{ marginTop: 'auto' }}>
+        <textarea
+          className="input" style={{ fontFamily: 'var(--font-sans)', fontSize: 16, minHeight: 110 }}
+          placeholder="Type what you hear…"
+          value={user} onChange={(e) => setUser(e.target.value)} disabled={disabled}
+        />
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10, fontSize: 12, color: 'var(--ink-3)' }}>
+          <span>{words} {words === 1 ? 'palavra' : 'palavras'}</span>
+          {speechSupported && (
+            <button className="btn btn-sm btn-ghost" style={{ padding: '2px 8px', minHeight: 0 }} onClick={() => speak(q.expected_answer)} disabled={disabled}>
+              <I.speaker s={14} /> ouvir de novo
+            </button>
+          )}
         </div>
       </div>
     </>
@@ -263,7 +320,7 @@ function ChoiceBody({ q, choice, setChoice, disabled }) {
   )
 }
 
-function FeedbackSheet({ result, q, onNext, onRetry }) {
+function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
   const tone = result.verdict === 'correct' ? 'success' : result.verdict === 'partial' ? 'warn' : 'error'
   const titles = {
     correct: 'Natural! 🎯',
@@ -286,12 +343,16 @@ function FeedbackSheet({ result, q, onNext, onRetry }) {
 
       {result.verdict !== 'correct' && (
         <div className="card" style={{ padding: 12, background: 'rgba(255,255,255,.55)', borderColor: 'transparent' }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: inkVar, opacity: .7, letterSpacing: '.08em', textTransform: 'uppercase' }}>esperado</div>
-          <div style={{ fontSize: 15, fontWeight: 700, marginTop: 4 }}>{q.expected_answer}</div>
-          <div style={{ fontSize: 11, fontWeight: 700, color: inkVar, opacity: .7, letterSpacing: '.08em', textTransform: 'uppercase', marginTop: 10 }}>você</div>
-          <div style={{ fontSize: 15, marginTop: 4, color: 'var(--ink-2)' }}>{result.normalized_user_answer || '—'}</div>
+          <AnswerDiff
+            user={result.user_answer ?? result.normalized_user_answer}
+            target={result.target || q.expected_answer}
+            missing={result.missing_words} extra={result.extra_words} typos={result.typos}
+            inkVar={inkVar}
+          />
         </div>
       )}
+
+      {result.verdict === 'correct' && <TypoNote typos={result.typos} inkVar={inkVar} />}
 
       {result.verdict === 'correct' && q.accepted_answers?.length > 0 && (
         <div>
@@ -313,7 +374,7 @@ function FeedbackSheet({ result, q, onNext, onRetry }) {
         </div>
       )}
 
-      {result.verdict === 'correct' && <ConfidenceRow inkVar={inkVar} />}
+      <ConfidenceRow inkVar={inkVar} onRate={onRate} />
 
       <div style={{ display: 'flex', gap: 8, marginTop: 6 }}>
         {result.verdict !== 'correct' && (
@@ -327,16 +388,23 @@ function FeedbackSheet({ result, q, onNext, onRetry }) {
   )
 }
 
-function ConfidenceRow({ inkVar }) {
+// Self-rated difficulty — persisted with the answer (future input for spaced
+// repetition scheduling).
+function ConfidenceRow({ inkVar, onRate }) {
   const [sel, setSel] = useState(null)
-  const opts = ['😅 Difícil', '🙂 Ok', '😎 Fácil']
+  const opts = [
+    { value: 'hard', label: '😅 Difícil' },
+    { value: 'ok', label: '🙂 Ok' },
+    { value: 'easy', label: '😎 Fácil' },
+  ]
   return (
     <div style={{ display: 'flex', gap: 8, marginTop: 4, alignItems: 'center', flexWrap: 'wrap' }}>
       <div style={{ fontSize: 12, color: inkVar, opacity: .7, fontWeight: 700, marginRight: 4 }}>FOI:</div>
       {opts.map((o) => (
-        <button key={o} className="btn btn-sm btn-secondary" onClick={() => setSel(o)}
-          style={{ minHeight: 36, padding: '6px 12px', ...(sel === o ? { borderColor: 'var(--success)', color: 'var(--success-ink)', background: 'rgba(255,255,255,.6)' } : {}) }}>
-          {o}
+        <button key={o.value} className="btn btn-sm btn-secondary"
+          onClick={() => { setSel(o.value); onRate?.(o.value) }}
+          style={{ minHeight: 36, padding: '6px 12px', ...(sel === o.value ? { borderColor: inkVar, color: inkVar, background: 'rgba(255,255,255,.6)' } : {}) }}>
+          {o.label}
         </button>
       ))}
     </div>

@@ -23,6 +23,7 @@ export const EXERCISE_TYPES = [
   'choose_best',
   'rewrite_natural',
   'answer_question',
+  'listen_type', // dictation: TTS speaks the answer, the student types it
 ]
 
 export class LessonParseError extends Error {

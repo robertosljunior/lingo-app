@@ -124,6 +124,16 @@ export async function saveAnswer(answer) {
   return key
 }
 
+// Patch an existing answer (e.g. the user's self-rated confidence).
+export async function updateAnswer(key, patch) {
+  const d = await db()
+  const rec = await d.get('answers', key)
+  if (!rec) return null
+  const next = { ...rec, ...patch }
+  await d.put('answers', next)
+  return next
+}
+
 export async function getAnswersForSession(session_id) {
   const d = await db()
   const rows = await d.getAllFromIndex('answers', 'session_id', session_id)

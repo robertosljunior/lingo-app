@@ -17,7 +17,7 @@ level: <A2|B1|B2>
 focus: <tema_em_snake_case>
 q:
   - id: 1
-    t: translate_natural        # ou build_sentence, rewrite_natural, fill_blank, choose_best
+    t: translate_natural        # ou build_sentence, rewrite_natural, fill_blank, choose_best, listen_type (ditado: o app fala a frase "a" e o aluno digita)
     pt: <frase em português para traduzir>     # translate_natural / build_sentence
     ctx: <contexto curto opcional>
     p: <instrução curta em português>

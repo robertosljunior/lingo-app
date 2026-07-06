@@ -52,7 +52,7 @@ export function buildNewLessonPrompt({ resultYaml, level, questionCount = 30 }) 
 Meu nível atual é ${level}.
 Foque nos meus erros recorrentes.
 Use frases naturais de ambiente profissional e conversação real.
-Misture exercícios de tradução natural, completar lacuna, montar frase, escolher melhor opção e reescrever frase.
+Misture exercícios de tradução natural, completar lacuna, montar frase, escolher melhor opção, reescrever frase e ditado (listen_type).
 Use vocabulário útil, chunks e collocations.
 Não use explicações longas dentro do YAML.
 

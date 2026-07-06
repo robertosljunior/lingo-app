@@ -3,7 +3,8 @@ import { useApp } from '../store.jsx'
 import { StatusBar, Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { speak, speechSupported } from '../lib/speech.js'
-import { FEEDBACK_BY_TYPE } from '../lib/correction-engine.js'
+import { FEEDBACK_BY_TYPE, wordDiff } from '../lib/correction-engine.js'
+import { MarkedText } from '../components/answer-diff.jsx'
 
 export default function Review() {
   const { session, back, showToast, SCREENS } = useApp()
@@ -34,6 +35,9 @@ export default function Review() {
   const q = a.question
   const next = () => { if (idx + 1 >= wrong.length) back(SCREENS.RESULT); else setIdx(idx + 1) }
   const explanation = FEEDBACK_BY_TYPE[a.mistake_type]?.wrong || a.feedback
+  // Recompute the word-level diff for the visual marks (answers were stored
+  // before the diff fields existed / without tokens).
+  const diff = wordDiff(a.user_answer || '', q.expected_answer || '')
 
   return (
     <div className="phone">
@@ -62,7 +66,9 @@ export default function Review() {
           <div className="card" style={{ padding: 14, marginTop: 8, borderColor: 'var(--error)' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
               <div style={{ color: 'var(--error)', flexShrink: 0, marginTop: 2 }}><I.x s={16} /></div>
-              <div style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.4, flex: 1 }}>{a.user_answer || '—'}</div>
+              <div style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.4, flex: 1 }}>
+                <MarkedText text={a.user_answer} marked={diff.extra_words} typos={diff.typos.map((t) => t.got)} variant="extra" />
+              </div>
             </div>
           </div>
         </div>
@@ -73,7 +79,9 @@ export default function Review() {
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
               <div style={{ color: 'var(--success)', flexShrink: 0, marginTop: 2 }}><I.check s={16} /></div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.4 }}>{q.expected_answer}</div>
+                <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.4 }}>
+                  <MarkedText text={q.expected_answer} marked={diff.missing_words} typos={diff.typos.map((t) => t.expected)} variant="missing" />
+                </div>
                 {q.accepted_answers?.length > 0 && (
                   <div style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 6 }}>
                     Alt: <span style={{ color: 'var(--ink-2)' }}>{q.accepted_answers[0]}</span>

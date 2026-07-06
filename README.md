@@ -107,8 +107,8 @@ existentes precisa mudar.
 // saída
 { id, result: {
     normalized_user_answer, normalized_expected_answer, similarity_score,
-    missing_words, extra_words, possible_mistake_type,
-    is_probably_correct, verdict, target, feedback } }
+    missing_words, extra_words, typos, user_tokens, target_tokens,
+    possible_mistake_type, is_probably_correct, verdict, target, feedback } }
 ```
 
 A arquitetura está pronta para adicionar **wink-nlp** depois, atrás do mesmo contrato.
@@ -116,7 +116,8 @@ A arquitetura está pronta para adicionar **wink-nlp** depois, atrás do mesmo c
 ## Tipos de exercício suportados
 
 `translate_natural` · `build_sentence` · `rewrite_natural` · `fill_blank` ·
-`choose_best` · `answer_question`
+`choose_best` · `answer_question` · `listen_type` (ditado: o app fala a frase
+via TTS e o aluno digita o que ouviu)
 
 ## Formato compacto de aula
 

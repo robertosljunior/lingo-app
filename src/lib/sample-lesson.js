@@ -37,4 +37,10 @@ q:
     p: Choose the most natural way to ask about the salary.
     opt: [What is the salary?, Could you tell me the salary range?, How much money?]
     a: Could you tell me the salary range?
-    f: question_structure`
+    f: question_structure
+  - id: 6
+    t: listen_type
+    pt: Há quanto tempo você trabalha lá?
+    p: Ouça a frase e digite exatamente o que ouvir.
+    a: How long have you worked there?
+    f: verb_tense`

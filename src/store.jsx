@@ -134,11 +134,21 @@ export function AppProvider({ children }) {
       feedback: a.feedback,
       session_id: session.id,
     }
-    await db.saveAnswer(stored)
-    const entry = { ...stored, question: q }
+    const key = await db.saveAnswer(stored)
+    const entry = { ...stored, key, question: q }
     setSession((s) => ({ ...s, answers: [...s.answers, entry] }))
     return entry
   }, [activeLesson, session.id])
+
+  // Persist the user's self-rated confidence ("difícil/ok/fácil") on an answer.
+  const rateAnswer = useCallback(async (key, confidence) => {
+    if (key == null) return
+    setSession((s) => ({
+      ...s,
+      answers: s.answers.map((a) => (a.key === key ? { ...a, confidence } : a)),
+    }))
+    await db.updateAnswer(key, { confidence })
+  }, [])
 
   const nextQuestion = useCallback(() => {
     setSession((s) => {
@@ -165,7 +175,7 @@ export function AppProvider({ children }) {
     SCREENS,
     isTab: (k) => TABS.has(k),
     navigate, back, setTab, showToast,
-    refreshLibrary, saveLesson, startLesson, submitAnswer, nextQuestion, updateSetting,
+    refreshLibrary, saveLesson, startLesson, submitAnswer, rateAnswer, nextQuestion, updateSetting,
     db,
   }
 
