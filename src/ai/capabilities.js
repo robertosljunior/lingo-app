@@ -1,0 +1,56 @@
+// capabilities.js — the extensibility seam for the on-device AI engine.
+//
+// The engine exposes a registry of *capabilities*. Today only 'chat' (text
+// generation) is backed by the loaded LLM. Future capabilities — e.g. 'image'
+// for quiz illustrations, or 'embeddings' for smarter mistake clustering — can
+// register here behind the same interface without touching callers. Each
+// capability is a plain object of async methods; consumers do
+// `getCapability('chat')?.stream(...)` and degrade gracefully when absent.
+
+// Static manifest so the UI can advertise what exists and what's planned.
+export const CAPABILITY_MANIFEST = [
+  { key: 'chat', label: 'Conversa & geração de aulas', status: 'available' },
+  { key: 'image', label: 'Imagens para quiz', status: 'planned' },
+  { key: 'embeddings', label: 'Agrupamento de erros', status: 'planned' },
+]
+
+export function createCapabilityRegistry() {
+  const map = new Map()
+  return {
+    register: (name, impl) => { map.set(name, impl) },
+    get: (name) => map.get(name) || null,
+    has: (name) => map.has(name),
+    list: () => [...map.keys()],
+    clear: () => map.clear(),
+  }
+}
+
+// Wraps a loaded web-llm engine as the 'chat' capability.
+export function createChatCapability(engine) {
+  return {
+    kind: 'chat',
+    // Async iterator of token deltas.
+    async *stream(messages, opts = {}) {
+      const completion = await engine.chat.completions.create({
+        messages,
+        stream: true,
+        temperature: opts.temperature ?? 0.7,
+        max_tokens: opts.max_tokens ?? 1024,
+        top_p: opts.top_p ?? 0.95,
+      })
+      for await (const chunk of completion) {
+        const delta = chunk.choices?.[0]?.delta?.content || ''
+        if (delta) yield delta
+      }
+    },
+    // Non-streaming convenience.
+    async complete(messages, opts = {}) {
+      const r = await engine.chat.completions.create({
+        messages,
+        temperature: opts.temperature ?? 0.7,
+        max_tokens: opts.max_tokens ?? 1024,
+      })
+      return r.choices?.[0]?.message?.content || ''
+    },
+  }
+}
