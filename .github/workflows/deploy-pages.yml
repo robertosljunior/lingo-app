@@ -1,17 +1,16 @@
 name: Deploy to GitHub Pages
 
-# Publica o conteúdo pré-buildado de dist/ no GitHub Pages a cada push na main.
-# O dist/ é versionado no repositório (ver README → Deploy), então não é
-# necessário rodar npm install/build aqui.
+# Publica o conteúdo pré-buildado de dist/ na branch gh-pages a cada push na
+# main. O GitHub Pages serve essa branch automaticamente. O dist/ é versionado
+# no repositório (ver README → Deploy), então não é necessário rodar
+# npm install/build aqui.
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
@@ -20,23 +19,14 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
         with:
-          enablement: true
+          fetch-depth: 0 # git subtree split precisa do histórico completo
 
-      - name: Upload dist/ como artefato do Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publica dist/ na branch gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git push origin "$(git subtree split --prefix dist main)":refs/heads/gh-pages --force

@@ -35,9 +35,9 @@ npx serve dist        # ou: npm run preview
 
 **GitHub Pages**: o deploy é automático. O workflow
 [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml)
-publica o `dist/` versionado no GitHub Pages a cada push na `main`
-(o `dist/` já inclui `.nojekyll`). Como a `base` é relativa, o app funciona
-no caminho `usuario.github.io/lingo-app/`.
+publica o `dist/` versionado na branch `gh-pages` a cada push na `main`
+(o `dist/` já inclui `.nojekyll`), e o Pages serve essa branch. Como a
+`base` é relativa, o app funciona no caminho `usuario.github.io/lingo-app/`.
 
 App publicado: <https://robertosljunior.github.io/lingo-app/>
 
