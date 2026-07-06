@@ -57,14 +57,10 @@ export default function Settings() {
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <SectionHead>perfil</SectionHead>
           <Row>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: 15 }}>Nível atual</div>
-                <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>Usado nos prompts de exportação</div>
-              </div>
-              <Segmented value={settings.level} onChange={(k) => updateSetting('level', k)}
-                options={[{ k: 'A2', l: 'A2' }, { k: 'B1', l: 'B1' }, { k: 'B2', l: 'B2' }]} />
-            </div>
+            <div style={{ fontWeight: 700, fontSize: 15 }}>Nível atual</div>
+            <div className="muted" style={{ fontSize: 12, margin: '2px 0 10px' }}>Usado nos prompts de exportação</div>
+            <Segmented value={settings.level} onChange={(k) => updateSetting('level', k)}
+              options={[{ k: 'A2', l: 'A2' }, { k: 'B1', l: 'B1' }, { k: 'B2', l: 'B2' }]} />
           </Row>
           <Row last>
             <div style={{ fontWeight: 700, fontSize: 15 }}>Foco preferido</div>
@@ -203,15 +199,10 @@ export default function Settings() {
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <SectionHead>diagnóstico</SectionHead>
           <Row last>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: log.length ? 10 : 0 }}>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: 15 }}>Log de eventos</div>
-                <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>
-                  {log.length === 0 ? 'Nenhum evento registrado' : `${log.length} eventos — erros e marcos (ex.: download de modelo)`}
-                </div>
-              </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
+              <div style={{ fontWeight: 700, fontSize: 15, flexShrink: 0 }}>Log de eventos</div>
               {log.length > 0 && (
-                <div style={{ display: 'flex', gap: 6 }}>
+                <div style={{ display: 'flex', gap: 4 }}>
                   <button className="btn btn-sm btn-ghost" style={{ padding: '6px 10px' }}
                     onClick={() => { navigator.clipboard?.writeText(formatErrorLog()); showToast('Log copiado') }}>
                     <I.copy s={14} /> Copiar
@@ -223,20 +214,28 @@ export default function Settings() {
                 </div>
               )}
             </div>
+            <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>
+              {log.length === 0
+                ? 'Nenhum evento registrado. Erros e marcos do app (ex.: download de modelo) aparecem aqui.'
+                : `${log.length} ${log.length === 1 ? 'evento' : 'eventos'} — erros e marcos do app`}
+            </div>
             {log.length > 0 && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 220, overflowY: 'auto' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 240, overflowY: 'auto', marginTop: 10 }}>
                 {log.slice(0, 20).map((e, i) => (
-                  <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 12, lineHeight: 1.45 }}>
-                    <span className={`chip ${e.level === 'error' ? 'chip-error' : ''}`}
-                      style={{ fontSize: 10, padding: '1px 7px', flexShrink: 0, fontFamily: 'var(--font-mono)' }}>
-                      {e.source}
-                    </span>
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <span style={{ color: e.level === 'error' ? 'var(--error-ink)' : 'var(--ink-2)', wordBreak: 'break-word' }}>{e.message}</span>
-                      <span className="muted" style={{ marginLeft: 6, fontSize: 11 }}>
+                  <div key={i} style={{ background: 'var(--bg-alt)', borderRadius: 10, padding: '8px 10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <span className={`chip ${e.level === 'error' ? 'chip-error' : ''}`}
+                        style={{ fontSize: 10, padding: '1px 7px', fontFamily: 'var(--font-mono)' }}>
+                        {e.source}
+                      </span>
+                      <span className="muted" style={{ fontSize: 11, marginLeft: 'auto', fontVariantNumeric: 'tabular-nums', flexShrink: 0 }}>
                         {new Date(e.ts).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}
                       </span>
                     </div>
+                    <div style={{
+                      fontSize: 12, lineHeight: 1.45, marginTop: 6, wordBreak: 'break-word',
+                      color: e.level === 'error' ? 'var(--error-ink)' : 'var(--ink-2)',
+                    }}>{e.message}</div>
                   </div>
                 ))}
               </div>
