@@ -21,6 +21,29 @@ npm run preview    # serve o build
 Abra no navegador e adicione à tela inicial para usar como app instalável.
 Depois do primeiro carregamento, funciona sem internet.
 
+## Versão compilada (mobile-ready)
+
+Uma build de produção já vem versionada em **`dist/`** — é um PWA mobile-first,
+instalável, com `base` relativa (roda em qualquer subpasta ou via `file://`).
+Para atualizar: `npm run build`.
+
+Servir localmente:
+
+```bash
+npx serve dist        # ou: npm run preview
+```
+
+**GitHub Pages**: o `dist/` inclui `.nojekyll`. Para publicar, aponte o Pages
+para esta pasta — a forma mais simples é uma branch `gh-pages` com o conteúdo de
+`dist/`:
+
+```bash
+git subtree push --prefix dist origin gh-pages
+```
+
+(ou configure o Pages para servir a pasta `/docs`, copiando `dist` para lá).
+Como a `base` é relativa, funciona no caminho `usuario.github.io/lingo-app/`.
+
 ## Arquitetura
 
 Camada de domínio (`src/lib/`), independente da UI:
