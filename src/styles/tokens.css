@@ -320,6 +320,10 @@ textarea.input { resize: vertical; min-height: 120px; line-height: 1.5; font-fam
   padding: 4px 20px 20px;
   gap: 16px;
 }
+/* Children of the scroll container must never flex-shrink: a card with
+   overflow:hidden has an automatic min-height of 0, so it would collapse and
+   clip its content instead of letting the screen scroll. */
+.screen-body > * { flex-shrink: 0; }
 
 /* Bottom sheet (for feedback / modals) */
 .sheet {
