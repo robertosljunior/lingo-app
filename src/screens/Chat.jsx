@@ -5,6 +5,8 @@ import { I } from '../components/icons.jsx'
 import { getModel, formatSize } from '../ai/models.js'
 import { TUTOR_SYSTEM_PROMPT, generateLesson, extractYaml } from '../ai/lesson-generator.js'
 import { validateLesson } from '../lib/lesson-parser.js'
+import { humanizeError } from '../ai/engine.js'
+import { logError } from '../lib/error-log.js'
 
 let msgId = 0
 const uid = () => `m${++msgId}`
@@ -39,7 +41,13 @@ export default function Chat() {
     if (!cap) { pushError('O modelo não está pronto.'); return }
     const id = uid()
     setMessages((m) => [...m, { id, role: 'assistant', content: '', streaming: true }])
-    const model2 = [{ role: 'system', content: TUTOR_SYSTEM_PROMPT }, ...history.map((h) => ({ role: h.role, content: h.content }))]
+    // Only real conversation goes to the model: drop error bubbles and empty
+    // turns, and keep the tail so long chats don't blow the context window.
+    const convo = history
+      .filter((h) => !h.error && h.content)
+      .slice(-12)
+      .map((h) => ({ role: h.role, content: h.content }))
+    const model2 = [{ role: 'system', content: TUTOR_SYSTEM_PROMPT }, ...convo]
     let acc = ''
     try {
       for await (const t of cap.stream(model2, { temperature: 0.7, max_tokens: 800 })) {
@@ -47,7 +55,10 @@ export default function Chat() {
         setMessages((m) => m.map((x) => (x.id === id ? { ...x, content: acc } : x)))
       }
     } catch (e) {
-      setMessages((m) => m.map((x) => (x.id === id ? { ...x, content: acc || 'Desculpe, tive um problema ao responder.', streaming: false, error: true } : x)))
+      const detail = humanizeError(e)
+      setMessages((m) => m.map((x) => (x.id === id
+        ? { ...x, content: acc || `Não consegui responder — ${detail}`, streaming: false, error: true }
+        : x)))
       return
     }
     // Detect an embedded lesson and surface it as a card.
@@ -90,7 +101,10 @@ export default function Chat() {
         setMessages((m) => m.map((x) => (x.id === streamId ? { ...x, content: `Não consegui montar uma aula válida (${res.error}). Tenta de novo ou troque o modelo nas Configurações.`, streaming: false, error: true } : x)))
       }
     } catch (e) {
-      setMessages((m) => m.map((x) => (x.id === streamId ? { ...x, content: 'Falha ao gerar a aula.', streaming: false, error: true } : x)))
+      logError('ai-lesson', e)
+      setMessages((m) => m.map((x) => (x.id === streamId
+        ? { ...x, content: `Falha ao gerar a aula — ${humanizeError(e)}`, streaming: false, error: true }
+        : x)))
     }
     setBusy(false)
   }

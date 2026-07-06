@@ -25,32 +25,46 @@ export function createCapabilityRegistry() {
   }
 }
 
-// Wraps a loaded web-llm engine as the 'chat' capability.
+import { logError } from '../lib/error-log.js'
+
+// Wraps a loaded web-llm engine as the 'chat' capability. Every failure is
+// recorded in the diagnostic log with the real message before rethrowing, so
+// inference problems are never silently swallowed by UI catches.
 export function createChatCapability(engine) {
   return {
     kind: 'chat',
     // Async iterator of token deltas.
     async *stream(messages, opts = {}) {
-      const completion = await engine.chat.completions.create({
-        messages,
-        stream: true,
-        temperature: opts.temperature ?? 0.7,
-        max_tokens: opts.max_tokens ?? 1024,
-        top_p: opts.top_p ?? 0.95,
-      })
-      for await (const chunk of completion) {
-        const delta = chunk.choices?.[0]?.delta?.content || ''
-        if (delta) yield delta
+      try {
+        const completion = await engine.chat.completions.create({
+          messages,
+          stream: true,
+          temperature: opts.temperature ?? 0.7,
+          max_tokens: opts.max_tokens ?? 1024,
+          top_p: opts.top_p ?? 0.95,
+        })
+        for await (const chunk of completion) {
+          const delta = chunk.choices?.[0]?.delta?.content || ''
+          if (delta) yield delta
+        }
+      } catch (e) {
+        logError('ai-chat', e, { op: 'stream', messages: messages.length })
+        throw e
       }
     },
     // Non-streaming convenience.
     async complete(messages, opts = {}) {
-      const r = await engine.chat.completions.create({
-        messages,
-        temperature: opts.temperature ?? 0.7,
-        max_tokens: opts.max_tokens ?? 1024,
-      })
-      return r.choices?.[0]?.message?.content || ''
+      try {
+        const r = await engine.chat.completions.create({
+          messages,
+          temperature: opts.temperature ?? 0.7,
+          max_tokens: opts.max_tokens ?? 1024,
+        })
+        return r.choices?.[0]?.message?.content || ''
+      } catch (e) {
+        logError('ai-chat', e, { op: 'complete', messages: messages.length })
+        throw e
+      }
     },
   }
 }
