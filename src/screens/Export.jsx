@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
 import { useApp } from '../store.jsx'
-import { StatusBar } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { buildResultYaml, buildNewLessonPrompt, buildLevelAnalysisPrompt, downloadText } from '../lib/export-engine.js'
 
@@ -32,7 +31,6 @@ export default function Export() {
 
   return (
     <div className="phone">
-      <StatusBar />
       <div className="app-header">
         <button className="back" onClick={() => back(answers.length ? SCREENS.RESULT : SCREENS.HOME)} aria-label="Voltar"><I.back /></button>
         <div style={{ fontWeight: 700, fontSize: 16 }}>Exportar</div>

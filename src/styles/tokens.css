@@ -169,6 +169,8 @@ button { font-family: inherit; }
   display: flex;
   flex-direction: column;
   letter-spacing: -0.005em;
+  /* keep content clear of the notch on installed PWAs (was on .statusbar) */
+  padding-top: max(env(safe-area-inset-top, 0px), 8px);
 }
 @media (min-width: 480px) {
   .app-shell { padding: 24px; align-items: center; }
@@ -180,23 +182,6 @@ button { font-family: inherit; }
   }
 }
 .phone * { box-sizing: border-box; }
-
-/* iOS-ish status bar */
-.statusbar {
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 22px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ink);
-  flex-shrink: 0;
-  padding-top: env(safe-area-inset-top, 0);
-  box-sizing: content-box;
-}
-.statusbar .right { display: flex; align-items: center; gap: 6px; font-size: 13px; }
-.statusbar svg { display:block; }
 
 /* Reusable */
 .card {

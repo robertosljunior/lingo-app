@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useApp } from '../store.jsx'
-import { StatusBar, Progress } from '../components/ui.jsx'
+import { Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { speak, speechSupported } from '../lib/speech.js'
 import { FEEDBACK_BY_TYPE, wordDiff } from '../lib/correction-engine.js'
@@ -15,7 +15,6 @@ export default function Review() {
   if (!a) {
     return (
       <div className="phone">
-        <StatusBar />
         <div className="app-header">
           <button className="back" onClick={() => back(SCREENS.RESULT)} aria-label="Voltar"><I.back /></button>
           <div style={{ fontWeight: 700, fontSize: 16 }}>Revisão</div>
@@ -41,7 +40,6 @@ export default function Review() {
 
   return (
     <div className="phone">
-      <StatusBar />
       <div style={{ padding: '8px 20px 8px', display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
         <button className="back" onClick={() => back(SCREENS.RESULT)} aria-label="Voltar"><I.back s={18} /></button>
         <div style={{ flex: 1 }}><Progress value={(idx / wrong.length) * 100} /></div>

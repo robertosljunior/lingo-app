@@ -1,19 +1,6 @@
-// Shared UI primitives: status bar, header, bottom nav, progress, logo, toast.
+// Shared UI primitives: header, bottom nav, progress, logo, toast.
 
 import { I } from './icons.jsx'
-
-export function StatusBar() {
-  return (
-    <div className="statusbar">
-      <span>9:41</span>
-      <div className="right" aria-hidden="true">
-        <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1" /><rect x="5" y="5" width="3" height="7" rx="1" /><rect x="10" y="2" width="3" height="10" rx="1" /><rect x="15" y="0" width="3" height="12" rx="1" /></svg>
-        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 4a10 10 0 0 1 14 0M3.5 6.5a6 6 0 0 1 9 0M6 9a2.5 2.5 0 0 1 4 0" /><circle cx="8" cy="11" r=".8" fill="currentColor" /></svg>
-        <svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="22" height="11" rx="3" stroke="currentColor" opacity=".4" /><rect x="2" y="2" width="19" height="8" rx="1.5" fill="currentColor" /><rect x="23.5" y="4" width="2" height="4" rx="1" fill="currentColor" opacity=".4" /></svg>
-      </div>
-    </div>
-  )
-}
 
 export function AppHeader({ title, onBack, right = null }) {
   return (

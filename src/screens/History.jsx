@@ -1,5 +1,5 @@
 import { useApp } from '../store.jsx'
-import { StatusBar, BottomNav, ScoreRing } from '../components/ui.jsx'
+import { BottomNav, ScoreRing } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 
 function relDate(ts) {
@@ -19,7 +19,6 @@ export default function History() {
   if (sessions.length === 0) {
     return (
       <div className="phone">
-        <StatusBar />
         <div style={{ padding: '8px 20px 4px', flexShrink: 0 }}><h1 className="h1">Histórico</h1></div>
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px 32px', textAlign: 'center', gap: 14 }}>
           <div style={{ width: 88, height: 88, borderRadius: '50%', background: 'var(--indigo-50)', color: 'var(--indigo-600)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -45,7 +44,6 @@ export default function History() {
 
   return (
     <div className="phone">
-      <StatusBar />
       <div style={{ padding: '8px 20px 4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
         <h1 className="h1">Histórico</h1>
         <div className="chip"><I.search s={12} /> {sessions.length} sessões</div>

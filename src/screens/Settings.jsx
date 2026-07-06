@@ -1,13 +1,16 @@
+import { useState } from 'react'
 import { useApp } from '../store.jsx'
-import { StatusBar, BottomNav } from '../components/ui.jsx'
+import { BottomNav } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { useAI } from '../ai/useAI.js'
 import { MODELS, formatSize } from '../ai/models.js'
 import { CAPABILITY_MANIFEST } from '../ai/capabilities.js'
+import { getErrorLog, clearErrorLog, formatErrorLog } from '../lib/error-log.js'
 
 export default function Settings() {
-  const { settings, updateSetting, setTab, showToast, db, refreshLibrary } = useApp()
+  const { settings, updateSetting, setTab, showToast, db, refreshLibrary, SCREENS } = useApp()
   const ai = useAI()
+  const [log, setLog] = useState(() => getErrorLog())
   if (!settings) return null
 
   const selectModel = (id) => {
@@ -48,7 +51,6 @@ export default function Settings() {
 
   return (
     <div className="phone">
-      <StatusBar />
       <div style={{ padding: '8px 20px 4px', flexShrink: 0 }}><h1 className="h1">Configurações</h1></div>
       <div className="screen-body" style={{ paddingTop: 12, paddingBottom: 100, gap: 12 }}>
 
@@ -195,6 +197,50 @@ export default function Settings() {
             <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Tema</div>
             <Segmented value={settings.theme} onChange={(k) => updateSetting('theme', k)}
               options={[{ k: 'system', l: 'Sistema' }, { k: 'light', l: 'Claro' }, { k: 'dark', l: 'Escuro' }]} />
+          </Row>
+        </div>
+
+        <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+          <SectionHead>diagnóstico</SectionHead>
+          <Row last>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: log.length ? 10 : 0 }}>
+              <div>
+                <div style={{ fontWeight: 700, fontSize: 15 }}>Log de eventos</div>
+                <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>
+                  {log.length === 0 ? 'Nenhum evento registrado' : `${log.length} eventos — erros e marcos (ex.: download de modelo)`}
+                </div>
+              </div>
+              {log.length > 0 && (
+                <div style={{ display: 'flex', gap: 6 }}>
+                  <button className="btn btn-sm btn-ghost" style={{ padding: '6px 10px' }}
+                    onClick={() => { navigator.clipboard?.writeText(formatErrorLog()); showToast('Log copiado') }}>
+                    <I.copy s={14} /> Copiar
+                  </button>
+                  <button className="btn btn-sm btn-ghost" style={{ padding: '6px 10px', color: 'var(--error)' }}
+                    onClick={() => { clearErrorLog(); setLog([]); showToast('Log limpo') }}>
+                    Limpar
+                  </button>
+                </div>
+              )}
+            </div>
+            {log.length > 0 && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 220, overflowY: 'auto' }}>
+                {log.slice(0, 20).map((e, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 12, lineHeight: 1.45 }}>
+                    <span className={`chip ${e.level === 'error' ? 'chip-error' : ''}`}
+                      style={{ fontSize: 10, padding: '1px 7px', flexShrink: 0, fontFamily: 'var(--font-mono)' }}>
+                      {e.source}
+                    </span>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <span style={{ color: e.level === 'error' ? 'var(--error-ink)' : 'var(--ink-2)', wordBreak: 'break-word' }}>{e.message}</span>
+                      <span className="muted" style={{ marginLeft: 6, fontSize: 11 }}>
+                        {new Date(e.ts).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </Row>
         </div>
 

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useApp } from '../store.jsx'
-import { StatusBar, Progress } from '../components/ui.jsx'
+import { Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { analyze } from '../lib/nlp-client.js'
 import { speak, speechSupported } from '../lib/speech.js'
@@ -71,7 +71,6 @@ export default function Exercise() {
 
   return (
     <div className="phone">
-      <StatusBar />
       <div style={{ padding: '8px 20px 8px', display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
         <button className="back" style={{ width: 36, height: 36 }} onClick={() => back()} aria-label="Sair da aula"><I.close s={18} /></button>
         <div style={{ flex: 1 }}><Progress value={progress + (feedback ? 100 / total : 0)} /></div>

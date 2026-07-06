@@ -1,5 +1,5 @@
 import { useApp } from '../store.jsx'
-import { StatusBar, BottomNav, Logo } from '../components/ui.jsx'
+import { BottomNav, Logo } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { prettyFocus } from '../lib/lesson-parser.js'
 
@@ -43,18 +43,11 @@ export default function Home() {
 
   return (
     <div className="phone">
-      <StatusBar />
       <div style={{ padding: '8px 20px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
         <Logo />
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          {avgScore != null && (
-            <div className="chip chip-indigo" style={{ fontWeight: 800 }}>{latest?.level || 'B1'}</div>
-          )}
-          <div style={{
-            width: 36, height: 36, borderRadius: '50%', background: 'var(--indigo-100)', color: 'var(--indigo-700)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 14,
-          }}>JS</div>
-        </div>
+        {avgScore != null && (
+          <div className="chip chip-indigo" style={{ fontWeight: 800 }}>{latest?.level || 'B1'}</div>
+        )}
       </div>
 
       <div className="screen-body" style={{ paddingBottom: 100 }}>

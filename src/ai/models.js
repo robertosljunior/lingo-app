@@ -7,24 +7,10 @@
 
 export const MODELS = [
   {
-    id: 'Phi-4-mini-instruct-q4f16_1-MLC',
-    name: 'Phi-4 Mini',
-    sizeMB: 3438,
-    note: 'Mais capaz. Melhor qualidade de aula e conversa. Pede um dispositivo forte.',
-    tier: 'quality',
-  },
-  {
-    id: 'Llama-3.2-3B-Instruct-q4f16_1-MLC',
-    name: 'Llama 3.2 3B',
-    sizeMB: 2264,
-    note: 'Bom equilíbrio entre qualidade e tamanho.',
-    tier: 'balanced',
-  },
-  {
     id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC',
     name: 'Qwen2.5 1.5B',
     sizeMB: 1630,
-    note: 'Leve e rápido, multilíngue. Boa escolha padrão.',
+    note: 'Padrão — leve, rápido e multilíngue (entende português e inglês). Dá conta de aulas e conversa de treino.',
     tier: 'balanced',
   },
   {
@@ -41,10 +27,25 @@ export const MODELS = [
     note: 'O mais leve. Rápido, mas menos consistente.',
     tier: 'light',
   },
+  {
+    id: 'Llama-3.2-3B-Instruct-q4f16_1-MLC',
+    name: 'Llama 3.2 3B',
+    sizeMB: 2264,
+    note: 'Mais qualidade, mais pesado. Requer um dispositivo com boa memória.',
+    tier: 'balanced',
+  },
+  {
+    id: 'Phi-4-mini-instruct-q4f16_1-MLC',
+    name: 'Phi-4 Mini',
+    sizeMB: 3438,
+    note: '⚠️ Pesado (3,4 GB) — em aparelhos com pouca memória o download pode fechar o app. Use só em desktop com GPU forte.',
+    tier: 'quality',
+  },
 ]
 
-// The user's requested default; falls back to the first entry if unavailable.
-export const DEFAULT_MODEL_ID = 'Phi-4-mini-instruct-q4f16_1-MLC'
+// Light multilingual default: capable enough for the EN↔PT tutoring flows and
+// small enough to load on ordinary devices without OOM-killing the tab.
+export const DEFAULT_MODEL_ID = 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC'
 
 export function getModel(id) {
   return MODELS.find((m) => m.id === id) || MODELS[0]

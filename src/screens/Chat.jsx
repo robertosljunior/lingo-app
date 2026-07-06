@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useApp } from '../store.jsx'
 import { useAI } from '../ai/useAI.js'
-import { StatusBar } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { getModel, formatSize } from '../ai/models.js'
 import { TUTOR_SYSTEM_PROMPT, generateLesson, extractYaml } from '../ai/lesson-generator.js'
@@ -117,7 +116,6 @@ export default function Chat() {
   // ---- Chat ----
   return (
     <div className="phone">
-      <StatusBar />
       <div className="app-header">
         <button className="back" onClick={() => back()} aria-label="Voltar"><I.back /></button>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -169,7 +167,6 @@ export default function Chat() {
 function Gate({ back, title, children }) {
   return (
     <div className="phone">
-      <StatusBar />
       <div className="app-header">
         <button className="back" onClick={() => back()} aria-label="Voltar"><I.back /></button>
         <div style={{ fontWeight: 700, fontSize: 16 }}>{title}</div>

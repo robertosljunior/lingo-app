@@ -8,6 +8,7 @@
 
 import { DEFAULT_MODEL_ID } from './models.js'
 import { createCapabilityRegistry, createChatCapability } from './capabilities.js'
+import { logError, logInfo } from '../lib/error-log.js'
 
 // web-llm is ~6 MB — imported lazily (only when the user activates the tutor) so
 // it never lands in the main bundle. Cached after the first dynamic import.
@@ -59,12 +60,19 @@ export async function loadModel(modelId = state.modelId) {
   if (state.status === 'loading') return false
   set({ status: 'loading', modelId, error: null, progress: { ratio: 0, text: 'Preparando…' } })
 
+  // Breadcrumb: if the tab dies mid-download (WebGPU/OOM kills it without a
+  // catchable error), this is the trail the user finds in the diagnostic log.
+  logInfo('ai', `download/carga do modelo iniciado: ${modelId}`, {
+    deviceMemoryGB: typeof navigator !== 'undefined' ? navigator.deviceMemory ?? null : null,
+  })
+
   const initProgressCallback = (p) => set({ progress: { ratio: p.progress ?? 0, text: p.text || '' } })
 
   try {
     const { CreateWebWorkerMLCEngine } = await loadWebLLM()
     if (!worker) {
       worker = new Worker(new URL('./webllm-worker.js', import.meta.url), { type: 'module' })
+      worker.onerror = (ev) => logError('ai-worker', ev.message || 'worker error')
     }
     if (!mlc) {
       mlc = await CreateWebWorkerMLCEngine(worker, modelId, { initProgressCallback })
@@ -74,8 +82,10 @@ export async function loadModel(modelId = state.modelId) {
     }
     caps.register('chat', createChatCapability(mlc))
     set({ status: 'ready', progress: { ratio: 1, text: 'Pronto' } })
+    logInfo('ai', `modelo pronto: ${modelId}`)
     return true
   } catch (e) {
+    logError('ai', e, { modelId, lastProgress: state.progress?.text || null })
     set({ status: 'error', error: humanizeError(e) })
     return false
   }

@@ -81,9 +81,16 @@ Um **SLM (small language model) roda 100% no navegador** via [WebLLM](https://gi
 | `useAI.js` | Binding React (`useSyncExternalStore`) |
 
 **Modelos**: configuráveis em Configurações → Inteligência artificial. Padrão
-`Phi-4-mini-instruct-q4f16_1-MLC` (~3.4 GB), com alternativas mais leves
-(Llama 3.2 1B ~880 MB, Qwen2.5 1.5B, etc.). Requer **WebGPU** (Chrome/Edge
+`Qwen2.5-1.5B-Instruct` (~1.6 GB) — leve e multilíngue (PT↔EN), suficiente para
+gerar aulas e conversar. Alternativas mais leves (Llama 3.2 1B ~880 MB) e mais
+pesadas (Phi-4 Mini ~3.4 GB — só para desktop com GPU forte; em aparelhos com
+pouca memória o download pode derrubar a aba). Requer **WebGPU** (Chrome/Edge
 recentes); degrada com uma mensagem clara onde não há suporte.
+
+**Diagnóstico**: erros não tratados, rejeições de promise e o ciclo de vida do
+modelo de IA são registrados num log persistente (localStorage), visível em
+Configurações → Diagnóstico (copiar/limpar). Um error boundary global mostra
+uma tela de recuperação com o log em vez de página branca.
 
 **Offline + PWA**: o download inicial dos pesos precisa de internet e é cacheado
 pelo próprio web-llm (Cache Storage). Os chunks grandes de JS do web-llm ficam

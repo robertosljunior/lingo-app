@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useApp } from '../store.jsx'
-import { StatusBar } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { validateLesson } from '../lib/lesson-parser.js'
 import { SAMPLE_YAML } from '../lib/sample-lesson.js'
@@ -25,7 +24,6 @@ export default function Import() {
 
   return (
     <div className="phone">
-      <StatusBar />
       <div className="app-header">
         <button className="back" onClick={() => back()} aria-label="Fechar"><I.close /></button>
         <div style={{ fontWeight: 700, fontSize: 16, letterSpacing: '-0.01em' }}>Importar aula</div>

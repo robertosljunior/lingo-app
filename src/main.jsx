@@ -13,6 +13,12 @@ import '@fontsource/geist-mono/500.css'
 import './styles/tokens.css'
 import { AppProvider } from './store.jsx'
 import App from './App.jsx'
+import { ErrorBoundary } from './components/error-boundary.jsx'
+import { installGlobalErrorLogging } from './lib/error-log.js'
+
+// Capture uncaught errors/rejections into the persistent diagnostic log
+// before anything else can fail.
+installGlobalErrorLogging()
 
 // Register the PWA service worker (offline caching). Injected by vite-plugin-pwa.
 import { registerSW } from 'virtual:pwa-register'
@@ -20,8 +26,10 @@ registerSW({ immediate: true })
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AppProvider>
-      <App />
-    </AppProvider>
+    <ErrorBoundary>
+      <AppProvider>
+        <App />
+      </AppProvider>
+    </ErrorBoundary>
   </StrictMode>,
 )

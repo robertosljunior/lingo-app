@@ -1,5 +1,5 @@
 import { useApp } from '../store.jsx'
-import { StatusBar, BottomNav } from '../components/ui.jsx'
+import { BottomNav } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 
 export default function Mistakes() {
@@ -8,7 +8,6 @@ export default function Mistakes() {
   if (mistakes.length === 0) {
     return (
       <div className="phone">
-        <StatusBar />
         <div style={{ padding: '8px 20px 4px', flexShrink: 0 }}><h1 className="h1">Erros recorrentes</h1></div>
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px 32px', textAlign: 'center', gap: 14 }}>
           <div style={{ width: 88, height: 88, borderRadius: '50%', background: 'var(--success-bg)', color: 'var(--success)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -29,7 +28,6 @@ export default function Mistakes() {
 
   return (
     <div className="phone">
-      <StatusBar />
       <div style={{ padding: '8px 20px 4px', flexShrink: 0 }}>
         <h1 className="h1">Erros recorrentes</h1>
         <p className="muted" style={{ fontSize: 13, marginTop: 4 }}>Classificados por tipo, do mais frequente ao menos</p>

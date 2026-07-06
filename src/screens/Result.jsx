@@ -1,5 +1,4 @@
 import { useApp } from '../store.jsx'
-import { StatusBar } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 
 export default function Result() {
@@ -24,7 +23,6 @@ export default function Result() {
 
   return (
     <div className="phone">
-      <StatusBar />
       <div className="app-header">
         <button className="back" onClick={() => setTab(SCREENS.HOME)} aria-label="Início"><I.close /></button>
         <div style={{ fontWeight: 700, fontSize: 16 }}>Resultado</div>
