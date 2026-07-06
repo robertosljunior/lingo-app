@@ -33,16 +33,16 @@ Servir localmente:
 npx serve dist        # ou: npm run preview
 ```
 
-**GitHub Pages**: o `dist/` inclui `.nojekyll`. Para publicar, aponte o Pages
-para esta pasta — a forma mais simples é uma branch `gh-pages` com o conteúdo de
-`dist/`:
+**GitHub Pages**: o deploy é automático. O workflow
+[`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml)
+publica o `dist/` versionado no GitHub Pages a cada push na `main`
+(o `dist/` já inclui `.nojekyll`). Como a `base` é relativa, o app funciona
+no caminho `usuario.github.io/lingo-app/`.
 
-```bash
-git subtree push --prefix dist origin gh-pages
-```
+App publicado: <https://robertosljunior.github.io/lingo-app/>
 
-(ou configure o Pages para servir a pasta `/docs`, copiando `dist` para lá).
-Como a `base` é relativa, funciona no caminho `usuario.github.io/lingo-app/`.
+Depois de alterar o código, rode `npm run build` e commite o `dist/`
+atualizado junto — é ele que vai ao ar.
 
 ## Arquitetura
 
