@@ -101,7 +101,7 @@ export async function loadModel(modelId = state.modelId) {
   try {
     if (isWasm) {
       try {
-        await bootWasmEngine(getModel(modelId), chatOpts?.context_window_size ?? 2048)
+        await bootWasmEngine(getModel(modelId))
       } catch (e) {
         logError('ai', e, { modelId, backend: 'wasm', lastProgress: state.progress?.text || null, deviceMemoryGB, tabWasHidden })
         set({ status: 'error', error: humanizeError(e) })
@@ -222,23 +222,37 @@ async function destroyEngine() {
 
 // CPU (WASM) backend — wllama running llama.cpp off the main thread, GPU never
 // touched. Same state machine and capability surface as the WebGPU path.
-async function bootWasmEngine(model, nCtx) {
+async function bootWasmEngine(model) {
   await destroyEngine()     // switching GPU → CPU: free GPU memory + the dead device, if any
   await destroyWasmEngine() // a wllama instance doesn't survive exit(); always build fresh
+
+  // Threading is the difference between usable and unusable on phones. It
+  // needs cross-origin isolation (COOP/COEP via the service worker); log the
+  // actual state so a diagnostic dump shows whether this session got threads.
+  const cores = typeof navigator !== 'undefined' ? navigator.hardwareConcurrency ?? null : null
+  const isolated = typeof window !== 'undefined' && !!window.crossOriginIsolated
+  logInfo('ai', 'iniciando backend CPU (wasm)', { cores, crossOriginIsolated: isolated })
+
   const { createWllamaEngine } = await import('./wllama-chat.js')
   wasmEngine = await createWllamaEngine({
     ggufUrl: model.gguf,
-    nCtx,
+    // KV cache lives in ordinary RAM here (not GPU memory), so a full 2048
+    // context is fine even on the low-memory tier.
+    nCtx: 2048,
     onProgress: ({ loaded, total }) => set({
       progress: { ratio: total ? loaded / total : 0, text: 'Baixando o modelo (CPU)…' },
     }),
   })
   set({ progress: { ratio: 0.99, text: 'Testando o modelo… (na CPU pode levar um minuto)' } })
+  const t0 = Date.now()
   await wasmEngine.chat.completions.create({
     messages: [{ role: 'user', content: 'Hi' }],
     max_tokens: 4,
     temperature: 0,
   })
+  // Rough speed probe — tells us from a log dump whether slowness is expected
+  // (no threads) or something is actually stuck.
+  logInfo('ai', `warmup CPU concluído em ${((Date.now() - t0) / 1000).toFixed(1)}s (4 tokens)`)
 }
 
 async function destroyWasmEngine() {

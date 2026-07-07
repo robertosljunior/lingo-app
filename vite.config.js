@@ -11,29 +11,22 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
+      // Custom worker (src/sw.js): same precache + runtime caching as the old
+      // generateSW config, plus COOP/COEP header injection on navigations so
+      // the CPU (WASM) AI backend gets SharedArrayBuffer → multi-threading.
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.js',
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
-      workbox: {
+      injectManifest: {
         globPatterns: ['**/*.{js,css,html,svg,woff,woff2}'],
         // Keep the big AI-runtime chunks out of first-load precache — they're
-        // runtime-cached on demand (below) so the app shell stays light while
-        // the AI tutor still works offline after its first activation.
+        // runtime-cached on demand (see src/sw.js) so the app shell stays
+        // light while the AI tutor still works offline after activation.
         globIgnores: ['**/web-llm-*.js', '**/webllm-worker-*.js', '**/wllama-*.js'],
         // The NLP worker + Compromise bundle can exceed the default 2 MiB cap.
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
-        runtimeCaching: [
-          {
-            // web-llm (WebGPU) and wllama (CPU/WASM) runtime chunks, plus the
-            // ~7 MB wllama.wasm binary — cached on first AI activation.
-            urlPattern: ({ url }) => /\/assets\/((web-llm|webllm-worker|wllama)-[^/]+\.js|[^/]+\.wasm)$/.test(url.pathname),
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'webllm-runtime',
-              expiration: { maxEntries: 8 },
-              cacheableResponse: { statuses: [0, 200] },
-            },
-          },
-        ],
       },
       manifest: {
         name: 'App Idiomas — Treino de Inglês',
