@@ -3,7 +3,7 @@ import { useApp } from '../store.jsx'
 import { BottomNav } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { useAI } from '../ai/useAI.js'
-import { MODELS, formatSize } from '../ai/models.js'
+import { MODELS, formatSize, getModel } from '../ai/models.js'
 import { CAPABILITY_MANIFEST } from '../ai/capabilities.js'
 import { getErrorLog, clearErrorLog, formatErrorLog } from '../lib/error-log.js'
 
@@ -17,6 +17,9 @@ export default function Settings() {
     updateSetting('ai_model', id)
     ai.setPreferredModel(id)
   }
+  // CPU (WASM) models run without WebGPU, so they stay activatable even when
+  // the browser has no GPU support.
+  const wasmSelected = getModel(settings.ai_model)?.backend === 'wasm'
   const activate = async () => {
     const ok = await ai.loadModel(settings.ai_model)
     if (ok) { updateSetting('ai_enabled', true); showToast('Tutor IA pronto') }
@@ -111,7 +114,7 @@ export default function Settings() {
               <div>
                 <div style={{ fontWeight: 700, fontSize: 15 }}>Tutor no dispositivo</div>
                 <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>
-                  {ai.supported === false ? 'WebGPU indisponível neste navegador'
+                  {ai.supported === false && !wasmSelected ? 'WebGPU indisponível — escolha o modelo "CPU" abaixo'
                     : ai.status === 'ready' ? 'Ativo · pronto para conversar'
                     : ai.status === 'loading' ? `Baixando… ${Math.round((ai.progress?.ratio || 0) * 100)}%`
                     : 'Roda um modelo localmente, offline após o download'}
@@ -125,7 +128,7 @@ export default function Settings() {
             {ai.status === 'error' && (
               <div style={{ fontSize: 12, color: 'var(--error)', marginTop: 8, lineHeight: 1.4 }}>{ai.error}</div>
             )}
-            {ai.supported !== false && (
+            {(ai.supported !== false || wasmSelected) && (
               <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
                 {ai.status === 'ready' ? (
                   <>
