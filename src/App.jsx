@@ -10,6 +10,7 @@ import History from './screens/History.jsx'
 import Mistakes from './screens/Mistakes.jsx'
 import Settings from './screens/Settings.jsx'
 import Chat from './screens/Chat.jsx'
+import Generate from './screens/Generate.jsx'
 
 const SCREEN_COMPONENTS = {
   [SCREENS.HOME]: Home,
@@ -22,6 +23,7 @@ const SCREEN_COMPONENTS = {
   [SCREENS.MISTAKES]: Mistakes,
   [SCREENS.SETTINGS]: Settings,
   [SCREENS.CHAT]: Chat,
+  [SCREENS.GENERATE]: Generate,
 }
 
 // Screens that require an active lesson/session; if reached without one, fall

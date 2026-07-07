@@ -105,7 +105,10 @@ function normalizeQuestion(raw, index) {
 }
 
 // Public: parse compact text into a validated, normalized lesson object.
-export function parseLesson(text) {
+// `lenient` skips malformed questions instead of failing the whole lesson —
+// used by the on-device generator, where a truncated tail question shouldn't
+// void an otherwise good lesson.
+export function parseLesson(text, { lenient = false } = {}) {
   const doc = rawParse(text)
   if (!doc || typeof doc !== 'object' || Array.isArray(doc)) {
     throw new LessonParseError('Estrutura inválida: esperado um objeto com lesson_id e q.')
@@ -116,7 +119,15 @@ export function parseLesson(text) {
     throw new LessonParseError('A aula não tem perguntas (q).')
   }
 
-  const questions = qs.map((raw, i) => normalizeQuestion(raw, i))
+  const questions = []
+  qs.forEach((raw, i) => {
+    try {
+      questions.push(normalizeQuestion(raw, i))
+    } catch (e) {
+      if (!lenient) throw e
+    }
+  })
+  if (questions.length === 0) throw new LessonParseError('Nenhuma pergunta válida na aula.')
 
   return {
     lesson_id: String(doc.lesson_id),
@@ -131,9 +142,9 @@ export function parseLesson(text) {
 
 // Lightweight validate that returns a result object instead of throwing —
 // used by the Import screen's "Validar" button.
-export function validateLesson(text) {
+export function validateLesson(text, opts) {
   try {
-    const lesson = parseLesson(text)
+    const lesson = parseLesson(text, opts)
     return {
       ok: true,
       lesson,

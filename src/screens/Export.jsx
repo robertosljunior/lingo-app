@@ -4,7 +4,7 @@ import { I } from '../components/icons.jsx'
 import { buildResultYaml, buildNewLessonPrompt, buildLevelAnalysisPrompt, downloadText } from '../lib/export-engine.js'
 
 export default function Export() {
-  const { activeLesson, session, settings, back, showToast, lessons, SCREENS } = useApp()
+  const { activeLesson, session, settings, back, navigate, showToast, lessons, SCREENS } = useApp()
   const [tab, setTab] = useState('result')
   const [copied, setCopied] = useState(false)
 
@@ -62,6 +62,20 @@ export default function Export() {
         </div>
 
         <div className="code" style={{ flex: 1, overflowY: 'auto', fontSize: 11.5, lineHeight: 1.6, minHeight: 160 }}>{content}</div>
+
+        {tab === 'new' && (
+          <button
+            className="btn btn-primary btn-block"
+            style={{ background: 'linear-gradient(140deg, var(--indigo-500), var(--indigo-700))' }}
+            onClick={() => navigate(SCREENS.GENERATE, {
+              resultYaml,
+              level: lesson.level,
+              count: Math.min(settings?.question_count || 8, 12),
+            })}
+          >
+            <I.spark s={18} /> Gerar agora no aparelho (IA)
+          </button>
+        )}
 
         <div style={{ display: 'flex', gap: 10 }}>
           <button className="btn btn-secondary" style={{ flex: 1 }} onClick={() => { downloadText(filenames[tab], content); showToast('Arquivo baixado') }}>

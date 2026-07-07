@@ -3,16 +3,15 @@ import { useApp } from '../store.jsx'
 import { useAI } from '../ai/useAI.js'
 import { I } from '../components/icons.jsx'
 import { getModel, formatSize } from '../ai/models.js'
-import { TUTOR_SYSTEM_PROMPT, generateLesson, extractYaml } from '../ai/lesson-generator.js'
+import { TUTOR_SYSTEM_PROMPT, extractYaml } from '../ai/lesson-generator.js'
 import { validateLesson } from '../lib/lesson-parser.js'
 import { humanizeError } from '../ai/engine.js'
-import { logError } from '../lib/error-log.js'
 
 let msgId = 0
 const uid = () => `m${++msgId}`
 
 export default function Chat() {
-  const { back, settings, saveLesson, startLesson, mistakes, showToast, updateSetting } = useApp()
+  const { back, navigate, settings, saveLesson, startLesson, showToast, SCREENS: SC } = useApp()
   const ai = useAI()
   const modelId = settings?.ai_model || ai.modelId
   const model = getModel(modelId)
@@ -82,31 +81,11 @@ export default function Chat() {
     setBusy(false)
   }
 
-  const createLesson = async ({ focus, level, count }) => {
+  // Lesson generation happens in its own screen (progress bar + auto-import
+  // straight into the exercise) — the composer just hands the job over.
+  const createLesson = ({ focus, level, count }) => {
     setComposer(false)
-    setBusy(true)
-    const userMsg = { id: uid(), role: 'user', content: `Crie uma aula: ${focus} · ${level} · ${count} perguntas.` }
-    setMessages((m) => [...m, userMsg])
-    const streamId = uid()
-    setMessages((m) => [...m, { id: streamId, role: 'assistant', content: 'Gerando sua aula…', streaming: true }])
-    const weaknesses = mistakes.slice(0, 3).map((x) => x.mistake_type)
-    try {
-      const res = await generateLesson({
-        chat: chat(), focus, level, count, weaknesses,
-        onToken: () => setMessages((m) => m.map((x) => (x.id === streamId ? { ...x, content: 'Gerando sua aula…' } : x))),
-      })
-      if (res.ok) {
-        setMessages((m) => m.map((x) => (x.id === streamId ? { ...x, content: `Pronto! Uma aula de ${res.lesson.questions.length} perguntas sobre ${res.lesson.focus}.`, streaming: false, lesson: res.lesson } : x)))
-      } else {
-        setMessages((m) => m.map((x) => (x.id === streamId ? { ...x, content: `Não consegui montar uma aula válida (${res.error}). Tenta de novo ou troque o modelo nas Configurações.`, streaming: false, error: true } : x)))
-      }
-    } catch (e) {
-      logError('ai-lesson', e)
-      setMessages((m) => m.map((x) => (x.id === streamId
-        ? { ...x, content: `Falha ao gerar a aula — ${humanizeError(e)}`, streaming: false, error: true }
-        : x)))
-    }
-    setBusy(false)
+    navigate(SC.GENERATE, { focus, level, count })
   }
 
   const useLesson = async (lesson) => {
@@ -116,7 +95,9 @@ export default function Chat() {
   }
 
   // ---- Gate: unsupported / not loaded ----
-  if (ai.supported === false) {
+  // CPU (WASM) models don't need WebGPU, so no-WebGPU only blocks when a GPU
+  // model is selected.
+  if (ai.supported === false && model.backend !== 'wasm') {
     return <Gate back={back} title="Tutor IA">
       <UnsupportedCard />
     </Gate>

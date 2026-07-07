@@ -42,6 +42,8 @@ export function createChatCapability(engine) {
           temperature: opts.temperature ?? 0.7,
           max_tokens: opts.max_tokens ?? 1024,
           top_p: opts.top_p ?? 0.95,
+          ...(opts.frequency_penalty != null ? { frequency_penalty: opts.frequency_penalty } : null),
+          ...(opts.repetition_penalty != null ? { repetition_penalty: opts.repetition_penalty } : null),
         })
         for await (const chunk of completion) {
           const delta = chunk.choices?.[0]?.delta?.content || ''

@@ -43,8 +43,15 @@ export async function createWllamaEngine({ ggufUrl, nCtx = 2048, onProgress }) {
       progressCallback: onProgress,
     },
   )
+  // wllama takes llama.cpp-style sampling names; translate the OpenAI-style
+  // penalty params the rest of the app uses so both backends behave the same.
+  const create = ({ frequency_penalty, repetition_penalty, ...opts }) => wllama.createChatCompletion({
+    ...opts,
+    ...(frequency_penalty != null ? { penalty_freq: frequency_penalty } : null),
+    ...(repetition_penalty != null ? { penalty_repeat: repetition_penalty } : null),
+  })
   return {
-    chat: { completions: { create: (opts) => wllama.createChatCompletion(opts) } },
+    chat: { completions: { create } },
     unload: () => wllama.exit(),
   }
 }

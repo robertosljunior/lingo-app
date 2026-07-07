@@ -13,7 +13,7 @@ export const useApp = () => useContext(AppCtx)
 export const SCREENS = {
   HOME: 'home', IMPORT: 'import', EXERCISE: 'exercise', RESULT: 'result',
   REVIEW: 'review', EXPORT: 'export', HISTORY: 'history',
-  MISTAKES: 'mistakes', SETTINGS: 'settings', CHAT: 'chat',
+  MISTAKES: 'mistakes', SETTINGS: 'settings', CHAT: 'chat', GENERATE: 'generate',
 }
 
 const TABS = new Set([SCREENS.HOME, SCREENS.HISTORY, SCREENS.MISTAKES, SCREENS.SETTINGS])

@@ -236,9 +236,10 @@ async function bootWasmEngine(model) {
   const { createWllamaEngine } = await import('./wllama-chat.js')
   wasmEngine = await createWllamaEngine({
     ggufUrl: model.gguf,
-    // KV cache lives in ordinary RAM here (not GPU memory), so a full 2048
-    // context is fine even on the low-memory tier.
-    nCtx: 2048,
+    // KV cache lives in ordinary RAM here (not GPU memory), so a roomy context
+    // is fine even on the low-memory tier. 4096 leaves space for the lesson
+    // generator's system prompt + a full retry round.
+    nCtx: 4096,
     onProgress: ({ loaded, total }) => set({
       progress: { ratio: total ? loaded / total : 0, text: 'Baixando o modelo (CPU)…' },
     }),
@@ -280,7 +281,7 @@ export function humanizeError(e) {
   if (/device.*(lost|destroyed)|instance.*destroyed/i.test(msg)) return 'A GPU descarregou o modelo (memória insuficiente). Troque para um modelo mais leve nas Configurações e recarregue a página.'
   if (/out of memory|OOM|allocat|storage/i.test(msg)) return 'Memória insuficiente para este modelo. Tente um modelo mais leve nas Configurações.'
   if (/shader-f16/i.test(msg)) return 'Este aparelho não suporta o formato f16 exigido pelo modelo. Tente outro modelo nas Configurações.'
-  if (/context window|prompt tokens/i.test(msg)) return 'A conversa ficou longa demais para o modelo. Recarregue a página para começar de novo.'
+  if (/context window|prompt tokens|exceeds? the available context|exceed_context/i.test(msg)) return 'A conversa ou a aula ficou grande demais para a memória do modelo. Tente de novo com menos perguntas, ou recarregue a página.'
   if (/webgpu/i.test(msg)) return 'Falha ao iniciar a WebGPU. Verifique se o navegador tem WebGPU habilitado.'
   if (/network|fetch|Failed to fetch|download/i.test(msg)) return 'Falha ao baixar o modelo. Verifique a conexão (o download inicial precisa de internet).'
   return msg || 'Erro ao carregar o modelo.'

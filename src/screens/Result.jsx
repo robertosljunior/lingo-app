@@ -1,8 +1,9 @@
 import { useApp } from '../store.jsx'
 import { I } from '../components/icons.jsx'
+import { buildResultYaml } from '../lib/export-engine.js'
 
 export default function Result() {
-  const { activeLesson, session, navigate, setTab, SCREENS } = useApp()
+  const { activeLesson, session, navigate, setTab, settings, SCREENS } = useApp()
   const answers = session.answers
   const total = activeLesson.questions.length
   const correct = answers.filter((a) => a.verdict === 'correct').length
@@ -74,7 +75,19 @@ export default function Result() {
           </div>
         )}
 
-        <div style={{ display: 'flex', gap: 10, marginTop: 'auto' }}>
+        <button
+          className="btn btn-primary btn-block"
+          style={{ marginTop: 'auto', background: 'linear-gradient(140deg, var(--indigo-500), var(--indigo-700))' }}
+          onClick={() => navigate(SCREENS.GENERATE, {
+            resultYaml: buildResultYaml({ lesson: activeLesson, answers }),
+            level: activeLesson.level,
+            count: Math.min(settings?.question_count || 8, 12),
+          })}
+        >
+          <I.spark s={18} /> Gerar nova aula com base nos erros
+        </button>
+
+        <div style={{ display: 'flex', gap: 10 }}>
           <button className="btn btn-secondary" style={{ flex: 1 }} onClick={() => navigate(SCREENS.EXPORT)}>
             <I.download s={18} /> Exportar
           </button>
