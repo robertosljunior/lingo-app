@@ -6,7 +6,7 @@
 // web-llm in the browser's Cache Storage, so subsequent loads — and inference —
 // work offline.
 
-import { DEFAULT_MODEL_ID } from './models.js'
+import { DEFAULT_MODEL_ID, getModel } from './models.js'
 import { createCapabilityRegistry, createChatCapability } from './capabilities.js'
 import { logError, logInfo } from '../lib/error-log.js'
 
@@ -21,8 +21,9 @@ function loadWebLLM() {
 const listeners = new Set()
 const caps = createCapabilityRegistry()
 
-let mlc = null       // the web-llm engine instance
-let worker = null    // the underlying Web Worker
+let mlc = null        // the web-llm engine instance (WebGPU backend)
+let worker = null     // the underlying Web Worker for web-llm
+let wasmEngine = null // the wllama engine (CPU/WASM backend), when a CPU model is loaded
 
 let state = {
   supported: null,   // WebGPU support: null = unchecked
@@ -53,8 +54,11 @@ export function setPreferredModel(modelId) {
 // Load (or switch to) a model. Reuses the worker; reloads in place when already
 // running. Returns true on success.
 export async function loadModel(modelId = state.modelId) {
-  if (!isSupported()) {
-    set({ status: 'error', error: 'Seu navegador não suporta WebGPU. Use Chrome ou Edge recentes num desktop, ou um navegador compatível.' })
+  // CPU (WASM) models don't touch the GPU, so they skip the WebGPU gate — they
+  // are exactly the escape hatch for devices where WebGPU is broken or absent.
+  const isWasm = getModel(modelId)?.backend === 'wasm'
+  if (!isWasm && !isSupported()) {
+    set({ status: 'error', error: 'Seu navegador não suporta WebGPU. Use Chrome ou Edge recentes num desktop, ou escolha o modelo "CPU" nas Configurações.' })
     return false
   }
   if (state.status === 'loading') return false
@@ -66,8 +70,8 @@ export async function loadModel(modelId = state.modelId) {
   // catchable error), this is the trail the user finds in the diagnostic log.
   // GPU architecture matters for triage: e.g. Adreno 6xx is known to lose the
   // device on long compute passes (Android GPU watchdog) regardless of memory.
-  const gpu = await describeGpu()
-  logInfo('ai', `download/carga do modelo iniciado: ${modelId}`, { deviceMemoryGB, gpu })
+  const gpu = isWasm ? null : await describeGpu()
+  logInfo('ai', `download/carga do modelo iniciado: ${modelId}`, { deviceMemoryGB, ...(isWasm ? { backend: 'wasm' } : { gpu }) })
 
   const initProgressCallback = (p) => set({ progress: { ratio: p.progress ?? 0, text: p.text || '' } })
 
@@ -95,6 +99,20 @@ export async function loadModel(modelId = state.modelId) {
     : ''
 
   try {
+    if (isWasm) {
+      try {
+        await bootWasmEngine(getModel(modelId), chatOpts?.context_window_size ?? 2048)
+      } catch (e) {
+        logError('ai', e, { modelId, backend: 'wasm', lastProgress: state.progress?.text || null, deviceMemoryGB, tabWasHidden })
+        set({ status: 'error', error: humanizeError(e) })
+        return false
+      }
+      caps.register('chat', createChatCapability(wasmEngine))
+      set({ status: 'ready', progress: { ratio: 1, text: 'Pronto' } })
+      logInfo('ai', `modelo pronto (inferência testada, CPU): ${modelId}`)
+      return true
+    }
+
     try {
       await bootEngine(modelId, chatOpts, initProgressCallback)
     } catch (e) {
@@ -165,6 +183,7 @@ async function waitForGpuAdapter(timeoutMs = 8000) {
 // OOM/device-lost here — with a real message — instead of leaving the user
 // with a chat that errors on every turn.
 async function bootEngine(modelId, chatOpts, initProgressCallback) {
+  await destroyWasmEngine() // switching CPU → GPU: free the wllama runtime first
   const { CreateWebWorkerMLCEngine } = await loadWebLLM()
   if (!worker) {
     worker = new Worker(new URL('./webllm-worker.js', import.meta.url), { type: 'module' })
@@ -201,8 +220,35 @@ async function destroyEngine() {
   worker = null
 }
 
+// CPU (WASM) backend — wllama running llama.cpp off the main thread, GPU never
+// touched. Same state machine and capability surface as the WebGPU path.
+async function bootWasmEngine(model, nCtx) {
+  await destroyEngine()     // switching GPU → CPU: free GPU memory + the dead device, if any
+  await destroyWasmEngine() // a wllama instance doesn't survive exit(); always build fresh
+  const { createWllamaEngine } = await import('./wllama-chat.js')
+  wasmEngine = await createWllamaEngine({
+    ggufUrl: model.gguf,
+    nCtx,
+    onProgress: ({ loaded, total }) => set({
+      progress: { ratio: total ? loaded / total : 0, text: 'Baixando o modelo (CPU)…' },
+    }),
+  })
+  set({ progress: { ratio: 0.99, text: 'Testando o modelo… (na CPU pode levar um minuto)' } })
+  await wasmEngine.chat.completions.create({
+    messages: [{ role: 'user', content: 'Hi' }],
+    max_tokens: 4,
+    temperature: 0,
+  })
+}
+
+async function destroyWasmEngine() {
+  try { if (wasmEngine) await wasmEngine.unload() } catch { /* ignore */ }
+  wasmEngine = null
+}
+
 export async function unloadModel() {
   try { if (mlc) await mlc.unload() } catch { /* ignore */ }
+  await destroyWasmEngine()
   caps.clear()
   set({ status: 'idle', progress: { ratio: 0, text: '' } })
 }
@@ -211,7 +257,7 @@ export async function unloadModel() {
 export function getCapability(name) { return caps.get(name) }
 export function hasCapability(name) { return caps.has(name) }
 export function listCapabilities() { return caps.list() }
-export function getEngine() { return mlc }
+export function getEngine() { return mlc ?? wasmEngine }
 
 export function humanizeError(e) {
   const msg = String(e?.message || e || '')
@@ -222,6 +268,6 @@ export function humanizeError(e) {
   if (/shader-f16/i.test(msg)) return 'Este aparelho não suporta o formato f16 exigido pelo modelo. Tente outro modelo nas Configurações.'
   if (/context window|prompt tokens/i.test(msg)) return 'A conversa ficou longa demais para o modelo. Recarregue a página para começar de novo.'
   if (/webgpu/i.test(msg)) return 'Falha ao iniciar a WebGPU. Verifique se o navegador tem WebGPU habilitado.'
-  if (/network|fetch|Failed to fetch/i.test(msg)) return 'Falha ao baixar o modelo. Verifique a conexão (o download inicial precisa de internet).'
+  if (/network|fetch|Failed to fetch|download/i.test(msg)) return 'Falha ao baixar o modelo. Verifique a conexão (o download inicial precisa de internet).'
   return msg || 'Erro ao carregar o modelo.'
 }

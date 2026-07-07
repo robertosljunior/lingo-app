@@ -15,19 +15,21 @@ export default defineConfig({
       includeAssets: ['favicon.svg'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,woff,woff2}'],
-        // Keep the big WebLLM chunks out of first-load precache — they're
+        // Keep the big AI-runtime chunks out of first-load precache — they're
         // runtime-cached on demand (below) so the app shell stays light while
         // the AI tutor still works offline after its first activation.
-        globIgnores: ['**/web-llm-*.js', '**/webllm-worker-*.js'],
+        globIgnores: ['**/web-llm-*.js', '**/webllm-worker-*.js', '**/wllama-*.js'],
         // The NLP worker + Compromise bundle can exceed the default 2 MiB cap.
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         runtimeCaching: [
           {
-            urlPattern: ({ url }) => /\/assets\/(web-llm|webllm-worker)-[^/]+\.js$/.test(url.pathname),
+            // web-llm (WebGPU) and wllama (CPU/WASM) runtime chunks, plus the
+            // ~7 MB wllama.wasm binary — cached on first AI activation.
+            urlPattern: ({ url }) => /\/assets\/((web-llm|webllm-worker|wllama)-[^/]+\.js|[^/]+\.wasm)$/.test(url.pathname),
             handler: 'CacheFirst',
             options: {
               cacheName: 'webllm-runtime',
-              expiration: { maxEntries: 6 },
+              expiration: { maxEntries: 8 },
               cacheableResponse: { statuses: [0, 200] },
             },
           },
@@ -59,6 +61,7 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('@mlc-ai/web-llm')) return 'web-llm'
+          if (id.includes('@wllama/wllama')) return 'wllama'
         },
       },
     },

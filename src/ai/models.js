@@ -28,6 +28,15 @@ export const MODELS = [
     tier: 'light',
   },
   {
+    id: 'wasm-Qwen2.5-0.5B-Instruct-q4_k_m',
+    name: 'Qwen2.5 0.5B · CPU (sem GPU)',
+    sizeMB: 491,
+    note: 'Roda no processador via WebAssembly — não usa a GPU. Ideal para aparelhos em que a GPU derruba os outros modelos. Mais lento: prefira perguntas e respostas curtas.',
+    tier: 'cpu',
+    backend: 'wasm',
+    gguf: 'https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q4_k_m.gguf',
+  },
+  {
     id: 'SmolLM2-360M-Instruct-q4f16_1-MLC',
     name: 'SmolLM2 360M · teste',
     sizeMB: 376,
