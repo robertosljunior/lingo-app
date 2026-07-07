@@ -28,6 +28,13 @@ export const MODELS = [
     tier: 'light',
   },
   {
+    id: 'Llama-3.2-1B-Instruct-q4f32_1-MLC',
+    name: 'Llama 3.2 1B · compatibilidade (f32)',
+    sizeMB: 1129,
+    note: 'Mesmo modelo leve em f32 — use se os outros falharem no teste da GPU (comum em celulares cujo driver não lida bem com f16).',
+    tier: 'compat',
+  },
+  {
     id: 'Llama-3.2-3B-Instruct-q4f16_1-MLC',
     name: 'Llama 3.2 3B',
     sizeMB: 2264,
