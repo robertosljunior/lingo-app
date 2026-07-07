@@ -24,8 +24,15 @@ export const MODELS = [
     id: 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC',
     name: 'Qwen2.5 0.5B',
     sizeMB: 945,
-    note: 'O mais leve. Rápido, mas menos consistente.',
+    note: 'Bem leve e multilíngue. Rápido, mas menos consistente.',
     tier: 'light',
+  },
+  {
+    id: 'SmolLM2-360M-Instruct-q4f16_1-MLC',
+    name: 'SmolLM2 360M · teste',
+    sizeMB: 376,
+    note: 'O menor de todos — fraco em português, mas serve para testar se o seu aparelho consegue rodar algum modelo. Se nem este funcionar, use o app num computador.',
+    tier: 'diagnostic',
   },
   {
     id: 'Llama-3.2-1B-Instruct-q4f32_1-MLC',
