@@ -64,7 +64,10 @@ export async function loadModel(modelId = state.modelId) {
 
   // Breadcrumb: if the tab dies mid-download (WebGPU/OOM kills it without a
   // catchable error), this is the trail the user finds in the diagnostic log.
-  logInfo('ai', `download/carga do modelo iniciado: ${modelId}`, { deviceMemoryGB })
+  // GPU architecture matters for triage: e.g. Adreno 6xx is known to lose the
+  // device on long compute passes (Android GPU watchdog) regardless of memory.
+  const gpu = await describeGpu()
+  logInfo('ai', `download/carga do modelo iniciado: ${modelId}`, { deviceMemoryGB, gpu })
 
   const initProgressCallback = (p) => set({ progress: { ratio: p.progress ?? 0, text: p.text || '' } })
 
@@ -77,37 +80,83 @@ export async function loadModel(modelId = state.modelId) {
       ? { context_window_size: 2048 }
       : undefined
 
-  try {
-    await bootEngine(modelId, chatOpts, initProgressCallback)
-  } catch (e) {
-    logError('ai', e, { modelId, lastProgress: state.progress?.text || null, deviceMemoryGB })
-    if (!isFatalGpuError(e)) {
-      set({ status: 'error', error: humanizeError(e) })
-      return false
-    }
-    // GPU device lost (surfaces as mapAsync AbortError / "device lost"). The
-    // worker is holding a dead GPUDevice — every later call on it fails the
-    // same way, even with a smaller model. Tear everything down and retry once
-    // on a fresh device with a smaller context window (weights are already in
-    // Cache Storage, so this is fast).
-    await destroyEngine()
-    const retryOpts = { context_window_size: Math.max(512, (chatOpts?.context_window_size ?? 4096) / 2) }
-    set({ progress: { ratio: 0.9, text: 'A GPU falhou no teste — tentando de novo com menos memória…' } })
-    logInfo('ai', `retry após perda do device de GPU: ${modelId}`, retryOpts)
-    try {
-      await bootEngine(modelId, retryOpts, initProgressCallback)
-    } catch (e2) {
-      logError('ai', e2, { modelId, phase: 'retry', lastProgress: state.progress?.text || null, deviceMemoryGB })
-      if (isFatalGpuError(e2)) await destroyEngine()
-      set({ status: 'error', error: humanizeError(e2) })
-      return false
-    }
-  }
+  // On Android the WebGPU device is torn down when the screen turns off or the
+  // browser leaves the foreground — a top cause of "device lost" during the
+  // minutes-long download/warmup. Hold a screen wake lock for the duration and
+  // record whether the tab went hidden anyway, so logs can tell that apart
+  // from a real GPU out-of-memory.
+  let wakeLock = null
+  try { wakeLock = (await navigator.wakeLock?.request('screen')) ?? null } catch { /* unsupported/denied */ }
+  let tabWasHidden = typeof document !== 'undefined' && document.visibilityState === 'hidden'
+  const onVis = () => { if (document.visibilityState === 'hidden') tabWasHidden = true }
+  if (typeof document !== 'undefined') document.addEventListener('visibilitychange', onVis)
+  const hiddenHint = () => tabWasHidden
+    ? ' A tela apagou ou o navegador foi para segundo plano durante o carregamento — no celular isso derruba a GPU. Tente de novo mantendo o app aberto e a tela ligada até terminar.'
+    : ''
 
-  caps.register('chat', createChatCapability(mlc))
-  set({ status: 'ready', progress: { ratio: 1, text: 'Pronto' } })
-  logInfo('ai', `modelo pronto (inferência testada): ${modelId}`)
-  return true
+  try {
+    try {
+      await bootEngine(modelId, chatOpts, initProgressCallback)
+    } catch (e) {
+      logError('ai', e, { modelId, lastProgress: state.progress?.text || null, deviceMemoryGB, tabWasHidden })
+      if (!isFatalGpuError(e)) {
+        set({ status: 'error', error: humanizeError(e) })
+        return false
+      }
+      // GPU device lost (surfaces as mapAsync AbortError / "device lost"). The
+      // worker is holding a dead GPUDevice — every later call on it fails the
+      // same way, even with a smaller model. Tear everything down and retry
+      // once on a fresh device with a smaller context window (weights are
+      // already in Cache Storage, so this is fast).
+      await destroyEngine()
+      set({ progress: { ratio: 0.9, text: 'A GPU falhou no teste — aguardando ela se recuperar…' } })
+      if (!(await waitForGpuAdapter())) {
+        set({ status: 'error', error: 'A GPU do navegador caiu e não voltou. Feche o navegador por completo, abra de novo e tente outra vez.' + hiddenHint() })
+        return false
+      }
+      const retryOpts = { context_window_size: Math.max(512, (chatOpts?.context_window_size ?? 4096) / 2) }
+      set({ progress: { ratio: 0.9, text: 'Tentando de novo com menos memória…' } })
+      logInfo('ai', `retry após perda do device de GPU: ${modelId}`, retryOpts)
+      try {
+        await bootEngine(modelId, retryOpts, initProgressCallback)
+      } catch (e2) {
+        logError('ai', e2, { modelId, phase: 'retry', lastProgress: state.progress?.text || null, deviceMemoryGB, tabWasHidden })
+        if (isFatalGpuError(e2)) await destroyEngine()
+        set({ status: 'error', error: humanizeError(e2) + (isFatalGpuError(e2) ? hiddenHint() : '') })
+        return false
+      }
+    }
+
+    caps.register('chat', createChatCapability(mlc))
+    set({ status: 'ready', progress: { ratio: 1, text: 'Pronto' } })
+    logInfo('ai', `modelo pronto (inferência testada): ${modelId}`)
+    return true
+  } finally {
+    if (typeof document !== 'undefined') document.removeEventListener('visibilitychange', onVis)
+    try { await wakeLock?.release() } catch { /* already released */ }
+  }
+}
+
+async function describeGpu() {
+  try {
+    const a = await navigator.gpu.requestAdapter()
+    if (!a) return null
+    const { vendor, architecture } = a.info ?? {}
+    return [vendor, architecture].filter(Boolean).join(' ') || null
+  } catch { return null }
+}
+
+// After a device loss, Chrome's GPU process can take a few seconds to come
+// back; until then requestAdapter() resolves null (seen in the field as
+// "Unable to find a compatible GPU" when retrying ~20ms after the loss).
+// Poll before recreating the engine so the retry lands on a live GPU.
+async function waitForGpuAdapter(timeoutMs = 8000) {
+  const t0 = Date.now()
+  while (Date.now() - t0 < timeoutMs) {
+    try { if (await navigator.gpu.requestAdapter()) return true } catch { /* keep polling */ }
+    await new Promise((r) => setTimeout(r, 500))
+  }
+  return false
 }
 
 // Creates/reloads the engine and runs a warmup inference. The download
@@ -166,7 +215,8 @@ export function getEngine() { return mlc }
 
 export function humanizeError(e) {
   const msg = String(e?.message || e || '')
-  if (/mapAsync|unmapped before/i.test(msg)) return 'A GPU do aparelho descartou o modelo durante o teste — falta de memória de GPU ou driver instável com f16. Feche outras abas e apps e tente de novo; se persistir, escolha o modelo "compatibilidade (f32)" nas Configurações.'
+  if (/mapAsync|unmapped before/i.test(msg)) return 'A GPU do aparelho derrubou o modelo durante o teste. Em celulares (especialmente com GPU Adreno) o sistema encerra a GPU quando o modelo pesa demais. Tente o modelo "SmolLM2 360M · teste" nas Configurações — se nem ele rodar, este aparelho não consegue executar o tutor offline; use um computador.'
+  if (/Unable to find a compatible GPU/i.test(msg)) return 'O navegador perdeu acesso à GPU (o processo gráfico caiu). Feche o navegador por completo, abra de novo e tente outra vez.'
   if (/device.*(lost|destroyed)|instance.*destroyed/i.test(msg)) return 'A GPU descarregou o modelo (memória insuficiente). Troque para um modelo mais leve nas Configurações e recarregue a página.'
   if (/out of memory|OOM|allocat|storage/i.test(msg)) return 'Memória insuficiente para este modelo. Tente um modelo mais leve nas Configurações.'
   if (/shader-f16/i.test(msg)) return 'Este aparelho não suporta o formato f16 exigido pelo modelo. Tente outro modelo nas Configurações.'
