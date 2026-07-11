@@ -23,14 +23,17 @@ const state = {
   accent: 'en-US',
   voiceURI: '', // '' = auto-pick best for accent
   rate: 0.95,
+  piperVoice: '',
   piper: null, // lazy handle to the piper engine module
 }
 
-export function configureTts({ tts_engine, tts_accent, tts_voice, tts_rate } = {}) {
+export function configureTts({ tts_engine, tts_accent, tts_voice, tts_rate, piper_voice } = {}) {
   if (tts_engine) state.engine = tts_engine
   if (tts_accent) state.accent = tts_accent
   state.voiceURI = tts_voice ?? state.voiceURI
   if (tts_rate) state.rate = +tts_rate
+  if (piper_voice) state.piperVoice = piper_voice
+  state.piper?.configurePiper?.({ piper_voice: state.piperVoice })
 }
 
 // ---------- voice enumeration (Web Speech) ----------
@@ -120,8 +123,9 @@ async function speakPiper(text, opts) {
   try {
     if (!state.piper) {
       state.piper = await import('./tts-piper.js')
+      state.piper.configurePiper?.({ piper_voice: state.piperVoice })
     }
-    return await state.piper.speak(text, { ...opts, accent: state.accent })
+    return await state.piper.speak(text, { ...opts, rate: opts.rate ?? state.rate, accent: state.accent })
   } catch {
     return false
   }

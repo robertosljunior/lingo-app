@@ -145,8 +145,18 @@ export function AppProvider({ children }) {
   const saveLesson = useCallback(async (lesson) => {
     const saved = await db.saveLesson(lesson)
     await refreshLibrary()
+    // With the neural engine on, pre-synthesize the lesson's sentences in the
+    // background so every "ouvir" is instant and offline.
+    if (settings?.tts_engine === 'piper') {
+      import('./lib/audio/tts-piper.js')
+        .then((piper) => piper.warmCache(
+          lesson.questions.map((q) => q.expected_answer).filter(Boolean),
+          settings.piper_voice,
+        ))
+        .catch(() => {})
+    }
     return saved
-  }, [refreshLibrary])
+  }, [refreshLibrary, settings?.tts_engine, settings?.piper_voice])
 
   // Synthetic sessions built from stored questions (SRS review / practice).
   const startSynthetic = useCallback((questions, meta) => {

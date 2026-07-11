@@ -4,6 +4,7 @@ import { BottomNav } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { getErrorLog, clearErrorLog, formatErrorLog } from '../lib/error-log.js'
 import { ACCENTS, listVoices, onVoicesChanged, speak, speechSupported } from '../lib/audio/tts.js'
+import { PIPER_VOICES, piperSupported, storedVoices, downloadVoice, removeVoice } from '../lib/audio/tts-piper.js'
 
 export default function Settings() {
   const { settings, updateSetting, setTab, showToast, db, refreshLibrary } = useApp()
@@ -309,11 +310,106 @@ function AudioSection({ Row, SectionHead, Segmented, settings, updateSetting }) 
         <div className="muted" style={{ fontSize: 12, marginTop: 8 }}>Ao abrir o resultado, a frase correta é falada em voz alta.</div>
       </Row>
 
+      {piperSupported && (
+        <Row>
+          <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Motor de voz</div>
+          <Segmented value={settings.tts_engine} onChange={(k) => updateSetting('tts_engine', k)}
+            options={[{ k: 'system', l: 'Sistema' }, { k: 'piper', l: 'Neural offline' }]} />
+          <div className="muted" style={{ fontSize: 12, marginTop: 8, lineHeight: 1.4 }}>
+            Neural offline usa vozes Piper de alta qualidade rodando no aparelho (baixe uma voz abaixo).
+            Se a voz escolhida não estiver baixada, o app volta sozinho para a voz do sistema.
+          </div>
+        </Row>
+      )}
+
+      {piperSupported && settings.tts_engine === 'piper' && (
+        <PiperVoicesRow settings={settings} updateSetting={updateSetting} />
+      )}
+
       <Row last>
         <button className="btn btn-secondary" style={{ width: '100%' }} onClick={() => speak(TEST_SENTENCE)}>
           <I.speaker s={18} /> Testar voz
         </button>
       </Row>
+    </div>
+  )
+}
+
+// Download manager for the Piper neural voices (~60 MB each, stored on the
+// device; first download needs internet, everything after is offline).
+function PiperVoicesRow({ settings, updateSetting }) {
+  const { showToast } = useApp()
+  const [stored, setStored] = useState([])
+  const [progress, setProgress] = useState({}) // voiceId -> % while downloading
+
+  const refresh = () => { storedVoices().then(setStored) }
+  useEffect(refresh, [])
+
+  const handleDownload = async (v) => {
+    setProgress((p) => ({ ...p, [v.id]: 0 }))
+    try {
+      await downloadVoice(v.id, (pct) => setProgress((p) => ({ ...p, [v.id]: pct })))
+      showToast(`${v.label} pronta para uso offline`)
+      updateSetting('piper_voice', v.id)
+    } catch {
+      showToast('Falha no download — verifique a internet')
+    } finally {
+      setProgress((p) => { const n = { ...p }; delete n[v.id]; return n })
+      refresh()
+    }
+  }
+
+  const handleRemove = async (v) => {
+    if (!confirm(`Apagar a voz ${v.label} (~${v.sizeMB} MB)?`)) return
+    await removeVoice(v.id)
+    refresh()
+  }
+
+  return (
+    <div style={{ padding: '14px 16px', borderBottom: '1px solid var(--border)' }}>
+      <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 2 }}>Vozes neurais (Piper)</div>
+      <div className="muted" style={{ fontSize: 12, marginBottom: 10 }}>
+        ~60 MB por voz · baixa uma vez, fala offline para sempre
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {PIPER_VOICES.map((v) => {
+          const isStored = stored.includes(v.id)
+          const isActive = settings.piper_voice === v.id
+          const pct = progress[v.id]
+          return (
+            <div key={v.id} style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--bg-alt)', borderRadius: 12, padding: '10px 12px' }}>
+              <button onClick={() => isStored && updateSetting('piper_voice', v.id)}
+                aria-label={`Usar voz ${v.label}`} disabled={!isStored}
+                style={{
+                  width: 20, height: 20, borderRadius: '50%', flexShrink: 0, cursor: isStored ? 'pointer' : 'default',
+                  border: `2px solid ${isActive ? 'var(--indigo-600)' : 'var(--border-strong)'}`,
+                  background: isActive ? 'var(--indigo-600)' : 'transparent',
+                  opacity: isStored ? 1 : 0.4,
+                }} />
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontWeight: 700, fontSize: 13 }}>{v.flag} {v.label}</div>
+                <div className="muted" style={{ fontSize: 11 }}>
+                  {pct != null ? `Baixando… ${pct}%` : isStored ? 'No aparelho · offline' : `${v.sizeMB} MB`}
+                </div>
+                {pct != null && (
+                  <div style={{ height: 4, background: 'var(--border)', borderRadius: 999, overflow: 'hidden', marginTop: 6 }}>
+                    <div style={{ height: '100%', width: `${pct}%`, background: 'var(--indigo-600)' }} />
+                  </div>
+                )}
+              </div>
+              {pct == null && (isStored ? (
+                <button className="btn btn-sm btn-ghost" style={{ padding: '4px 8px', color: 'var(--error)' }} onClick={() => handleRemove(v)}>
+                  Apagar
+                </button>
+              ) : (
+                <button className="btn btn-sm btn-secondary" style={{ padding: '4px 10px' }} onClick={() => handleDownload(v)}>
+                  <I.download s={14} /> Baixar
+                </button>
+              ))}
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

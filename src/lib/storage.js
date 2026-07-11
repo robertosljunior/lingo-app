@@ -307,6 +307,7 @@ const SETTINGS_DEFAULTS = {
   active_profile: DEFAULT_PROFILE,
   // audio
   tts_engine: 'system', // system | piper
+  piper_voice: 'en_US-hfc_female-medium',
   tts_accent: 'en-US',
   tts_voice: '', // '' = auto-pick best voice for the accent
   tts_rate: 0.95,
