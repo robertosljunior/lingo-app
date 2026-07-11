@@ -61,7 +61,9 @@ export function analyze(payload) {
   return new Promise((resolve) => {
     pending.set(id, resolve)
     w.postMessage({ type: 'analyze_answer', id, payload })
-    // Safety timeout: if the worker never replies, fall back.
+    // Safety timeout: if the worker never replies, fall back. wink-nlp loads
+    // its model on the first request, so give it more headroom.
+    const timeoutMs = payload.nlp_library === 'wink' ? 10000 : 4000
     setTimeout(() => {
       if (pending.has(id)) {
         pending.delete(id)
@@ -72,6 +74,6 @@ export function analyze(payload) {
           mistake_focus: payload.mistake_focus || null,
         }))
       }
-    }, 4000)
+    }, timeoutMs)
   })
 }

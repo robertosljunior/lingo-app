@@ -82,12 +82,12 @@ export default function Settings() {
             </div>
           </Row>
           <Row last>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: 15 }}>Biblioteca NLP</div>
-                <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>análise local no Web Worker</div>
-              </div>
-              <span className="chip" style={{ fontFamily: 'var(--font-mono)' }}>compromise.js</span>
+            <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Biblioteca NLP</div>
+            <Segmented value={settings.nlp_library} onChange={(k) => updateSetting('nlp_library', k)}
+              options={[{ k: 'compromise', l: 'Compromise' }, { k: 'wink', l: 'wink-nlp' }]} />
+            <div className="muted" style={{ fontSize: 12, marginTop: 8, lineHeight: 1.4 }}>
+              Análise local no Web Worker. wink-nlp tem análise gramatical (POS) mais precisa para
+              classificar erros de tempo verbal e estrutura; carrega na primeira correção.
             </div>
           </Row>
         </div>

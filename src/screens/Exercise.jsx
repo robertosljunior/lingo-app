@@ -53,6 +53,7 @@ export default function Exercise() {
       accepted_answers: strict ? [] : q.accepted_answers,
       exercise_type: q.type,
       mistake_focus: q.mistake_focus,
+      nlp_library: settings?.nlp_library,
     })
     // Choice questions: exact-match the option regardless of NLP.
     if (q.type === 'fill_blank' || q.type === 'choose_best') {
