@@ -2,28 +2,12 @@ import { useState } from 'react'
 import { useApp } from '../store.jsx'
 import { BottomNav } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
-import { useAI } from '../ai/useAI.js'
-import { MODELS, formatSize, getModel } from '../ai/models.js'
-import { CAPABILITY_MANIFEST } from '../ai/capabilities.js'
 import { getErrorLog, clearErrorLog, formatErrorLog } from '../lib/error-log.js'
 
 export default function Settings() {
-  const { settings, updateSetting, setTab, showToast, db, refreshLibrary, SCREENS } = useApp()
-  const ai = useAI()
+  const { settings, updateSetting, setTab, showToast, db, refreshLibrary } = useApp()
   const [log, setLog] = useState(() => getErrorLog())
   if (!settings) return null
-
-  const selectModel = (id) => {
-    updateSetting('ai_model', id)
-    ai.setPreferredModel(id)
-  }
-  // CPU (WASM) models run without WebGPU, so they stay activatable even when
-  // the browser has no GPU support.
-  const wasmSelected = getModel(settings.ai_model)?.backend === 'wasm'
-  const activate = async () => {
-    const ok = await ai.loadModel(settings.ai_model)
-    if (ok) { updateSetting('ai_enabled', true); showToast('Tutor IA pronto') }
-  }
 
   const Row = ({ children, last }) => (
     <div style={{ padding: '14px 16px', borderBottom: last ? 'none' : '1px solid var(--border)' }}>{children}</div>
@@ -104,93 +88,6 @@ export default function Settings() {
         </div>
 
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
-          <div style={{ padding: '14px 16px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div className="label-eyebrow">inteligência artificial</div>
-            <span className="chip chip-indigo" style={{ fontSize: 10, padding: '2px 7px' }}>beta</span>
-          </div>
-
-          <Row>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: 15 }}>Tutor no dispositivo</div>
-                <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>
-                  {ai.supported === false && !wasmSelected ? 'WebGPU indisponível — escolha o modelo "CPU" abaixo'
-                    : ai.status === 'ready' ? 'Ativo · pronto para conversar'
-                    : ai.status === 'loading' ? `Baixando… ${Math.round((ai.progress?.ratio || 0) * 100)}%`
-                    : 'Roda um modelo localmente, offline após o download'}
-                </div>
-              </div>
-              <StatusDot ai={ai} />
-            </div>
-            {ai.status === 'loading' && (
-              <div className="progress" style={{ marginTop: 10 }}><div className="fill" style={{ width: `${Math.round((ai.progress?.ratio || 0) * 100)}%` }} /></div>
-            )}
-            {ai.status === 'error' && (
-              <div style={{ fontSize: 12, color: 'var(--error)', marginTop: 8, lineHeight: 1.4 }}>{ai.error}</div>
-            )}
-            {(ai.supported !== false || wasmSelected) && (
-              <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-                {ai.status === 'ready' ? (
-                  <>
-                    <button className="btn btn-secondary btn-sm" style={{ flex: 1 }} onClick={() => setTab(SCREENS.CHAT)}>Abrir tutor</button>
-                    <button className="btn btn-secondary btn-sm" style={{ flex: 1 }} onClick={async () => { await ai.unloadModel(); updateSetting('ai_enabled', false); showToast('Modelo descarregado') }}>Descarregar</button>
-                  </>
-                ) : (
-                  <button className="btn btn-primary btn-sm btn-block" disabled={ai.status === 'loading'} onClick={activate}>
-                    <I.spark s={16} /> {ai.status === 'loading' ? 'Baixando…' : 'Baixar e ativar'}
-                  </button>
-                )}
-              </div>
-            )}
-          </Row>
-
-          <Row>
-            <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10 }}>Modelo</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {MODELS.map((m) => {
-                const active = settings.ai_model === m.id
-                return (
-                  <button key={m.id} onClick={() => selectModel(m.id)} style={{
-                    display: 'flex', alignItems: 'flex-start', gap: 10, textAlign: 'left', cursor: 'pointer',
-                    padding: 12, borderRadius: 12, fontFamily: 'inherit', color: 'var(--ink)',
-                    border: `1.5px solid ${active ? 'var(--indigo-600)' : 'var(--border)'}`,
-                    background: active ? 'var(--indigo-50)' : 'var(--surface)',
-                  }}>
-                    <div style={{ width: 20, height: 20, borderRadius: '50%', flexShrink: 0, marginTop: 1, border: `2px solid ${active ? 'var(--indigo-600)' : 'var(--border-strong)'}`, background: active ? 'var(--indigo-600)' : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>{active && <I.check s={11} />}</div>
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
-                        <span style={{ fontWeight: 700, fontSize: 14 }}>{m.name}</span>
-                        <span className="chip" style={{ fontSize: 10, padding: '1px 7px' }}>{formatSize(m.sizeMB)}</span>
-                      </div>
-                      <div className="muted" style={{ fontSize: 12, marginTop: 3, lineHeight: 1.4 }}>{m.note}</div>
-                    </div>
-                  </button>
-                )
-              })}
-            </div>
-            {ai.status === 'ready' && (
-              <button className="btn btn-secondary btn-sm btn-block" style={{ marginTop: 10 }} onClick={activate}>
-                Aplicar modelo selecionado
-              </button>
-            )}
-          </Row>
-
-          <Row last>
-            <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Recursos</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {CAPABILITY_MANIFEST.map((c) => (
-                <div key={c.key} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13 }}>
-                  <span className="muted-2">{c.label}</span>
-                  <span className={`chip ${c.status === 'available' ? 'chip-success' : ''}`} style={{ fontSize: 11 }}>
-                    {c.status === 'available' ? 'disponível' : 'em breve'}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </Row>
-        </div>
-
-        <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <SectionHead>aparência</SectionHead>
           <Row last>
             <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Tema</div>
@@ -264,16 +161,7 @@ export default function Settings() {
           App Idiomas · funciona 100% offline · seus dados ficam só neste dispositivo
         </p>
       </div>
-      <BottomNav active="settings" onNavigate={setTab} onTutor={() => setTab(SCREENS.CHAT)} />
+      <BottomNav active="settings" onNavigate={setTab} />
     </div>
   )
-}
-
-function StatusDot({ ai }) {
-  const color = ai.supported === false ? 'var(--ink-4)'
-    : ai.status === 'ready' ? 'var(--success)'
-    : ai.status === 'loading' ? 'var(--warn)'
-    : ai.status === 'error' ? 'var(--error)'
-    : 'var(--ink-4)'
-  return <div style={{ width: 12, height: 12, borderRadius: '50%', background: color, flexShrink: 0, boxShadow: `0 0 0 4px color-mix(in srgb, ${color} 18%, transparent)` }} />
 }

@@ -172,23 +172,13 @@ const SETTINGS_DEFAULTS = {
   correction_mode: 'flexible', // flexible | strict
   nlp_library: 'compromise',
   theme: 'system', // system | light | dark
-  ai_model: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC',
-  ai_enabled: false,
 }
 
 export async function getSettings() {
   const d = await db()
   const rows = await d.getAll('settings')
   const map = Object.fromEntries(rows.map((r) => [r.key, r.value]))
-  const s = { ...SETTINGS_DEFAULTS, ...map }
-  // Migration: Phi-4 was the old default and OOM-crashes ordinary devices
-  // during download. Anyone who still has it selected but never got the tutor
-  // running is moved to the light default; who activated it keeps it.
-  if (s.ai_model === 'Phi-4-mini-instruct-q4f16_1-MLC' && !s.ai_enabled) {
-    s.ai_model = SETTINGS_DEFAULTS.ai_model
-    await d.put('settings', { key: 'ai_model', value: s.ai_model })
-  }
-  return s
+  return { ...SETTINGS_DEFAULTS, ...map }
 }
 
 export async function setSetting(key, value) {

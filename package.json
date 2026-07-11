@@ -12,8 +12,6 @@
   },
   "dependencies": {
     "@fontsource/geist-mono": "^5.2.8",
-    "@mlc-ai/web-llm": "^0.2.84",
-    "@wllama/wllama": "^3.5.1",
     "compromise": "^14.14.4",
     "idb": "^8.0.0",
     "js-yaml": "^4.1.0",

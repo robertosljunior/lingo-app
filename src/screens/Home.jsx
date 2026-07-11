@@ -91,16 +91,6 @@ export default function Home() {
           </div>
         )}
 
-        {/* AI tutor entry */}
-        <div className="card tap" onClick={() => setTab(SCREENS.CHAT)} style={{ display: 'flex', alignItems: 'center', gap: 14, borderColor: 'var(--indigo-200)', background: 'var(--indigo-50)' }}>
-          <div style={{ width: 46, height: 46, borderRadius: 14, background: 'linear-gradient(140deg, var(--indigo-500), var(--indigo-700))', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><I.spark s={22} /></div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontWeight: 800, fontSize: 15 }}>Tutor IA <span className="chip chip-indigo" style={{ fontSize: 10, padding: '2px 7px', verticalAlign: 'middle' }}>beta</span></div>
-            <div style={{ fontSize: 12.5, color: 'var(--ink-2)', marginTop: 2 }}>Converse e gere aulas na hora — roda no seu dispositivo</div>
-          </div>
-          <div style={{ color: 'var(--indigo-700)' }}><I.chevR /></div>
-        </div>
-
         {/* Action row */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
           <div className="card tap" onClick={() => navigate(SCREENS.IMPORT)} style={{ padding: 14, display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -140,7 +130,7 @@ export default function Home() {
         <StreakStrip sessions={sessions} />
       </div>
 
-      <BottomNav active="home" onNavigate={setTab} onTutor={() => setTab(SCREENS.CHAT)} />
+      <BottomNav active="home" onNavigate={setTab} />
     </div>
   )
 }
