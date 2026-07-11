@@ -35,25 +35,35 @@ function StreakStrip({ sessions }) {
 }
 
 export default function Home() {
-  const { lessons, sessions, mistakes, startLesson, navigate, setTab, SCREENS } = useApp()
+  const { lessons, sessions, mistakes, profiles, activeProfile, startLesson, navigate, setTab, SCREENS } = useApp()
   const latest = lessons[0] || null
   const avgScore = sessions.length
     ? Math.round(sessions.reduce((a, s) => a + s.score, 0) / sessions.length)
     : null
+  const profile = profiles.find((p) => p.profile_id === activeProfile)
 
   return (
     <div className="phone">
       <div style={{ padding: '8px 20px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
         <Logo />
-        {avgScore != null && (
-          <div className="chip chip-indigo" style={{ fontWeight: 800 }}>{latest?.level || 'B1'}</div>
-        )}
+        <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+          {profile && (
+            <button className="chip" onClick={() => setTab(SCREENS.SETTINGS)}
+              style={{ border: '1px solid var(--border)', background: 'var(--surface)', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 5, font: 'inherit', fontSize: 12, fontWeight: 700 }}
+              aria-label="Trocar perfil">
+              <I.user s={12} /> {profile.name}
+            </button>
+          )}
+          {avgScore != null && (
+            <div className="chip chip-indigo" style={{ fontWeight: 800 }}>{latest?.level || 'B1'}</div>
+          )}
+        </div>
       </div>
 
       <div className="screen-body" style={{ paddingBottom: 100 }}>
         <div>
           <div className="label-eyebrow">bem-vindo</div>
-          <h1 className="h1" style={{ marginTop: 4 }}>Bem-vindo de volta.</h1>
+          <h1 className="h1" style={{ marginTop: 4 }}>{profile && profile.name !== 'Você' ? `Bem-vindo, ${profile.name}.` : 'Bem-vindo de volta.'}</h1>
           <p className="muted-2" style={{ margin: '6px 0 0', fontSize: 14 }}>Pronto pra travar menos hoje?</p>
         </div>
 

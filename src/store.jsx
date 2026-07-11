@@ -33,6 +33,7 @@ export function AppProvider({ children }) {
   const [lessons, setLessons] = useState([])
   const [sessions, setSessions] = useState([])
   const [mistakes, setMistakes] = useState([])
+  const [profiles, setProfiles] = useState([])
 
   const [activeLesson, setActiveLesson] = useState(null)
   const [session, setSession] = useState({ id: null, qIdx: 0, answers: [] })
@@ -43,8 +44,10 @@ export function AppProvider({ children }) {
   // ---- boot ----
   useEffect(() => {
     (async () => {
+      await db.ensureBootstrapped()
       const s = await db.getSettings()
       setSettings(s)
+      const profile = s.active_profile || db.DEFAULT_PROFILE
       // Seed the sample lesson on first run so the app is usable immediately.
       let all = await db.getAllLessons()
       if (all.length === 0) {
@@ -55,12 +58,15 @@ export function AppProvider({ children }) {
         } catch { /* ignore seed failure */ }
       }
       setLessons(all)
-      setSessions(await db.getSessionSummaries())
-      setMistakes(await db.getMistakes())
+      setProfiles(await db.getProfiles())
+      setSessions(await db.getSessionSummaries(profile))
+      setMistakes(await db.getMistakes(profile))
       setReady(true)
       warmupNlp()
     })()
   }, [])
+
+  const activeProfile = settings?.active_profile || db.DEFAULT_PROFILE
 
   // ---- audio ----
   useEffect(() => {
@@ -76,11 +82,35 @@ export function AppProvider({ children }) {
     else root.removeAttribute('data-theme')
   }, [settings?.theme])
 
-  const refreshLibrary = useCallback(async () => {
+  const refreshLibrary = useCallback(async (profile = activeProfile) => {
     setLessons(await db.getAllLessons())
-    setSessions(await db.getSessionSummaries())
-    setMistakes(await db.getMistakes())
-  }, [])
+    setProfiles(await db.getProfiles())
+    setSessions(await db.getSessionSummaries(profile))
+    setMistakes(await db.getMistakes(profile))
+  }, [activeProfile])
+
+  // ---- profiles ----
+  const switchProfile = useCallback(async (profile_id) => {
+    setSettings((s) => ({ ...s, active_profile: profile_id }))
+    await db.setSetting('active_profile', profile_id)
+    await refreshLibrary(profile_id)
+  }, [refreshLibrary])
+
+  const addProfile = useCallback(async (name) => {
+    const id = await db.saveProfile({ name })
+    await switchProfile(id)
+    return id
+  }, [switchProfile])
+
+  const removeProfile = useCallback(async (profile_id) => {
+    await db.deleteProfile(profile_id)
+    const rest = (await db.getProfiles())
+    if (rest.length === 0) {
+      await db.saveProfile({ profile_id: db.DEFAULT_PROFILE, name: 'Você' })
+    }
+    const next = (await db.getProfiles())[0].profile_id
+    await switchProfile(next)
+  }, [switchProfile])
 
   // ---- navigation ----
   const navigate = useCallback((next, p = {}) => {
@@ -129,6 +159,7 @@ export function AppProvider({ children }) {
     const q = rec.question
     const a = rec.analysis
     const stored = {
+      profile_id: activeProfile,
       lesson_id: activeLesson.lesson_id,
       question_id: q.id,
       user_answer: rec.user_answer,
@@ -144,7 +175,7 @@ export function AppProvider({ children }) {
     const entry = { ...stored, key, question: q }
     setSession((s) => ({ ...s, answers: [...s.answers, entry] }))
     return entry
-  }, [activeLesson, session.id])
+  }, [activeLesson, session.id, activeProfile])
 
   // Persist the user's self-rated confidence ("difícil/ok/fácil") on an answer.
   const rateAnswer = useCallback(async (key, confidence) => {
@@ -176,6 +207,7 @@ export function AppProvider({ children }) {
   const value = {
     ready, screen, params, settings,
     lessons, sessions, mistakes,
+    profiles, activeProfile, switchProfile, addProfile, removeProfile,
     activeLesson, session,
     toast,
     SCREENS,

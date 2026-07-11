@@ -45,6 +45,9 @@ export default function Settings() {
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <SectionHead>perfil</SectionHead>
           <Row>
+            <ProfilesRow />
+          </Row>
+          <Row>
             <div style={{ fontWeight: 700, fontSize: 15 }}>Nível atual</div>
             <div className="muted" style={{ fontSize: 12, margin: '2px 0 10px' }}>Usado nos prompts de exportação</div>
             <Segmented value={settings.level} onChange={(k) => updateSetting('level', k)}
@@ -166,6 +169,57 @@ export default function Settings() {
       </div>
       <BottomNav active="settings" onNavigate={setTab} />
     </div>
+  )
+}
+
+// Family profiles: each member keeps their own history, mistakes and reviews.
+function ProfilesRow() {
+  const { profiles, activeProfile, switchProfile, addProfile, removeProfile, showToast } = useApp()
+  const handleAdd = async () => {
+    const name = prompt('Nome do novo perfil (ex.: Ana):')?.trim()
+    if (!name) return
+    await addProfile(name)
+    showToast(`Perfil "${name}" criado`)
+  }
+  const handleRemove = async (p) => {
+    if (!confirm(`Remover o perfil "${p.name}"? O histórico dele fica guardado, mas some da lista.`)) return
+    await removeProfile(p.profile_id)
+    showToast('Perfil removido')
+  }
+  return (
+    <>
+      <div style={{ fontWeight: 700, fontSize: 15 }}>Quem está estudando</div>
+      <div className="muted" style={{ fontSize: 12, margin: '2px 0 10px' }}>
+        Cada perfil tem seu próprio histórico, erros e revisões
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        {profiles.map((p) => {
+          const active = p.profile_id === activeProfile
+          return (
+            <span key={p.profile_id} style={{ display: 'inline-flex', alignItems: 'center' }}>
+              <button className="btn btn-sm btn-secondary"
+                onClick={() => switchProfile(p.profile_id)}
+                style={{
+                  minHeight: 38, padding: '6px 12px',
+                  ...(active ? { borderColor: 'var(--indigo-600)', color: 'var(--indigo-700)', background: 'var(--indigo-50)', fontWeight: 800 } : {}),
+                }}>
+                <I.user s={14} /> {p.name}
+              </button>
+              {active && profiles.length > 1 && (
+                <button className="btn btn-sm btn-ghost" aria-label={`Remover perfil ${p.name}`}
+                  onClick={() => handleRemove(p)}
+                  style={{ padding: '4px 6px', minHeight: 0, color: 'var(--error)' }}>
+                  <I.x s={12} />
+                </button>
+              )}
+            </span>
+          )
+        })}
+        <button className="btn btn-sm btn-secondary" onClick={handleAdd} style={{ minHeight: 38, padding: '6px 12px' }}>
+          <I.plus s={14} /> Novo
+        </button>
+      </div>
+    </>
   )
 }
 

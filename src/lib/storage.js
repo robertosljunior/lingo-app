@@ -1,26 +1,33 @@
 // storage.js — IndexedDB persistence via idb.
 //
-// Stores (per the spec):
+// Stores (v2):
 //   lessons   { lesson_id*, title, level, focus, raw_content, created_at }
 //   questions { key* (lesson_id:id), lesson_id, id, type, prompt, expected_answer,
 //               accepted_answers, mistake_focus, payload }
-//   answers   { key* auto, lesson_id, question_id, user_answer, expected_answer,
-//               score, is_correct, verdict, mistake_type, feedback, answered_at,
-//               session_id }
-//   mistakes  { mistake_type*, count, examples, updated_at }
+//   answers   { key* auto, profile_id, lesson_id, question_id, user_answer,
+//               expected_answer, score, is_correct, verdict, mistake_type,
+//               feedback, answered_at, session_id, spoken_transcript?,
+//               pronunciation_score? }
+//   mistakes  { key* (profile:mistake_type), profile_id, mistake_type, count,
+//               examples, updated_at }
+//   profiles  { profile_id*, name, created_at }
+//   srs       { key* (profile:lesson:question), profile_id, lesson_id,
+//               question_id, box, due_at, last_result, updated_at }
 //   settings  { key*, value }
 
 import { openDB } from 'idb'
 
 const DB_NAME = 'app-idiomas'
-const DB_VERSION = 1
+const DB_VERSION = 2
+
+export const DEFAULT_PROFILE = 'default'
 
 let dbPromise = null
 
 function db() {
   if (!dbPromise) {
     dbPromise = openDB(DB_NAME, DB_VERSION, {
-      upgrade(d) {
+      upgrade(d, oldVersion) {
         if (!d.objectStoreNames.contains('lessons')) {
           d.createObjectStore('lessons', { keyPath: 'lesson_id' })
             .createIndex('created_at', 'created_at')
@@ -35,8 +42,22 @@ function db() {
           s.createIndex('session_id', 'session_id')
           s.createIndex('mistake_type', 'mistake_type')
         }
+        // v2: the mistakes rollup became per-profile (key = profile:mistake_type).
+        // The old global store is dropped and rebuilt from `answers` on boot.
+        if (oldVersion > 0 && oldVersion < 2 && d.objectStoreNames.contains('mistakes')) {
+          d.deleteObjectStore('mistakes')
+        }
         if (!d.objectStoreNames.contains('mistakes')) {
-          d.createObjectStore('mistakes', { keyPath: 'mistake_type' })
+          const s = d.createObjectStore('mistakes', { keyPath: 'key' })
+          s.createIndex('profile_id', 'profile_id')
+        }
+        if (!d.objectStoreNames.contains('profiles')) {
+          d.createObjectStore('profiles', { keyPath: 'profile_id' })
+        }
+        if (!d.objectStoreNames.contains('srs')) {
+          const s = d.createObjectStore('srs', { keyPath: 'key' })
+          s.createIndex('profile_id', 'profile_id')
+          s.createIndex('due_at', 'due_at')
         }
         if (!d.objectStoreNames.contains('settings')) {
           d.createObjectStore('settings', { keyPath: 'key' })
@@ -45,6 +66,53 @@ function db() {
     })
   }
   return dbPromise
+}
+
+// ---------- Profiles ----------
+export async function getProfiles() {
+  const d = await db()
+  const rows = await d.getAll('profiles')
+  return rows.sort((a, b) => (a.created_at || 0) - (b.created_at || 0))
+}
+
+export async function saveProfile({ profile_id, name }) {
+  const d = await db()
+  const id = profile_id || `p_${Date.now().toString(36)}`
+  const existing = await d.get('profiles', id)
+  await d.put('profiles', { profile_id: id, name, created_at: existing?.created_at || Date.now() })
+  return id
+}
+
+export async function deleteProfile(profile_id) {
+  const d = await db()
+  await d.delete('profiles', profile_id)
+  // The profile's answers/rollups stay in place (harmless, recoverable by
+  // recreating a profile with the same id).
+}
+
+// One-time boot fixup: guarantee the default profile exists, stamp legacy
+// answers with it, and rebuild the mistakes rollup after the v2 migration.
+export async function ensureBootstrapped() {
+  const d = await db()
+  if (!(await d.get('profiles', DEFAULT_PROFILE))) {
+    const legacy = await d.count('answers')
+    // Only auto-create when the app was already in use or no profile exists.
+    const anyProfile = (await d.count('profiles')) > 0
+    if (legacy > 0 || !anyProfile) {
+      await d.put('profiles', { profile_id: DEFAULT_PROFILE, name: 'Você', created_at: Date.now() })
+    }
+  }
+  const mistakesEmpty = (await d.count('mistakes')) === 0
+  const answers = await d.getAll('answers')
+  if (mistakesEmpty && answers.length > 0) {
+    for (const a of answers) {
+      if (!a.is_correct && a.mistake_type) {
+        await bumpMistake(a.profile_id || DEFAULT_PROFILE, a.mistake_type, {
+          user: a.user_answer, expected: a.expected_answer, lesson_id: a.lesson_id,
+        })
+      }
+    }
+  }
 }
 
 // ---------- Lessons ----------
@@ -111,11 +179,15 @@ export async function deleteLesson(lesson_id) {
 // ---------- Answers ----------
 export async function saveAnswer(answer) {
   const d = await db()
-  const rec = { ...answer, answered_at: answer.answered_at || Date.now() }
+  const rec = {
+    ...answer,
+    profile_id: answer.profile_id || DEFAULT_PROFILE,
+    answered_at: answer.answered_at || Date.now(),
+  }
   const key = await d.add('answers', rec)
   // Roll up recurring mistakes.
   if (!rec.is_correct && rec.mistake_type) {
-    await bumpMistake(rec.mistake_type, {
+    await bumpMistake(rec.profile_id, rec.mistake_type, {
       user: rec.user_answer,
       expected: rec.expected_answer,
       lesson_id: rec.lesson_id,
@@ -140,17 +212,20 @@ export async function getAnswersForSession(session_id) {
   return rows.sort((a, b) => a.answered_at - b.answered_at)
 }
 
-export async function getAllAnswers() {
+export async function getAllAnswers(profile_id = null) {
   const d = await db()
-  return d.getAll('answers')
+  const rows = await d.getAll('answers')
+  if (!profile_id) return rows
+  return rows.filter((a) => (a.profile_id || DEFAULT_PROFILE) === profile_id)
 }
 
-// ---------- Mistakes rollup ----------
-async function bumpMistake(mistake_type, example) {
+// ---------- Mistakes rollup (per profile) ----------
+async function bumpMistake(profile_id, mistake_type, example) {
   const d = await db()
+  const key = `${profile_id}:${mistake_type}`
   const tx = d.transaction('mistakes', 'readwrite')
   const store = tx.objectStore('mistakes')
-  const existing = (await store.get(mistake_type)) || { mistake_type, count: 0, examples: [] }
+  const existing = (await store.get(key)) || { key, profile_id, mistake_type, count: 0, examples: [] }
   existing.count += 1
   existing.examples = [example, ...existing.examples].slice(0, 5)
   existing.updated_at = Date.now()
@@ -158,9 +233,9 @@ async function bumpMistake(mistake_type, example) {
   await tx.done
 }
 
-export async function getMistakes() {
+export async function getMistakes(profile_id = DEFAULT_PROFILE) {
   const d = await db()
-  const rows = await d.getAll('mistakes')
+  const rows = await d.getAllFromIndex('mistakes', 'profile_id', profile_id)
   return rows.sort((a, b) => b.count - a.count)
 }
 
@@ -172,6 +247,7 @@ const SETTINGS_DEFAULTS = {
   correction_mode: 'flexible', // flexible | strict
   nlp_library: 'compromise',
   theme: 'system', // system | light | dark
+  active_profile: DEFAULT_PROFILE,
   // audio
   tts_engine: 'system', // system | piper
   tts_accent: 'en-US',
@@ -193,7 +269,7 @@ export async function setSetting(key, value) {
 }
 
 // ---------- Stats for history / home ----------
-export async function getSessionSummaries() {
+export async function getSessionSummaries(profile_id = null) {
   const d = await db()
   const answers = await d.getAll('answers')
   const lessons = await d.getAll('lessons')
@@ -202,6 +278,7 @@ export async function getSessionSummaries() {
   const bySession = new Map()
   for (const a of answers) {
     if (!a.session_id) continue
+    if (profile_id && (a.profile_id || DEFAULT_PROFILE) !== profile_id) continue
     if (!bySession.has(a.session_id)) bySession.set(a.session_id, [])
     bySession.get(a.session_id).push(a)
   }
@@ -227,8 +304,9 @@ export async function getSessionSummaries() {
 
 export async function wipeAll() {
   const d = await db()
-  const tx = d.transaction(['lessons', 'questions', 'answers', 'mistakes', 'settings'], 'readwrite')
-  for (const name of ['lessons', 'questions', 'answers', 'mistakes', 'settings']) {
+  const stores = ['lessons', 'questions', 'answers', 'mistakes', 'profiles', 'srs', 'settings']
+  const tx = d.transaction(stores, 'readwrite')
+  for (const name of stores) {
     await tx.objectStore(name).clear()
   }
   await tx.done
