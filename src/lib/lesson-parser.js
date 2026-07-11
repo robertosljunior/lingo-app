@@ -24,6 +24,7 @@ export const EXERCISE_TYPES = [
   'rewrite_natural',
   'answer_question',
   'listen_type', // dictation: TTS speaks the answer, the student types it
+  'speak_sentence', // speaking drill: the student says the sentence, STT grades it
 ]
 
 export class LessonParseError extends Error {

@@ -43,4 +43,11 @@ q:
     pt: Há quanto tempo você trabalha lá?
     p: Ouça a frase e digite exatamente o que ouvir.
     a: How long have you worked there?
-    f: verb_tense`
+    f: verb_tense
+  - id: 7
+    t: speak_sentence
+    pt: Eu gostaria de agendar uma entrevista.
+    p: Fale a frase em inglês.
+    a: I would like to schedule an interview.
+    alt: [I'd like to schedule an interview.]
+    f: unnatural_translation`
