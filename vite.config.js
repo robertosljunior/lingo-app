@@ -11,20 +11,10 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      // Custom worker (src/sw.js): same precache + runtime caching as the old
-      // generateSW config, plus COOP/COEP header injection on navigations so
-      // the CPU (WASM) AI backend gets SharedArrayBuffer → multi-threading.
-      strategies: 'injectManifest',
-      srcDir: 'src',
-      filename: 'sw.js',
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
-      injectManifest: {
+      workbox: {
         globPatterns: ['**/*.{js,css,html,svg,woff,woff2}'],
-        // Keep the big AI-runtime chunks out of first-load precache — they're
-        // runtime-cached on demand (see src/sw.js) so the app shell stays
-        // light while the AI tutor still works offline after activation.
-        globIgnores: ['**/web-llm-*.js', '**/webllm-worker-*.js', '**/wllama-*.js'],
         // The NLP worker + Compromise bundle can exceed the default 2 MiB cap.
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
       },
@@ -47,16 +37,5 @@ export default defineConfig({
   ],
   worker: {
     format: 'es',
-  },
-  build: {
-    chunkSizeWarningLimit: 7000, // the on-demand web-llm chunk is large by nature
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('@mlc-ai/web-llm')) return 'web-llm'
-          if (id.includes('@wllama/wllama')) return 'wllama'
-        },
-      },
-    },
   },
 })

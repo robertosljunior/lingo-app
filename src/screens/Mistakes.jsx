@@ -19,7 +19,7 @@ export default function Mistakes() {
           </p>
           <button className="btn btn-primary" style={{ marginTop: 8 }} onClick={() => setTab(SCREENS.HOME)}>Ir treinar</button>
         </div>
-        <BottomNav active="mistakes" onNavigate={setTab} onTutor={() => setTab(SCREENS.CHAT)} />
+        <BottomNav active="mistakes" onNavigate={setTab} />
       </div>
     )
   }
@@ -61,7 +61,7 @@ export default function Mistakes() {
           )
         })}
       </div>
-      <BottomNav active="mistakes" onNavigate={setTab} onTutor={() => setTab(SCREENS.CHAT)} />
+      <BottomNav active="mistakes" onNavigate={setTab} />
     </div>
   )
 }

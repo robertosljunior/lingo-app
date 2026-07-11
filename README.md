@@ -6,7 +6,7 @@ localmente em um **Web Worker** com **Compromise.js**.
 
 Implementa o design exportado do Claude Design (soft duolingo, acento índigo,
 superfícies em creme quente, Manrope + Geist Mono) e o spec técnico completo:
-importar aulas geradas por IA, responder exercícios, revisar erros e exportar
+importar aulas, responder exercícios, revisar erros e exportar
 resultados/prompts para o tutor ChatGPT.
 
 ## Rodando
@@ -61,49 +61,14 @@ Camada de domínio (`src/lib/`), independente da UI:
 UI (`src/`):
 
 - `store.jsx` — estado global (navegação, aula ativa, sessão de exercícios, settings) sobre IndexedDB
-- `screens/` — as telas: Home, Import, Exercise, Result, Review, History, Mistakes, Settings, Export, **Chat (tutor IA)**
+- `screens/` — as telas: Home, Import, Exercise, Result, Review, History, Mistakes, Settings, Export
 - `components/` — primitivas compartilhadas (status bar, nav, ícones, anel de score)
 - `styles/tokens.css` — design system portado do handoff (light/dark)
 
-### Tutor IA no dispositivo (WebLLM) — `src/ai/`
-
-Um **SLM (small language model) roda 100% no navegador** via [WebLLM](https://github.com/mlc-ai/web-llm)
-(WebGPU), sem servidor. Uma nova tela de **chat dinâmico** conversa com o aluno e
-**cria aulas automaticamente** (gera o YAML compacto, valida e oferece salvar+iniciar).
-
-| Arquivo | Responsabilidade |
-|---|---|
-| `engine.js` | Ciclo de vida do modelo (worker WebLLM), estado reativo, registro de capacidades. web-llm é carregado sob demanda (`import()` dinâmico) para não pesar no bundle inicial |
-| `webllm-worker.js` | Web Worker que roda a inferência fora da main thread |
-| `capabilities.js` | **Seam de extensibilidade**: registro de capacidades. Hoje `chat`; o manifesto já reserva `image` (imagens de quiz) e `embeddings` (agrupar erros) como *em breve* |
-| `lesson-generator.js` | Gera + valida uma aula a partir do modelo (testável com um `chat` fake) |
-| `models.js` | Catálogo curado de modelos eficientes (padrão **Phi-4-mini**, + Llama 3.2, Qwen2.5) |
-| `useAI.js` | Binding React (`useSyncExternalStore`) |
-
-**Modelos**: configuráveis em Configurações → Inteligência artificial. Padrão
-`Qwen2.5-1.5B-Instruct` (~1.6 GB) — leve e multilíngue (PT↔EN), suficiente para
-gerar aulas e conversar. Alternativas mais leves (Llama 3.2 1B ~880 MB) e mais
-pesadas (Phi-4 Mini ~3.4 GB — só para desktop com GPU forte; em aparelhos com
-pouca memória o download pode derrubar a aba). Requer **WebGPU** (Chrome/Edge
-recentes); degrada com uma mensagem clara onde não há suporte.
-
-**Diagnóstico**: erros não tratados, rejeições de promise e o ciclo de vida do
-modelo de IA são registrados num log persistente (localStorage), visível em
-Configurações → Diagnóstico (copiar/limpar). Um error boundary global mostra
-uma tela de recuperação com o log em vez de página branca.
-
-**Offline + PWA**: o download inicial dos pesos precisa de internet e é cacheado
-pelo próprio web-llm (Cache Storage). Os chunks grandes de JS do web-llm ficam
-**fora do precache** do service worker e são cacheados em runtime (CacheFirst),
-mantendo o *app shell* leve; o tutor passa a funcionar offline após a primeira
-ativação. O resto do app funciona offline desde o primeiro carregamento.
-
-#### Estendendo para novas capacidades (ex.: imagens)
-
-O `capabilities` registry é o ponto de extensão. Uma capacidade futura registra-se
-sob um nome e expõe métodos assíncronos; os consumidores fazem
-`getCapability('image')?.generate(...)` e degradam se ausente. Nada nas telas
-existentes precisa mudar.
+**Diagnóstico**: erros não tratados e rejeições de promise são registrados num
+log persistente (localStorage), visível em Configurações → Diagnóstico
+(copiar/limpar). Um error boundary global mostra uma tela de recuperação com o
+log em vez de página branca.
 
 ### Contrato do Web Worker
 

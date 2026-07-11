@@ -32,7 +32,7 @@ export default function History() {
             <I.upload s={18} /> Importar primeira aula
           </button>
         </div>
-        <BottomNav active="history" onNavigate={setTab} onTutor={() => setTab(SCREENS.CHAT)} />
+        <BottomNav active="history" onNavigate={setTab} />
       </div>
     )
   }
@@ -68,7 +68,7 @@ export default function History() {
           </button>
         ))}
       </div>
-      <BottomNav active="history" onNavigate={setTab} onTutor={() => setTab(SCREENS.CHAT)} />
+      <BottomNav active="history" onNavigate={setTab} />
     </div>
   )
 }

@@ -14,12 +14,10 @@ export function AppHeader({ title, onBack, right = null }) {
   )
 }
 
-export function BottomNav({ active, onNavigate, onTutor }) {
-  const left = [
+export function BottomNav({ active, onNavigate }) {
+  const items = [
     { k: 'home', label: 'Início', icon: I.home },
     { k: 'history', label: 'Histórico', icon: I.history },
-  ]
-  const right = [
     { k: 'mistakes', label: 'Erros', icon: I.mistakes },
     { k: 'settings', label: 'Ajustes', icon: I.settings },
   ]
@@ -32,12 +30,7 @@ export function BottomNav({ active, onNavigate, onTutor }) {
   )
   return (
     <nav className="bottom-nav" aria-label="Navegação principal">
-      {left.map(Item)}
-      <div className="nav-center">
-        <button className="fab" onClick={() => onTutor?.()} aria-label="Tutor IA"><I.spark s={24} /></button>
-        <span className="fab-label">Tutor</span>
-      </div>
-      {right.map(Item)}
+      {items.map(Item)}
     </nav>
   )
 }
