@@ -62,4 +62,13 @@ export const I = {
   trend: (p = {}) => (
     <svg width={p.s || 20} height={p.s || 20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 17 6-6 4 4 8-8" /><path d="M14 7h7v7" /></svg>
   ),
+  turtle: (p = {}) => (
+    <svg width={p.s || 20} height={p.s || 20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 15a5 5 0 0 1 10 0" /><path d="M7 15h10" /><path d="M12 10v5M9.5 11.5 12 15M14.5 11.5 12 15" /><path d="M17 15c2 0 3-.8 3-2 0-1-.8-1.6-1.6-1.4" /><path d="M7 15c-1.4 0-2.5.4-2.5 1.4S5.6 18 7 18" /><path d="M9 15v2.5M15 15v2.5" /></svg>
+  ),
+  refresh: (p = {}) => (
+    <svg width={p.s || 20} height={p.s || 20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4" /><path d="M21 3v6h-6" /></svg>
+  ),
+  user: (p = {}) => (
+    <svg width={p.s || 20} height={p.s || 20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" /></svg>
+  ),
 }

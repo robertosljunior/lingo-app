@@ -3,7 +3,7 @@ import { BottomNav } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 
 export default function Mistakes() {
-  const { mistakes, setTab, navigate, SCREENS } = useApp()
+  const { mistakes, setTab, navigate, SCREENS, startPracticeSession } = useApp()
 
   if (mistakes.length === 0) {
     return (
@@ -33,6 +33,9 @@ export default function Mistakes() {
         <p className="muted" style={{ fontSize: 13, marginTop: 4 }}>Classificados por tipo, do mais frequente ao menos</p>
       </div>
       <div className="screen-body" style={{ paddingTop: 12, paddingBottom: 100, gap: 10 }}>
+        <button className="btn btn-primary btn-block" onClick={startPracticeSession}>
+          <I.trend s={18} /> Treinar minhas dificuldades
+        </button>
         {mistakes.map((m, i) => {
           const ex = m.examples?.[0]
           return (

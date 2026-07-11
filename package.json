@@ -12,11 +12,14 @@
   },
   "dependencies": {
     "@fontsource/geist-mono": "^5.2.8",
+    "@mintplex-labs/piper-tts-web": "^1.0.4",
     "compromise": "^14.14.4",
     "idb": "^8.0.0",
     "js-yaml": "^4.1.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "wink-eng-lite-web-model": "^1.8.1",
+    "wink-nlp": "^2.4.0"
   },
   "devDependencies": {
     "@fontsource/manrope": "^5.1.0",

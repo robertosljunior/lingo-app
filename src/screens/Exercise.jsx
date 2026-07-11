@@ -1,9 +1,12 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useApp } from '../store.jsx'
 import { Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { analyze } from '../lib/nlp-client.js'
-import { speak, speechSupported } from '../lib/speech.js'
+import { speak, speechSupported } from '../lib/audio/tts.js'
+import { sttSupported } from '../lib/audio/stt.js'
+import { SpeakButton, SpeakableText } from '../components/speak-button.jsx'
+import { MicButton } from '../components/mic-button.jsx'
 import { AnswerDiff, TypoNote } from '../components/answer-diff.jsx'
 
 export default function Exercise() {
@@ -50,6 +53,7 @@ export default function Exercise() {
       accepted_answers: strict ? [] : q.accepted_answers,
       exercise_type: q.type,
       mistake_focus: q.mistake_focus,
+      nlp_library: settings?.nlp_library,
     })
     // Choice questions: exact-match the option regardless of NLP.
     if (q.type === 'fill_blank' || q.type === 'choose_best') {
@@ -58,7 +62,12 @@ export default function Exercise() {
       analysis.is_probably_correct = correct
       analysis.possible_mistake_type = correct ? null : q.mistake_focus
     }
-    const entry = await submitAnswer({ question: q, user_answer: ans, analysis })
+    // Speaking drill: what the recognizer heard doubles as a rough
+    // pronunciation score (word-level, Duolingo-style — not phonetic).
+    const spoken = q.type === 'speak_sentence'
+      ? { spoken_transcript: ans, pronunciation_score: analysis.similarity_score }
+      : {}
+    const entry = await submitAnswer({ question: q, user_answer: ans, analysis, ...spoken })
     setFeedback({ ...analysis, answerKey: entry.key, user_answer: ans })
     setAnalyzing(false)
   }
@@ -104,6 +113,9 @@ export default function Exercise() {
         )}
         {q.type === 'listen_type' && (
           <DictationBody q={q} user={user} setUser={setUser} disabled={!!feedback} showHint={showHint} />
+        )}
+        {q.type === 'speak_sentence' && (
+          <SpeakBody q={q} user={user} setUser={setUser} disabled={!!feedback} showHint={showHint} />
         )}
       </div>
 
@@ -156,8 +168,13 @@ function TranslateBody({ q, user, setUser, disabled, showHint }) {
           {q.type === 'answer_question' ? 'responda em inglês' : 'diga em inglês'}
         </div>
         <h2 style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.2, margin: '8px 0 0' }}>
-          {q.prompt_pt || q.prompt}
+          {q.type === 'answer_question' && !q.prompt_pt
+            ? <SpeakableText text={q.prompt} />
+            : (q.prompt_pt || q.prompt)}
         </h2>
+        {q.type === 'answer_question' && !q.prompt_pt && (
+          <div style={{ marginTop: 10 }}><SpeakButton text={q.prompt} size="sm" label=" ouvir pergunta" /></div>
+        )}
         {!disabled && <p className="muted" style={{ margin: '12px 0 0', fontSize: 13 }}>Tente sem traduzir literalmente. Use uma forma natural.</p>}
       </div>
       {showHint && !disabled && <HintCard text={hintFor(q)} />}
@@ -167,9 +184,12 @@ function TranslateBody({ q, user, setUser, disabled, showHint }) {
           placeholder="Type your natural answer in English…"
           value={user} onChange={(e) => setUser(e.target.value)} disabled={disabled} autoFocus
         />
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10, fontSize: 12, color: 'var(--ink-3)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 10, fontSize: 12, color: 'var(--ink-3)' }}>
           <span>{words} {words === 1 ? 'palavra' : 'palavras'}</span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><I.mic s={14} /> gravar</span>
+          {sttSupported && (
+            <MicButton lang="en-US" size={34} disabled={disabled}
+              onResult={(t) => { if (t) setUser((u) => (u ? `${u} ${t}` : t)) }} />
+          )}
         </div>
       </div>
     </>
@@ -191,10 +211,9 @@ function DictationBody({ q, user, setUser, disabled, showHint }) {
       </div>
 
       {speechSupported ? (
-        <button className="btn btn-secondary" onClick={() => speak(q.expected_answer)}
-          style={{ alignSelf: 'center', display: 'flex', alignItems: 'center', gap: 10, padding: '18px 26px', borderRadius: 999, marginTop: 8 }}>
-          <I.speaker s={22} /> Ouvir frase
-        </button>
+        <div style={{ alignSelf: 'center', marginTop: 8 }}>
+          <SpeakButton text={q.expected_answer} size="lg" turtle label=" Ouvir frase" />
+        </div>
       ) : (
         <div className="card" style={{ padding: 14, background: 'var(--bg-alt)' }}>
           <div className="label-eyebrow" style={{ marginBottom: 6 }}>sem áudio neste navegador — copie a frase</div>
@@ -213,12 +232,81 @@ function DictationBody({ q, user, setUser, disabled, showHint }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10, fontSize: 12, color: 'var(--ink-3)' }}>
           <span>{words} {words === 1 ? 'palavra' : 'palavras'}</span>
           {speechSupported && (
-            <button className="btn btn-sm btn-ghost" style={{ padding: '2px 8px', minHeight: 0 }} onClick={() => speak(q.expected_answer)} disabled={disabled}>
-              <I.speaker s={14} /> ouvir de novo
-            </button>
+            <span style={{ display: 'inline-flex', gap: 4 }}>
+              <button className="btn btn-sm btn-ghost" style={{ padding: '2px 8px', minHeight: 0 }} onClick={() => speak(q.expected_answer)} disabled={disabled}>
+                <I.speaker s={14} /> de novo
+              </button>
+              <button className="btn btn-sm btn-ghost" style={{ padding: '2px 8px', minHeight: 0 }} onClick={() => speak(q.expected_answer, { slow: true })} disabled={disabled} aria-label="Ouvir devagar">
+                <I.turtle s={14} /> devagar
+              </button>
+            </span>
           )}
         </div>
       </div>
+    </>
+  )
+}
+
+// Speaking drill: the student says the sentence out loud and the recognizer's
+// transcript is graded like a typed answer. Two flavors:
+//   with prompt_pt   → "say this in English" (speaking translation)
+//   without prompt_pt → "read this sentence aloud" (repeat-after-me)
+// Without STT support the exercise degrades to typing.
+function SpeakBody({ q, user, setUser, disabled, showHint }) {
+  const [partial, setPartial] = useState('')
+  const readAloud = !q.prompt_pt
+
+  return (
+    <>
+      <div>
+        <div className="label-eyebrow" style={{ color: 'var(--indigo-700)' }}>
+          {readAloud ? 'leia em voz alta' : 'fale em inglês'}
+        </div>
+        {readAloud ? (
+          <h2 style={{ fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.25, margin: '8px 0 0' }}>
+            <SpeakableText text={q.expected_answer} />
+          </h2>
+        ) : (
+          <h2 style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.2, margin: '8px 0 0' }}>
+            {q.prompt_pt}
+          </h2>
+        )}
+        <div style={{ marginTop: 10, display: 'flex', gap: 8, alignItems: 'center' }}>
+          {readAloud && <SpeakButton text={q.expected_answer} size="sm" turtle label=" ouvir modelo" />}
+          {!readAloud && !disabled && <p className="muted" style={{ margin: 0, fontSize: 13 }}>Pense na frase e fale com calma, de uma vez.</p>}
+        </div>
+      </div>
+
+      {showHint && !disabled && <HintCard text={hintFor(q)} />}
+
+      {sttSupported ? (
+        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+          <div className="card" style={{ padding: 14, width: '100%', minHeight: 64, background: 'var(--bg-alt)' }}>
+            <div className="label-eyebrow" style={{ marginBottom: 6 }}>o que o app ouviu</div>
+            <div style={{ fontSize: 16, fontWeight: 600, lineHeight: 1.4, color: user ? 'var(--ink)' : 'var(--ink-4)' }}>
+              {user || partial || 'Toque no microfone e fale…'}
+            </div>
+          </div>
+          <MicButton lang="en-US" disabled={disabled}
+            label={user ? 'Falar de novo' : 'Toque para falar'}
+            onPartial={(t) => { setPartial(t) }}
+            onResult={(t) => { setPartial(''); if (t) setUser(t) }}
+          />
+        </div>
+      ) : (
+        <div style={{ marginTop: 'auto' }}>
+          <div className="card" style={{ padding: 12, background: 'var(--warn-bg)', borderColor: 'transparent', marginBottom: 10 }}>
+            <div style={{ fontSize: 13, color: 'var(--warn-ink)', lineHeight: 1.5 }}>
+              Este navegador não tem reconhecimento de voz — no Android, use o Chrome. Por ora, digite a frase.
+            </div>
+          </div>
+          <textarea
+            className="input" style={{ fontFamily: 'var(--font-sans)', fontSize: 16, minHeight: 90 }}
+            placeholder="Type the sentence…"
+            value={user} onChange={(e) => setUser(e.target.value)} disabled={disabled}
+          />
+        </div>
+      )}
     </>
   )
 }
@@ -320,6 +408,15 @@ function ChoiceBody({ q, choice, setChoice, disabled }) {
 }
 
 function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
+  const { settings } = useApp()
+  const target = result.target || q.expected_answer
+
+  // Duolingo-style: hearing the right sentence after every answer is how the
+  // sound of the language sticks — speak it when the sheet opens (opt-out).
+  useEffect(() => {
+    if (settings?.tts_autoplay !== false && speechSupported && target) speak(target)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   const tone = result.verdict === 'correct' ? 'success' : result.verdict === 'partial' ? 'warn' : 'error'
   const titles = {
     correct: 'Natural! 🎯',
@@ -352,6 +449,17 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
       )}
 
       {result.verdict === 'correct' && <TypoNote typos={result.typos} inkVar={inkVar} />}
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <SpeakButton text={target} size="sm" turtle label=" ouvir" />
+        <span style={{ fontSize: 11, color: inkVar, opacity: .6 }}>toque numa palavra para ouvi-la</span>
+      </div>
+
+      {q.type === 'speak_sentence' && (
+        <div style={{ fontSize: 13, color: inkVar }}>
+          🎙️ Pronúncia reconhecida: <strong>{Math.round((result.similarity_score || 0) * 100)}%</strong> das palavras
+        </div>
+      )}
 
       {result.verdict === 'correct' && q.accepted_answers?.length > 0 && (
         <div>

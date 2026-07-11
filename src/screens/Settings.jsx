@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useApp } from '../store.jsx'
 import { BottomNav } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { getErrorLog, clearErrorLog, formatErrorLog } from '../lib/error-log.js'
+import { ACCENTS, listVoices, onVoicesChanged, speak, speechSupported } from '../lib/audio/tts.js'
+import { PIPER_VOICES, piperSupported, storedVoices, downloadVoice, removeVoice } from '../lib/audio/tts-piper.js'
 
 export default function Settings() {
   const { settings, updateSetting, setTab, showToast, db, refreshLibrary } = useApp()
@@ -44,6 +46,9 @@ export default function Settings() {
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <SectionHead>perfil</SectionHead>
           <Row>
+            <ProfilesRow />
+          </Row>
+          <Row>
             <div style={{ fontWeight: 700, fontSize: 15 }}>Nível atual</div>
             <div className="muted" style={{ fontSize: 12, margin: '2px 0 10px' }}>Usado nos prompts de exportação</div>
             <Segmented value={settings.level} onChange={(k) => updateSetting('level', k)}
@@ -77,15 +82,17 @@ export default function Settings() {
             </div>
           </Row>
           <Row last>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: 15 }}>Biblioteca NLP</div>
-                <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>análise local no Web Worker</div>
-              </div>
-              <span className="chip" style={{ fontFamily: 'var(--font-mono)' }}>compromise.js</span>
+            <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Biblioteca NLP</div>
+            <Segmented value={settings.nlp_library} onChange={(k) => updateSetting('nlp_library', k)}
+              options={[{ k: 'compromise', l: 'Compromise' }, { k: 'wink', l: 'wink-nlp' }]} />
+            <div className="muted" style={{ fontSize: 12, marginTop: 8, lineHeight: 1.4 }}>
+              Análise local no Web Worker. wink-nlp tem análise gramatical (POS) mais precisa para
+              classificar erros de tempo verbal e estrutura; carrega na primeira correção.
             </div>
           </Row>
         </div>
+
+        <AudioSection Row={Row} SectionHead={SectionHead} Segmented={Segmented} settings={settings} updateSetting={updateSetting} />
 
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <SectionHead>aparência</SectionHead>
@@ -162,6 +169,247 @@ export default function Settings() {
         </p>
       </div>
       <BottomNav active="settings" onNavigate={setTab} />
+    </div>
+  )
+}
+
+// Family profiles: each member keeps their own history, mistakes and reviews.
+function ProfilesRow() {
+  const { profiles, activeProfile, switchProfile, addProfile, removeProfile, showToast } = useApp()
+  const handleAdd = async () => {
+    const name = prompt('Nome do novo perfil (ex.: Ana):')?.trim()
+    if (!name) return
+    await addProfile(name)
+    showToast(`Perfil "${name}" criado`)
+  }
+  const handleRemove = async (p) => {
+    if (!confirm(`Remover o perfil "${p.name}"? O histórico dele fica guardado, mas some da lista.`)) return
+    await removeProfile(p.profile_id)
+    showToast('Perfil removido')
+  }
+  return (
+    <>
+      <div style={{ fontWeight: 700, fontSize: 15 }}>Quem está estudando</div>
+      <div className="muted" style={{ fontSize: 12, margin: '2px 0 10px' }}>
+        Cada perfil tem seu próprio histórico, erros e revisões
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        {profiles.map((p) => {
+          const active = p.profile_id === activeProfile
+          return (
+            <span key={p.profile_id} style={{ display: 'inline-flex', alignItems: 'center' }}>
+              <button className="btn btn-sm btn-secondary"
+                onClick={() => switchProfile(p.profile_id)}
+                style={{
+                  minHeight: 38, padding: '6px 12px',
+                  ...(active ? { borderColor: 'var(--indigo-600)', color: 'var(--indigo-700)', background: 'var(--indigo-50)', fontWeight: 800 } : {}),
+                }}>
+                <I.user s={14} /> {p.name}
+              </button>
+              {active && profiles.length > 1 && (
+                <button className="btn btn-sm btn-ghost" aria-label={`Remover perfil ${p.name}`}
+                  onClick={() => handleRemove(p)}
+                  style={{ padding: '4px 6px', minHeight: 0, color: 'var(--error)' }}>
+                  <I.x s={12} />
+                </button>
+              )}
+            </span>
+          )
+        })}
+        <button className="btn btn-sm btn-secondary" onClick={handleAdd} style={{ minHeight: 38, padding: '6px 12px' }}>
+          <I.plus s={14} /> Novo
+        </button>
+      </div>
+    </>
+  )
+}
+
+const TEST_SENTENCE = 'Hello! This is how your lessons will sound.'
+
+// Audio preferences: accent, specific voice, speed, autoplay — everything the
+// TTS layer reads. Voices come from the device's TTS engine, so the list can
+// change (voiceschanged) and differs per phone.
+function AudioSection({ Row, SectionHead, Segmented, settings, updateSetting }) {
+  const [voices, setVoices] = useState(() => listVoices())
+  useEffect(() => onVoicesChanged(setVoices), [])
+
+  if (!speechSupported) {
+    return (
+      <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+        <SectionHead>áudio</SectionHead>
+        <Row last>
+          <div className="muted" style={{ fontSize: 13 }}>Este navegador não tem síntese de voz. No Android, use o Chrome.</div>
+        </Row>
+      </div>
+    )
+  }
+
+  const accentVoices = voices.filter((v) => (v.lang || '').toLowerCase().replace('_', '-') === settings.tts_accent.toLowerCase())
+  const accentHasVoice = (code) => voices.some((v) => (v.lang || '').toLowerCase().replace('_', '-') === code.toLowerCase())
+
+  return (
+    <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+      <SectionHead>áudio</SectionHead>
+
+      <Row>
+        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Sotaque do inglês</div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          {ACCENTS.map((a) => {
+            const active = settings.tts_accent === a.code
+            const available = accentHasVoice(a.code)
+            return (
+              <button key={a.code} className="btn btn-sm btn-secondary"
+                onClick={() => { updateSetting('tts_accent', a.code); updateSetting('tts_voice', '') }}
+                style={{
+                  minHeight: 38, padding: '6px 12px', opacity: available ? 1 : 0.5,
+                  ...(active ? { borderColor: 'var(--indigo-600)', color: 'var(--indigo-700)', background: 'var(--indigo-50)' } : {}),
+                }}>
+                {a.flag} {a.label}
+              </button>
+            )
+          })}
+        </div>
+        <div className="muted" style={{ fontSize: 12, marginTop: 8, lineHeight: 1.4 }}>
+          Sotaques esmaecidos não têm voz instalada neste aparelho. No Android, baixe mais vozes em
+          Configurações → Sistema → Conversão de texto em voz.
+        </div>
+      </Row>
+
+      <Row>
+        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Voz</div>
+        <select className="input" style={{ fontSize: 14, padding: '10px 12px' }}
+          value={settings.tts_voice || ''}
+          onChange={(e) => updateSetting('tts_voice', e.target.value)}
+          aria-label="Voz do inglês">
+          <option value="">Automática (melhor voz do sotaque)</option>
+          {accentVoices.map((v) => (
+            <option key={v.voiceURI} value={v.voiceURI}>
+              {v.name}{v.localService ? ' · offline' : ''}
+            </option>
+          ))}
+        </select>
+      </Row>
+
+      <Row>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+          <div style={{ fontWeight: 700, fontSize: 15 }}>Velocidade da fala</div>
+          <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--indigo-700)', fontVariantNumeric: 'tabular-nums' }}>{Number(settings.tts_rate).toFixed(2)}×</div>
+        </div>
+        <input type="range" min="0.5" max="1.2" step="0.05" value={settings.tts_rate}
+          onChange={(e) => updateSetting('tts_rate', +e.target.value)} aria-label="Velocidade da fala" />
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--ink-3)', marginTop: 6 }}>
+          <span>0.5× devagar</span><span>1.2× rápido</span>
+        </div>
+      </Row>
+
+      <Row>
+        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Falar resposta ao corrigir</div>
+        <Segmented value={settings.tts_autoplay ? 'on' : 'off'}
+          onChange={(k) => updateSetting('tts_autoplay', k === 'on')}
+          options={[{ k: 'on', l: 'Sim' }, { k: 'off', l: 'Não' }]} />
+        <div className="muted" style={{ fontSize: 12, marginTop: 8 }}>Ao abrir o resultado, a frase correta é falada em voz alta.</div>
+      </Row>
+
+      {piperSupported && (
+        <Row>
+          <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Motor de voz</div>
+          <Segmented value={settings.tts_engine} onChange={(k) => updateSetting('tts_engine', k)}
+            options={[{ k: 'system', l: 'Sistema' }, { k: 'piper', l: 'Neural offline' }]} />
+          <div className="muted" style={{ fontSize: 12, marginTop: 8, lineHeight: 1.4 }}>
+            Neural offline usa vozes Piper de alta qualidade rodando no aparelho (baixe uma voz abaixo).
+            Se a voz escolhida não estiver baixada, o app volta sozinho para a voz do sistema.
+          </div>
+        </Row>
+      )}
+
+      {piperSupported && settings.tts_engine === 'piper' && (
+        <PiperVoicesRow settings={settings} updateSetting={updateSetting} />
+      )}
+
+      <Row last>
+        <button className="btn btn-secondary" style={{ width: '100%' }} onClick={() => speak(TEST_SENTENCE)}>
+          <I.speaker s={18} /> Testar voz
+        </button>
+      </Row>
+    </div>
+  )
+}
+
+// Download manager for the Piper neural voices (~60 MB each, stored on the
+// device; first download needs internet, everything after is offline).
+function PiperVoicesRow({ settings, updateSetting }) {
+  const { showToast } = useApp()
+  const [stored, setStored] = useState([])
+  const [progress, setProgress] = useState({}) // voiceId -> % while downloading
+
+  const refresh = () => { storedVoices().then(setStored) }
+  useEffect(refresh, [])
+
+  const handleDownload = async (v) => {
+    setProgress((p) => ({ ...p, [v.id]: 0 }))
+    try {
+      await downloadVoice(v.id, (pct) => setProgress((p) => ({ ...p, [v.id]: pct })))
+      showToast(`${v.label} pronta para uso offline`)
+      updateSetting('piper_voice', v.id)
+    } catch {
+      showToast('Falha no download — verifique a internet')
+    } finally {
+      setProgress((p) => { const n = { ...p }; delete n[v.id]; return n })
+      refresh()
+    }
+  }
+
+  const handleRemove = async (v) => {
+    if (!confirm(`Apagar a voz ${v.label} (~${v.sizeMB} MB)?`)) return
+    await removeVoice(v.id)
+    refresh()
+  }
+
+  return (
+    <div style={{ padding: '14px 16px', borderBottom: '1px solid var(--border)' }}>
+      <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 2 }}>Vozes neurais (Piper)</div>
+      <div className="muted" style={{ fontSize: 12, marginBottom: 10 }}>
+        ~60 MB por voz · baixa uma vez, fala offline para sempre
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {PIPER_VOICES.map((v) => {
+          const isStored = stored.includes(v.id)
+          const isActive = settings.piper_voice === v.id
+          const pct = progress[v.id]
+          return (
+            <div key={v.id} style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--bg-alt)', borderRadius: 12, padding: '10px 12px' }}>
+              <button onClick={() => isStored && updateSetting('piper_voice', v.id)}
+                aria-label={`Usar voz ${v.label}`} disabled={!isStored}
+                style={{
+                  width: 20, height: 20, borderRadius: '50%', flexShrink: 0, cursor: isStored ? 'pointer' : 'default',
+                  border: `2px solid ${isActive ? 'var(--indigo-600)' : 'var(--border-strong)'}`,
+                  background: isActive ? 'var(--indigo-600)' : 'transparent',
+                  opacity: isStored ? 1 : 0.4,
+                }} />
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontWeight: 700, fontSize: 13 }}>{v.flag} {v.label}</div>
+                <div className="muted" style={{ fontSize: 11 }}>
+                  {pct != null ? `Baixando… ${pct}%` : isStored ? 'No aparelho · offline' : `${v.sizeMB} MB`}
+                </div>
+                {pct != null && (
+                  <div style={{ height: 4, background: 'var(--border)', borderRadius: 999, overflow: 'hidden', marginTop: 6 }}>
+                    <div style={{ height: '100%', width: `${pct}%`, background: 'var(--indigo-600)' }} />
+                  </div>
+                )}
+              </div>
+              {pct == null && (isStored ? (
+                <button className="btn btn-sm btn-ghost" style={{ padding: '4px 8px', color: 'var(--error)' }} onClick={() => handleRemove(v)}>
+                  Apagar
+                </button>
+              ) : (
+                <button className="btn btn-sm btn-secondary" style={{ padding: '4px 10px' }} onClick={() => handleDownload(v)}>
+                  <I.download s={14} /> Baixar
+                </button>
+              ))}
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

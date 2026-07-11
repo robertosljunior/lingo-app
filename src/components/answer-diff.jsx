@@ -7,6 +7,7 @@
 //   typo    → sublinhado ondulado (near-miss spelling, paired by the engine)
 
 import { tokenize, wordDiff } from '../lib/correction-engine.js'
+import { speakWord, speechSupported } from '../lib/audio/tts.js'
 
 const MARK_STYLE = {
   extra: { textDecoration: 'line-through', opacity: 0.65 },
@@ -25,11 +26,13 @@ function markFor(rawWord, markedSet, typoSet) {
 }
 
 // Render `text` word by word, marking each word per the provided sets.
-export function MarkedText({ text, marked = [], typos = [], variant = 'missing', style }) {
+// When TTS is available every word is tappable and speaks itself.
+export function MarkedText({ text, marked = [], typos = [], variant = 'missing', style, speakable = true }) {
   const markedSet = new Set(marked)
   const typoSet = new Set(typos)
   const words = String(text || '').split(/\s+/).filter(Boolean)
   if (words.length === 0) return <span style={style}>—</span>
+  const tappable = speakable && speechSupported
   return (
     <span style={style}>
       {words.map((w, i) => {
@@ -38,7 +41,8 @@ export function MarkedText({ text, marked = [], typos = [], variant = 'missing',
         return (
           <span key={i}>
             {i > 0 && ' '}
-            <span style={s || undefined}>{w}</span>
+            <span style={{ ...(s || {}), ...(tappable ? { cursor: 'pointer' } : {}) }}
+              onClick={tappable ? () => speakWord(w) : undefined}>{w}</span>
           </span>
         )
       })}

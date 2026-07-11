@@ -35,25 +35,35 @@ function StreakStrip({ sessions }) {
 }
 
 export default function Home() {
-  const { lessons, sessions, mistakes, startLesson, navigate, setTab, SCREENS } = useApp()
+  const { lessons, sessions, mistakes, dueCount, profiles, activeProfile, startLesson, startReviewSession, startPracticeSession, navigate, setTab, SCREENS } = useApp()
   const latest = lessons[0] || null
   const avgScore = sessions.length
     ? Math.round(sessions.reduce((a, s) => a + s.score, 0) / sessions.length)
     : null
+  const profile = profiles.find((p) => p.profile_id === activeProfile)
 
   return (
     <div className="phone">
       <div style={{ padding: '8px 20px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
         <Logo />
-        {avgScore != null && (
-          <div className="chip chip-indigo" style={{ fontWeight: 800 }}>{latest?.level || 'B1'}</div>
-        )}
+        <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+          {profile && (
+            <button className="chip" onClick={() => setTab(SCREENS.SETTINGS)}
+              style={{ border: '1px solid var(--border)', background: 'var(--surface)', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 5, font: 'inherit', fontSize: 12, fontWeight: 700 }}
+              aria-label="Trocar perfil">
+              <I.user s={12} /> {profile.name}
+            </button>
+          )}
+          {avgScore != null && (
+            <div className="chip chip-indigo" style={{ fontWeight: 800 }}>{latest?.level || 'B1'}</div>
+          )}
+        </div>
       </div>
 
       <div className="screen-body" style={{ paddingBottom: 100 }}>
         <div>
           <div className="label-eyebrow">bem-vindo</div>
-          <h1 className="h1" style={{ marginTop: 4 }}>Bem-vindo de volta.</h1>
+          <h1 className="h1" style={{ marginTop: 4 }}>{profile && profile.name !== 'Você' ? `Bem-vindo, ${profile.name}.` : 'Bem-vindo de volta.'}</h1>
           <p className="muted-2" style={{ margin: '6px 0 0', fontSize: 14 }}>Pronto pra travar menos hoje?</p>
         </div>
 
@@ -109,21 +119,43 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Recurring mistakes preview */}
+        {/* Due spaced-repetition reviews */}
+        {dueCount > 0 && (
+          <div className="card tap" onClick={startReviewSession} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 14 }}>
+            <div style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--success-bg)', color: 'var(--success)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <I.refresh s={20} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 700, fontSize: 15 }}>Revisão do dia</div>
+              <div style={{ fontSize: 12, color: 'var(--ink-3)' }}>
+                {dueCount} {dueCount === 1 ? 'frase esperando' : 'frases esperando'} — repetição espaçada
+              </div>
+            </div>
+            <I.chevR s={18} />
+          </div>
+        )}
+
+        {/* Recurring mistakes preview + targeted practice */}
         {mistakes.length > 0 && (
-          <div className="card tap" onClick={() => setTab(SCREENS.MISTAKES)}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-              <h3 className="h3">Erros recorrentes</h3>
-              <span style={{ fontSize: 13, color: 'var(--indigo-700)', fontWeight: 700 }}>Ver todos →</span>
+          <div className="card">
+            <div className="tap" onClick={() => setTab(SCREENS.MISTAKES)} style={{ cursor: 'pointer' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                <h3 className="h3">Erros recorrentes</h3>
+                <span style={{ fontSize: 13, color: 'var(--indigo-700)', fontWeight: 700 }}>Ver todos →</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {mistakes.slice(0, 3).map((m) => (
+                  <div key={m.mistake_type} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ fontWeight: 600, fontSize: 14, fontFamily: 'var(--font-mono)' }}>{m.mistake_type}</div>
+                    <span style={{ fontSize: 14, fontWeight: 800, minWidth: 24, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>{m.count}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {mistakes.slice(0, 3).map((m) => (
-                <div key={m.mistake_type} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{ fontWeight: 600, fontSize: 14, fontFamily: 'var(--font-mono)' }}>{m.mistake_type}</div>
-                  <span style={{ fontSize: 14, fontWeight: 800, minWidth: 24, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>{m.count}</span>
-                </div>
-              ))}
-            </div>
+            <button className="btn btn-secondary btn-block" style={{ marginTop: 12 }}
+              onClick={(e) => { e.stopPropagation(); startPracticeSession() }}>
+              <I.trend s={16} /> Treinar minhas dificuldades
+            </button>
           </div>
         )}
 

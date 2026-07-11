@@ -10,6 +10,18 @@ export default defineConfig({
   base: './',
   plugins: [
     react(),
+    // onnxruntime-web (pulled in by piper-tts-web) emits its 26 MB wasm as a
+    // build asset, but at runtime Piper always loads the ONNX/phonemizer
+    // runtimes from CDN (cached by the service worker) — the local copy is
+    // never requested. Drop it so the versioned dist/ stays small.
+    {
+      name: 'drop-unused-ort-wasm',
+      generateBundle(_, bundle) {
+        for (const key of Object.keys(bundle)) {
+          if (key.endsWith('.wasm')) delete bundle[key]
+        }
+      },
+    },
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
@@ -17,6 +29,20 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,woff,woff2}'],
         // The NLP worker + Compromise bundle can exceed the default 2 MiB cap.
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
+        // Piper (neural TTS) runtimes come from CDNs; cache them so the
+        // engine keeps working offline after the first use. The voice models
+        // themselves live in OPFS (handled by piper-tts-web).
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/(cdn\.jsdelivr\.net|cdnjs\.cloudflare\.com)\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'piper-runtime-v1',
+              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+        ],
       },
       manifest: {
         name: 'App Idiomas — Treino de Inglês',

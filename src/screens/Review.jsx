@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useApp } from '../store.jsx'
 import { Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
-import { speak, speechSupported } from '../lib/speech.js'
+import { speak, speechSupported } from '../lib/audio/tts.js'
 import { FEEDBACK_BY_TYPE, wordDiff } from '../lib/correction-engine.js'
 import { MarkedText } from '../components/answer-diff.jsx'
 
@@ -89,9 +89,14 @@ export default function Review() {
             </div>
             <div style={{ display: 'flex', gap: 6, marginTop: 10 }}>
               {speechSupported && (
-                <button className="btn btn-sm btn-ghost" style={{ padding: '6px 10px' }} onClick={() => speak(q.expected_answer)}>
-                  <I.speaker s={14} /> Ouvir
-                </button>
+                <>
+                  <button className="btn btn-sm btn-ghost" style={{ padding: '6px 10px' }} onClick={() => speak(q.expected_answer)}>
+                    <I.speaker s={14} /> Ouvir
+                  </button>
+                  <button className="btn btn-sm btn-ghost" style={{ padding: '6px 10px' }} onClick={() => speak(q.expected_answer, { slow: true })} aria-label="Ouvir devagar">
+                    <I.turtle s={14} />
+                  </button>
+                </>
               )}
               <button className="btn btn-sm btn-ghost" style={{ padding: '6px 10px' }}
                 onClick={() => { navigator.clipboard?.writeText(q.expected_answer); showToast('Copiado') }}>

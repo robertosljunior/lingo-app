@@ -10,10 +10,12 @@
 //       missing_words, extra_words, possible_mistake_type,
 //       is_probably_correct, feedback, verdict, target } }
 //
-// Compromise refines the base heuristic classification with real POS info:
-// detecting a missing question auxiliary, contractions, and verb-tense drift.
-// The architecture is ready for wink-nlp to be added later behind the same
-// message contract without touching callers.
+// Two engines refine the base heuristic classification with real POS info
+// (missing question auxiliary, verb-tense drift), selected per request via
+// payload.nlp_library:
+//   'compromise' (default) — bundled with the worker
+//   'wink'                 — wink-nlp + English lite model, loaded lazily on
+//                            first use so it costs nothing until enabled
 
 import nlp from 'compromise'
 import {
@@ -68,7 +70,55 @@ function verbTense(verbs) {
   }
 }
 
-self.onmessage = (e) => {
+// ---------- wink-nlp engine (lazy) ----------
+let winkEngine = null
+async function ensureWink() {
+  if (!winkEngine) {
+    const [{ default: winkNLP }, { default: model }] = await Promise.all([
+      import('wink-nlp'),
+      import('wink-eng-lite-web-model'),
+    ])
+    winkEngine = winkNLP(model)
+  }
+  return winkEngine
+}
+
+const AUX_SET = new Set(['do', 'does', 'did', 'is', 'are', 'am', 'was', 'were', 'have', 'has', 'had', 'will', 'would', 'can', 'could', 'should'])
+
+// Map Penn Treebank verb tags to a coarse tense bucket.
+function winkTense(tags) {
+  const t = tags.find((x) => x.startsWith('VB'))
+  if (!t) return null
+  if (t === 'VBD' || t === 'VBN') return 'Past'
+  if (t === 'VBZ' || t === 'VBP' || t === 'VB') return 'Present'
+  if (t === 'VBG') return 'Gerund'
+  return null
+}
+
+function winkRefine(base, payload, wink) {
+  const { user_answer, expected_answer } = payload
+  if (base.is_probably_correct) return base
+  const its = wink.its
+  const posOf = (text) => wink.readDoc(text).tokens().out(its.pos)
+
+  const expectedFirst = tokenize(expected_answer)[0]
+  const userFirst = tokenize(user_answer)[0]
+  const expectedIsQuestion = /\?\s*$/.test(expected_answer) || AUX_SET.has(expectedFirst)
+  if (expectedIsQuestion && AUX_SET.has(expectedFirst) && !AUX_SET.has(userFirst)) {
+    base.possible_mistake_type = 'question_structure'
+  }
+
+  const expTense = winkTense(posOf(expected_answer))
+  const usrTense = winkTense(posOf(user_answer))
+  if (expTense && usrTense && expTense !== usrTense && base.possible_mistake_type === 'vocabulary') {
+    base.possible_mistake_type = 'verb_tense'
+  }
+
+  base.feedback = buildFeedback(base.is_probably_correct, base.verdict === 'partial', base.possible_mistake_type)
+  return base
+}
+
+self.onmessage = async (e) => {
   const { type, id, payload } = e.data || {}
   if (type !== 'analyze_answer') return
   try {
@@ -78,7 +128,18 @@ self.onmessage = (e) => {
       accepted_answers: payload.accepted_answers || [],
       mistake_focus: payload.mistake_focus || null,
     })
-    const result = structuralRefine(base, payload)
+    let result
+    if (payload.nlp_library === 'wink') {
+      try {
+        result = winkRefine(base, payload, await ensureWink())
+      } catch {
+        // wink failed to load (e.g. offline before first use) — Compromise
+        // answers the same contract.
+        result = structuralRefine(base, payload)
+      }
+    } else {
+      result = structuralRefine(base, payload)
+    }
     self.postMessage({ id, result })
   } catch (err) {
     // Never leave a request hanging — return a safe fallback so the UI proceeds.
