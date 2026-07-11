@@ -6,6 +6,7 @@ import * as db from './lib/storage.js'
 import { parseLesson } from './lib/lesson-parser.js'
 import { SAMPLE_YAML } from './lib/sample-lesson.js'
 import { warmupNlp } from './lib/nlp-client.js'
+import { configureTts } from './lib/audio/tts.js'
 
 const AppCtx = createContext(null)
 export const useApp = () => useContext(AppCtx)
@@ -60,6 +61,11 @@ export function AppProvider({ children }) {
       warmupNlp()
     })()
   }, [])
+
+  // ---- audio ----
+  useEffect(() => {
+    if (settings) configureTts(settings)
+  }, [settings])
 
   // ---- theme ----
   useEffect(() => {

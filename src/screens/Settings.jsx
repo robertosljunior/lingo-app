@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useApp } from '../store.jsx'
 import { BottomNav } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { getErrorLog, clearErrorLog, formatErrorLog } from '../lib/error-log.js'
+import { ACCENTS, listVoices, onVoicesChanged, speak, speechSupported } from '../lib/audio/tts.js'
 
 export default function Settings() {
   const { settings, updateSetting, setTab, showToast, db, refreshLibrary } = useApp()
@@ -87,6 +88,8 @@ export default function Settings() {
           </Row>
         </div>
 
+        <AudioSection Row={Row} SectionHead={SectionHead} Segmented={Segmented} settings={settings} updateSetting={updateSetting} />
+
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <SectionHead>aparência</SectionHead>
           <Row last>
@@ -162,6 +165,101 @@ export default function Settings() {
         </p>
       </div>
       <BottomNav active="settings" onNavigate={setTab} />
+    </div>
+  )
+}
+
+const TEST_SENTENCE = 'Hello! This is how your lessons will sound.'
+
+// Audio preferences: accent, specific voice, speed, autoplay — everything the
+// TTS layer reads. Voices come from the device's TTS engine, so the list can
+// change (voiceschanged) and differs per phone.
+function AudioSection({ Row, SectionHead, Segmented, settings, updateSetting }) {
+  const [voices, setVoices] = useState(() => listVoices())
+  useEffect(() => onVoicesChanged(setVoices), [])
+
+  if (!speechSupported) {
+    return (
+      <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+        <SectionHead>áudio</SectionHead>
+        <Row last>
+          <div className="muted" style={{ fontSize: 13 }}>Este navegador não tem síntese de voz. No Android, use o Chrome.</div>
+        </Row>
+      </div>
+    )
+  }
+
+  const accentVoices = voices.filter((v) => (v.lang || '').toLowerCase().replace('_', '-') === settings.tts_accent.toLowerCase())
+  const accentHasVoice = (code) => voices.some((v) => (v.lang || '').toLowerCase().replace('_', '-') === code.toLowerCase())
+
+  return (
+    <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+      <SectionHead>áudio</SectionHead>
+
+      <Row>
+        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Sotaque do inglês</div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          {ACCENTS.map((a) => {
+            const active = settings.tts_accent === a.code
+            const available = accentHasVoice(a.code)
+            return (
+              <button key={a.code} className="btn btn-sm btn-secondary"
+                onClick={() => { updateSetting('tts_accent', a.code); updateSetting('tts_voice', '') }}
+                style={{
+                  minHeight: 38, padding: '6px 12px', opacity: available ? 1 : 0.5,
+                  ...(active ? { borderColor: 'var(--indigo-600)', color: 'var(--indigo-700)', background: 'var(--indigo-50)' } : {}),
+                }}>
+                {a.flag} {a.label}
+              </button>
+            )
+          })}
+        </div>
+        <div className="muted" style={{ fontSize: 12, marginTop: 8, lineHeight: 1.4 }}>
+          Sotaques esmaecidos não têm voz instalada neste aparelho. No Android, baixe mais vozes em
+          Configurações → Sistema → Conversão de texto em voz.
+        </div>
+      </Row>
+
+      <Row>
+        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Voz</div>
+        <select className="input" style={{ fontSize: 14, padding: '10px 12px' }}
+          value={settings.tts_voice || ''}
+          onChange={(e) => updateSetting('tts_voice', e.target.value)}
+          aria-label="Voz do inglês">
+          <option value="">Automática (melhor voz do sotaque)</option>
+          {accentVoices.map((v) => (
+            <option key={v.voiceURI} value={v.voiceURI}>
+              {v.name}{v.localService ? ' · offline' : ''}
+            </option>
+          ))}
+        </select>
+      </Row>
+
+      <Row>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+          <div style={{ fontWeight: 700, fontSize: 15 }}>Velocidade da fala</div>
+          <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--indigo-700)', fontVariantNumeric: 'tabular-nums' }}>{Number(settings.tts_rate).toFixed(2)}×</div>
+        </div>
+        <input type="range" min="0.5" max="1.2" step="0.05" value={settings.tts_rate}
+          onChange={(e) => updateSetting('tts_rate', +e.target.value)} aria-label="Velocidade da fala" />
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--ink-3)', marginTop: 6 }}>
+          <span>0.5× devagar</span><span>1.2× rápido</span>
+        </div>
+      </Row>
+
+      <Row>
+        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Falar resposta ao corrigir</div>
+        <Segmented value={settings.tts_autoplay ? 'on' : 'off'}
+          onChange={(k) => updateSetting('tts_autoplay', k === 'on')}
+          options={[{ k: 'on', l: 'Sim' }, { k: 'off', l: 'Não' }]} />
+        <div className="muted" style={{ fontSize: 12, marginTop: 8 }}>Ao abrir o resultado, a frase correta é falada em voz alta.</div>
+      </Row>
+
+      <Row last>
+        <button className="btn btn-secondary" style={{ width: '100%' }} onClick={() => speak(TEST_SENTENCE)}>
+          <I.speaker s={18} /> Testar voz
+        </button>
+      </Row>
     </div>
   )
 }

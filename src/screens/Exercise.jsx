@@ -1,9 +1,10 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useApp } from '../store.jsx'
 import { Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { analyze } from '../lib/nlp-client.js'
-import { speak, speechSupported } from '../lib/speech.js'
+import { speak, speechSupported } from '../lib/audio/tts.js'
+import { SpeakButton, SpeakableText } from '../components/speak-button.jsx'
 import { AnswerDiff, TypoNote } from '../components/answer-diff.jsx'
 
 export default function Exercise() {
@@ -156,8 +157,13 @@ function TranslateBody({ q, user, setUser, disabled, showHint }) {
           {q.type === 'answer_question' ? 'responda em inglês' : 'diga em inglês'}
         </div>
         <h2 style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.2, margin: '8px 0 0' }}>
-          {q.prompt_pt || q.prompt}
+          {q.type === 'answer_question' && !q.prompt_pt
+            ? <SpeakableText text={q.prompt} />
+            : (q.prompt_pt || q.prompt)}
         </h2>
+        {q.type === 'answer_question' && !q.prompt_pt && (
+          <div style={{ marginTop: 10 }}><SpeakButton text={q.prompt} size="sm" label=" ouvir pergunta" /></div>
+        )}
         {!disabled && <p className="muted" style={{ margin: '12px 0 0', fontSize: 13 }}>Tente sem traduzir literalmente. Use uma forma natural.</p>}
       </div>
       {showHint && !disabled && <HintCard text={hintFor(q)} />}
@@ -191,10 +197,9 @@ function DictationBody({ q, user, setUser, disabled, showHint }) {
       </div>
 
       {speechSupported ? (
-        <button className="btn btn-secondary" onClick={() => speak(q.expected_answer)}
-          style={{ alignSelf: 'center', display: 'flex', alignItems: 'center', gap: 10, padding: '18px 26px', borderRadius: 999, marginTop: 8 }}>
-          <I.speaker s={22} /> Ouvir frase
-        </button>
+        <div style={{ alignSelf: 'center', marginTop: 8 }}>
+          <SpeakButton text={q.expected_answer} size="lg" turtle label=" Ouvir frase" />
+        </div>
       ) : (
         <div className="card" style={{ padding: 14, background: 'var(--bg-alt)' }}>
           <div className="label-eyebrow" style={{ marginBottom: 6 }}>sem áudio neste navegador — copie a frase</div>
@@ -213,9 +218,14 @@ function DictationBody({ q, user, setUser, disabled, showHint }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10, fontSize: 12, color: 'var(--ink-3)' }}>
           <span>{words} {words === 1 ? 'palavra' : 'palavras'}</span>
           {speechSupported && (
-            <button className="btn btn-sm btn-ghost" style={{ padding: '2px 8px', minHeight: 0 }} onClick={() => speak(q.expected_answer)} disabled={disabled}>
-              <I.speaker s={14} /> ouvir de novo
-            </button>
+            <span style={{ display: 'inline-flex', gap: 4 }}>
+              <button className="btn btn-sm btn-ghost" style={{ padding: '2px 8px', minHeight: 0 }} onClick={() => speak(q.expected_answer)} disabled={disabled}>
+                <I.speaker s={14} /> de novo
+              </button>
+              <button className="btn btn-sm btn-ghost" style={{ padding: '2px 8px', minHeight: 0 }} onClick={() => speak(q.expected_answer, { slow: true })} disabled={disabled} aria-label="Ouvir devagar">
+                <I.turtle s={14} /> devagar
+              </button>
+            </span>
           )}
         </div>
       </div>
@@ -320,6 +330,15 @@ function ChoiceBody({ q, choice, setChoice, disabled }) {
 }
 
 function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
+  const { settings } = useApp()
+  const target = result.target || q.expected_answer
+
+  // Duolingo-style: hearing the right sentence after every answer is how the
+  // sound of the language sticks — speak it when the sheet opens (opt-out).
+  useEffect(() => {
+    if (settings?.tts_autoplay !== false && speechSupported && target) speak(target)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   const tone = result.verdict === 'correct' ? 'success' : result.verdict === 'partial' ? 'warn' : 'error'
   const titles = {
     correct: 'Natural! 🎯',
@@ -352,6 +371,11 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
       )}
 
       {result.verdict === 'correct' && <TypoNote typos={result.typos} inkVar={inkVar} />}
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <SpeakButton text={target} size="sm" turtle label=" ouvir" />
+        <span style={{ fontSize: 11, color: inkVar, opacity: .6 }}>toque numa palavra para ouvi-la</span>
+      </div>
 
       {result.verdict === 'correct' && q.accepted_answers?.length > 0 && (
         <div>

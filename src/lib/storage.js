@@ -172,6 +172,12 @@ const SETTINGS_DEFAULTS = {
   correction_mode: 'flexible', // flexible | strict
   nlp_library: 'compromise',
   theme: 'system', // system | light | dark
+  // audio
+  tts_engine: 'system', // system | piper
+  tts_accent: 'en-US',
+  tts_voice: '', // '' = auto-pick best voice for the accent
+  tts_rate: 0.95,
+  tts_autoplay: true, // speak the correct sentence when feedback opens
 }
 
 export async function getSettings() {
