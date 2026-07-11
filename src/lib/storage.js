@@ -16,6 +16,7 @@
 //   settings  { key*, value }
 
 import { openDB } from 'idb'
+import { srsKey, nextSrs, rankPracticeQuestions } from './srs.js'
 
 const DB_NAME = 'app-idiomas'
 const DB_VERSION = 2
@@ -237,6 +238,62 @@ export async function getMistakes(profile_id = DEFAULT_PROFILE) {
   const d = await db()
   const rows = await d.getAllFromIndex('mistakes', 'profile_id', profile_id)
   return rows.sort((a, b) => b.count - a.count)
+}
+
+// ---------- SRS (spaced repetition) ----------
+// Record the outcome of an answered question into the Leitner schedule.
+export async function updateSrs({ profile_id, lesson_id, question_id, correct, confidence = null }) {
+  const d = await db()
+  const key = srsKey(profile_id, lesson_id, question_id)
+  const existing = await d.get('srs', key)
+  const next = nextSrs(existing, { correct, confidence })
+  await d.put('srs', { key, profile_id, lesson_id, question_id, ...next })
+}
+
+// Patch the schedule after the student self-rates the answer ("fácil" bumps
+// the box one further).
+export async function bumpSrsConfidence({ profile_id, lesson_id, question_id, confidence }) {
+  if (confidence !== 'easy') return
+  const d = await db()
+  const key = srsKey(profile_id, lesson_id, question_id)
+  const existing = await d.get('srs', key)
+  if (!existing || existing.last_result !== 'correct') return
+  const next = nextSrs({ box: existing.box - 1 }, { correct: true, confidence: 'easy', now: existing.updated_at })
+  await d.put('srs', { ...existing, ...next })
+}
+
+// Questions due for review, hydrated from the questions store.
+export async function getDueReviews(profile_id, { now = Date.now(), limit = 15 } = {}) {
+  const d = await db()
+  const rows = await d.getAllFromIndex('srs', 'profile_id', profile_id)
+  const due = rows.filter((r) => r.due_at <= now).sort((a, b) => a.due_at - b.due_at).slice(0, limit)
+  const out = []
+  for (const r of due) {
+    const q = await d.get('questions', `${r.lesson_id}:${r.question_id}`)
+    if (q) out.push(q)
+  }
+  return out
+}
+
+export async function countDueReviews(profile_id, now = Date.now()) {
+  const d = await db()
+  const rows = await d.getAllFromIndex('srs', 'profile_id', profile_id)
+  return rows.filter((r) => r.due_at <= now).length
+}
+
+// Difficulty-driven practice: the questions this profile misses the most,
+// weighted toward its top recurring mistake types.
+export async function getPracticeQuestions(profile_id, { limit = 12 } = {}) {
+  const d = await db()
+  const answers = await getAllAnswers(profile_id)
+  const top = (await getMistakes(profile_id)).slice(0, 3).map((m) => m.mistake_type)
+  const ranked = rankPracticeQuestions({ answers, topMistakeTypes: top, limit })
+  const out = []
+  for (const r of ranked) {
+    const q = await d.get('questions', `${r.lesson_id}:${r.question_id}`)
+    if (q) out.push(q)
+  }
+  return out
 }
 
 // ---------- Settings ----------

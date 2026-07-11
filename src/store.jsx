@@ -7,6 +7,7 @@ import { parseLesson } from './lib/lesson-parser.js'
 import { SAMPLE_YAML } from './lib/sample-lesson.js'
 import { warmupNlp } from './lib/nlp-client.js'
 import { configureTts } from './lib/audio/tts.js'
+import { shuffle } from './lib/srs.js'
 
 const AppCtx = createContext(null)
 export const useApp = () => useContext(AppCtx)
@@ -34,6 +35,7 @@ export function AppProvider({ children }) {
   const [sessions, setSessions] = useState([])
   const [mistakes, setMistakes] = useState([])
   const [profiles, setProfiles] = useState([])
+  const [dueCount, setDueCount] = useState(0)
 
   const [activeLesson, setActiveLesson] = useState(null)
   const [session, setSession] = useState({ id: null, qIdx: 0, answers: [] })
@@ -61,6 +63,7 @@ export function AppProvider({ children }) {
       setProfiles(await db.getProfiles())
       setSessions(await db.getSessionSummaries(profile))
       setMistakes(await db.getMistakes(profile))
+      setDueCount(await db.countDueReviews(profile))
       setReady(true)
       warmupNlp()
     })()
@@ -87,6 +90,7 @@ export function AppProvider({ children }) {
     setProfiles(await db.getProfiles())
     setSessions(await db.getSessionSummaries(profile))
     setMistakes(await db.getMistakes(profile))
+    setDueCount(await db.countDueReviews(profile))
   }, [activeProfile])
 
   // ---- profiles ----
@@ -144,6 +148,34 @@ export function AppProvider({ children }) {
     return saved
   }, [refreshLibrary])
 
+  // Synthetic sessions built from stored questions (SRS review / practice).
+  const startSynthetic = useCallback((questions, meta) => {
+    const lesson = {
+      lesson_id: meta.id,
+      title: meta.title,
+      level: meta.level || '—',
+      focus: meta.focus,
+      questions: shuffle(questions),
+    }
+    setActiveLesson(lesson)
+    setSession({ id: newSessionId(meta.id), qIdx: 0, answers: [] })
+    navigate(SCREENS.EXERCISE, {})
+  }, [navigate])
+
+  // "Revisão do dia": questions whose Leitner interval has elapsed.
+  const startReviewSession = useCallback(async () => {
+    const qs = await db.getDueReviews(activeProfile)
+    if (qs.length === 0) { showToast('Nada para revisar agora 🎉'); return }
+    startSynthetic(qs, { id: 'review', title: 'Revisão do dia', focus: 'revisao_espacada' })
+  }, [activeProfile, startSynthetic, showToast])
+
+  // "Treino dirigido": the questions this profile misses the most.
+  const startPracticeSession = useCallback(async () => {
+    const qs = await db.getPracticeQuestions(activeProfile)
+    if (qs.length === 0) { showToast('Errou pouco até agora — treine com uma aula!'); return }
+    startSynthetic(qs, { id: 'practice', title: 'Treino dirigido', focus: 'maiores_dificuldades' })
+  }, [activeProfile, startSynthetic, showToast])
+
   const startLesson = useCallback(async (lesson) => {
     // Lessons coming from the list view carry no questions (separate store) —
     // hydrate the full record before starting.
@@ -155,12 +187,15 @@ export function AppProvider({ children }) {
   }, [navigate])
 
   const submitAnswer = useCallback(async (rec) => {
-    // rec: { question, user_answer, analysis }
+    // rec: { question, user_answer, analysis, spoken_transcript?, pronunciation_score? }
     const q = rec.question
     const a = rec.analysis
+    // Synthetic sessions (review/practice) reuse questions from other lessons —
+    // keep the question's original lesson so stats and SRS aggregate right.
+    const lessonId = q.lesson_id || activeLesson.lesson_id
     const stored = {
       profile_id: activeProfile,
-      lesson_id: activeLesson.lesson_id,
+      lesson_id: lessonId,
       question_id: q.id,
       user_answer: rec.user_answer,
       expected_answer: a.target || q.expected_answer,
@@ -170,22 +205,40 @@ export function AppProvider({ children }) {
       mistake_type: a.verdict === 'correct' ? null : a.possible_mistake_type,
       feedback: a.feedback,
       session_id: session.id,
+      spoken_transcript: rec.spoken_transcript || null,
+      pronunciation_score: rec.pronunciation_score ?? null,
     }
     const key = await db.saveAnswer(stored)
+    await db.updateSrs({
+      profile_id: activeProfile,
+      lesson_id: lessonId,
+      question_id: q.id,
+      correct: a.verdict === 'correct',
+    })
     const entry = { ...stored, key, question: q }
     setSession((s) => ({ ...s, answers: [...s.answers, entry] }))
     return entry
   }, [activeLesson, session.id, activeProfile])
 
   // Persist the user's self-rated confidence ("difícil/ok/fácil") on an answer.
+  // "Fácil" also pushes the question further out in the review schedule.
   const rateAnswer = useCallback(async (key, confidence) => {
     if (key == null) return
+    const entry = session.answers.find((a) => a.key === key)
     setSession((s) => ({
       ...s,
       answers: s.answers.map((a) => (a.key === key ? { ...a, confidence } : a)),
     }))
     await db.updateAnswer(key, { confidence })
-  }, [])
+    if (entry) {
+      await db.bumpSrsConfidence({
+        profile_id: activeProfile,
+        lesson_id: entry.lesson_id,
+        question_id: entry.question_id,
+        confidence,
+      })
+    }
+  }, [session.answers, activeProfile])
 
   const nextQuestion = useCallback(() => {
     setSession((s) => {
@@ -206,8 +259,9 @@ export function AppProvider({ children }) {
 
   const value = {
     ready, screen, params, settings,
-    lessons, sessions, mistakes,
+    lessons, sessions, mistakes, dueCount,
     profiles, activeProfile, switchProfile, addProfile, removeProfile,
+    startReviewSession, startPracticeSession,
     activeLesson, session,
     toast,
     SCREENS,
