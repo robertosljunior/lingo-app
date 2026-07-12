@@ -106,6 +106,7 @@ function normalizeQuestion(raw, index) {
     // Legacy alias kept for old UI/data paths. It is pedagogical focus only,
     // not the detected error produced by the correction engine.
     mistake_focus: lessonFocus,
+    assessment_mode: raw.assessment_mode || raw.mode || null,
     // keep the untouched source for round-trip / debugging
     payload: raw,
   }

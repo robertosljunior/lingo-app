@@ -6,6 +6,7 @@ import { getErrorLog, clearErrorLog, formatErrorLog } from '../lib/error-log.js'
 import { ACCENTS, listVoices, onVoicesChanged, speak, speechSupported } from '../lib/audio/tts.js'
 import { PIPER_VOICES, piperSupported, storedVoices, downloadVoice, removeVoice } from '../lib/audio/tts-piper.js'
 import { PORTUGUESE_VOICES, speakSegment } from '../lib/speech-router.js'
+import { getInstallEligibility, requestInstall } from '../lib/pwa-install-controller.js'
 
 export default function Settings() {
   const { settings, updateSetting, setTab, showToast, db, refreshLibrary } = useApp()
@@ -117,6 +118,15 @@ export default function Settings() {
         </div>
 
         <AudioSection Row={Row} SectionHead={SectionHead} Segmented={Segmented} settings={settings} updateSetting={updateSetting} />
+
+        <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+          <SectionHead>aplicativo</SectionHead>
+          <Row last>
+            <div style={{ fontWeight: 700, fontSize: 15 }}>Instalar aplicativo</div>
+            <div className="muted" style={{ fontSize: 12, margin: '2px 0 10px' }}>Instale para usar lições e vozes offline.</div>
+            <button className="btn btn-secondary" onClick={async()=>{ const e=getInstallEligibility({allowManualFallback:true}); if(e.mode==='prompt') await requestInstall(); else showToast('Para instalar, abra o menu do navegador e escolha “Adicionar à Tela de Início”.') }}>Instalar aplicativo</button>
+          </Row>
+        </div>
 
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <SectionHead>aparência</SectionHead>

@@ -10,6 +10,7 @@ import { speak, speakWord, speechSupported } from '../lib/audio/tts.js'
 
 export function SpeakButton({ text, size = 'md', turtle = false, label = null, disabled = false }) {
   const [active, setActive] = useState(null) // 'normal' | 'slow' while flashing
+  const [error, setError] = useState('')
   if (!speechSupported || !text) return null
 
   const flash = (kind) => {
@@ -21,7 +22,7 @@ export function SpeakButton({ text, size = 'md', turtle = false, label = null, d
   return (
     <span style={{ display: 'inline-flex', gap: 8, alignItems: 'center' }}>
       <button type="button" className="btn btn-secondary" disabled={disabled}
-        onClick={() => { speak(text); flash('normal') }}
+        onClick={async () => { const r = await speak(text); if (r?.ok === false) setError(r.message); else flash('normal') }}
         aria-label="Ouvir frase"
         style={{
           display: 'inline-flex', alignItems: 'center', gap: 8, padding: dims.pad, borderRadius: 999,
@@ -31,7 +32,7 @@ export function SpeakButton({ text, size = 'md', turtle = false, label = null, d
       </button>
       {turtle && (
         <button type="button" className="btn btn-secondary" disabled={disabled}
-          onClick={() => { speak(text, { slow: true }); flash('slow') }}
+          onClick={async () => { const r = await speak(text, { slow: true }); if (r?.ok === false) setError(r.message); else flash('slow') }}
           aria-label="Ouvir devagar"
           style={{
             display: 'inline-flex', alignItems: 'center', padding: dims.pad, borderRadius: 999,
@@ -40,6 +41,7 @@ export function SpeakButton({ text, size = 'md', turtle = false, label = null, d
           <I.turtle s={dims.icon} />
         </button>
       )}
+      {error && <span className="muted" style={{ fontSize: 12 }}>{error}</span>}
     </span>
   )
 }

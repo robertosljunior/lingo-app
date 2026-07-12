@@ -100,12 +100,12 @@ export async function speak(text, opts = {}) {
   let fallbackOpts = opts
   if (state.engine === 'piper' || opts.voiceId) {
     const ok = await speakPiper(t, opts)
-    if (ok) { state.overrideVoiceId = prevOverride.voice; state.overrideLang = prevOverride.lang; return true } // otherwise fall through to the system engine
+    if (ok?.ok || ok === true) { state.overrideVoiceId = prevOverride.voice; state.overrideLang = prevOverride.lang; return { ok: true, engine: 'piper' } } // otherwise fall through to the system engine
     fallbackOpts = { ...opts, requestedVoiceId: opts.requestedVoiceId || opts.voiceId || state.piperVoice, fallback_used: true, fallback_reason: 'MODEL_NOT_INSTALLED' }
   }
   const ok = speakSystem(t, fallbackOpts)
   state.overrideVoiceId = prevOverride.voice; state.overrideLang = prevOverride.lang
-  return ok
+  return ok ? { ok: true, engine: 'system', fallback_used: !!fallbackOpts.fallback_used } : unavailable(opts)
 }
 
 function recordTtsEvent(event) {
@@ -164,8 +164,11 @@ async function speakPiper(text, opts) {
     }
     return await state.piper.speak(text, { ...opts, rate: opts.rate ?? state.rate, accent: state.accent, voiceId: opts.voiceId || state.piperVoice, requestedVoiceId: opts.requestedVoiceId || opts.voiceId || state.piperVoice, language: opts.language || state.accent })
   } catch {
-    return false
+    return unavailable(opts)
   }
+}
+function unavailable(opts = {}) {
+  return { ok: false, code: 'TTS_BACKEND_UNAVAILABLE', requested_voice_id: opts.requestedVoiceId || opts.voiceId || state.piperVoice || state.voiceURI || state.accent, fallback_available: speechSupported, message: 'O áudio não está disponível agora. Você pode continuar a lição normalmente.' }
 }
 
 export function stopSpeaking() {
