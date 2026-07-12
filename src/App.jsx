@@ -9,6 +9,7 @@ import Export from './screens/Export.jsx'
 import History from './screens/History.jsx'
 import Mistakes from './screens/Mistakes.jsx'
 import Settings from './screens/Settings.jsx'
+import TrainingHub from './screens/TrainingHub.jsx'
 
 const SCREEN_COMPONENTS = {
   [SCREENS.HOME]: Home,
@@ -20,6 +21,7 @@ const SCREEN_COMPONENTS = {
   [SCREENS.HISTORY]: History,
   [SCREENS.MISTAKES]: Mistakes,
   [SCREENS.SETTINGS]: Settings,
+  [SCREENS.TRAINING]: TrainingHub,
 }
 
 // Screens that require an active lesson/session; if reached without one, fall
