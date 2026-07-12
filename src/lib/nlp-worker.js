@@ -28,7 +28,7 @@ import {
 
 function structuralRefine(base, payload) {
   const { user_answer, expected_answer, exercise_type } = payload
-  if (base.is_probably_correct) return base
+  if (base.is_probably_correct || base.detected_errors?.length) return base
 
   const expectedDoc = nlp(expected_answer)
   const userDoc = nlp(user_answer)
@@ -97,7 +97,7 @@ function winkTense(tags) {
 
 function winkRefine(base, payload, wink) {
   const { user_answer, expected_answer } = payload
-  if (base.is_probably_correct) return base
+  if (base.is_probably_correct || base.detected_errors?.length) return base
   const its = wink.its
   const posOf = (text) => wink.readDoc(text).tokens().out(its.pos)
 
@@ -127,6 +127,8 @@ self.onmessage = async (e) => {
       expected_answer: payload.expected_answer,
       accepted_answers: payload.accepted_answers || [],
       mistake_focus: payload.mistake_focus || null,
+      skill_target: payload.skill_target || null,
+      exercise_type: payload.exercise_type || null,
     })
     let result
     if (payload.nlp_library === 'wink') {
@@ -154,11 +156,20 @@ self.onmessage = async (e) => {
         typos: [],
         user_tokens: [],
         target_tokens: [],
-        possible_mistake_type: payload.mistake_focus || 'unnatural_translation',
+        engine_version: '2',
+        alignment: [],
+        detected_errors: [{
+          role: 'primary', category: 'vocabulary', subtype: 'analysis_failed', severity: 'medium', confidence: 0.3,
+          actual: payload.user_answer || '', expected: payload.expected_answer || '', rule_id: 'engine.fallback',
+          actual_token_start: null, actual_token_end: null, expected_token_start: null, expected_token_end: null,
+          feedback: 'Não deu para analisar — compare com a resposta esperada.', evidence: { error: String(err) },
+        }],
+        primary_error: { role: 'primary', category: 'vocabulary', subtype: 'analysis_failed', severity: 'medium', confidence: 0.3, rule_id: 'engine.fallback' },
+        possible_mistake_type: 'vocabulary',
         is_probably_correct: false,
         verdict: 'incorrect',
         target: payload.expected_answer,
-        feedback: FEEDBACK_BY_TYPE[payload.mistake_focus]?.wrong || 'Não deu para analisar — compare com a resposta esperada.',
+        feedback: 'Não deu para analisar — compare com a resposta esperada.',
         error: String(err),
       },
     })

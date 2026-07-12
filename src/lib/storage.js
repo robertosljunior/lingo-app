@@ -3,10 +3,10 @@
 // Stores (v2):
 //   lessons   { lesson_id*, title, level, focus, raw_content, created_at }
 //   questions { key* (lesson_id:id), lesson_id, id, type, prompt, expected_answer,
-//               accepted_answers, mistake_focus, payload }
+//               accepted_answers, skill_target, mistake_focus (legacy), payload }
 //   answers   { key* auto, profile_id, lesson_id, question_id, user_answer,
 //               expected_answer, score, is_correct, verdict, mistake_type,
-//               feedback, answered_at, session_id, spoken_transcript?,
+//               feedback, evaluation, answered_at, session_id, spoken_transcript?,
 //               pronunciation_score? }
 //   mistakes  { key* (profile:mistake_type), profile_id, mistake_type, count,
 //               examples, updated_at }
@@ -145,6 +145,8 @@ export async function saveLesson(lesson) {
       accepted_answers: q.accepted_answers,
       options: q.options,
       words: q.words,
+      skill_target: q.skill_target || q.lesson_focus || q.mistake_focus || null,
+      lesson_focus: q.lesson_focus || q.skill_target || q.mistake_focus || null,
       mistake_focus: q.mistake_focus,
       payload: q.payload,
     })

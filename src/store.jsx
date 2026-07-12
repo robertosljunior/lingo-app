@@ -203,6 +203,18 @@ export function AppProvider({ children }) {
     // Synthetic sessions (review/practice) reuse questions from other lessons —
     // keep the question's original lesson so stats and SRS aggregate right.
     const lessonId = q.lesson_id || activeLesson.lesson_id
+    const evaluation = {
+      engine_version: a.engine_version || '1',
+      verdict: a.verdict,
+      score: a.score ?? a.similarity_score,
+      primary_error: a.primary_error || null,
+      detected_errors: a.detected_errors || [],
+      alignment: a.alignment || [],
+      accepted_differences: a.accepted_differences || [],
+      target_answer: a.target_answer || a.target || q.expected_answer,
+      normalized_user_answer: a.normalized_user_answer,
+      normalized_expected_answer: a.normalized_expected_answer,
+    }
     const stored = {
       profile_id: activeProfile,
       lesson_id: lessonId,
@@ -212,8 +224,9 @@ export function AppProvider({ children }) {
       score: a.similarity_score,
       is_correct: a.verdict === 'correct',
       verdict: a.verdict,
-      mistake_type: a.verdict === 'correct' ? null : a.possible_mistake_type,
+      mistake_type: a.verdict === 'correct' ? null : (evaluation.primary_error?.category || a.possible_mistake_type),
       feedback: a.feedback,
+      evaluation,
       session_id: session.id,
       spoken_transcript: rec.spoken_transcript || null,
       pronunciation_score: rec.pronunciation_score ?? null,
