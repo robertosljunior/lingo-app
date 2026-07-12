@@ -107,7 +107,8 @@ export default function Exercise() {
       <div className="screen-body" style={{ paddingTop: 16, paddingBottom: feedback ? 20 : 110 }}>
         {q.context && (
           <div>
-            <div className="label-eyebrow">contexto</div>
+            {session.mode === 'adaptive_review' && <div className="chip chip-indigo" style={{ marginBottom: 8 }}>Revisão direcionada</div>}
+        <div className="label-eyebrow">contexto</div>
             <p style={{ fontSize: 14, color: 'var(--ink-2)', margin: '6px 0 0', lineHeight: 1.5 }}>{q.context}</p>
           </div>
         )}

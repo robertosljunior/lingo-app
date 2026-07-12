@@ -44,6 +44,7 @@ export default function Mistakes() {
 }
 
 function SkillList({ profiles }) {
+  const { startPracticeSession } = useApp()
   return profiles.map((p, i) => {
     const skill = getSkill(p.skill_id)
     const ex = p.recent_examples?.[0]
@@ -66,6 +67,9 @@ function SkillList({ profiles }) {
             </div>
           </div>
         </div>
+        <button className="btn btn-secondary btn-block" style={{ marginTop: 12 }} onClick={() => startPracticeSession(p.skill_id)}>
+          <I.trend s={16} /> Praticar esta habilidade
+        </button>
         {ex && (
           <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
             <div className="label-eyebrow" style={{ marginBottom: 6 }}>exemplo recente</div>

@@ -3,6 +3,8 @@
 // fields such as `possible_mistake_type`, `missing_words` and `extra_words` are
 // still derived for older screens/data.
 
+import { inferAssessedSkills } from './skill-profile.js'
+
 export const ENGINE_VERSION = '2'
 
 export const MISTAKE_TYPES = [
@@ -300,7 +302,7 @@ export function analyzeAnswer({ user_answer, expected_answer, accepted_answers =
   const feedback = buildEvaluationFeedback(verdict, primary_error)
   const diff = wordDiff(user_answer, target)
 
-  return {
+  const baseEvaluation = {
     engine_version: ENGINE_VERSION,
     verdict,
     score: exact ? 1 : effectiveScore,
@@ -319,7 +321,6 @@ export function analyzeAnswer({ user_answer, expected_answer, accepted_answers =
     detected_errors,
     primary_error,
     accepted_differences,
-    // Legacy derived fields below.
     possible_mistake_type,
     missing_words: diff.missing_words,
     extra_words: diff.extra_words,
@@ -328,6 +329,7 @@ export function analyzeAnswer({ user_answer, expected_answer, accepted_answers =
     feedback,
     skill_target: skill_target ?? mistake_focus ?? null,
   }
+  return { ...baseEvaluation, assessed_skills: inferAssessedSkills({ evaluation: baseEvaluation, question: { skill_target, mistake_focus, type: exercise_type }, user_answer, expected_answer: target }) }
 }
 
 function detectErrors(ctx) {

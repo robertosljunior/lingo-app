@@ -60,6 +60,13 @@ export default function Result() {
         </div>
 
 
+        {session.mode === 'adaptive_review' && skillRows.length > 0 && (
+          <div className="card">
+            <div className="label-eyebrow" style={{ marginBottom: 10 }}>skills praticadas na prática adaptativa</div>
+            <SkillMiniList title="acertos e erros por skill" items={skillRows.slice(0, 6)} tone="success" />
+          </div>
+        )}
+
         {(needsReview.length > 0 || strengths.length > 0) && (
           <div className="card">
             <div className="label-eyebrow" style={{ marginBottom: 10 }}>habilidades da aula</div>

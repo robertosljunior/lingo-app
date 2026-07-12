@@ -1,9 +1,10 @@
 // export-engine.js — compact result YAML + the two tutor prompts.
 
 import { summarizeLearningProfile } from './skill-profile.js'
+import { buildLessonGenerationContext as buildAdaptiveContextPure, rankSkillsForReview, PLANNER_VERSION } from './adaptive-planner.js'
 
 // Build the compact result block from a finished session.
-export function buildResultYaml({ lesson, answers, skillProfiles = [] }) {
+export function buildResultYaml({ lesson, answers, skillProfiles = [], adaptiveContext = null, profileId = 'default' }) {
   const total = answers.length
   const correct = answers.filter((a) => a.verdict === 'correct').length
   const partial = answers.filter((a) => a.verdict === 'partial').length
@@ -23,6 +24,7 @@ export function buildResultYaml({ lesson, answers, skillProfiles = [] }) {
     : '    none: 0'
 
   const profileBlock = buildLearningProfileBlock(skillProfiles)
+  const adaptiveBlock = buildAdaptiveContextBlock(adaptiveContext || buildAdaptiveContextPure({ profileId, skillProfiles, answers, level: lesson.level }))
 
   const wrongBlock = wrong.length
     ? wrong.map((a) => [
@@ -43,9 +45,44 @@ ${mistakesBlock}
   wrong:
 ${wrongBlock}
   learning_profile:
-${profileBlock}`
+${profileBlock}
+  adaptive_context:
+${adaptiveBlock}`
 }
 
+
+function buildAdaptiveContextBlock(ctx) {
+  const targets = (ctx?.target_skills || []).slice(0, 8)
+  const reinforce = (ctx?.reinforcement_skills || []).slice(0, 5)
+  const qids = (ctx?.recent_question_ids || []).slice(0, 30)
+  const tBlock = targets.length ? targets.map((p) => [
+    `      - skill: ${p.skill_id}`,
+    `        priority: ${Number(p.priority || 0).toFixed(2)}`,
+    `        mastery: ${Number(p.mastery || 0).toFixed(2)}`,
+    `        evidence: ${p.evidence}`,
+    `        reasons: [${adaptiveReasons(p).join(', ')}]`,
+  ].join('\n')).join('\n') : '      []'
+  const rBlock = reinforce.length ? reinforce.map((p) => [
+    `      - skill: ${p.skill_id}`,
+    `        mastery: ${Number(p.mastery || 0).toFixed(2)}`,
+  ].join('\n')).join('\n') : '      []'
+  const qBlock = qids.length ? `\n${qids.map((id) => `        - ${yamlInline(id)}`).join('\n')}` : ' []'
+  return `    planner_version: ${PLANNER_VERSION}
+    target_skills:
+${tBlock}
+    reinforcement_skills:
+${rBlock}
+    recent_content:
+      question_ids:${qBlock}`
+}
+function adaptiveReasons(p) {
+  const out = []
+  if ((p.mastery || 0) < 0.65) out.push('low_mastery')
+  if (p.evidence === 'insufficient') out.push('collect_more_evidence')
+  if ((p.recent_errors || []).some((e) => e.severity === 'high' || e.severity === 'critical')) out.push('high_severity_error')
+  if (!out.length) out.push('maintenance')
+  return out
+}
 
 function buildLearningProfileBlock(skillProfiles) {
   if (!skillProfiles?.length) return '    needs_review: []\n    strengths: []'
