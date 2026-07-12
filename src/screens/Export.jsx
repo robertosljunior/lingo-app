@@ -4,7 +4,7 @@ import { I } from '../components/icons.jsx'
 import { buildResultYaml, buildNewLessonPrompt, buildLevelAnalysisPrompt, downloadText } from '../lib/export-engine.js'
 
 export default function Export() {
-  const { activeLesson, session, settings, back, showToast, lessons, SCREENS } = useApp()
+  const { activeLesson, session, settings, back, showToast, lessons, skillProfiles, SCREENS } = useApp()
   const [tab, setTab] = useState('result')
   const [copied, setCopied] = useState(false)
 
@@ -12,7 +12,7 @@ export default function Export() {
   const lesson = activeLesson || lessons[0] || { lesson_id: 'eng_000', level: settings?.level || 'B1', questions: [] }
   const answers = session.answers
 
-  const resultYaml = useMemo(() => buildResultYaml({ lesson, answers }), [lesson, answers])
+  const resultYaml = useMemo(() => buildResultYaml({ lesson, answers, skillProfiles }), [lesson, answers, skillProfiles])
   const promptNew = useMemo(
     () => buildNewLessonPrompt({ resultYaml, level: lesson.level, questionCount: settings?.question_count || 30 }),
     [resultYaml, lesson.level, settings?.question_count],

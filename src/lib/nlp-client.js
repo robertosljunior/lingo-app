@@ -55,6 +55,8 @@ export function analyze(payload) {
       expected_answer: payload.expected_answer,
       accepted_answers: payload.accepted_answers || [],
       mistake_focus: payload.mistake_focus || null,
+      skill_target: payload.skill_target || null,
+      exercise_type: payload.exercise_type || null,
     }))
   }
   const id = ++seq
@@ -72,6 +74,8 @@ export function analyze(payload) {
           expected_answer: payload.expected_answer,
           accepted_answers: payload.accepted_answers || [],
           mistake_focus: payload.mistake_focus || null,
+          skill_target: payload.skill_target || null,
+          exercise_type: payload.exercise_type || null,
         }))
       }
     }, timeoutMs)

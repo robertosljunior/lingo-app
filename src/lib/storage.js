@@ -1,12 +1,12 @@
 // storage.js — IndexedDB persistence via idb.
 //
-// Stores (v2):
+// Stores (v3):
 //   lessons   { lesson_id*, title, level, focus, raw_content, created_at }
 //   questions { key* (lesson_id:id), lesson_id, id, type, prompt, expected_answer,
-//               accepted_answers, mistake_focus, payload }
+//               accepted_answers, skill_target, mistake_focus (legacy), payload }
 //   answers   { key* auto, profile_id, lesson_id, question_id, user_answer,
 //               expected_answer, score, is_correct, verdict, mistake_type,
-//               feedback, answered_at, session_id, spoken_transcript?,
+//               feedback, evaluation, answered_at, session_id, spoken_transcript?,
 //               pronunciation_score? }
 //   mistakes  { key* (profile:mistake_type), profile_id, mistake_type, count,
 //               examples, updated_at }
@@ -14,12 +14,15 @@
 //   srs       { key* (profile:lesson:question), profile_id, lesson_id,
 //               question_id, box, due_at, last_result, updated_at }
 //   settings  { key*, value }
+//   skill_events   { key* (profile:answer:skill), profile_id, answer_id, skill_id, outcome, effective_weight }
+//   skill_profiles { key* (profile:skill), profile_id, skill_id, mastery, aggregates }
 
 import { openDB } from 'idb'
 import { srsKey, nextSrs, rankPracticeQuestions } from './srs.js'
+import { buildSkillEvents, aggregateSkillProfile, inferAssessedSkills, rankSkillsForReview, PROFILE_ENGINE_VERSION } from './skill-profile.js'
 
 const DB_NAME = 'app-idiomas'
-const DB_VERSION = 2
+const DB_VERSION = 3
 
 export const DEFAULT_PROFILE = 'default'
 
@@ -62,6 +65,17 @@ function db() {
         }
         if (!d.objectStoreNames.contains('settings')) {
           d.createObjectStore('settings', { keyPath: 'key' })
+        }
+        if (!d.objectStoreNames.contains('skill_events')) {
+          const s = d.createObjectStore('skill_events', { keyPath: 'key' })
+          s.createIndex('profile_id', 'profile_id')
+          s.createIndex('answer_id', 'answer_id')
+          s.createIndex('profile_skill', ['profile_id', 'skill_id'])
+        }
+        if (!d.objectStoreNames.contains('skill_profiles')) {
+          const s = d.createObjectStore('skill_profiles', { keyPath: 'key' })
+          s.createIndex('profile_id', 'profile_id')
+          s.createIndex('skill_id', 'skill_id')
         }
       },
     })
@@ -145,6 +159,8 @@ export async function saveLesson(lesson) {
       accepted_answers: q.accepted_answers,
       options: q.options,
       words: q.words,
+      skill_target: q.skill_target || q.lesson_focus || q.mistake_focus || null,
+      lesson_focus: q.lesson_focus || q.skill_target || q.mistake_focus || null,
       mistake_focus: q.mistake_focus,
       payload: q.payload,
     })
@@ -186,6 +202,7 @@ export async function saveAnswer(answer) {
     answered_at: answer.answered_at || Date.now(),
   }
   const key = await d.add('answers', rec)
+  await recordSkillEventsForAnswer({ ...rec, key }, key)
   // Roll up recurring mistakes.
   if (!rec.is_correct && rec.mistake_type) {
     await bumpMistake(rec.profile_id, rec.mistake_type, {
@@ -238,6 +255,58 @@ export async function getMistakes(profile_id = DEFAULT_PROFILE) {
   const d = await db()
   const rows = await d.getAllFromIndex('mistakes', 'profile_id', profile_id)
   return rows.sort((a, b) => b.count - a.count)
+}
+
+// ---------- Granular skill profiles (v3) ----------
+export async function recordSkillEventsForAnswer(answer, answer_id = answer.key) {
+  if (!answer?.evaluation || String(answer.evaluation.engine_version || '') < '2') return []
+  const d = await db()
+  const profile_id = answer.profile_id || DEFAULT_PROFILE
+  const rows = answer.session_id ? await d.getAllFromIndex('answers', 'session_id', answer.session_id) : await d.getAll('answers')
+  const prior = rows.filter((a) => (a.profile_id || DEFAULT_PROFILE) === profile_id
+    && a.session_id === answer.session_id
+    && a.lesson_id === answer.lesson_id
+    && String(a.question_id) === String(answer.question_id)
+    && (a.key == null || a.key <= answer_id))
+  const attempt_number = Math.max(1, prior.length || 1)
+  const assessed_skills = answer.evaluation.assessed_skills?.length
+    ? answer.evaluation.assessed_skills
+    : inferAssessedSkills({ evaluation: answer.evaluation, question: answer.question || {}, user_answer: answer.user_answer, expected_answer: answer.expected_answer })
+  const events = buildSkillEvents({ answer: { ...answer, profile_id, evaluation: { ...answer.evaluation, assessed_skills } }, answer_id, assessed_skills, attempt_number, created_at: answer.answered_at || Date.now() })
+  if (!events.length) return []
+  const tx = d.transaction(['skill_events', 'skill_profiles'], 'readwrite')
+  const eventStore = tx.objectStore('skill_events')
+  const profileStore = tx.objectStore('skill_profiles')
+  for (const e of events) await eventStore.put(e)
+  for (const skill_id of [...new Set(events.map((e) => e.skill_id))]) {
+    const skillEvents = await eventStore.index('profile_skill').getAll([profile_id, skill_id])
+    await profileStore.put(aggregateSkillProfile(skillEvents, { profile_id, skill_id }))
+  }
+  await tx.done
+  return events
+}
+
+export async function getSkillProfiles(profile_id = DEFAULT_PROFILE) {
+  const d = await db()
+  const rows = await d.getAllFromIndex('skill_profiles', 'profile_id', profile_id)
+  return rankSkillsForReview(rows)
+}
+
+export async function rebuildSkillProfilesFromEvaluations(profile_id = DEFAULT_PROFILE) {
+  const d = await db()
+  const answers = (await d.getAll('answers')).filter((a) => (a.profile_id || DEFAULT_PROFILE) === profile_id && String(a.evaluation?.engine_version || '') >= '2')
+  const tx = d.transaction(['skill_events', 'skill_profiles'], 'readwrite')
+  const eventStore = tx.objectStore('skill_events')
+  const profileStore = tx.objectStore('skill_profiles')
+  const oldEvents = await eventStore.index('profile_id').getAllKeys(profile_id)
+  for (const k of oldEvents) await eventStore.delete(k)
+  const oldProfiles = await profileStore.index('profile_id').getAllKeys(profile_id)
+  for (const k of oldProfiles) await profileStore.delete(k)
+  await tx.done
+  const sorted = answers.sort((a, b) => (a.answered_at || 0) - (b.answered_at || 0))
+  for (const a of sorted) await recordSkillEventsForAnswer(a, a.key)
+  await setSetting(`skill_profile_rebuild_version:${profile_id}`, PROFILE_ENGINE_VERSION)
+  return getSkillProfiles(profile_id)
 }
 
 // ---------- SRS (spaced repetition) ----------
@@ -362,7 +431,7 @@ export async function getSessionSummaries(profile_id = null) {
 
 export async function wipeAll() {
   const d = await db()
-  const stores = ['lessons', 'questions', 'answers', 'mistakes', 'profiles', 'srs', 'settings']
+  const stores = ['lessons', 'questions', 'answers', 'mistakes', 'profiles', 'srs', 'settings', 'skill_events', 'skill_profiles']
   const tx = d.transaction(stores, 'readwrite')
   for (const name of stores) {
     await tx.objectStore(name).clear()

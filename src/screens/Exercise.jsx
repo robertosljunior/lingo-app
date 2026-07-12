@@ -3,6 +3,7 @@ import { useApp } from '../store.jsx'
 import { Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { analyze } from '../lib/nlp-client.js'
+import { buildIncorrectChoiceEvaluation } from '../lib/correction-engine.js'
 import { speak, speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
 import { SpeakButton, SpeakableText } from '../components/speak-button.jsx'
@@ -53,6 +54,7 @@ export default function Exercise() {
       accepted_answers: strict ? [] : q.accepted_answers,
       exercise_type: q.type,
       mistake_focus: q.mistake_focus,
+      skill_target: q.skill_target || q.lesson_focus || q.mistake_focus,
       nlp_library: settings?.nlp_library,
     })
     // Choice questions: exact-match the option regardless of NLP.
@@ -60,7 +62,18 @@ export default function Exercise() {
       const correct = ans.trim().toLowerCase() === q.expected_answer.trim().toLowerCase()
       analysis.verdict = correct ? 'correct' : 'incorrect'
       analysis.is_probably_correct = correct
-      analysis.possible_mistake_type = correct ? null : q.mistake_focus
+      if (correct) {
+        analysis.detected_errors = []
+        analysis.primary_error = null
+        analysis.possible_mistake_type = null
+        analysis.feedback = 'Natural! Boa estrutura.'
+      } else {
+        Object.assign(analysis, buildIncorrectChoiceEvaluation({
+          user_answer: ans,
+          expected_answer: q.expected_answer,
+          skill_target: q.skill_target || q.lesson_focus || q.mistake_focus,
+        }))
+      }
     }
     // Speaking drill: what the recognizer heard doubles as a rough
     // pronunciation score (word-level, Duolingo-style — not phonetic).
@@ -407,6 +420,55 @@ function ChoiceBody({ q, choice, setChoice, disabled }) {
   )
 }
 
+
+function ErrorList({ result, q, tone, inkVar }) {
+  const errors = result.detected_errors?.length
+    ? result.detected_errors
+    : legacyErrorFromResult(result, q)
+  const primary = errors.find((e) => e.role === 'primary') || errors[0]
+  const secondary = errors.filter((e) => e !== primary)
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+      {primary && <ErrorCard error={primary} title="Erro principal" tone={tone} inkVar={inkVar} />}
+      {secondary.length > 0 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {secondary.map((e, i) => <ErrorCard key={`${e.rule_id || e.category}-${i}`} error={e} title={e.category === 'preposition' ? 'Melhoria de naturalidade' : 'Também revisar'} tone="warn" inkVar={inkVar} compact />)}
+        </div>
+      )}
+      {!primary && <div style={{ fontSize: 14, color: inkVar, lineHeight: 1.5 }}>{result.feedback}</div>}
+    </div>
+  )
+}
+
+function ErrorCard({ error, title, tone, inkVar, compact = false }) {
+  const chipTone = tone === 'warn' || error.severity === 'low' ? 'warn' : 'error'
+  return (
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 5, flexWrap: 'wrap' }}>
+        <span className={`chip chip-${chipTone}`} style={{ fontFamily: 'var(--font-mono)' }}>
+          {error.category}{error.subtype ? `/${error.subtype}` : ''}
+        </span>
+        <span style={{ fontSize: 12, color: inkVar, opacity: .75, fontWeight: 700 }}>{title} · {error.severity}</span>
+      </div>
+      <div style={{ fontSize: 14, color: inkVar, lineHeight: 1.5 }}>{error.feedback}</div>
+      {!compact && (error.actual || error.expected) && (
+        <div style={{ fontSize: 13, color: inkVar, opacity: .85, marginTop: 5 }}>
+          {error.actual && <>Errado: <strong>{error.actual}</strong></>} {error.expected && <>Correto: <strong>{error.expected}</strong></>}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function legacyErrorFromResult(result, q) {
+  const category = result.possible_mistake_type || 'vocabulary'
+  return [{
+    role: 'primary', category, subtype: category, severity: result.verdict === 'partial' ? 'medium' : 'high', confidence: 0.4,
+    actual: result.user_answer || '', expected: result.target || q.expected_answer || '', rule_id: 'legacy.feedback',
+    feedback: result.feedback || 'Compare com a resposta esperada.', evidence: { legacy: true },
+  }]
+}
+
 function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
   const { settings } = useApp()
   const target = result.target || q.expected_answer
@@ -443,6 +505,7 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
             user={result.user_answer ?? result.normalized_user_answer}
             target={result.target || q.expected_answer}
             missing={result.missing_words} extra={result.extra_words} typos={result.typos}
+            alignment={result.alignment}
             inkVar={inkVar}
           />
         </div>
@@ -471,14 +534,7 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
       )}
 
       {result.verdict !== 'correct' && (
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
-            <span className={`chip chip-${tone === 'warn' ? 'warn' : 'error'}`} style={{ fontFamily: 'var(--font-mono)' }}>
-              {result.possible_mistake_type || q.mistake_focus || 'revisar'}
-            </span>
-          </div>
-          <div style={{ fontSize: 14, color: inkVar, lineHeight: 1.5 }}>{result.feedback}</div>
-        </div>
+        <ErrorList result={result} q={q} tone={tone} inkVar={inkVar} />
       )}
 
       <ConfidenceRow inkVar={inkVar} onRate={onRate} />

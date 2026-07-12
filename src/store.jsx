@@ -34,6 +34,7 @@ export function AppProvider({ children }) {
   const [lessons, setLessons] = useState([])
   const [sessions, setSessions] = useState([])
   const [mistakes, setMistakes] = useState([])
+  const [skillProfiles, setSkillProfiles] = useState([])
   const [profiles, setProfiles] = useState([])
   const [dueCount, setDueCount] = useState(0)
 
@@ -62,7 +63,11 @@ export function AppProvider({ children }) {
       setLessons(all)
       setProfiles(await db.getProfiles())
       setSessions(await db.getSessionSummaries(profile))
+      if (s[`skill_profile_rebuild_version:${profile}`] !== '1') {
+        await db.rebuildSkillProfilesFromEvaluations(profile).catch(() => {})
+      }
       setMistakes(await db.getMistakes(profile))
+      setSkillProfiles(await db.getSkillProfiles(profile))
       setDueCount(await db.countDueReviews(profile))
       setReady(true)
       warmupNlp()
@@ -90,6 +95,7 @@ export function AppProvider({ children }) {
     setProfiles(await db.getProfiles())
     setSessions(await db.getSessionSummaries(profile))
     setMistakes(await db.getMistakes(profile))
+    setSkillProfiles(await db.getSkillProfiles(profile))
     setDueCount(await db.countDueReviews(profile))
   }, [activeProfile])
 
@@ -203,6 +209,19 @@ export function AppProvider({ children }) {
     // Synthetic sessions (review/practice) reuse questions from other lessons —
     // keep the question's original lesson so stats and SRS aggregate right.
     const lessonId = q.lesson_id || activeLesson.lesson_id
+    const evaluation = {
+      engine_version: a.engine_version || '1',
+      verdict: a.verdict,
+      score: a.score ?? a.similarity_score,
+      primary_error: a.primary_error || null,
+      detected_errors: a.detected_errors || [],
+      alignment: a.alignment || [],
+      assessed_skills: a.assessed_skills || [],
+      accepted_differences: a.accepted_differences || [],
+      target_answer: a.target_answer || a.target || q.expected_answer,
+      normalized_user_answer: a.normalized_user_answer,
+      normalized_expected_answer: a.normalized_expected_answer,
+    }
     const stored = {
       profile_id: activeProfile,
       lesson_id: lessonId,
@@ -212,8 +231,9 @@ export function AppProvider({ children }) {
       score: a.similarity_score,
       is_correct: a.verdict === 'correct',
       verdict: a.verdict,
-      mistake_type: a.verdict === 'correct' ? null : a.possible_mistake_type,
+      mistake_type: a.verdict === 'correct' ? null : (evaluation.primary_error?.category || a.possible_mistake_type),
       feedback: a.feedback,
+      evaluation,
       session_id: session.id,
       spoken_transcript: rec.spoken_transcript || null,
       pronunciation_score: rec.pronunciation_score ?? null,
@@ -269,7 +289,7 @@ export function AppProvider({ children }) {
 
   const value = {
     ready, screen, params, settings,
-    lessons, sessions, mistakes, dueCount,
+    lessons, sessions, mistakes, skillProfiles, dueCount,
     profiles, activeProfile, switchProfile, addProfile, removeProfile,
     startReviewSession, startPracticeSession,
     activeLesson, session,

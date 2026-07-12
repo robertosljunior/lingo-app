@@ -4,7 +4,8 @@ import { Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { speak, speechSupported } from '../lib/audio/tts.js'
 import { FEEDBACK_BY_TYPE, wordDiff } from '../lib/correction-engine.js'
-import { MarkedText } from '../components/answer-diff.jsx'
+import { AnswerDiff } from '../components/answer-diff.jsx'
+import { getSkill } from '../lib/skill-registry.js'
 
 export default function Review() {
   const { session, back, showToast, SCREENS } = useApp()
@@ -33,10 +34,9 @@ export default function Review() {
 
   const q = a.question
   const next = () => { if (idx + 1 >= wrong.length) back(SCREENS.RESULT); else setIdx(idx + 1) }
-  const explanation = FEEDBACK_BY_TYPE[a.mistake_type]?.wrong || a.feedback
-  // Recompute the word-level diff for the visual marks (answers were stored
-  // before the diff fields existed / without tokens).
-  const diff = wordDiff(a.user_answer || '', q.expected_answer || '')
+  const primary = a.evaluation?.primary_error || a.evaluation?.detected_errors?.[0] || null
+  const explanation = primary?.feedback || FEEDBACK_BY_TYPE[a.mistake_type]?.wrong || a.feedback
+  const diff = wordDiff(a.user_answer || '', a.expected_answer || q.expected_answer || '')
 
   return (
     <div className="phone">
@@ -46,7 +46,7 @@ export default function Review() {
         <div style={{ fontWeight: 700, fontSize: 13, color: 'var(--ink-2)', fontVariantNumeric: 'tabular-nums' }}>{idx + 1}/{wrong.length}</div>
       </div>
       <div style={{ padding: '6px 20px 0', flexShrink: 0 }}>
-        <span className="chip chip-error" style={{ fontFamily: 'var(--font-mono)' }}>{a.mistake_type || q.mistake_focus}</span>
+        <span className="chip chip-error" style={{ fontFamily: 'var(--font-mono)' }}>{primary?.category || a.mistake_type || q.mistake_focus}</span>
       </div>
 
       <div className="screen-body" style={{ paddingTop: 16, paddingBottom: 20 }}>
@@ -60,33 +60,28 @@ export default function Review() {
         </div>
 
         <div>
-          <div className="label-eyebrow" style={{ color: 'var(--error-ink)' }}>sua resposta</div>
+          <div className="label-eyebrow" style={{ color: 'var(--error-ink)' }}>comparação</div>
           <div className="card" style={{ padding: 14, marginTop: 8, borderColor: 'var(--error)' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-              <div style={{ color: 'var(--error)', flexShrink: 0, marginTop: 2 }}><I.x s={16} /></div>
-              <div style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.4, flex: 1 }}>
-                <MarkedText text={a.user_answer} marked={diff.extra_words} typos={diff.typos.map((t) => t.got)} variant="extra" />
-              </div>
-            </div>
+            <AnswerDiff
+              user={a.user_answer}
+              target={a.expected_answer || q.expected_answer}
+              missing={diff.missing_words}
+              extra={diff.extra_words}
+              typos={diff.typos}
+              alignment={a.evaluation?.alignment}
+              inkVar="var(--error-ink)"
+            />
           </div>
         </div>
 
         <div>
           <div className="label-eyebrow" style={{ color: 'var(--success-ink)' }}>esperado</div>
           <div className="card" style={{ padding: 14, marginTop: 8, borderColor: 'var(--success)' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-              <div style={{ color: 'var(--success)', flexShrink: 0, marginTop: 2 }}><I.check s={16} /></div>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.4 }}>
-                  <MarkedText text={q.expected_answer} marked={diff.missing_words} typos={diff.typos.map((t) => t.expected)} variant="missing" />
-                </div>
-                {q.accepted_answers?.length > 0 && (
-                  <div style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 6 }}>
-                    Alt: <span style={{ color: 'var(--ink-2)' }}>{q.accepted_answers[0]}</span>
-                  </div>
-                )}
+            {q.accepted_answers?.length > 0 && (
+              <div style={{ fontSize: 13, color: 'var(--ink-3)', marginBottom: 6 }}>
+                Alt: <span style={{ color: 'var(--ink-2)' }}>{q.accepted_answers[0]}</span>
               </div>
-            </div>
+            )}
             <div style={{ display: 'flex', gap: 6, marginTop: 10 }}>
               {speechSupported && (
                 <>
@@ -105,6 +100,21 @@ export default function Review() {
             </div>
           </div>
         </div>
+
+
+        {a.evaluation?.assessed_skills?.length > 0 && (
+          <div className="card" style={{ padding: 14 }}>
+            <div className="label-eyebrow" style={{ marginBottom: 8 }}>habilidades avaliadas</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {a.evaluation.assessed_skills.map((s) => (
+                <div key={s.skill_id} style={{ display: 'flex', justifyContent: 'space-between', gap: 8, fontSize: 13 }}>
+                  <span>{getSkill(s.skill_id).label_pt}</span>
+                  <strong style={{ color: s.outcome === 'correct' ? 'var(--success)' : s.outcome === 'incorrect' ? 'var(--error)' : 'var(--warn)' }}>{s.outcome}</strong>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="card" style={{ background: 'var(--indigo-50)', borderColor: 'transparent', padding: 14 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>

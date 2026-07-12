@@ -1,22 +1,17 @@
-// answer-diff.jsx — word-level visual diff between the student's answer and
-// the expected one, driven by the correction engine's missing/extra/typo sets.
-//
-// Marks (all currentColor so they read on any sheet/card tint):
-//   extra   → riscado (word the student added that the target doesn't have)
-//   missing → negrito sublinhado (word the target has and the answer lacks)
-//   typo    → sublinhado ondulado (near-miss spelling, paired by the engine)
+// answer-diff.jsx — token-level visual diff between the student's answer and
+// the expected one. Prefer v2 positional alignment; fall back to legacy wordDiff
+// for old stored answers.
 
-import { tokenize, wordDiff } from '../lib/correction-engine.js'
+import { alignTokens, tokenize, wordDiff } from '../lib/correction-engine.js'
 import { speakWord, speechSupported } from '../lib/audio/tts.js'
 
 const MARK_STYLE = {
   extra: { textDecoration: 'line-through', opacity: 0.65 },
   missing: { fontWeight: 800, textDecoration: 'underline', textUnderlineOffset: 3 },
+  replace: { fontWeight: 800, textDecoration: 'underline wavy', textUnderlineOffset: 3 },
   typo: { textDecoration: 'underline wavy', textUnderlineOffset: 3 },
 }
 
-// Decide the mark for a raw (displayed) word by normalizing it and checking
-// every resulting token — "don't" normalizes to two tokens, both must match.
 function markFor(rawWord, markedSet, typoSet) {
   const subs = tokenize(rawWord)
   if (subs.length === 0) return null
@@ -25,8 +20,6 @@ function markFor(rawWord, markedSet, typoSet) {
   return null
 }
 
-// Render `text` word by word, marking each word per the provided sets.
-// When TTS is available every word is tappable and speaks itself.
 export function MarkedText({ text, marked = [], typos = [], variant = 'missing', style, speakable = true }) {
   const markedSet = new Set(marked)
   const typoSet = new Set(typos)
@@ -50,10 +43,60 @@ export function MarkedText({ text, marked = [], typos = [], variant = 'missing',
   )
 }
 
-// Two labeled lines (esperado / você) with diff marks. Accepts a fresh
-// analysis result; when sets are absent (e.g. old stored answers) they are
-// recomputed with the same engine used to grade.
-export function AnswerDiff({ user, target, missing, extra, typos, inkVar = 'var(--ink-2)' }) {
+function TokenLine({ label, tokens, marks, inkVar }) {
+  const eyebrow = {
+    fontSize: 11, fontWeight: 700, color: inkVar, opacity: 0.7,
+    letterSpacing: '.08em', textTransform: 'uppercase',
+  }
+  const tappable = speechSupported
+  return (
+    <>
+      <div style={eyebrow}>{label}</div>
+      <div style={{ fontSize: 15, marginTop: 4, color: label === 'você' ? 'var(--ink-2)' : undefined, fontWeight: label === 'esperado' ? 700 : 400 }}>
+        {tokens.length ? tokens.map((w, i) => (
+          <span key={`${label}-${i}`}>
+            {i > 0 && ' '}
+            <span style={{ ...(MARK_STYLE[marks.get(i)] || {}), ...(tappable ? { cursor: 'pointer' } : {}) }}
+              onClick={tappable ? () => speakWord(w) : undefined}>{w}</span>
+          </span>
+        )) : '—'}
+      </div>
+    </>
+  )
+}
+
+function marksFromAlignment(alignment) {
+  const expectedMarks = new Map()
+  const actualMarks = new Map()
+  for (const a of alignment || []) {
+    if (a.operation === 'replace') {
+      if (a.expected_token_index != null) expectedMarks.set(a.expected_token_index, 'replace')
+      if (a.actual_token_index != null) actualMarks.set(a.actual_token_index, 'replace')
+    } else if (a.operation === 'delete') {
+      if (a.expected_token_index != null) expectedMarks.set(a.expected_token_index, 'missing')
+    } else if (a.operation === 'insert') {
+      if (a.actual_token_index != null) actualMarks.set(a.actual_token_index, 'extra')
+    }
+  }
+  return { expectedMarks, actualMarks }
+}
+
+export function AnswerDiff({ user, target, missing, extra, typos, alignment, inkVar = 'var(--ink-2)' }) {
+  const userTokens = tokenize(user || '')
+  const targetTokens = tokenize(target || '')
+  const aligned = alignment?.length ? alignment : alignTokens(userTokens, targetTokens)
+  if (aligned?.length) {
+    const { expectedMarks, actualMarks } = marksFromAlignment(aligned)
+    return (
+      <>
+        <TokenLine label="esperado" tokens={targetTokens} marks={expectedMarks} inkVar={inkVar} />
+        <div style={{ marginTop: 10 }}>
+          <TokenLine label="você" tokens={userTokens} marks={actualMarks} inkVar={inkVar} />
+        </div>
+      </>
+    )
+  }
+
   let m = missing, x = extra, t = typos
   if (!m || !x || !t) {
     const d = wordDiff(user || '', target || '')
@@ -79,7 +122,6 @@ export function AnswerDiff({ user, target, missing, extra, typos, inkVar = 'var(
   )
 }
 
-// One-line spelling note for answers that are correct apart from typos.
 export function TypoNote({ typos, inkVar }) {
   if (!typos?.length) return null
   return (
