@@ -5,6 +5,7 @@ import { I } from '../components/icons.jsx'
 import { speak, speechSupported } from '../lib/audio/tts.js'
 import { FEEDBACK_BY_TYPE, wordDiff } from '../lib/correction-engine.js'
 import { AnswerDiff } from '../components/answer-diff.jsx'
+import { getSkill } from '../lib/skill-registry.js'
 
 export default function Review() {
   const { session, back, showToast, SCREENS } = useApp()

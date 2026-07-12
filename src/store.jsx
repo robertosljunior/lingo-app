@@ -8,6 +8,7 @@ import { SAMPLE_YAML } from './lib/sample-lesson.js'
 import { warmupNlp } from './lib/nlp-client.js'
 import { configureTts } from './lib/audio/tts.js'
 import { generateLessonFromContext, buildGeneratedLessonYaml } from './lib/lesson-generator.js'
+import { inferAssessedSkills } from './lib/skill-profile.js'
 
 
 const AppCtx = createContext(null)
@@ -23,6 +24,13 @@ const TABS = new Set([SCREENS.HOME, SCREENS.HISTORY, SCREENS.MISTAKES, SCREENS.S
 
 function newSessionId(lessonId) {
   return `${lessonId}-${Date.now().toString(36)}`
+}
+
+// Test-only hook: E2E runs may inject a deterministic generation seed through
+// sessionStorage. Never set during normal usage; sessionStorage dies with the
+// tab, so it cannot leak into a real install.
+function e2eGenerationSeed() {
+  try { return window.sessionStorage.getItem('e2e:generation-seed') } catch { return null }
 }
 
 export function AppProvider({ children }) {
@@ -51,6 +59,9 @@ export function AppProvider({ children }) {
   useEffect(() => {
     (async () => {
       await db.ensureBootstrapped()
+      // Test-only hook: E2E runs flag the tab via sessionStorage to reach the
+      // same public storage layer the UI uses (never set in normal usage).
+      try { if (window.sessionStorage.getItem('e2e:enabled')) window.__e2e = { db } } catch { /* noop */ }
       const s = await db.getSettings()
       setSettings(s)
       const profile = s.active_profile || db.DEFAULT_PROFILE
@@ -240,6 +251,7 @@ export function AppProvider({ children }) {
     const full = lesson.questions?.length ? lesson : await db.getLesson(lesson.lesson_id, activeProfile)
     if (db.isLessonAccessDenied?.(full)) { showToast('Aula não acessível para este perfil.'); return }
     if (!full || !full.questions?.length) return
+    if (full.owner_profile_id && full.owner_profile_id !== activeProfile) { showToast('Esta aula pertence a outro perfil.'); return }
     setActiveLesson(full)
     setSession({ id: newSessionId(full.lesson_id), qIdx: 0, answers: [] })
     navigate(SCREENS.EXERCISE, {})
@@ -264,6 +276,11 @@ export function AppProvider({ children }) {
       normalized_user_answer: a.normalized_user_answer,
       normalized_expected_answer: a.normalized_expected_answer,
     }
+    // Persist the assessed skills so Result/Review can summarize the session
+    // and the skill-profile pipeline consumes exactly what the UI showed.
+    evaluation.assessed_skills = a.assessed_skills?.length
+      ? a.assessed_skills
+      : inferAssessedSkills({ evaluation, question: q, user_answer: rec.user_answer, expected_answer: evaluation.target_answer })
     const stored = {
       profile_id: activeProfile,
       lesson_id: lessonId,

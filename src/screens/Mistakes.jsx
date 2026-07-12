@@ -51,7 +51,7 @@ function SkillList({ profiles }) {
     const mastery = Math.round((p.mastery || 0) * 100)
     const errors = (p.incorrect || 0) + (p.partial || 0)
     return (
-      <div key={p.key || p.skill_id} className="card" style={{ padding: 14 }}>
+      <div key={p.key || p.skill_id} className="card" style={{ padding: 14 }} data-testid={`skill-card-${p.skill_id}`}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
           <div style={{ width: 24, fontSize: 13, fontWeight: 800, color: 'var(--ink-3)', fontVariantNumeric: 'tabular-nums' }}>#{i + 1}</div>
           <div style={{ flex: 1, minWidth: 0 }}>
@@ -71,7 +71,7 @@ function SkillList({ profiles }) {
           <button className="btn btn-secondary btn-block" onClick={() => startPracticeSession(p.skill_id)}>
             <I.trend s={16} /> Praticar
           </button>
-          <button className="btn btn-secondary btn-block" onClick={async () => { const res = await generateAdaptiveLesson({ targetSkillId: p.skill_id, questionCount: 30 }); if (res?.lesson) { showToast('Aula gerada.'); startLesson(res.lesson) } }}>
+          <button className="btn btn-secondary btn-block" data-testid={`generate-for-skill-${p.skill_id}`} onClick={async () => { const res = await generateAdaptiveLesson({ targetSkillId: p.skill_id, questionCount: 30 }); if (res?.lesson) { showToast('Aula gerada.'); startLesson(res.lesson) } }}>
             <I.spark s={16} /> Gerar aula
           </button>
         </div>

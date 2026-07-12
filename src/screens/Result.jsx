@@ -44,7 +44,7 @@ export default function Result() {
                 transform="rotate(-90 90 90)" style={{ transition: 'stroke-dasharray .8s ease' }} />
             </svg>
             <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{score}<span style={{ fontSize: 22, color: 'var(--ink-3)' }}>%</span></div>
+              <div style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }} data-testid="result-score">{score}<span style={{ fontSize: 22, color: 'var(--ink-3)' }}>%</span></div>
               <div style={{ fontSize: 12, color: 'var(--ink-3)', fontWeight: 600, marginTop: 4 }}>score</div>
             </div>
           </div>
