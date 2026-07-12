@@ -1,0 +1,94 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "semantic_at_in_on_contrasts",
+    "pack_kind": "semantic_knowledge",
+    "title": { "pt": "Contrastes at / in / on", "en": "at / in / on contrasts" },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "levels": ["A1", "A2", "B1", "B2"],
+    "dependencies": ["semantic_at", "semantic_in", "semantic_on"],
+    "min_app_version": "1.0.0",
+    "analysis_compatibility": { "min_version": "1", "max_version": "1" }
+  },
+  "concepts": [
+    {
+      "concept_id": "contrast_at_in_on_place",
+      "surface": "at/in/on",
+      "lemma": "at",
+      "level": "A2",
+      "roles": ["preposition"],
+      "meaning_pt": "As preposições at, in e on de lugar dependem do contexto; muitas vezes não há erro absoluto, apenas uma escolha mais natural.",
+      "intent_tags": ["location"],
+      "grammar_tags": ["preposition"],
+      "related_concepts": []
+    }
+  ],
+  "usage_rules": [],
+  "semantic_frames": [],
+  "contrast_sets": [
+    {
+      "contrast_id": "place_station_platform",
+      "level": "A2",
+      "items": [
+        { "text": "at the station", "note_pt": "ponto/lugar de referência" },
+        { "text": "in the station", "note_pt": "dentro do prédio da estação" },
+        { "text": "on the platform", "note_pt": "sobre a plataforma" }
+      ]
+    },
+    {
+      "contrast_id": "time_at_in_on",
+      "level": "A2",
+      "items": [
+        { "text": "at 8 o'clock", "note_pt": "horas exatas" },
+        { "text": "in July", "note_pt": "meses e períodos longos" },
+        { "text": "on Monday", "note_pt": "dias e datas" }
+      ]
+    }
+  ],
+  "patterns": [],
+  "transformations": [],
+  "explanations_pt": [
+    {
+      "explanation_id": "pt_at_workplace",
+      "locale": "pt-BR",
+      "title": "\"at\" com locais de trabalho",
+      "summary": "Com nomes de empresas e locais de trabalho, \"at this company\" costuma soar mais natural do que \"in this company\".",
+      "formula": "work at + empresa",
+      "examples": [
+        { "incorrect": "I work in this company.", "correct": "I work at this company." }
+      ],
+      "speech_text": "Com empresas, prefira work at this company."
+    },
+    {
+      "explanation_id": "pt_at_in_on_context",
+      "locale": "pt-BR",
+      "title": "at, in e on dependem do contexto",
+      "summary": "Nem toda diferença entre at, in e on é erro: cada uma destaca um aspecto do lugar ou do tempo.",
+      "speech_text": "at, in e on dependem do contexto e do que você quer destacar."
+    }
+  ],
+  "natural_alternatives": [],
+  "retrieval_exemplars": [
+    { "example_id": "contrast_001", "level": "A2", "text": "I work at this company.", "intent": "description", "polarity": "positive", "weight": 1 },
+    { "example_id": "contrast_002", "level": "A2", "text": "I work in this company.", "intent": "description", "polarity": "positive", "weight": 1 }
+  ],
+  "naturalness_hints": [
+    {
+      "hint_id": "work_at_company",
+      "contains_all": ["work", "in", "company"],
+      "replace": { "from": "in", "to": "at" },
+      "severity": "low",
+      "explanation_id": "pt_at_workplace"
+    }
+  ],
+  "golden_tests": [
+    { "input": "I work in this company.", "mode": "free", "expect": { "verdict": "valid_with_suggestions", "no_high_severity": true, "suggests": "I work at this company." } }
+  ],
+  "coverage": {
+    "concepts_expected": 6,
+    "concepts_implemented": 1,
+    "levels": { "A1": "partial", "A2": "complete_for_scope", "B1": "partial", "B2": "planned" },
+    "known_gaps": ["regional usage", "rare idioms"]
+  }
+}

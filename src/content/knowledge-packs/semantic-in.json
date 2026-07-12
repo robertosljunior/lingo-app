@@ -1,0 +1,209 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "semantic_in",
+    "pack_kind": "semantic_knowledge",
+    "title": {
+      "pt": "Usos de in",
+      "en": "Uses of in"
+    },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ],
+    "dependencies": [],
+    "min_app_version": "1.0.0",
+    "analysis_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "concepts": [
+    {
+      "concept_id": "in_containment",
+      "surface": "in",
+      "lemma": "in",
+      "level": "A1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "in indica interior/contenção (in the box).",
+      "intent_tags": [
+        "location"
+      ],
+      "grammar_tags": [
+        "place"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "in_city_country",
+      "surface": "in",
+      "lemma": "in",
+      "level": "A1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "in com cidades e países (in Brazil).",
+      "intent_tags": [
+        "location"
+      ],
+      "grammar_tags": [
+        "place"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "in_period",
+      "surface": "in",
+      "lemma": "in",
+      "level": "A1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "in com meses, anos e períodos (in July).",
+      "intent_tags": [
+        "time"
+      ],
+      "grammar_tags": [
+        "time"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "in_language",
+      "surface": "in",
+      "lemma": "in",
+      "level": "A2",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "in com idiomas (in English).",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "language"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "in_state",
+      "surface": "in",
+      "lemma": "in",
+      "level": "B1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "in com estados/condições (in trouble).",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "state"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "in_field",
+      "surface": "in",
+      "lemma": "in",
+      "level": "B1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "in com áreas/setores (in marketing).",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "field"
+      ],
+      "related_concepts": []
+    }
+  ],
+  "usage_rules": [],
+  "semantic_frames": [
+    {
+      "frame_id": "in_location",
+      "level": "A1",
+      "intent": "location",
+      "slots": [
+        "place"
+      ],
+      "positive_exemplars": [
+        "in the office",
+        "in Brazil",
+        "in the box"
+      ],
+      "acceptable_variants": [],
+      "naturalness_preferences": []
+    }
+  ],
+  "contrast_sets": [],
+  "patterns": [],
+  "transformations": [],
+  "explanations_pt": [
+    {
+      "explanation_id": "pt_in_containment",
+      "locale": "pt-BR",
+      "title": "in para interior e períodos",
+      "summary": "Use in para algo dentro de um espaço e para meses, anos e períodos.",
+      "speech_text": "Use in para interiores e períodos longos."
+    }
+  ],
+  "natural_alternatives": [],
+  "retrieval_exemplars": [
+    {
+      "example_id": "in_001",
+      "level": "A1",
+      "text": "The keys are in the box.",
+      "intent": "location",
+      "polarity": "positive",
+      "weight": 1
+    },
+    {
+      "example_id": "in_002",
+      "level": "A1",
+      "text": "I was born in July.",
+      "intent": "time",
+      "polarity": "positive",
+      "weight": 1
+    },
+    {
+      "example_id": "in_003",
+      "level": "B1",
+      "text": "She works in marketing.",
+      "intent": "description",
+      "polarity": "positive",
+      "weight": 1
+    }
+  ],
+  "golden_tests": [
+    {
+      "input": "The keys are in the box.",
+      "mode": "free",
+      "expect": {
+        "verdict": "valid"
+      }
+    }
+  ],
+  "coverage": {
+    "concepts_expected": 12,
+    "concepts_implemented": 6,
+    "levels": {
+      "A1": "complete_for_scope",
+      "A2": "partial",
+      "B1": "partial",
+      "B2": "planned"
+    },
+    "known_gaps": [
+      "clothing uses",
+      "media formats"
+    ]
+  }
+}

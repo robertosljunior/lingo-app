@@ -1,0 +1,209 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "semantic_on",
+    "pack_kind": "semantic_knowledge",
+    "title": {
+      "pt": "Usos de on",
+      "en": "Uses of on"
+    },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ],
+    "dependencies": [],
+    "min_app_version": "1.0.0",
+    "analysis_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "concepts": [
+    {
+      "concept_id": "on_surface",
+      "surface": "on",
+      "lemma": "on",
+      "level": "A1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "on indica superfície (on the table).",
+      "intent_tags": [
+        "location"
+      ],
+      "grammar_tags": [
+        "place"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "on_days",
+      "surface": "on",
+      "lemma": "on",
+      "level": "A1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "on com dias e datas (on Monday).",
+      "intent_tags": [
+        "time"
+      ],
+      "grammar_tags": [
+        "time"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "on_transport",
+      "surface": "on",
+      "lemma": "on",
+      "level": "A2",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "on com transporte coletivo (on the bus).",
+      "intent_tags": [
+        "location"
+      ],
+      "grammar_tags": [
+        "transport"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "on_media",
+      "surface": "on",
+      "lemma": "on",
+      "level": "A2",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "on com mídia/dispositivo (on TV, on the phone).",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "media"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "on_topic",
+      "surface": "on",
+      "lemma": "on",
+      "level": "B1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "on com assunto (a book on history).",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "topic"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "on_functional",
+      "surface": "on",
+      "lemma": "on",
+      "level": "B1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "estados funcionais: on duty, on sale.",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "state"
+      ],
+      "related_concepts": []
+    }
+  ],
+  "usage_rules": [],
+  "semantic_frames": [
+    {
+      "frame_id": "on_location",
+      "level": "A1",
+      "intent": "location",
+      "slots": [
+        "place"
+      ],
+      "positive_exemplars": [
+        "on the table",
+        "on the bus",
+        "on Monday"
+      ],
+      "acceptable_variants": [],
+      "naturalness_preferences": []
+    }
+  ],
+  "contrast_sets": [],
+  "patterns": [],
+  "transformations": [],
+  "explanations_pt": [
+    {
+      "explanation_id": "pt_on_surface",
+      "locale": "pt-BR",
+      "title": "on para superfícies e dias",
+      "summary": "Use on para superfícies e para dias e datas.",
+      "speech_text": "Use on para superfícies e para dias."
+    }
+  ],
+  "natural_alternatives": [],
+  "retrieval_exemplars": [
+    {
+      "example_id": "on_001",
+      "level": "A1",
+      "text": "The book is on the table.",
+      "intent": "location",
+      "polarity": "positive",
+      "weight": 1
+    },
+    {
+      "example_id": "on_002",
+      "level": "A1",
+      "text": "I have a meeting on Monday.",
+      "intent": "time",
+      "polarity": "positive",
+      "weight": 1
+    },
+    {
+      "example_id": "on_003",
+      "level": "B1",
+      "text": "It is on sale.",
+      "intent": "description",
+      "polarity": "positive",
+      "weight": 1
+    }
+  ],
+  "golden_tests": [
+    {
+      "input": "The book is on the table.",
+      "mode": "free",
+      "expect": {
+        "verdict": "valid"
+      }
+    }
+  ],
+  "coverage": {
+    "concepts_expected": 12,
+    "concepts_implemented": 6,
+    "levels": {
+      "A1": "complete_for_scope",
+      "A2": "partial",
+      "B1": "partial",
+      "B2": "planned"
+    },
+    "known_gaps": [
+      "dependency uses",
+      "collocations"
+    ]
+  }
+}

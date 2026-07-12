@@ -278,6 +278,19 @@ export function AppProvider({ children }) {
       normalized_user_answer: a.normalized_user_answer,
       normalized_expected_answer: a.normalized_expected_answer,
     }
+    // Slice 7.1: persist the local semantic tutor's provenance when present.
+    // Raw embeddings are intentionally NOT stored on the attempt.
+    if (a.assessment_mode) {
+      evaluation.analysis_version = a.analysis_version || '1'
+      evaluation.assessment_mode = a.assessment_mode
+      evaluation.engines = a.engines || null
+      evaluation.knowledge_pack_versions = a.knowledge_pack_versions || {}
+      evaluation.detected_intents = a.detected_intents || []
+      evaluation.matched_concepts = a.matched_concepts || []
+      evaluation.corrected_version = a.corrected_version || null
+      evaluation.natural_alternatives = a.natural_alternatives || []
+      evaluation.fallback_events = a.fallback_events || []
+    }
     // Persist the assessed skills so Result/Review can summarize the session
     // and the skill-profile pipeline consumes exactly what the UI showed.
     evaluation.assessed_skills = a.assessed_skills?.length

@@ -18,7 +18,9 @@ export default defineConfig({
       name: 'drop-unused-ort-wasm',
       generateBundle(_, bundle) {
         for (const key of Object.keys(bundle)) {
-          if (key.endsWith('.wasm')) delete bundle[key]
+          // Drop only the onnxruntime/Piper wasm (loaded from CDN at runtime).
+          // Keep Harper's wasm — the local grammar engine needs it to run.
+          if (key.endsWith('.wasm') && !/harper/i.test(key)) delete bundle[key]
         }
       },
     },
@@ -39,6 +41,19 @@ export default defineConfig({
             options: {
               cacheName: 'piper-runtime-v1',
               expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            // Harper's WASM (~18 MB, local same-origin asset) is too large to
+            // precache; cache it on first use so grammar analysis works offline
+            // afterwards. Before first (online) use, the app falls back to the
+            // internal grammar checker — GRAMMAR_ENGINE_UNAVAILABLE, no crash.
+            urlPattern: ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.wasm'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'harper-wasm-v1',
+              expiration: { maxEntries: 4, maxAgeSeconds: 60 * 60 * 24 * 365 },
               cacheableResponse: { statuses: [0, 200] },
             },
           },

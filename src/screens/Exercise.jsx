@@ -3,6 +3,7 @@ import { useApp } from '../store.jsx'
 import { Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { analyze } from '../lib/nlp-client.js'
+import { analyzeProduction, resolveAssessmentMode, usesSemanticPipeline, toExerciseAnalysis, essentialWords } from '../lib/language-analysis/index.js'
 import { buildIncorrectChoiceEvaluation } from '../lib/correction-engine.js'
 import { speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
@@ -52,22 +53,21 @@ export default function Exercise() {
     const ans = answerText()
     const strict = settings?.correction_mode === 'strict'
     let analysis
-    if (q.assessment_mode === 'guided') {
-      const ok = /\b(i'll|i will|we'll|we will|will)\b/i.test(ans) && /\btomorrow\b/i.test(ans)
-      analysis = {
-        verdict: ok ? 'correct' : 'partial',
-        is_probably_correct: ok,
-        similarity_score: ok ? 1 : 0.6,
-        score: ok ? 1 : 0.6,
-        target: q.expected_answer,
-        target_answer: q.expected_answer,
-        normalized_user_answer: ans,
-        normalized_expected_answer: q.expected_answer,
-        detected_errors: ok ? [] : [{ category: 'guided_structure', subtype: 'missing_will_or_tomorrow', severity: 'medium', confidence: 0.9 }],
-        primary_error: ok ? null : { category: 'guided_structure', subtype: 'missing_will_or_tomorrow', severity: 'medium', confidence: 0.9 },
-        feedback: ok ? 'Sua frase usa corretamente a estrutura pedida. Veja também uma resposta modelo.' : 'Use “will” e uma referência a amanhã. Veja uma resposta modelo.',
-        guided_result: { verdict: 'valid_guided_response', target_skill_result: ok ? 'correct' : 'partial', model_answer: q.expected_answer },
-      }
+    const semanticMode = resolveAssessmentMode(q)
+    if (usesSemanticPipeline(q)) {
+      // Free / guided / equivalent → local semantic tutor pipeline (real Harper +
+      // structural NLP + USE/hashing + knowledge packs). Free & guided never see
+      // the model answer.
+      const result = await analyzeProduction({
+        text: ans,
+        assessmentMode: semanticMode,
+        requestedIntent: q.requested_intent || (semanticMode === 'guided' ? 'future_plan' : null),
+        level: q.level || activeLesson?.level || 'A1',
+        equivalentTarget: semanticMode === 'equivalent'
+          ? { text: q.expected_answer, essential_words: essentialWords(q.expected_answer) }
+          : null,
+      })
+      analysis = toExerciseAnalysis(result, { question: q, mode: semanticMode })
     } else {
       analysis = await analyze({
       user_answer: ans,
@@ -127,6 +127,7 @@ export default function Exercise() {
       </div>
 
       <div className="screen-body" style={{ paddingTop: 16, paddingBottom: feedback ? 20 : 110 }}>
+        <span data-testid="question-type" style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)' }}>{q.type}</span>
         {q.context && (
           <div>
             {session.mode === 'adaptive_review' && <div className="chip chip-indigo" style={{ marginBottom: 8 }}>Revisão direcionada</div>}
@@ -176,6 +177,40 @@ export default function Exercise() {
         />
       )}
     </div>
+  )
+}
+
+// Feedback for free/guided production: never shows the model answer, diff, or
+// "Expected". Shows the learner's sentence, a corrected version (only for real
+// errors) and intent-preserving natural alternatives.
+function SemanticFeedbackBlock({ sem, userText, settings }) {
+  const alts = sem.natural_alternatives || []
+  return (
+    <section className="feedback-comparison" aria-label="Análise da sua frase" data-testid="feedback-semantic">
+      <div className="feedback-answer">
+        <div className="feedback-answer-label">Sua frase</div>
+        <div className="feedback-answer-text">{userText}</div>
+        {userText && <button className="btn btn-sm btn-ghost" aria-label="Ouvir sua frase" onClick={() => speakSegment({ text: userText, language: 'en', role: 'user_answer_en', settings })}><I.speaker s={14} /> Ouvir</button>}
+      </div>
+      {sem.corrected_version && (
+        <div className="feedback-answer correct" data-testid="feedback-corrected">
+          <div className="feedback-answer-label">Versão corrigida</div>
+          <div className="feedback-answer-text">{sem.corrected_version}</div>
+          <button className="btn btn-sm btn-secondary" aria-label="Ouvir versão corrigida" onClick={() => speakSegment({ text: sem.corrected_version, language: 'en', role: 'correct_answer_en', settings })}><I.speaker s={14} /> Ouvir</button>
+        </div>
+      )}
+      {alts.length > 0 && (
+        <div className="feedback-answer" data-testid="feedback-alternatives">
+          <div className="feedback-answer-label">{sem.corrected_version ? 'Outras formas naturais' : 'Formas mais naturais neste contexto'}</div>
+          {alts.map((t, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: i ? 6 : 2 }}>
+              <span className="feedback-answer-text" style={{ flex: 1 }}>{t}</span>
+              <button className="btn btn-sm btn-ghost" aria-label={`Ouvir alternativa ${i + 1}`} onClick={() => speakSegment({ text: t, language: 'en', role: 'correct_answer_en', settings })}><I.speaker s={14} /></button>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
   )
 }
 
@@ -488,6 +523,7 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
   }, [result.answerKey, q.id])
   useEffect(() => { speakFeedbackSequence(presentation, settings); return () => stopSpeaking() }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  const sem = result.semantic_feedback || null
   const tone = presentation.tone === 'correct' ? 'success' : presentation.tone === 'almost' ? 'warn' : 'error'
   const header = presentation.tone === 'correct' ? 'Muito bem' : presentation.tone === 'almost' ? 'Quase lá' : 'Vamos ajustar uma coisa'
   const secondary = presentation.secondary_suggestions || []
@@ -512,26 +548,31 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
           </div>
 
           <section className="feedback-card feedback-explanation" aria-label="Explicação" data-testid="feedback-explanation-card">
-            <h3>{presentation.title}</h3>
-            <p>{presentation.explanation_pt}</p>
-            {presentation.learner_tip_pt && <p>{presentation.learner_tip_pt}</p>}
-            <button className="btn btn-sm btn-secondary" style={{ marginTop: 10 }} aria-label="Ouvir explicação" onClick={() => speakSegment({ text: presentation.speech_segments[0].text, language: 'pt-BR', role: 'explanation_pt', settings })}><I.speaker s={14} /> Ouvir explicação</button>
+            <h3>{sem?.explanation_pt?.title || presentation.title}</h3>
+            <p>{sem ? sem.headline : presentation.explanation_pt}</p>
+            {sem?.explanation_pt?.summary && sem.explanation_pt.summary !== sem.headline && <p>{sem.explanation_pt.summary}</p>}
+            {!sem && presentation.learner_tip_pt && <p>{presentation.learner_tip_pt}</p>}
+            <button className="btn btn-sm btn-secondary" style={{ marginTop: 10 }} aria-label="Ouvir explicação" onClick={() => speakSegment({ text: sem ? sem.headline : presentation.speech_segments[0].text, language: 'pt-BR', role: 'explanation_pt', settings })}><I.speaker s={14} /> Ouvir explicação</button>
           </section>
 
-          {result.verdict === 'correct' && <TypoNote typos={result.typos} inkVar="var(--feedback-text-secondary)" />}
+          {result.verdict === 'correct' && !sem && <TypoNote typos={result.typos} inkVar="var(--feedback-text-secondary)" />}
 
-          <section className="feedback-comparison" aria-label="Comparação da resposta" data-testid="feedback-comparison">
-            <div className="feedback-answer">
-              <div className="feedback-answer-label">{presentation.comparison.user_label}</div>
-              <div className="feedback-answer-text"><MarkedText text={presentation.comparison.user_text} marked={extra} typos={typoGot} variant="extra" speakable={false} /></div>
-              {presentation.comparison.user_text && <button className="btn btn-sm btn-ghost" aria-label="Ouvir sua resposta" onClick={() => speakSegment({ text: presentation.comparison.user_text, language: 'en', role: 'user_answer_en', settings })}><I.speaker s={14} /> Ouvir</button>}
-            </div>
-            <div className="feedback-answer correct">
-              <div className="feedback-answer-label">{presentation.comparison.expected_label}</div>
-              <div className="feedback-answer-text"><MarkedText text={presentation.comparison.expected_text} marked={missing} typos={typoExpected} variant="missing" speakable={false} /></div>
-              <button className="btn btn-sm btn-secondary" aria-label="Ouvir forma correta" onClick={() => speakSegment({ text: presentation.comparison.expected_text, language: 'en', role: 'correct_answer_en', settings })}><I.speaker s={14} /> Ouvir forma correta</button>
-            </div>
-          </section>
+          {sem?.hide_model_answer ? (
+            <SemanticFeedbackBlock sem={sem} userText={result.user_answer} settings={settings} />
+          ) : (
+            <section className="feedback-comparison" aria-label="Comparação da resposta" data-testid="feedback-comparison">
+              <div className="feedback-answer">
+                <div className="feedback-answer-label">{presentation.comparison.user_label}</div>
+                <div className="feedback-answer-text"><MarkedText text={presentation.comparison.user_text} marked={extra} typos={typoGot} variant="extra" speakable={false} /></div>
+                {presentation.comparison.user_text && <button className="btn btn-sm btn-ghost" aria-label="Ouvir sua resposta" onClick={() => speakSegment({ text: presentation.comparison.user_text, language: 'en', role: 'user_answer_en', settings })}><I.speaker s={14} /> Ouvir</button>}
+              </div>
+              <div className="feedback-answer correct">
+                <div className="feedback-answer-label">{presentation.comparison.expected_label}</div>
+                <div className="feedback-answer-text"><MarkedText text={presentation.comparison.expected_text} marked={missing} typos={typoExpected} variant="missing" speakable={false} /></div>
+                <button className="btn btn-sm btn-secondary" aria-label="Ouvir forma correta" onClick={() => speakSegment({ text: presentation.comparison.expected_text, language: 'en', role: 'correct_answer_en', settings })}><I.speaker s={14} /> Ouvir forma correta</button>
+              </div>
+            </section>
+          )}
 
           {q.type === 'speak_sentence' && <div style={{ fontSize: 13, color: 'var(--feedback-text-secondary)' }}>🎙️ Pronúncia reconhecida: <strong>{Math.round((result.similarity_score || 0) * 100)}%</strong> das palavras</div>}
           {secondary.length > 0 && <section className="feedback-card feedback-secondary" style={{ padding: 14 }}><details><summary>Outros pontos para observar ({secondary.length})</summary>{secondary.map((s,i)=><p key={i} style={{fontSize:14,color:'var(--feedback-text-secondary)',lineHeight:1.45}}><strong>{s.title}:</strong> {s.explanation_pt}</p>)}</details></section>}

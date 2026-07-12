@@ -8,6 +8,11 @@ import { defineConfig, devices } from '@playwright/test'
 
 const PORT = 4173
 
+// Optional local browser override: some sandboxes ship a Chromium revision that
+// differs from the one @playwright/test pins. Set PW_CHROMIUM_EXECUTABLE to that
+// binary. CI leaves it unset and uses Playwright's managed browser.
+const executablePath = process.env.PW_CHROMIUM_EXECUTABLE || undefined
+
 export default defineConfig({
   testDir: './e2e',
   timeout: 180_000,
@@ -25,7 +30,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium-desktop',
-      use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 800 } },
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 800 }, launchOptions: { executablePath } },
       testIgnore: /mobile-smoke/,
     },
     {

@@ -1,0 +1,119 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "semantic_requests",
+    "pack_kind": "semantic_knowledge",
+    "title": { "pt": "Pedidos e pedidos educados", "en": "Requests and polite requests" },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "levels": ["A1", "A2", "B1"],
+    "dependencies": [],
+    "min_app_version": "1.0.0",
+    "analysis_compatibility": { "min_version": "1", "max_version": "1" }
+  },
+  "concepts": [
+    {
+      "concept_id": "request_imperative",
+      "surface": "give me",
+      "lemma": "give",
+      "level": "A1",
+      "roles": ["request"],
+      "meaning_pt": "Pedido direto no imperativo. Correto, mas pode soar pouco educado em contextos formais.",
+      "intent_tags": ["request"],
+      "grammar_tags": ["imperative"],
+      "related_concepts": ["polite_request_could_i_have"]
+    },
+    {
+      "concept_id": "polite_request_could_i_have",
+      "surface": "could I have",
+      "lemma": "have",
+      "level": "A1",
+      "roles": ["polite_request"],
+      "meaning_pt": "Forma educada de pedir algo, comum em restaurantes e lojas.",
+      "intent_tags": ["polite_request"],
+      "grammar_tags": ["modal", "question"],
+      "related_concepts": ["request_imperative"]
+    }
+  ],
+  "usage_rules": [],
+  "semantic_frames": [
+    {
+      "frame_id": "polite_request_food",
+      "level": "A1",
+      "intent": "polite_request",
+      "slots": ["requested_item"],
+      "positive_exemplars": [
+        "Could I have a dessert, please?",
+        "I'd like a dessert, please.",
+        "Could I see the dessert menu?",
+        "Can I have some water, please?"
+      ],
+      "acceptable_variants": ["Please give me a dessert.", "Give me a dessert."],
+      "naturalness_preferences": [{ "pattern": "could_i_have", "priority": 1 }]
+    }
+  ],
+  "contrast_sets": [],
+  "patterns": [],
+  "transformations": [
+    {
+      "transformation_id": "imperative_request_to_polite_could",
+      "source_frame": "polite_request",
+      "target_frame": "polite_request",
+      "match_requirements": ["imperative_request", "direct_object_present"],
+      "operation_id": "request_to_could_i_have",
+      "preserve": ["requested_item", "polarity"],
+      "explanation_id": "pt_request_more_polite"
+    },
+    {
+      "transformation_id": "imperative_request_to_i_would_like",
+      "source_frame": "polite_request",
+      "target_frame": "polite_request",
+      "match_requirements": ["imperative_request", "direct_object_present"],
+      "operation_id": "request_to_i_would_like",
+      "preserve": ["requested_item", "polarity"],
+      "explanation_id": "pt_request_more_polite"
+    }
+  ],
+  "explanations_pt": [
+    {
+      "explanation_id": "pt_request_more_polite",
+      "locale": "pt-BR",
+      "title": "Uma forma mais educada de pedir",
+      "summary": "Em um restaurante, uma forma mais natural e educada é usar \"Could I have ...?\" ou \"I'd like ...\".",
+      "formula": "Could I have + item + , please?",
+      "examples": [
+        { "incorrect": "Please give me a dessert.", "correct": "Could I have a dessert, please?" }
+      ],
+      "speech_text": "Para soar mais educado em um restaurante, use could I have seguido do item e please."
+    }
+  ],
+  "natural_alternatives": [
+    {
+      "alternative_set_id": "polite_request_dessert",
+      "frame_id": "polite_request_food",
+      "level": "A1",
+      "alternatives": [
+        { "text": "Could I have a dessert, please?", "tone": "polite", "context_tags": ["restaurant"] },
+        { "text": "I'd like a dessert, please.", "tone": "polite", "context_tags": ["restaurant"] },
+        { "text": "Could I see the dessert menu?", "tone": "polite", "context_tags": ["restaurant"] }
+      ]
+    }
+  ],
+  "retrieval_exemplars": [
+    { "example_id": "request_food_001", "frame_id": "polite_request_food", "level": "A1", "text": "Could I have a dessert, please?", "intent": "polite_request", "polarity": "positive", "weight": 1 },
+    { "example_id": "request_food_002", "frame_id": "polite_request_food", "level": "A1", "text": "Please give me a dessert.", "intent": "request", "polarity": "positive", "weight": 1 },
+    { "example_id": "request_food_003", "frame_id": "polite_request_food", "level": "A1", "text": "I'd like a dessert, please.", "intent": "polite_request", "polarity": "positive", "weight": 1 },
+    { "example_id": "request_food_004", "frame_id": "polite_request_food", "level": "A1", "text": "Can I have some water, please?", "intent": "polite_request", "polarity": "positive", "weight": 1 },
+    { "example_id": "request_food_005", "frame_id": "polite_request_food", "level": "A2", "text": "The dessert is important.", "intent": "description", "polarity": "negative", "weight": 1 }
+  ],
+  "golden_tests": [
+    { "input": "Please give me a dessert.", "mode": "free", "expect": { "verdict": "valid_with_suggestions", "no_corrected_version": true, "intent": "request" } },
+    { "input": "Could I have a dessert, please?", "mode": "free", "expect": { "verdict": "valid" } }
+  ],
+  "coverage": {
+    "concepts_expected": 4,
+    "concepts_implemented": 2,
+    "levels": { "A1": "complete_for_scope", "A2": "partial", "B1": "planned", "B2": "planned" },
+    "known_gaps": ["formal business requests", "indirect requests"]
+  }
+}

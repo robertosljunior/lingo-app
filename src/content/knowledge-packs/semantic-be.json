@@ -1,0 +1,227 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "semantic_be",
+    "pack_kind": "semantic_knowledge",
+    "title": {
+      "pt": "Papéis de be",
+      "en": "Roles of be"
+    },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ],
+    "dependencies": [],
+    "min_app_version": "1.0.0",
+    "analysis_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "concepts": [
+    {
+      "concept_id": "be_identity",
+      "surface": "be",
+      "lemma": "be",
+      "level": "A1",
+      "roles": [
+        "copula"
+      ],
+      "meaning_pt": "be de identidade (She is a doctor).",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "identity"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "be_state",
+      "surface": "be",
+      "lemma": "be",
+      "level": "A1",
+      "roles": [
+        "copula"
+      ],
+      "meaning_pt": "be de estado (She is tired).",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "state"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "be_location",
+      "surface": "be",
+      "lemma": "be",
+      "level": "A1",
+      "roles": [
+        "copula"
+      ],
+      "meaning_pt": "be de localização (She is at home).",
+      "intent_tags": [
+        "location"
+      ],
+      "grammar_tags": [
+        "location"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "be_age",
+      "surface": "be",
+      "lemma": "be",
+      "level": "A1",
+      "roles": [
+        "copula"
+      ],
+      "meaning_pt": "be de idade (She is thirty).",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "age"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "be_continuous",
+      "surface": "be",
+      "lemma": "be",
+      "level": "A2",
+      "roles": [
+        "auxiliary"
+      ],
+      "meaning_pt": "be auxiliar do continuous (She is working).",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "continuous"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "be_passive",
+      "surface": "be",
+      "lemma": "be",
+      "level": "B1",
+      "roles": [
+        "auxiliary"
+      ],
+      "meaning_pt": "be auxiliar da voz passiva (The report was approved).",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "passive"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "be_there_is",
+      "surface": "be",
+      "lemma": "be",
+      "level": "A2",
+      "roles": [
+        "existential"
+      ],
+      "meaning_pt": "there is/are como construção relacionada.",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "existential"
+      ],
+      "related_concepts": []
+    }
+  ],
+  "usage_rules": [],
+  "semantic_frames": [
+    {
+      "frame_id": "be_description",
+      "level": "A1",
+      "intent": "description",
+      "slots": [
+        "subject",
+        "complement"
+      ],
+      "positive_exemplars": [
+        "She is a doctor.",
+        "She is tired.",
+        "She is at home."
+      ],
+      "acceptable_variants": [],
+      "naturalness_preferences": []
+    }
+  ],
+  "contrast_sets": [],
+  "patterns": [],
+  "transformations": [],
+  "explanations_pt": [
+    {
+      "explanation_id": "pt_be_roles",
+      "locale": "pt-BR",
+      "title": "be tem vários papéis",
+      "summary": "be pode indicar identidade, estado, localização, idade, além de formar o continuous e a voz passiva.",
+      "speech_text": "be indica identidade, estado e localização, e também forma o continuous e a passiva."
+    }
+  ],
+  "natural_alternatives": [],
+  "retrieval_exemplars": [
+    {
+      "example_id": "be_001",
+      "level": "A1",
+      "text": "She is a doctor.",
+      "intent": "description",
+      "polarity": "positive",
+      "weight": 1
+    },
+    {
+      "example_id": "be_002",
+      "level": "A2",
+      "text": "She is working.",
+      "intent": "description",
+      "polarity": "positive",
+      "weight": 1
+    },
+    {
+      "example_id": "be_003",
+      "level": "B1",
+      "text": "The report was approved.",
+      "intent": "description",
+      "polarity": "positive",
+      "weight": 1
+    }
+  ],
+  "golden_tests": [
+    {
+      "input": "She is a doctor.",
+      "mode": "free",
+      "expect": {
+        "verdict": "valid"
+      }
+    }
+  ],
+  "coverage": {
+    "concepts_expected": 15,
+    "concepts_implemented": 7,
+    "levels": {
+      "A1": "complete_for_scope",
+      "A2": "partial",
+      "B1": "partial",
+      "B2": "planned"
+    },
+    "known_gaps": [
+      "subjunctive be",
+      "emphatic uses"
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "semantic_do",
+    "pack_kind": "semantic_knowledge",
+    "title": { "pt": "Usos de do", "en": "Uses of do" },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "levels": ["A1", "A2", "B1", "B2"],
+    "dependencies": [],
+    "min_app_version": "1.0.0",
+    "analysis_compatibility": { "min_version": "1", "max_version": "1" }
+  },
+  "concepts": [
+    { "concept_id": "do_auxiliary_simple_present_question", "surface": "do", "lemma": "do", "level": "A1", "roles": ["auxiliary"], "meaning_pt": "Auxiliar usado para formar perguntas no presente simples com I, you, we, they.", "intent_tags": ["question"], "grammar_tags": ["simple_present", "auxiliary"], "related_concepts": ["does_third_person_question", "do_auxiliary_negation"] },
+    { "concept_id": "does_third_person_question", "surface": "does", "lemma": "do", "level": "A1", "roles": ["auxiliary"], "meaning_pt": "Auxiliar de pergunta no presente simples com he, she, it. O verbo principal fica na forma-base.", "intent_tags": ["question"], "grammar_tags": ["simple_present", "third_person", "auxiliary"], "related_concepts": ["do_auxiliary_simple_present_question"] },
+    { "concept_id": "do_auxiliary_negation", "surface": "do not / don't", "lemma": "do", "level": "A1", "roles": ["auxiliary"], "meaning_pt": "Auxiliar usado para formar negativas no presente simples.", "intent_tags": ["negation"], "grammar_tags": ["simple_present", "negation"], "related_concepts": ["do_auxiliary_simple_present_question"] },
+    { "concept_id": "did_past_auxiliary", "surface": "did", "lemma": "do", "level": "A1", "roles": ["auxiliary"], "meaning_pt": "Auxiliar de perguntas e negativas no passado simples. O verbo principal fica na forma-base.", "intent_tags": ["question", "negation"], "grammar_tags": ["simple_past", "auxiliary"], "related_concepts": ["do_auxiliary_simple_present_question"] },
+    { "concept_id": "do_emphatic", "surface": "do", "lemma": "do", "level": "B1", "roles": ["emphasis"], "meaning_pt": "Do enfático reforça uma afirmação: I do understand.", "intent_tags": ["emphasis"], "grammar_tags": ["emphatic"], "related_concepts": [] },
+    { "concept_id": "do_pro_verb", "surface": "so do I", "lemma": "do", "level": "B1", "roles": ["pro_verb"], "meaning_pt": "Do substitui um verbo já dito: So do I / I did too.", "intent_tags": ["agreement"], "grammar_tags": ["pro_verb"], "related_concepts": [] },
+    { "concept_id": "do_lexical_verb", "surface": "do the work", "lemma": "do", "level": "A2", "roles": ["lexical_verb"], "meaning_pt": "Do como verbo pleno: do homework, do the work, do business, do research, do your best.", "intent_tags": ["action"], "grammar_tags": ["lexical_verb", "collocation"], "related_concepts": ["do_vs_make"] },
+    { "concept_id": "do_vs_make", "surface": "do vs make", "lemma": "do", "level": "B1", "roles": ["contrast"], "meaning_pt": "Do costuma indicar atividades/tarefas; make costuma indicar criação/produção.", "intent_tags": ["contrast"], "grammar_tags": ["collocation"], "related_concepts": ["do_lexical_verb"] }
+  ],
+  "usage_rules": [
+    {
+      "rule_id": "do_question_simple_present_non_third",
+      "concept_id": "do_auxiliary_simple_present_question",
+      "level": "A1",
+      "when": { "sentence_type": "question", "tense": "simple_present", "subject_features": { "persons": [1, 2, 3], "numbers": ["plural"] } },
+      "expected": { "auxiliary": "do", "main_verb_form": "base" },
+      "positive_examples": ["Do they work here?", "Do you like coffee?"],
+      "negative_examples": [{ "text": "Are they work here?", "error_id": "wrong_question_auxiliary" }],
+      "explanation_id": "pt_do_simple_present_question"
+    }
+  ],
+  "semantic_frames": [
+    { "frame_id": "simple_present_question", "level": "A1", "intent": "question", "slots": ["subject", "action"], "positive_exemplars": ["Do you work here?", "Does she work here?", "Did they call?"], "acceptable_variants": [], "naturalness_preferences": [] }
+  ],
+  "contrast_sets": [
+    { "contrast_id": "do_vs_make_set", "level": "B1", "items": [{ "text": "do your homework", "note_pt": "tarefa" }, { "text": "make a decision", "note_pt": "criação" }] }
+  ],
+  "patterns": [],
+  "transformations": [],
+  "explanations_pt": [
+    { "explanation_id": "pt_do_simple_present_question", "locale": "pt-BR", "title": "Use \"do\" para iniciar a pergunta", "summary": "No presente simples, perguntas com I, you, we e they usam \"do\" antes do sujeito.", "formula": "Do + sujeito + verbo na forma-base", "examples": [{ "incorrect": "Are they work here?", "correct": "Do they work here?" }], "speech_text": "No presente simples, use do antes do sujeito e mantenha o verbo principal na forma-base." },
+    { "explanation_id": "pt_does_third_person", "locale": "pt-BR", "title": "Use \"does\" com he, she, it", "summary": "Com he, she e it a pergunta usa \"does\" e o verbo principal fica na forma-base.", "formula": "Does + sujeito + verbo-base", "examples": [{ "incorrect": "Does she works here?", "correct": "Does she work here?" }], "speech_text": "Com he, she e it, use does e mantenha o verbo na forma-base." }
+  ],
+  "natural_alternatives": [],
+  "retrieval_exemplars": [
+    { "example_id": "do_001", "frame_id": "simple_present_question", "level": "A1", "text": "Do you work here?", "intent": "question", "polarity": "positive", "weight": 1 },
+    { "example_id": "do_002", "frame_id": "simple_present_question", "level": "A1", "text": "Does she work here?", "intent": "question", "polarity": "positive", "weight": 1 },
+    { "example_id": "do_003", "frame_id": "simple_present_question", "level": "A1", "text": "Are you work here?", "intent": "question", "polarity": "negative", "weight": 1 }
+  ],
+  "golden_tests": [
+    { "input": "Do you work here?", "mode": "free", "expect": { "verdict": "valid" } },
+    { "input": "I do understand.", "mode": "free", "expect": { "verdict": "valid" } }
+  ],
+  "coverage": {
+    "concepts_expected": 14,
+    "concepts_implemented": 8,
+    "levels": { "A1": "complete_for_scope", "A2": "partial", "B1": "partial", "B2": "planned" },
+    "known_gaps": ["question tags", "informal reductions"]
+  }
+}
