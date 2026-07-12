@@ -28,8 +28,14 @@ async function importLesson(page) {
 }
 
 async function answerWrong(page, text) {
-  await page.locator('textarea.input').fill(text)
-  await page.getByRole('button', { name: /Responder/ }).click()
+  const ta = page.locator('textarea.input')
+  await ta.fill(text)
+  await expect(ta).toHaveValue(text)
+  const submit = page.getByRole('button', { name: /Responder/ })
+  // Wait for the controlled state to register (the button enables only when
+  // `user` is non-empty) before clicking — avoids a rare fill→enable race.
+  await expect(submit).toBeEnabled()
+  await submit.click()
   await expect(page.getByTestId('feedback-sheet')).toBeVisible()
 }
 

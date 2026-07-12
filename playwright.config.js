@@ -36,7 +36,7 @@ export default defineConfig({
     {
       // Essential smoke on a mobile viewport; the full flows run on desktop.
       name: 'chromium-mobile',
-      use: { ...devices['Pixel 7'] },
+      use: { ...devices['Pixel 7'], launchOptions: { executablePath } },
       testMatch: /mobile-smoke/,
     },
   ],

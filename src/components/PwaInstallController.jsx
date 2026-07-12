@@ -4,7 +4,10 @@ import { dismissInstallPrompt, getInstallEligibility, initPwaInstallController, 
 export default function PwaInstallController(){
   const [eligible,setEligible]=useState(null)
   const [voice,setVoice]=useState(()=>loadFabiolaState())
-  useEffect(()=>{ initPwaInstallController(); const t=setTimeout(()=>setEligible(getInstallEligibility({allowManualFallback:true})),1200); return()=>clearTimeout(t)},[])
+  // Under E2E, never surface the bottom install card — it is fixed-positioned
+  // over the sticky action buttons and intermittently intercepts their clicks.
+  const e2e = typeof window!=='undefined' && (()=>{ try { return sessionStorage.getItem('e2e:enabled')==='1' } catch { return false } })()
+  useEffect(()=>{ if(e2e) return; initPwaInstallController(); const t=setTimeout(()=>setEligible(getInstallEligibility({allowManualFallback:true})),1200); return()=>clearTimeout(t)},[e2e])
   useEffect(()=>{ if(markStandaloneLaunch() || isStandalone()){ startFabiolaDownload(setVoice) } },[])
   if(voice.fabiola_status && voice.fabiola_status!=='ready') return <VoiceBanner state={voice} onRetry={()=>startFabiolaDownload(setVoice,true)} />
   if(!eligible?.eligible) return null

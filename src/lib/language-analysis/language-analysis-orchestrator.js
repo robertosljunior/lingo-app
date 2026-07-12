@@ -365,10 +365,24 @@ function fuseVerdict(ctx) {
   // Equivalent mode: meaning must match the target. Combine similarity with
   // essential-word / intent evidence — never on similarity alone.
   if (assessmentMode === 'equivalent' && equivalentTarget) {
+    // Exact / paraphrase short-circuit: if the learner reproduced the target (or
+    // used every essential content word), it is a meaning match by definition.
+    const userNorm = normSurface(structure.sentences?.[0] || structure.tokens.join(' '))
+    const targetNorm = normSurface(equivalentTarget.text || '')
+    if (userNorm && userNorm === targetNorm) {
+      return { ...ctx, verdict: hasSoftIssue ? 'valid_with_suggestions' : 'valid', confidence: 0.9 }
+    }
     const essential = (equivalentTarget.essential_words || []).map((w) => w.toLowerCase())
-    const userLower = structure.tokens.map((t) => t.toLowerCase())
-    const missingEssential = essential.filter((w) => !userLower.includes(w))
-    const meaningMismatch = missingEssential.length > 0
+    // Match essential CONTENT words against the normalized user surface (word
+    // boundaries), not the split-clitic token list — so contractions/morphology
+    // never cause false "missing word" mismatches.
+    const userWords = new Set(userNorm.split(' ').filter(Boolean))
+    const missingEssential = essential.filter((w) => !userWords.has(w))
+    // A missing essential CONTENT word signals a different meaning (e.g. target
+    // "The dessert is important" vs "Please give me a dessert" drops "important").
+    // Contractions/function words are excluded from `essential`, so exact answers
+    // and legitimate paraphrases keep all content words and pass.
+    const meaningMismatch = essential.length > 0 && missingEssential.length > 0
     if (hasHardError) return { ...ctx, verdict: 'needs_revision', confidence: 0.9 }
     if (meaningMismatch) {
       return {

@@ -25,24 +25,52 @@ export function resolveAssessmentMode(q) {
   return TYPE_TO_MODE[q?.type] || 'exact'
 }
 
+// Legacy generator question types. The deterministic lesson generator already
+// stamps these with assessment_mode ('equivalent' for translate/rewrite, 'guided'
+// for speak_sentence), but they were designed around the legacy engine +
+// model-answer comparison UI. Keep them on that engine so generated lessons are
+// unchanged; only NEW authored free/guided (and opt-in equivalent) types route
+// through the semantic tutor pipeline.
+const LEGACY_ENGINE_TYPES = new Set([
+  'translate_natural', 'rewrite_natural', 'speak_sentence',
+  'fill_blank', 'choose_best', 'build_sentence', 'listen_type',
+])
+
 /**
  * Whether this question should be routed through the semantic tutor pipeline.
  * Free and guided always route (the new capability). Equivalent routes only when
- * a question OPTS IN via an explicit `assessment_mode: 'equivalent'` — the legacy
- * translate/rewrite flows keep their established engine + comparison UI to avoid
- * regressing existing lessons and E2E.
+ * a question OPTS IN via an explicit `assessment_mode: 'equivalent'` on a
+ * non-legacy type.
  */
 export function usesSemanticPipeline(q) {
+  if (LEGACY_ENGINE_TYPES.has(q?.type)) return false
   const mode = resolveAssessmentMode(q)
   if (mode === 'free' || mode === 'guided') return true
   if (mode === 'equivalent' && q?.assessment_mode === 'equivalent') return true
   return false
 }
 
-const STOP = new Set(['a', 'an', 'the', 'to', 'of', 'is', 'are', 'am', 'be', 'and', 'or', 'in', 'on', 'at', 'i', 'you', 'he', 'she', 'it', 'we', 'they', 'my', 'your', 'this', 'that'])
-/** Essential content words of the model answer for equivalent-mode meaning checks. */
+const STOP = new Set([
+  'a', 'an', 'the', 'to', 'of', 'is', 'are', 'am', 'be', 'been', 'being', 'was', 'were',
+  'and', 'or', 'in', 'on', 'at', 'for', 'with', 'from', 'by', 'as', 'so',
+  'i', 'you', 'he', 'she', 'it', 'we', 'they', 'me', 'him', 'her', 'us', 'them',
+  'my', 'your', 'his', 'its', 'our', 'their', 'this', 'that', 'these', 'those',
+  'do', 'does', 'did', 'have', 'has', 'had', 'will', 'would', 'can', 'could', 'should',
+  'not', 'no', 'yes', 'here', 'there', 'now', 'then',
+])
+/**
+ * Essential CONTENT words of the model answer for equivalent-mode meaning checks.
+ * Contractions (i've, don't, she's) are dropped — they are function words and the
+ * structural tokenizer splits their clitics, so they must never count as
+ * "essential meaning" tokens.
+ */
 export function essentialWords(text) {
-  return [...new Set((text || '').toLowerCase().replace(/[^a-z0-9' ]+/g, ' ').split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w)))]
+  return [...new Set(
+    (text || '').toLowerCase()
+      .replace(/[^a-z0-9' ]+/g, ' ')
+      .split(/\s+/)
+      .filter((w) => w.length > 2 && !w.includes("'") && !STOP.has(w)),
+  )]
 }
 
 const VERDICT_MAP = {
