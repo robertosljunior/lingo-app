@@ -19,7 +19,7 @@
 //   adaptive_sessions stored compactly in settings: adaptive_session:<profile_id>
 
 import { openDB } from 'idb'
-import { srsKey, nextSrs, rankPracticeQuestions } from './srs.js'
+import { srsKey, nextSrs, rankPracticeQuestions, automaticSrsRating } from './srs.js'
 import { buildSkillEvents, aggregateSkillProfile, inferAssessedSkills, rankSkillsForReview, PROFILE_ENGINE_VERSION } from './skill-profile.js'
 import { validateGeneratedLesson } from './generated-lesson-validator.js'
 import { indexQuestionSkills, buildAdaptivePracticePlan, buildLessonGenerationContext as buildAdaptiveContextPure, QUESTION_SKILL_INDEX_VERSION } from './adaptive-planner.js'
@@ -414,12 +414,13 @@ export async function rebuildSkillProfilesFromEvaluations(profile_id = DEFAULT_P
 
 // ---------- SRS (spaced repetition) ----------
 // Record the outcome of an answered question into the Leitner schedule.
-export async function updateSrs({ profile_id, lesson_id, question_id, correct, confidence = null }) {
+export async function updateSrs({ profile_id, lesson_id, question_id, correct, confidence = null, verdict = null, attempt_number = 1, hint_used = false }) {
   const d = await db()
   const key = srsKey(profile_id, lesson_id, question_id)
   const existing = await d.get('srs', key)
-  const next = nextSrs(existing, { correct, confidence })
-  await d.put('srs', { key, profile_id, lesson_id, question_id, ...next })
+  const auto = confidence || automaticSrsRating({ verdict: verdict || (correct ? 'correct' : 'incorrect'), attempt_number, hint_used })
+  const next = nextSrs(existing, { correct, confidence: auto })
+  await d.put('srs', { key, profile_id, lesson_id, question_id, ...next, srs_rating_source: 'automatic', verdict: verdict || (correct ? 'correct' : 'incorrect'), attempt_number, hint_used })
 }
 
 // Patch the schedule after the student self-rates the answer ("fácil" bumps

@@ -51,7 +51,25 @@ export default function Exercise() {
     setAnalyzing(true)
     const ans = answerText()
     const strict = settings?.correction_mode === 'strict'
-    const analysis = await analyze({
+    let analysis
+    if (q.assessment_mode === 'guided') {
+      const ok = /\b(i'll|i will|we'll|we will|will)\b/i.test(ans) && /\btomorrow\b/i.test(ans)
+      analysis = {
+        verdict: ok ? 'correct' : 'partial',
+        is_probably_correct: ok,
+        similarity_score: ok ? 1 : 0.6,
+        score: ok ? 1 : 0.6,
+        target: q.expected_answer,
+        target_answer: q.expected_answer,
+        normalized_user_answer: ans,
+        normalized_expected_answer: q.expected_answer,
+        detected_errors: ok ? [] : [{ category: 'guided_structure', subtype: 'missing_will_or_tomorrow', severity: 'medium', confidence: 0.9 }],
+        primary_error: ok ? null : { category: 'guided_structure', subtype: 'missing_will_or_tomorrow', severity: 'medium', confidence: 0.9 },
+        feedback: ok ? 'Sua frase usa corretamente a estrutura pedida. Veja também uma resposta modelo.' : 'Use “will” e uma referência a amanhã. Veja uma resposta modelo.',
+        guided_result: { verdict: 'valid_guided_response', target_skill_result: ok ? 'correct' : 'partial', model_answer: q.expected_answer },
+      }
+    } else {
+      analysis = await analyze({
       user_answer: ans,
       expected_answer: q.expected_answer,
       accepted_answers: strict ? [] : q.accepted_answers,
@@ -59,7 +77,8 @@ export default function Exercise() {
       mistake_focus: q.mistake_focus,
       skill_target: q.skill_target || q.lesson_focus || q.mistake_focus,
       nlp_library: settings?.nlp_library,
-    })
+      })
+    }
     // Choice questions: exact-match the option regardless of NLP.
     if (q.type === 'fill_blank' || q.type === 'choose_best') {
       const correct = ans.trim().toLowerCase() === q.expected_answer.trim().toLowerCase()
@@ -88,7 +107,7 @@ export default function Exercise() {
     const spoken = q.type === 'speak_sentence'
       ? { spoken_transcript: ans, pronunciation_score: analysis.similarity_score }
       : {}
-    const entry = await submitAnswer({ question: q, user_answer: ans, analysis, ...spoken })
+    const entry = await submitAnswer({ question: q, user_answer: ans, analysis, ...spoken, attempt_number: 1, hint_used: showHint })
     setFeedback({ ...analysis, answerKey: entry.key, user_answer: ans })
     setAnalyzing(false)
   }
@@ -105,11 +124,6 @@ export default function Exercise() {
         <button className="back" style={{ width: 36, height: 36 }} onClick={() => back()} aria-label="Sair da aula"><I.close s={18} /></button>
         <div style={{ flex: 1 }}><Progress value={progress + (feedback ? 100 / total : 0)} /></div>
         <div style={{ fontWeight: 700, fontSize: 13, color: 'var(--ink-2)', minWidth: 36, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>{session.qIdx + 1}/{total}</div>
-      </div>
-
-      <div style={{ padding: '6px 20px 0', display: 'flex', gap: 6, alignItems: 'center', flexShrink: 0 }}>
-        <span className="chip chip-indigo" data-testid="question-type" style={{ fontFamily: 'var(--font-mono)' }}>{q.type}</span>
-        {q.mistake_focus && <span className="chip" style={{ fontFamily: 'var(--font-mono)' }}>{q.mistake_focus}</span>}
       </div>
 
       <div className="screen-body" style={{ paddingTop: 16, paddingBottom: feedback ? 20 : 110 }}>
@@ -523,7 +537,6 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
           {secondary.length > 0 && <section className="feedback-card feedback-secondary" style={{ padding: 14 }}><details><summary>Outros pontos para observar ({secondary.length})</summary>{secondary.map((s,i)=><p key={i} style={{fontSize:14,color:'var(--feedback-text-secondary)',lineHeight:1.45}}><strong>{s.title}:</strong> {s.explanation_pt}</p>)}</details></section>}
           <TechnicalDiagnostics result={result} />
           <div className="feedback-footer" data-testid="feedback-footer">
-            <ConfidenceRow onRate={onRate} />
             <div className="feedback-actions">
               {result.verdict !== 'correct' && <button className="btn feedback-secondary-action" onClick={onRetry}>Tentar de novo</button>}
               <button className="btn btn-primary feedback-primary-action" onClick={onNext}>Próxima <I.chevR s={18} /></button>
@@ -531,29 +544,6 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
           </div>
         </div>
       </div>
-    </div>
-  )
-}
-
-// Self-rated difficulty — persisted with the answer (future input for spaced
-// repetition scheduling).
-function ConfidenceRow({ onRate }) {
-  const [sel, setSel] = useState(null)
-  const opts = [
-    { value: 'hard', label: '😅 Difícil' },
-    { value: 'ok', label: '🙂 Ok' },
-    { value: 'easy', label: '😎 Fácil' },
-  ]
-  return (
-    <div className="feedback-difficulty">
-      <div className="feedback-difficulty-label">FOI:</div>
-      {opts.map((o) => (
-        <button key={o.value} className="btn btn-sm btn-secondary"
-          onClick={() => { setSel(o.value); onRate?.(o.value) }}
-          style={{ minHeight: 36, padding: '6px 12px', ...(sel === o.value ? { borderColor: 'var(--feedback-primary-action)', color: 'var(--feedback-primary-action)', background: 'var(--indigo-50)' } : {}) }}>
-          {o.label}
-        </button>
-      ))}
     </div>
   )
 }

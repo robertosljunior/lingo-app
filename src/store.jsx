@@ -305,6 +305,9 @@ export function AppProvider({ children }) {
       lesson_id: lessonId,
       question_id: q.id,
       correct: a.verdict === 'correct',
+      verdict: a.verdict,
+      attempt_number: rec.attempt_number || 1,
+      hint_used: !!rec.hint_used,
     })
     const entry = { ...stored, key, question: q }
     setSession((s) => ({ ...s, answers: [...s.answers, entry] }))

@@ -10,6 +10,7 @@ import History from './screens/History.jsx'
 import Mistakes from './screens/Mistakes.jsx'
 import Settings from './screens/Settings.jsx'
 import TrainingHub from './screens/TrainingHub.jsx'
+import PwaInstallController from './components/PwaInstallController.jsx'
 
 const SCREEN_COMPONENTS = {
   [SCREENS.HOME]: Home,
@@ -49,6 +50,7 @@ export default function App() {
     <div className="app-shell">
       {/* key forces a remount per screen so the entrance animation replays */}
       <Screen key={active} />
+      <PwaInstallController />
       <Toast show={!!toast}>{toast}</Toast>
     </div>
   )

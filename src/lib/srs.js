@@ -16,6 +16,15 @@ export function srsKey(profile_id, lesson_id, question_id) {
   return `${profile_id}:${lesson_id}:${question_id}`
 }
 
+// Deterministic automatic rating policy:
+// incorrect -> again, partial -> hard, correct after retry/hint -> hard,
+// correct on the first attempt -> good. Easy is never assigned automatically.
+export function automaticSrsRating({ verdict, attempt_number = 1, hint_used = false } = {}) {
+  if (verdict === 'correct' && attempt_number <= 1 && !hint_used) return 'good'
+  if (verdict === 'correct' || verdict === 'partial') return 'hard'
+  return 'again'
+}
+
 // Compute the next SRS record after an answer.
 export function nextSrs(existing, { correct, confidence = null, now = Date.now() }) {
   const cur = existing?.box || 0
@@ -26,6 +35,7 @@ export function nextSrs(existing, { correct, confidence = null, now = Date.now()
     box,
     due_at: now + BOX_INTERVALS[box],
     last_result: correct ? 'correct' : 'wrong',
+    srs_rating: confidence || (correct ? 'good' : 'again'),
     updated_at: now,
   }
 }
