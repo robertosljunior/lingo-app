@@ -1,0 +1,847 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "technology_and_communication_b1",
+    "title": {
+      "pt": "Tecnologia e comunicação B1",
+      "en": "Technology & Communication B1"
+    },
+    "theme": "technology_and_communication",
+    "level": "B1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "tech_b1_the_connection",
+      "en": "the connection",
+      "pt": "a conexão",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "internet"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "item_id": "tech_b1_the_file",
+      "en": "the file",
+      "pt": "o arquivo",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "files"
+      ],
+      "forms": {
+        "singular": "file",
+        "plural": "files"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "item_id": "tech_b1_the_backup",
+      "en": "the backup",
+      "pt": "o backup",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "security"
+      ],
+      "forms": {
+        "singular": "backup",
+        "plural": "backups"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "item_id": "tech_b1_the_settings",
+      "en": "the settings",
+      "pt": "as configurações",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "software"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "item_id": "tech_b1_the_bug",
+      "en": "the bug",
+      "pt": "o bug",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "singular": "bug",
+        "plural": "bugs"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "item_id": "tech_b1_the_account",
+      "en": "the account",
+      "pt": "a conta",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "security"
+      ],
+      "forms": {
+        "singular": "account",
+        "plural": "accounts"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "item_id": "tech_b1_upload_verb",
+      "en": "upload",
+      "pt": "fazer upload",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "files"
+      ],
+      "forms": {
+        "ing": "uploading",
+        "participle": "uploaded"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "item_id": "tech_b1_fix_verb",
+      "en": "fix",
+      "pt": "consertar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "participle": "fixed",
+        "ing": "fixing"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "item_id": "tech_b1_restart_verb",
+      "en": "restart",
+      "pt": "reiniciar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "past": "restarted"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "item_id": "tech_b1_sync_verb",
+      "en": "sync",
+      "pt": "sincronizar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "files"
+      ],
+      "forms": {
+        "ing": "syncing"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "item_id": "tech_b1_for_an_hour",
+      "en": "for an hour",
+      "pt": "há uma hora",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "item_id": "tech_b1_since_the_update",
+      "en": "since the update",
+      "pt": "desde a atualização",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "tech_b1_pp_uploaded_01",
+      "family_id": "tech_b1_pp_uploaded",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_past_participle_yet",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_past_participle",
+        "level_allows_present_perfect",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você confirma uma tarefa."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "I have already uploaded the files.",
+          "pt": "Eu já fiz upload dos arquivos.",
+          "ctx": "Você confirma uma tarefa.",
+          "blank": "uploaded",
+          "wrong": "I have already upload the files."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "template_id": "tech_b1_ppc_syncing_01",
+      "family_id": "tech_b1_ppc_syncing",
+      "primary_skill_id": "present_perfect_continuous",
+      "skill_ids": [
+        "present_perfect_continuous",
+        "gerund_after_been"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica a lentidão."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "The computer has been syncing the files for an hour.",
+          "pt": "O computador está sincronizando os arquivos há uma hora.",
+          "ctx": "Você explica a lentidão.",
+          "blank": "syncing",
+          "wrong": "The computer has been synced the files for an hour."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "template_id": "tech_b1_ppc_failing_01",
+      "family_id": "tech_b1_ppc_failing",
+      "primary_skill_id": "present_perfect_continuous",
+      "skill_ids": [
+        "present_perfect_continuous",
+        "gerund_after_been"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você abre um chamado de suporte."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "The connection has been failing since the update.",
+          "pt": "A conexão está falhando desde a atualização.",
+          "ctx": "Você abre um chamado de suporte.",
+          "blank": "failing",
+          "wrong": "The connection has been failed since the update."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "template_id": "tech_b1_cond1_restart_01",
+      "family_id": "tech_b1_cond1_restart",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "if_present_will_future",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "O suporte orienta você."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If you restart the router, the connection will come back.",
+          "pt": "Se você reiniciar o roteador, a conexão vai voltar.",
+          "ctx": "O suporte orienta você.",
+          "blank": "will come",
+          "wrong": "If you will restart the router, the connection comes back."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "template_id": "tech_b1_modal_should_backup_01",
+      "family_id": "tech_b1_modal_should_backup",
+      "primary_skill_id": "modal_verbs",
+      "skill_ids": [
+        "modal_verbs",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_modal_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você dá um conselho técnico."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "You should make a backup before the update.",
+          "pt": "Você deveria fazer um backup antes da atualização.",
+          "ctx": "Você dá um conselho técnico.",
+          "blank": "should",
+          "wrong": "You should to make a backup before the update."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "template_id": "tech_b1_q_tried_restart_01",
+      "family_id": "tech_b1_q_tried_restart",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary",
+        "present_perfect"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "O suporte técnico pergunta."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "Have you tried restarting the computer?",
+          "pt": "Você já tentou reiniciar o computador?",
+          "ctx": "O suporte técnico pergunta.",
+          "blank": "Have",
+          "wrong": "Did you tried restarting the computer?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "tech_b1_back_up",
+      "canonical": "back up the files",
+      "pt": "fazer backup dos arquivos",
+      "tags": [
+        "security"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "backup up the files wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make back the files up",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Back up the files before formatting.",
+          "pt": "Faça backup dos arquivos antes de formatar."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "tech_b1_set_up",
+      "canonical": "set up an account",
+      "pt": "criar uma conta",
+      "tags": [
+        "security"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "set an account on",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make up an account set wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "It takes two minutes to set up an account.",
+          "pt": "Leva dois minutos para criar uma conta."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "tech_b1_reset_password",
+      "canonical": "reset the password",
+      "pt": "redefinir a senha",
+      "tags": [
+        "security"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "restart the password",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "renew the password reset wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Click here to reset the password.",
+          "pt": "Clique aqui para redefinir a senha."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "tech_b1_drop_the_call",
+      "canonical": "the call dropped",
+      "pt": "a ligação caiu",
+      "tags": [
+        "calls"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "the call fell",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "the call felled down",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Sorry, the call dropped.",
+          "pt": "Desculpa, a ligação caiu."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "tech_b1_work_offline",
+      "canonical": "work offline",
+      "pt": "trabalhar offline",
+      "tags": [
+        "software"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "work in offline",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "work by offline",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The app also works offline.",
+          "pt": "O aplicativo também funciona offline."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "tech_b1_share_the_screen",
+      "canonical": "share the screen",
+      "pt": "compartilhar a tela",
+      "tags": [
+        "calls"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication",
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "divide the screen share",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "show the screen share wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Can you share the screen in the meeting?",
+          "pt": "Você pode compartilhar a tela na reunião?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B1"
+    }
+  ]
+}

@@ -1,0 +1,807 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "food_and_restaurants_b2",
+    "title": {
+      "pt": "Comida e restaurantes B2",
+      "en": "Food & Restaurants B2"
+    },
+    "theme": "food_and_restaurants",
+    "level": "B2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "food_b2_the_tasting_menu",
+      "en": "the tasting menu",
+      "pt": "o menu degustação",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "item_id": "food_b2_the_seasoning",
+      "en": "the seasoning",
+      "pt": "o tempero",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "cooking"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "item_id": "food_b2_the_supplier",
+      "en": "the supplier",
+      "pt": "o fornecedor",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "business"
+      ],
+      "forms": {
+        "singular": "supplier",
+        "plural": "suppliers"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "item_id": "food_b2_the_review",
+      "en": "the review",
+      "pt": "a avaliação",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {
+        "singular": "review",
+        "plural": "reviews"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "item_id": "food_b2_the_portion",
+      "en": "the portion",
+      "pt": "a porção",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "dishes"
+      ],
+      "forms": {
+        "singular": "portion",
+        "plural": "portions"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "item_id": "food_b2_locally_sourced",
+      "en": "locally sourced ingredients",
+      "pt": "ingredientes locais",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "cooking"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "item_id": "food_b2_season_verb",
+      "en": "season",
+      "pt": "temperar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "cooking"
+      ],
+      "forms": {
+        "participle": "seasoned"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "item_id": "food_b2_serve_verb",
+      "en": "serve",
+      "pt": "servir",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {
+        "participle": "served"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "item_id": "food_b2_source_verb",
+      "en": "source",
+      "pt": "obter (ingredientes)",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "business"
+      ],
+      "forms": {
+        "participle": "sourced"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "item_id": "food_b2_overcook_verb",
+      "en": "overcook",
+      "pt": "passar do ponto",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "participle": "overcooked"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "item_id": "food_b2_at_dinner_service",
+      "en": "during dinner service",
+      "pt": "durante o serviço do jantar",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "item_id": "food_b2_these_days",
+      "en": "these days",
+      "pt": "atualmente",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "general"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "food_b2_passive_served_01",
+      "family_id": "food_b2_passive_served",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "O garçom descreve o prato."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "The fish is served with roasted vegetables.",
+          "pt": "O peixe é servido com legumes assados.",
+          "ctx": "O garçom descreve o prato.",
+          "blank": "served",
+          "wrong": "The fish is serve with roasted vegetables."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "template_id": "food_b2_passive_sourced_01",
+      "family_id": "food_b2_passive_sourced",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você lê a apresentação do restaurante."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "All the ingredients are sourced from local farms.",
+          "pt": "Todos os ingredientes vêm de fazendas locais.",
+          "ctx": "Você lê a apresentação do restaurante.",
+          "blank": "sourced",
+          "wrong": "All the ingredients are source from local farms."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "template_id": "food_b2_reported_chef_01",
+      "family_id": "food_b2_reported_chef",
+      "primary_skill_id": "reported_speech",
+      "skill_ids": [
+        "reported_speech",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "reported_speech_statement",
+      "slots": {
+        "reporter": {
+          "source": "inline"
+        },
+        "statement": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "level_allows_reported_speech",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conta sobre um jantar especial."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "The waiter said that the chef had prepared a special menu.",
+          "pt": "O garçom disse que o chef tinha preparado um menu especial.",
+          "ctx": "Você conta sobre um jantar especial.",
+          "blank": "had prepared",
+          "wrong": "The waiter said that the chef has prepare a special menu."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "template_id": "food_b2_cond2_restaurant_01",
+      "family_id": "food_b2_cond2_restaurant",
+      "primary_skill_id": "second_conditional",
+      "skill_ids": [
+        "second_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "second_conditional",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conversa sobre gastronomia."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If I owned a restaurant, I would change the menu every season.",
+          "pt": "Se eu tivesse um restaurante, mudaria o cardápio a cada estação.",
+          "ctx": "Você conversa sobre gastronomia.",
+          "blank": "would change",
+          "wrong": "If I would own a restaurant, I will change the menu every season."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "template_id": "food_b2_deduction_busy_01",
+      "family_id": "food_b2_deduction_busy",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "modal_deduction_statement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você deduz pela fila na porta."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "The food must be good; the place is always full.",
+          "pt": "A comida deve ser boa; o lugar está sempre cheio.",
+          "ctx": "Você deduz pela fila na porta.",
+          "blank": "must",
+          "wrong": "The food must to be good; the place is always full."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "template_id": "food_b2_connector_although_01",
+      "family_id": "food_b2_connector_although",
+      "primary_skill_id": "connectors",
+      "skill_ids": [
+        "connectors",
+        "word_order"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você escreve uma avaliação."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "Although the portions are small, the flavors are amazing.",
+          "pt": "Embora as porções sejam pequenas, os sabores são incríveis.",
+          "ctx": "Você escreve uma avaliação.",
+          "blank": "Although",
+          "wrong": "However the portions are small, the flavors are amazing."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "food_b2_rave_reviews",
+      "canonical": "get rave reviews",
+      "pt": "receber ótimas avaliações",
+      "tags": [
+        "restaurant"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "get raving reviews wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "take rave reviews",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The new bistro got rave reviews.",
+          "pt": "O novo bistrô recebeu ótimas avaliações."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "food_b2_whip_up",
+      "canonical": "whip up a meal",
+      "pt": "preparar uma refeição rapidinho",
+      "tags": [
+        "cooking"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "whip a meal on",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "beat up a meal",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She whipped up a meal in twenty minutes.",
+          "pt": "Ela preparou uma refeição rapidinho em vinte minutos."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "food_b2_acquired_taste",
+      "canonical": "an acquired taste",
+      "pt": "um gosto que se aprende",
+      "tags": [
+        "preferences"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "an acquired flavor taste",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "a gained taste",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Olives are an acquired taste.",
+          "pt": "Azeitona é um gosto que se aprende."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "food_b2_work_up_an_appetite",
+      "canonical": "work up an appetite",
+      "pt": "abrir o apetite",
+      "tags": [
+        "meals"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "work an appetite up wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "build up an appetite work",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The hike helped us work up an appetite.",
+          "pt": "A trilha nos ajudou a abrir o apetite."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "food_b2_to_die_for",
+      "canonical": "a dessert to die for",
+      "pt": "uma sobremesa de comer rezando",
+      "tags": [
+        "dishes"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "a dessert to die about",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "a dessert for dying",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "They serve a chocolate cake to die for.",
+          "pt": "Eles servem um bolo de chocolate de comer rezando."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "food_b2_book_well_in_advance",
+      "canonical": "book well in advance",
+      "pt": "reservar com bastante antecedência",
+      "tags": [
+        "restaurant"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "book well with advance",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "reserve well in advantage",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "You need to book well in advance for Saturdays.",
+          "pt": "É preciso reservar com bastante antecedência para os sábados."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B2"
+    }
+  ]
+}

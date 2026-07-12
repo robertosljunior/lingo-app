@@ -1,0 +1,1222 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "core_b2",
+    "title": {
+      "pt": "Inglês essencial B2",
+      "en": "Core English B2"
+    },
+    "theme": "core",
+    "level": "B2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "core_b2_i",
+      "en": "I",
+      "pt": "eu",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_you",
+      "en": "you",
+      "pt": "você",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_he",
+      "en": "he",
+      "pt": "ele",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "third_person_requires_has"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_we",
+      "en": "we",
+      "pt": "nós",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "plural_subject_requires_have"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_they",
+      "en": "they",
+      "pt": "eles",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "plural_subject_requires_have"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_must_modal",
+      "en": "must",
+      "pt": "deve (dedução)",
+      "semantic_type": "modal",
+      "part_of_speech": "modal",
+      "tags": [
+        "deduction"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_might_modal",
+      "en": "might",
+      "pt": "pode ser que",
+      "semantic_type": "modal",
+      "part_of_speech": "modal",
+      "tags": [
+        "deduction"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_cant_modal",
+      "en": "can't",
+      "pt": "não pode ser",
+      "semantic_type": "modal",
+      "part_of_speech": "modal",
+      "tags": [
+        "deduction"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_would_modal",
+      "en": "would",
+      "pt": "iria",
+      "semantic_type": "modal",
+      "part_of_speech": "modal",
+      "tags": [
+        "conditional"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_however",
+      "en": "however",
+      "pt": "no entanto",
+      "semantic_type": "connector",
+      "part_of_speech": "adverb",
+      "tags": [
+        "contrast"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_although",
+      "en": "although",
+      "pt": "embora",
+      "semantic_type": "connector",
+      "part_of_speech": "conjunction",
+      "tags": [
+        "contrast"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_therefore",
+      "en": "therefore",
+      "pt": "portanto",
+      "semantic_type": "connector",
+      "part_of_speech": "adverb",
+      "tags": [
+        "result"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_decision",
+      "en": "the decision",
+      "pt": "a decisão",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "general"
+      ],
+      "forms": {
+        "singular": "decision",
+        "plural": "decisions"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_proposal",
+      "en": "the proposal",
+      "pt": "a proposta",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "general"
+      ],
+      "forms": {
+        "singular": "proposal",
+        "plural": "proposals"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_announce_verb",
+      "en": "announce",
+      "pt": "anunciar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "communication"
+      ],
+      "forms": {
+        "past": "announced",
+        "participle": "announced"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_approve_verb",
+      "en": "approve",
+      "pt": "aprovar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "decisions"
+      ],
+      "forms": {
+        "past": "approved",
+        "participle": "approved"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_agree_verb",
+      "en": "agree",
+      "pt": "concordar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "discussion"
+      ],
+      "forms": {},
+      "compatibility": {
+        "prepositions": [
+          "with"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "item_id": "core_b2_negotiate_verb",
+      "en": "negotiate",
+      "pt": "negociar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "negotiation"
+      ],
+      "forms": {
+        "past": "negotiated",
+        "ing": "negotiating"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "core_b2_passive_approved_01",
+      "family_id": "core_b2_passive_approved",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você comunica uma decisão oficial."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "The proposal was approved yesterday.",
+          "pt": "A proposta foi aprovada ontem.",
+          "ctx": "Você comunica uma decisão oficial.",
+          "blank": "approved",
+          "wrong": "The proposal was approve yesterday."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "template_id": "core_b2_passive_announced_01",
+      "family_id": "core_b2_passive_announced",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você informa uma data oficial."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "The results will be announced on Friday.",
+          "pt": "Os resultados serão anunciados na sexta-feira.",
+          "ctx": "Você informa uma data oficial.",
+          "blank": "announced",
+          "wrong": "The results will be announce on Friday."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "template_id": "core_b2_reported_said_01",
+      "family_id": "core_b2_reported_said",
+      "primary_skill_id": "reported_speech",
+      "skill_ids": [
+        "reported_speech",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "reported_speech_statement",
+      "slots": {
+        "reporter": {
+          "source": "inline"
+        },
+        "statement": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "level_allows_reported_speech",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você relata uma conversa."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "She said that she was busy that day.",
+          "pt": "Ela disse que estava ocupada naquele dia.",
+          "ctx": "Você relata uma conversa.",
+          "blank": "was",
+          "wrong": "She said that she is busy that day."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "template_id": "core_b2_reported_told_01",
+      "family_id": "core_b2_reported_told",
+      "primary_skill_id": "reported_speech",
+      "skill_ids": [
+        "reported_speech",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "reported_speech_statement",
+      "slots": {
+        "reporter": {
+          "source": "inline"
+        },
+        "statement": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "level_allows_reported_speech",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você repassa um recado."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "He told me that he would call later.",
+          "pt": "Ele me disse que ligaria mais tarde.",
+          "ctx": "Você repassa um recado.",
+          "blank": "would",
+          "wrong": "He told me that he will call later."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "template_id": "core_b2_cond2_lottery_01",
+      "family_id": "core_b2_cond2_lottery",
+      "primary_skill_id": "second_conditional",
+      "skill_ids": [
+        "second_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "second_conditional",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você imagina uma situação hipotética."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If I had more time, I would travel more.",
+          "pt": "Se eu tivesse mais tempo, eu viajaria mais.",
+          "ctx": "Você imagina uma situação hipotética.",
+          "blank": "would travel",
+          "wrong": "If I would have more time, I will travel more."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "template_id": "core_b2_cond2_job_01",
+      "family_id": "core_b2_cond2_job",
+      "primary_skill_id": "second_conditional",
+      "skill_ids": [
+        "second_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "second_conditional",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica um contexto hipotético."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If she worked here, she would understand the problem.",
+          "pt": "Se ela trabalhasse aqui, ela entenderia o problema.",
+          "ctx": "Você explica um contexto hipotético.",
+          "blank": "would understand",
+          "wrong": "If she would work here, she would understand the problem."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "template_id": "core_b2_deduction_must_01",
+      "family_id": "core_b2_deduction_must",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "modal_deduction_statement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você deduz algo por evidências."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "He must be very tired after the trip.",
+          "pt": "Ele deve estar muito cansado depois da viagem.",
+          "ctx": "Você deduz algo por evidências.",
+          "blank": "must",
+          "wrong": "He must to be very tired after the trip."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "template_id": "core_b2_deduction_cant_01",
+      "family_id": "core_b2_deduction_cant",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "modal_deduction_statement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você percebe algo estranho."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "That can't be the right address.",
+          "pt": "Esse não pode ser o endereço certo.",
+          "ctx": "Você percebe algo estranho.",
+          "blank": "can't",
+          "wrong": "That mustn't can be the right address."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "template_id": "core_b2_connector_however_01",
+      "family_id": "core_b2_connector_however",
+      "primary_skill_id": "connectors",
+      "skill_ids": [
+        "connectors",
+        "word_order"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pondera prós e contras."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "The plan is expensive; however, it is worth it.",
+          "pt": "O plano é caro; no entanto, vale a pena.",
+          "ctx": "Você pondera prós e contras.",
+          "blank": "however",
+          "wrong": "The plan is expensive; therefore, it is worth it."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "template_id": "core_b2_disagree_polite_01",
+      "family_id": "core_b2_disagree_polite",
+      "primary_skill_id": "modal_verbs",
+      "skill_ids": [
+        "modal_verbs",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_modal_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você discorda educadamente."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "I see your point, but I would suggest another approach.",
+          "pt": "Entendo seu ponto, mas eu sugeriria outra abordagem.",
+          "ctx": "Você discorda educadamente.",
+          "blank": "would suggest",
+          "wrong": "I see your point, but I will to suggest another approach."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "core_b2_reach_an_agreement",
+      "canonical": "reach an agreement",
+      "pt": "chegar a um acordo",
+      "tags": [
+        "negotiation"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "arrive an agreement",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make an agreement point",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Both sides finally reached an agreement.",
+          "pt": "Os dois lados finalmente chegaram a um acordo."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "core_b2_make_a_compromise",
+      "canonical": "make a compromise",
+      "pt": "fazer uma concessão",
+      "tags": [
+        "negotiation"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace",
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do a compromise",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "take a compromise",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We had to make a compromise on the price.",
+          "pt": "Tivemos que fazer uma concessão no preço."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "core_b2_take_into_account",
+      "canonical": "take into account",
+      "pt": "levar em conta",
+      "tags": [
+        "discussion"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "take in account",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "put into account",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "You should take the costs into account.",
+          "pt": "Você deveria levar os custos em conta."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "core_b2_strongly_agree",
+      "canonical": "strongly agree",
+      "pt": "concordar plenamente",
+      "tags": [
+        "opinion"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "hardly agree with support",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "agree strong",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I strongly agree with this decision.",
+          "pt": "Concordo plenamente com esta decisão."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "core_b2_raise_a_question",
+      "canonical": "raise a question",
+      "pt": "levantar uma questão",
+      "tags": [
+        "discussion"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "rise a question",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "lift a question",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She raised a question about the budget.",
+          "pt": "Ela levantou uma questão sobre o orçamento."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "core_b2_come_to_a_conclusion",
+      "canonical": "come to a conclusion",
+      "pt": "chegar a uma conclusão",
+      "tags": [
+        "discussion"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "arrive to a conclusion",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "come at a conclusion",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "After the debate, we came to a conclusion.",
+          "pt": "Depois do debate, chegamos a uma conclusão."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "core_b2_on_the_other_hand",
+      "canonical": "on the other hand",
+      "pt": "por outro lado",
+      "tags": [
+        "contrast"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life",
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "in the other hand",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "on another hand side",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "On the other hand, the price is very high.",
+          "pt": "Por outro lado, o preço é muito alto."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "core_b2_weigh_the_pros_and_cons",
+      "canonical": "weigh the pros and cons",
+      "pt": "pesar os prós e contras",
+      "tags": [
+        "decisions"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace",
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "measure the pros and cons badly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "weight the pros or cons",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Let’s weigh the pros and cons before deciding.",
+          "pt": "Vamos pesar os prós e contras antes de decidir."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B2"
+    }
+  ]
+}

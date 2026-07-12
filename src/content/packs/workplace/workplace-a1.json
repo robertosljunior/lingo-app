@@ -1,0 +1,805 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "workplace_a1",
+    "title": {
+      "pt": "Trabalho A1",
+      "en": "Workplace A1"
+    },
+    "theme": "workplace",
+    "level": "A1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "work_a1_the_office",
+      "en": "the office",
+      "pt": "o escritório",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "workplace"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "item_id": "work_a1_a_meeting",
+      "en": "a meeting",
+      "pt": "uma reunião",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "meetings"
+      ],
+      "forms": {
+        "singular": "meeting",
+        "plural": "meetings"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "item_id": "work_a1_my_boss",
+      "en": "my boss",
+      "pt": "meu chefe",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "people"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "item_id": "work_a1_a_computer",
+      "en": "a computer",
+      "pt": "um computador",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "tools"
+      ],
+      "forms": {
+        "singular": "computer",
+        "plural": "computers"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "item_id": "work_a1_an_email",
+      "en": "an email",
+      "pt": "um e-mail",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "communication"
+      ],
+      "forms": {
+        "singular": "email",
+        "plural": "emails"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "item_id": "work_a1_a_desk",
+      "en": "a desk",
+      "pt": "uma mesa de trabalho",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "office"
+      ],
+      "forms": {
+        "singular": "desk",
+        "plural": "desks"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "item_id": "work_a1_send_verb",
+      "en": "send",
+      "pt": "enviar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "communication"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "item_id": "work_a1_start_verb",
+      "en": "start",
+      "pt": "começar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "routine"
+      ],
+      "forms": {
+        "third": "starts"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "item_id": "work_a1_call_verb",
+      "en": "call",
+      "pt": "ligar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "communication"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "item_id": "work_a1_help_verb",
+      "en": "help",
+      "pt": "ajudar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "general"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "item_id": "work_a1_at_nine",
+      "en": "at nine",
+      "pt": "às nove",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "item_id": "work_a1_on_fridays",
+      "en": "on Fridays",
+      "pt": "às sextas",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "work_a1_be_manager_01",
+      "family_id": "work_a1_be_manager",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_complement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "complement": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você apresenta um colega."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "He is my manager.",
+          "pt": "Ele é meu gerente.",
+          "ctx": "Você apresenta um colega.",
+          "blank": "is",
+          "wrong": "He are my manager."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "template_id": "work_a1_sp_starts_01",
+      "family_id": "work_a1_sp_starts",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você confirma um horário."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "The meeting starts at nine.",
+          "pt": "A reunião começa às nove.",
+          "ctx": "Você confirma um horário.",
+          "blank": "starts",
+          "wrong": "The meeting start at nine."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "template_id": "work_a1_sp_work_at_01",
+      "family_id": "work_a1_sp_work_at",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "preposition"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre seu emprego."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_preposition"
+      ],
+      "variants": [
+        {
+          "en": "I work at a small company.",
+          "pt": "Eu trabalho em uma empresa pequena.",
+          "ctx": "Você fala sobre seu emprego.",
+          "blank": "at",
+          "wrong": "I work in a small company."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "template_id": "work_a1_there_meeting_01",
+      "family_id": "work_a1_there_meeting",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "verb_to_be"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "there_is_are_noun",
+      "slots": {
+        "noun": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica a agenda do time."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "There is a meeting on Fridays.",
+          "pt": "Há uma reunião às sextas.",
+          "ctx": "Você explica a agenda do time.",
+          "blank": "is",
+          "wrong": "There have a meeting on Fridays."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "template_id": "work_a1_can_send_01",
+      "family_id": "work_a1_can_send",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "question_structure"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_can_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pede algo a um colega."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Can you send the email today?",
+          "pt": "Você pode enviar o e-mail hoje?",
+          "ctx": "Você pede algo a um colega.",
+          "blank": "Can",
+          "wrong": "You can send the email today?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "template_id": "work_a1_wh_start_01",
+      "family_id": "work_a1_wh_start",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conversa com um colega novo."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "What time do you start work?",
+          "pt": "A que horas você começa a trabalhar?",
+          "ctx": "Você conversa com um colega novo.",
+          "blank": "do",
+          "wrong": "What time you start work?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "work_a1_answer_the_phone",
+      "canonical": "answer the phone",
+      "pt": "atender o telefone",
+      "tags": [
+        "communication"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "respond the phone",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "reply the phone",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She answers the phone at the front desk.",
+          "pt": "Ela atende o telefone na recepção."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "work_a1_send_an_email",
+      "canonical": "send an email",
+      "pt": "enviar um e-mail",
+      "tags": [
+        "communication"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace",
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "send an email letter wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make an email",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I send an email every morning.",
+          "pt": "Eu envio um e-mail toda manhã."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "work_a1_have_a_meeting",
+      "canonical": "have a meeting",
+      "pt": "ter uma reunião",
+      "tags": [
+        "meetings"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a meeting",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a meeting",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We have a meeting at ten.",
+          "pt": "Temos uma reunião às dez."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "work_a1_take_notes",
+      "canonical": "take notes",
+      "pt": "fazer anotações",
+      "tags": [
+        "meetings"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make notes down wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do notes",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "He takes notes in every meeting.",
+          "pt": "Ele faz anotações em toda reunião."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "work_a1_ask_a_question",
+      "canonical": "ask a question",
+      "pt": "fazer uma pergunta",
+      "tags": [
+        "communication"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a question",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a question",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Can I ask a question?",
+          "pt": "Posso fazer uma pergunta?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "work_a1_finish_work",
+      "canonical": "finish work",
+      "pt": "terminar o expediente",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "finish the work day off wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "end work out",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I finish work at six.",
+          "pt": "Eu termino o expediente às seis."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A1"
+    }
+  ]
+}

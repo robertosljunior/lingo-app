@@ -24,7 +24,7 @@ import { buildSkillEvents, aggregateSkillProfile, inferAssessedSkills, rankSkill
 import { indexQuestionSkills, buildAdaptivePracticePlan, buildLessonGenerationContext as buildAdaptiveContextPure, QUESTION_SKILL_INDEX_VERSION } from './adaptive-planner.js'
 
 const DB_NAME = 'app-idiomas'
-const DB_VERSION = 3
+const DB_VERSION = 4
 
 export const DEFAULT_PROFILE = 'default'
 
@@ -78,6 +78,41 @@ function db() {
           const s = d.createObjectStore('skill_profiles', { keyPath: 'key' })
           s.createIndex('profile_id', 'profile_id')
           s.createIndex('skill_id', 'skill_id')
+        }
+        // v4: declarative content packs (Slice 5). Non-destructive: only adds
+        // new stores; all previous stores/data stay untouched.
+        if (!d.objectStoreNames.contains('content_packs')) {
+          const s = d.createObjectStore('content_packs', { keyPath: 'pack_id' })
+          s.createIndex('theme', 'theme')
+          s.createIndex('level', 'level')
+          s.createIndex('enabled', 'enabled_index')
+          s.createIndex('source', 'source')
+          s.createIndex('theme_level', ['theme', 'level'])
+        }
+        if (!d.objectStoreNames.contains('lexical_items')) {
+          const s = d.createObjectStore('lexical_items', { keyPath: 'item_id' })
+          s.createIndex('pack_id', 'pack_id')
+          s.createIndex('theme', 'theme')
+          s.createIndex('level', 'level')
+          s.createIndex('semantic_type', 'semantic_type')
+          s.createIndex('pack_semantic', ['pack_id', 'semantic_type'])
+        }
+        if (!d.objectStoreNames.contains('template_definitions')) {
+          const s = d.createObjectStore('template_definitions', { keyPath: 'template_id' })
+          s.createIndex('pack_id', 'pack_id')
+          s.createIndex('family_id', 'family_id')
+          s.createIndex('level', 'level')
+          s.createIndex('theme', 'theme')
+          s.createIndex('primary_skill_id', 'primary_skill_id')
+          s.createIndex('pack_primary_skill', ['pack_id', 'primary_skill_id'])
+        }
+        if (!d.objectStoreNames.contains('collocations')) {
+          const s = d.createObjectStore('collocations', { keyPath: 'collocation_id' })
+          s.createIndex('pack_id', 'pack_id')
+          s.createIndex('theme', 'theme')
+          s.createIndex('level', 'level')
+          s.createIndex('canonical', 'canonical')
+          s.createIndex('pack_level', ['pack_id', 'level'])
         }
       },
     })
@@ -146,7 +181,9 @@ export async function saveLesson(lesson) {
     count: lesson.questions.length,
     created_at,
     generated: !!lesson.generated,
-    owner_profile_id: lesson.owner_profile_id || lesson.generation_metadata?.profile_id || null,
+    imported: !!lesson.imported,
+    source_lesson_id: lesson.source_lesson_id || null,
+    owner_profile_id: lesson.owner_profile_id ?? lesson.generation_metadata?.profile_id ?? null,
     generation_metadata: lesson.generation_metadata || null,
   })
   const qStore = tx.objectStore('questions')
@@ -176,6 +213,49 @@ export async function saveLesson(lesson) {
   }
   await tx.done
   return { ...lesson, created_at }
+}
+
+// ---------- Lesson import (collision-safe, Slice 5) ----------
+// Contract: importing a lesson whose lesson_id already exists must NEVER
+// overwrite the stored lesson, change its owner_profile_id, turn a private
+// lesson global, or replace its questions. Instead the imported copy gets a
+// new internal identity derived from (source id + content checksum), which is
+// stable for auditing, collision-free and idempotent: re-importing the same
+// YAML returns the already-imported copy instead of creating another one.
+function contentHash(s) {
+  let h = 2166136261
+  for (let i = 0; i < String(s).length; i++) { h ^= String(s).charCodeAt(i); h = Math.imul(h, 16777619) }
+  return (h >>> 0).toString(16).padStart(8, '0')
+}
+
+export async function importLesson(lesson) {
+  const d = await db()
+  const source_lesson_id = lesson.lesson_id
+  const checksum = contentHash(lesson.raw_content || JSON.stringify(lesson.questions))
+  const importId = `import_${(lesson.level || 'b1').toLowerCase()}_${contentHash(`${source_lesson_id}:${checksum}`)}`
+
+  // Idempotent re-import: the same YAML resolves to the same import identity.
+  const priorImport = await d.get('lessons', importId)
+  if (priorImport) return { ...(await getLesson(importId, { profile_id: priorImport.owner_profile_id || undefined })), already_imported: true }
+
+  const existing = await d.get('lessons', source_lesson_id)
+  if (!existing) {
+    // No collision: store under the original id as a global imported lesson.
+    return saveLesson({ ...lesson, owner_profile_id: null, imported: true, source_lesson_id })
+  }
+  // Collision: keep the stored lesson (private or not) 100% intact and save
+  // the imported copy under its own identity as a global lesson.
+  const copy = {
+    ...lesson,
+    lesson_id: importId,
+    imported: true,
+    source_lesson_id,
+    owner_profile_id: null,
+    generation_metadata: null,
+    generated: false,
+    questions: lesson.questions.map((q) => ({ ...q })),
+  }
+  return saveLesson(copy)
 }
 
 // Private lessons (owner_profile_id set) can only be read/removed by their
@@ -494,9 +574,88 @@ export async function getSessionSummaries(profile_id = null) {
   return out.sort((a, b) => b.answered_at - a.answered_at)
 }
 
+// ---------- Content packs (Slice 5) ----------
+// One atomic transaction covers the pack row + all its content rows: a failed
+// or invalid install leaves zero partial records and keeps the previous
+// version in place.
+export async function installContentPack({ record, lexical_items, template_definitions, collocations }) {
+  const d = await db()
+  const tx = d.transaction(['content_packs', 'lexical_items', 'template_definitions', 'collocations'], 'readwrite')
+  // A failed install aborts the transaction; swallow the expected rejection
+  // from tx.done so the abort surfaces only through the thrown error below.
+  tx.done.catch(() => {})
+  try {
+    const packs = tx.objectStore('content_packs')
+    const existing = await packs.get(record.pack_id)
+    // Remove this pack's previous content rows before writing the new set.
+    for (const [store, rows] of [['lexical_items', lexical_items], ['template_definitions', template_definitions], ['collocations', collocations]]) {
+      const s = tx.objectStore(store)
+      const oldKeys = await s.index('pack_id').getAllKeys(record.pack_id)
+      for (const k of oldKeys) await s.delete(k)
+      for (const row of rows) await s.put({ ...row, pack_id: record.pack_id })
+    }
+    await packs.put({
+      ...record,
+      enabled_index: record.enabled ? 1 : 0,
+      installed_at: existing?.installed_at || record.installed_at || new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    })
+    await tx.done
+    return true
+  } catch (e) {
+    try { tx.abort() } catch { /* already aborted */ }
+    throw e
+  }
+}
+
+export async function getContentPackRecord(pack_id) {
+  const d = await db()
+  return (await d.get('content_packs', pack_id)) || null
+}
+
+export async function getAllContentPackRecords() {
+  const d = await db()
+  return d.getAll('content_packs')
+}
+
+export async function getContentPackRecordsByThemeAndLevel(theme, level) {
+  const d = await db()
+  return d.getAllFromIndex('content_packs', 'theme_level', [theme, level])
+}
+
+export async function setContentPackEnabled(pack_id, enabled) {
+  const d = await db()
+  const rec = await d.get('content_packs', pack_id)
+  if (!rec) return null
+  const next = { ...rec, enabled: !!enabled, enabled_index: enabled ? 1 : 0, updated_at: new Date().toISOString() }
+  await d.put('content_packs', next)
+  return next
+}
+
+export async function getLexicalItemsForPackIds(packIds) {
+  const d = await db()
+  const out = []
+  for (const id of packIds) out.push(...await d.getAllFromIndex('lexical_items', 'pack_id', id))
+  return out
+}
+
+export async function getTemplatesForPackIds(packIds) {
+  const d = await db()
+  const out = []
+  for (const id of packIds) out.push(...await d.getAllFromIndex('template_definitions', 'pack_id', id))
+  return out
+}
+
+export async function getCollocationsForPackIds(packIds) {
+  const d = await db()
+  const out = []
+  for (const id of packIds) out.push(...await d.getAllFromIndex('collocations', 'pack_id', id))
+  return out
+}
+
 export async function wipeAll() {
   const d = await db()
-  const stores = ['lessons', 'questions', 'answers', 'mistakes', 'profiles', 'srs', 'settings', 'skill_events', 'skill_profiles']
+  const stores = ['lessons', 'questions', 'answers', 'mistakes', 'profiles', 'srs', 'settings', 'skill_events', 'skill_profiles', 'content_packs', 'lexical_items', 'template_definitions', 'collocations']
   const tx = d.transaction(stores, 'readwrite')
   for (const name of stores) {
     await tx.objectStore(name).clear()

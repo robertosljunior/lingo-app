@@ -1,0 +1,793 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "daily_life_a1",
+    "title": {
+      "pt": "Vida cotidiana A1",
+      "en": "Daily Life A1"
+    },
+    "theme": "daily_life",
+    "level": "A1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "daily_a1_breakfast",
+      "en": "breakfast",
+      "pt": "café da manhã",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun",
+      "tags": [
+        "routine"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "item_id": "daily_a1_the_bus",
+      "en": "the bus",
+      "pt": "o ônibus",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "transport"
+      ],
+      "forms": {
+        "singular": "bus",
+        "plural": "buses"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "item_id": "daily_a1_the_kitchen",
+      "en": "the kitchen",
+      "pt": "a cozinha",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "home"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "item_id": "daily_a1_my_house",
+      "en": "my house",
+      "pt": "minha casa",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "home"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "item_id": "daily_a1_the_supermarket",
+      "en": "the supermarket",
+      "pt": "o supermercado",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "errands"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "item_id": "daily_a1_dinner",
+      "en": "dinner",
+      "pt": "o jantar",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun",
+      "tags": [
+        "routine"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "item_id": "daily_a1_get_up_verb",
+      "en": "get up",
+      "pt": "levantar-se",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "routine"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "item_id": "daily_a1_clean_verb",
+      "en": "clean",
+      "pt": "limpar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "chores"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "item_id": "daily_a1_cook_verb",
+      "en": "cook",
+      "pt": "cozinhar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "chores"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "item_id": "daily_a1_walk_verb",
+      "en": "walk",
+      "pt": "caminhar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "routine"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "item_id": "daily_a1_in_the_morning",
+      "en": "in the morning",
+      "pt": "de manhã",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "item_id": "daily_a1_at_night",
+      "en": "at night",
+      "pt": "à noite",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "A1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "daily_a1_be_home_01",
+      "family_id": "daily_a1_be_home",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_complement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "complement": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você diz onde está."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "I am at home now.",
+          "pt": "Eu estou em casa agora.",
+          "ctx": "Você diz onde está.",
+          "blank": "am",
+          "wrong": "I is at home now."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "template_id": "daily_a1_sp_breakfast_01",
+      "family_id": "daily_a1_sp_breakfast",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você descreve a rotina de casa."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "She makes breakfast in the morning.",
+          "pt": "Ela faz o café da manhã de manhã.",
+          "ctx": "Você descreve a rotina de casa.",
+          "blank": "makes",
+          "wrong": "She make breakfast in the morning."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "template_id": "daily_a1_sp_bus_01",
+      "family_id": "daily_a1_sp_bus",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "preposition"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre transporte."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_preposition"
+      ],
+      "variants": [
+        {
+          "en": "I go to work by bus.",
+          "pt": "Eu vou para o trabalho de ônibus.",
+          "ctx": "Você fala sobre transporte.",
+          "blank": "by",
+          "wrong": "I go to work with bus."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "template_id": "daily_a1_there_kitchen_01",
+      "family_id": "daily_a1_there_kitchen",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "verb_to_be"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "there_is_are_noun",
+      "slots": {
+        "noun": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você descreve sua casa."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "There is a table in the kitchen.",
+          "pt": "Há uma mesa na cozinha.",
+          "ctx": "Você descreve sua casa.",
+          "blank": "is",
+          "wrong": "There are a table in the kitchen."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "template_id": "daily_a1_can_clean_01",
+      "family_id": "daily_a1_can_clean",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_can_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você divide as tarefas de casa."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Can you clean the kitchen today?",
+          "pt": "Você pode limpar a cozinha hoje?",
+          "ctx": "Você divide as tarefas de casa.",
+          "blank": "Can",
+          "wrong": "You can clean the kitchen today, yes?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "template_id": "daily_a1_wh_dinner_01",
+      "family_id": "daily_a1_wh_dinner",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pergunta sobre a rotina."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "What time do you have dinner?",
+          "pt": "A que horas você janta?",
+          "ctx": "Você pergunta sobre a rotina.",
+          "blank": "do",
+          "wrong": "What time you have dinner?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "daily_a1_make_the_bed",
+      "canonical": "make the bed",
+      "pt": "arrumar a cama",
+      "tags": [
+        "chores"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do the bed",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "clean the bed up",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I make the bed every morning.",
+          "pt": "Eu arrumo a cama toda manhã."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "daily_a1_wash_the_dishes",
+      "canonical": "wash the dishes",
+      "pt": "lavar a louça",
+      "tags": [
+        "chores"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "clean the dishes water",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "wash up the dish plates wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "He washes the dishes after dinner.",
+          "pt": "Ele lava a louça depois do jantar."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "daily_a1_go_home",
+      "canonical": "go home",
+      "pt": "ir para casa",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "go to home",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "go at home",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I go home at six.",
+          "pt": "Eu vou para casa às seis."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "daily_a1_have_lunch",
+      "canonical": "have lunch",
+      "pt": "almoçar",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do lunch",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make a lunch break wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We have lunch at noon.",
+          "pt": "Nós almoçamos ao meio-dia."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "daily_a1_brush_my_teeth",
+      "canonical": "brush my teeth",
+      "pt": "escovar os dentes",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "wash my teeth",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "clean my teeth brush",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I brush my teeth at night.",
+          "pt": "Eu escovo os dentes à noite."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "daily_a1_take_the_dog_out",
+      "canonical": "take the dog out",
+      "pt": "levar o cachorro para passear",
+      "tags": [
+        "chores"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "put the dog out walk",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "bring the dog to out",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She takes the dog out in the morning.",
+          "pt": "Ela leva o cachorro para passear de manhã."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "A1"
+    }
+  ]
+}

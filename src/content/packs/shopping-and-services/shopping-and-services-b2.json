@@ -1,0 +1,807 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "shopping_and_services_b2",
+    "title": {
+      "pt": "Compras e serviços B2",
+      "en": "Shopping & Services B2"
+    },
+    "theme": "shopping_and_services",
+    "level": "B2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "shop_b2_the_terms",
+      "en": "the terms and conditions",
+      "pt": "os termos e condições",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "services"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "item_id": "shop_b2_the_policy",
+      "en": "the return policy",
+      "pt": "a política de devolução",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "returns"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "item_id": "shop_b2_the_subscription",
+      "en": "the subscription",
+      "pt": "a assinatura",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "services"
+      ],
+      "forms": {
+        "singular": "subscription",
+        "plural": "subscriptions"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "item_id": "shop_b2_the_overcharge",
+      "en": "the overcharge",
+      "pt": "a cobrança indevida",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "problems"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "item_id": "shop_b2_the_retailer",
+      "en": "the retailer",
+      "pt": "o varejista",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "business"
+      ],
+      "forms": {
+        "singular": "retailer",
+        "plural": "retailers"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "item_id": "shop_b2_the_consumer",
+      "en": "the consumer",
+      "pt": "o consumidor",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "business"
+      ],
+      "forms": {
+        "singular": "consumer",
+        "plural": "consumers"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "item_id": "shop_b2_refund_verb",
+      "en": "refund",
+      "pt": "reembolsar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "returns"
+      ],
+      "forms": {
+        "participle": "refunded"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "item_id": "shop_b2_process_verb",
+      "en": "process",
+      "pt": "processar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "services"
+      ],
+      "forms": {
+        "participle": "processed"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "item_id": "shop_b2_dispute_verb",
+      "en": "dispute",
+      "pt": "contestar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "past": "disputed"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "item_id": "shop_b2_cancel_verb",
+      "en": "cancel",
+      "pt": "cancelar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "services"
+      ],
+      "forms": {
+        "participle": "canceled"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "item_id": "shop_b2_within_thirty_days",
+      "en": "within thirty days",
+      "pt": "em até trinta dias",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "services"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "item_id": "shop_b2_upon_request",
+      "en": "upon request",
+      "pt": "mediante solicitação",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "services"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "shop_b2_passive_refunded_01",
+      "family_id": "shop_b2_passive_refunded",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "O atendente confirma o estorno."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "The amount will be refunded within thirty days.",
+          "pt": "O valor será reembolsado em até trinta dias.",
+          "ctx": "O atendente confirma o estorno.",
+          "blank": "refunded",
+          "wrong": "The amount will be refund within thirty days."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "template_id": "shop_b2_passive_processed_01",
+      "family_id": "shop_b2_passive_processed",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você recebe uma atualização do suporte."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "Your request is being processed by our team.",
+          "pt": "Sua solicitação está sendo processada pela nossa equipe.",
+          "ctx": "Você recebe uma atualização do suporte.",
+          "blank": "processed",
+          "wrong": "Your request is being process by our team."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "template_id": "shop_b2_reported_manager_01",
+      "family_id": "shop_b2_reported_manager",
+      "primary_skill_id": "reported_speech",
+      "skill_ids": [
+        "reported_speech",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "reported_speech_statement",
+      "slots": {
+        "reporter": {
+          "source": "inline"
+        },
+        "statement": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "level_allows_reported_speech",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você relata o que ouviu na loja."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "The manager said that the policy had changed last month.",
+          "pt": "O gerente disse que a política tinha mudado no mês passado.",
+          "ctx": "Você relata o que ouviu na loja.",
+          "blank": "had changed",
+          "wrong": "The manager said that the policy has change last month."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "template_id": "shop_b2_cond2_price_01",
+      "family_id": "shop_b2_cond2_price",
+      "primary_skill_id": "second_conditional",
+      "skill_ids": [
+        "second_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "second_conditional",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você negocia com o vendedor."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If the price were lower, I would buy two of them.",
+          "pt": "Se o preço fosse mais baixo, eu compraria dois.",
+          "ctx": "Você negocia com o vendedor.",
+          "blank": "would buy",
+          "wrong": "If the price would be lower, I will buy two of them."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "template_id": "shop_b2_deduction_error_01",
+      "family_id": "shop_b2_deduction_error",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "modal_deduction_statement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você contesta uma fatura."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "This charge must be a mistake; I canceled the subscription.",
+          "pt": "Esta cobrança deve ser um engano; eu cancelei a assinatura.",
+          "ctx": "Você contesta uma fatura.",
+          "blank": "must",
+          "wrong": "This charge must to be a mistake; I canceled the subscription."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "template_id": "shop_b2_connector_however_01",
+      "family_id": "shop_b2_connector_however",
+      "primary_skill_id": "connectors",
+      "skill_ids": [
+        "connectors",
+        "word_order"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você escreve uma avaliação equilibrada."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "The product is excellent; however, the delivery was very slow.",
+          "pt": "O produto é excelente; no entanto, a entrega foi muito lenta.",
+          "ctx": "Você escreve uma avaliação equilibrada.",
+          "blank": "however",
+          "wrong": "The product is excellent; therefore, the delivery was very slow."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "shop_b2_lodge_a_complaint",
+      "canonical": "lodge a formal complaint",
+      "pt": "registrar uma reclamação formal",
+      "tags": [
+        "problems"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "lodge a complain formally",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "put a formal complaint lodge wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She lodged a formal complaint with the retailer.",
+          "pt": "Ela registrou uma reclamação formal junto ao varejista."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "shop_b2_money_back",
+      "canonical": "get your money back",
+      "pt": "receber o dinheiro de volta",
+      "tags": [
+        "returns"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "take your money back get wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "win your money back",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "You are entitled to get your money back.",
+          "pt": "Você tem direito a receber o dinheiro de volta."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "shop_b2_cooling_off_period",
+      "canonical": "a cooling-off period",
+      "pt": "um prazo de arrependimento",
+      "tags": [
+        "returns"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "a cooling period off",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "a cold-off period",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The law guarantees a seven-day cooling-off period.",
+          "pt": "A lei garante um prazo de arrependimento de sete dias."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "shop_b2_hidden_fees",
+      "canonical": "hidden fees",
+      "pt": "taxas escondidas",
+      "tags": [
+        "payment"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "hided fees",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "hidden taxes fees wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Watch out for hidden fees in the contract.",
+          "pt": "Cuidado com taxas escondidas no contrato."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "shop_b2_price_match",
+      "canonical": "match the price",
+      "pt": "cobrir o preço",
+      "tags": [
+        "price"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "match with the price",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "equal the price match wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The store agreed to match the online price.",
+          "pt": "A loja concordou em cobrir o preço da internet."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "shop_b2_take_it_up_with",
+      "canonical": "take it up with the manager",
+      "pt": "levar a questão ao gerente",
+      "tags": [
+        "problems"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "take it on with the manager",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "bring it up to with the manager wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "If they refuse, take it up with the manager.",
+          "pt": "Se eles recusarem, leve a questão ao gerente."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B2"
+    }
+  ]
+}

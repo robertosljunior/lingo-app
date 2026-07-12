@@ -1,0 +1,802 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "food_and_restaurants_a1",
+    "title": {
+      "pt": "Comida e restaurantes A1",
+      "en": "Food & Restaurants A1"
+    },
+    "theme": "food_and_restaurants",
+    "level": "A1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "food_a1_the_menu",
+      "en": "the menu",
+      "pt": "o cardápio",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "item_id": "food_a1_a_coffee",
+      "en": "a coffee",
+      "pt": "um café",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "drinks"
+      ],
+      "forms": {
+        "singular": "coffee",
+        "plural": "coffees"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "item_id": "food_a1_the_bill",
+      "en": "the bill",
+      "pt": "a conta",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "payment"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "item_id": "food_a1_a_table",
+      "en": "a table",
+      "pt": "uma mesa",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {
+        "singular": "table",
+        "plural": "tables"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "item_id": "food_a1_a_salad",
+      "en": "a salad",
+      "pt": "uma salada",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "dishes"
+      ],
+      "forms": {
+        "singular": "salad",
+        "plural": "salads"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "item_id": "food_a1_water",
+      "en": "some water",
+      "pt": "um pouco de água",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "drinks"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "item_id": "food_a1_order_verb",
+      "en": "order",
+      "pt": "pedir",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "item_id": "food_a1_like_verb",
+      "en": "like",
+      "pt": "gostar de",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "preferences"
+      ],
+      "forms": {
+        "third": "likes"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "item_id": "food_a1_want_verb",
+      "en": "want",
+      "pt": "querer",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "preferences"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "item_id": "food_a1_eat_verb",
+      "en": "eat",
+      "pt": "comer",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "general"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "item_id": "food_a1_for_lunch",
+      "en": "for lunch",
+      "pt": "no almoço",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "meals"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "item_id": "food_a1_for_two",
+      "en": "for two people",
+      "pt": "para duas pessoas",
+      "semantic_type": "quantity",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "food_a1_be_delicious_01",
+      "family_id": "food_a1_be_delicious",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_complement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "complement": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você comenta a comida."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "The salad is delicious.",
+          "pt": "A salada está deliciosa.",
+          "ctx": "Você comenta a comida.",
+          "blank": "is",
+          "wrong": "The salad are delicious."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "template_id": "food_a1_sp_likes_01",
+      "family_id": "food_a1_sp_likes",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre preferências."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "She likes Italian food.",
+          "pt": "Ela gosta de comida italiana.",
+          "ctx": "Você fala sobre preferências.",
+          "blank": "likes",
+          "wrong": "She like Italian food."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "template_id": "food_a1_there_table_01",
+      "family_id": "food_a1_there_table",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "verb_to_be"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "there_is_are_noun",
+      "slots": {
+        "noun": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você chega ao restaurante."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "There is a table for two people.",
+          "pt": "Há uma mesa para duas pessoas.",
+          "ctx": "Você chega ao restaurante.",
+          "blank": "is",
+          "wrong": "There have a table for two people."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "template_id": "food_a1_can_menu_01",
+      "family_id": "food_a1_can_menu",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "question_structure"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_can_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você acabou de sentar no restaurante."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Can I see the menu, please?",
+          "pt": "Posso ver o cardápio, por favor?",
+          "ctx": "Você acabou de sentar no restaurante.",
+          "blank": "Can",
+          "wrong": "I can see the menu, please?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "template_id": "food_a1_wh_want_01",
+      "family_id": "food_a1_wh_want",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você decide onde comer com um amigo."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "What do you want for lunch?",
+          "pt": "O que você quer no almoço?",
+          "ctx": "Você decide onde comer com um amigo.",
+          "blank": "do",
+          "wrong": "What you want for lunch?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "template_id": "food_a1_sp_order_01",
+      "family_id": "food_a1_sp_order",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você faz seu pedido no balcão."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_article"
+      ],
+      "variants": [
+        {
+          "en": "I want a coffee and a sandwich.",
+          "pt": "Eu quero um café e um sanduíche.",
+          "ctx": "Você faz seu pedido no balcão.",
+          "blank": "a",
+          "wrong": "I want the a coffee and a sandwich."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "food_a1_order_food",
+      "canonical": "order food",
+      "pt": "pedir comida",
+      "tags": [
+        "restaurant"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "ask food",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "demand food order",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We order food from the app.",
+          "pt": "Nós pedimos comida pelo aplicativo."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "food_a1_the_bill_please",
+      "canonical": "the bill, please",
+      "pt": "a conta, por favor",
+      "tags": [
+        "payment"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "the account, please",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "the payment paper, please",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Excuse me, the bill, please.",
+          "pt": "Com licença, a conta, por favor."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "food_a1_have_dinner",
+      "canonical": "have dinner",
+      "pt": "jantar",
+      "tags": [
+        "meals"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants",
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make dinner meal wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do dinner",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We have dinner at eight.",
+          "pt": "Nós jantamos às oito."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "food_a1_a_glass_of_water",
+      "canonical": "a glass of water",
+      "pt": "um copo de água",
+      "tags": [
+        "drinks"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "a cup of water glass",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "a glass with water wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Can I have a glass of water?",
+          "pt": "Pode me trazer um copo de água?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "food_a1_fast_food",
+      "canonical": "eat fast food",
+      "pt": "comer fast food",
+      "tags": [
+        "meals"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "eat quick food",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "eat a fast food",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "They eat fast food on Fridays.",
+          "pt": "Eles comem fast food às sextas."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "food_a1_take_away",
+      "canonical": "take away",
+      "pt": "para viagem",
+      "tags": [
+        "restaurant"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "take to away",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "bring away",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Two coffees to take away, please.",
+          "pt": "Dois cafés para viagem, por favor."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A1"
+    }
+  ]
+}

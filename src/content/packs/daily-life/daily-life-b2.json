@@ -1,0 +1,804 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "daily_life_b2",
+    "title": {
+      "pt": "Vida cotidiana B2",
+      "en": "Daily Life B2"
+    },
+    "theme": "daily_life",
+    "level": "B2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "daily_b2_the_lease",
+      "en": "the lease",
+      "pt": "o contrato de aluguel",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "home"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "item_id": "daily_b2_the_utilities",
+      "en": "the utility bills",
+      "pt": "as contas de consumo",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "home"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "item_id": "daily_b2_the_renovation",
+      "en": "the renovation",
+      "pt": "a reforma",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "home"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "item_id": "daily_b2_work_life_balance",
+      "en": "work-life balance",
+      "pt": "equilíbrio entre trabalho e vida",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "lifestyle"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "item_id": "daily_b2_the_lifestyle",
+      "en": "the lifestyle",
+      "pt": "o estilo de vida",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "lifestyle"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "item_id": "daily_b2_the_habit",
+      "en": "the habit",
+      "pt": "o hábito",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "routine"
+      ],
+      "forms": {
+        "singular": "habit",
+        "plural": "habits"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "item_id": "daily_b2_renovate_verb",
+      "en": "renovate",
+      "pt": "reformar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "home"
+      ],
+      "forms": {
+        "participle": "renovated"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "item_id": "daily_b2_postpone_verb",
+      "en": "postpone",
+      "pt": "adiar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "plans"
+      ],
+      "forms": {
+        "past": "postponed",
+        "participle": "postponed"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "item_id": "daily_b2_mention_verb",
+      "en": "mention",
+      "pt": "mencionar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "communication"
+      ],
+      "forms": {
+        "past": "mentioned"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "item_id": "daily_b2_afford_verb",
+      "en": "afford",
+      "pt": "poder pagar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "money"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "item_id": "daily_b2_nowadays",
+      "en": "nowadays",
+      "pt": "hoje em dia",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb",
+      "tags": [
+        "general"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "item_id": "daily_b2_in_the_long_run",
+      "en": "in the long run",
+      "pt": "no longo prazo",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "general"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "daily_b2_passive_renovated_01",
+      "family_id": "daily_b2_passive_renovated",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica a bagunça em casa."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "Our apartment is being renovated this month.",
+          "pt": "Nosso apartamento está sendo reformado este mês.",
+          "ctx": "Você explica a bagunça em casa.",
+          "blank": "renovated",
+          "wrong": "Our apartment is being renovate this month."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "template_id": "daily_b2_reported_neighbor_01",
+      "family_id": "daily_b2_reported_neighbor",
+      "primary_skill_id": "reported_speech",
+      "skill_ids": [
+        "reported_speech",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "reported_speech_statement",
+      "slots": {
+        "reporter": {
+          "source": "inline"
+        },
+        "statement": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "level_allows_reported_speech",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você relata uma conversa do prédio."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "The neighbor said that the noise had stopped.",
+          "pt": "O vizinho disse que o barulho tinha parado.",
+          "ctx": "Você relata uma conversa do prédio.",
+          "blank": "had stopped",
+          "wrong": "The neighbor said that the noise has stop."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "template_id": "daily_b2_cond2_city_01",
+      "family_id": "daily_b2_cond2_city",
+      "primary_skill_id": "second_conditional",
+      "skill_ids": [
+        "second_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "second_conditional",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você imagina outra rotina."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If I lived closer to work, I would walk every day.",
+          "pt": "Se eu morasse mais perto do trabalho, eu iria a pé todos os dias.",
+          "ctx": "Você imagina outra rotina.",
+          "blank": "would walk",
+          "wrong": "If I would live closer to work, I will walk every day."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "template_id": "daily_b2_deduction_lights_01",
+      "family_id": "daily_b2_deduction_lights",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "modal_deduction_statement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você deduz algo sobre os vizinhos."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "They must be on vacation; the lights are always off.",
+          "pt": "Eles devem estar de férias; as luzes estão sempre apagadas.",
+          "ctx": "Você deduz algo sobre os vizinhos.",
+          "blank": "must",
+          "wrong": "They must to be on vacation; the lights are always off."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "template_id": "daily_b2_connector_although_01",
+      "family_id": "daily_b2_connector_although",
+      "primary_skill_id": "connectors",
+      "skill_ids": [
+        "connectors",
+        "word_order"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pondera sobre onde morar."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "Although the rent is high, the neighborhood is worth it.",
+          "pt": "Embora o aluguel seja alto, o bairro vale a pena.",
+          "ctx": "Você pondera sobre onde morar.",
+          "blank": "Although",
+          "wrong": "However the rent is high, the neighborhood is worth it."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "template_id": "daily_b2_modal_balance_01",
+      "family_id": "daily_b2_modal_balance",
+      "primary_skill_id": "modal_verbs",
+      "skill_ids": [
+        "modal_verbs",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_modal_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você reflete sobre estilo de vida."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "We should try to improve our work-life balance.",
+          "pt": "Deveríamos tentar melhorar nosso equilíbrio entre trabalho e vida.",
+          "ctx": "Você reflete sobre estilo de vida.",
+          "blank": "should",
+          "wrong": "We should to try to improve our work-life balance."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "daily_b2_make_ends_meet",
+      "canonical": "make ends meet",
+      "pt": "fechar as contas do mês",
+      "tags": [
+        "money"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make ends match",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do ends meet",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "With two jobs, they barely make ends meet.",
+          "pt": "Com dois empregos, eles mal fecham as contas do mês."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "daily_b2_settle_into",
+      "canonical": "settle into a routine",
+      "pt": "adaptar-se a uma rotina",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "settle on a routine wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "sit into a routine",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "It took me weeks to settle into a routine.",
+          "pt": "Levei semanas para me adaptar a uma rotina."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "daily_b2_put_off",
+      "canonical": "put off a decision",
+      "pt": "adiar uma decisão",
+      "tags": [
+        "plans"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "put a decision away wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "push off a decision",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We keep putting off the decision about moving.",
+          "pt": "Continuamos adiando a decisão sobre a mudança."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "daily_b2_keep_up_with",
+      "canonical": "keep up with the bills",
+      "pt": "dar conta das contas",
+      "tags": [
+        "money"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "keep on with the bills",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "hold up with the bills",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "It is hard to keep up with the bills nowadays.",
+          "pt": "Está difícil dar conta das contas hoje em dia."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "daily_b2_take_on",
+      "canonical": "take on more responsibility",
+      "pt": "assumir mais responsabilidade",
+      "tags": [
+        "lifestyle"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life",
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "take more responsibility on top wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "get on more responsibility",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She took on more responsibility at home.",
+          "pt": "Ela assumiu mais responsabilidade em casa."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "daily_b2_wind_down",
+      "canonical": "wind down after work",
+      "pt": "relaxar depois do trabalho",
+      "tags": [
+        "lifestyle"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "wind off after work",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "turn down after work relaxing",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I listen to music to wind down after work.",
+          "pt": "Eu ouço música para relaxar depois do trabalho."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B2"
+    }
+  ]
+}

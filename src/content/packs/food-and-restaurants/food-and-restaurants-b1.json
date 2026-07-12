@@ -1,0 +1,826 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "food_and_restaurants_b1",
+    "title": {
+      "pt": "Comida e restaurantes B1",
+      "en": "Food & Restaurants B1"
+    },
+    "theme": "food_and_restaurants",
+    "level": "B1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "food_b1_the_reservation",
+      "en": "the reservation",
+      "pt": "a reserva",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "item_id": "food_b1_the_chef",
+      "en": "the chef",
+      "pt": "o chef",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "item_id": "food_b1_the_specials",
+      "en": "the specials",
+      "pt": "os pratos do dia",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "dishes"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "item_id": "food_b1_a_food_allergy",
+      "en": "a food allergy",
+      "pt": "uma alergia alimentar",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "preferences"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "item_id": "food_b1_the_service",
+      "en": "the service",
+      "pt": "o atendimento",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "item_id": "food_b1_the_dish",
+      "en": "the dish",
+      "pt": "o prato",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "dishes"
+      ],
+      "forms": {
+        "singular": "dish",
+        "plural": "dishes"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "item_id": "food_b1_wait_verb",
+      "en": "wait",
+      "pt": "esperar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {
+        "ing": "waiting"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "item_id": "food_b1_prepare_verb",
+      "en": "prepare",
+      "pt": "preparar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "cooking"
+      ],
+      "forms": {
+        "ing": "preparing",
+        "participle": "prepared"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "item_id": "food_b1_complain_verb",
+      "en": "complain",
+      "pt": "reclamar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {},
+      "compatibility": {
+        "prepositions": [
+          "about"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "item_id": "food_b1_avoid_verb",
+      "en": "avoid",
+      "pt": "evitar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "preferences"
+      ],
+      "forms": {
+        "ing": "avoiding"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "item_id": "food_b1_for_twenty_minutes",
+      "en": "for twenty minutes",
+      "pt": "há vinte minutos",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "item_id": "food_b1_since_we_arrived",
+      "en": "since we arrived",
+      "pt": "desde que chegamos",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "food_b1_pp_ordered_01",
+      "family_id": "food_b1_pp_ordered",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_past_participle_yet",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_past_participle",
+        "level_allows_present_perfect",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você chega atrasado ao restaurante."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "Have you ordered yet?",
+          "pt": "Você já pediu?",
+          "ctx": "Você chega atrasado ao restaurante.",
+          "blank": "Have",
+          "wrong": "Did you ordered yet?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "template_id": "food_b1_ppc_waiting_food_01",
+      "family_id": "food_b1_ppc_waiting_food",
+      "primary_skill_id": "present_perfect_continuous",
+      "skill_ids": [
+        "present_perfect_continuous",
+        "gerund_after_been"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você chama o garçom educadamente."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "We have been waiting for our food for twenty minutes.",
+          "pt": "Estamos esperando nossa comida há vinte minutos.",
+          "ctx": "Você chama o garçom educadamente.",
+          "blank": "waiting",
+          "wrong": "We have been waited for our food for twenty minutes."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "template_id": "food_b1_cond1_dessert_01",
+      "family_id": "food_b1_cond1_dessert",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "if_present_will_future",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você negocia com uma criança."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If you finish your plate, we will order dessert.",
+          "pt": "Se você terminar seu prato, vamos pedir sobremesa.",
+          "ctx": "Você negocia com uma criança.",
+          "blank": "will order",
+          "wrong": "If you will finish your plate, we order dessert."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "template_id": "food_b1_modal_should_try_01",
+      "family_id": "food_b1_modal_should_try",
+      "primary_skill_id": "modal_verbs",
+      "skill_ids": [
+        "modal_verbs",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_modal_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "O garçom faz uma sugestão."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "You should try the specials today.",
+          "pt": "Você deveria experimentar os pratos do dia hoje.",
+          "ctx": "O garçom faz uma sugestão.",
+          "blank": "should",
+          "wrong": "You should to try the specials today."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "template_id": "food_b1_q_allergy_01",
+      "family_id": "food_b1_q_allergy",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você avisa sobre uma alergia."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "Does this dish contain any nuts?",
+          "pt": "Este prato contém castanhas?",
+          "ctx": "Você avisa sobre uma alergia.",
+          "blank": "Does",
+          "wrong": "Do this dish contains any nuts?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "template_id": "food_b1_rel_dish_01",
+      "family_id": "food_b1_rel_dish",
+      "primary_skill_id": "relative_clauses",
+      "skill_ids": [
+        "relative_clauses",
+        "word_order"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "relative_clause_basic",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "clause": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você faz uma reclamação educada."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "The dish that I ordered was cold.",
+          "pt": "O prato que eu pedi estava frio.",
+          "ctx": "Você faz uma reclamação educada.",
+          "blank": "that",
+          "wrong": "The dish who I ordered was cold."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "food_b1_make_a_complaint",
+      "canonical": "make a complaint",
+      "pt": "fazer uma reclamação",
+      "tags": [
+        "problems"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants",
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do a complaint",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "give a complaint",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We made a complaint about the cold food.",
+          "pt": "Fizemos uma reclamação sobre a comida fria."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "food_b1_on_the_house",
+      "canonical": "on the house",
+      "pt": "por conta da casa",
+      "tags": [
+        "restaurant"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "on the home",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "by the house free",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The dessert is on the house.",
+          "pt": "A sobremesa é por conta da casa."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "food_b1_cut_back_on",
+      "canonical": "cut back on salt",
+      "pt": "reduzir o sal",
+      "tags": [
+        "health"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants",
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "cut salt back off wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "cut behind on salt",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The doctor told me to cut back on salt.",
+          "pt": "O médico me disse para reduzir o sal."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "food_b1_help_yourself",
+      "canonical": "help yourself",
+      "pt": "sirva-se",
+      "tags": [
+        "meals"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "serve yourself help",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "help you with self",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Help yourself to some salad.",
+          "pt": "Sirva-se de salada."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "food_b1_send_back",
+      "canonical": "send the dish back",
+      "pt": "devolver o prato",
+      "tags": [
+        "problems"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "send back the dish return wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "give the dish back return",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She sent the dish back because it was cold.",
+          "pt": "Ela devolveu o prato porque estava frio."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "food_b1_food_goes_off",
+      "canonical": "the food goes off",
+      "pt": "a comida estraga",
+      "tags": [
+        "cooking"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "the food goes bad off wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "the food turns off",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Fish goes off quickly in the heat.",
+          "pt": "Peixe estraga rápido no calor."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "B1"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import { validateLesson } from '../lib/lesson-parser.js'
 import { SAMPLE_YAML } from '../lib/sample-lesson.js'
 
 export default function Import() {
-  const { back, saveLesson, startLesson, showToast } = useApp()
+  const { back, importLesson, startLesson, showToast } = useApp()
   const [text, setText] = useState(SAMPLE_YAML)
   const [result, setResult] = useState(null) // { ok, summary } | { ok:false, error, line }
 
@@ -14,8 +14,8 @@ export default function Import() {
   const saveAndStart = async () => {
     const v = result && result.ok ? result : validateLesson(text)
     if (!v.ok) { setResult(v); return }
-    const saved = await saveLesson(v.lesson)
-    showToast('Aula salva')
+    const saved = await importLesson(v.lesson)
+    showToast(saved.already_imported ? 'Aula já importada' : 'Aula salva')
     startLesson(saved)
   }
 

@@ -1,0 +1,805 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "technology_and_communication_a1",
+    "title": {
+      "pt": "Tecnologia e comunicação A1",
+      "en": "Technology & Communication A1"
+    },
+    "theme": "technology_and_communication",
+    "level": "A1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "tech_a1_a_phone",
+      "en": "a phone",
+      "pt": "um celular",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "devices"
+      ],
+      "forms": {
+        "singular": "phone",
+        "plural": "phones"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "item_id": "tech_a1_the_internet",
+      "en": "the internet",
+      "pt": "a internet",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "internet"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "item_id": "tech_a1_a_message",
+      "en": "a message",
+      "pt": "uma mensagem",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "messages"
+      ],
+      "forms": {
+        "singular": "message",
+        "plural": "messages"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "item_id": "tech_a1_the_password",
+      "en": "the password",
+      "pt": "a senha",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "security"
+      ],
+      "forms": {
+        "singular": "password",
+        "plural": "passwords"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "item_id": "tech_a1_a_laptop",
+      "en": "a laptop",
+      "pt": "um notebook",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "devices"
+      ],
+      "forms": {
+        "singular": "laptop",
+        "plural": "laptops"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "item_id": "tech_a1_the_wifi",
+      "en": "the Wi-Fi",
+      "pt": "o Wi-Fi",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "internet"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "item_id": "tech_a1_use_verb",
+      "en": "use",
+      "pt": "usar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "general"
+      ],
+      "forms": {
+        "third": "uses"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "item_id": "tech_a1_send_verb",
+      "en": "send",
+      "pt": "enviar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "messages"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "item_id": "tech_a1_charge_verb",
+      "en": "charge",
+      "pt": "carregar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "devices"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "item_id": "tech_a1_turn_on_verb",
+      "en": "turn on",
+      "pt": "ligar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "devices"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "item_id": "tech_a1_every_night",
+      "en": "every night",
+      "pt": "toda noite",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "item_id": "tech_a1_at_work",
+      "en": "at work",
+      "pt": "no trabalho",
+      "semantic_type": "place",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "places"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "tech_a1_be_new_phone_01",
+      "family_id": "tech_a1_be_new_phone",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_complement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "complement": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você mostra uma novidade."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "This is my new phone.",
+          "pt": "Este é meu celular novo.",
+          "ctx": "Você mostra uma novidade.",
+          "blank": "is",
+          "wrong": "This are my new phone."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "template_id": "tech_a1_sp_uses_01",
+      "family_id": "tech_a1_sp_uses",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre a rotina de alguém."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "She uses the laptop at work.",
+          "pt": "Ela usa o notebook no trabalho.",
+          "ctx": "Você fala sobre a rotina de alguém.",
+          "blank": "uses",
+          "wrong": "She use the laptop at work."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "template_id": "tech_a1_there_wifi_01",
+      "family_id": "tech_a1_there_wifi",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "verb_to_be"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "there_is_are_noun",
+      "slots": {
+        "noun": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você avisa um amigo."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "There is free Wi-Fi in the café.",
+          "pt": "Há Wi-Fi grátis no café.",
+          "ctx": "Você avisa um amigo.",
+          "blank": "is",
+          "wrong": "There have free Wi-Fi in the café."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "template_id": "tech_a1_can_password_01",
+      "family_id": "tech_a1_can_password",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "question_structure"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_can_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pergunta no café."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Can you tell me the Wi-Fi password?",
+          "pt": "Você pode me dizer a senha do Wi-Fi?",
+          "ctx": "Você pergunta no café.",
+          "blank": "Can",
+          "wrong": "You can tell me the Wi-Fi password?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "template_id": "tech_a1_wh_charge_01",
+      "family_id": "tech_a1_wh_charge",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conversa sobre hábitos."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "When do you charge your phone?",
+          "pt": "Quando você carrega seu celular?",
+          "ctx": "Você conversa sobre hábitos.",
+          "blank": "do",
+          "wrong": "When you charge your phone?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "template_id": "tech_a1_sp_send_01",
+      "family_id": "tech_a1_sp_send",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala da sua rotina."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_article"
+      ],
+      "variants": [
+        {
+          "en": "I send a message to my mother every night.",
+          "pt": "Eu envio uma mensagem para minha mãe toda noite.",
+          "ctx": "Você fala da sua rotina.",
+          "blank": "a",
+          "wrong": "I send the a message to my mother every night."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "tech_a1_turn_on",
+      "canonical": "turn on the computer",
+      "pt": "ligar o computador",
+      "tags": [
+        "devices"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "open the computer on",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "turn the computer up wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I turn on the computer at eight.",
+          "pt": "Eu ligo o computador às oito."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "tech_a1_turn_off",
+      "canonical": "turn off the phone",
+      "pt": "desligar o celular",
+      "tags": [
+        "devices"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "close the phone off",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "shut the phone wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Please turn off your phone in the meeting.",
+          "pt": "Por favor, desligue o celular na reunião."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "tech_a1_send_a_message",
+      "canonical": "send a message",
+      "pt": "enviar uma mensagem",
+      "tags": [
+        "messages"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a message",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a message send wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I send a message when I arrive.",
+          "pt": "Eu envio uma mensagem quando chego."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "tech_a1_make_a_call",
+      "canonical": "make a call",
+      "pt": "fazer uma ligação",
+      "tags": [
+        "calls"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do a call",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "take a call make wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I need to make a call.",
+          "pt": "Preciso fazer uma ligação."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "tech_a1_go_online",
+      "canonical": "go online",
+      "pt": "entrar na internet",
+      "tags": [
+        "internet"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "go in online",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "enter online go wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I go online after dinner.",
+          "pt": "Eu entro na internet depois do jantar."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "tech_a1_take_a_picture",
+      "canonical": "take a picture",
+      "pt": "tirar uma foto",
+      "tags": [
+        "devices"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication",
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a picture",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a picture",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She takes a picture of everything.",
+          "pt": "Ela tira foto de tudo."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A1"
+    }
+  ]
+}

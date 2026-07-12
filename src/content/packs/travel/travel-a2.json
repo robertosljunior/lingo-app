@@ -1,0 +1,814 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "travel_a2",
+    "title": {
+      "pt": "Viagens A2",
+      "en": "Travel A2"
+    },
+    "theme": "travel",
+    "level": "A2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "travel_a2_the_flight",
+      "en": "the flight",
+      "pt": "o voo",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "airport"
+      ],
+      "forms": {
+        "singular": "flight",
+        "plural": "flights"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "item_id": "travel_a2_a_reservation",
+      "en": "a reservation",
+      "pt": "uma reserva",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "booking"
+      ],
+      "forms": {
+        "singular": "reservation",
+        "plural": "reservations"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "item_id": "travel_a2_the_luggage",
+      "en": "the luggage",
+      "pt": "a bagagem",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun",
+      "tags": [
+        "airport"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "item_id": "travel_a2_the_museum",
+      "en": "the museum",
+      "pt": "o museu",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "tourism"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "item_id": "travel_a2_a_tour",
+      "en": "a tour",
+      "pt": "um passeio guiado",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "tourism"
+      ],
+      "forms": {
+        "singular": "tour",
+        "plural": "tours"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "item_id": "travel_a2_the_passport",
+      "en": "the passport",
+      "pt": "o passaporte",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "documents"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "item_id": "travel_a2_book_verb",
+      "en": "book",
+      "pt": "reservar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "booking"
+      ],
+      "forms": {
+        "past": "booked",
+        "ing": "booking"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "item_id": "travel_a2_visit_verb",
+      "en": "visit",
+      "pt": "visitar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "tourism"
+      ],
+      "forms": {
+        "past": "visited",
+        "ing": "visiting"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "item_id": "travel_a2_lose_verb",
+      "en": "lose",
+      "pt": "perder",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "past": "lost"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "item_id": "travel_a2_rent_verb",
+      "en": "rent",
+      "pt": "alugar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "transport"
+      ],
+      "forms": {
+        "past": "rented"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "item_id": "travel_a2_last_summer",
+      "en": "last summer",
+      "pt": "no verão passado",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "past"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "item_id": "travel_a2_tonight",
+      "en": "tonight",
+      "pt": "hoje à noite",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "travel_a2_past_visited_01",
+      "family_id": "travel_a2_past_visited",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conta sobre suas férias."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "We visited three museums last summer.",
+          "pt": "Visitamos três museus no verão passado.",
+          "ctx": "Você conta sobre suas férias.",
+          "blank": "visited",
+          "wrong": "We have visited three museums last summer."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "template_id": "travel_a2_past_lost_01",
+      "family_id": "travel_a2_past_lost",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conta um problema de viagem."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "He lost his passport at the airport.",
+          "pt": "Ele perdeu o passaporte no aeroporto.",
+          "ctx": "Você conta um problema de viagem.",
+          "blank": "lost",
+          "wrong": "He losed his passport at the airport."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "template_id": "travel_a2_pc_waiting_flight_01",
+      "family_id": "travel_a2_pc_waiting_flight",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_present_continuous_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "verb_requires_ving",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você manda mensagem do aeroporto."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "We are waiting for our flight.",
+          "pt": "Estamos esperando nosso voo.",
+          "ctx": "Você manda mensagem do aeroporto.",
+          "blank": "waiting",
+          "wrong": "We are wait for our flight."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "template_id": "travel_a2_goingto_rent_01",
+      "family_id": "travel_a2_goingto_rent",
+      "primary_skill_id": "future_going_to",
+      "skill_ids": [
+        "future_going_to",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você planeja o roteiro."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "We are going to rent a car tomorrow.",
+          "pt": "Nós vamos alugar um carro amanhã.",
+          "ctx": "Você planeja o roteiro.",
+          "blank": "going",
+          "wrong": "We are go to rent a car tomorrow."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "template_id": "travel_a2_comp_faster_01",
+      "family_id": "travel_a2_comp_faster",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "comparative_than",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "adjective": {
+          "source": "inline"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você compara opções de transporte."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "The train is faster than the bus.",
+          "pt": "O trem é mais rápido que o ônibus.",
+          "ctx": "Você compara opções de transporte.",
+          "blank": "faster",
+          "wrong": "The train is more fast than the bus."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "template_id": "travel_a2_polite_late_checkout_01",
+      "family_id": "travel_a2_polite_late_checkout",
+      "primary_skill_id": "polite_requests",
+      "skill_ids": [
+        "polite_requests",
+        "can_request"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "imperative_polite_request",
+      "slots": {
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala com a recepção do hotel."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Could we have a late checkout, please?",
+          "pt": "Poderíamos ter um checkout mais tarde, por favor?",
+          "ctx": "Você fala com a recepção do hotel.",
+          "blank": "Could",
+          "wrong": "We could have a late checkout, please?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "travel_a2_book_a_room",
+      "canonical": "book a room",
+      "pt": "reservar um quarto",
+      "tags": [
+        "booking"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a room booking wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "reserve a room book",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I booked a room for two nights.",
+          "pt": "Reservei um quarto para duas noites."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "travel_a2_catch_a_flight",
+      "canonical": "catch a flight",
+      "pt": "pegar um voo",
+      "tags": [
+        "airport"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "take on a flight",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "hold a flight",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We have to catch a flight at seven.",
+          "pt": "Temos que pegar um voo às sete."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "travel_a2_miss_the_train",
+      "canonical": "miss the train",
+      "pt": "perder o trem",
+      "tags": [
+        "problems"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "lose the train",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "fail the train",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "They missed the train this morning.",
+          "pt": "Eles perderam o trem hoje de manhã."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "travel_a2_go_abroad",
+      "canonical": "go abroad",
+      "pt": "viajar para o exterior",
+      "tags": [
+        "tourism"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "go to abroad",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "travel in abroad",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She went abroad for the first time.",
+          "pt": "Ela viajou para o exterior pela primeira vez."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "travel_a2_take_a_trip",
+      "canonical": "take a trip",
+      "pt": "fazer uma viagem",
+      "tags": [
+        "tourism"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a trip do",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a trip",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We took a trip to the mountains.",
+          "pt": "Fizemos uma viagem para as montanhas."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "travel_a2_check_out",
+      "canonical": "check out of the hotel",
+      "pt": "fazer checkout do hotel",
+      "tags": [
+        "hotel"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "check out from of the hotel",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "check off the hotel",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We checked out of the hotel at noon.",
+          "pt": "Fizemos checkout do hotel ao meio-dia."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A2"
+    }
+  ]
+}

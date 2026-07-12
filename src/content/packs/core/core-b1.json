@@ -1,0 +1,1290 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "core_b1",
+    "title": {
+      "pt": "Inglês essencial B1",
+      "en": "Core English B1"
+    },
+    "theme": "core",
+    "level": "B1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "core_b1_i",
+      "en": "I",
+      "pt": "eu",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_you",
+      "en": "you",
+      "pt": "você",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_she",
+      "en": "she",
+      "pt": "ela",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "third_person_requires_has"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_we",
+      "en": "we",
+      "pt": "nós",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "plural_subject_requires_have"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_they",
+      "en": "they",
+      "pt": "eles",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "plural_subject_requires_have"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_for_three_years",
+      "en": "for three years",
+      "pt": "há três anos",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "present_perfect",
+          "present_perfect_continuous"
+        ]
+      },
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_for_six_months",
+      "en": "for six months",
+      "pt": "há seis meses",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "present_perfect",
+          "present_perfect_continuous"
+        ]
+      },
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_since_january",
+      "en": "since January",
+      "pt": "desde janeiro",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "present_perfect",
+          "present_perfect_continuous"
+        ]
+      },
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_since_monday",
+      "en": "since Monday",
+      "pt": "desde segunda-feira",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "present_perfect",
+          "present_perfect_continuous"
+        ]
+      },
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_already",
+      "en": "already",
+      "pt": "já",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb",
+      "tags": [
+        "present_perfect"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "present_perfect"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_yet",
+      "en": "yet",
+      "pt": "ainda",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb",
+      "tags": [
+        "present_perfect"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "present_perfect"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_how_long",
+      "en": "how long",
+      "pt": "há quanto tempo",
+      "semantic_type": "wh_word",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "question"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_should_modal",
+      "en": "should",
+      "pt": "deveria",
+      "semantic_type": "modal",
+      "part_of_speech": "modal",
+      "tags": [
+        "advice"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_might_modal",
+      "en": "might",
+      "pt": "talvez",
+      "semantic_type": "modal",
+      "part_of_speech": "modal",
+      "tags": [
+        "possibility"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_finish_verb",
+      "en": "finish",
+      "pt": "terminar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "tasks"
+      ],
+      "forms": {
+        "past": "finished",
+        "participle": "finished",
+        "ing": "finishing"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_wait_verb",
+      "en": "wait",
+      "pt": "esperar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "general"
+      ],
+      "forms": {
+        "ing": "waiting"
+      },
+      "compatibility": {
+        "prepositions": [
+          "for"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_the_documents",
+      "en": "the documents",
+      "pt": "os documentos",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "general"
+      ],
+      "forms": {
+        "singular": "document",
+        "plural": "documents"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "item_id": "core_b1_the_answer",
+      "en": "the answer",
+      "pt": "a resposta",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "general"
+      ],
+      "forms": {
+        "singular": "answer",
+        "plural": "answers"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "B1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "core_b1_pp_finished_01",
+      "family_id": "core_b1_pp_finished",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_past_participle_yet",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_past_participle",
+        "level_allows_present_perfect",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você informa que uma tarefa acabou."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "I have already finished the exercise.",
+          "pt": "Eu já terminei o exercício.",
+          "ctx": "Você informa que uma tarefa acabou.",
+          "blank": "finished",
+          "wrong": "I have already finish the exercise."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "template_id": "core_b1_pp_arrived_01",
+      "family_id": "core_b1_pp_arrived",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_past_participle_yet",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_past_participle",
+        "level_allows_present_perfect",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você confirma uma chegada."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "The documents have arrived.",
+          "pt": "Os documentos chegaram.",
+          "ctx": "Você confirma uma chegada.",
+          "blank": "have",
+          "wrong": "The documents has arrived."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "template_id": "core_b1_ppc_waiting_01",
+      "family_id": "core_b1_ppc_waiting",
+      "primary_skill_id": "present_perfect_continuous",
+      "skill_ids": [
+        "present_perfect_continuous",
+        "gerund_after_been"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica uma espera longa."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "We have been waiting for the answer since Monday.",
+          "pt": "Estamos esperando a resposta desde segunda-feira.",
+          "ctx": "Você explica uma espera longa.",
+          "blank": "waiting",
+          "wrong": "We have been waited for the answer since Monday."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "template_id": "core_b1_ppc_studying_01",
+      "family_id": "core_b1_ppc_studying",
+      "primary_skill_id": "present_perfect_continuous",
+      "skill_ids": [
+        "present_perfect_continuous",
+        "gerund_after_been"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre a experiência de alguém."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "She has been studying English for three years.",
+          "pt": "Ela estuda inglês há três anos.",
+          "ctx": "Você fala sobre a experiência de alguém.",
+          "blank": "studying",
+          "wrong": "She has been studied English for three years."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "template_id": "core_b1_cond1_rain_01",
+      "family_id": "core_b1_cond1_rain",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "if_present_will_future",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre uma possibilidade."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If it rains tomorrow, we will stay home.",
+          "pt": "Se chover amanhã, vamos ficar em casa.",
+          "ctx": "Você fala sobre uma possibilidade.",
+          "blank": "will stay",
+          "wrong": "If it will rain tomorrow, we stay home."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "template_id": "core_b1_cond1_finish_01",
+      "family_id": "core_b1_cond1_finish",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "if_present_will_future",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você combina um retorno."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If I finish early, I will call you.",
+          "pt": "Se eu terminar cedo, eu te ligo.",
+          "ctx": "Você combina um retorno.",
+          "blank": "will call",
+          "wrong": "If I will finish early, I call you."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "template_id": "core_b1_modal_should_01",
+      "family_id": "core_b1_modal_should",
+      "primary_skill_id": "modal_verbs",
+      "skill_ids": [
+        "modal_verbs",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_modal_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você dá um conselho."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "You should ask for more information.",
+          "pt": "Você deveria pedir mais informações.",
+          "ctx": "Você dá um conselho.",
+          "blank": "should",
+          "wrong": "You should to ask for more information."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "template_id": "core_b1_q_howlong_01",
+      "family_id": "core_b1_q_howlong",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary",
+        "present_perfect_continuous"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você chega a um lugar com fila."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "How long have you been waiting?",
+          "pt": "Há quanto tempo você está esperando?",
+          "ctx": "Você chega a um lugar com fila.",
+          "blank": "have",
+          "wrong": "How long you are waiting?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "template_id": "core_b1_q_haveyou_01",
+      "family_id": "core_b1_q_haveyou",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "question_structure",
+        "present_perfect"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conversa sobre filmes."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "Have you seen this movie yet?",
+          "pt": "Você já viu este filme?",
+          "ctx": "Você conversa sobre filmes.",
+          "blank": "Have",
+          "wrong": "Do you seen this movie yet?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "template_id": "core_b1_rel_clause_01",
+      "family_id": "core_b1_rel_clause",
+      "primary_skill_id": "relative_clauses",
+      "skill_ids": [
+        "relative_clauses",
+        "word_order"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "relative_clause_basic",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "clause": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica quem ligou."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "The person who called you is my boss.",
+          "pt": "A pessoa que te ligou é meu chefe.",
+          "ctx": "Você explica quem ligou.",
+          "blank": "who",
+          "wrong": "The person which called you is my boss."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "core_b1_make_a_mistake",
+      "canonical": "make a mistake",
+      "pt": "cometer um erro",
+      "tags": [
+        "general"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life",
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do a mistake",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "commit a mistake",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Everyone makes a mistake sometimes.",
+          "pt": "Todo mundo comete um erro às vezes."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "core_b1_take_a_break",
+      "canonical": "take a break",
+      "pt": "fazer uma pausa",
+      "tags": [
+        "general"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace",
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a break",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a break",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Let’s take a break for ten minutes.",
+          "pt": "Vamos fazer uma pausa de dez minutos."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "core_b1_run_out_of",
+      "canonical": "run out of time",
+      "pt": "ficar sem tempo",
+      "tags": [
+        "phrasal"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "run out from time",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "finish out of time",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We are running out of time.",
+          "pt": "Estamos ficando sem tempo."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "core_b1_find_out",
+      "canonical": "find out",
+      "pt": "descobrir",
+      "tags": [
+        "phrasal"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "find it out about wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "discover out",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I need to find out what happened.",
+          "pt": "Preciso descobrir o que aconteceu."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "core_b1_deal_with",
+      "canonical": "deal with a problem",
+      "pt": "lidar com um problema",
+      "tags": [
+        "phrasal"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace",
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "deal a problem",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "treat with a problem",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She knows how to deal with a problem calmly.",
+          "pt": "Ela sabe lidar com um problema com calma."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "core_b1_look_forward_to",
+      "canonical": "look forward to",
+      "pt": "aguardar ansiosamente",
+      "tags": [
+        "communication"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "look forward for",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "wait forward to",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I look forward to hearing from you.",
+          "pt": "Aguardo seu retorno."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "core_b1_get_in_touch",
+      "canonical": "get in touch",
+      "pt": "entrar em contato",
+      "tags": [
+        "communication"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace",
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "get in contact touch",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "enter in touch",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Please get in touch with our team.",
+          "pt": "Por favor, entre em contato com a nossa equipe."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "core_b1_in_my_opinion",
+      "canonical": "in my opinion",
+      "pt": "na minha opinião",
+      "tags": [
+        "opinion"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life",
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "in my point",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "for my opinion",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "In my opinion, this is the best option.",
+          "pt": "Na minha opinião, esta é a melhor opção."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "B1"
+    }
+  ]
+}

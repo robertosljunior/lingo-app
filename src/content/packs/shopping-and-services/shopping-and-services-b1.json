@@ -1,0 +1,833 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "shopping_and_services_b1",
+    "title": {
+      "pt": "Compras e serviços B1",
+      "en": "Shopping & Services B1"
+    },
+    "theme": "shopping_and_services",
+    "level": "B1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "shop_b1_the_warranty",
+      "en": "the warranty",
+      "pt": "a garantia",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "services"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "item_id": "shop_b1_the_delivery",
+      "en": "the delivery",
+      "pt": "a entrega",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "services"
+      ],
+      "forms": {
+        "singular": "delivery",
+        "plural": "deliveries"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "item_id": "shop_b1_the_order",
+      "en": "the order",
+      "pt": "o pedido",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "shopping"
+      ],
+      "forms": {
+        "singular": "order",
+        "plural": "orders"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "item_id": "shop_b1_the_complaint",
+      "en": "the complaint",
+      "pt": "a reclamação",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "singular": "complaint",
+        "plural": "complaints"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "item_id": "shop_b1_the_installments",
+      "en": "the installments",
+      "pt": "as parcelas",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "payment"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "item_id": "shop_b1_the_deal",
+      "en": "the deal",
+      "pt": "a oferta",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "price"
+      ],
+      "forms": {
+        "singular": "deal",
+        "plural": "deals"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "item_id": "shop_b1_track_verb",
+      "en": "track",
+      "pt": "rastrear",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "services"
+      ],
+      "forms": {
+        "ing": "tracking"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "item_id": "shop_b1_deliver_verb",
+      "en": "deliver",
+      "pt": "entregar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "services"
+      ],
+      "forms": {
+        "participle": "delivered"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "item_id": "shop_b1_charge_verb",
+      "en": "charge",
+      "pt": "cobrar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "payment"
+      ],
+      "forms": {
+        "past": "charged",
+        "participle": "charged"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "item_id": "shop_b1_compare_verb",
+      "en": "compare",
+      "pt": "comparar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "price"
+      ],
+      "forms": {
+        "ing": "comparing"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "item_id": "shop_b1_for_a_week",
+      "en": "for a week",
+      "pt": "há uma semana",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "item_id": "shop_b1_since_friday",
+      "en": "since Friday",
+      "pt": "desde sexta-feira",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "shop_b1_pp_arrived_01",
+      "family_id": "shop_b1_pp_arrived",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_past_participle_yet",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_past_participle",
+        "level_allows_present_perfect",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você abre um chamado no suporte."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "My order has not arrived yet.",
+          "pt": "Meu pedido ainda não chegou.",
+          "ctx": "Você abre um chamado no suporte.",
+          "blank": "has",
+          "wrong": "My order have not arrived yet."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "template_id": "shop_b1_ppc_waiting_delivery_01",
+      "family_id": "shop_b1_ppc_waiting_delivery",
+      "primary_skill_id": "present_perfect_continuous",
+      "skill_ids": [
+        "present_perfect_continuous",
+        "gerund_after_been"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você reclama de um atraso na entrega."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "I have been waiting for the delivery since Friday.",
+          "pt": "Estou esperando a entrega desde sexta-feira.",
+          "ctx": "Você reclama de um atraso na entrega.",
+          "blank": "waiting",
+          "wrong": "I have been waited for the delivery since Friday."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "template_id": "shop_b1_cond1_refund_01",
+      "family_id": "shop_b1_cond1_refund",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "if_present_will_future",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "O atendente explica a política da loja."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If the product arrives damaged, we will send a replacement.",
+          "pt": "Se o produto chegar danificado, enviaremos uma reposição.",
+          "ctx": "O atendente explica a política da loja.",
+          "blank": "will send",
+          "wrong": "If the product will arrive damaged, we send a replacement."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "template_id": "shop_b1_modal_should_compare_01",
+      "family_id": "shop_b1_modal_should_compare",
+      "primary_skill_id": "modal_verbs",
+      "skill_ids": [
+        "modal_verbs",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_modal_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você dá um conselho de consumo."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "You should compare prices before buying.",
+          "pt": "Você deveria comparar preços antes de comprar.",
+          "ctx": "Você dá um conselho de consumo.",
+          "blank": "should",
+          "wrong": "You should to compare prices before buying."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "template_id": "shop_b1_q_charged_01",
+      "family_id": "shop_b1_q_charged",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary",
+        "past_simple"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você liga para o cartão."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "Why did you charge me twice?",
+          "pt": "Por que vocês me cobraram duas vezes?",
+          "ctx": "Você liga para o cartão.",
+          "blank": "did",
+          "wrong": "Why you charged me twice?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "template_id": "shop_b1_rel_store_01",
+      "family_id": "shop_b1_rel_store",
+      "primary_skill_id": "relative_clauses",
+      "skill_ids": [
+        "relative_clauses",
+        "word_order"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "relative_clause_basic",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "clause": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica onde comprou."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "The store that sold me the phone offers free repairs.",
+          "pt": "A loja que me vendeu o celular oferece consertos grátis.",
+          "ctx": "Você explica onde comprou.",
+          "blank": "that",
+          "wrong": "The store who sold me the phone offers free repairs."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "shop_b1_place_an_order",
+      "canonical": "place an order",
+      "pt": "fazer um pedido",
+      "tags": [
+        "shopping"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make an order place wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do an order",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I placed an order last night.",
+          "pt": "Fiz um pedido ontem à noite."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "shop_b1_under_warranty",
+      "canonical": "under warranty",
+      "pt": "na garantia",
+      "tags": [
+        "services"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services",
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "in warranty under",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "inside warranty",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The phone is still under warranty.",
+          "pt": "O celular ainda está na garantia."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "shop_b1_shop_around",
+      "canonical": "shop around",
+      "pt": "pesquisar preços",
+      "tags": [
+        "price"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "shop about around",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "search shop around wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "It pays to shop around before big purchases.",
+          "pt": "Vale a pena pesquisar preços antes de compras grandes."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "shop_b1_rip_off",
+      "canonical": "a rip-off",
+      "pt": "um roubo (preço abusivo)",
+      "tags": [
+        "price"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "a rip of price",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "a ripped-off",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Twenty dollars for a coffee is a rip-off.",
+          "pt": "Vinte dólares por um café é um roubo."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "shop_b1_store_credit",
+      "canonical": "get store credit",
+      "pt": "receber crédito na loja",
+      "tags": [
+        "returns"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "take store credit get wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "win store credit",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "They offered me store credit instead of a refund.",
+          "pt": "Me ofereceram crédito na loja em vez de reembolso."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "shop_b1_in_installments",
+      "canonical": "pay in installments",
+      "pt": "pagar parcelado",
+      "tags": [
+        "payment"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "pay by installments in wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "pay on installments",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "You can pay in installments with no interest.",
+          "pt": "Você pode pagar parcelado sem juros."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "B1"
+    }
+  ]
+}

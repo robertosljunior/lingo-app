@@ -1,0 +1,815 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "workplace_a2",
+    "title": {
+      "pt": "Trabalho A2",
+      "en": "Workplace A2"
+    },
+    "theme": "workplace",
+    "level": "A2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "work_a2_a_job_interview",
+      "en": "a job interview",
+      "pt": "uma entrevista de emprego",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "recruiting"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "item_id": "work_a2_a_coworker",
+      "en": "a coworker",
+      "pt": "um colega de trabalho",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "people"
+      ],
+      "forms": {
+        "singular": "coworker",
+        "plural": "coworkers"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "item_id": "work_a2_a_presentation",
+      "en": "a presentation",
+      "pt": "uma apresentação",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "meetings"
+      ],
+      "forms": {
+        "singular": "presentation",
+        "plural": "presentations"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "item_id": "work_a2_the_new_office",
+      "en": "the new office",
+      "pt": "o escritório novo",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "office"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "item_id": "work_a2_a_day_off",
+      "en": "a day off",
+      "pt": "um dia de folga",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "schedule"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "item_id": "work_a2_the_team",
+      "en": "the team",
+      "pt": "a equipe",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "people"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "item_id": "work_a2_apply_verb",
+      "en": "apply",
+      "pt": "candidatar-se",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "recruiting"
+      ],
+      "forms": {
+        "past": "applied"
+      },
+      "compatibility": {
+        "prepositions": [
+          "for"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "item_id": "work_a2_prepare_verb",
+      "en": "prepare",
+      "pt": "preparar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "tasks"
+      ],
+      "forms": {
+        "ing": "preparing",
+        "past": "prepared"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "item_id": "work_a2_travel_verb",
+      "en": "travel",
+      "pt": "viajar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "business"
+      ],
+      "forms": {
+        "past": "traveled",
+        "ing": "traveling"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "item_id": "work_a2_join_verb",
+      "en": "join",
+      "pt": "entrar (na equipe)",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "recruiting"
+      ],
+      "forms": {
+        "past": "joined"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "item_id": "work_a2_last_month",
+      "en": "last month",
+      "pt": "mês passado",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "past"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "item_id": "work_a2_next_quarter",
+      "en": "next quarter",
+      "pt": "próximo trimestre",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "future"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "A2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "work_a2_past_joined_01",
+      "family_id": "work_a2_past_joined",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você apresenta uma colega nova."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "She joined the team last month.",
+          "pt": "Ela entrou na equipe mês passado.",
+          "ctx": "Você apresenta uma colega nova.",
+          "blank": "joined",
+          "wrong": "She has joined the team last month."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "template_id": "work_a2_past_applied_01",
+      "family_id": "work_a2_past_applied",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "preposition"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conta uma novidade profissional."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_preposition"
+      ],
+      "variants": [
+        {
+          "en": "I applied for a new job last week.",
+          "pt": "Eu me candidatei a um emprego novo semana passada.",
+          "ctx": "Você conta uma novidade profissional.",
+          "blank": "for",
+          "wrong": "I applied to a new job last week."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "template_id": "work_a2_pc_preparing_01",
+      "family_id": "work_a2_pc_preparing",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_present_continuous_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "verb_requires_ving",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica no que o time está trabalhando."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "We are preparing a presentation for the client.",
+          "pt": "Estamos preparando uma apresentação para o cliente.",
+          "ctx": "Você explica no que o time está trabalhando.",
+          "blank": "preparing",
+          "wrong": "We are prepare a presentation for the client."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "template_id": "work_a2_goingto_move_01",
+      "family_id": "work_a2_goingto_move",
+      "primary_skill_id": "future_going_to",
+      "skill_ids": [
+        "future_going_to",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você comenta uma mudança planejada."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "The company is going to move to a new office next quarter.",
+          "pt": "A empresa vai se mudar para um escritório novo no próximo trimestre.",
+          "ctx": "Você comenta uma mudança planejada.",
+          "blank": "going",
+          "wrong": "The company is go to move to a new office next quarter."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "template_id": "work_a2_comp_busier_01",
+      "family_id": "work_a2_comp_busier",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "comparative_than",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "adjective": {
+          "source": "inline"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você descreve a semana de trabalho."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "Mondays are busier than Fridays at the office.",
+          "pt": "As segundas são mais corridas que as sextas no escritório.",
+          "ctx": "Você descreve a semana de trabalho.",
+          "blank": "busier",
+          "wrong": "Mondays are more busy than Fridays at the office."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "template_id": "work_a2_polite_dayoff_01",
+      "family_id": "work_a2_polite_dayoff",
+      "primary_skill_id": "polite_requests",
+      "skill_ids": [
+        "polite_requests",
+        "can_request"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "imperative_polite_request",
+      "slots": {
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala com seu gestor."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Could I take a day off on Friday?",
+          "pt": "Eu poderia tirar um dia de folga na sexta?",
+          "ctx": "Você fala com seu gestor.",
+          "blank": "Could",
+          "wrong": "I could take a day off on Friday, yes?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "work_a2_apply_for_a_job",
+      "canonical": "apply for a job",
+      "pt": "candidatar-se a um emprego",
+      "tags": [
+        "recruiting"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "apply to a job",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "apply a job",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "He applied for a job at the bank.",
+          "pt": "Ele se candidatou a um emprego no banco."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "work_a2_give_a_presentation",
+      "canonical": "give a presentation",
+      "pt": "fazer uma apresentação",
+      "tags": [
+        "meetings"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a presentation talk wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a presentation",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She gave a presentation to the team.",
+          "pt": "Ela fez uma apresentação para a equipe."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "work_a2_take_a_day_off",
+      "canonical": "take a day off",
+      "pt": "tirar um dia de folga",
+      "tags": [
+        "schedule"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a day off",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "get a day out",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I took a day off yesterday.",
+          "pt": "Eu tirei um dia de folga ontem."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "work_a2_work_from_home",
+      "canonical": "work from home",
+      "pt": "trabalhar de casa",
+      "tags": [
+        "schedule"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "work at home from wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "work in home",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We work from home on Wednesdays.",
+          "pt": "Trabalhamos de casa às quartas."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "work_a2_attend_a_meeting",
+      "canonical": "attend a meeting",
+      "pt": "participar de uma reunião",
+      "tags": [
+        "meetings"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "assist a meeting",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "attend to a meeting",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "They attended a meeting with the director.",
+          "pt": "Eles participaram de uma reunião com o diretor."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "work_a2_earn_a_salary",
+      "canonical": "earn a salary",
+      "pt": "ganhar um salário",
+      "tags": [
+        "money"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "win a salary",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "gain a salary money",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She earns a good salary.",
+          "pt": "Ela ganha um bom salário."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "A2"
+    }
+  ]
+}

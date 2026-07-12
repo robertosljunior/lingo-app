@@ -1,0 +1,844 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "travel_b1",
+    "title": {
+      "pt": "Viagens B1",
+      "en": "Travel B1"
+    },
+    "theme": "travel",
+    "level": "B1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "travel_b1_the_itinerary",
+      "en": "the itinerary",
+      "pt": "o roteiro",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "planning"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "item_id": "travel_b1_the_connection",
+      "en": "the connection",
+      "pt": "a conexão",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "airport"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "item_id": "travel_b1_the_boarding_pass",
+      "en": "the boarding pass",
+      "pt": "o cartão de embarque",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "airport"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "item_id": "travel_b1_a_refund",
+      "en": "a refund",
+      "pt": "um reembolso",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "singular": "refund",
+        "plural": "refunds"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "item_id": "travel_b1_the_delay",
+      "en": "the delay",
+      "pt": "o atraso",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "singular": "delay",
+        "plural": "delays"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "item_id": "travel_b1_the_trip",
+      "en": "the trip",
+      "pt": "a viagem",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "general"
+      ],
+      "forms": {
+        "singular": "trip",
+        "plural": "trips"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "item_id": "travel_b1_plan_verb",
+      "en": "plan",
+      "pt": "planejar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "planning"
+      ],
+      "forms": {
+        "ing": "planning",
+        "participle": "planned"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "item_id": "travel_b1_explore_verb",
+      "en": "explore",
+      "pt": "explorar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "tourism"
+      ],
+      "forms": {
+        "ing": "exploring"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "item_id": "travel_b1_cancel_verb",
+      "en": "cancel",
+      "pt": "cancelar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "past": "canceled",
+        "participle": "canceled"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "item_id": "travel_b1_confirm_verb",
+      "en": "confirm",
+      "pt": "confirmar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "booking"
+      ],
+      "forms": {
+        "participle": "confirmed"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "item_id": "travel_b1_for_two_hours",
+      "en": "for two hours",
+      "pt": "há duas horas",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "item_id": "travel_b1_since_this_morning",
+      "en": "since this morning",
+      "pt": "desde hoje de manhã",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "travel_b1_pp_confirmed_01",
+      "family_id": "travel_b1_pp_confirmed",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_past_participle_yet",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_past_participle",
+        "level_allows_present_perfect",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você organiza a viagem com um amigo."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "Have you confirmed the reservation yet?",
+          "pt": "Você já confirmou a reserva?",
+          "ctx": "Você organiza a viagem com um amigo.",
+          "blank": "confirmed",
+          "wrong": "Have you confirm the reservation yet?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "template_id": "travel_b1_ppc_waiting_airport_01",
+      "family_id": "travel_b1_ppc_waiting_airport",
+      "primary_skill_id": "present_perfect_continuous",
+      "skill_ids": [
+        "present_perfect_continuous",
+        "gerund_after_been"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você reclama de um atraso."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "We have been waiting at the airport for two hours.",
+          "pt": "Estamos esperando no aeroporto há duas horas.",
+          "ctx": "Você reclama de um atraso.",
+          "blank": "waiting",
+          "wrong": "We have been waited at the airport for two hours."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "template_id": "travel_b1_ppc_planning_01",
+      "family_id": "travel_b1_ppc_planning",
+      "primary_skill_id": "present_perfect_continuous",
+      "skill_ids": [
+        "present_perfect_continuous",
+        "gerund_after_been"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala do roteiro de uma amiga."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "She has been planning this trip since March.",
+          "pt": "Ela planeja esta viagem desde março.",
+          "ctx": "Você fala do roteiro de uma amiga.",
+          "blank": "planning",
+          "wrong": "She has been planned this trip since March."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "template_id": "travel_b1_cond1_flight_01",
+      "family_id": "travel_b1_cond1_flight",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "if_present_will_future",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você avalia um risco no aeroporto."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If the flight is delayed, we will miss the connection.",
+          "pt": "Se o voo atrasar, vamos perder a conexão.",
+          "ctx": "Você avalia um risco no aeroporto.",
+          "blank": "will miss",
+          "wrong": "If the flight will be delayed, we miss the connection."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "template_id": "travel_b1_modal_should_book_01",
+      "family_id": "travel_b1_modal_should_book",
+      "primary_skill_id": "modal_verbs",
+      "skill_ids": [
+        "modal_verbs",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_modal_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você dá uma dica de viagem."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "You should book the tickets in advance.",
+          "pt": "Você deveria reservar as passagens com antecedência.",
+          "ctx": "Você dá uma dica de viagem.",
+          "blank": "should",
+          "wrong": "You should to book the tickets in advance."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "template_id": "travel_b1_q_been_before_01",
+      "family_id": "travel_b1_q_been_before",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary",
+        "present_perfect"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conversa com outro viajante."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "Have you been to this city before?",
+          "pt": "Você já esteve nesta cidade antes?",
+          "ctx": "Você conversa com outro viajante.",
+          "blank": "Have",
+          "wrong": "Did you been to this city before?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "travel_b1_get_around",
+      "canonical": "get around the city",
+      "pt": "locomover-se pela cidade",
+      "tags": [
+        "transport"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "get about around the city wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "move around on the city",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "It is easy to get around the city by subway.",
+          "pt": "É fácil se locomover pela cidade de metrô."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "travel_b1_set_off",
+      "canonical": "set off early",
+      "pt": "partir cedo",
+      "tags": [
+        "planning"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "set up early to leave",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "go off early wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We set off early to avoid traffic.",
+          "pt": "Partimos cedo para evitar o trânsito."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "travel_b1_ask_for_a_refund",
+      "canonical": "ask for a refund",
+      "pt": "pedir um reembolso",
+      "tags": [
+        "problems"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel",
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "ask a refund",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "demand for a refund rudely",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "You can ask for a refund at the counter.",
+          "pt": "Você pode pedir um reembolso no balcão."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "travel_b1_travel_light",
+      "canonical": "travel light",
+      "pt": "viajar com pouca bagagem",
+      "tags": [
+        "preparation"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "travel lightly with bags",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "travel with light",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I always try to travel light.",
+          "pt": "Eu sempre tento viajar com pouca bagagem."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "travel_b1_look_around",
+      "canonical": "look around the old town",
+      "pt": "dar uma olhada pelo centro histórico",
+      "tags": [
+        "tourism"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "look about around the old town",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "watch around the old town",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We spent the afternoon looking around the old town.",
+          "pt": "Passamos a tarde dando uma olhada pelo centro histórico."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "travel_b1_make_the_most_of",
+      "canonical": "make the most of the trip",
+      "pt": "aproveitar a viagem ao máximo",
+      "tags": [
+        "tourism"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do the most of the trip",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make the most from the trip",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We made the most of our short trip.",
+          "pt": "Aproveitamos ao máximo nossa viagem curta."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B1"
+    }
+  ]
+}

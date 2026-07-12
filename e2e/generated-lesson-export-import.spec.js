@@ -4,7 +4,7 @@ import fs from 'node:fs'
 import yaml from 'js-yaml'
 import {
   enableTestHooks, seedFixtures, generateFromHome, readLessonWithQuestions,
-  answerCurrentQuestion, switchProfileViaUi, attachErrorMonitor,
+  answerCurrentQuestion, switchProfileViaUi, attachErrorMonitor, readStore,
   GEN_SEED, PROFILE_A, SEVEN_TYPES,
 } from './helpers.js'
 
@@ -57,11 +57,20 @@ test('exported YAML round-trips through the import flow without private metadata
   await expect(page.getByTestId('question-type')).toBeVisible()
   await testInfo.attach('imported-lesson-started', { body: await page.screenshot(), contentType: 'image/png' })
 
-  // The imported lesson is global (current designed behavior): it no longer
-  // carries the previous owner_profile_id.
-  const { lesson, questions } = await readLessonWithQuestions(page, lessonId)
-  expect(lesson).toBeTruthy()
-  expect(lesson.owner_profile_id).toBeNull()
+  // Slice 5 import contract: the private original is never overwritten. The
+  // import lands under a new identity (import_<level>_<hash>) as a global
+  // lesson pointing back at the source lesson id.
+  const { lesson: original, questions: originalQuestions } = await readLessonWithQuestions(page, lessonId)
+  expect(original).toBeTruthy()
+  expect(original.owner_profile_id).toBe(PROFILE_A)
+  expect(original.generated).toBe(true)
+  expect(originalQuestions).toHaveLength(30)
+  const importedLesson = (await readStore(page, 'lessons')).find((l) => l.source_lesson_id === lessonId)
+  expect(importedLesson).toBeTruthy()
+  expect(importedLesson.lesson_id).toMatch(/^import_b1_[0-9a-f]{8}$/)
+  expect(importedLesson.owner_profile_id).toBeNull()
+  expect(importedLesson.imported).toBe(true)
+  const { questions } = await readLessonWithQuestions(page, importedLesson.lesson_id)
   expect(questions).toHaveLength(30)
 
   // Answer at least one question of the imported lesson.
@@ -73,14 +82,20 @@ test('exported YAML round-trips through the import flow without private metadata
   await page.getByRole('button', { name: 'Fechar' }).click()
   await expect(page.getByText('Gerar nova aula adaptativa')).toBeVisible()
 
-  // Being global now, other profiles may open it.
+  // Profile B sees only the imported global copy; the private original stays
+  // out of reach.
   await switchProfileViaUi(page, 'Perfil B')
   await expect(page.getByText('Adaptive Workplace English').first()).toBeVisible()
-  const accessibleToB = await page.evaluate(async (lessonId) => {
-    const l = await window.__e2e.db.getLesson(lessonId, { profile_id: 'profile-b' })
+  const accessibleToB = await page.evaluate(async (importId) => {
+    const l = await window.__e2e.db.getLesson(importId, { profile_id: 'profile-b' })
     return { questions: l.questions.length }
-  }, lessonId)
+  }, importedLesson.lesson_id)
   expect(accessibleToB.questions).toBe(30)
+  const privateRefused = await page.evaluate(async (lessonId) => {
+    try { await window.__e2e.db.getLesson(lessonId, { profile_id: 'profile-b' }); return 'leaked' }
+    catch (e) { return e?.code || 'error' }
+  }, lessonId)
+  expect(privateRefused).toBe('LESSON_NOT_ACCESSIBLE')
 
   monitor.assertClean()
 })

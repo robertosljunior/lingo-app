@@ -1,0 +1,810 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "shopping_and_services_a1",
+    "title": {
+      "pt": "Compras e serviços A1",
+      "en": "Shopping & Services A1"
+    },
+    "theme": "shopping_and_services",
+    "level": "A1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "shop_a1_the_store",
+      "en": "the store",
+      "pt": "a loja",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "shopping"
+      ],
+      "forms": {
+        "singular": "store",
+        "plural": "stores"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "item_id": "shop_a1_the_price",
+      "en": "the price",
+      "pt": "o preço",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "price"
+      ],
+      "forms": {
+        "singular": "price",
+        "plural": "prices"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "item_id": "shop_a1_a_shirt",
+      "en": "a shirt",
+      "pt": "uma camisa",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "clothes"
+      ],
+      "forms": {
+        "singular": "shirt",
+        "plural": "shirts"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "item_id": "shop_a1_shoes",
+      "en": "shoes",
+      "pt": "sapatos",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun",
+      "tags": [
+        "clothes"
+      ],
+      "forms": {
+        "singular": "shoe",
+        "plural": "shoes"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "item_id": "shop_a1_a_bag",
+      "en": "a bag",
+      "pt": "uma sacola",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "shopping"
+      ],
+      "forms": {
+        "singular": "bag",
+        "plural": "bags"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "item_id": "shop_a1_the_cashier",
+      "en": "the cashier",
+      "pt": "o caixa",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "services"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "item_id": "shop_a1_buy_verb",
+      "en": "buy",
+      "pt": "comprar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "shopping"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "item_id": "shop_a1_pay_verb",
+      "en": "pay",
+      "pt": "pagar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "payment"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "item_id": "shop_a1_cost_verb",
+      "en": "cost",
+      "pt": "custar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "price"
+      ],
+      "forms": {
+        "third": "costs"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "item_id": "shop_a1_open_verb",
+      "en": "open",
+      "pt": "abrir",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "services"
+      ],
+      "forms": {
+        "third": "opens"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "item_id": "shop_a1_how_much",
+      "en": "how much",
+      "pt": "quanto",
+      "semantic_type": "wh_word",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "price"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "item_id": "shop_a1_on_saturdays",
+      "en": "on Saturdays",
+      "pt": "aos sábados",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "shop_a1_be_expensive_01",
+      "family_id": "shop_a1_be_expensive",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_complement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "complement": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você comenta um preço."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "These shoes are expensive.",
+          "pt": "Estes sapatos são caros.",
+          "ctx": "Você comenta um preço.",
+          "blank": "are",
+          "wrong": "These shoes is expensive."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "template_id": "shop_a1_sp_opens_01",
+      "family_id": "shop_a1_sp_opens",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você confirma o horário da loja."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "The store opens at ten.",
+          "pt": "A loja abre às dez.",
+          "ctx": "Você confirma o horário da loja.",
+          "blank": "opens",
+          "wrong": "The store open at ten."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "template_id": "shop_a1_there_sale_01",
+      "family_id": "shop_a1_there_sale",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "verb_to_be"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "there_is_are_noun",
+      "slots": {
+        "noun": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conta uma novidade."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "There is a sale at the mall.",
+          "pt": "Há uma promoção no shopping.",
+          "ctx": "Você conta uma novidade.",
+          "blank": "is",
+          "wrong": "There have a sale at the mall."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "template_id": "shop_a1_can_pay_card_01",
+      "family_id": "shop_a1_can_pay_card",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "question_structure"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_can_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você está no caixa."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Can I pay by card?",
+          "pt": "Posso pagar com cartão?",
+          "ctx": "Você está no caixa.",
+          "blank": "Can",
+          "wrong": "I can pay by card, yes?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "template_id": "shop_a1_wh_how_much_01",
+      "family_id": "shop_a1_wh_how_much",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pergunta o preço."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "How much does this shirt cost?",
+          "pt": "Quanto custa esta camisa?",
+          "ctx": "Você pergunta o preço.",
+          "blank": "does",
+          "wrong": "How much this shirt cost?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "template_id": "shop_a1_sp_need_size_01",
+      "family_id": "shop_a1_sp_need_size",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você experimenta uma roupa."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_article"
+      ],
+      "variants": [
+        {
+          "en": "I need a smaller size.",
+          "pt": "Eu preciso de um tamanho menor.",
+          "ctx": "Você experimenta uma roupa.",
+          "blank": "a",
+          "wrong": "I need the a smaller size."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "shop_a1_pay_by_card",
+      "canonical": "pay by card",
+      "pt": "pagar com cartão",
+      "tags": [
+        "payment"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "pay with card by",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "pay in card",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I always pay by card.",
+          "pt": "Eu sempre pago com cartão."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "shop_a1_pay_in_cash",
+      "canonical": "pay in cash",
+      "pt": "pagar em dinheiro",
+      "tags": [
+        "payment"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "pay by cash in",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "pay with cash money wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "You can pay in cash or by card.",
+          "pt": "Você pode pagar em dinheiro ou com cartão."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "shop_a1_try_on",
+      "canonical": "try on a shirt",
+      "pt": "experimentar uma camisa",
+      "tags": [
+        "clothes"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "try a shirt in",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "test on a shirt",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Can I try on this shirt?",
+          "pt": "Posso experimentar esta camisa?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "shop_a1_on_sale",
+      "canonical": "on sale",
+      "pt": "em promoção",
+      "tags": [
+        "price"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "in sale",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "at sale",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "These shoes are on sale.",
+          "pt": "Estes sapatos estão em promoção."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "shop_a1_shopping_list",
+      "canonical": "make a shopping list",
+      "pt": "fazer uma lista de compras",
+      "tags": [
+        "shopping"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services",
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do a shopping list",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "write a shopping list make wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I make a shopping list every week.",
+          "pt": "Eu faço uma lista de compras toda semana."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "shop_a1_get_a_receipt",
+      "canonical": "get a receipt",
+      "pt": "pegar o recibo",
+      "tags": [
+        "payment"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "take a receipt get wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "catch a receipt",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Don’t forget to get a receipt.",
+          "pt": "Não esqueça de pegar o recibo."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A1"
+    }
+  ]
+}

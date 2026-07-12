@@ -6,8 +6,19 @@
 //   npm run benchmark:indexeddb
 import 'fake-indexeddb/auto'
 
+import fs from 'node:fs'
+import path from 'node:path'
+import url from 'node:url'
+
 const storage = await import('../src/lib/storage.js')
-const { generateLessonFromContext } = await import('../src/lib/lesson-generator.js')
+const { generateLesson } = await import('../src/lib/lesson-generator.js')
+const { setBundledPacksForNode, composeBundledSnapshot } = await import('../src/lib/content-pack-loader.js')
+const repo = await import('../src/lib/content-pack-repository.js')
+
+// Load the bundled packs from disk (plain node has no import.meta.glob).
+const packsDir = path.join(path.dirname(path.dirname(url.fileURLToPath(import.meta.url))), 'src/content/packs')
+setBundledPacksForNode(fs.readdirSync(packsDir).flatMap((dir) =>
+  fs.readdirSync(path.join(packsDir, dir)).map((f) => JSON.parse(fs.readFileSync(path.join(packsDir, dir, f), 'utf8')))))
 
 const LESSONS = 100
 const QUESTIONS_PER_LESSON = 30
@@ -31,14 +42,27 @@ async function main() {
     reinforcement_skills: [{ skill_id: 'workplace_preposition', mastery: 0.68 }],
   }
 
+  // Content pack seed + snapshot (Slice 5 paths).
+  const tSeed = now()
+  const seedResult = await repo.seedBuiltinContentPacks()
+  const seed_packs_ms = Math.round(now() - tSeed)
+  const tSeed2 = now()
+  await repo.seedBuiltinContentPacks()
+  const seed_noop_ms = Math.round(now() - tSeed2)
+  const tSnap = now()
+  const dbSnapshot = await repo.resolveContentSnapshot({ theme: 'workplace', level: 'B1' })
+  const snapshot_ms = Math.round(now() - tSnap)
+  const snapshot = composeBundledSnapshot('workplace', 'B1')
+
   // Generation (pure, deterministic).
   const tGen = now()
   const lessons = []
   for (let i = 0; i < LESSONS; i++) {
-    lessons.push(generateLessonFromContext(context, {
+    lessons.push(generateLesson({
+      context: { ...context, profile_id: PROFILE_A },
+      contentSnapshot: snapshot,
       questionCount: QUESTIONS_PER_LESSON,
       seed: `bench-${i}`,
-      profileId: PROFILE_A,
     }))
   }
   const generate_ms = Math.round(now() - tGen)
@@ -81,6 +105,11 @@ async function main() {
   const report = {
     lessons: LESSONS,
     questions: LESSONS * QUESTIONS_PER_LESSON,
+    content_packs_installed: seedResult.installed + seedResult.skipped + seedResult.updated,
+    seed_packs_ms,
+    seed_noop_ms,
+    snapshot_ms,
+    snapshot_pack_ids: dbSnapshot.pack_ids,
     generate_ms,
     write_ms,
     list_owner_ms,

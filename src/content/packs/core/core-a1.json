@@ -1,0 +1,1227 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "core_a1",
+    "title": {
+      "pt": "Inglês essencial A1",
+      "en": "Core English A1"
+    },
+    "theme": "core",
+    "level": "A1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "core_a1_i",
+      "en": "I",
+      "pt": "eu",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_you",
+      "en": "you",
+      "pt": "você",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_he",
+      "en": "he",
+      "pt": "ele",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "third_person_requires_has"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_she",
+      "en": "she",
+      "pt": "ela",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "third_person_requires_has"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_we",
+      "en": "we",
+      "pt": "nós",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "plural_subject_requires_have"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_they",
+      "en": "they",
+      "pt": "eles",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "plural_subject_requires_have"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_what",
+      "en": "what",
+      "pt": "o que",
+      "semantic_type": "wh_word",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "question"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_where",
+      "en": "where",
+      "pt": "onde",
+      "semantic_type": "wh_word",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "question"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_when",
+      "en": "when",
+      "pt": "quando",
+      "semantic_type": "wh_word",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "question"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_work_verb",
+      "en": "work",
+      "pt": "trabalhar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "routine"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "present_simple"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_live_verb",
+      "en": "live",
+      "pt": "morar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "routine"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "present_simple"
+        ],
+        "prepositions": [
+          "in"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_water",
+      "en": "water",
+      "pt": "água",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun",
+      "tags": [
+        "basic"
+      ],
+      "forms": {
+        "singular": "water"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_book",
+      "en": "a book",
+      "pt": "um livro",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "basic"
+      ],
+      "forms": {
+        "singular": "book",
+        "plural": "books"
+      },
+      "compatibility": {},
+      "constraints": [
+        "countable_article_required"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_teacher",
+      "en": "a teacher",
+      "pt": "professor(a)",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "jobs"
+      ],
+      "forms": {
+        "singular": "teacher",
+        "plural": "teachers"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_monday",
+      "en": "Monday",
+      "pt": "segunda-feira",
+      "semantic_type": "time_expression",
+      "part_of_speech": "noun",
+      "tags": [
+        "days"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_seven_oclock",
+      "en": "at seven o’clock",
+      "pt": "às sete horas",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_every_day",
+      "en": "every day",
+      "pt": "todos os dias",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "frequency"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "item_id": "core_a1_can_modal",
+      "en": "can",
+      "pt": "poder",
+      "semantic_type": "modal",
+      "part_of_speech": "modal",
+      "tags": [
+        "ability"
+      ],
+      "forms": {},
+      "compatibility": {
+        "verbs": [
+          "help",
+          "swim",
+          "speak"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "core_a1_be_teacher_01",
+      "family_id": "core_a1_be_teacher",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_complement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "complement": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você apresenta uma pessoa."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "She is a teacher.",
+          "pt": "Ela é professora.",
+          "ctx": "Você apresenta uma pessoa.",
+          "blank": "is",
+          "wrong": "She are a teacher."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "template_id": "core_a1_be_from_01",
+      "family_id": "core_a1_be_from",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_complement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "complement": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você se apresenta."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "I am from Brazil.",
+          "pt": "Eu sou do Brasil.",
+          "ctx": "Você se apresenta.",
+          "blank": "am",
+          "wrong": "I is from Brazil."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "template_id": "core_a1_sp_live_01",
+      "family_id": "core_a1_sp_live",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "preposition"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre sua família."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_preposition"
+      ],
+      "variants": [
+        {
+          "en": "They live in a small house.",
+          "pt": "Eles moram em uma casa pequena.",
+          "ctx": "Você fala sobre sua família.",
+          "blank": "in",
+          "wrong": "They live at a small house."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "template_id": "core_a1_sp_work_01",
+      "family_id": "core_a1_sp_work",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre a rotina de alguém."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "He works every day.",
+          "pt": "Ele trabalha todos os dias.",
+          "ctx": "Você fala sobre a rotina de alguém.",
+          "blank": "works",
+          "wrong": "He work every day."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "template_id": "core_a1_there_is_01",
+      "family_id": "core_a1_there_is",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "verb_to_be"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "there_is_are_noun",
+      "slots": {
+        "noun": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você descreve um lugar."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "There is a book on the table.",
+          "pt": "Há um livro na mesa.",
+          "ctx": "Você descreve um lugar.",
+          "blank": "is",
+          "wrong": "There have a book on the table."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "template_id": "core_a1_there_are_01",
+      "family_id": "core_a1_there_are",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "verb_to_be"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "there_is_are_noun",
+      "slots": {
+        "noun": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você descreve um cômodo."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "There are two chairs in the room.",
+          "pt": "Há duas cadeiras na sala.",
+          "ctx": "Você descreve um cômodo.",
+          "blank": "are",
+          "wrong": "There is two chairs in the room."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "template_id": "core_a1_can_swim_01",
+      "family_id": "core_a1_can_swim",
+      "primary_skill_id": "can_ability",
+      "skill_ids": [
+        "can_ability",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_can_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre habilidades."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "I can swim very well.",
+          "pt": "Eu sei nadar muito bem.",
+          "ctx": "Você fala sobre habilidades.",
+          "blank": "can",
+          "wrong": "I can to swim very well."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "template_id": "core_a1_can_help_01",
+      "family_id": "core_a1_can_help",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "question_structure"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_can_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pede ajuda de forma simples."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Can you help me, please?",
+          "pt": "Você pode me ajudar, por favor?",
+          "ctx": "Você pede ajuda de forma simples.",
+          "blank": "Can",
+          "wrong": "You can help me, please?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "template_id": "core_a1_wh_where_live_01",
+      "family_id": "core_a1_wh_where_live",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary",
+        "simple_present"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conhece uma pessoa nova."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "Where do you live?",
+          "pt": "Onde você mora?",
+          "ctx": "Você conhece uma pessoa nova.",
+          "blank": "do",
+          "wrong": "Where you live?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "template_id": "core_a1_wh_time_01",
+      "family_id": "core_a1_wh_time",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pergunta sobre a rotina."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "What time do you get up?",
+          "pt": "A que horas você acorda?",
+          "ctx": "Você pergunta sobre a rotina.",
+          "blank": "do",
+          "wrong": "What time you get up?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "core_a1_get_up",
+      "canonical": "get up early",
+      "pt": "acordar cedo",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "wake up early yourself",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "get on early",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I get up early every day.",
+          "pt": "Eu acordo cedo todos os dias."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "core_a1_have_breakfast",
+      "canonical": "have breakfast",
+      "pt": "tomar café da manhã",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life",
+        "food"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do breakfast",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make the breakfast at morning",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I have breakfast at seven.",
+          "pt": "Eu tomo café da manhã às sete."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "core_a1_go_to_work",
+      "canonical": "go to work",
+      "pt": "ir para o trabalho",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life",
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "go to job",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "go at work",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I go to work by bus.",
+          "pt": "Eu vou para o trabalho de ônibus."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "core_a1_watch_tv",
+      "canonical": "watch TV",
+      "pt": "assistir TV",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "see TV",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "look TV",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We watch TV at night.",
+          "pt": "Nós assistimos TV à noite."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "core_a1_take_a_shower",
+      "canonical": "take a shower",
+      "pt": "tomar banho",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a shower",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a shower",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I take a shower in the morning.",
+          "pt": "Eu tomo banho de manhã."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "core_a1_listen_to_music",
+      "canonical": "listen to music",
+      "pt": "ouvir música",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "listen music",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "hear to music",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She listens to music every day.",
+          "pt": "Ela ouve música todos os dias."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "core_a1_play_soccer",
+      "canonical": "play soccer",
+      "pt": "jogar futebol",
+      "tags": [
+        "free_time"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "play a soccer",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make soccer",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "They play soccer on Sundays.",
+          "pt": "Eles jogam futebol aos domingos."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "core_a1_do_homework",
+      "canonical": "do homework",
+      "pt": "fazer lição de casa",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make homework",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make the homework",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "He does homework after school.",
+          "pt": "Ele faz lição de casa depois da escola."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A1"
+    }
+  ]
+}

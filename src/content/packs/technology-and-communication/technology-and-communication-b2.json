@@ -1,0 +1,810 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "technology_and_communication_b2",
+    "title": {
+      "pt": "Tecnologia e comunicação B2",
+      "en": "Technology & Communication B2"
+    },
+    "theme": "technology_and_communication",
+    "level": "B2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "tech_b2_the_data_breach",
+      "en": "the data breach",
+      "pt": "o vazamento de dados",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "security"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "item_id": "tech_b2_the_encryption",
+      "en": "the encryption",
+      "pt": "a criptografia",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "security"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "item_id": "tech_b2_the_server",
+      "en": "the server",
+      "pt": "o servidor",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "infrastructure"
+      ],
+      "forms": {
+        "singular": "server",
+        "plural": "servers"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "item_id": "tech_b2_the_outage",
+      "en": "the outage",
+      "pt": "a queda do sistema",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "singular": "outage",
+        "plural": "outages"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "item_id": "tech_b2_the_release",
+      "en": "the release",
+      "pt": "o lançamento",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "software"
+      ],
+      "forms": {
+        "singular": "release",
+        "plural": "releases"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "item_id": "tech_b2_the_notification",
+      "en": "the notification",
+      "pt": "a notificação",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "messages"
+      ],
+      "forms": {
+        "singular": "notification",
+        "plural": "notifications"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "item_id": "tech_b2_encrypt_verb",
+      "en": "encrypt",
+      "pt": "criptografar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "security"
+      ],
+      "forms": {
+        "participle": "encrypted"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "item_id": "tech_b2_restore_verb",
+      "en": "restore",
+      "pt": "restaurar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "participle": "restored"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "item_id": "tech_b2_release_verb",
+      "en": "release",
+      "pt": "lançar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "software"
+      ],
+      "forms": {
+        "participle": "released"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "item_id": "tech_b2_notify_verb",
+      "en": "notify",
+      "pt": "notificar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "messages"
+      ],
+      "forms": {
+        "past": "notified"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "item_id": "tech_b2_overnight",
+      "en": "overnight",
+      "pt": "durante a noite",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "item_id": "tech_b2_within_minutes",
+      "en": "within minutes",
+      "pt": "em questão de minutos",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "tech_b2_passive_encrypted_01",
+      "family_id": "tech_b2_passive_encrypted",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica um recurso de segurança."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "All messages are encrypted by default.",
+          "pt": "Todas as mensagens são criptografadas por padrão.",
+          "ctx": "Você explica um recurso de segurança.",
+          "blank": "encrypted",
+          "wrong": "All messages are encrypt by default."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "template_id": "tech_b2_passive_restored_01",
+      "family_id": "tech_b2_passive_restored",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você atualiza os usuários após uma queda."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "The service was restored within minutes.",
+          "pt": "O serviço foi restaurado em questão de minutos.",
+          "ctx": "Você atualiza os usuários após uma queda.",
+          "blank": "restored",
+          "wrong": "The service was restore within minutes."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "template_id": "tech_b2_reported_support_01",
+      "family_id": "tech_b2_reported_support",
+      "primary_skill_id": "reported_speech",
+      "skill_ids": [
+        "reported_speech",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "reported_speech_statement",
+      "slots": {
+        "reporter": {
+          "source": "inline"
+        },
+        "statement": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "level_allows_reported_speech",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você repassa a resposta do suporte."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "Support said that the bug had been fixed.",
+          "pt": "O suporte disse que o bug tinha sido corrigido.",
+          "ctx": "Você repassa a resposta do suporte.",
+          "blank": "had been fixed",
+          "wrong": "Support said that the bug has fix."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "template_id": "tech_b2_cond2_password_01",
+      "family_id": "tech_b2_cond2_password",
+      "primary_skill_id": "second_conditional",
+      "skill_ids": [
+        "second_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "second_conditional",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você comenta sobre segurança digital."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If people used stronger passwords, there would be fewer breaches.",
+          "pt": "Se as pessoas usassem senhas mais fortes, haveria menos vazamentos.",
+          "ctx": "Você comenta sobre segurança digital.",
+          "blank": "would be",
+          "wrong": "If people would use stronger passwords, there will be fewer breaches."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "template_id": "tech_b2_deduction_server_01",
+      "family_id": "tech_b2_deduction_server",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "modal_deduction_statement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você deduz a causa do problema."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "The server must be down; nobody can log in.",
+          "pt": "O servidor deve estar fora do ar; ninguém consegue entrar.",
+          "ctx": "Você deduz a causa do problema.",
+          "blank": "must",
+          "wrong": "The server must to be down; nobody can log in."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "template_id": "tech_b2_connector_therefore_01",
+      "family_id": "tech_b2_connector_therefore",
+      "primary_skill_id": "connectors",
+      "skill_ids": [
+        "connectors",
+        "word_order"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica o adiamento."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "The update failed; therefore, the release was postponed.",
+          "pt": "A atualização falhou; portanto, o lançamento foi adiado.",
+          "ctx": "Você explica o adiamento.",
+          "blank": "therefore",
+          "wrong": "The update failed; however, the release was postponed."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "tech_b2_roll_out",
+      "canonical": "roll out an update",
+      "pt": "liberar uma atualização",
+      "tags": [
+        "software"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "roll an update on",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "push out roll an update wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The company rolled out the update overnight.",
+          "pt": "A empresa liberou a atualização durante a noite."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "tech_b2_phase_out",
+      "canonical": "phase out old systems",
+      "pt": "aposentar sistemas antigos",
+      "tags": [
+        "infrastructure"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "phase old systems away",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "fade out old systems wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "They are phasing out the old system.",
+          "pt": "Eles estão aposentando o sistema antigo."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "tech_b2_state_of_the_art",
+      "canonical": "state-of-the-art technology",
+      "pt": "tecnologia de ponta",
+      "tags": [
+        "general"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "state-of-art technology",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "art-of-state technology",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The lab uses state-of-the-art technology.",
+          "pt": "O laboratório usa tecnologia de ponta."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "tech_b2_user_friendly",
+      "canonical": "user-friendly interface",
+      "pt": "interface amigável",
+      "tags": [
+        "software"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "user-friend interface",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "friendly-user interface",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The new app has a very user-friendly interface.",
+          "pt": "O novo aplicativo tem uma interface muito amigável."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "tech_b2_cutting_edge",
+      "canonical": "cutting-edge security",
+      "pt": "segurança de última geração",
+      "tags": [
+        "security"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "cutting-border security",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "edge-cutting security",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The platform offers cutting-edge security.",
+          "pt": "A plataforma oferece segurança de última geração."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "tech_b2_go_viral",
+      "canonical": "go viral",
+      "pt": "viralizar",
+      "tags": [
+        "messages"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "turn viral go",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "become viral go wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The video went viral within hours.",
+          "pt": "O vídeo viralizou em poucas horas."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "B2"
+    }
+  ]
+}

@@ -1,0 +1,802 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "travel_b2",
+    "title": {
+      "pt": "Viagens B2",
+      "en": "Travel B2"
+    },
+    "theme": "travel",
+    "level": "B2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "travel_b2_the_compensation",
+      "en": "the compensation",
+      "pt": "a indenização",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "problems"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "item_id": "travel_b2_the_travel_insurance",
+      "en": "the travel insurance",
+      "pt": "o seguro viagem",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "documents"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "item_id": "travel_b2_the_layover",
+      "en": "the layover",
+      "pt": "a escala",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "airport"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "item_id": "travel_b2_the_upgrade",
+      "en": "the upgrade",
+      "pt": "o upgrade",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "hotel"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "item_id": "travel_b2_the_destination",
+      "en": "the destination",
+      "pt": "o destino",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "planning"
+      ],
+      "forms": {
+        "singular": "destination",
+        "plural": "destinations"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "item_id": "travel_b2_the_locals",
+      "en": "the locals",
+      "pt": "os moradores locais",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "culture"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "item_id": "travel_b2_reschedule_verb",
+      "en": "reschedule",
+      "pt": "remarcar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "participle": "rescheduled"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "item_id": "travel_b2_compensate_verb",
+      "en": "compensate",
+      "pt": "indenizar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "participle": "compensated"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "item_id": "travel_b2_recommend_verb",
+      "en": "recommend",
+      "pt": "recomendar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "tourism"
+      ],
+      "forms": {
+        "past": "recommended"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "item_id": "travel_b2_cancel_verb",
+      "en": "cancel",
+      "pt": "cancelar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "participle": "canceled"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "item_id": "travel_b2_due_to_weather",
+      "en": "due to the weather",
+      "pt": "por causa do tempo",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "problems"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "item_id": "travel_b2_at_short_notice",
+      "en": "at short notice",
+      "pt": "em cima da hora",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "problems"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "B2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "travel_b2_passive_canceled_01",
+      "family_id": "travel_b2_passive_canceled",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica um imprevisto."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "Our flight was canceled due to the weather.",
+          "pt": "Nosso voo foi cancelado por causa do tempo.",
+          "ctx": "Você explica um imprevisto.",
+          "blank": "canceled",
+          "wrong": "Our flight was cancel due to the weather."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "template_id": "travel_b2_passive_included_01",
+      "family_id": "travel_b2_passive_included",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você confere os detalhes da reserva."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "Breakfast is included in the room rate.",
+          "pt": "O café da manhã está incluído na diária.",
+          "ctx": "Você confere os detalhes da reserva.",
+          "blank": "included",
+          "wrong": "Breakfast is include in the room rate."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "template_id": "travel_b2_reported_agent_01",
+      "family_id": "travel_b2_reported_agent",
+      "primary_skill_id": "reported_speech",
+      "skill_ids": [
+        "reported_speech",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "reported_speech_statement",
+      "slots": {
+        "reporter": {
+          "source": "inline"
+        },
+        "statement": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "level_allows_reported_speech",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você relata um problema na recepção."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "The agent said that the hotel had overbooked the rooms.",
+          "pt": "O atendente disse que o hotel tinha vendido quartos demais.",
+          "ctx": "Você relata um problema na recepção.",
+          "blank": "had overbooked",
+          "wrong": "The agent said that the hotel has overbook the rooms."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "template_id": "travel_b2_cond2_money_01",
+      "family_id": "travel_b2_cond2_money",
+      "primary_skill_id": "second_conditional",
+      "skill_ids": [
+        "second_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "second_conditional",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conversa sobre o roteiro ideal."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If we had more time, we would visit the islands.",
+          "pt": "Se tivéssemos mais tempo, visitaríamos as ilhas.",
+          "ctx": "Você conversa sobre o roteiro ideal.",
+          "blank": "would visit",
+          "wrong": "If we would have more time, we will visit the islands."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "template_id": "travel_b2_deduction_luggage_01",
+      "family_id": "travel_b2_deduction_luggage",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "modal_deduction_statement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você deduz onde a mala parou."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "The luggage must have been left at the connection.",
+          "pt": "A bagagem deve ter ficado na conexão.",
+          "ctx": "Você deduz onde a mala parou.",
+          "blank": "must have been left",
+          "wrong": "The luggage must to be left at the connection."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "template_id": "travel_b2_connector_therefore_01",
+      "family_id": "travel_b2_connector_therefore",
+      "primary_skill_id": "connectors",
+      "skill_ids": [
+        "connectors",
+        "word_order"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conta como o problema foi resolvido."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "The flight was overbooked; therefore, we were offered compensation.",
+          "pt": "O voo estava lotado; portanto, nos ofereceram uma indenização.",
+          "ctx": "Você conta como o problema foi resolvido.",
+          "blank": "therefore",
+          "wrong": "The flight was overbooked; however, we were offered compensation."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "travel_b2_file_a_complaint",
+      "canonical": "file a complaint",
+      "pt": "registrar uma reclamação",
+      "tags": [
+        "problems"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel",
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a complaint file",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "put a complaint",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We filed a complaint with the airline.",
+          "pt": "Registramos uma reclamação na companhia aérea."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "travel_b2_off_the_beaten_track",
+      "canonical": "off the beaten track",
+      "pt": "fora do circuito turístico",
+      "tags": [
+        "tourism"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "out of the beaten track",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "off the beaten road",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We found a village off the beaten track.",
+          "pt": "Encontramos um vilarejo fora do circuito turístico."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "travel_b2_soak_up",
+      "canonical": "soak up the atmosphere",
+      "pt": "absorver o clima do lugar",
+      "tags": [
+        "culture"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "soak in up the atmosphere wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "drink up the atmosphere",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We sat in the square soaking up the atmosphere.",
+          "pt": "Sentamos na praça absorvendo o clima do lugar."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "travel_b2_get_stranded",
+      "canonical": "get stranded",
+      "pt": "ficar preso (sem transporte)",
+      "tags": [
+        "problems"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "be stranded get wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "get strand",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Hundreds of passengers got stranded overnight.",
+          "pt": "Centenas de passageiros ficaram presos durante a noite."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "travel_b2_claim_compensation",
+      "canonical": "claim compensation",
+      "pt": "solicitar indenização",
+      "tags": [
+        "problems"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "ask compensation claim",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "demand a compensation claim wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "You can claim compensation for the delay.",
+          "pt": "Você pode solicitar indenização pelo atraso."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "travel_b2_itchy_feet",
+      "canonical": "have itchy feet",
+      "pt": "estar com vontade de viajar",
+      "tags": [
+        "culture"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "have itching feet travel",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "feel itchy foot",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "After a year at home, I have itchy feet again.",
+          "pt": "Depois de um ano em casa, estou com vontade de viajar de novo."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "B2"
+    }
+  ]
+}

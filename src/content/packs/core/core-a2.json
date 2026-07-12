@@ -1,0 +1,1265 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "core_a2",
+    "title": {
+      "pt": "Inglês essencial A2",
+      "en": "Core English A2"
+    },
+    "theme": "core",
+    "level": "A2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "core_a2_i",
+      "en": "I",
+      "pt": "eu",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_you",
+      "en": "you",
+      "pt": "você",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_she",
+      "en": "she",
+      "pt": "ela",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "third_person_requires_has"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_we",
+      "en": "we",
+      "pt": "nós",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "plural_subject_requires_have"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_they",
+      "en": "they",
+      "pt": "eles",
+      "semantic_type": "person_subject",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "pronoun"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "plural_subject_requires_have"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_yesterday",
+      "en": "yesterday",
+      "pt": "ontem",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb",
+      "tags": [
+        "past"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "past_simple"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_last_week",
+      "en": "last week",
+      "pt": "semana passada",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "past"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "past_simple"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_next_month",
+      "en": "next month",
+      "pt": "mês que vem",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "future"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "future_going_to"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_right_now",
+      "en": "right now",
+      "pt": "agora mesmo",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "present"
+      ],
+      "forms": {},
+      "compatibility": {
+        "tenses": [
+          "present_continuous"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_visit_verb",
+      "en": "visit",
+      "pt": "visitar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "travel"
+      ],
+      "forms": {
+        "past": "visited"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_study_verb",
+      "en": "study",
+      "pt": "estudar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "routine"
+      ],
+      "forms": {
+        "past": "studied",
+        "ing": "studying"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_buy_verb",
+      "en": "buy",
+      "pt": "comprar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "shopping"
+      ],
+      "forms": {
+        "past": "bought"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_movie",
+      "en": "a movie",
+      "pt": "um filme",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "free_time"
+      ],
+      "forms": {
+        "singular": "movie",
+        "plural": "movies"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_friends",
+      "en": "my friends",
+      "pt": "meus amigos",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "social"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_cheaper",
+      "en": "cheaper",
+      "pt": "mais barato",
+      "semantic_type": "adjective",
+      "part_of_speech": "adjective",
+      "tags": [
+        "comparison"
+      ],
+      "forms": {
+        "base": "cheap",
+        "comparative": "cheaper"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_bigger",
+      "en": "bigger",
+      "pt": "maior",
+      "semantic_type": "adjective",
+      "part_of_speech": "adjective",
+      "tags": [
+        "comparison"
+      ],
+      "forms": {
+        "base": "big",
+        "comparative": "bigger"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_some",
+      "en": "some",
+      "pt": "um pouco de",
+      "semantic_type": "quantifier",
+      "part_of_speech": "determiner",
+      "tags": [
+        "quantity"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "countable_article_required"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_could_modal",
+      "en": "could",
+      "pt": "poderia",
+      "semantic_type": "modal",
+      "part_of_speech": "modal",
+      "tags": [
+        "requests"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "item_id": "core_a2_where",
+      "en": "where",
+      "pt": "onde",
+      "semantic_type": "wh_word",
+      "part_of_speech": "pronoun",
+      "tags": [
+        "question"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "core",
+      "level": "A2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "core_a2_past_visited_01",
+      "family_id": "core_a2_past_visited",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conta o que fez ontem."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "I visited my grandmother yesterday.",
+          "pt": "Eu visitei minha avó ontem.",
+          "ctx": "Você conta o que fez ontem.",
+          "blank": "visited",
+          "wrong": "I have visited my grandmother yesterday."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "template_id": "core_a2_past_bought_01",
+      "family_id": "core_a2_past_bought",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conta uma novidade."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "She bought a new phone last week.",
+          "pt": "Ela comprou um celular novo semana passada.",
+          "ctx": "Você conta uma novidade.",
+          "blank": "bought",
+          "wrong": "She buyed a new phone last week."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "template_id": "core_a2_pc_studying_01",
+      "family_id": "core_a2_pc_studying",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_present_continuous_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "verb_requires_ving",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica o que está fazendo."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "I am studying English right now.",
+          "pt": "Eu estou estudando inglês agora mesmo.",
+          "ctx": "Você explica o que está fazendo.",
+          "blank": "studying",
+          "wrong": "I am study English right now."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "template_id": "core_a2_pc_waiting_01",
+      "family_id": "core_a2_pc_waiting",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_present_continuous_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "verb_requires_ving",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você descreve uma cena."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "They are waiting for the bus.",
+          "pt": "Eles estão esperando o ônibus.",
+          "ctx": "Você descreve uma cena.",
+          "blank": "waiting",
+          "wrong": "They are wait for the bus."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "template_id": "core_a2_goingto_travel_01",
+      "family_id": "core_a2_goingto_travel",
+      "primary_skill_id": "future_going_to",
+      "skill_ids": [
+        "future_going_to",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre planos."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "We are going to travel next month.",
+          "pt": "Nós vamos viajar mês que vem.",
+          "ctx": "Você fala sobre planos.",
+          "blank": "going",
+          "wrong": "We are go to travel next month."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "template_id": "core_a2_goingto_visit_01",
+      "family_id": "core_a2_goingto_visit",
+      "primary_skill_id": "future_going_to",
+      "skill_ids": [
+        "future_going_to",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você comenta seus planos de fim de semana."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "I am going to visit my friends on Saturday.",
+          "pt": "Eu vou visitar meus amigos no sábado.",
+          "ctx": "Você comenta seus planos de fim de semana.",
+          "blank": "going to visit",
+          "wrong": "I will to visit my friends on Saturday."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "template_id": "core_a2_comp_cheaper_01",
+      "family_id": "core_a2_comp_cheaper",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "comparative_than",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "adjective": {
+          "source": "inline"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você compara duas opções."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "This restaurant is cheaper than the other one.",
+          "pt": "Este restaurante é mais barato que o outro.",
+          "ctx": "Você compara duas opções.",
+          "blank": "cheaper",
+          "wrong": "This restaurant is more cheap than the other one."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "template_id": "core_a2_count_some_01",
+      "family_id": "core_a2_count_some",
+      "primary_skill_id": "countable_uncountable",
+      "skill_ids": [
+        "countable_uncountable",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre o que falta em casa."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_article"
+      ],
+      "variants": [
+        {
+          "en": "We need some water.",
+          "pt": "Precisamos de um pouco de água.",
+          "ctx": "Você fala sobre o que falta em casa.",
+          "blank": "some",
+          "wrong": "We need a water."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "template_id": "core_a2_polite_could_01",
+      "family_id": "core_a2_polite_could",
+      "primary_skill_id": "polite_requests",
+      "skill_ids": [
+        "polite_requests",
+        "can_request"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "imperative_polite_request",
+      "slots": {
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você faz um pedido educado."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Could you open the window, please?",
+          "pt": "Você poderia abrir a janela, por favor?",
+          "ctx": "Você faz um pedido educado.",
+          "blank": "Could",
+          "wrong": "You could open the window, please?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "template_id": "core_a2_wh_past_01",
+      "family_id": "core_a2_wh_past",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary",
+        "past_simple"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conversa sobre o fim de semana."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "Where did you go last weekend?",
+          "pt": "Onde você foi no fim de semana passado?",
+          "ctx": "Você conversa sobre o fim de semana.",
+          "blank": "did",
+          "wrong": "Where you went last weekend?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "core_a2_take_the_bus",
+      "canonical": "take the bus",
+      "pt": "pegar o ônibus",
+      "tags": [
+        "transport"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life",
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "catch on the bus",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "take on the bus",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I take the bus to school.",
+          "pt": "Eu pego o ônibus para a escola."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "core_a2_go_shopping",
+      "canonical": "go shopping",
+      "pt": "fazer compras",
+      "tags": [
+        "shopping"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "go to shopping",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make shopping",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We went shopping last Saturday.",
+          "pt": "Fizemos compras sábado passado."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "core_a2_make_plans",
+      "canonical": "make plans",
+      "pt": "fazer planos",
+      "tags": [
+        "plans"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do plans",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "create plans together",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "They are making plans for the holiday.",
+          "pt": "Eles estão fazendo planos para o feriado."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "core_a2_spend_time",
+      "canonical": "spend time",
+      "pt": "passar tempo",
+      "tags": [
+        "social"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "pass time with",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "use time with",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I spend time with my family on Sundays.",
+          "pt": "Eu passo tempo com minha família aos domingos."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "core_a2_have_a_party",
+      "canonical": "have a party",
+      "pt": "dar uma festa",
+      "tags": [
+        "social"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a party",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a party",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We are going to have a party next week.",
+          "pt": "Vamos dar uma festa semana que vem."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "core_a2_take_a_photo",
+      "canonical": "take a photo",
+      "pt": "tirar uma foto",
+      "tags": [
+        "travel"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a photo",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a photo",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She took a photo of the beach.",
+          "pt": "Ela tirou uma foto da praia."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "core_a2_go_for_a_walk",
+      "canonical": "go for a walk",
+      "pt": "dar uma caminhada",
+      "tags": [
+        "free_time"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "go to a walk",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make a walk",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We went for a walk in the park.",
+          "pt": "Demos uma caminhada no parque."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "core_a2_ask_for_help",
+      "canonical": "ask for help",
+      "pt": "pedir ajuda",
+      "tags": [
+        "services"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "ask help to someone",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "demand for help",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "You can ask for help at the desk.",
+          "pt": "Você pode pedir ajuda no balcão."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "core",
+      "level": "A2"
+    }
+  ]
+}

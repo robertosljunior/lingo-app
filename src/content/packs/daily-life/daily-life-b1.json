@@ -1,0 +1,838 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "daily_life_b1",
+    "title": {
+      "pt": "Vida cotidiana B1",
+      "en": "Daily Life B1"
+    },
+    "theme": "daily_life",
+    "level": "B1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "daily_b1_the_neighborhood",
+      "en": "the neighborhood",
+      "pt": "o bairro",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "home"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "item_id": "daily_b1_the_commute",
+      "en": "the commute",
+      "pt": "o trajeto diário",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "transport"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "item_id": "daily_b1_a_routine",
+      "en": "a routine",
+      "pt": "uma rotina",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "routine"
+      ],
+      "forms": {
+        "singular": "routine",
+        "plural": "routines"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "item_id": "daily_b1_the_landlord",
+      "en": "the landlord",
+      "pt": "o proprietário",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "home"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "item_id": "daily_b1_the_repairs",
+      "en": "the repairs",
+      "pt": "os consertos",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "home"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "item_id": "daily_b1_the_schedule",
+      "en": "the schedule",
+      "pt": "a agenda",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "plans"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "item_id": "daily_b1_try_verb",
+      "en": "try",
+      "pt": "tentar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "general"
+      ],
+      "forms": {
+        "past": "tried",
+        "ing": "trying",
+        "participle": "tried"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "item_id": "daily_b1_save_verb",
+      "en": "save",
+      "pt": "economizar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "money"
+      ],
+      "forms": {
+        "ing": "saving",
+        "participle": "saved"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "item_id": "daily_b1_organize_verb",
+      "en": "organize",
+      "pt": "organizar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "plans"
+      ],
+      "forms": {
+        "ing": "organizing",
+        "participle": "organized"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "item_id": "daily_b1_exercise_verb",
+      "en": "exercise",
+      "pt": "exercitar-se",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "health"
+      ],
+      "forms": {
+        "ing": "exercising"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "item_id": "daily_b1_for_a_month",
+      "en": "for a month",
+      "pt": "há um mês",
+      "semantic_type": "duration",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "duration_compatible_with_present_perfect"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "item_id": "daily_b1_lately",
+      "en": "lately",
+      "pt": "ultimamente",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb",
+      "tags": [
+        "present_perfect"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "daily_life",
+      "level": "B1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "daily_b1_pp_organized_01",
+      "family_id": "daily_b1_pp_organized",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_past_participle_yet",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_past_participle",
+        "level_allows_present_perfect",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre planejamento."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "I have already organized my schedule for the week.",
+          "pt": "Eu já organizei minha agenda da semana.",
+          "ctx": "Você fala sobre planejamento.",
+          "blank": "organized",
+          "wrong": "I have already organize my schedule for the week."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "template_id": "daily_b1_ppc_exercising_01",
+      "family_id": "daily_b1_ppc_exercising",
+      "primary_skill_id": "present_perfect_continuous",
+      "skill_ids": [
+        "present_perfect_continuous",
+        "gerund_after_been"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você comenta um hábito novo."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "She has been exercising every morning for a month.",
+          "pt": "Ela se exercita toda manhã há um mês.",
+          "ctx": "Você comenta um hábito novo.",
+          "blank": "exercising",
+          "wrong": "She has been exercised every morning for a month."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "template_id": "daily_b1_ppc_saving_01",
+      "family_id": "daily_b1_ppc_saving",
+      "primary_skill_id": "present_perfect_continuous",
+      "skill_ids": [
+        "present_perfect_continuous",
+        "gerund_after_been"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre um objetivo da família."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "We have been saving money since January.",
+          "pt": "Estamos economizando dinheiro desde janeiro.",
+          "ctx": "Você fala sobre um objetivo da família.",
+          "blank": "saving",
+          "wrong": "We have been saved money since January."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "template_id": "daily_b1_cond1_traffic_01",
+      "family_id": "daily_b1_cond1_traffic",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "if_present_will_future",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você planeja o trajeto."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If the traffic is bad, I will take the subway.",
+          "pt": "Se o trânsito estiver ruim, eu vou de metrô.",
+          "ctx": "Você planeja o trajeto.",
+          "blank": "will take",
+          "wrong": "If the traffic will be bad, I take the subway."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "template_id": "daily_b1_modal_should_sleep_01",
+      "family_id": "daily_b1_modal_should_sleep",
+      "primary_skill_id": "modal_verbs",
+      "skill_ids": [
+        "modal_verbs",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_modal_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você dá um conselho a um amigo cansado."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "You should go to bed earlier during the week.",
+          "pt": "Você deveria dormir mais cedo durante a semana.",
+          "ctx": "Você dá um conselho a um amigo cansado.",
+          "blank": "should",
+          "wrong": "You should to go to bed earlier during the week."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "template_id": "daily_b1_q_moved_01",
+      "family_id": "daily_b1_q_moved",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary",
+        "present_perfect"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conversa com um vizinho novo."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "How long have you lived in this neighborhood?",
+          "pt": "Há quanto tempo você mora neste bairro?",
+          "ctx": "Você conversa com um vizinho novo.",
+          "blank": "have",
+          "wrong": "How long do you lived in this neighborhood?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "daily_b1_keep_track_of",
+      "canonical": "keep track of expenses",
+      "pt": "controlar os gastos",
+      "tags": [
+        "money"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "keep the track of expenses",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "hold track of expenses",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I keep track of my expenses in an app.",
+          "pt": "Eu controlo meus gastos em um aplicativo."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "daily_b1_get_used_to",
+      "canonical": "get used to",
+      "pt": "acostumar-se com",
+      "tags": [
+        "routine"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "get use to",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "be used for",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I am getting used to my new routine.",
+          "pt": "Estou me acostumando com minha nova rotina."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "daily_b1_pick_up",
+      "canonical": "pick up the kids",
+      "pt": "buscar as crianças",
+      "tags": [
+        "family"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "take up the kids",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "pick the kids on",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "He picks up the kids at five.",
+          "pt": "Ele busca as crianças às cinco."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "daily_b1_sort_out",
+      "canonical": "sort out a problem",
+      "pt": "resolver um problema",
+      "tags": [
+        "home"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "sort a problem off",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "solve out a problem",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I need to sort out a problem with the landlord.",
+          "pt": "Preciso resolver um problema com o proprietário."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "daily_b1_cut_down_on",
+      "canonical": "cut down on sugar",
+      "pt": "reduzir o açúcar",
+      "tags": [
+        "health"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life",
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "cut down sugar off",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "cut off on sugar",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She is cutting down on sugar.",
+          "pt": "Ela está reduzindo o açúcar."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "daily_b1_make_time_for",
+      "canonical": "make time for family",
+      "pt": "arranjar tempo para a família",
+      "tags": [
+        "family"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do time for family",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "take time to family wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "You should make time for your family.",
+          "pt": "Você deveria arranjar tempo para a sua família."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "daily_life",
+      "level": "B1"
+    }
+  ]
+}

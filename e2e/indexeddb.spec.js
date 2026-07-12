@@ -7,18 +7,19 @@ import {
 } from './helpers.js'
 
 const EXPECTED_STORES = [
-  'answers', 'lessons', 'mistakes', 'profiles', 'questions',
-  'settings', 'skill_events', 'skill_profiles', 'srs',
+  'answers', 'collocations', 'content_packs', 'lessons', 'lexical_items',
+  'mistakes', 'profiles', 'questions', 'settings', 'skill_events',
+  'skill_profiles', 'srs', 'template_definitions',
 ]
 
-test('database v3 has the expected stores, indexes and persisted data', async ({ page, context }) => {
+test('database v4 has the expected stores, indexes and persisted data', async ({ page, context }) => {
   const monitor = attachErrorMonitor(page)
   await enableTestHooks(context, { seed: GEN_SEED })
   await seedFixtures(page, { active: PROFILE_A })
   await generateFromHome(page, { count: 30 })
 
   const info = await dbInfo(page)
-  expect(info.version).toBe(3)
+  expect(info.version).toBe(4)
   expect(info.stores).toEqual(EXPECTED_STORES)
   expect(info.indexes.lessons).toEqual(['created_at'])
   expect(info.indexes.questions).toEqual(['lesson_id'])
@@ -27,6 +28,11 @@ test('database v3 has the expected stores, indexes and persisted data', async ({
   expect(info.indexes.srs).toEqual(['due_at', 'profile_id'])
   expect(info.indexes.skill_events).toEqual(['answer_id', 'profile_id', 'profile_skill'])
   expect(info.indexes.skill_profiles).toEqual(['profile_id', 'skill_id'])
+  expect(info.indexes.content_packs).toEqual(['enabled', 'level', 'source', 'theme', 'theme_level'])
+  expect(info.indexes.lexical_items).toEqual(['level', 'pack_id', 'pack_semantic', 'semantic_type', 'theme'])
+  expect(info.indexes.template_definitions).toEqual(['family_id', 'level', 'pack_id', 'pack_primary_skill', 'primary_skill_id', 'theme'])
+  expect(info.indexes.collocations).toEqual(['canonical', 'level', 'pack_id', 'pack_level', 'theme'])
+  expect(info.counts.content_packs).toBe(28)
 
   // Sample lesson (7 questions) + generated lesson (30 questions).
   expect(info.counts.lessons).toBe(2)
@@ -59,7 +65,7 @@ test('data survives a real browser close/reopen (persistent context)', async ({ 
   await page2.waitForFunction(() => window.__e2e && window.__e2e.db)
 
   const after = await dbInfo(page2)
-  expect(after.version).toBe(3)
+  expect(after.version).toBe(4)
   expect(after.counts.lessons).toBe(before.counts.lessons)
   expect(after.counts.questions).toBe(before.counts.questions)
   const { lesson, questions } = await readLessonWithQuestions(page2, lessonId)
@@ -70,7 +76,7 @@ test('data survives a real browser close/reopen (persistent context)', async ({ 
   await ctx2.close()
 })
 
-test('opening a legacy v2 database upgrades to v3 preserving data', async ({ page, context }) => {
+test('opening a legacy v2 database upgrades to v4 preserving data', async ({ page, context }) => {
   const monitor = attachErrorMonitor(page)
   await enableTestHooks(context)
 
@@ -115,7 +121,7 @@ test('opening a legacy v2 database upgrades to v3 preserving data', async ({ pag
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
 
   const info = await dbInfo(page)
-  expect(info.version).toBe(3)
+  expect(info.version).toBe(4)
   expect(info.stores).toEqual(EXPECTED_STORES)
 
   // Legacy data preserved and readable through the app layer.

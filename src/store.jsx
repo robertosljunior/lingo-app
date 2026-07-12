@@ -7,8 +7,9 @@ import { parseLesson } from './lib/lesson-parser.js'
 import { SAMPLE_YAML } from './lib/sample-lesson.js'
 import { warmupNlp } from './lib/nlp-client.js'
 import { configureTts } from './lib/audio/tts.js'
-import { generateLessonFromContext, buildGeneratedLessonYaml } from './lib/lesson-generator.js'
+import { generateLesson, buildGeneratedLessonYaml } from './lib/lesson-generator.js'
 import { inferAssessedSkills } from './lib/skill-profile.js'
+import * as contentRepo from './lib/content-pack-repository.js'
 
 
 const AppCtx = createContext(null)
@@ -46,6 +47,7 @@ export function AppProvider({ children }) {
   const [skillProfiles, setSkillProfiles] = useState([])
   const [profiles, setProfiles] = useState([])
   const [dueCount, setDueCount] = useState(0)
+  const [contentPacks, setContentPacks] = useState([])
 
   const [activeLesson, setActiveLesson] = useState(null)
   const [session, setSession] = useState({ id: null, qIdx: 0, answers: [] })
@@ -59,9 +61,13 @@ export function AppProvider({ children }) {
   useEffect(() => {
     (async () => {
       await db.ensureBootstrapped()
+      // Idempotent content-pack seed: a no-op (signature check only) when the
+      // installed packs already match the bundle.
+      try { await contentRepo.seedBuiltinContentPacks() } catch (e) { console.warn('content pack seed failed', e) }
       // Test-only hook: E2E runs flag the tab via sessionStorage to reach the
       // same public storage layer the UI uses (never set in normal usage).
-      try { if (window.sessionStorage.getItem('e2e:enabled')) window.__e2e = { db } } catch { /* noop */ }
+      try { if (window.sessionStorage.getItem('e2e:enabled')) window.__e2e = { db, contentRepo } } catch { /* noop */ }
+      setContentPacks(await contentRepo.getAllContentPacks())
       const s = await db.getSettings()
       setSettings(s)
       const profile = s.active_profile || db.DEFAULT_PROFILE
@@ -228,7 +234,7 @@ export function AppProvider({ children }) {
   }, [activeProfile, startSynthetic, showToast])
 
 
-  const generateAdaptiveLesson = useCallback(async ({ questionCount = 30, targetSkillId = null, seed = null } = {}) => {
+  const generateAdaptiveLesson = useCallback(async ({ questionCount = 30, targetSkillId = null, seed = null, theme = null, level = null } = {}) => {
     if (generationStartRef.current) return null
     generationStartRef.current = true
     try {
@@ -238,12 +244,48 @@ export function AppProvider({ children }) {
         const found = context.target_skills.find((s) => s.skill_id === targetSkillId) || { skill_id: targetSkillId, priority: 1, mastery: 0.4, evidence: 'emerging' }
         context.target_skills = [found, ...context.target_skills.filter((s) => s.skill_id !== targetSkillId)]
       }
-      const lesson = generateLessonFromContext(context, { questionCount, seed: seed ?? e2eGenerationSeed(), profileId: activeProfile })
+      const chosenTheme = theme || settings?.last_generation_theme || 'workplace'
+      const chosenLevel = level || settings?.level || 'B1'
+      let snapshot
+      try {
+        snapshot = await contentRepo.resolveContentSnapshot({ theme: chosenTheme, level: chosenLevel })
+      } catch (e) {
+        if (e?.code === 'CONTENT_DEPENDENCY_MISSING') { showToast(`Pacote necessário indisponível: ${e.missing.join(', ')}`); return null }
+        throw e
+      }
+      if (!snapshot.pack_ids.some((id) => id.startsWith(chosenTheme))) { showToast('Nenhum pacote habilitado para este tema e nível.'); return null }
+      context.level = chosenLevel
+      const lesson = generateLesson({ context, contentSnapshot: snapshot, questionCount, seed: seed ?? e2eGenerationSeed() })
       const saved = await db.saveLesson(lesson)
+      await db.setSetting('last_generation_theme', chosenTheme)
+      setSettings((s) => ({ ...s, last_generation_theme: chosenTheme }))
       await refreshLibrary(activeProfile)
       return { lesson: saved, yaml: buildGeneratedLessonYaml(saved), validation: lesson.generation_metadata }
     } finally { generationStartRef.current = false }
-  }, [activeProfile, refreshLibrary])
+  }, [activeProfile, refreshLibrary, settings?.level, settings?.last_generation_theme, showToast])
+
+  // Imported lessons go through the collision-safe path: an existing lesson
+  // (especially a private one) is never overwritten by an import.
+  const importLesson = useCallback(async (lesson) => {
+    const saved = await db.importLesson(lesson)
+    await refreshLibrary()
+    return saved
+  }, [refreshLibrary])
+
+  const refreshContentPacks = useCallback(async () => {
+    setContentPacks(await contentRepo.getAllContentPacks())
+  }, [])
+
+  const setContentPackEnabled = useCallback(async (packId, enabled) => {
+    if (enabled) await contentRepo.enableContentPack(packId)
+    else await contentRepo.disableContentPack(packId)
+    await refreshContentPacks()
+  }, [refreshContentPacks])
+
+  const restoreContentPack = useCallback(async (packId) => {
+    await contentRepo.restoreBuiltinContentPack(packId)
+    await refreshContentPacks()
+  }, [refreshContentPacks])
 
   const startLesson = useCallback(async (lesson) => {
     // Lessons coming from the list view carry no questions (separate store) —
@@ -357,6 +399,7 @@ export function AppProvider({ children }) {
     lessons, sessions, mistakes, skillProfiles, dueCount,
     profiles, activeProfile, switchProfile, addProfile, removeProfile,
     startReviewSession, startPracticeSession, generateAdaptiveLesson,
+    contentPacks, refreshContentPacks, setContentPackEnabled, restoreContentPack, importLesson,
     activeLesson, session,
     toast,
     SCREENS,

@@ -1,0 +1,802 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "workplace_b2",
+    "title": {
+      "pt": "Trabalho B2",
+      "en": "Workplace B2"
+    },
+    "theme": "workplace",
+    "level": "B2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "work_b2_the_contract",
+      "en": "the contract",
+      "pt": "o contrato",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "negotiation"
+      ],
+      "forms": {
+        "singular": "contract",
+        "plural": "contracts"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "item_id": "work_b2_the_budget",
+      "en": "the budget",
+      "pt": "o orçamento",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "management"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "item_id": "work_b2_the_stakeholders",
+      "en": "the stakeholders",
+      "pt": "as partes interessadas",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "management"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "item_id": "work_b2_the_merger",
+      "en": "the merger",
+      "pt": "a fusão",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "business"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "item_id": "work_b2_the_performance_review",
+      "en": "the performance review",
+      "pt": "a avaliação de desempenho",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "feedback"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "item_id": "work_b2_the_raise",
+      "en": "a raise",
+      "pt": "um aumento",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "salary"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "item_id": "work_b2_sign_verb",
+      "en": "sign",
+      "pt": "assinar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "negotiation"
+      ],
+      "forms": {
+        "past": "signed",
+        "participle": "signed"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "item_id": "work_b2_approve_verb",
+      "en": "approve",
+      "pt": "aprovar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "management"
+      ],
+      "forms": {
+        "participle": "approved"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "item_id": "work_b2_promote_verb",
+      "en": "promote",
+      "pt": "promover",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "career"
+      ],
+      "forms": {
+        "participle": "promoted"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "item_id": "work_b2_negotiate_verb",
+      "en": "negotiate",
+      "pt": "negociar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "negotiation"
+      ],
+      "forms": {
+        "ing": "negotiating"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "item_id": "work_b2_by_the_end_of_q",
+      "en": "by the end of the quarter",
+      "pt": "até o fim do trimestre",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "deadlines"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "item_id": "work_b2_during_the_review",
+      "en": "during the review",
+      "pt": "durante a avaliação",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "feedback"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "work_b2_passive_signed_01",
+      "family_id": "work_b2_passive_signed",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você comunica o fechamento de um acordo."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "The contract was signed by both companies.",
+          "pt": "O contrato foi assinado pelas duas empresas.",
+          "ctx": "Você comunica o fechamento de um acordo.",
+          "blank": "signed",
+          "wrong": "The contract was sign by both companies."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "template_id": "work_b2_passive_promoted_01",
+      "family_id": "work_b2_passive_promoted",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "passive_be_past_participle",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_past_participle",
+        "level_allows_passive",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você comenta uma promoção."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_participle"
+      ],
+      "variants": [
+        {
+          "en": "She was promoted to senior manager last month.",
+          "pt": "Ela foi promovida a gerente sênior mês passado.",
+          "ctx": "Você comenta uma promoção.",
+          "blank": "promoted",
+          "wrong": "She was promote to senior manager last month."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "template_id": "work_b2_reported_budget_01",
+      "family_id": "work_b2_reported_budget",
+      "primary_skill_id": "reported_speech",
+      "skill_ids": [
+        "reported_speech",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "reported_speech_statement",
+      "slots": {
+        "reporter": {
+          "source": "inline"
+        },
+        "statement": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "level_allows_reported_speech",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você repassa uma decisão da diretoria."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "The director said that the budget had been approved.",
+          "pt": "O diretor disse que o orçamento tinha sido aprovado.",
+          "ctx": "Você repassa uma decisão da diretoria.",
+          "blank": "had been approved",
+          "wrong": "The director said that the budget has approve."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "template_id": "work_b2_cond2_raise_01",
+      "family_id": "work_b2_cond2_raise",
+      "primary_skill_id": "second_conditional",
+      "skill_ids": [
+        "second_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "second_conditional",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pondera uma proposta."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If they offered me a raise, I would stay at the company.",
+          "pt": "Se me oferecessem um aumento, eu ficaria na empresa.",
+          "ctx": "Você pondera uma proposta.",
+          "blank": "would stay",
+          "wrong": "If they would offer me a raise, I will stay at the company."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "template_id": "work_b2_deduction_meeting_01",
+      "family_id": "work_b2_deduction_meeting",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "modal_deduction_statement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "modal": {
+          "source": "lexical_items",
+          "semantic_type": "modal"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você deduz pelo escritório vazio."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "The meeting must have run late; nobody has left yet.",
+          "pt": "A reunião deve ter passado da hora; ninguém saiu ainda.",
+          "ctx": "Você deduz pelo escritório vazio.",
+          "blank": "must have run",
+          "wrong": "The meeting must to run late; nobody has left yet."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "template_id": "work_b2_connector_negotiation_01",
+      "family_id": "work_b2_connector_negotiation",
+      "primary_skill_id": "connectors",
+      "skill_ids": [
+        "connectors",
+        "word_order"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você avalia uma proposta em uma negociação."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "The offer is attractive; however, the deadline is too tight.",
+          "pt": "A oferta é atraente; no entanto, o prazo é apertado demais.",
+          "ctx": "Você avalia uma proposta em uma negociação.",
+          "blank": "however",
+          "wrong": "The offer is attractive; therefore, the deadline is too tight."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "work_b2_close_a_deal",
+      "canonical": "close a deal",
+      "pt": "fechar um negócio",
+      "tags": [
+        "negotiation"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "shut a deal",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "close a business deal wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "They closed a deal with a new supplier.",
+          "pt": "Eles fecharam um negócio com um novo fornecedor."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "work_b2_meet_expectations",
+      "canonical": "meet expectations",
+      "pt": "atender às expectativas",
+      "tags": [
+        "feedback"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "reach the expectations wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "attend expectations",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "The results met everyone’s expectations.",
+          "pt": "Os resultados atenderam às expectativas de todos."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "work_b2_ask_for_a_raise",
+      "canonical": "ask for a raise",
+      "pt": "pedir um aumento",
+      "tags": [
+        "salary"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "ask a raise",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "demand for a raise politely",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "He asked for a raise during the review.",
+          "pt": "Ele pediu um aumento durante a avaliação."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "work_b2_take_the_lead",
+      "canonical": "take the lead",
+      "pt": "assumir a liderança",
+      "tags": [
+        "leadership"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "get the lead on",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make the lead",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She took the lead on the new project.",
+          "pt": "Ela assumiu a liderança do novo projeto."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "work_b2_bring_up",
+      "canonical": "bring up an issue",
+      "pt": "levantar um assunto",
+      "tags": [
+        "meetings"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "bring an issue on",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "take up an issue wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "He brought up an issue about the budget.",
+          "pt": "Ele levantou um assunto sobre o orçamento."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    },
+    {
+      "collocation_id": "work_b2_common_ground",
+      "canonical": "find common ground",
+      "pt": "encontrar um denominador comum",
+      "tags": [
+        "negotiation"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "find a common ground floor",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "meet common ground",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Both teams found common ground quickly.",
+          "pt": "As duas equipes encontraram um denominador comum rapidamente."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B2"
+    }
+  ]
+}

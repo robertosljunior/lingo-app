@@ -1,0 +1,819 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "technology_and_communication_a2",
+    "title": {
+      "pt": "Tecnologia e comunicação A2",
+      "en": "Technology & Communication A2"
+    },
+    "theme": "technology_and_communication",
+    "level": "A2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "tech_a2_an_app",
+      "en": "an app",
+      "pt": "um aplicativo",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "software"
+      ],
+      "forms": {
+        "singular": "app",
+        "plural": "apps"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "item_id": "tech_a2_the_screen",
+      "en": "the screen",
+      "pt": "a tela",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "devices"
+      ],
+      "forms": {
+        "singular": "screen",
+        "plural": "screens"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "item_id": "tech_a2_a_video_call",
+      "en": "a video call",
+      "pt": "uma chamada de vídeo",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "calls"
+      ],
+      "forms": {
+        "singular": "video call",
+        "plural": "video calls"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "item_id": "tech_a2_the_charger",
+      "en": "the charger",
+      "pt": "o carregador",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "devices"
+      ],
+      "forms": {
+        "singular": "charger",
+        "plural": "chargers"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "item_id": "tech_a2_a_photo",
+      "en": "a photo",
+      "pt": "uma foto",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "files"
+      ],
+      "forms": {
+        "singular": "photo",
+        "plural": "photos"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "item_id": "tech_a2_the_headphones",
+      "en": "the headphones",
+      "pt": "os fones de ouvido",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "devices"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "item_id": "tech_a2_download_verb",
+      "en": "download",
+      "pt": "baixar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "software"
+      ],
+      "forms": {
+        "past": "downloaded",
+        "ing": "downloading"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "item_id": "tech_a2_install_verb",
+      "en": "install",
+      "pt": "instalar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "software"
+      ],
+      "forms": {
+        "past": "installed"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "item_id": "tech_a2_update_verb",
+      "en": "update",
+      "pt": "atualizar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "software"
+      ],
+      "forms": {
+        "ing": "updating"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "item_id": "tech_a2_break_verb",
+      "en": "break",
+      "pt": "quebrar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "problems"
+      ],
+      "forms": {
+        "past": "broke"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "item_id": "tech_a2_this_morning",
+      "en": "this morning",
+      "pt": "hoje de manhã",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "past"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "item_id": "tech_a2_later_today",
+      "en": "later today",
+      "pt": "mais tarde hoje",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "future"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "tech_a2_past_downloaded_01",
+      "family_id": "tech_a2_past_downloaded",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você mostra uma novidade a um amigo."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "I downloaded a new app this morning.",
+          "pt": "Baixei um aplicativo novo hoje de manhã.",
+          "ctx": "Você mostra uma novidade a um amigo.",
+          "blank": "downloaded",
+          "wrong": "I have downloaded a new app this morning."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "template_id": "tech_a2_past_broke_01",
+      "family_id": "tech_a2_past_broke",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica por que não respondeu."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "My phone broke last week.",
+          "pt": "Meu celular quebrou semana passada.",
+          "ctx": "Você explica por que não respondeu.",
+          "blank": "broke",
+          "wrong": "My phone breaked last week."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "template_id": "tech_a2_pc_updating_01",
+      "family_id": "tech_a2_pc_updating",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_present_continuous_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "verb_requires_ving",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica a demora."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "The computer is updating right now.",
+          "pt": "O computador está atualizando agora mesmo.",
+          "ctx": "Você explica a demora.",
+          "blank": "updating",
+          "wrong": "The computer is update right now."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "template_id": "tech_a2_goingto_install_01",
+      "family_id": "tech_a2_goingto_install",
+      "primary_skill_id": "future_going_to",
+      "skill_ids": [
+        "future_going_to",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você adia uma tarefa."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "I am going to install the update later today.",
+          "pt": "Vou instalar a atualização mais tarde hoje.",
+          "ctx": "Você adia uma tarefa.",
+          "blank": "going",
+          "wrong": "I am go to install the update later today."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "template_id": "tech_a2_comp_faster_01",
+      "family_id": "tech_a2_comp_faster",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "comparative_than",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "adjective": {
+          "source": "inline"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você compara equipamentos."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "The new laptop is faster than the old one.",
+          "pt": "O notebook novo é mais rápido que o antigo.",
+          "ctx": "Você compara equipamentos.",
+          "blank": "faster",
+          "wrong": "The new laptop is more fast than the old one."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "template_id": "tech_a2_polite_call_later_01",
+      "family_id": "tech_a2_polite_call_later",
+      "primary_skill_id": "polite_requests",
+      "skill_ids": [
+        "polite_requests",
+        "can_request"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "imperative_polite_request",
+      "slots": {
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você está ocupado agora."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Could you call me back later, please?",
+          "pt": "Você poderia me ligar de volta mais tarde, por favor?",
+          "ctx": "Você está ocupado agora.",
+          "blank": "Could",
+          "wrong": "You could call me back later, please?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "tech_a2_charge_the_phone",
+      "canonical": "charge the phone",
+      "pt": "carregar o celular",
+      "tags": [
+        "devices"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "load the phone",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "fill the phone battery wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I forgot to charge the phone.",
+          "pt": "Esqueci de carregar o celular."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "tech_a2_run_out_of_battery",
+      "canonical": "run out of battery",
+      "pt": "ficar sem bateria",
+      "tags": [
+        "devices"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "run out from battery",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "finish out of battery",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "My phone ran out of battery.",
+          "pt": "Meu celular ficou sem bateria."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "tech_a2_take_a_screenshot",
+      "canonical": "take a screenshot",
+      "pt": "tirar um print",
+      "tags": [
+        "files"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a screenshot",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a screenshot",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Take a screenshot of the error.",
+          "pt": "Tire um print do erro."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "tech_a2_log_in",
+      "canonical": "log in to the account",
+      "pt": "entrar na conta",
+      "tags": [
+        "security"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "log in the account inside wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "login to in the account",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I can’t log in to my account.",
+          "pt": "Não consigo entrar na minha conta."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "tech_a2_hang_up",
+      "canonical": "hang up the call",
+      "pt": "desligar a ligação",
+      "tags": [
+        "calls"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "hang the call off",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "close up the call",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She hung up the call by accident.",
+          "pt": "Ela desligou a ligação sem querer."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "tech_a2_on_silent",
+      "canonical": "put the phone on silent",
+      "pt": "colocar o celular no silencioso",
+      "tags": [
+        "devices"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "put the phone in silent on wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "turn the phone to silent put",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I put my phone on silent at night.",
+          "pt": "Coloco o celular no silencioso à noite."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "technology_and_communication",
+      "level": "A2"
+    }
+  ]
+}

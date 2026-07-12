@@ -1,0 +1,813 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "shopping_and_services_a2",
+    "title": {
+      "pt": "Compras e serviços A2",
+      "en": "Shopping & Services A2"
+    },
+    "theme": "shopping_and_services",
+    "level": "A2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "shop_a2_a_discount",
+      "en": "a discount",
+      "pt": "um desconto",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "price"
+      ],
+      "forms": {
+        "singular": "discount",
+        "plural": "discounts"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "item_id": "shop_a2_the_fitting_room",
+      "en": "the fitting room",
+      "pt": "o provador",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "clothes"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "item_id": "shop_a2_a_refund",
+      "en": "a refund",
+      "pt": "um reembolso",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "returns"
+      ],
+      "forms": {
+        "singular": "refund",
+        "plural": "refunds"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "item_id": "shop_a2_the_receipt",
+      "en": "the receipt",
+      "pt": "o recibo",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "payment"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "item_id": "shop_a2_a_jacket",
+      "en": "a jacket",
+      "pt": "uma jaqueta",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "clothes"
+      ],
+      "forms": {
+        "singular": "jacket",
+        "plural": "jackets"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "item_id": "shop_a2_the_customer_service",
+      "en": "customer service",
+      "pt": "o atendimento ao cliente",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "services"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "item_id": "shop_a2_return_verb",
+      "en": "return",
+      "pt": "devolver",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "returns"
+      ],
+      "forms": {
+        "past": "returned"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "item_id": "shop_a2_exchange_verb",
+      "en": "exchange",
+      "pt": "trocar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "returns"
+      ],
+      "forms": {
+        "past": "exchanged"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "item_id": "shop_a2_spend_verb",
+      "en": "spend",
+      "pt": "gastar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "money"
+      ],
+      "forms": {
+        "past": "spent"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "item_id": "shop_a2_look_for_verb",
+      "en": "look for",
+      "pt": "procurar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "shopping"
+      ],
+      "forms": {
+        "ing": "looking for"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "item_id": "shop_a2_this_week",
+      "en": "this week",
+      "pt": "esta semana",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "item_id": "shop_a2_two_days_ago",
+      "en": "two days ago",
+      "pt": "dois dias atrás",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "past"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "shop_a2_past_bought_online_01",
+      "family_id": "shop_a2_past_bought_online",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica de onde veio a peça."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "I bought this jacket online two days ago.",
+          "pt": "Comprei esta jaqueta pela internet dois dias atrás.",
+          "ctx": "Você explica de onde veio a peça.",
+          "blank": "bought",
+          "wrong": "I have bought this jacket online two days ago."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "template_id": "shop_a2_past_spent_01",
+      "family_id": "shop_a2_past_spent",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você comenta sobre as compras."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "She spent too much money at the mall.",
+          "pt": "Ela gastou dinheiro demais no shopping.",
+          "ctx": "Você comenta sobre as compras.",
+          "blank": "spent",
+          "wrong": "She spended too much money at the mall."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "template_id": "shop_a2_pc_looking_01",
+      "family_id": "shop_a2_pc_looking",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_present_continuous_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "verb_requires_ving",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Um vendedor oferece ajuda."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "I am looking for a gift for my mother.",
+          "pt": "Estou procurando um presente para minha mãe.",
+          "ctx": "Um vendedor oferece ajuda.",
+          "blank": "looking",
+          "wrong": "I am look for a gift for my mother."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "template_id": "shop_a2_goingto_return_01",
+      "family_id": "shop_a2_goingto_return",
+      "primary_skill_id": "future_going_to",
+      "skill_ids": [
+        "future_going_to",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica seu plano."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "I am going to return these shoes tomorrow.",
+          "pt": "Vou devolver estes sapatos amanhã.",
+          "ctx": "Você explica seu plano.",
+          "blank": "going",
+          "wrong": "I am go to return these shoes tomorrow."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "template_id": "shop_a2_comp_cheaper_online_01",
+      "family_id": "shop_a2_comp_cheaper_online",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "comparative_than",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "adjective": {
+          "source": "inline"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você compara preços."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "This model is cheaper online than in the store.",
+          "pt": "Este modelo é mais barato pela internet do que na loja.",
+          "ctx": "Você compara preços.",
+          "blank": "cheaper",
+          "wrong": "This model is more cheap online than in the store."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "template_id": "shop_a2_polite_exchange_01",
+      "family_id": "shop_a2_polite_exchange",
+      "primary_skill_id": "polite_requests",
+      "skill_ids": [
+        "polite_requests",
+        "can_request"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "imperative_polite_request",
+      "slots": {
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala com o atendente."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Could I exchange this for a bigger size?",
+          "pt": "Eu poderia trocar isto por um tamanho maior?",
+          "ctx": "Você fala com o atendente.",
+          "blank": "Could",
+          "wrong": "I could exchange this for a bigger size, yes?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "shop_a2_get_a_discount",
+      "canonical": "get a discount",
+      "pt": "conseguir um desconto",
+      "tags": [
+        "price"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "take a discount get wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "win a discount",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "You get a discount if you pay in cash.",
+          "pt": "Você consegue um desconto se pagar em dinheiro."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "shop_a2_ask_for_a_refund",
+      "canonical": "ask for a refund",
+      "pt": "pedir um reembolso",
+      "tags": [
+        "returns"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "ask a refund",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "request for a refund demand wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "She asked for a refund at customer service.",
+          "pt": "Ela pediu um reembolso no atendimento ao cliente."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "shop_a2_window_shopping",
+      "canonical": "go window shopping",
+      "pt": "ver vitrines",
+      "tags": [
+        "shopping"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "go windows shopping",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make window shopping",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We went window shopping downtown.",
+          "pt": "Fomos ver vitrines no centro."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "shop_a2_out_of_stock",
+      "canonical": "out of stock",
+      "pt": "fora de estoque",
+      "tags": [
+        "services"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "out of the stock shelf",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "off of stock",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Sorry, this size is out of stock.",
+          "pt": "Desculpe, este tamanho está fora de estoque."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "shop_a2_fill_out_a_form",
+      "canonical": "fill out a form",
+      "pt": "preencher um formulário",
+      "tags": [
+        "services"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services"
+      ],
+      "invalid_variants": [
+        {
+          "text": "fill a form up wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "complete out a form",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Please fill out this form for the exchange.",
+          "pt": "Por favor, preencha este formulário para a troca."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "shop_a2_good_value",
+      "canonical": "good value for money",
+      "pt": "com bom custo-benefício",
+      "tags": [
+        "price"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "shopping_and_services",
+        "technology_and_communication"
+      ],
+      "invalid_variants": [
+        {
+          "text": "good price for money value",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "nice value of money",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "This phone is good value for money.",
+          "pt": "Este celular tem bom custo-benefício."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "shopping_and_services",
+      "level": "A2"
+    }
+  ]
+}

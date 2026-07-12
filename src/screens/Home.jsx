@@ -37,22 +37,41 @@ function StreakStrip({ sessions }) {
   )
 }
 
+const GEN_THEMES = [
+  ['daily_life', 'Vida cotidiana'], ['workplace', 'Trabalho'], ['travel', 'Viagens'],
+  ['food_and_restaurants', 'Comida e restaurantes'], ['shopping_and_services', 'Compras e serviços'],
+  ['technology_and_communication', 'Tecnologia e comunicação'],
+]
+const GEN_LEVELS = ['A1', 'A2', 'B1', 'B2']
+
 export default function Home() {
-  const { lessons, sessions, mistakes, dueCount, profiles, activeProfile, skillProfiles = [], startLesson, startReviewSession, startPracticeSession, generateAdaptiveLesson, navigate, setTab, SCREENS, showToast } = useApp()
+  const { lessons, sessions, mistakes, dueCount, profiles, activeProfile, settings, contentPacks = [], skillProfiles = [], startLesson, startReviewSession, startPracticeSession, generateAdaptiveLesson, navigate, setTab, SCREENS, showToast } = useApp()
   const latest = lessons[0] || null
   const avgScore = sessions.length
     ? Math.round(sessions.reduce((a, s) => a + s.score, 0) / sessions.length)
     : null
   const profile = profiles.find((p) => p.profile_id === activeProfile)
   const [genCount, setGenCount] = useState(30)
+  const [genLevel, setGenLevel] = useState(null) // null = profile default
+  const [genTheme, setGenTheme] = useState(null) // null = last used / workplace
   const [generating, setGenerating] = useState(false)
   const [generated, setGenerated] = useState(null)
   const topSkills = skillProfiles.slice(0, 2).map((p) => p.label_pt || p.skill_id)
+  const level = genLevel || settings?.level || 'B1'
+  const theme = genTheme || settings?.last_generation_theme || 'workplace'
+  // Only offer themes whose pack is installed AND enabled for the level; the
+  // core dependency is included automatically at generation time.
+  const availableThemes = GEN_THEMES.filter(([id]) =>
+    contentPacks.some((p) => p.theme === id && p.level === level && p.enabled))
+  const corePack = contentPacks.find((p) => p.pack_id === `core_${level.toLowerCase()}`)
+  const themeAvailable = availableThemes.some(([id]) => id === theme)
+  const dependencyOk = !!corePack?.enabled
   async function onGenerate() {
     if (generating) return
+    if (!themeAvailable || !dependencyOk) { showToast('Pacote de conteúdo necessário está desabilitado ou ausente.'); return }
     setGenerating(true)
     try {
-      const res = await generateAdaptiveLesson({ questionCount: genCount })
+      const res = await generateAdaptiveLesson({ questionCount: genCount, theme, level })
       if (res?.lesson) { setGenerated(res.lesson); showToast('Aula gerada localmente.') }
     } finally { setGenerating(false) }
   }
@@ -140,12 +159,22 @@ export default function Home() {
             <div style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--success-bg)', color: 'var(--success)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><I.spark s={20} /></div>
             <div style={{ flex: 1 }}>
               <div style={{ fontWeight: 800, fontSize: 15 }}>Gerar nova aula adaptativa</div>
-              <div style={{ fontSize: 12, color: 'var(--ink-3)' }} data-testid="generation-focus">B1 · foco: {topSkills.join(', ') || 'workplace English'} · offline</div>
+              <div style={{ fontSize: 12, color: 'var(--ink-3)' }} data-testid="generation-focus">{level} · foco: {topSkills.join(', ') || 'inglês prático'} · offline</div>
             </div>
           </div>
-          <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
+          <div style={{ display: 'flex', gap: 6, marginTop: 12, flexWrap: 'wrap' }} data-testid="gen-level-row">
+            {GEN_LEVELS.map((l) => <button key={l} className={`btn btn-sm ${level===l?'btn-primary':'btn-secondary'}`} data-testid={`gen-level-${l}`} onClick={() => setGenLevel(l)}>{l}</button>)}
+          </div>
+          <div style={{ display: 'flex', gap: 6, marginTop: 8, flexWrap: 'wrap' }} data-testid="gen-theme-row">
+            {availableThemes.map(([id, label]) => (
+              <button key={id} className={`btn btn-sm ${theme===id?'btn-primary':'btn-secondary'}`} data-testid={`gen-theme-${id}`} onClick={() => setGenTheme(id)}>{label}</button>
+            ))}
+            {availableThemes.length === 0 && <div className="muted" style={{ fontSize: 12 }} data-testid="gen-no-themes">Nenhum pacote de tema habilitado para {level}.</div>}
+          </div>
+          {!dependencyOk && <div style={{ fontSize: 12, color: 'var(--error)', marginTop: 8 }} data-testid="gen-dependency-error">O pacote essencial core_{level.toLowerCase()} está desabilitado — habilite-o em Ajustes para gerar aulas.</div>}
+          <div style={{ display: 'flex', gap: 8, marginTop: 10 }}>
             {[10,20,30].map((n) => <button key={n} className={`btn btn-sm ${genCount===n?'btn-primary':'btn-secondary'}`} data-testid={`gen-count-${n}`} onClick={() => setGenCount(n)}>{n}</button>)}
-            <button className="btn btn-primary" style={{ flex: 1 }} disabled={generating} data-testid="generate-lesson" onClick={onGenerate}>{generating ? 'Gerando aula...' : 'Gerar aula'}</button>
+            <button className="btn btn-primary" style={{ flex: 1 }} disabled={generating || !themeAvailable || !dependencyOk} data-testid="generate-lesson" onClick={onGenerate}>{generating ? 'Gerando aula...' : 'Gerar aula'}</button>
           </div>
           {generated && <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--border)' }} data-testid="generated-lesson-result">
             <div style={{ fontWeight: 800 }}>{generated.title}</div>

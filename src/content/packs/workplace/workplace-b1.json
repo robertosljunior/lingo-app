@@ -1,0 +1,938 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "workplace_b1",
+    "title": {
+      "pt": "Inglês profissional B1",
+      "en": "Workplace English B1"
+    },
+    "theme": "workplace",
+    "level": "B1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "workplace_company",
+      "en": "this company",
+      "pt": "esta empresa",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "company",
+        "job",
+        "experience"
+      ],
+      "forms": {
+        "singular": "company",
+        "plural": "companies"
+      },
+      "compatibility": {
+        "verbs": [
+          "work"
+        ],
+        "tenses": [
+          "present_simple",
+          "present_perfect",
+          "present_perfect_continuous"
+        ],
+        "prepositions": [
+          "at"
+        ]
+      },
+      "constraints": [
+        "workplace_requires_at"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "item_id": "workplace_support_team",
+      "en": "the support team",
+      "pt": "a equipe de suporte",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "support"
+      ],
+      "forms": {},
+      "compatibility": {
+        "verbs": [
+          "work",
+          "lead"
+        ],
+        "prepositions": [
+          "with"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "item_id": "workplace_project",
+      "en": "this project",
+      "pt": "este projeto",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "projects"
+      ],
+      "forms": {},
+      "compatibility": {
+        "verbs": [
+          "work",
+          "manage"
+        ],
+        "prepositions": [
+          "on"
+        ]
+      },
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "item_id": "workplace_report",
+      "en": "the report",
+      "pt": "o relatório",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "work"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "item_id": "workplace_latest_version",
+      "en": "the latest version",
+      "pt": "a versão mais recente",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "technology"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "item_id": "workplace_deadline_friday",
+      "en": "by Friday",
+      "pt": "até sexta-feira",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "deadlines"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "item_id": "workplace_requirements",
+      "en": "the requirements",
+      "pt": "os requisitos",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "projects"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "item_id": "workplace_client",
+      "en": "the client",
+      "pt": "o cliente",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "communication"
+      ],
+      "forms": {
+        "singular": "client",
+        "plural": "clients"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "item_id": "workplace_deployment",
+      "en": "the deployment",
+      "pt": "a implantação",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "technology"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "item_id": "workplace_open_positions",
+      "en": "open positions",
+      "pt": "vagas abertas",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "recruiting"
+      ],
+      "forms": {
+        "singular": "open position",
+        "plural": "open positions"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "item_id": "workplace_manage_verb",
+      "en": "manage",
+      "pt": "gerenciar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "projects"
+      ],
+      "forms": {
+        "ing": "managing",
+        "participle": "managed"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "item_id": "workplace_lead_verb",
+      "en": "lead",
+      "pt": "liderar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "leadership"
+      ],
+      "forms": {
+        "ing": "leading",
+        "participle": "led"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "workplace",
+      "level": "B1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "work_b1_ppc_project_since_01",
+      "family_id": "work_b1_ppc_project_since",
+      "primary_skill_id": "gerund_after_been",
+      "skill_ids": [
+        "gerund_after_been",
+        "present_perfect_continuous",
+        "workplace_preposition"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você está explicando sua experiência a um recrutador."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "I've been working on this project since January.",
+          "pt": "Eu trabalho neste projeto desde janeiro.",
+          "ctx": "Você está explicando sua experiência a um recrutador.",
+          "blank": "working",
+          "wrong": "I've been worked on this project since January."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "template_id": "work_b1_ppc_support_duration_01",
+      "family_id": "work_b1_ppc_support_duration",
+      "primary_skill_id": "gerund_after_been",
+      "skill_ids": [
+        "gerund_after_been",
+        "present_perfect_continuous"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        },
+        "duration": {
+          "source": "lexical_items",
+          "semantic_type": "duration"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_ving",
+        "duration_compatible_with_present_perfect",
+        "level_allows_present_perfect_continuous",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você descreve a função de uma colega."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "She's been leading the support team for six months.",
+          "pt": "Ela lidera a equipe de suporte há seis meses.",
+          "ctx": "Você descreve a função de uma colega.",
+          "blank": "leading",
+          "wrong": "She's been lead the support team for six months."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "template_id": "work_b1_q_open_positions_01",
+      "family_id": "work_b1_q_open_positions",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "question_structure",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala com um recrutador."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "Do they have any open positions?",
+          "pt": "Eles têm vagas abertas?",
+          "ctx": "Você fala com um recrutador.",
+          "blank": "Do",
+          "wrong": "Are they have any opening jobs?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "template_id": "work_b1_pp_client_replied_01",
+      "family_id": "work_b1_pp_client_replied",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_have_past_participle_yet",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "verb_requires_past_participle",
+        "level_allows_present_perfect",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você atualiza a equipe."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "The client has replied to our email.",
+          "pt": "O cliente respondeu ao nosso e-mail.",
+          "ctx": "Você atualiza a equipe.",
+          "blank": "has",
+          "wrong": "The client have replied to our email."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "template_id": "work_b1_prep_responsible_01",
+      "family_id": "work_b1_prep_responsible",
+      "primary_skill_id": "workplace_preposition",
+      "skill_ids": [
+        "workplace_preposition",
+        "collocation",
+        "preposition"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_complement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "complement": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você explica sua responsabilidade."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_preposition"
+      ],
+      "variants": [
+        {
+          "en": "I'm responsible for the deployment.",
+          "pt": "Sou responsável pela implantação.",
+          "ctx": "Você explica sua responsabilidade.",
+          "blank": "for",
+          "wrong": "I'm responsible of the deployment."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "template_id": "work_b1_cond1_deadline_01",
+      "family_id": "work_b1_cond1_deadline",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "if_present_will_future",
+      "slots": {
+        "condition": {
+          "source": "inline"
+        },
+        "result": {
+          "source": "inline"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você alerta a equipe sobre o prazo."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "If we miss the deadline, the client will not be happy.",
+          "pt": "Se perdermos o prazo, o cliente não vai ficar satisfeito.",
+          "ctx": "Você alerta a equipe sobre o prazo.",
+          "blank": "will not be",
+          "wrong": "If we will miss the deadline, the client is not happy."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "work_b1_make_a_decision",
+      "canonical": "make a decision",
+      "pt": "tomar uma decisão",
+      "tags": [
+        "decision",
+        "meeting",
+        "management"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace",
+        "projects",
+        "meetings"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do a decision",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "create a decision",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We need to make a decision by Friday.",
+          "pt": "Precisamos tomar uma decisão até sexta-feira."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "work_b1_meet_a_deadline",
+      "canonical": "meet a deadline",
+      "pt": "cumprir um prazo",
+      "tags": [
+        "deadlines"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace",
+        "projects"
+      ],
+      "invalid_variants": [
+        {
+          "text": "do a deadline",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make a deadline",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We have to meet the deadline.",
+          "pt": "Temos que cumprir o prazo."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "work_b1_schedule_a_meeting",
+      "canonical": "schedule a meeting",
+      "pt": "agendar uma reunião",
+      "tags": [
+        "meetings"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace",
+        "meetings"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a meeting",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "program a meeting",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Let's schedule a meeting for tomorrow.",
+          "pt": "Vamos agendar uma reunião para amanhã."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "work_b1_provide_feedback",
+      "canonical": "provide feedback",
+      "pt": "dar feedback",
+      "tags": [
+        "feedback"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make feedback",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "give a feedback",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Could you provide feedback on the proposal?",
+          "pt": "Você poderia dar feedback sobre a proposta?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "work_b1_take_responsibility",
+      "canonical": "take responsibility",
+      "pt": "assumir a responsabilidade",
+      "tags": [
+        "responsibility"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make responsibility",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "get responsibility",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "He took responsibility for the mistake.",
+          "pt": "Ele assumiu a responsabilidade pelo erro."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "work_b1_follow_up_with",
+      "canonical": "follow up with the client",
+      "pt": "dar retorno ao cliente",
+      "tags": [
+        "communication"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "follow the client up",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "follow on with the client",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I will follow up with the client tomorrow.",
+          "pt": "Vou dar retorno ao cliente amanhã."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "work_b1_keep_updated",
+      "canonical": "keep someone updated",
+      "pt": "manter alguém informado",
+      "tags": [
+        "communication"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "keep someone actualized",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "keep updated someone",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Please keep me updated after the meeting.",
+          "pt": "Por favor, mantenha-me informado depois da reunião."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    },
+    {
+      "collocation_id": "work_b1_get_back_to",
+      "canonical": "get back to someone",
+      "pt": "retornar para alguém",
+      "tags": [
+        "communication"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "workplace"
+      ],
+      "invalid_variants": [
+        {
+          "text": "return to someone",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "back get to someone",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I'll get back to you this afternoon.",
+          "pt": "Vou te retornar esta tarde."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "workplace",
+      "level": "B1"
+    }
+  ]
+}

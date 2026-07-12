@@ -52,7 +52,7 @@ export default function Settings() {
             <div style={{ fontWeight: 700, fontSize: 15 }}>Nível atual</div>
             <div className="muted" style={{ fontSize: 12, margin: '2px 0 10px' }}>Usado nos prompts de exportação</div>
             <Segmented value={settings.level} onChange={(k) => updateSetting('level', k)}
-              options={[{ k: 'A2', l: 'A2' }, { k: 'B1', l: 'B1' }, { k: 'B2', l: 'B2' }]} />
+              options={[{ k: 'A1', l: 'A1' }, { k: 'A2', l: 'A2' }, { k: 'B1', l: 'B1' }, { k: 'B2', l: 'B2' }]} />
           </Row>
           <Row last>
             <div style={{ fontWeight: 700, fontSize: 15 }}>Foco preferido</div>
@@ -91,6 +91,8 @@ export default function Settings() {
             </div>
           </Row>
         </div>
+
+        <ContentPacksSection Row={Row} SectionHead={SectionHead} />
 
         <AudioSection Row={Row} SectionHead={SectionHead} Segmented={Segmented} settings={settings} updateSetting={updateSetting} />
 
@@ -174,6 +176,70 @@ export default function Settings() {
 }
 
 // Family profiles: each member keeps their own history, mistakes and reviews.
+const PACK_THEME_LABELS = {
+  core: 'Essencial', daily_life: 'Vida cotidiana', workplace: 'Trabalho', travel: 'Viagens',
+  food_and_restaurants: 'Comida e restaurantes', shopping_and_services: 'Compras e serviços',
+  technology_and_communication: 'Tecnologia e comunicação',
+}
+
+function ContentPacksSection({ Row, SectionHead }) {
+  const { contentPacks = [], setContentPackEnabled, restoreContentPack, showToast } = useApp()
+  const [open, setOpen] = useState(false)
+  const byTheme = new Map()
+  for (const p of contentPacks) {
+    if (!byTheme.has(p.theme)) byTheme.set(p.theme, [])
+    byTheme.get(p.theme).push(p)
+  }
+  for (const list of byTheme.values()) list.sort((a, b) => a.level.localeCompare(b.level))
+  const themes = ['core', 'daily_life', 'workplace', 'travel', 'food_and_restaurants', 'shopping_and_services', 'technology_and_communication'].filter((t) => byTheme.has(t))
+  return (
+    <div className="card" style={{ padding: 0, overflow: 'hidden' }} data-testid="content-packs-section">
+      <SectionHead>pacotes de conteúdo</SectionHead>
+      <Row last={!open}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <div style={{ fontWeight: 700, fontSize: 15 }}>Pacotes instalados</div>
+            <div className="muted" style={{ fontSize: 12, marginTop: 2 }} data-testid="content-packs-count">
+              {contentPacks.length} pacotes · {contentPacks.filter((p) => p.enabled).length} habilitados
+            </div>
+          </div>
+          <button className="btn btn-secondary btn-sm" data-testid="content-packs-toggle" onClick={() => setOpen((v) => !v)}>{open ? 'Ocultar' : 'Ver todos'}</button>
+        </div>
+      </Row>
+      {open && themes.map((theme, ti) => (
+        <div key={theme}>
+          <div style={{ padding: '10px 16px 4px' }}><div className="label-eyebrow">{PACK_THEME_LABELS[theme] || theme}</div></div>
+          {byTheme.get(theme).map((p, i) => (
+            <Row key={p.pack_id} last={ti === themes.length - 1 && i === byTheme.get(theme).length - 1}>
+              <div data-testid={`content-pack-${p.pack_id}`} style={{ display: 'flex', justifyContent: 'space-between', gap: 10, alignItems: 'flex-start' }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 700, fontSize: 14 }}>{p.title_pt} <span className="muted" style={{ fontWeight: 600 }}>· v{p.version} · {p.source}</span></div>
+                  <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>
+                    {p.lexical_item_count} itens · {p.template_count} templates · {p.collocation_count} collocations
+                    {p.dependencies?.length ? ` · depende de ${p.dependencies.join(', ')}` : ''} · válido
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
+                  <button className="btn btn-secondary btn-sm" data-testid={`content-pack-toggle-${p.pack_id}`}
+                    onClick={() => setContentPackEnabled(p.pack_id, !p.enabled)}>
+                    {p.enabled ? 'Desabilitar' : 'Habilitar'}
+                  </button>
+                  {p.source === 'builtin' && (
+                    <button className="btn btn-secondary btn-sm" data-testid={`content-pack-restore-${p.pack_id}`}
+                      onClick={async () => { await restoreContentPack(p.pack_id); showToast('Pacote restaurado.') }}>
+                      Restaurar
+                    </button>
+                  )}
+                </div>
+              </div>
+            </Row>
+          ))}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function ProfilesRow() {
   const { profiles, activeProfile, switchProfile, addProfile, removeProfile, showToast } = useApp()
   const handleAdd = async () => {

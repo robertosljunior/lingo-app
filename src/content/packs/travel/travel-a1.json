@@ -1,0 +1,800 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "travel_a1",
+    "title": {
+      "pt": "Viagens A1",
+      "en": "Travel A1"
+    },
+    "theme": "travel",
+    "level": "A1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "travel_a1_the_airport",
+      "en": "the airport",
+      "pt": "o aeroporto",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "airport"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "item_id": "travel_a1_a_ticket",
+      "en": "a ticket",
+      "pt": "uma passagem",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "booking"
+      ],
+      "forms": {
+        "singular": "ticket",
+        "plural": "tickets"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "item_id": "travel_a1_the_hotel",
+      "en": "the hotel",
+      "pt": "o hotel",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "hotel"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "item_id": "travel_a1_a_map",
+      "en": "a map",
+      "pt": "um mapa",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "directions"
+      ],
+      "forms": {
+        "singular": "map",
+        "plural": "maps"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "item_id": "travel_a1_the_beach",
+      "en": "the beach",
+      "pt": "a praia",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "places"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "item_id": "travel_a1_a_taxi",
+      "en": "a taxi",
+      "pt": "um táxi",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "transport"
+      ],
+      "forms": {
+        "singular": "taxi",
+        "plural": "taxis"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "item_id": "travel_a1_the_station",
+      "en": "the train station",
+      "pt": "a estação de trem",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "transport"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "item_id": "travel_a1_travel_verb",
+      "en": "travel",
+      "pt": "viajar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "general"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "item_id": "travel_a1_stay_verb",
+      "en": "stay",
+      "pt": "ficar (hospedado)",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "hotel"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "item_id": "travel_a1_need_verb",
+      "en": "need",
+      "pt": "precisar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "general"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "item_id": "travel_a1_near_here",
+      "en": "near here",
+      "pt": "perto daqui",
+      "semantic_type": "place",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "directions"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "item_id": "travel_a1_today",
+      "en": "today",
+      "pt": "hoje",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb",
+      "tags": [
+        "time"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "travel",
+      "level": "A1"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "travel_a1_be_hotel_01",
+      "family_id": "travel_a1_be_hotel",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_complement",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "complement": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você descreve sua hospedagem."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "The hotel is near the beach.",
+          "pt": "O hotel é perto da praia.",
+          "ctx": "Você descreve sua hospedagem.",
+          "blank": "is",
+          "wrong": "The hotel are near the beach."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "template_id": "travel_a1_sp_need_taxi_01",
+      "family_id": "travel_a1_sp_need_taxi",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pede transporte no hotel."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_article"
+      ],
+      "variants": [
+        {
+          "en": "I need a taxi to the airport.",
+          "pt": "Eu preciso de um táxi para o aeroporto.",
+          "ctx": "Você pede transporte no hotel.",
+          "blank": "a",
+          "wrong": "I need the a taxi to the airport."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "template_id": "travel_a1_there_bus_01",
+      "family_id": "travel_a1_there_bus",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "verb_to_be"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "there_is_are_noun",
+      "slots": {
+        "noun": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pergunta no balcão de informações."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "There is a bus to the city center.",
+          "pt": "Há um ônibus para o centro da cidade.",
+          "ctx": "Você pergunta no balcão de informações.",
+          "blank": "is",
+          "wrong": "There have a bus to the city center."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "template_id": "travel_a1_can_help_bags_01",
+      "family_id": "travel_a1_can_help_bags",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "question_structure"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_can_base_verb",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você chega ao hotel com bagagem."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Can you help me with my bags?",
+          "pt": "Você pode me ajudar com as malas?",
+          "ctx": "Você chega ao hotel com bagagem.",
+          "blank": "Can",
+          "wrong": "You can help me with my bags?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "template_id": "travel_a1_wh_where_station_01",
+      "family_id": "travel_a1_wh_where_station",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "question_auxiliary",
+        "verb_to_be"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "wh_do_subject_base_verb",
+      "slots": {
+        "wh": {
+          "source": "lexical_items",
+          "semantic_type": "wh_word"
+        },
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "question_requires_do",
+        "verb_requires_base_form",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pede uma direção na rua."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_question_auxiliary"
+      ],
+      "variants": [
+        {
+          "en": "Where is the train station?",
+          "pt": "Onde fica a estação de trem?",
+          "ctx": "Você pede uma direção na rua.",
+          "blank": "is",
+          "wrong": "Where the train station is?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "template_id": "travel_a1_sp_stay_01",
+      "family_id": "travel_a1_sp_stay",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "preposition"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_simple_present_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você fala sobre a hospedagem."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_preposition"
+      ],
+      "variants": [
+        {
+          "en": "We stay at a small hotel.",
+          "pt": "Nós ficamos em um hotel pequeno.",
+          "ctx": "Você fala sobre a hospedagem.",
+          "blank": "at",
+          "wrong": "We stay in at a small hotel."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "travel_a1_take_a_taxi",
+      "canonical": "take a taxi",
+      "pt": "pegar um táxi",
+      "tags": [
+        "transport"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "catch on a taxi",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "pick a taxi",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We take a taxi to the hotel.",
+          "pt": "Pegamos um táxi para o hotel."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "travel_a1_buy_a_ticket",
+      "canonical": "buy a ticket",
+      "pt": "comprar uma passagem",
+      "tags": [
+        "booking"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "pay a ticket buy",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "take a ticket money",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I buy a ticket at the station.",
+          "pt": "Eu compro uma passagem na estação."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "travel_a1_check_in",
+      "canonical": "check in at the hotel",
+      "pt": "fazer check-in no hotel",
+      "tags": [
+        "hotel"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "check in on the hotel",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make check-in to the hotel",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We check in at the hotel at two.",
+          "pt": "Fazemos check-in no hotel às duas."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "travel_a1_go_sightseeing",
+      "canonical": "go sightseeing",
+      "pt": "passear pelos pontos turísticos",
+      "tags": [
+        "tourism"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "go to sightseeing",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make sightseeing",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "They go sightseeing every morning.",
+          "pt": "Eles passeiam pelos pontos turísticos toda manhã."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "travel_a1_pack_a_bag",
+      "canonical": "pack a bag",
+      "pt": "arrumar a mala",
+      "tags": [
+        "preparation"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a bag pack",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "do a bag",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I pack a bag the night before.",
+          "pt": "Eu arrumo a mala na noite anterior."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    },
+    {
+      "collocation_id": "travel_a1_ask_for_directions",
+      "canonical": "ask for directions",
+      "pt": "pedir informações de caminho",
+      "tags": [
+        "directions"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "travel"
+      ],
+      "invalid_variants": [
+        {
+          "text": "ask directions to way",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "question for directions",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "You can ask for directions at the desk.",
+          "pt": "Você pode pedir informações no balcão."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "travel",
+      "level": "A1"
+    }
+  ]
+}

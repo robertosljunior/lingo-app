@@ -1,0 +1,819 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "food_and_restaurants_a2",
+    "title": {
+      "pt": "Comida e restaurantes A2",
+      "en": "Food & Restaurants A2"
+    },
+    "theme": "food_and_restaurants",
+    "level": "A2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "food_a2_the_dessert",
+      "en": "the dessert",
+      "pt": "a sobremesa",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "dishes"
+      ],
+      "forms": {
+        "singular": "dessert",
+        "plural": "desserts"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "item_id": "food_a2_the_starter",
+      "en": "the starter",
+      "pt": "a entrada",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "dishes"
+      ],
+      "forms": {
+        "singular": "starter",
+        "plural": "starters"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "item_id": "food_a2_the_waiter",
+      "en": "the waiter",
+      "pt": "o garçom",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {
+        "singular": "waiter",
+        "plural": "waiters"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "item_id": "food_a2_a_recipe",
+      "en": "a recipe",
+      "pt": "uma receita",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "cooking"
+      ],
+      "forms": {
+        "singular": "recipe",
+        "plural": "recipes"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "item_id": "food_a2_the_ingredients",
+      "en": "the ingredients",
+      "pt": "os ingredientes",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "cooking"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "item_id": "food_a2_some_bread",
+      "en": "some bread",
+      "pt": "um pouco de pão",
+      "semantic_type": "theme_object",
+      "part_of_speech": "noun_phrase",
+      "tags": [
+        "dishes"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [
+        "countable_article_required"
+      ],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "item_id": "food_a2_try_verb",
+      "en": "try",
+      "pt": "experimentar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "preferences"
+      ],
+      "forms": {
+        "past": "tried"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "item_id": "food_a2_cook_verb",
+      "en": "cook",
+      "pt": "cozinhar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "cooking"
+      ],
+      "forms": {
+        "past": "cooked",
+        "ing": "cooking"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "item_id": "food_a2_recommend_verb",
+      "en": "recommend",
+      "pt": "recomendar",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {
+        "past": "recommended"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "item_id": "food_a2_share_verb",
+      "en": "share",
+      "pt": "dividir",
+      "semantic_type": "action_verb",
+      "part_of_speech": "verb",
+      "tags": [
+        "restaurant"
+      ],
+      "forms": {
+        "ing": "sharing"
+      },
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "item_id": "food_a2_last_night",
+      "en": "last night",
+      "pt": "ontem à noite",
+      "semantic_type": "time_expression",
+      "part_of_speech": "adverb_phrase",
+      "tags": [
+        "past"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "item_id": "food_a2_at_the_moment",
+      "en": "at the moment",
+      "pt": "no momento",
+      "semantic_type": "time_expression",
+      "part_of_speech": "prepositional_phrase",
+      "tags": [
+        "present"
+      ],
+      "forms": {},
+      "compatibility": {},
+      "constraints": [],
+      "version": 1,
+      "enabled": true,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "food_a2_past_tried_01",
+      "family_id": "food_a2_past_tried",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você conta sobre o jantar."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "We tried a new restaurant last night.",
+          "pt": "Experimentamos um restaurante novo ontem à noite.",
+          "ctx": "Você conta sobre o jantar.",
+          "blank": "tried",
+          "wrong": "We have tried a new restaurant last night."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "template_id": "food_a2_past_cooked_01",
+      "family_id": "food_a2_past_cooked",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "verb_tense"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_past_simple_object_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você elogia alguém."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "He cooked dinner for the whole family.",
+          "pt": "Ele cozinhou o jantar para a família toda.",
+          "ctx": "Você elogia alguém.",
+          "blank": "cooked",
+          "wrong": "He cook dinner for the whole family yesterday."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "template_id": "food_a2_pc_cooking_01",
+      "family_id": "food_a2_pc_cooking",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_present_continuous_object",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "verb_requires_ving",
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você descreve a cena na cozinha."
+      ],
+      "distractor_strategy_ids": [
+        "verb_form_after_have_been"
+      ],
+      "variants": [
+        {
+          "en": "She is cooking pasta at the moment.",
+          "pt": "Ela está cozinhando macarrão no momento.",
+          "ctx": "Você descreve a cena na cozinha.",
+          "blank": "cooking",
+          "wrong": "She is cook pasta at the moment."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "template_id": "food_a2_goingto_order_01",
+      "family_id": "food_a2_goingto_order",
+      "primary_skill_id": "future_going_to",
+      "skill_ids": [
+        "future_going_to",
+        "verb_form"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você decide seu prato."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_tense"
+      ],
+      "variants": [
+        {
+          "en": "I am going to order the fish.",
+          "pt": "Eu vou pedir o peixe.",
+          "ctx": "Você decide seu prato.",
+          "blank": "going",
+          "wrong": "I am go to order the fish."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "template_id": "food_a2_comp_spicier_01",
+      "family_id": "food_a2_comp_spicier",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "comparative_than",
+      "slots": {
+        "subject": {
+          "source": "lexical_items",
+          "semantic_type": "person_subject"
+        },
+        "adjective": {
+          "source": "inline"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você compara dois pratos."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_word_order"
+      ],
+      "variants": [
+        {
+          "en": "This sauce is spicier than the other one.",
+          "pt": "Este molho é mais apimentado que o outro.",
+          "ctx": "Você compara dois pratos.",
+          "blank": "spicier",
+          "wrong": "This sauce is more spicy than the other one."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "template_id": "food_a2_polite_recommend_01",
+      "family_id": "food_a2_polite_recommend",
+      "primary_skill_id": "polite_requests",
+      "skill_ids": [
+        "polite_requests",
+        "can_request"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "difficulty": "medium",
+      "pattern_id": "imperative_polite_request",
+      "slots": {
+        "verb": {
+          "source": "lexical_items",
+          "semantic_type": "action_verb"
+        },
+        "object": {
+          "source": "lexical_items",
+          "semantic_type": "theme_object"
+        }
+      },
+      "constraints": [
+        "curated_sentence"
+      ],
+      "prompt_templates": {
+        "translate_natural": "Traduza naturalmente.",
+        "fill_blank": "Complete a frase.",
+        "rewrite_natural": "Reescreva de forma natural e correta."
+      },
+      "context_templates": [
+        "Você pergunta ao garçom."
+      ],
+      "distractor_strategy_ids": [
+        "wrong_modal_form"
+      ],
+      "variants": [
+        {
+          "en": "Could you recommend a good dessert?",
+          "pt": "Você poderia recomendar uma boa sobremesa?",
+          "ctx": "Você pergunta ao garçom.",
+          "blank": "Could",
+          "wrong": "You could recommend a good dessert?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "food_a2_book_a_table",
+      "canonical": "book a table",
+      "pt": "reservar uma mesa",
+      "tags": [
+        "restaurant"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "make a table booking wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "reserve a table book",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "I booked a table for eight o’clock.",
+          "pt": "Reservei uma mesa para as oito."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "food_a2_split_the_bill",
+      "canonical": "split the bill",
+      "pt": "dividir a conta",
+      "tags": [
+        "payment"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "divide the bill split",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "break the bill",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Let’s split the bill.",
+          "pt": "Vamos dividir a conta."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "food_a2_leave_a_tip",
+      "canonical": "leave a tip",
+      "pt": "deixar uma gorjeta",
+      "tags": [
+        "payment"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "give a tip leave wrongly",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "put a tip",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "We left a tip for the waiter.",
+          "pt": "Deixamos uma gorjeta para o garçom."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "food_a2_home_cooked_meal",
+      "canonical": "a home-cooked meal",
+      "pt": "uma comida caseira",
+      "tags": [
+        "cooking"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "a house-cooked meal",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "a home-made meal cooked wrongly",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Nothing beats a home-cooked meal.",
+          "pt": "Nada supera uma comida caseira."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "food_a2_grab_a_bite",
+      "canonical": "grab a bite",
+      "pt": "comer alguma coisa rápida",
+      "tags": [
+        "meals"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants"
+      ],
+      "invalid_variants": [
+        {
+          "text": "take a bite grab",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "catch a bite",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Let’s grab a bite before the movie.",
+          "pt": "Vamos comer alguma coisa rápida antes do filme."
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    },
+    {
+      "collocation_id": "food_a2_set_the_table",
+      "canonical": "set the table",
+      "pt": "pôr a mesa",
+      "tags": [
+        "cooking"
+      ],
+      "skill_ids": [
+        "collocation"
+      ],
+      "compatible_contexts": [
+        "food_and_restaurants",
+        "daily_life"
+      ],
+      "invalid_variants": [
+        {
+          "text": "put the table",
+          "error_id": "wrong_collocation"
+        },
+        {
+          "text": "make the table set",
+          "error_id": "wrong_collocation"
+        }
+      ],
+      "examples": [
+        {
+          "en": "Can you set the table, please?",
+          "pt": "Você pode pôr a mesa, por favor?"
+        }
+      ],
+      "enabled": true,
+      "version": 1,
+      "theme": "food_and_restaurants",
+      "level": "A2"
+    }
+  ]
+}

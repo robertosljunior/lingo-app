@@ -1,8 +1,8 @@
 import { EXERCISE_TYPES, parseLesson } from './lesson-parser.js'
-import { validateCuratedCollocationAnswer, normalize } from './lexical-bank.js'
-import { buildGeneratedLessonYaml } from './lesson-generator.js'
+import { buildGeneratedLessonYaml, buildCollocationGuard, normalize } from './lesson-generator.js'
 
-export function validateGeneratedLesson(lesson, { expectedCount = null, roundTrip = true } = {}) {
+export function validateGeneratedLesson(lesson, { expectedCount = null, roundTrip = true, collocations = [] } = {}) {
+  const guard = buildCollocationGuard(collocations)
   const errors=[], warnings=[], question_results=[]
   const qs = lesson?.questions || lesson?.q || []
   if (!lesson?.lesson_id) errors.push('LESSON_ID_REQUIRED')
@@ -17,7 +17,7 @@ export function validateGeneratedLesson(lesson, { expectedCount = null, roundTri
     if(!(q.skill_target||q.f||q.metadata?.primary_skill_id)) qe.push('SKILL_REQUIRED')
     const sig=q.metadata?.question_signature || normalize(`${type} ${q.prompt||q.p} ${a}`); if(sigs.has(sig)) qe.push('DUPLICATE_QUESTION'); sigs.add(sig)
     const f=q.metadata?.family_id; if(f){ fam[f]=(fam[f]||0)+1; if(fam[f]>3) qe.push('FAMILY_LIMIT_EXCEEDED') }
-    if(!validateCuratedCollocationAnswer(a).valid) qe.push('INVALID_COLLOCATION_AS_ANSWER')
+    if(!guard.validate(a).valid) qe.push('INVALID_COLLOCATION_AS_ANSWER')
     if(type==='fill_blank'){ const opt=q.options||q.opt; if(!Array.isArray(opt)||opt.length<2) qe.push('FILL_OPT_REQUIRED'); else { const n=opt.map(normalize); if(!n.includes(normalize(a))) qe.push('FILL_ANSWER_NOT_IN_OPT'); if(n.filter(x=>x===normalize(a)).length!==1) qe.push('FILL_ANSWER_COUNT'); if(new Set(n).size!==n.length) qe.push('FILL_DUP_OPTIONS') } if(!String(q.prompt||q.p).includes('____')) qe.push('FILL_BLANK_REQUIRED') }
     if(type==='choose_best'){ const opt=q.options||q.opt; if(!Array.isArray(opt)||opt.length<2) qe.push('CHOOSE_OPT_REQUIRED'); else { const n=opt.map(normalize); if(!n.includes(normalize(a))) qe.push('CHOOSE_ANSWER_NOT_IN_OPT'); if(new Set(n).size!==n.length) qe.push('CHOOSE_DUP_OPTIONS'); if(n.filter(x=>x===normalize(a)).length!==1) qe.push('CHOOSE_CANONICAL_COUNT') } }
     if(type==='build_sentence'){ const words=q.words; if(!Array.isArray(words)||!words.length) qe.push('WORDS_REQUIRED'); else if(normalize(words.join(' '))!==normalize(a)) qe.push('WORDS_DO_NOT_REBUILD') }
