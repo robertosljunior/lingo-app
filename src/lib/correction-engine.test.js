@@ -8,6 +8,7 @@ import {
   wordDiff,
   classifyMistake,
   analyzeAnswer,
+  alignTokens,
   MISTAKE_TYPES,
   FEEDBACK_BY_TYPE,
 } from './correction-engine.js'
@@ -198,5 +199,115 @@ describe('similarity — sanidade', () => {
 
   it('tokenize expande contrações em tokens separados', () => {
     expect(tokenize("don't")).toEqual(['do', 'not'])
+  })
+})
+
+describe('analyzeAnswer v2 — reliable multi-error evaluation', () => {
+  const expectedCompany = "I've been working at this company for three years."
+
+  it('detecta forma verbal como erro principal e preposição como secundário', () => {
+    const r = analyzeAnswer({
+      user_answer: "I've been worked in this company for three years.",
+      expected_answer: expectedCompany,
+      mistake_focus: 'missing_auxiliary',
+    })
+    expect(r.verdict).not.toBe('correct')
+    expect(r.engine_version).toBe('2')
+    expect(r.detected_errors.length).toBeGreaterThanOrEqual(2)
+    expect(r.primary_error).toMatchObject({
+      category: 'verb_form',
+      subtype: 'gerund_after_been',
+      actual: 'worked',
+      expected: 'working',
+      severity: 'high',
+      rule_id: 'verb.have_been_requires_ing',
+    })
+    expect(r.detected_errors.some((e) => e.subtype === 'missing_auxiliary')).toBe(false)
+    expect(r.detected_errors[1]).toMatchObject({
+      category: 'preposition',
+      subtype: 'workplace_preposition',
+      actual: 'in',
+      expected: 'at',
+    })
+    expect(r.possible_mistake_type).toBe('verb_form')
+  })
+
+  it('aceita forma expandida equivalente à contração', () => {
+    const r = analyzeAnswer({ user_answer: 'I have been working at this company for three years.', expected_answer: expectedCompany })
+    expect(r.verdict).toBe('correct')
+    expect(r.detected_errors).toEqual([])
+  })
+
+  it('trata apóstrofo ausente como baixa severidade, não estrutural', () => {
+    const r = analyzeAnswer({ user_answer: 'Ive been working at this company for three years.', expected_answer: expectedCompany })
+    expect(r.detected_errors[0]).toMatchObject({ category: 'punctuation', subtype: 'apostrophe_missing', severity: 'low' })
+    expect(r.detected_errors.some((e) => ['verb_form', 'auxiliary'].includes(e.category))).toBe(false)
+  })
+
+  it('detecta auxiliar realmente ausente', () => {
+    const r = analyzeAnswer({ user_answer: 'I working here for two years.', expected_answer: "I've been working here for two years." })
+    expect(r.detected_errors[0]).toMatchObject({ category: 'auxiliary', subtype: 'missing_auxiliary', severity: 'high' })
+    expect(r.detected_errors[0].evidence).toMatchObject({ expected_auxiliary_present: true, actual_auxiliary_present: false })
+  })
+
+  it('detecta been ausente como estrutura auxiliar', () => {
+    const r = analyzeAnswer({ user_answer: "I've working here for two years.", expected_answer: "I've been working here for two years." })
+    expect(r.detected_errors[0]).toMatchObject({ category: 'auxiliary', subtype: 'missing_auxiliary', expected: 'been' })
+  })
+
+  it('detecta forma base após been como verb_form', () => {
+    const r = analyzeAnswer({ user_answer: "I've been work here for two years.", expected_answer: "I've been working here for two years." })
+    expect(r.primary_error).toMatchObject({ category: 'verb_form', subtype: 'gerund_after_been', actual: 'work', expected: 'working' })
+  })
+
+  it('detecta somente preposição/naturalidade com menor severidade', () => {
+    const r = analyzeAnswer({ user_answer: "I've been working in this company for three years.", expected_answer: expectedCompany })
+    expect(r.primary_error).toMatchObject({ category: 'preposition', subtype: 'workplace_preposition' })
+    expect(['low', 'medium']).toContain(r.primary_error.severity)
+    expect(r.detected_errors.some((e) => e.subtype === 'missing_auxiliary')).toBe(false)
+  })
+
+  it('não usa skill_target como erro detectado em pergunta incorreta', () => {
+    const r = analyzeAnswer({
+      user_answer: 'Are they have any open positions?',
+      expected_answer: 'Do they have any open positions?',
+      mistake_focus: 'collocation',
+    })
+    expect(r.primary_error.category).toBe('auxiliary')
+    expect(r.primary_error.subtype).toBe('wrong_auxiliary')
+    expect(r.primary_error.category).not.toBe('collocation')
+  })
+})
+
+describe('alignTokens — positional edit script', () => {
+  it('representa replace, insert e delete', () => {
+    expect(alignTokens('i worked there', 'i work there').map((a) => a.operation)).toEqual(['equal', 'replace', 'equal'])
+    expect(alignTokens('i really work there', 'i work there').map((a) => a.operation)).toEqual(['equal', 'insert', 'equal', 'equal'])
+    expect(alignTokens('i work', 'i work there').map((a) => a.operation)).toEqual(['equal', 'equal', 'delete'])
+  })
+
+  it('preserva repetições e posições em palavras iguais deslocadas', () => {
+    const a = alignTokens('a b b c', 'a b c b')
+    expect(a).toHaveLength(4)
+    expect(a[1]).toMatchObject({ operation: 'equal', expected_token_index: 1, actual_token_index: 1 })
+    expect(a.filter((x) => x.operation === 'replace')).toHaveLength(2)
+  })
+
+  it('mantém duas substituições na mesma frase', () => {
+    const a = alignTokens("i have been worked in this company", "i have been working at this company")
+    expect(a.filter((x) => x.operation === 'replace').map((x) => [x.expected, x.actual])).toEqual([
+      ['working', 'worked'],
+      ['at', 'in'],
+    ])
+  })
+})
+
+describe('closed exercises — neutral incorrect choice', () => {
+  it('não transforma skill_target em erro detectado para escolha errada', async () => {
+    const { buildIncorrectChoiceEvaluation } = await import('./correction-engine.js')
+    const r = buildIncorrectChoiceEvaluation({ user_answer: 'as', expected_answer: 'like', skill_target: 'collocation' })
+    expect(r.primary_error).toMatchObject({ category: 'incorrect_choice', subtype: 'incorrect_choice', rule_id: 'choice.exact_match' })
+    expect(r.skill_target).toBe('collocation')
+    expect(r.possible_mistake_type).toBe('incorrect_choice')
   })
 })

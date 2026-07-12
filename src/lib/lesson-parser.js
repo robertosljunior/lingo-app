@@ -88,6 +88,8 @@ function normalizeQuestion(raw, index) {
     ? words.join(' ')
     : expected
 
+  const lessonFocus = raw.f ?? raw.focus ?? raw.mistake_focus ?? null
+
   return {
     id: raw.id ?? index + 1,
     type,
@@ -99,7 +101,11 @@ function normalizeQuestion(raw, index) {
     accepted_answers: (Array.isArray(accepted) ? accepted : [accepted]).filter(Boolean).map(String),
     options: options ? options.map(String) : null,
     words: words ? words.map(String) : null,
-    mistake_focus: raw.f ?? raw.focus ?? raw.mistake_focus ?? null,
+    skill_target: lessonFocus,
+    lesson_focus: lessonFocus,
+    // Legacy alias kept for old UI/data paths. It is pedagogical focus only,
+    // not the detected error produced by the correction engine.
+    mistake_focus: lessonFocus,
     // keep the untouched source for round-trip / debugging
     payload: raw,
   }
