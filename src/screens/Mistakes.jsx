@@ -44,7 +44,7 @@ export default function Mistakes() {
 }
 
 function SkillList({ profiles }) {
-  const { startPracticeSession } = useApp()
+  const { startPracticeSession, generateAdaptiveLesson, startLesson, showToast } = useApp()
   return profiles.map((p, i) => {
     const skill = getSkill(p.skill_id)
     const ex = p.recent_examples?.[0]
@@ -67,9 +67,14 @@ function SkillList({ profiles }) {
             </div>
           </div>
         </div>
-        <button className="btn btn-secondary btn-block" style={{ marginTop: 12 }} onClick={() => startPracticeSession(p.skill_id)}>
-          <I.trend s={16} /> Praticar esta habilidade
-        </button>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginTop: 12 }}>
+          <button className="btn btn-secondary btn-block" onClick={() => startPracticeSession(p.skill_id)}>
+            <I.trend s={16} /> Praticar
+          </button>
+          <button className="btn btn-secondary btn-block" onClick={async () => { const res = await generateAdaptiveLesson({ targetSkillId: p.skill_id, questionCount: 30 }); if (res?.lesson) { showToast('Aula gerada.'); startLesson(res.lesson) } }}>
+            <I.spark s={16} /> Gerar aula
+          </button>
+        </div>
         {ex && (
           <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
             <div className="label-eyebrow" style={{ marginBottom: 6 }}>exemplo recente</div>
