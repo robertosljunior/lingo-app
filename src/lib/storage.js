@@ -178,10 +178,36 @@ export async function saveLesson(lesson) {
   return { ...lesson, created_at }
 }
 
-export async function getLesson(lesson_id) {
+// Private lessons (owner_profile_id set) can only be read/removed by their
+// owner. Reads resolve the caller's profile from the active profile setting
+// unless one is passed explicitly, so even direct-by-ID access is scoped.
+export const LESSON_NOT_ACCESSIBLE = 'LESSON_NOT_ACCESSIBLE'
+
+export class LessonAccessError extends Error {
+  constructor(lesson_id) {
+    super(LESSON_NOT_ACCESSIBLE)
+    this.name = 'LessonAccessError'
+    this.code = LESSON_NOT_ACCESSIBLE
+    this.lesson_id = lesson_id
+  }
+}
+
+async function resolveProfileScope(d, profile_id) {
+  if (profile_id !== undefined) return profile_id
+  return (await d.get('settings', 'active_profile'))?.value || DEFAULT_PROFILE
+}
+
+async function assertLessonAccess(d, lesson, profile_id) {
+  if (!lesson?.owner_profile_id) return
+  const scope = await resolveProfileScope(d, profile_id)
+  if (lesson.owner_profile_id !== scope) throw new LessonAccessError(lesson.lesson_id)
+}
+
+export async function getLesson(lesson_id, { profile_id } = {}) {
   const d = await db()
   const lesson = await d.get('lessons', lesson_id)
   if (!lesson) return null
+  await assertLessonAccess(d, lesson, profile_id)
   const questions = await d.getAllFromIndex('questions', 'lesson_id', lesson_id)
   questions.sort((a, b) => a.id - b.id)
   return { ...lesson, questions }
@@ -200,8 +226,9 @@ export async function getAllLessons(profile_id = null) {
   return lessons.filter((l) => !l.owner_profile_id || !profile_id || l.owner_profile_id === profile_id).reverse() // newest first
 }
 
-export async function deleteLesson(lesson_id) {
+export async function deleteLesson(lesson_id, { profile_id } = {}) {
   const d = await db()
+  await assertLessonAccess(d, await d.get('lessons', lesson_id), profile_id)
   const tx = d.transaction(['lessons', 'questions'], 'readwrite')
   await tx.objectStore('lessons').delete(lesson_id)
   const qs = await tx.objectStore('questions').index('lesson_id').getAllKeys(lesson_id)

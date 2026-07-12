@@ -58,7 +58,10 @@ export function generateLessonFromContext(context={}, opts={}){
     }
     if(made) qs.push(made); else warnings.push({code:'INSUFFICIENT_TEMPLATES_FOR_SKILL',skill_id:skill,type})
   }
-  const lesson_id=`gen_${level.toLowerCase()}_${hash(`${seed}:${questionCount}`).slice(0,8)}`
+  // The id is scoped by owner profile so the same explicit seed used by two
+  // profiles never collides (each keeps its own private lesson); the same
+  // profile + seed + count stays idempotent.
+  const lesson_id=`gen_${level.toLowerCase()}_${hash(`${context.profile_id||opts.profileId||'default'}:${seed}:${questionCount}`).slice(0,8)}`
   qs.forEach((q,i)=>{ q.id=i+1; q.generated_question_id=`${lesson_id}:${q.id}` })
   const lesson={ lesson_id,title:titleFor(context),level,focus:'adaptive_workplace_english',generated:true,owner_profile_id:context.profile_id||opts.profileId||null,questions:qs,generation_metadata:{generator_version:LESSON_GENERATOR_VERSION,template_registry_version:TEMPLATE_REGISTRY_VERSION,lexical_bank_version:LEXICAL_BANK_VERSION,profile_id:context.profile_id||opts.profileId||null,seed,generated_at:new Date(0).toISOString(),requested_questions:questionCount,actual_questions:qs.length,target_skills:(context.target_skills||[]).map(s=>s.skill_id),template_ids:templateIds,template_family_counts:familyCounts,warnings}}
   lesson.raw_content=buildGeneratedLessonYaml(lesson)

@@ -64,4 +64,8 @@ export default defineConfig({
   worker: {
     format: 'es',
   },
+  // Vitest: unit tests only — Playwright owns e2e/*.spec.js.
+  test: {
+    include: ['src/**/*.test.js'],
+  },
 })
