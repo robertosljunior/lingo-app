@@ -64,13 +64,17 @@ export async function fetchCatalog({ url = DEFAULT_CATALOG_URL, fetchImpl } = {}
  * transactionally install a pack from a catalog entry. Never executes content.
  * @returns {{ ok, code?, pack_id? }}
  */
-export async function installFromCatalogEntry(entry, { fetchImpl, dbFactory } = {}) {
+export async function installFromCatalogEntry(entry, { fetchImpl, dbFactory, onProgress } = {}) {
+  const step = (s) => { if (typeof onProgress === 'function') onProgress(s) }
   if (!entry?.asset_url) return { ok: false, code: 'NO_ASSET_URL' }
   if (!isAllowlistedUrl(entry.asset_url)) return { ok: false, code: 'URL_NOT_ALLOWLISTED' }
+  step('downloading')
   const res = await fetchGuarded(entry.asset_url, fetchImpl ? { fetchImpl } : {})
   if (!res.ok) return { ok: false, code: res.code }
+  step('validating')
   const verified = await verifyDownloadedPack({ bytes: res.bytes, catalogEntry: entry, appVersion: APP_VERSION })
   if (!verified.ok) return { ok: false, code: verified.code, validation: verified.validation }
+  step('installing')
   const installed = await installKnowledgePack(verified.pack, { source: 'remote', ...(dbFactory ? { dbFactory } : {}) })
   return installed
 }

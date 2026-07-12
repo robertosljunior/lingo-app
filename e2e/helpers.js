@@ -67,12 +67,27 @@ export function profileASkillRows() {
 // ---------- app boot / fixtures ----------
 // Flags the tab for the app's test hooks (public storage layer on
 // window.__e2e, optional deterministic generation seed).
-export async function enableTestHooks(context, { seed = null } = {}) {
-  await context.addInitScript((seed) => {
+export async function enableTestHooks(context, { seed = null, pwaInstall = null } = {}) {
+  await context.addInitScript(({ seed, pwaInstall }) => {
     sessionStorage.setItem('e2e:enabled', '1')
     if (seed) sessionStorage.setItem('e2e:generation-seed', seed)
     else sessionStorage.removeItem('e2e:generation-seed')
-  }, seed)
+    // Pre-seed the deterministic PWA state BEFORE app boot; main.jsx merges the
+    // rest of __LINGO_E2E__ without clobbering this. Defaults to 'disabled' when
+    // a spec does not care about the install prompt.
+    window.__LINGO_E2E__ = window.__LINGO_E2E__ || {}
+    window.__LINGO_E2E__.pwaInstall = pwaInstall || { mode: 'disabled', promptOutcome: null }
+  }, { seed, pwaInstall })
+}
+
+// Re-pin the PWA install state for a subsequent navigation/reload. Used by the
+// PWA-specific spec to switch modes (eligible/standalone/manual/disabled) and to
+// set the simulated prompt outcome.
+export async function setPwaInstallState(context, pwaInstall) {
+  await context.addInitScript((pwaInstall) => {
+    window.__LINGO_E2E__ = window.__LINGO_E2E__ || {}
+    window.__LINGO_E2E__.pwaInstall = pwaInstall
+  }, pwaInstall)
 }
 
 export async function gotoApp(page) {

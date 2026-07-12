@@ -50,6 +50,15 @@ export default function Exercise() {
   const handleSubmit = async () => {
     if (analyzing) return
     setAnalyzing(true)
+    try {
+      await runSubmission()
+    } finally {
+      // Never leave the screen stuck on "Analisando…" if analysis throws.
+      setAnalyzing(false)
+    }
+  }
+
+  const runSubmission = async () => {
     const ans = answerText()
     const strict = settings?.correction_mode === 'strict'
     let analysis
@@ -57,17 +66,22 @@ export default function Exercise() {
     if (usesSemanticPipeline(q)) {
       // Free / guided / equivalent → local semantic tutor pipeline (real Harper +
       // structural NLP + USE/hashing + knowledge packs). Free & guided never see
-      // the model answer.
-      const result = await analyzeProduction({
-        text: ans,
-        assessmentMode: semanticMode,
-        requestedIntent: q.requested_intent || (semanticMode === 'guided' ? 'future_plan' : null),
-        level: q.level || activeLesson?.level || 'A1',
-        equivalentTarget: semanticMode === 'equivalent'
-          ? { text: q.expected_answer, essential_words: essentialWords(q.expected_answer) }
-          : null,
-      })
-      analysis = toExerciseAnalysis(result, { question: q, mode: semanticMode })
+      // the model answer. On any engine failure, degrade to a conservative valid
+      // result so free production is never a total failure (never blocks).
+      try {
+        const result = await analyzeProduction({
+          text: ans,
+          assessmentMode: semanticMode,
+          requestedIntent: q.requested_intent || (semanticMode === 'guided' ? 'future_plan' : null),
+          level: q.level || activeLesson?.level || 'A1',
+          equivalentTarget: semanticMode === 'equivalent'
+            ? { text: q.expected_answer, essential_words: essentialWords(q.expected_answer) }
+            : null,
+        })
+        analysis = toExerciseAnalysis(result, { question: q, mode: semanticMode })
+      } catch (err) {
+        analysis = buildSemanticFallbackAnalysis({ mode: semanticMode, userAnswer: ans })
+      }
     } else {
       analysis = await analyze({
       user_answer: ans,
@@ -109,7 +123,6 @@ export default function Exercise() {
       : {}
     const entry = await submitAnswer({ question: q, user_answer: ans, analysis, ...spoken, attempt_number: 1, hint_used: showHint })
     setFeedback({ ...analysis, answerKey: entry.key, user_answer: ans })
-    setAnalyzing(false)
   }
 
   const handleNext = () => {
@@ -212,6 +225,27 @@ function SemanticFeedbackBlock({ sem, userText, settings }) {
       )}
     </section>
   )
+}
+
+// Conservative degrade when the local semantic pipeline throws (e.g. a chunk
+// fails to load). Free production is never a total failure and the model answer
+// is never shown; the learner sees a neutral, valid acknowledgement.
+function buildSemanticFallbackAnalysis({ mode, userAnswer }) {
+  const headline = 'Sua frase foi registrada.'
+  return {
+    analysis_version: '1', assessment_mode: mode, verdict: 'correct', is_probably_correct: true,
+    score: 1, similarity_score: 1, target: null, target_answer: null,
+    detected_errors: [], primary_error: null, possible_mistake_type: null,
+    detected_intents: [], matched_concepts: [], corrected_version: null, natural_alternatives: [],
+    feedback: headline,
+    semantic_feedback: {
+      mode, hide_model_answer: mode === 'free' || mode === 'guided', verdict: 'valid',
+      headline, corrected_version: null, natural_alternatives: [],
+      explanation_pt: { title: 'Análise indisponível', summary: 'Não foi possível analisar em detalhe agora. Sua resposta foi registrada.' },
+    },
+    engines: null, fallback_events: [{ engine: 'pipeline', code: 'ANALYSIS_FAILED' }], knowledge_pack_versions: {},
+    assessed_skills: null,
+  }
 }
 
 function HintCard({ text }) {

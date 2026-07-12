@@ -21,7 +21,12 @@ import { installGlobalErrorLogging } from './lib/error-log.js'
 installGlobalErrorLogging()
 
 if (typeof window !== 'undefined' && sessionStorage.getItem('e2e:enabled') === '1') {
-  window.__LINGO_E2E__ = window.__LINGO_E2E__ || { ttsEvents: [] }
+  // Merge defaults without clobbering values a test pre-set via an init script.
+  const e2e = (window.__LINGO_E2E__ = window.__LINGO_E2E__ || {})
+  e2e.ttsEvents = e2e.ttsEvents || []
+  // Default the PWA install prompt to `disabled` so non-PWA specs are not
+  // affected by the bottom install card; PWA specs opt into other modes.
+  e2e.pwaInstall = e2e.pwaInstall || { mode: 'disabled', promptOutcome: null }
 }
 
 // Register the PWA service worker (offline caching).
