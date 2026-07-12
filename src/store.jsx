@@ -123,8 +123,6 @@ export function AppProvider({ children }) {
   const switchProfile = useCallback(async (profile_id) => {
     setSettings((s) => ({ ...s, active_profile: profile_id }))
     await db.setSetting('active_profile', profile_id)
-    // The in-memory lesson/session belongs to the previous profile — drop it
-    // so nothing private carries over to the newly selected profile.
     setActiveLesson(null)
     setSession({ id: null, qIdx: 0, answers: [] })
     await refreshLibrary(profile_id)
@@ -238,8 +236,10 @@ export function AppProvider({ children }) {
         const found = context.target_skills.find((s) => s.skill_id === targetSkillId) || { skill_id: targetSkillId, priority: 1, mastery: 0.4, evidence: 'emerging' }
         context.target_skills = [found, ...context.target_skills.filter((s) => s.skill_id !== targetSkillId)]
       }
-      const lesson = generateLessonFromContext(context, { questionCount, seed: seed ?? e2eGenerationSeed(), profileId: activeProfile })
+      if (import.meta.env?.DEV) console.info('lesson_generation_started', { profile_id: activeProfile, questionCount, targetSkillId })
+      const lesson = generateLessonFromContext(context, { questionCount, seed, profileId: activeProfile })
       const saved = await db.saveLesson(lesson)
+      if (import.meta.env?.DEV) console.info('lesson_generation_completed', { lesson_id: saved.lesson_id })
       await refreshLibrary(activeProfile)
       return { lesson: saved, yaml: buildGeneratedLessonYaml(saved), validation: lesson.generation_metadata }
     } finally { generationStartRef.current = false }
@@ -247,15 +247,9 @@ export function AppProvider({ children }) {
 
   const startLesson = useCallback(async (lesson) => {
     // Lessons coming from the list view carry no questions (separate store) —
-    // hydrate the full record before starting. Private lessons owned by another
-    // profile are refused by the storage layer.
-    let full
-    try {
-      full = lesson.questions?.length ? lesson : await db.getLesson(lesson.lesson_id, { profile_id: activeProfile })
-    } catch (e) {
-      if (e?.code === db.LESSON_NOT_ACCESSIBLE) { showToast('Esta aula pertence a outro perfil.'); return }
-      throw e
-    }
+    // hydrate the full record before starting.
+    const full = lesson.questions?.length ? lesson : await db.getLesson(lesson.lesson_id, activeProfile)
+    if (db.isLessonAccessDenied?.(full)) { showToast('Aula não acessível para este perfil.'); return }
     if (!full || !full.questions?.length) return
     if (full.owner_profile_id && full.owner_profile_id !== activeProfile) { showToast('Esta aula pertence a outro perfil.'); return }
     setActiveLesson(full)

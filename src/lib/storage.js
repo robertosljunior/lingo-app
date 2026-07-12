@@ -21,14 +21,22 @@
 import { openDB } from 'idb'
 import { srsKey, nextSrs, rankPracticeQuestions } from './srs.js'
 import { buildSkillEvents, aggregateSkillProfile, inferAssessedSkills, rankSkillsForReview, PROFILE_ENGINE_VERSION } from './skill-profile.js'
+import { validateGeneratedLesson } from './generated-lesson-validator.js'
 import { indexQuestionSkills, buildAdaptivePracticePlan, buildLessonGenerationContext as buildAdaptiveContextPure, QUESTION_SKILL_INDEX_VERSION } from './adaptive-planner.js'
 
 const DB_NAME = 'app-idiomas'
-const DB_VERSION = 3
+export const DB_VERSION = 3
 
 export const DEFAULT_PROFILE = 'default'
 
 let dbPromise = null
+
+export const LESSON_NOT_ACCESSIBLE = { code: 'LESSON_NOT_ACCESSIBLE' }
+function canAccessLesson(lesson, profile_id = null) {
+  return !!lesson && (!lesson.owner_profile_id || !profile_id || lesson.owner_profile_id === profile_id)
+}
+export function isLessonAccessDenied(result) { return result?.code === 'LESSON_NOT_ACCESSIBLE' }
+export async function __resetDbForTests() { if (dbPromise) { try { (await dbPromise).close() } catch {} } dbPromise = null }
 
 function db() {
   if (!dbPromise) {
@@ -134,23 +142,43 @@ export async function ensureBootstrapped() {
 
 // ---------- Lessons ----------
 export async function saveLesson(lesson) {
+  if (!lesson?.lesson_id || !Array.isArray(lesson.questions) || lesson.questions.length === 0) throw new Error('LESSON_INVALID')
+  if (lesson.generated) {
+    const validation = validateGeneratedLesson(lesson, { expectedCount: lesson.generation_metadata?.requested_questions || null })
+    if (!validation.valid) throw new Error(`LESSON_VALIDATION_FAILED:${validation.errors.join(',')}`)
+  }
+  const owner = lesson.owner_profile_id || lesson.generation_metadata?.profile_id || null
+  const seenIds = new Set()
+  for (const q of lesson.questions) {
+    if (seenIds.has(String(q.id))) throw new Error('QUESTION_ID_DUPLICATE')
+    seenIds.add(String(q.id))
+    const qOwner = q.owner_profile_id || owner
+    if ((owner || q.owner_profile_id) && qOwner !== owner) throw new Error('QUESTION_OWNER_MISMATCH')
+    if (lesson.generated && (!q.metadata?.template_id || !q.metadata?.family_id || !q.metadata?.question_signature || !q.metadata?.generator_version)) throw new Error('QUESTION_GENERATION_METADATA_REQUIRED')
+  }
   const d = await db()
   const created_at = lesson.created_at || Date.now()
   const tx = d.transaction(['lessons', 'questions'], 'readwrite')
-  await tx.objectStore('lessons').put({
+  const lessonStore = tx.objectStore('lessons')
+  const qStore = tx.objectStore('questions')
+  const existing = await lessonStore.get(lesson.lesson_id)
+  if (existing?.owner_profile_id && owner && existing.owner_profile_id !== owner) throw new Error('LESSON_ID_COLLISION')
+  const oldKeys = await qStore.index('lesson_id').getAllKeys(lesson.lesson_id)
+  for (const k of oldKeys) await qStore.delete(k)
+  await lessonStore.put({
     lesson_id: lesson.lesson_id,
     title: lesson.title,
     level: lesson.level,
     focus: lesson.focus,
     raw_content: lesson.raw_content,
     count: lesson.questions.length,
-    created_at,
+    created_at: existing?.created_at || created_at,
     generated: !!lesson.generated,
-    owner_profile_id: lesson.owner_profile_id || lesson.generation_metadata?.profile_id || null,
+    owner_profile_id: owner,
     generation_metadata: lesson.generation_metadata || null,
   })
-  const qStore = tx.objectStore('questions')
   for (const q of lesson.questions) {
+    const skill_index = indexQuestionSkills({ ...q, lesson_id: lesson.lesson_id }, lesson)
     await qStore.put({
       key: `${lesson.lesson_id}:${q.id}`,
       lesson_id: lesson.lesson_id,
@@ -170,70 +198,63 @@ export async function saveLesson(lesson) {
       payload: q.payload,
       metadata: q.metadata || q.payload?.metadata || null,
       generated: !!lesson.generated,
-      owner_profile_id: lesson.owner_profile_id || lesson.generation_metadata?.profile_id || null,
-      skill_index: indexQuestionSkills({ ...q, lesson_id: lesson.lesson_id }, lesson),
+      generator_version: q.metadata?.generator_version || lesson.generation_metadata?.generator_version || null,
+      owner_profile_id: owner,
+      skill_index,
     })
   }
   await tx.done
-  return { ...lesson, created_at }
+  return { ...lesson, created_at: existing?.created_at || created_at, owner_profile_id: owner }
 }
 
-// Private lessons (owner_profile_id set) can only be read/removed by their
-// owner. Reads resolve the caller's profile from the active profile setting
-// unless one is passed explicitly, so even direct-by-ID access is scoped.
-export const LESSON_NOT_ACCESSIBLE = 'LESSON_NOT_ACCESSIBLE'
-
-export class LessonAccessError extends Error {
-  constructor(lesson_id) {
-    super(LESSON_NOT_ACCESSIBLE)
-    this.name = 'LessonAccessError'
-    this.code = LESSON_NOT_ACCESSIBLE
-    this.lesson_id = lesson_id
-  }
-}
-
-async function resolveProfileScope(d, profile_id) {
-  if (profile_id !== undefined) return profile_id
-  return (await d.get('settings', 'active_profile'))?.value || DEFAULT_PROFILE
-}
-
-async function assertLessonAccess(d, lesson, profile_id) {
-  if (!lesson?.owner_profile_id) return
-  const scope = await resolveProfileScope(d, profile_id)
-  if (lesson.owner_profile_id !== scope) throw new LessonAccessError(lesson.lesson_id)
-}
-
-export async function getLesson(lesson_id, { profile_id } = {}) {
+export async function getLesson(lesson_id, profile_id = null) {
   const d = await db()
   const lesson = await d.get('lessons', lesson_id)
   if (!lesson) return null
-  await assertLessonAccess(d, lesson, profile_id)
+  if (!canAccessLesson(lesson, profile_id)) return LESSON_NOT_ACCESSIBLE
   const questions = await d.getAllFromIndex('questions', 'lesson_id', lesson_id)
   questions.sort((a, b) => a.id - b.id)
   return { ...lesson, questions }
 }
 
+export async function getQuestion(lesson_id, question_id, profile_id = null) {
+  const lesson = await getLesson(lesson_id, profile_id)
+  if (isLessonAccessDenied(lesson)) return LESSON_NOT_ACCESSIBLE
+  if (!lesson) return null
+  return lesson.questions.find((q) => String(q.id) === String(question_id)) || null
+}
+
+export async function getLessonQuestions(lesson_id, profile_id = null) {
+  const lesson = await getLesson(lesson_id, profile_id)
+  if (isLessonAccessDenied(lesson)) return LESSON_NOT_ACCESSIBLE
+  return lesson?.questions || []
+}
+
 export async function getAllQuestions(profile_id = null) {
   const d = await db()
   const rows = await d.getAll('questions')
-  const scoped = profile_id ? rows.filter((q) => !q.owner_profile_id || q.owner_profile_id === profile_id) : rows
+  const lessons = Object.fromEntries((await d.getAll('lessons')).map((l) => [l.lesson_id, l]))
+  const scoped = profile_id ? rows.filter((q) => canAccessLesson(lessons[q.lesson_id] || q, profile_id) && (!q.owner_profile_id || q.owner_profile_id === profile_id)) : rows
   return scoped.map((q) => q.skill_index?.question_index_version === QUESTION_SKILL_INDEX_VERSION ? q : { ...q, skill_index: indexQuestionSkills(q, q) })
 }
 
 export async function getAllLessons(profile_id = null) {
   const d = await db()
   const lessons = await d.getAllFromIndex('lessons', 'created_at')
-  return lessons.filter((l) => !l.owner_profile_id || !profile_id || l.owner_profile_id === profile_id).reverse() // newest first
+  return lessons.filter((l) => canAccessLesson(l, profile_id)).reverse()
 }
 
-export async function deleteLesson(lesson_id, { profile_id } = {}) {
+export async function deleteLesson(lesson_id, profile_id = null) {
   const d = await db()
-  await assertLessonAccess(d, await d.get('lessons', lesson_id), profile_id)
+  const lesson = await d.get('lessons', lesson_id)
+  if (!lesson) return null
+  if (!canAccessLesson(lesson, profile_id)) return LESSON_NOT_ACCESSIBLE
   const tx = d.transaction(['lessons', 'questions'], 'readwrite')
   await tx.objectStore('lessons').delete(lesson_id)
   const qs = await tx.objectStore('questions').index('lesson_id').getAllKeys(lesson_id)
   for (const k of qs) await tx.objectStore('questions').delete(k)
   await tx.done
+  return true
 }
 
 // ---------- Answers ----------
@@ -382,7 +403,7 @@ export async function getDueReviews(profile_id, { now = Date.now(), limit = 15 }
   const out = []
   for (const r of due) {
     const q = await d.get('questions', `${r.lesson_id}:${r.question_id}`)
-    if (q) out.push(q)
+    if (q && (!q.owner_profile_id || q.owner_profile_id === profile_id)) out.push(q)
   }
   return out
 }
@@ -425,7 +446,7 @@ export async function getPracticeQuestions(profile_id, { limit = 12 } = {}) {
   const out = []
   for (const r of ranked) {
     const q = await d.get('questions', `${r.lesson_id}:${r.question_id}`)
-    if (q) out.push(q)
+    if (q && (!q.owner_profile_id || q.owner_profile_id === profile_id)) out.push(q)
   }
   return out
 }

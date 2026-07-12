@@ -4,6 +4,7 @@ import { getSkill } from './skill-registry.js'
 import { getLessonTemplates, TEMPLATE_REGISTRY_VERSION, SUPPORTED_GENERATED_TYPES } from './lesson-template-registry.js'
 import { LEXICAL_BANK_VERSION, normalize } from './lexical-bank.js'
 import { parseLesson } from './lesson-parser.js'
+import { canonicalText, tokenizeBuildSentence } from './generated-lesson-contracts.js'
 
 export const LESSON_GENERATOR_VERSION = '1'
 const TYPE_TARGET_30={translate_natural:6,fill_blank:5,build_sentence:5,choose_best:4,rewrite_natural:4,listen_type:3,speak_sentence:3}
@@ -40,7 +41,9 @@ export function exerciseTypePlan(questionCount=30){
 }
 
 export function generateLessonFromContext(context={}, opts={}){
-  const questionCount=opts.questionCount||30, level=context.level||'B1', seed=opts.seed||`${context.profile_id||'default'}:${level}:${LESSON_GENERATOR_VERSION}:${(context.target_skills||[]).map(s=>s.skill_id).join(',')}`
+  const questionCount=opts.questionCount||30, level=context.level||'B1'
+  const owner=context.profile_id||opts.profileId||null
+  const seed=opts.seed||`${owner||'global'}:${level}:${LESSON_GENERATOR_VERSION}:${(context.target_skills||[]).map(s=>s.skill_id).join(',')}`
   const rng=seededRandom(seed), templates=getLessonTemplates(), skillPlan=allocateLessonSkills(context, questionCount), typePlan=exerciseTypePlan(questionCount)
   const recent=new Set((context.recent_sentences||[]).map(normalize)), warnings=[], qs=[], signatures=new Set(), familyCounts={}, templateIds=[]
   for(let i=0;i<questionCount;i++){
@@ -58,12 +61,11 @@ export function generateLessonFromContext(context={}, opts={}){
     }
     if(made) qs.push(made); else warnings.push({code:'INSUFFICIENT_TEMPLATES_FOR_SKILL',skill_id:skill,type})
   }
-  // The id is scoped by owner profile so the same explicit seed used by two
-  // profiles never collides (each keeps its own private lesson); the same
-  // profile + seed + count stays idempotent.
-  const lesson_id=`gen_${level.toLowerCase()}_${hash(`${context.profile_id||opts.profileId||'default'}:${seed}:${questionCount}`).slice(0,8)}`
+  const ownerScopeHash=hash(owner||'global').slice(0,8)
+  const generationKey=hash(`${seed}:${questionCount}:${(context.target_skills||[]).map(s=>s.skill_id).join(',')}:${LESSON_GENERATOR_VERSION}:${TEMPLATE_REGISTRY_VERSION}`).slice(0,10)
+  const lesson_id=`gen_${level.toLowerCase()}_${ownerScopeHash}_${generationKey}`
   qs.forEach((q,i)=>{ q.id=i+1; q.generated_question_id=`${lesson_id}:${q.id}` })
-  const lesson={ lesson_id,title:titleFor(context),level,focus:'adaptive_workplace_english',generated:true,owner_profile_id:context.profile_id||opts.profileId||null,questions:qs,generation_metadata:{generator_version:LESSON_GENERATOR_VERSION,template_registry_version:TEMPLATE_REGISTRY_VERSION,lexical_bank_version:LEXICAL_BANK_VERSION,profile_id:context.profile_id||opts.profileId||null,seed,generated_at:new Date(0).toISOString(),requested_questions:questionCount,actual_questions:qs.length,target_skills:(context.target_skills||[]).map(s=>s.skill_id),template_ids:templateIds,template_family_counts:familyCounts,warnings}}
+  const lesson={ lesson_id,title:titleFor(context),level,focus:'adaptive_workplace_english',generated:true,owner_profile_id:owner,questions:qs,generation_metadata:{generator_version:LESSON_GENERATOR_VERSION,generation_key:generationKey,content_hash:hash(qs.map(q=>canonicalText(q.expected_answer)).join('|')),owner_scope_hash:ownerScopeHash,template_registry_version:TEMPLATE_REGISTRY_VERSION,lexical_bank_version:LEXICAL_BANK_VERSION,profile_id:owner,seed,generated_at:new Date(0).toISOString(),requested_questions:questionCount,actual_questions:qs.length,target_skills:(context.target_skills||[]).map(s=>s.skill_id),template_ids:templateIds,template_family_counts:familyCounts,warnings}}
   lesson.raw_content=buildGeneratedLessonYaml(lesson)
   const parsed=parseLesson(lesson.raw_content)
   if(parsed.questions.length!==lesson.questions.length) throw new Error('Generated lesson YAML round-trip failed')
@@ -72,22 +74,22 @@ export function generateLessonFromContext(context={}, opts={}){
 function titleFor(context){ const labels=(context.target_skills||[]).slice(0,2).map(s=>getSkill(s.skill_id)?.label_pt).filter(Boolean); return labels.length?`Revisão profissional: ${labels.join(' e ')}`:'Revisão profissional adaptativa' }
 function buildQuestion(t,type,id){ const a=t.sentence, f=t.primary_skill_id; const base={id,type,prompt:'',prompt_pt:t.pt,context:t.ctx,expected_answer:a,accepted_answers:[],options:null,words:null,original:null,skill_target:f,lesson_focus:f,mistake_focus:f,payload:null}
  if(type==='translate_natural') Object.assign(base,{prompt:'Traduza naturalmente.', accepted_answers: a.includes("I've")?[a.replace("I've",'I have')]:[]})
- if(type==='fill_blank') Object.assign(base,{prompt:a.replace(t.blank,'____'), expected_answer:t.blank, options:distractors(t.primary_skill_id,t.blank,t.wrong)})
+ if(type==='fill_blank') { const opts=distractors(t.primary_skill_id,t.blank,t.wrong); Object.assign(base,{prompt:a.replace(t.blank,'____'), expected_answer:t.blank, options:opts, payload_contract:{blank_skill:t.primary_skill_id,expected_slot_type:t.blank?.endsWith('ing')?'VBG':'LEXICAL',correct_option:t.blank,distractors:opts.filter(o=>canonicalText(o)!==canonicalText(t.blank)).map(text=>({text,error:'INVALID_SLOT_FORM'}))}}) }
  if(type==='build_sentence') Object.assign(base,{prompt:'Monte a frase em inglês.', words:tokenize(a)})
- if(type==='choose_best') Object.assign(base,{prompt:t.ctx || 'Escolha a frase mais natural.', options:shuffleFixed(uniqueOptions([a,t.wrong,secondWrong(t),genericWrong(t)]).slice(0,3),t.template_id)})
+ if(type==='choose_best') { const ds=uniqueOptions([t.wrong,secondWrong(t),genericWrong(t)]).filter(x=>canonicalText(x)!==canonicalText(a)).slice(0,2); Object.assign(base,{prompt:t.ctx || 'Escolha a frase mais natural.', options:shuffleFixed([a,...ds],t.template_id), payload_contract:{correct:a,rule_id:`${t.family_id}.correct`,distractors:ds.map((text,i)=>({text,invalid_rule_id:`${t.family_id}.distractor_${i+1}`})),context_required:!!t.ctx}}) }
  if(type==='rewrite_natural') Object.assign(base,{prompt:'Reescreva a frase de forma natural e correta.', original:t.wrong})
  if(type==='listen_type') Object.assign(base,{prompt:'Ouça a frase e digite exatamente o que ouvir.'})
  if(type==='speak_sentence') Object.assign(base,{prompt:'Fale a frase em inglês.'})
  base.payload=compact(base,t); return base }
-function compact(q,t){ const o={id:q.id,t:q.type}; if(q.prompt_pt)o.pt=q.prompt_pt; if(q.context)o.ctx=q.context; if(q.prompt)o.p=q.prompt; if(q.original)o.original=q.original; if(q.options)o.opt=q.options; if(q.words)o.words=q.words; o.a=q.expected_answer; if(q.accepted_answers?.length)o.alt=q.accepted_answers; o.f=q.skill_target; o.template_id=t.template_id; o.family_id=t.family_id; o.skill_ids=t.skill_ids; return o }
+function compact(q,t){ const o={id:q.id,t:q.type}; if(q.prompt_pt)o.pt=q.prompt_pt; if(q.context)o.ctx=q.context; if(q.prompt)o.p=q.prompt; if(q.original)o.original=q.original; if(q.options)o.opt=q.options; if(q.words)o.words=q.words; if(q.payload_contract)o.contract=q.payload_contract; o.a=q.expected_answer; if(q.accepted_answers?.length)o.alt=q.accepted_answers; o.f=q.skill_target; o.template_id=t.template_id; o.family_id=t.family_id; o.skill_ids=t.skill_ids; return o }
 function distractors(skill,correct,wrong){ let opts=[correct]; if(skill==='gerund_after_been'||correct.endsWith('ing')) opts.push(correct.replace(/ing$/,'ed'),correct.replace(/ing$/,'')); else if(skill.includes('preposition')||['at','on','for'].includes(correct)) opts.push(correct==='at'?'in':'at',correct==='on'?'in':'of'); else if(correct==="I've") opts.push('Ive','I have been'); else opts.push(wrong?.split(' ')[0]||'do','make') ; return [...new Set(opts)].slice(0,3) }
 function secondWrong(t){ if(t.primary_skill_id==='question_auxiliary') return 'They do have any open positions?'; if(t.primary_skill_id==='question_structure') return t.sentence.replace(/^(Have|Do|Could|How long have) /,''); if(t.primary_skill_id==='workplace_preposition') return t.wrong.includes(' in ')?t.wrong.replace(' in ',' at '):t.wrong.replace(' of ',' for '); if(t.primary_skill_id==='gerund_after_been'||t.primary_skill_id==='present_perfect_continuous') return t.sentence.replace(/been ([a-z]+ing)/,'been '+(t.blank||'work')); return t.wrong.replace('.', '?') }
 function genericWrong(t){ return t.sentence.replace(/\?$/, '').replace(/\.$/, '') + ' please?' }
 function uniqueOptions(xs){ const seen=new Set(); return xs.filter(x=>{const n=normalize(x); if(!n||seen.has(n)) return false; seen.add(n); return true}) }
-function tokenize(s){ return String(s).match(/[A-Za-z]+(?:'[A-Za-z]+)?|[.,!?]/g)||[] }
+function tokenize(s){ return tokenizeBuildSentence(s) }
 function questionSignature(q,t){ return hash(`${q.type}|${t.family_id}|${normalize(q.prompt)}|${normalize(q.expected_answer)}`) }
 function hash(s){ let h=2166136261; for(const ch of String(s)){h^=ch.charCodeAt(0); h=Math.imul(h,16777619)} return (h>>>0).toString(16).padStart(8,'0') }
 function shuffleStable(arr,rng){ return arr.map(x=>[rng(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]) }
 function shuffleFixed(arr,seed){ const r=seededRandom(seed); return shuffleStable(arr,r) }
-function yamlQuestion(q){ const o={id:q.id,t:q.type}; if(q.prompt_pt)o.pt=q.prompt_pt; if(q.context)o.ctx=q.context; if(q.prompt)o.p=q.prompt; if(q.original)o.original=q.original; if(q.options)o.opt=q.options; if(q.words)o.words=q.words; o.a=q.expected_answer; if(q.accepted_answers?.length)o.alt=q.accepted_answers; o.f=q.skill_target; return o }
+function yamlQuestion(q){ const o={id:q.id,t:q.type}; if(q.prompt_pt)o.pt=q.prompt_pt; if(q.context)o.ctx=q.context; if(q.prompt)o.p=q.prompt; if(q.original)o.original=q.original; if(q.options)o.opt=q.options; if(q.words)o.words=q.words; if(q.payload_contract)o.contract=q.payload_contract; o.a=q.expected_answer; if(q.accepted_answers?.length)o.alt=q.accepted_answers; o.f=q.skill_target; return o }
 export function buildGeneratedLessonYaml(lesson){ return yaml.dump({lesson_id:lesson.lesson_id,title:lesson.title,level:lesson.level,focus:lesson.focus,q:lesson.questions.map(yamlQuestion)}, {schema:yaml.JSON_SCHEMA,lineWidth:120,noRefs:true,sortKeys:false}) }
