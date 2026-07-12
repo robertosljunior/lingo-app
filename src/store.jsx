@@ -8,6 +8,7 @@ import { SAMPLE_YAML } from './lib/sample-lesson.js'
 import { warmupNlp } from './lib/nlp-client.js'
 import { configureTts } from './lib/audio/tts.js'
 import { generateLessonFromContext, buildGeneratedLessonYaml } from './lib/lesson-generator.js'
+import { inferAssessedSkills } from './lib/skill-profile.js'
 
 
 const AppCtx = createContext(null)
@@ -23,6 +24,13 @@ const TABS = new Set([SCREENS.HOME, SCREENS.HISTORY, SCREENS.MISTAKES, SCREENS.S
 
 function newSessionId(lessonId) {
   return `${lessonId}-${Date.now().toString(36)}`
+}
+
+// Test-only hook: E2E runs may inject a deterministic generation seed through
+// sessionStorage. Never set during normal usage; sessionStorage dies with the
+// tab, so it cannot leak into a real install.
+function e2eGenerationSeed() {
+  try { return window.sessionStorage.getItem('e2e:generation-seed') } catch { return null }
 }
 
 export function AppProvider({ children }) {
@@ -51,6 +59,9 @@ export function AppProvider({ children }) {
   useEffect(() => {
     (async () => {
       await db.ensureBootstrapped()
+      // Test-only hook: E2E runs flag the tab via sessionStorage to reach the
+      // same public storage layer the UI uses (never set in normal usage).
+      try { if (window.sessionStorage.getItem('e2e:enabled')) window.__e2e = { db } } catch { /* noop */ }
       const s = await db.getSettings()
       setSettings(s)
       const profile = s.active_profile || db.DEFAULT_PROFILE
@@ -112,6 +123,10 @@ export function AppProvider({ children }) {
   const switchProfile = useCallback(async (profile_id) => {
     setSettings((s) => ({ ...s, active_profile: profile_id }))
     await db.setSetting('active_profile', profile_id)
+    // The in-memory lesson/session belongs to the previous profile — drop it
+    // so nothing private carries over to the newly selected profile.
+    setActiveLesson(null)
+    setSession({ id: null, qIdx: 0, answers: [] })
     await refreshLibrary(profile_id)
   }, [refreshLibrary])
 
@@ -223,7 +238,7 @@ export function AppProvider({ children }) {
         const found = context.target_skills.find((s) => s.skill_id === targetSkillId) || { skill_id: targetSkillId, priority: 1, mastery: 0.4, evidence: 'emerging' }
         context.target_skills = [found, ...context.target_skills.filter((s) => s.skill_id !== targetSkillId)]
       }
-      const lesson = generateLessonFromContext(context, { questionCount, seed, profileId: activeProfile })
+      const lesson = generateLessonFromContext(context, { questionCount, seed: seed ?? e2eGenerationSeed(), profileId: activeProfile })
       const saved = await db.saveLesson(lesson)
       await refreshLibrary(activeProfile)
       return { lesson: saved, yaml: buildGeneratedLessonYaml(saved), validation: lesson.generation_metadata }
@@ -232,13 +247,21 @@ export function AppProvider({ children }) {
 
   const startLesson = useCallback(async (lesson) => {
     // Lessons coming from the list view carry no questions (separate store) —
-    // hydrate the full record before starting.
-    const full = lesson.questions?.length ? lesson : await db.getLesson(lesson.lesson_id)
+    // hydrate the full record before starting. Private lessons owned by another
+    // profile are refused by the storage layer.
+    let full
+    try {
+      full = lesson.questions?.length ? lesson : await db.getLesson(lesson.lesson_id, { profile_id: activeProfile })
+    } catch (e) {
+      if (e?.code === db.LESSON_NOT_ACCESSIBLE) { showToast('Esta aula pertence a outro perfil.'); return }
+      throw e
+    }
     if (!full || !full.questions?.length) return
+    if (full.owner_profile_id && full.owner_profile_id !== activeProfile) { showToast('Esta aula pertence a outro perfil.'); return }
     setActiveLesson(full)
     setSession({ id: newSessionId(full.lesson_id), qIdx: 0, answers: [] })
     navigate(SCREENS.EXERCISE, {})
-  }, [navigate])
+  }, [navigate, activeProfile, showToast])
 
   const submitAnswer = useCallback(async (rec) => {
     // rec: { question, user_answer, analysis, spoken_transcript?, pronunciation_score? }
@@ -259,6 +282,11 @@ export function AppProvider({ children }) {
       normalized_user_answer: a.normalized_user_answer,
       normalized_expected_answer: a.normalized_expected_answer,
     }
+    // Persist the assessed skills so Result/Review can summarize the session
+    // and the skill-profile pipeline consumes exactly what the UI showed.
+    evaluation.assessed_skills = a.assessed_skills?.length
+      ? a.assessed_skills
+      : inferAssessedSkills({ evaluation, question: q, user_answer: rec.user_answer, expected_answer: evaluation.target_answer })
     const stored = {
       profile_id: activeProfile,
       lesson_id: lessonId,

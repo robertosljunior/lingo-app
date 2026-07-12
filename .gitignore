@@ -3,5 +3,10 @@ dist-ssr
 *.local
 .DS_Store
 
+# Playwright output (reports/traces/screenshots are run artifacts)
+playwright-report/
+test-results/
+blob-report/
+
 # dist/ is intentionally committed — a prebuilt, mobile-ready PWA is shipped in
 # the repo (see README → Deploy). Rebuild with `npm run build`.

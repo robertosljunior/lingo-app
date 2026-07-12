@@ -62,6 +62,9 @@ export default function Exercise() {
       const correct = ans.trim().toLowerCase() === q.expected_answer.trim().toLowerCase()
       analysis.verdict = correct ? 'correct' : 'incorrect'
       analysis.is_probably_correct = correct
+      // The skills assessed by the free-text engine no longer match the
+      // rewritten choice evaluation — drop them so they are re-inferred.
+      analysis.assessed_skills = null
       if (correct) {
         analysis.detected_errors = []
         analysis.primary_error = null
@@ -100,7 +103,7 @@ export default function Exercise() {
       </div>
 
       <div style={{ padding: '6px 20px 0', display: 'flex', gap: 6, alignItems: 'center', flexShrink: 0 }}>
-        <span className="chip chip-indigo" style={{ fontFamily: 'var(--font-mono)' }}>{q.type}</span>
+        <span className="chip chip-indigo" data-testid="question-type" style={{ fontFamily: 'var(--font-mono)' }}>{q.type}</span>
         {q.mistake_focus && <span className="chip" style={{ fontFamily: 'var(--font-mono)' }}>{q.mistake_focus}</span>}
       </div>
 
@@ -265,10 +268,13 @@ function DictationBody({ q, user, setUser, disabled, showHint }) {
 // transcript is graded like a typed answer. Two flavors:
 //   with prompt_pt   → "say this in English" (speaking translation)
 //   without prompt_pt → "read this sentence aloud" (repeat-after-me)
-// Without STT support the exercise degrades to typing.
+// Without STT support — or when the mic/recognizer fails (offline, no mic
+// permission) — the exercise degrades to typing so the lesson never blocks.
 function SpeakBody({ q, user, setUser, disabled, showHint }) {
   const [partial, setPartial] = useState('')
+  const [typing, setTyping] = useState(false)
   const readAloud = !q.prompt_pt
+  const useMic = sttSupported && !typing
 
   return (
     <>
@@ -293,7 +299,7 @@ function SpeakBody({ q, user, setUser, disabled, showHint }) {
 
       {showHint && !disabled && <HintCard text={hintFor(q)} />}
 
-      {sttSupported ? (
+      {useMic ? (
         <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
           <div className="card" style={{ padding: 14, width: '100%', minHeight: 64, background: 'var(--bg-alt)' }}>
             <div className="label-eyebrow" style={{ marginBottom: 6 }}>o que o app ouviu</div>
@@ -306,14 +312,20 @@ function SpeakBody({ q, user, setUser, disabled, showHint }) {
             onPartial={(t) => { setPartial(t) }}
             onResult={(t) => { setPartial(''); if (t) setUser(t) }}
           />
+          <button className="btn btn-sm btn-ghost" style={{ padding: '2px 10px', minHeight: 0 }} disabled={disabled}
+            data-testid="speak-type-fallback" onClick={() => setTyping(true)}>
+            Sem microfone? Digitar a frase
+          </button>
         </div>
       ) : (
         <div style={{ marginTop: 'auto' }}>
-          <div className="card" style={{ padding: 12, background: 'var(--warn-bg)', borderColor: 'transparent', marginBottom: 10 }}>
-            <div style={{ fontSize: 13, color: 'var(--warn-ink)', lineHeight: 1.5 }}>
-              Este navegador não tem reconhecimento de voz — no Android, use o Chrome. Por ora, digite a frase.
+          {!sttSupported && (
+            <div className="card" style={{ padding: 12, background: 'var(--warn-bg)', borderColor: 'transparent', marginBottom: 10 }}>
+              <div style={{ fontSize: 13, color: 'var(--warn-ink)', lineHeight: 1.5 }}>
+                Este navegador não tem reconhecimento de voz — no Android, use o Chrome. Por ora, digite a frase.
+              </div>
             </div>
-          </div>
+          )}
           <textarea
             className="input" style={{ fontFamily: 'var(--font-sans)', fontSize: 16, minHeight: 90 }}
             placeholder="Type the sentence…"
@@ -430,10 +442,10 @@ function ErrorList({ result, q, tone, inkVar }) {
   const secondary = errors.filter((e) => e !== primary)
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      {primary && <ErrorCard error={primary} title="Erro principal" tone={tone} inkVar={inkVar} />}
+      {primary && <ErrorCard error={primary} title="Erro principal" tone={tone} inkVar={inkVar} testid="error-primary" />}
       {secondary.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {secondary.map((e, i) => <ErrorCard key={`${e.rule_id || e.category}-${i}`} error={e} title={e.category === 'preposition' ? 'Melhoria de naturalidade' : 'Também revisar'} tone="warn" inkVar={inkVar} compact />)}
+          {secondary.map((e, i) => <ErrorCard key={`${e.rule_id || e.category}-${i}`} error={e} title={e.category === 'preposition' ? 'Melhoria de naturalidade' : 'Também revisar'} tone="warn" inkVar={inkVar} compact testid="error-secondary" />)}
         </div>
       )}
       {!primary && <div style={{ fontSize: 14, color: inkVar, lineHeight: 1.5 }}>{result.feedback}</div>}
@@ -441,10 +453,10 @@ function ErrorList({ result, q, tone, inkVar }) {
   )
 }
 
-function ErrorCard({ error, title, tone, inkVar, compact = false }) {
+function ErrorCard({ error, title, tone, inkVar, compact = false, testid = null }) {
   const chipTone = tone === 'warn' || error.severity === 'low' ? 'warn' : 'error'
   return (
-    <div>
+    <div data-testid={testid} data-error-category={error.category} data-error-subtype={error.subtype || ''}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 5, flexWrap: 'wrap' }}>
         <span className={`chip chip-${chipTone}`} style={{ fontFamily: 'var(--font-mono)' }}>
           {error.category}{error.subtype ? `/${error.subtype}` : ''}
@@ -491,7 +503,7 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
   const shadow = tone === 'success' ? '#14532D' : tone === 'warn' ? '#78350F' : '#7F1D1D'
 
   return (
-    <div className={`sheet sheet-${tone} sheet-anim`}>
+    <div className={`sheet sheet-${tone} sheet-anim`} data-testid="feedback-sheet" data-verdict={result.verdict}>
       <div className="handle" style={{ background: 'rgba(0,0,0,.15)' }} />
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <div style={{ width: 36, height: 36, borderRadius: '50%', background: baseColor, color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800 }}>
