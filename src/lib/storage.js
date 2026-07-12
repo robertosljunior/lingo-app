@@ -23,9 +23,11 @@ import { srsKey, nextSrs, rankPracticeQuestions } from './srs.js'
 import { buildSkillEvents, aggregateSkillProfile, inferAssessedSkills, rankSkillsForReview, PROFILE_ENGINE_VERSION } from './skill-profile.js'
 import { validateGeneratedLesson } from './generated-lesson-validator.js'
 import { indexQuestionSkills, buildAdaptivePracticePlan, buildLessonGenerationContext as buildAdaptiveContextPure, QUESTION_SKILL_INDEX_VERSION } from './adaptive-planner.js'
+import { BUILTIN_CONTENT_PACKS, getBuiltinContentPack } from './content-pack-loader.js'
+import { validateContentPacks } from './content-pack-validator.js'
 
 const DB_NAME = 'app-idiomas'
-export const DB_VERSION = 3
+export const DB_VERSION = 4
 
 export const DEFAULT_PROFILE = 'default'
 
@@ -87,6 +89,39 @@ function db() {
           s.createIndex('profile_id', 'profile_id')
           s.createIndex('skill_id', 'skill_id')
         }
+        if (!d.objectStoreNames.contains('content_packs')) {
+          const s = d.createObjectStore('content_packs', { keyPath: 'pack_id' })
+          s.createIndex('theme', 'theme')
+          s.createIndex('level', 'level')
+          s.createIndex('enabled', 'enabled')
+          s.createIndex('source', 'source')
+          s.createIndex('theme_level', ['theme', 'level'])
+        }
+        if (!d.objectStoreNames.contains('lexical_items')) {
+          const s = d.createObjectStore('lexical_items', { keyPath: 'item_id' })
+          s.createIndex('pack_id', 'pack_id')
+          s.createIndex('theme', 'theme')
+          s.createIndex('level', 'level')
+          s.createIndex('semantic_type', 'semantic_type')
+          s.createIndex('pack_semantic_type', ['pack_id', 'semantic_type'])
+        }
+        if (!d.objectStoreNames.contains('template_definitions')) {
+          const s = d.createObjectStore('template_definitions', { keyPath: 'template_id' })
+          s.createIndex('pack_id', 'pack_id')
+          s.createIndex('family_id', 'family_id')
+          s.createIndex('level', 'level')
+          s.createIndex('theme', 'theme')
+          s.createIndex('primary_skill_id', 'primary_skill_id')
+          s.createIndex('pack_primary_skill', ['pack_id', 'primary_skill_id'])
+        }
+        if (!d.objectStoreNames.contains('collocations')) {
+          const s = d.createObjectStore('collocations', { keyPath: 'collocation_id' })
+          s.createIndex('pack_id', 'pack_id')
+          s.createIndex('theme', 'theme')
+          s.createIndex('level', 'level')
+          s.createIndex('canonical', 'canonical')
+          s.createIndex('pack_level', ['pack_id', 'level'])
+        }
       },
     })
   }
@@ -118,6 +153,7 @@ export async function deleteProfile(profile_id) {
 // One-time boot fixup: guarantee the default profile exists, stamp legacy
 // answers with it, and rebuild the mistakes rollup after the v2 migration.
 export async function ensureBootstrapped() {
+  await seedBuiltinContentPacks().catch(() => {})
   const d = await db()
   if (!(await d.get('profiles', DEFAULT_PROFILE))) {
     const legacy = await d.count('answers')
@@ -208,10 +244,12 @@ export async function saveLesson(lesson) {
 }
 
 export async function getLesson(lesson_id, profile_id = null) {
+  const throwDenied = !!(profile_id && typeof profile_id === 'object')
+  if (throwDenied) profile_id = profile_id.profile_id || null
   const d = await db()
   const lesson = await d.get('lessons', lesson_id)
   if (!lesson) return null
-  if (!canAccessLesson(lesson, profile_id)) return LESSON_NOT_ACCESSIBLE
+  if (!canAccessLesson(lesson, profile_id)) { if (throwDenied) throw LESSON_NOT_ACCESSIBLE; return LESSON_NOT_ACCESSIBLE }
   const questions = await d.getAllFromIndex('questions', 'lesson_id', lesson_id)
   questions.sort((a, b) => a.id - b.id)
   return { ...lesson, questions }
@@ -245,6 +283,7 @@ export async function getAllLessons(profile_id = null) {
 }
 
 export async function deleteLesson(lesson_id, profile_id = null) {
+  if (profile_id && typeof profile_id === 'object') profile_id = profile_id.profile_id || null
   const d = await db()
   const lesson = await d.get('lessons', lesson_id)
   if (!lesson) return null
@@ -524,3 +563,37 @@ export async function wipeAll() {
   }
   await tx.done
 }
+
+// ---------- Content packs (v4) ----------
+function stableHash(value){ const s=JSON.stringify(value,Object.keys(value).sort()); let h=2166136261; for(const ch of s){h^=ch.charCodeAt(0); h=Math.imul(h,16777619)} return (h>>>0).toString(16).padStart(8,'0') }
+function packChecksum(pack){ return stableHash(pack) }
+export async function seedBuiltinContentPacks(){
+  const validation=validateContentPacks(BUILTIN_CONTENT_PACKS); if(!validation.valid) throw new Error(`CONTENT_PACKS_INVALID:${validation.errors.join(',')}`)
+  const d=await db(); const installed=[]; const skipped=[]
+  for(const pack of BUILTIN_CONTENT_PACKS){ const m=pack.manifest; const checksum=packChecksum(pack); const existing=await d.get('content_packs',m.pack_id); if(existing?.source && existing.source!=='builtin'){ skipped.push(m.pack_id); continue } if(existing?.version===m.version && existing?.checksum===checksum){ skipped.push(m.pack_id); continue }
+    const tx=d.transaction(['content_packs','lexical_items','template_definitions','collocations'],'readwrite')
+    for(const storeName of ['lexical_items','template_definitions','collocations']){ const keys=await tx.objectStore(storeName).index('pack_id').getAllKeys(m.pack_id); for(const k of keys) await tx.objectStore(storeName).delete(k) }
+    const counts={lexical_items:pack.lexical_items.length,template_definitions:pack.template_definitions.length,collocations:pack.collocations.length}
+    await tx.objectStore('content_packs').put({pack_id:m.pack_id,...m,enabled:existing?.enabled ?? m.enabled_by_default,checksum,counts,validation_status:'valid',seeded_at:Date.now()})
+    for(const row of pack.lexical_items) await tx.objectStore('lexical_items').put({...row,pack_id:m.pack_id,theme:m.theme,level:m.level})
+    for(const row of pack.template_definitions) await tx.objectStore('template_definitions').put({...row,pack_id:m.pack_id,theme:m.theme,level:m.level})
+    for(const row of pack.collocations) await tx.objectStore('collocations').put({...row,pack_id:m.pack_id,theme:m.theme,level:m.level})
+    await tx.done; installed.push(m.pack_id)
+  }
+  await setSetting('content_pack_seed_marker',{version:1,pack_count:BUILTIN_CONTENT_PACKS.length,seeded_at:Date.now()})
+  return {installed,skipped,total:BUILTIN_CONTENT_PACKS.length}
+}
+export async function listContentPacks(){ const d=await db(); return (await d.getAll('content_packs')).sort((a,b)=>a.pack_id.localeCompare(b.pack_id)) }
+export async function getContentPack(packId){ const d=await db(); return d.get('content_packs',packId) }
+export async function getEnabledContentPacks(){ return (await listContentPacks()).filter(p=>p.enabled) }
+export async function getContentPacksByThemeAndLevel(theme,level){ const d=await db(); return d.getAllFromIndex('content_packs','theme_level',[theme,level]) }
+async function getRows(store, packIds){ const d=await db(); const out=[]; for(const id of packIds) out.push(...await d.getAllFromIndex(store,'pack_id',id)); return out.sort((a,b)=>(a.template_id||a.item_id||a.collocation_id).localeCompare(b.template_id||b.item_id||b.collocation_id)) }
+export const getLexicalItemsForPacks=(ids)=>getRows('lexical_items',ids)
+export const getTemplatesForPacks=(ids)=>getRows('template_definitions',ids)
+export const getCollocationsForPacks=(ids)=>getRows('collocations',ids)
+export async function resolveContentSnapshot({theme='workplace',level='B1',packIds=null}={}){ await seedBuiltinContentPacks(); const desired=packIds?.length?packIds:[`core_${level.toLowerCase()}`,`${theme}_${level.toLowerCase()}`]; const packs=[]; for(const id of desired){ const p=await getContentPack(id); if(!p||!p.enabled) continue; for(const dep of p.dependencies||[]){ const dp=await getContentPack(dep); if(dp?.enabled&&!packs.find(x=>x.pack_id===dep)) packs.push(dp) } if(!packs.find(x=>x.pack_id===id)) packs.push(p) } const filtered=packs.filter(p=>p.level===level); const ids=filtered.map(p=>p.pack_id).sort(); const [lexical_items,template_definitions,collocations]=await Promise.all([getLexicalItemsForPacks(ids),getTemplatesForPacks(ids),getCollocationsForPacks(ids)]); const pack_versions=Object.fromEntries(filtered.map(p=>[p.pack_id,p.version])); const checksum=stableHash({ids,pack_versions,lexical_items:lexical_items.map(x=>x.item_id),template_definitions:template_definitions.map(x=>x.template_id),collocations:collocations.map(x=>x.collocation_id)}); return Object.freeze({pack_ids:ids,pack_versions,checksum,lexical_items:Object.freeze(lexical_items),template_definitions:Object.freeze(template_definitions),collocations:Object.freeze(collocations)}) }
+export async function enableContentPack(packId){ const d=await db(); const p=await d.get('content_packs',packId); if(!p) return null; await d.put('content_packs',{...p,enabled:true}); return true }
+export async function disableContentPack(packId){ const d=await db(); const p=await d.get('content_packs',packId); if(!p) return null; await d.put('content_packs',{...p,enabled:false}); return true }
+export async function restoreBuiltinContentPack(packId){ const pack=getBuiltinContentPack(packId); if(!pack) return null; const d=await db(); await d.delete('content_packs',packId); return seedBuiltinContentPacks() }
+export function buildImportedLessonId(lesson, policy='yaml_import_v1') { return `import_${String(lesson.level||'b1').toLowerCase()}_${stableHash({source_lesson_id:lesson.lesson_id,raw_content:lesson.raw_content||'',questions:(lesson.questions||[]).map(q=>({t:q.type,p:q.prompt,a:q.expected_answer})),schema:'1',policy}).slice(0,10)}` }
+export async function importLessonCopy(lesson){ const source_lesson_id=lesson.lesson_id; const lesson_id=buildImportedLessonId(lesson); const existing=await getLesson(lesson_id,null); if(existing) return existing; return saveLesson({...lesson,lesson_id,source_lesson_id,imported:true,owner_profile_id:null,generated:false,questions:lesson.questions.map(q=>({...q,owner_profile_id:null})),generation_metadata:null}) }

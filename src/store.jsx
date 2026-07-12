@@ -226,12 +226,14 @@ export function AppProvider({ children }) {
   }, [activeProfile, startSynthetic, showToast])
 
 
-  const generateAdaptiveLesson = useCallback(async ({ questionCount = 30, targetSkillId = null, seed = null } = {}) => {
+  const generateAdaptiveLesson = useCallback(async ({ questionCount = 30, targetSkillId = null, seed = null, level = null, theme = 'workplace' } = {}) => {
     if (generationStartRef.current) return null
     generationStartRef.current = true
     try {
       const context = await db.buildLessonGenerationContext(activeProfile)
       context.profile_id = activeProfile
+      if (level) context.level = level
+      context.theme = theme
       if (targetSkillId) {
         const found = context.target_skills.find((s) => s.skill_id === targetSkillId) || { skill_id: targetSkillId, priority: 1, mastery: 0.4, evidence: 'emerging' }
         context.target_skills = [found, ...context.target_skills.filter((s) => s.skill_id !== targetSkillId)]

@@ -1,0 +1,607 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "technology_and_communication_a1",
+    "title": {
+      "pt": "Tecnologia e comunicação A1",
+      "en": "Technology and communication A1"
+    },
+    "theme": "technology_and_communication",
+    "level": "A1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "technology_and_communication_a1_password",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "password",
+      "translation_pt": "password",
+      "semantic_type": "object",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_message",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "message",
+      "translation_pt": "message",
+      "semantic_type": "time",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_video_call",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "video call",
+      "translation_pt": "video call",
+      "semantic_type": "action",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_laptop",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "laptop",
+      "translation_pt": "laptop",
+      "semantic_type": "object",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_app_update",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "app update",
+      "translation_pt": "app update",
+      "semantic_type": "time",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_wifi_network",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "wifi network",
+      "translation_pt": "wifi network",
+      "semantic_type": "action",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_email",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "email",
+      "translation_pt": "email",
+      "semantic_type": "object",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_cloud_file",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "cloud file",
+      "translation_pt": "cloud file",
+      "semantic_type": "time",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_screen",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "screen",
+      "translation_pt": "screen",
+      "semantic_type": "action",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_notification",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "notification",
+      "translation_pt": "notification",
+      "semantic_type": "object",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_charger",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "charger",
+      "translation_pt": "charger",
+      "semantic_type": "time",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_online_meeting",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "online meeting",
+      "translation_pt": "online meeting",
+      "semantic_type": "action",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_privacy_setting",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "privacy setting",
+      "translation_pt": "privacy setting",
+      "semantic_type": "object",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "technology_and_communication_a1_support_chat",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "support chat",
+      "translation_pt": "support chat",
+      "semantic_type": "time",
+      "tags": [
+        "technology_and_communication",
+        "a1"
+      ]
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "technology_and_communication_a1_subject_be_complement_01",
+      "family_id": "technology_and_communication_a1_subject_be_complement_0",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "technology_and_communication_a1_password"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The password is important.",
+      "pt": "Frase sobre password.",
+      "ctx": "Contexto Tecnologia e comunicação A1.",
+      "blank": "password",
+      "wrong": "The password is important."
+    },
+    {
+      "template_id": "technology_and_communication_a1_subject_simple_present_object_02",
+      "family_id": "technology_and_communication_a1_subject_simple_present_object_1",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "technology_and_communication_a1_message"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the message every day.",
+      "pt": "Frase sobre message.",
+      "ctx": "Contexto Tecnologia e comunicação A1.",
+      "blank": "check",
+      "wrong": "We check the message every day."
+    },
+    {
+      "template_id": "technology_and_communication_a1_wh_do_subject_base_verb_03",
+      "family_id": "technology_and_communication_a1_wh_do_subject_base_verb_2",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "technology_and_communication_a1_video_call"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the video call?",
+      "pt": "Frase sobre video call.",
+      "ctx": "Contexto Tecnologia e comunicação A1.",
+      "blank": "do",
+      "wrong": "When you do need the video call?"
+    },
+    {
+      "template_id": "technology_and_communication_a1_subject_modal_base_verb_04",
+      "family_id": "technology_and_communication_a1_subject_modal_base_verb_3",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "can_ability",
+      "skill_ids": [
+        "can_ability",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "technology_and_communication_a1_laptop"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the laptop today.",
+      "pt": "Frase sobre laptop.",
+      "ctx": "Contexto Tecnologia e comunicação A1.",
+      "blank": "can",
+      "wrong": "I cans update the laptop today."
+    },
+    {
+      "template_id": "technology_and_communication_a1_subject_be_complement_05",
+      "family_id": "technology_and_communication_a1_subject_be_complement_4",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "technology_and_communication_a1_app_update"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The app update is important.",
+      "pt": "Frase sobre app update.",
+      "ctx": "Contexto Tecnologia e comunicação A1.",
+      "blank": "app",
+      "wrong": "The app update is important."
+    },
+    {
+      "template_id": "technology_and_communication_a1_subject_simple_present_object_06",
+      "family_id": "technology_and_communication_a1_subject_simple_present_object_5",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "technology_and_communication_a1_wifi_network"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the wifi network every day.",
+      "pt": "Frase sobre wifi network.",
+      "ctx": "Contexto Tecnologia e comunicação A1.",
+      "blank": "check",
+      "wrong": "We check the wifi network every day."
+    },
+    {
+      "template_id": "technology_and_communication_a1_wh_do_subject_base_verb_07",
+      "family_id": "technology_and_communication_a1_wh_do_subject_base_verb_0",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "vocabulary",
+      "skill_ids": [
+        "vocabulary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "technology_and_communication_a1_email"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the email?",
+      "pt": "Frase sobre email.",
+      "ctx": "Contexto Tecnologia e comunicação A1.",
+      "blank": "do",
+      "wrong": "When you do need the email?"
+    },
+    {
+      "template_id": "technology_and_communication_a1_subject_modal_base_verb_08",
+      "family_id": "technology_and_communication_a1_subject_modal_base_verb_1",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "technology_and_communication_a1_cloud_file"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the cloud file today.",
+      "pt": "Frase sobre cloud file.",
+      "ctx": "Contexto Tecnologia e comunicação A1.",
+      "blank": "can",
+      "wrong": "I cans update the cloud file today."
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "technology_and_communication_a1_password_chunk",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "make a password",
+      "translation_pt": "password",
+      "invalid_variants": [
+        "do a password"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "technology_and_communication_a1_message_chunk",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "check the message",
+      "translation_pt": "message",
+      "invalid_variants": [
+        "do the message"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "technology_and_communication_a1_video_call_chunk",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "make a video call",
+      "translation_pt": "video call",
+      "invalid_variants": [
+        "do a video call"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "technology_and_communication_a1_laptop_chunk",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "check the laptop",
+      "translation_pt": "laptop",
+      "invalid_variants": [
+        "do the laptop"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "technology_and_communication_a1_app_update_chunk",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "make a app update",
+      "translation_pt": "app update",
+      "invalid_variants": [
+        "do a app update"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "technology_and_communication_a1_wifi_network_chunk",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "check the wifi network",
+      "translation_pt": "wifi network",
+      "invalid_variants": [
+        "do the wifi network"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "technology_and_communication_a1_email_chunk",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "canonical": "make a email",
+      "translation_pt": "email",
+      "invalid_variants": [
+        "do a email"
+      ],
+      "skill_id": "collocation"
+    }
+  ]
+}

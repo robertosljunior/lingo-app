@@ -1,0 +1,607 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "travel_a1",
+    "title": {
+      "pt": "Viagens A1",
+      "en": "Travel A1"
+    },
+    "theme": "travel",
+    "level": "A1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "travel_a1_ticket",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "ticket",
+      "translation_pt": "ticket",
+      "semantic_type": "object",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_hotel",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "hotel",
+      "translation_pt": "hotel",
+      "semantic_type": "time",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_passport",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "passport",
+      "translation_pt": "passport",
+      "semantic_type": "action",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_train_station",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "train station",
+      "translation_pt": "train station",
+      "semantic_type": "object",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_boarding_gate",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "boarding gate",
+      "translation_pt": "boarding gate",
+      "semantic_type": "time",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_luggage",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "luggage",
+      "translation_pt": "luggage",
+      "semantic_type": "action",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_reservation",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "reservation",
+      "translation_pt": "reservation",
+      "semantic_type": "object",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_city_map",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "city map",
+      "translation_pt": "city map",
+      "semantic_type": "time",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_tour_guide",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "tour guide",
+      "translation_pt": "tour guide",
+      "semantic_type": "action",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_beach_trip",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "beach trip",
+      "translation_pt": "beach trip",
+      "semantic_type": "object",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_flight_delay",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "flight delay",
+      "translation_pt": "flight delay",
+      "semantic_type": "time",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_taxi_ride",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "taxi ride",
+      "translation_pt": "taxi ride",
+      "semantic_type": "action",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_museum_pass",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "museum pass",
+      "translation_pt": "museum pass",
+      "semantic_type": "object",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "travel_a1_travel_insurance",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "travel insurance",
+      "translation_pt": "travel insurance",
+      "semantic_type": "time",
+      "tags": [
+        "travel",
+        "a1"
+      ]
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "travel_a1_subject_be_complement_01",
+      "family_id": "travel_a1_subject_be_complement_0",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "travel_a1_ticket"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The ticket is important.",
+      "pt": "Frase sobre ticket.",
+      "ctx": "Contexto Viagens A1.",
+      "blank": "ticket",
+      "wrong": "The ticket is important."
+    },
+    {
+      "template_id": "travel_a1_subject_simple_present_object_02",
+      "family_id": "travel_a1_subject_simple_present_object_1",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "travel_a1_hotel"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the hotel every day.",
+      "pt": "Frase sobre hotel.",
+      "ctx": "Contexto Viagens A1.",
+      "blank": "check",
+      "wrong": "We check the hotel every day."
+    },
+    {
+      "template_id": "travel_a1_wh_do_subject_base_verb_03",
+      "family_id": "travel_a1_wh_do_subject_base_verb_2",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "travel_a1_passport"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the passport?",
+      "pt": "Frase sobre passport.",
+      "ctx": "Contexto Viagens A1.",
+      "blank": "do",
+      "wrong": "When you do need the passport?"
+    },
+    {
+      "template_id": "travel_a1_subject_modal_base_verb_04",
+      "family_id": "travel_a1_subject_modal_base_verb_3",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "can_ability",
+      "skill_ids": [
+        "can_ability",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "travel_a1_train_station"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the train station today.",
+      "pt": "Frase sobre train station.",
+      "ctx": "Contexto Viagens A1.",
+      "blank": "can",
+      "wrong": "I cans update the train station today."
+    },
+    {
+      "template_id": "travel_a1_subject_be_complement_05",
+      "family_id": "travel_a1_subject_be_complement_4",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "travel_a1_boarding_gate"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The boarding gate is important.",
+      "pt": "Frase sobre boarding gate.",
+      "ctx": "Contexto Viagens A1.",
+      "blank": "boarding",
+      "wrong": "The boarding gate is important."
+    },
+    {
+      "template_id": "travel_a1_subject_simple_present_object_06",
+      "family_id": "travel_a1_subject_simple_present_object_5",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "travel_a1_luggage"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the luggage every day.",
+      "pt": "Frase sobre luggage.",
+      "ctx": "Contexto Viagens A1.",
+      "blank": "check",
+      "wrong": "We check the luggage every day."
+    },
+    {
+      "template_id": "travel_a1_wh_do_subject_base_verb_07",
+      "family_id": "travel_a1_wh_do_subject_base_verb_0",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "vocabulary",
+      "skill_ids": [
+        "vocabulary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "travel_a1_reservation"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the reservation?",
+      "pt": "Frase sobre reservation.",
+      "ctx": "Contexto Viagens A1.",
+      "blank": "do",
+      "wrong": "When you do need the reservation?"
+    },
+    {
+      "template_id": "travel_a1_subject_modal_base_verb_08",
+      "family_id": "travel_a1_subject_modal_base_verb_1",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "travel_a1_city_map"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the city map today.",
+      "pt": "Frase sobre city map.",
+      "ctx": "Contexto Viagens A1.",
+      "blank": "can",
+      "wrong": "I cans update the city map today."
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "travel_a1_ticket_chunk",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "make a ticket",
+      "translation_pt": "ticket",
+      "invalid_variants": [
+        "do a ticket"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "travel_a1_hotel_chunk",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "check the hotel",
+      "translation_pt": "hotel",
+      "invalid_variants": [
+        "do the hotel"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "travel_a1_passport_chunk",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "make a passport",
+      "translation_pt": "passport",
+      "invalid_variants": [
+        "do a passport"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "travel_a1_train_station_chunk",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "check the train station",
+      "translation_pt": "train station",
+      "invalid_variants": [
+        "do the train station"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "travel_a1_boarding_gate_chunk",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "make a boarding gate",
+      "translation_pt": "boarding gate",
+      "invalid_variants": [
+        "do a boarding gate"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "travel_a1_luggage_chunk",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "check the luggage",
+      "translation_pt": "luggage",
+      "invalid_variants": [
+        "do the luggage"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "travel_a1_reservation_chunk",
+      "pack_id": "travel_a1",
+      "theme": "travel",
+      "level": "A1",
+      "canonical": "make a reservation",
+      "translation_pt": "reservation",
+      "invalid_variants": [
+        "do a reservation"
+      ],
+      "skill_id": "collocation"
+    }
+  ]
+}

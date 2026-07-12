@@ -9,6 +9,9 @@ import { PIPER_VOICES, piperSupported, storedVoices, downloadVoice, removeVoice 
 export default function Settings() {
   const { settings, updateSetting, setTab, showToast, db, refreshLibrary } = useApp()
   const [log, setLog] = useState(() => getErrorLog())
+  const [contentPacks, setContentPacks] = useState([])
+  useEffect(() => { db.seedBuiltinContentPacks?.().then(() => db.listContentPacks?.()).then((rows) => setContentPacks(rows || [])).catch(() => {}) }, [db])
+  async function refreshPacks(){ setContentPacks(await db.listContentPacks()) }
   if (!settings) return null
 
   const Row = ({ children, last }) => (
@@ -88,6 +91,26 @@ export default function Settings() {
             <div className="muted" style={{ fontSize: 12, marginTop: 8, lineHeight: 1.4 }}>
               Análise local no Web Worker. wink-nlp tem análise gramatical (POS) mais precisa para
               classificar erros de tempo verbal e estrutura; carrega na primeira correção.
+            </div>
+          </Row>
+        </div>
+
+
+        <div className="card" style={{ padding: 0, overflow: 'hidden' }} data-testid="content-packs-settings">
+          <SectionHead>pacotes de conteúdo</SectionHead>
+          <Row last>
+            <div className="muted" style={{ fontSize: 12, marginBottom: 10 }}>28 pacotes builtin versionados, agrupados por tema e nível.</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 360, overflowY: 'auto' }}>
+              {contentPacks.map((p) => (
+                <div key={p.pack_id} data-testid={`content-pack-${p.pack_id}`} style={{ border: '1px solid var(--border)', borderRadius: 10, padding: 10 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
+                    <div><div style={{ fontWeight: 800, fontSize: 13 }}>{p.title?.pt || p.pack_id}</div><div className="muted" style={{ fontSize: 11 }}>{p.pack_id} · v{p.version} · {p.source} · {p.level} · {p.validation_status}</div></div>
+                    <button className="btn btn-sm btn-secondary" data-testid={`toggle-pack-${p.pack_id}`} onClick={async()=>{ p.enabled ? await db.disableContentPack(p.pack_id) : await db.enableContentPack(p.pack_id); await refreshPacks() }}>{p.enabled ? 'Desabilitar' : 'Habilitar'}</button>
+                  </div>
+                  <div className="muted" style={{ fontSize: 11, marginTop: 6 }}>lexical {p.counts?.lexical_items || 0} · templates {p.counts?.template_definitions || 0} · collocations {p.counts?.collocations || 0} · deps {(p.dependencies||[]).join(',') || '—'}</div>
+                  {p.source === 'builtin' && <button className="btn btn-sm btn-ghost" onClick={async()=>{ await db.restoreBuiltinContentPack(p.pack_id); await refreshPacks(); showToast('Pacote restaurado') }}>Restaurar builtin</button>}
+                </div>
+              ))}
             </div>
           </Row>
         </div>

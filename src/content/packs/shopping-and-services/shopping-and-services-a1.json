@@ -1,0 +1,607 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "shopping_and_services_a1",
+    "title": {
+      "pt": "Compras e serviços A1",
+      "en": "Shopping and services A1"
+    },
+    "theme": "shopping_and_services",
+    "level": "A1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "shopping_and_services_a1_receipt",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "receipt",
+      "translation_pt": "receipt",
+      "semantic_type": "object",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_discount",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "discount",
+      "translation_pt": "discount",
+      "semantic_type": "time",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_cashier",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "cashier",
+      "translation_pt": "cashier",
+      "semantic_type": "action",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_return_policy",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "return policy",
+      "translation_pt": "return policy",
+      "semantic_type": "object",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_shoe_size",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "shoe size",
+      "translation_pt": "shoe size",
+      "semantic_type": "time",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_delivery",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "delivery",
+      "translation_pt": "delivery",
+      "semantic_type": "action",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_pharmacy",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "pharmacy",
+      "translation_pt": "pharmacy",
+      "semantic_type": "object",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_bank_account",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "bank account",
+      "translation_pt": "bank account",
+      "semantic_type": "time",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_haircut",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "haircut",
+      "translation_pt": "haircut",
+      "semantic_type": "action",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_repair_shop",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "repair shop",
+      "translation_pt": "repair shop",
+      "semantic_type": "object",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_customer_service",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "customer service",
+      "translation_pt": "customer service",
+      "semantic_type": "time",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_appointment",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "appointment",
+      "translation_pt": "appointment",
+      "semantic_type": "action",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_online_order",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "online order",
+      "translation_pt": "online order",
+      "semantic_type": "object",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "shopping_and_services_a1_queue",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "queue",
+      "translation_pt": "queue",
+      "semantic_type": "time",
+      "tags": [
+        "shopping_and_services",
+        "a1"
+      ]
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "shopping_and_services_a1_subject_be_complement_01",
+      "family_id": "shopping_and_services_a1_subject_be_complement_0",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "shopping_and_services_a1_receipt"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The receipt is important.",
+      "pt": "Frase sobre receipt.",
+      "ctx": "Contexto Compras e serviços A1.",
+      "blank": "receipt",
+      "wrong": "The receipt is important."
+    },
+    {
+      "template_id": "shopping_and_services_a1_subject_simple_present_object_02",
+      "family_id": "shopping_and_services_a1_subject_simple_present_object_1",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "shopping_and_services_a1_discount"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the discount every day.",
+      "pt": "Frase sobre discount.",
+      "ctx": "Contexto Compras e serviços A1.",
+      "blank": "check",
+      "wrong": "We check the discount every day."
+    },
+    {
+      "template_id": "shopping_and_services_a1_wh_do_subject_base_verb_03",
+      "family_id": "shopping_and_services_a1_wh_do_subject_base_verb_2",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "shopping_and_services_a1_cashier"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the cashier?",
+      "pt": "Frase sobre cashier.",
+      "ctx": "Contexto Compras e serviços A1.",
+      "blank": "do",
+      "wrong": "When you do need the cashier?"
+    },
+    {
+      "template_id": "shopping_and_services_a1_subject_modal_base_verb_04",
+      "family_id": "shopping_and_services_a1_subject_modal_base_verb_3",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "can_ability",
+      "skill_ids": [
+        "can_ability",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "shopping_and_services_a1_return_policy"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the return policy today.",
+      "pt": "Frase sobre return policy.",
+      "ctx": "Contexto Compras e serviços A1.",
+      "blank": "can",
+      "wrong": "I cans update the return policy today."
+    },
+    {
+      "template_id": "shopping_and_services_a1_subject_be_complement_05",
+      "family_id": "shopping_and_services_a1_subject_be_complement_4",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "shopping_and_services_a1_shoe_size"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The shoe size is important.",
+      "pt": "Frase sobre shoe size.",
+      "ctx": "Contexto Compras e serviços A1.",
+      "blank": "shoe",
+      "wrong": "The shoe size is important."
+    },
+    {
+      "template_id": "shopping_and_services_a1_subject_simple_present_object_06",
+      "family_id": "shopping_and_services_a1_subject_simple_present_object_5",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "shopping_and_services_a1_delivery"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the delivery every day.",
+      "pt": "Frase sobre delivery.",
+      "ctx": "Contexto Compras e serviços A1.",
+      "blank": "check",
+      "wrong": "We check the delivery every day."
+    },
+    {
+      "template_id": "shopping_and_services_a1_wh_do_subject_base_verb_07",
+      "family_id": "shopping_and_services_a1_wh_do_subject_base_verb_0",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "vocabulary",
+      "skill_ids": [
+        "vocabulary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "shopping_and_services_a1_pharmacy"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the pharmacy?",
+      "pt": "Frase sobre pharmacy.",
+      "ctx": "Contexto Compras e serviços A1.",
+      "blank": "do",
+      "wrong": "When you do need the pharmacy?"
+    },
+    {
+      "template_id": "shopping_and_services_a1_subject_modal_base_verb_08",
+      "family_id": "shopping_and_services_a1_subject_modal_base_verb_1",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "shopping_and_services_a1_bank_account"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the bank account today.",
+      "pt": "Frase sobre bank account.",
+      "ctx": "Contexto Compras e serviços A1.",
+      "blank": "can",
+      "wrong": "I cans update the bank account today."
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "shopping_and_services_a1_receipt_chunk",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "make a receipt",
+      "translation_pt": "receipt",
+      "invalid_variants": [
+        "do a receipt"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "shopping_and_services_a1_discount_chunk",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "check the discount",
+      "translation_pt": "discount",
+      "invalid_variants": [
+        "do the discount"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "shopping_and_services_a1_cashier_chunk",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "make a cashier",
+      "translation_pt": "cashier",
+      "invalid_variants": [
+        "do a cashier"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "shopping_and_services_a1_return_policy_chunk",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "check the return policy",
+      "translation_pt": "return policy",
+      "invalid_variants": [
+        "do the return policy"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "shopping_and_services_a1_shoe_size_chunk",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "make a shoe size",
+      "translation_pt": "shoe size",
+      "invalid_variants": [
+        "do a shoe size"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "shopping_and_services_a1_delivery_chunk",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "check the delivery",
+      "translation_pt": "delivery",
+      "invalid_variants": [
+        "do the delivery"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "shopping_and_services_a1_pharmacy_chunk",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "canonical": "make a pharmacy",
+      "translation_pt": "pharmacy",
+      "invalid_variants": [
+        "do a pharmacy"
+      ],
+      "skill_id": "collocation"
+    }
+  ]
+}

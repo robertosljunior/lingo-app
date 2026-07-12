@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "benchmark:indexeddb": "node scripts/benchmark-indexeddb.mjs"
+    "benchmark:indexeddb": "node scripts/benchmark-indexeddb.mjs",
+    "validate:content-packs": "node scripts/validate-content-packs.mjs",
+    "quality:content-packs": "node scripts/quality-content-packs.mjs"
   },
   "dependencies": {
     "@fontsource/geist-mono": "^5.2.8",

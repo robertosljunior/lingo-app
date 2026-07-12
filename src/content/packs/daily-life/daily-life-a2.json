@@ -1,0 +1,607 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "daily_life_a2",
+    "title": {
+      "pt": "Vida cotidiana A2",
+      "en": "Daily life A2"
+    },
+    "theme": "daily_life",
+    "level": "A2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "daily_life_a2_morning_routine",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "morning routine",
+      "translation_pt": "morning routine",
+      "semantic_type": "object",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_family_dinner",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "family dinner",
+      "translation_pt": "family dinner",
+      "semantic_type": "time",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_bus_stop",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "bus stop",
+      "translation_pt": "bus stop",
+      "semantic_type": "action",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_homework",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "homework",
+      "translation_pt": "homework",
+      "semantic_type": "object",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_neighbor",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "neighbor",
+      "translation_pt": "neighbor",
+      "semantic_type": "time",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_weekend_plan",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "weekend plan",
+      "translation_pt": "weekend plan",
+      "semantic_type": "action",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_appointment",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "appointment",
+      "translation_pt": "appointment",
+      "semantic_type": "object",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_coffee_break",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "coffee break",
+      "translation_pt": "coffee break",
+      "semantic_type": "time",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_grocery_list",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "grocery list",
+      "translation_pt": "grocery list",
+      "semantic_type": "action",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_phone_call",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "phone call",
+      "translation_pt": "phone call",
+      "semantic_type": "object",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_clean_kitchen",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "clean kitchen",
+      "translation_pt": "clean kitchen",
+      "semantic_type": "time",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_quiet_street",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "quiet street",
+      "translation_pt": "quiet street",
+      "semantic_type": "action",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_birthday_party",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "birthday party",
+      "translation_pt": "birthday party",
+      "semantic_type": "object",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "daily_life_a2_daily_schedule",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "daily schedule",
+      "translation_pt": "daily schedule",
+      "semantic_type": "time",
+      "tags": [
+        "daily_life",
+        "a2"
+      ]
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "daily_life_a2_subject_past_simple_object_time_01",
+      "family_id": "daily_life_a2_subject_past_simple_object_time_0",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "pattern_id": "subject_past_simple_object_time",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "daily_life_a2_morning_routine"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We checked the morning routine yesterday.",
+      "pt": "Frase sobre morning routine.",
+      "ctx": "Contexto Vida cotidiana A2.",
+      "blank": "checked",
+      "wrong": "We check the morning routine yesterday."
+    },
+    {
+      "template_id": "daily_life_a2_subject_be_going_to_verb_time_02",
+      "family_id": "daily_life_a2_subject_be_going_to_verb_time_1",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "daily_life_a2_family_dinner"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "They are going to review the family dinner tomorrow.",
+      "pt": "Frase sobre family dinner.",
+      "ctx": "Contexto Vida cotidiana A2.",
+      "blank": "are",
+      "wrong": "They go to review the family dinner tomorrow."
+    },
+    {
+      "template_id": "daily_life_a2_subject_simple_present_object_03",
+      "family_id": "daily_life_a2_subject_simple_present_object_2",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "future_going_to",
+      "skill_ids": [
+        "future_going_to",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "daily_life_a2_bus_stop"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the bus stop every day.",
+      "pt": "Frase sobre bus stop.",
+      "ctx": "Contexto Vida cotidiana A2.",
+      "blank": "check",
+      "wrong": "We check the bus stop every day."
+    },
+    {
+      "template_id": "daily_life_a2_wh_do_subject_base_verb_04",
+      "family_id": "daily_life_a2_wh_do_subject_base_verb_3",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "daily_life_a2_homework"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the homework?",
+      "pt": "Frase sobre homework.",
+      "ctx": "Contexto Vida cotidiana A2.",
+      "blank": "do",
+      "wrong": "When you do need the homework?"
+    },
+    {
+      "template_id": "daily_life_a2_subject_past_simple_object_time_05",
+      "family_id": "daily_life_a2_subject_past_simple_object_time_4",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "pattern_id": "subject_past_simple_object_time",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "daily_life_a2_neighbor"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We checked the neighbor yesterday.",
+      "pt": "Frase sobre neighbor.",
+      "ctx": "Contexto Vida cotidiana A2.",
+      "blank": "checked",
+      "wrong": "We check the neighbor yesterday."
+    },
+    {
+      "template_id": "daily_life_a2_subject_be_going_to_verb_time_06",
+      "family_id": "daily_life_a2_subject_be_going_to_verb_time_5",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "daily_life_a2_weekend_plan"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "They are going to review the weekend plan tomorrow.",
+      "pt": "Frase sobre weekend plan.",
+      "ctx": "Contexto Vida cotidiana A2.",
+      "blank": "are",
+      "wrong": "They go to review the weekend plan tomorrow."
+    },
+    {
+      "template_id": "daily_life_a2_subject_simple_present_object_07",
+      "family_id": "daily_life_a2_subject_simple_present_object_0",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "vocabulary",
+      "skill_ids": [
+        "vocabulary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "daily_life_a2_appointment"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the appointment every day.",
+      "pt": "Frase sobre appointment.",
+      "ctx": "Contexto Vida cotidiana A2.",
+      "blank": "check",
+      "wrong": "We check the appointment every day."
+    },
+    {
+      "template_id": "daily_life_a2_wh_do_subject_base_verb_08",
+      "family_id": "daily_life_a2_wh_do_subject_base_verb_1",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "daily_life_a2_coffee_break"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the coffee break?",
+      "pt": "Frase sobre coffee break.",
+      "ctx": "Contexto Vida cotidiana A2.",
+      "blank": "do",
+      "wrong": "When you do need the coffee break?"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "daily_life_a2_morning_routine_chunk",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "make a morning routine",
+      "translation_pt": "morning routine",
+      "invalid_variants": [
+        "do a morning routine"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "daily_life_a2_family_dinner_chunk",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "check the family dinner",
+      "translation_pt": "family dinner",
+      "invalid_variants": [
+        "do the family dinner"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "daily_life_a2_bus_stop_chunk",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "make a bus stop",
+      "translation_pt": "bus stop",
+      "invalid_variants": [
+        "do a bus stop"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "daily_life_a2_homework_chunk",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "check the homework",
+      "translation_pt": "homework",
+      "invalid_variants": [
+        "do the homework"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "daily_life_a2_neighbor_chunk",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "make a neighbor",
+      "translation_pt": "neighbor",
+      "invalid_variants": [
+        "do a neighbor"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "daily_life_a2_weekend_plan_chunk",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "check the weekend plan",
+      "translation_pt": "weekend plan",
+      "invalid_variants": [
+        "do the weekend plan"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "daily_life_a2_appointment_chunk",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "canonical": "make a appointment",
+      "translation_pt": "appointment",
+      "invalid_variants": [
+        "do a appointment"
+      ],
+      "skill_id": "collocation"
+    }
+  ]
+}

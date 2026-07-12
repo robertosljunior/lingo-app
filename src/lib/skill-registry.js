@@ -5,6 +5,22 @@
 export const SKILL_REGISTRY_VERSION = '1'
 
 const SKILLS = {
+
+  simple_present: skill('simple_present', 'verb_tense', 'verb_tense', 'Presente simples', 'Simple present', 'Usar o presente simples para rotinas e fatos.', 'medium', 'A1', ['present_simple']),
+  verb_to_be: skill('verb_to_be', 'verb_form', 'verb_form', 'Verbo to be', 'Verb to be', 'Usar am/is/are corretamente.', 'high', 'A1', ['be']),
+  there_is_are: skill('there_is_are', 'verb_to_be', 'grammar', 'There is/are', 'There is/are', 'Descrever existência com singular e plural.', 'medium', 'A1', []),
+  can_ability: skill('can_ability', null, 'modal', 'Can para habilidade', 'Can for ability', 'Falar sobre habilidades com can.', 'medium', 'A1', []),
+  can_request: skill('can_request', null, 'modal', 'Can para pedidos', 'Can for requests', 'Fazer pedidos simples com can.', 'medium', 'A1', []),
+  past_simple: skill('past_simple', 'verb_tense', 'verb_tense', 'Passado simples', 'Past simple', 'Usar passado simples para ações concluídas.', 'medium', 'A2', []),
+  present_continuous: skill('present_continuous', 'verb_tense', 'verb_tense', 'Presente contínuo', 'Present continuous', 'Usar be + ing para ações em andamento.', 'medium', 'A2', []),
+  future_going_to: skill('future_going_to', 'verb_tense', 'verb_tense', 'Futuro going to', 'Going to future', 'Falar sobre planos com going to.', 'medium', 'A2', []),
+  comparatives: skill('comparatives', null, 'grammar', 'Comparativos', 'Comparatives', 'Comparar pessoas e coisas.', 'medium', 'A2', []),
+  countable_uncountable: skill('countable_uncountable', null, 'grammar', 'Contáveis e incontáveis', 'Countable and uncountable', 'Usar artigos e quantificadores corretamente.', 'medium', 'A2', []),
+  first_conditional: skill('first_conditional', null, 'conditionals', 'Primeira condicional', 'First conditional', 'Usar if + presente, will para possibilidades reais.', 'medium', 'B1', []),
+  second_conditional: skill('second_conditional', null, 'conditionals', 'Segunda condicional', 'Second conditional', 'Usar if + passado, would para hipóteses.', 'high', 'B2', []),
+  passive_voice: skill('passive_voice', null, 'grammar', 'Voz passiva', 'Passive voice', 'Usar be + particípio para foco no resultado.', 'high', 'B2', []),
+  reported_speech: skill('reported_speech', null, 'grammar', 'Discurso indireto', 'Reported speech', 'Relatar falas e informações.', 'high', 'B2', []),
+  modal_deduction: skill('modal_deduction', null, 'modal', 'Dedução modal', 'Modal deduction', 'Usar must/might/can’t para deduções.', 'medium', 'B2', []),
   question_structure: skill('question_structure', null, 'question_structure', 'Estrutura de perguntas', 'Question structure', 'Organizar perguntas em inglês com a estrutura correta.', 'high'),
   question_auxiliary: skill('question_auxiliary', 'question_structure', 'auxiliary', 'Auxiliar em perguntas', 'Question auxiliary', 'Usar o auxiliar correto no início de perguntas.', 'high'),
   missing_auxiliary: skill('missing_auxiliary', 'question_structure', 'auxiliary', 'Auxiliar ausente', 'Missing auxiliary', 'Incluir o auxiliar necessário na frase.', 'high'),
@@ -51,8 +67,8 @@ export const RULE_SKILLS = {
   'choice.exact_match': { skill_id: 'incorrect_choice', parent_skill_id: null },
 }
 
-function skill(skill_id, parent_skill_id, category, label_pt, label_en, description_pt, default_severity) {
-  return { skill_id, parent_skill_id, category, label_pt, label_en, description_pt, default_severity, custom: false }
+function skill(skill_id, parent_skill_id, category, label_pt, label_en, description_pt, default_severity, cefr_start = 'A1', aliases = []) {
+  return { skill_id, parent_skill_id, category, label_pt, label_en, description_pt, default_severity, cefr_start, aliases, custom: false }
 }
 
 export function normalizeSkillId(value) {

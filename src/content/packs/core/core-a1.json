@@ -1,0 +1,863 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "core_a1",
+    "title": {
+      "pt": "Base A1",
+      "en": "Core A1"
+    },
+    "theme": "core",
+    "level": "A1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "core_a1_i",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "I",
+      "translation_pt": "I",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_you",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "you",
+      "translation_pt": "you",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_we",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "we",
+      "translation_pt": "we",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_they",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "they",
+      "translation_pt": "they",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_she",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "she",
+      "translation_pt": "she",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_he",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "he",
+      "translation_pt": "he",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_today",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "today",
+      "translation_pt": "today",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_tomorrow",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "tomorrow",
+      "translation_pt": "tomorrow",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_yesterday",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "yesterday",
+      "translation_pt": "yesterday",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_this_week",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "this week",
+      "translation_pt": "this week",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_since_monday",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "since Monday",
+      "translation_pt": "since Monday",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_for_two_hours",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "for two hours",
+      "translation_pt": "for two hours",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_can",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "can",
+      "translation_pt": "can",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_have",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "have",
+      "translation_pt": "have",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_make",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "make",
+      "translation_pt": "make",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_do",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "do",
+      "translation_pt": "do",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_go",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "go",
+      "translation_pt": "go",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_get",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "get",
+      "translation_pt": "get",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_send",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "send",
+      "translation_pt": "send",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    },
+    {
+      "item_id": "core_a1_check",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "check",
+      "translation_pt": "check",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "a1"
+      ]
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "core_a1_subject_be_complement_01",
+      "family_id": "core_a1_subject_be_complement_0",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_i"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The I is important.",
+      "pt": "Frase sobre I.",
+      "ctx": "Contexto Base A1.",
+      "blank": "I",
+      "wrong": "The I is important."
+    },
+    {
+      "template_id": "core_a1_subject_simple_present_object_02",
+      "family_id": "core_a1_subject_simple_present_object_1",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_you"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the you every day.",
+      "pt": "Frase sobre you.",
+      "ctx": "Contexto Base A1.",
+      "blank": "check",
+      "wrong": "We check the you every day."
+    },
+    {
+      "template_id": "core_a1_wh_do_subject_base_verb_03",
+      "family_id": "core_a1_wh_do_subject_base_verb_2",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_we"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the we?",
+      "pt": "Frase sobre we.",
+      "ctx": "Contexto Base A1.",
+      "blank": "do",
+      "wrong": "When you do need the we?"
+    },
+    {
+      "template_id": "core_a1_subject_modal_base_verb_04",
+      "family_id": "core_a1_subject_modal_base_verb_3",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "can_ability",
+      "skill_ids": [
+        "can_ability",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_they"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the they today.",
+      "pt": "Frase sobre they.",
+      "ctx": "Contexto Base A1.",
+      "blank": "can",
+      "wrong": "I cans update the they today."
+    },
+    {
+      "template_id": "core_a1_subject_be_complement_05",
+      "family_id": "core_a1_subject_be_complement_4",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_she"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The she is important.",
+      "pt": "Frase sobre she.",
+      "ctx": "Contexto Base A1.",
+      "blank": "she",
+      "wrong": "The she is important."
+    },
+    {
+      "template_id": "core_a1_subject_simple_present_object_06",
+      "family_id": "core_a1_subject_simple_present_object_5",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_he"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the he every day.",
+      "pt": "Frase sobre he.",
+      "ctx": "Contexto Base A1.",
+      "blank": "check",
+      "wrong": "We check the he every day."
+    },
+    {
+      "template_id": "core_a1_wh_do_subject_base_verb_07",
+      "family_id": "core_a1_wh_do_subject_base_verb_0",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "vocabulary",
+      "skill_ids": [
+        "vocabulary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_today"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the today?",
+      "pt": "Frase sobre today.",
+      "ctx": "Contexto Base A1.",
+      "blank": "do",
+      "wrong": "When you do need the today?"
+    },
+    {
+      "template_id": "core_a1_subject_modal_base_verb_08",
+      "family_id": "core_a1_subject_modal_base_verb_1",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "verb_to_be",
+      "skill_ids": [
+        "verb_to_be",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_tomorrow"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the tomorrow today.",
+      "pt": "Frase sobre tomorrow.",
+      "ctx": "Contexto Base A1.",
+      "blank": "can",
+      "wrong": "I cans update the tomorrow today."
+    },
+    {
+      "template_id": "core_a1_subject_be_complement_09",
+      "family_id": "core_a1_subject_be_complement_2",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_yesterday"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The yesterday is important.",
+      "pt": "Frase sobre yesterday.",
+      "ctx": "Contexto Base A1.",
+      "blank": "yesterday",
+      "wrong": "The yesterday is important."
+    },
+    {
+      "template_id": "core_a1_subject_simple_present_object_10",
+      "family_id": "core_a1_subject_simple_present_object_3",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_this_week"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the this week every day.",
+      "pt": "Frase sobre this week.",
+      "ctx": "Contexto Base A1.",
+      "blank": "check",
+      "wrong": "We check the this week every day."
+    },
+    {
+      "template_id": "core_a1_wh_do_subject_base_verb_11",
+      "family_id": "core_a1_wh_do_subject_base_verb_4",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "can_ability",
+      "skill_ids": [
+        "can_ability",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_since_monday"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the since Monday?",
+      "pt": "Frase sobre since Monday.",
+      "ctx": "Contexto Base A1.",
+      "blank": "do",
+      "wrong": "When you do need the since Monday?"
+    },
+    {
+      "template_id": "core_a1_subject_modal_base_verb_12",
+      "family_id": "core_a1_subject_modal_base_verb_5",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_a1_for_two_hours"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the for two hours today.",
+      "pt": "Frase sobre for two hours.",
+      "ctx": "Contexto Base A1.",
+      "blank": "can",
+      "wrong": "I cans update the for two hours today."
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "core_a1_i_chunk",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "make a I",
+      "translation_pt": "I",
+      "invalid_variants": [
+        "do a I"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_a1_you_chunk",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "check the you",
+      "translation_pt": "you",
+      "invalid_variants": [
+        "do the you"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_a1_we_chunk",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "make a we",
+      "translation_pt": "we",
+      "invalid_variants": [
+        "do a we"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_a1_they_chunk",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "check the they",
+      "translation_pt": "they",
+      "invalid_variants": [
+        "do the they"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_a1_she_chunk",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "make a she",
+      "translation_pt": "she",
+      "invalid_variants": [
+        "do a she"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_a1_he_chunk",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "check the he",
+      "translation_pt": "he",
+      "invalid_variants": [
+        "do the he"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_a1_today_chunk",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "make a today",
+      "translation_pt": "today",
+      "invalid_variants": [
+        "do a today"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_a1_tomorrow_chunk",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "check the tomorrow",
+      "translation_pt": "tomorrow",
+      "invalid_variants": [
+        "do the tomorrow"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_a1_yesterday_chunk",
+      "pack_id": "core_a1",
+      "theme": "core",
+      "level": "A1",
+      "canonical": "make a yesterday",
+      "translation_pt": "yesterday",
+      "invalid_variants": [
+        "do a yesterday"
+      ],
+      "skill_id": "collocation"
+    }
+  ]
+}
