@@ -7,18 +7,19 @@ import {
 } from './helpers.js'
 
 const EXPECTED_STORES = [
-  'answers', 'lessons', 'mistakes', 'profiles', 'questions',
-  'settings', 'skill_events', 'skill_profiles', 'srs',
+  'answers', 'collocations', 'content_packs', 'lessons', 'lexical_items',
+  'mistakes', 'profiles', 'questions', 'settings', 'skill_events',
+  'skill_profiles', 'srs', 'template_definitions',
 ]
 
-test('database v3 has the expected stores, indexes and persisted data', async ({ page, context }) => {
+test('database v4 has the expected stores, indexes and persisted data', async ({ page, context }) => {
   const monitor = attachErrorMonitor(page)
   await enableTestHooks(context, { seed: GEN_SEED })
   await seedFixtures(page, { active: PROFILE_A })
   await generateFromHome(page, { count: 30 })
 
   const info = await dbInfo(page)
-  expect(info.version).toBe(3)
+  expect(info.version).toBe(4)
   expect(info.stores).toEqual(EXPECTED_STORES)
   expect(info.indexes.lessons).toEqual(['created_at'])
   expect(info.indexes.questions).toEqual(['lesson_id'])
@@ -59,7 +60,7 @@ test('data survives a real browser close/reopen (persistent context)', async ({ 
   await page2.waitForFunction(() => window.__e2e && window.__e2e.db)
 
   const after = await dbInfo(page2)
-  expect(after.version).toBe(3)
+  expect(after.version).toBe(4)
   expect(after.counts.lessons).toBe(before.counts.lessons)
   expect(after.counts.questions).toBe(before.counts.questions)
   const { lesson, questions } = await readLessonWithQuestions(page2, lessonId)
@@ -70,7 +71,7 @@ test('data survives a real browser close/reopen (persistent context)', async ({ 
   await ctx2.close()
 })
 
-test('opening a legacy v2 database upgrades to v3 preserving data', async ({ page, context }) => {
+test('opening a legacy v2 database upgrades to v4 preserving data', async ({ page, context }) => {
   const monitor = attachErrorMonitor(page)
   await enableTestHooks(context)
 
@@ -110,12 +111,12 @@ test('opening a legacy v2 database upgrades to v3 preserving data', async ({ pag
     db.close()
   })
 
-  // Load the app: it opens the DB at v3 and runs the upgrade path.
+  // Load the app: it opens the DB at v4 and runs the upgrade path.
   await page.goto('./')
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
 
   const info = await dbInfo(page)
-  expect(info.version).toBe(3)
+  expect(info.version).toBe(4)
   expect(info.stores).toEqual(EXPECTED_STORES)
 
   // Legacy data preserved and readable through the app layer.

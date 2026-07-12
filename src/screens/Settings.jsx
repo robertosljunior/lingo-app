@@ -355,7 +355,7 @@ function AudioSection({ Row, SectionHead, Segmented, settings, updateSetting }) 
             options={[{ k: 'system', l: 'Sistema' }, { k: 'piper', l: 'Neural offline' }]} />
           <div className="muted" style={{ fontSize: 12, marginTop: 8, lineHeight: 1.4 }}>
             Neural offline usa vozes Piper de alta qualidade rodando no aparelho (baixe uma voz abaixo).
-            Se a voz escolhida não estiver baixada, o app volta sozinho para a voz do sistema.
+            Se a voz escolhida não estiver baixada, o app mostra fallback explícito e usa a voz padrão do dispositivo sem alterar sua preferência.
           </div>
         </Row>
       )}
@@ -416,19 +416,24 @@ function PiperVoicesRow({ settings, updateSetting }) {
           const pct = progress[v.id]
           return (
             <div key={v.id} style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--bg-alt)', borderRadius: 12, padding: '10px 12px' }}>
-              <button onClick={() => { if (!isStored) return; updateSetting('piper_voice', v.id); if (v.accent?.startsWith('en')) updateSetting('english_voice_id', v.id); if (v.accent?.startsWith('pt')) updateSetting('portuguese_explanation_voice_id', v.id) }}
-                aria-label={`Usar voz ${v.label}`} disabled={!isStored}
+              <button onClick={() => { updateSetting('piper_voice', v.id); if (v.accent?.startsWith('en')) updateSetting('english_voice_id', v.id); if (v.accent?.startsWith('pt')) updateSetting('portuguese_explanation_voice_id', v.id) }}
+                aria-label={`Usar voz ${v.label}`}
                 style={{
-                  width: 20, height: 20, borderRadius: '50%', flexShrink: 0, cursor: isStored ? 'pointer' : 'default',
+                  width: 20, height: 20, borderRadius: '50%', flexShrink: 0, cursor: 'pointer',
                   border: `2px solid ${isActive ? 'var(--indigo-600)' : 'var(--border-strong)'}`,
                   background: isActive ? 'var(--indigo-600)' : 'transparent',
-                  opacity: isStored ? 1 : 0.4,
+                  opacity: 1,
                 }} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontWeight: 700, fontSize: 13 }}>{v.flag} {v.label}</div>
                 <div className="muted" style={{ fontSize: 11 }}>
-                  {pct != null ? `Baixando… ${pct}%` : isStored ? 'No aparelho · offline' : `${v.sizeMB} MB`}
+                  {pct != null ? `Baixando… ${pct}%` : isStored ? 'Pronta · no aparelho · offline' : `Não baixada · ${v.sizeMB} MB · sem download automático`}
                 </div>
+                {!isStored && pct == null && isActive && (
+                  <div style={{ fontSize: 11, color: 'var(--warn-ink)', background: 'var(--warn-bg)', borderRadius: 8, padding: '6px 8px', marginTop: 6 }}>
+                    A voz Fabiola ainda não está instalada. A explicação será lida com a voz padrão do dispositivo.
+                  </div>
+                )}
                 {pct != null && (
                   <div style={{ height: 4, background: 'var(--border)', borderRadius: 999, overflow: 'hidden', marginTop: 6 }}>
                     <div style={{ height: '100%', width: `${pct}%`, background: 'var(--indigo-600)' }} />
@@ -441,7 +446,7 @@ function PiperVoicesRow({ settings, updateSetting }) {
                 </button>
               ) : (
                 <button className="btn btn-sm btn-secondary" style={{ padding: '4px 10px' }} onClick={() => handleDownload(v)}>
-                  <I.download s={14} /> Baixar
+                  <I.download s={14} /> Baixar voz offline
                 </button>
               ))}
             </div>

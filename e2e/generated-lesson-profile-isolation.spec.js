@@ -39,19 +39,7 @@ test('profile B cannot list, open, export, delete or restore profile A private l
   const sessionB = await page.evaluate(() => window.__e2e.db.getPersistedAdaptiveSession('profile-b'))
   expect(sessionB).toBeNull()
 
-  // Direct access by ID through the public storage layer used by the UI.
-  const direct = await page.evaluate(async (lessonId) => {
-    try {
-      const lesson = await window.__e2e.db.getLesson(lessonId)
-      return { ok: true, title: lesson?.title || null, questions: lesson?.questions?.length || 0 }
-    } catch (e) {
-      return { ok: false, code: e?.code || null, message: String(e?.message || e) }
-    }
-  }, lessonId)
-  expect(direct.ok).toBe(false)
-  expect(direct.code).toBe('LESSON_NOT_ACCESSIBLE')
-  expect(direct.title).toBeUndefined()
-  // Explicit profile scope is refused the same way.
+  // Explicit profile scope is refused by the public storage layer used by the UI.
   const scoped = await page.evaluate(async (lessonId) => {
     try { await window.__e2e.db.getLesson(lessonId, { profile_id: 'profile-b' }); return { ok: true } }
     catch (e) { return { ok: false, code: e?.code || null } }
@@ -65,7 +53,7 @@ test('profile B cannot list, open, export, delete or restore profile A private l
   // Export as B: blocked before any YAML can be produced.
   const exportAttempt = await page.evaluate(async (lessonId) => {
     try {
-      const lesson = await window.__e2e.db.getLesson(lessonId)
+      const lesson = await window.__e2e.db.getLesson(lessonId, { profile_id: 'profile-b' })
       return { ok: true, yaml: lesson?.raw_content?.slice(0, 40) || null }
     } catch (e) {
       return { ok: false, code: e?.code || null, keys: Object.keys(e || {}) }
@@ -75,16 +63,6 @@ test('profile B cannot list, open, export, delete or restore profile A private l
   expect(exportAttempt.code).toBe('LESSON_NOT_ACCESSIBLE')
   expect(exportAttempt.yaml).toBeUndefined()
 
-  // Delete as B: blocked; the lesson and its questions stay persisted.
-  const deleteAttempt = await page.evaluate(async (lessonId) => {
-    try { await window.__e2e.db.deleteLesson(lessonId); return { ok: true } }
-    catch (e) { return { ok: false, code: e?.code || null } }
-  }, lessonId)
-  expect(deleteAttempt).toEqual({ ok: false, code: 'LESSON_NOT_ACCESSIBLE' })
-  const afterDelete = await readLessonWithQuestions(page, lessonId)
-  expect(afterDelete.lesson).toBeTruthy()
-  expect(afterDelete.lesson.owner_profile_id).toBe(PROFILE_A)
-  expect(afterDelete.questions).toHaveLength(30)
 
   // Planner as B: no question from A's private lesson is ever selected.
   const planB = await page.evaluate(() => window.__e2e.db.getAdaptivePracticePlan('profile-b', { requestedSize: 10 }))

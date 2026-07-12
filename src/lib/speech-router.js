@@ -15,8 +15,7 @@ export async function speakSegment({ text, language = 'en', role = 'exercise_en'
   const routed = resolveVoiceForSegment({ language, role, voiceId, settings })
   const selected = voiceId || routed.voiceId
   if (interrupt) stopSpeaking()
-  if (typeof window !== 'undefined' && window.__LINGO_E2E__?.ttsEvents) window.__LINGO_E2E__.ttsEvents.push({ voice_id: selected, language, role, timestamp: Date.now() })
-  return speak(text, { rate: rate ?? routed.rate, voiceId: selected, language, role, interrupt })
+  return speak(text, { rate: rate ?? routed.rate, voiceId: selected, requestedVoiceId: selected, language, role, interrupt })
 }
 export async function speakFeedbackSequence(presentation, settings = {}) {
   if (!settings.auto_read_explanations) return false

@@ -97,13 +97,31 @@ export async function speak(text, opts = {}) {
   const prevOverride = { voice: state.overrideVoiceId, lang: state.overrideLang }
   state.overrideVoiceId = opts.voiceId || ''
   state.overrideLang = opts.language || ''
+  let fallbackOpts = opts
   if (state.engine === 'piper' || opts.voiceId) {
     const ok = await speakPiper(t, opts)
     if (ok) { state.overrideVoiceId = prevOverride.voice; state.overrideLang = prevOverride.lang; return true } // otherwise fall through to the system engine
+    fallbackOpts = { ...opts, requestedVoiceId: opts.requestedVoiceId || opts.voiceId || state.piperVoice, fallback_used: true, fallback_reason: 'MODEL_NOT_INSTALLED' }
   }
-  const ok = speakSystem(t, opts)
+  const ok = speakSystem(t, fallbackOpts)
   state.overrideVoiceId = prevOverride.voice; state.overrideLang = prevOverride.lang
   return ok
+}
+
+function recordTtsEvent(event) {
+  if (typeof window === 'undefined' || !window.__LINGO_E2E__?.ttsEvents) return
+  window.__LINGO_E2E__.ttsEvents.push({
+    requested_voice_id: event.requested_voice_id || '',
+    effective_voice_id: event.effective_voice_id || '',
+    language: event.language || '',
+    role: event.role || 'exercise_en',
+    engine: event.engine || state.engine,
+    rate: event.rate ?? state.rate,
+    fallback_used: !!event.fallback_used,
+    fallback_reason: event.fallback_reason || '',
+    model_state: event.model_state || '',
+    timestamp: Date.now(),
+  })
 }
 
 function speakSystem(text, opts = {}) {
@@ -121,6 +139,17 @@ function speakSystem(text, opts = {}) {
     const base = opts.rate ?? state.rate
     u.rate = opts.slow ? Math.max(0.5, base * 0.6) : base
     window.speechSynthesis.speak(u)
+    recordTtsEvent({
+      requested_voice_id: opts.requestedVoiceId || opts.voiceId || state.overrideVoiceId || state.voiceURI || state.overrideLang || state.accent,
+      effective_voice_id: voice?.voiceURI || u.lang || state.accent,
+      language: opts.language || u.lang || state.accent,
+      role: opts.role,
+      engine: 'system',
+      rate: u.rate,
+      fallback_used: !!opts.fallback_used,
+      fallback_reason: opts.fallback_reason || '',
+      model_state: voice ? 'system_voice_selected' : 'system_default',
+    })
     return true
   } catch {
     return false
@@ -133,7 +162,7 @@ async function speakPiper(text, opts) {
       state.piper = await import('./tts-piper.js')
       state.piper.configurePiper?.({ piper_voice: state.piperVoice })
     }
-    return await state.piper.speak(text, { ...opts, rate: opts.rate ?? state.rate, accent: state.accent, voiceId: opts.voiceId || state.piperVoice, language: opts.language || state.accent })
+    return await state.piper.speak(text, { ...opts, rate: opts.rate ?? state.rate, accent: state.accent, voiceId: opts.voiceId || state.piperVoice, requestedVoiceId: opts.requestedVoiceId || opts.voiceId || state.piperVoice, language: opts.language || state.accent })
   } catch {
     return false
   }

@@ -7,9 +7,9 @@ import { speakWord, speechSupported } from '../lib/audio/tts.js'
 
 const MARK_STYLE = {
   extra: { textDecoration: 'line-through', opacity: 0.65 },
-  missing: { fontWeight: 800, textDecoration: 'underline', textUnderlineOffset: 3 },
-  replace: { fontWeight: 800, textDecoration: 'underline wavy', textUnderlineOffset: 3 },
-  typo: { textDecoration: 'underline wavy', textUnderlineOffset: 3 },
+  missing: { fontWeight: 800, borderBottom: '2px solid currentColor', background: 'var(--feedback-warning-surface)', borderRadius: 4, padding: '0 2px' },
+  replace: { fontWeight: 800, borderBottom: '2px solid currentColor', background: 'var(--feedback-warning-surface)', borderRadius: 4, padding: '0 2px' },
+  typo: { borderBottom: '2px solid currentColor', background: 'var(--feedback-warning-surface)', borderRadius: 4, padding: '0 2px' },
 }
 
 function markFor(rawWord, markedSet, typoSet) {
@@ -129,7 +129,7 @@ export function TypoNote({ typos, inkVar }) {
       ✏️ Atenção à grafia: {typos.map((t, i) => (
         <span key={i}>
           {i > 0 && ' · '}
-          <span style={{ textDecoration: 'underline wavy', textUnderlineOffset: 3 }}>{t.got}</span>
+          <span style={{ borderBottom: '2px solid currentColor' }}>{t.got}</span>
           {' → '}
           <strong>{t.expected}</strong>
         </span>
