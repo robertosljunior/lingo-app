@@ -35,7 +35,7 @@ function StreakStrip({ sessions }) {
 }
 
 export default function Home() {
-  const { lessons, sessions, mistakes, dueCount, profiles, activeProfile, startLesson, startReviewSession, startPracticeSession, navigate, setTab, SCREENS } = useApp()
+  const { lessons, sessions, mistakes, dueCount, profiles, activeProfile, skillProfiles = [], startLesson, startReviewSession, startPracticeSession, navigate, setTab, SCREENS } = useApp()
   const latest = lessons[0] || null
   const avgScore = sessions.length
     ? Math.round(sessions.reduce((a, s) => a + s.score, 0) / sessions.length)
@@ -117,6 +117,18 @@ export default function Home() {
               <div style={{ fontSize: 12, color: 'var(--ink-3)' }}>para nova aula</div>
             </div>
           </div>
+        </div>
+
+
+        <div className="card tap" onClick={() => startPracticeSession()} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 14 }}>
+          <div style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--indigo-50)', color: 'var(--indigo-700)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <I.trend s={20} />
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontWeight: 700, fontSize: 15 }}>Prática adaptativa</div>
+            <div style={{ fontSize: 12, color: 'var(--ink-3)' }}>10 perguntas · {skillProfiles.slice(0, 2).map((p) => p.label_pt || p.skill_id).join(', ') || 'SRS e perguntas disponíveis'}</div>
+          </div>
+          <I.chevR s={18} />
         </div>
 
         {/* Due spaced-repetition reviews */}

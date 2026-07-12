@@ -2,6 +2,7 @@
 // deterministic, auditable learning-profile aggregates.
 
 import { getRuleSkill, getSkill, normalizeSkillId, SKILL_REGISTRY_VERSION } from './skill-registry.js'
+import { rankSkillsForReview as rankAdaptiveSkillsForReview, skillPriority as adaptiveSkillPriority } from './adaptive-planner.js'
 
 export const PROFILE_ENGINE_VERSION = '1'
 
@@ -286,18 +287,11 @@ export function trendFromOutcomes(outcomes) {
 }
 
 export function rankSkillsForReview(profiles, now = Date.now()) {
-  return [...profiles].map((p) => ({ ...p, priority: skillPriority(p, now) })).sort((a, b) => b.priority - a.priority)
+  return rankAdaptiveSkillsForReview(profiles, now)
 }
 
 export function skillPriority(p, now = Date.now()) {
-  const weakness = 1 - (p.mastery ?? 0.5)
-  const evidence = Math.min(1, (p.weighted_attempts || 0) / 3)
-  const highRatio = p.attempts ? (p.high_errors || 0) / p.attempts : 0
-  const severity = 1 + highRatio * 0.5
-  const age = p.last_error_at ? now - p.last_error_at : Infinity
-  const day = 86400000
-  const recency = age <= 7 * day ? 1.2 : age <= 30 * day ? 1 : 0.8
-  return +(weakness * evidence * severity * recency).toFixed(4)
+  return adaptiveSkillPriority(p, now)
 }
 
 export function summarizeLearningProfile(profiles) {

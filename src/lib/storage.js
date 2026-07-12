@@ -16,10 +16,12 @@
 //   settings  { key*, value }
 //   skill_events   { key* (profile:answer:skill), profile_id, answer_id, skill_id, outcome, effective_weight }
 //   skill_profiles { key* (profile:skill), profile_id, skill_id, mastery, aggregates }
+//   adaptive_sessions stored compactly in settings: adaptive_session:<profile_id>
 
 import { openDB } from 'idb'
 import { srsKey, nextSrs, rankPracticeQuestions } from './srs.js'
 import { buildSkillEvents, aggregateSkillProfile, inferAssessedSkills, rankSkillsForReview, PROFILE_ENGINE_VERSION } from './skill-profile.js'
+import { indexQuestionSkills, buildAdaptivePracticePlan, buildLessonGenerationContext as buildAdaptiveContextPure, QUESTION_SKILL_INDEX_VERSION } from './adaptive-planner.js'
 
 const DB_NAME = 'app-idiomas'
 const DB_VERSION = 3
@@ -163,6 +165,7 @@ export async function saveLesson(lesson) {
       lesson_focus: q.lesson_focus || q.skill_target || q.mistake_focus || null,
       mistake_focus: q.mistake_focus,
       payload: q.payload,
+      skill_index: indexQuestionSkills({ ...q, lesson_id: lesson.lesson_id }, lesson),
     })
   }
   await tx.done
@@ -176,6 +179,12 @@ export async function getLesson(lesson_id) {
   const questions = await d.getAllFromIndex('questions', 'lesson_id', lesson_id)
   questions.sort((a, b) => a.id - b.id)
   return { ...lesson, questions }
+}
+
+export async function getAllQuestions() {
+  const d = await db()
+  const rows = await d.getAll('questions')
+  return rows.map((q) => q.skill_index?.question_index_version === QUESTION_SKILL_INDEX_VERSION ? q : { ...q, skill_index: indexQuestionSkills(q, q) })
 }
 
 export async function getAllLessons() {
@@ -352,6 +361,28 @@ export async function countDueReviews(profile_id, now = Date.now()) {
 
 // Difficulty-driven practice: the questions this profile misses the most,
 // weighted toward its top recurring mistake types.
+export async function getAdaptivePracticePlan(profile_id = DEFAULT_PROFILE, { requestedSize = 10, seed = null, targetSkillId = null, now = Date.now() } = {}) {
+  const d = await db()
+  const [questions, answers, skillProfiles, srsRows, settings] = await Promise.all([
+    getAllQuestions(), getAllAnswers(profile_id), getSkillProfiles(profile_id), d.getAllFromIndex('srs', 'profile_id', profile_id), getSettings(),
+  ])
+  return buildAdaptivePracticePlan({ profile: { profile_id, level: settings.level }, skillProfiles, questions, answerHistory: answers, srsState: srsRows, requestedSize, seed, targetSkillId, now })
+}
+
+export async function persistAdaptiveSession(profile_id, session) {
+  await setSetting(`adaptive_session:${profile_id}`, session)
+}
+
+export async function getPersistedAdaptiveSession(profile_id = DEFAULT_PROFILE) {
+  const d = await db()
+  return (await d.get('settings', `adaptive_session:${profile_id}`))?.value || null
+}
+
+export async function buildLessonGenerationContext(profile_id = DEFAULT_PROFILE) {
+  const [settings, skillProfiles, answers, questions] = await Promise.all([getSettings(), getSkillProfiles(profile_id), getAllAnswers(profile_id), getAllQuestions()])
+  return buildAdaptiveContextPure({ profileId: profile_id, skillProfiles, answers, questions, level: settings.level })
+}
+
 export async function getPracticeQuestions(profile_id, { limit = 12 } = {}) {
   const d = await db()
   const answers = await getAllAnswers(profile_id)

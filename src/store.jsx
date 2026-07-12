@@ -7,7 +7,7 @@ import { parseLesson } from './lib/lesson-parser.js'
 import { SAMPLE_YAML } from './lib/sample-lesson.js'
 import { warmupNlp } from './lib/nlp-client.js'
 import { configureTts } from './lib/audio/tts.js'
-import { shuffle } from './lib/srs.js'
+
 
 const AppCtx = createContext(null)
 export const useApp = () => useContext(AppCtx)
@@ -43,6 +43,7 @@ export function AppProvider({ children }) {
 
   const [toast, setToast] = useState(null)
   const toastTimer = useRef(0)
+  const adaptiveStartRef = useRef(false)
 
   // ---- boot ----
   useEffect(() => {
@@ -69,6 +70,12 @@ export function AppProvider({ children }) {
       setMistakes(await db.getMistakes(profile))
       setSkillProfiles(await db.getSkillProfiles(profile))
       setDueCount(await db.countDueReviews(profile))
+      const persisted = await db.getPersistedAdaptiveSession(profile).catch(() => null)
+      if (persisted?.session?.mode === 'adaptive_review' && persisted.session.profile_id === profile && persisted?.lesson?.questions?.length) {
+        setActiveLesson(persisted.lesson)
+        setSession(persisted.session)
+        setScreen(SCREENS.EXERCISE)
+      }
       setReady(true)
       warmupNlp()
     })()
@@ -171,12 +178,15 @@ export function AppProvider({ children }) {
       title: meta.title,
       level: meta.level || '—',
       focus: meta.focus,
-      questions: shuffle(questions),
+      mode: meta.mode || 'synthetic',
+      questions,
     }
+    const nextSession = { id: newSessionId(meta.id), qIdx: 0, answers: [], mode: meta.mode || 'synthetic', adaptive_plan: meta.plan || null, profile_id: activeProfile }
     setActiveLesson(lesson)
-    setSession({ id: newSessionId(meta.id), qIdx: 0, answers: [] })
+    setSession(nextSession)
+    if (meta.mode === 'adaptive_review') db.persistAdaptiveSession(activeProfile, { lesson, session: nextSession }).catch(() => {})
     navigate(SCREENS.EXERCISE, {})
-  }, [navigate])
+  }, [navigate, activeProfile])
 
   // "Revisão do dia": questions whose Leitner interval has elapsed.
   const startReviewSession = useCallback(async () => {
@@ -186,10 +196,18 @@ export function AppProvider({ children }) {
   }, [activeProfile, startSynthetic, showToast])
 
   // "Treino dirigido": the questions this profile misses the most.
-  const startPracticeSession = useCallback(async () => {
-    const qs = await db.getPracticeQuestions(activeProfile)
-    if (qs.length === 0) { showToast('Errou pouco até agora — treine com uma aula!'); return }
-    startSynthetic(qs, { id: 'practice', title: 'Treino dirigido', focus: 'maiores_dificuldades' })
+  const startPracticeSession = useCallback(async (targetSkillId = null) => {
+    if (adaptiveStartRef.current) return
+    adaptiveStartRef.current = true
+    try {
+    const plan = await db.getAdaptivePracticePlan(activeProfile, { requestedSize: 10, targetSkillId })
+    if (!plan.selected_questions.length) { showToast('Ainda não há perguntas cadastradas para essa prática.'); return }
+    const all = await db.getAllQuestions()
+    const byKey = new Map(all.map((q) => [`${q.lesson_id}:${q.id}`, q]))
+    const qs = plan.selected_questions.map((sq) => byKey.get(`${sq.lesson_id}:${sq.question_id}`)).filter(Boolean)
+    const label = targetSkillId ? `Prática: ${plan.target_skills.find((s) => s.skill_id === targetSkillId)?.skill_id || targetSkillId}` : 'Prática adaptativa'
+    startSynthetic(qs, { id: 'adaptive_review', title: label, focus: targetSkillId || 'adaptive_review', mode: 'adaptive_review', plan })
+    } finally { adaptiveStartRef.current = false }
   }, [activeProfile, startSynthetic, showToast])
 
   const startLesson = useCallback(async (lesson) => {
