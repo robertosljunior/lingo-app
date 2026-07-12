@@ -34,6 +34,7 @@ export function AppProvider({ children }) {
   const [lessons, setLessons] = useState([])
   const [sessions, setSessions] = useState([])
   const [mistakes, setMistakes] = useState([])
+  const [skillProfiles, setSkillProfiles] = useState([])
   const [profiles, setProfiles] = useState([])
   const [dueCount, setDueCount] = useState(0)
 
@@ -62,7 +63,11 @@ export function AppProvider({ children }) {
       setLessons(all)
       setProfiles(await db.getProfiles())
       setSessions(await db.getSessionSummaries(profile))
+      if (s[`skill_profile_rebuild_version:${profile}`] !== '1') {
+        await db.rebuildSkillProfilesFromEvaluations(profile).catch(() => {})
+      }
       setMistakes(await db.getMistakes(profile))
+      setSkillProfiles(await db.getSkillProfiles(profile))
       setDueCount(await db.countDueReviews(profile))
       setReady(true)
       warmupNlp()
@@ -90,6 +95,7 @@ export function AppProvider({ children }) {
     setProfiles(await db.getProfiles())
     setSessions(await db.getSessionSummaries(profile))
     setMistakes(await db.getMistakes(profile))
+    setSkillProfiles(await db.getSkillProfiles(profile))
     setDueCount(await db.countDueReviews(profile))
   }, [activeProfile])
 
@@ -282,7 +288,7 @@ export function AppProvider({ children }) {
 
   const value = {
     ready, screen, params, settings,
-    lessons, sessions, mistakes, dueCount,
+    lessons, sessions, mistakes, skillProfiles, dueCount,
     profiles, activeProfile, switchProfile, addProfile, removeProfile,
     startReviewSession, startPracticeSession,
     activeLesson, session,

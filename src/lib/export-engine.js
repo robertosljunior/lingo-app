@@ -1,7 +1,9 @@
 // export-engine.js — compact result YAML + the two tutor prompts.
 
+import { summarizeLearningProfile } from './skill-profile.js'
+
 // Build the compact result block from a finished session.
-export function buildResultYaml({ lesson, answers }) {
+export function buildResultYaml({ lesson, answers, skillProfiles = [] }) {
   const total = answers.length
   const correct = answers.filter((a) => a.verdict === 'correct').length
   const partial = answers.filter((a) => a.verdict === 'partial').length
@@ -20,6 +22,8 @@ export function buildResultYaml({ lesson, answers }) {
     ? Object.entries(mistakes).map(([k, v]) => `    ${k}: ${v}`).join('\n')
     : '    none: 0'
 
+  const profileBlock = buildLearningProfileBlock(skillProfiles)
+
   const wrongBlock = wrong.length
     ? wrong.map((a) => [
         `    - q: ${a.question_id}`,
@@ -37,7 +41,35 @@ export function buildResultYaml({ lesson, answers }) {
   mistakes:
 ${mistakesBlock}
   wrong:
-${wrongBlock}`
+${wrongBlock}
+  learning_profile:
+${profileBlock}`
+}
+
+
+function buildLearningProfileBlock(skillProfiles) {
+  if (!skillProfiles?.length) return '    needs_review: []\n    strengths: []'
+  const summary = summarizeLearningProfile(skillProfiles)
+  const needs = summary.needs_review.slice(0, 8)
+  const strengths = summary.strengths.slice(0, 5)
+  const needsBlock = needs.length ? needs.map((p) => [
+    `      - skill: ${p.skill_id}`,
+    `        mastery: ${Number(p.mastery || 0).toFixed(2)}`,
+    `        evidence: ${p.evidence_level}`,
+    `        attempts: ${p.attempts}`,
+    `        errors: ${(p.incorrect || 0) + (p.partial || 0)}`,
+    `        trend: ${p.trend}`,
+    p.recent_examples?.[0]?.actual ? `        last_error: ${yamlInline(p.recent_examples[0].actual)}` : null,
+    p.recent_examples?.[0]?.expected ? `        expected: ${yamlInline(p.recent_examples[0].expected)}` : null,
+  ].filter(Boolean).join('\n')).join('\n') : '      []'
+  const strengthsBlock = strengths.length ? strengths.map((p) => [
+    `      - skill: ${p.skill_id}`,
+    `        mastery: ${Number(p.mastery || 0).toFixed(2)}`,
+    `        evidence: ${p.evidence_level}`,
+    `        attempts: ${p.attempts}`,
+    `        correct: ${p.correct}`,
+  ].join('\n')).join('\n') : '      []'
+  return `    needs_review:\n${needsBlock}\n    strengths:\n${strengthsBlock}`
 }
 
 // Quote values that would otherwise break the flow scalar.

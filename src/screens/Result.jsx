@@ -1,5 +1,6 @@
 import { useApp } from '../store.jsx'
 import { I } from '../components/icons.jsx'
+import { getSkill } from '../lib/skill-registry.js'
 
 export default function Result() {
   const { activeLesson, session, navigate, setTab, SCREENS } = useApp()
@@ -20,6 +21,9 @@ export default function Result() {
   }
   const maxCount = Math.max(1, ...Object.values(mistakeCounts))
   const reviewable = wrong + partial
+  const skillRows = summarizeSessionSkills(answers)
+  const needsReview = skillRows.filter((s) => s.incorrect > 0 || s.partial > 0).slice(0, 4)
+  const strengths = skillRows.filter((s) => s.correct > 0 && s.incorrect === 0 && s.partial === 0).slice(0, 4)
 
   return (
     <div className="phone">
@@ -54,6 +58,15 @@ export default function Result() {
           <Stat n={partial} label="parciais" color="var(--warn)" />
           <Stat n={wrong} label="erros" color="var(--error)" />
         </div>
+
+
+        {(needsReview.length > 0 || strengths.length > 0) && (
+          <div className="card">
+            <div className="label-eyebrow" style={{ marginBottom: 10 }}>habilidades da aula</div>
+            {needsReview.length > 0 && <SkillMiniList title="precisam de revisão" items={needsReview} tone="error" />}
+            {strengths.length > 0 && <SkillMiniList title="demonstradas" items={strengths} tone="success" />}
+          </div>
+        )}
 
         {Object.keys(mistakeCounts).length > 0 && (
           <div className="card">
@@ -96,6 +109,36 @@ function Stat({ n, label, color }) {
     <div className="card" style={{ padding: 12, textAlign: 'center' }}>
       <div style={{ fontSize: 24, fontWeight: 800, color, fontVariantNumeric: 'tabular-nums' }}>{n}</div>
       <div style={{ fontSize: 11, color: 'var(--ink-3)', fontWeight: 600 }}>{label}</div>
+    </div>
+  )
+}
+
+
+function summarizeSessionSkills(answers) {
+  const map = new Map()
+  for (const a of answers) {
+    for (const s of a.evaluation?.assessed_skills || []) {
+      const cur = map.get(s.skill_id) || { skill_id: s.skill_id, correct: 0, partial: 0, incorrect: 0 }
+      cur[s.outcome] = (cur[s.outcome] || 0) + 1
+      map.set(s.skill_id, cur)
+    }
+  }
+  return [...map.values()].sort((a, b) => (b.incorrect - a.incorrect) || (b.partial - a.partial) || (b.correct - a.correct))
+}
+
+function SkillMiniList({ title, items, tone }) {
+  const color = tone === 'success' ? 'var(--success)' : 'var(--error)'
+  return (
+    <div style={{ marginTop: 8 }}>
+      <div style={{ fontSize: 12, color: 'var(--ink-3)', fontWeight: 700, marginBottom: 5 }}>{title}</div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+        {items.map((s) => (
+          <div key={s.skill_id} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13 }}>
+            <span>{getSkill(s.skill_id).label_pt}</span>
+            <strong style={{ color }}>{s.incorrect ? `${s.incorrect} erro(s)` : `${s.correct} ok`}</strong>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

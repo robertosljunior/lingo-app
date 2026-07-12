@@ -100,6 +100,21 @@ export default function Review() {
           </div>
         </div>
 
+
+        {a.evaluation?.assessed_skills?.length > 0 && (
+          <div className="card" style={{ padding: 14 }}>
+            <div className="label-eyebrow" style={{ marginBottom: 8 }}>habilidades avaliadas</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {a.evaluation.assessed_skills.map((s) => (
+                <div key={s.skill_id} style={{ display: 'flex', justifyContent: 'space-between', gap: 8, fontSize: 13 }}>
+                  <span>{getSkill(s.skill_id).label_pt}</span>
+                  <strong style={{ color: s.outcome === 'correct' ? 'var(--success)' : s.outcome === 'incorrect' ? 'var(--error)' : 'var(--warn)' }}>{s.outcome}</strong>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="card" style={{ background: 'var(--indigo-50)', borderColor: 'transparent', padding: 14 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
             <div style={{ color: 'var(--indigo-700)' }}><I.lightbulb s={16} /></div>
