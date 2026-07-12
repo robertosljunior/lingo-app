@@ -2,6 +2,7 @@ import yaml from 'js-yaml'
 import { seededRandom } from './adaptive-planner.js'
 import { getSkill } from './skill-registry.js'
 import { getLessonTemplates, TEMPLATE_REGISTRY_VERSION, SUPPORTED_GENERATED_TYPES } from './lesson-template-registry.js'
+import { BUILTIN_CONTENT_PACKS } from './content-pack-loader.js'
 import { LEXICAL_BANK_VERSION, normalize } from './lexical-bank.js'
 import { parseLesson } from './lesson-parser.js'
 import { canonicalText, tokenizeBuildSentence } from './generated-lesson-contracts.js'
@@ -44,7 +45,8 @@ export function generateLessonFromContext(context={}, opts={}){
   const questionCount=opts.questionCount||30, level=context.level||'B1'
   const owner=context.profile_id||opts.profileId||null
   const seed=opts.seed||`${owner||'global'}:${level}:${LESSON_GENERATOR_VERSION}:${(context.target_skills||[]).map(s=>s.skill_id).join(',')}`
-  const rng=seededRandom(seed), templates=getLessonTemplates(), skillPlan=allocateLessonSkills(context, questionCount), typePlan=exerciseTypePlan(questionCount)
+  const contentSnapshot=opts.contentSnapshot || context.contentSnapshot || builtinSnapshot(context.theme || 'workplace', level)
+  const rng=seededRandom(seed), templates=templatesFromSnapshot(contentSnapshot), skillPlan=allocateLessonSkills(context, questionCount), typePlan=exerciseTypePlan(questionCount)
   const recent=new Set((context.recent_sentences||[]).map(normalize)), warnings=[], qs=[], signatures=new Set(), familyCounts={}, templateIds=[]
   for(let i=0;i<questionCount;i++){
     const type=typePlan[i], skill=skillPlan[i]?.skill_id; let made=null
@@ -62,16 +64,31 @@ export function generateLessonFromContext(context={}, opts={}){
     if(made) qs.push(made); else warnings.push({code:'INSUFFICIENT_TEMPLATES_FOR_SKILL',skill_id:skill,type})
   }
   const ownerScopeHash=hash(owner||'global').slice(0,8)
-  const generationKey=hash(`${seed}:${questionCount}:${(context.target_skills||[]).map(s=>s.skill_id).join(',')}:${LESSON_GENERATOR_VERSION}:${TEMPLATE_REGISTRY_VERSION}`).slice(0,10)
+  const generationKey=hash(`${owner||'global'}:${context.theme||'workplace'}:${level}:${seed}:${questionCount}:${(context.target_skills||[]).map(s=>s.skill_id).join(',')}:${LESSON_GENERATOR_VERSION}:${contentSnapshot.checksum}`).slice(0,10)
   const lesson_id=`gen_${level.toLowerCase()}_${ownerScopeHash}_${generationKey}`
   qs.forEach((q,i)=>{ q.id=i+1; q.generated_question_id=`${lesson_id}:${q.id}` })
-  const lesson={ lesson_id,title:titleFor(context),level,focus:'adaptive_workplace_english',generated:true,owner_profile_id:owner,questions:qs,generation_metadata:{generator_version:LESSON_GENERATOR_VERSION,generation_key:generationKey,content_hash:hash(qs.map(q=>canonicalText(q.expected_answer)).join('|')),owner_scope_hash:ownerScopeHash,template_registry_version:TEMPLATE_REGISTRY_VERSION,lexical_bank_version:LEXICAL_BANK_VERSION,profile_id:owner,seed,generated_at:new Date(0).toISOString(),requested_questions:questionCount,actual_questions:qs.length,target_skills:(context.target_skills||[]).map(s=>s.skill_id),template_ids:templateIds,template_family_counts:familyCounts,warnings}}
+  const lesson={ lesson_id,title:titleFor(context),level,focus:`adaptive_${context.theme||'workplace'}_english`,generated:true,owner_profile_id:owner,questions:qs,generation_metadata:{generator_version:LESSON_GENERATOR_VERSION,generation_key:generationKey,content_hash:hash(qs.map(q=>canonicalText(q.expected_answer)).join('|')),owner_scope_hash:ownerScopeHash,template_registry_version:TEMPLATE_REGISTRY_VERSION,lexical_bank_version:LEXICAL_BANK_VERSION,content_pack_ids:contentSnapshot.pack_ids,content_pack_versions:contentSnapshot.pack_versions,content_snapshot_checksum:contentSnapshot.checksum,content_schema_version:'1',theme:context.theme||'workplace',profile_id:owner,seed,generated_at:new Date(0).toISOString(),requested_questions:questionCount,actual_questions:qs.length,target_skills:(context.target_skills||[]).map(s=>s.skill_id),template_ids:templateIds,template_family_counts:familyCounts,warnings}}
   lesson.raw_content=buildGeneratedLessonYaml(lesson)
   const parsed=parseLesson(lesson.raw_content)
   if(parsed.questions.length!==lesson.questions.length) throw new Error('Generated lesson YAML round-trip failed')
   return lesson
 }
-function titleFor(context){ const labels=(context.target_skills||[]).slice(0,2).map(s=>getSkill(s.skill_id)?.label_pt).filter(Boolean); return labels.length?`Revisão profissional: ${labels.join(' e ')}`:'Revisão profissional adaptativa' }
+
+function builtinSnapshot(theme, level){
+  const ids=[`core_${level.toLowerCase()}`,`${theme}_${level.toLowerCase()}`]
+  const packs=BUILTIN_CONTENT_PACKS.filter(p=>ids.includes(p.manifest.pack_id))
+  const template_definitions=packs.flatMap(p=>p.template_definitions)
+  const lexical_items=packs.flatMap(p=>p.lexical_items)
+  const collocations=packs.flatMap(p=>p.collocations)
+  const pack_versions=Object.fromEntries(packs.map(p=>[p.manifest.pack_id,p.manifest.version]))
+  return {pack_ids:ids,pack_versions,checksum:hash(JSON.stringify({ids,pack_versions})),template_definitions,lexical_items,collocations}
+}
+function templatesFromSnapshot(snapshot){
+  const rows=snapshot?.template_definitions?.length ? snapshot.template_definitions : getLessonTemplates()
+  return rows.map(t=>({template_id:t.template_id,family_id:t.family_id,level:t.level,primary_skill_id:t.primary_skill_id,skill_ids:t.skill_ids||[t.primary_skill_id],exercise_types:t.exercise_types||SUPPORTED_GENERATED_TYPES,domain:t.theme||t.domain,difficulty:t.difficulty||'medium',slots:t.slots||{},constraints:t.constraints||[],sentence:t.sentence,pt:t.pt,ctx:t.ctx,blank:t.blank||String(t.sentence||'').split(' ')[1]||'',wrong:(t.wrong && normalize(t.wrong)!==normalize(t.sentence) ? t.wrong : `Incorrect: ${t.sentence}`)}))
+}
+
+function titleFor(context){ const labels=(context.target_skills||[]).slice(0,2).map(s=>getSkill(s.skill_id)?.label_pt).filter(Boolean); return labels.length?`Revisão ${context.theme||'workplace'}: ${labels.join(' e ')}`:`Revisão ${context.theme||'workplace'} adaptativa` }
 function buildQuestion(t,type,id){ const a=t.sentence, f=t.primary_skill_id; const base={id,type,prompt:'',prompt_pt:t.pt,context:t.ctx,expected_answer:a,accepted_answers:[],options:null,words:null,original:null,skill_target:f,lesson_focus:f,mistake_focus:f,payload:null}
  if(type==='translate_natural') Object.assign(base,{prompt:'Traduza naturalmente.', accepted_answers: a.includes("I've")?[a.replace("I've",'I have')]:[]})
  if(type==='fill_blank') { const opts=distractors(t.primary_skill_id,t.blank,t.wrong); Object.assign(base,{prompt:a.replace(t.blank,'____'), expected_answer:t.blank, options:opts, payload_contract:{blank_skill:t.primary_skill_id,expected_slot_type:t.blank?.endsWith('ing')?'VBG':'LEXICAL',correct_option:t.blank,distractors:opts.filter(o=>canonicalText(o)!==canonicalText(t.blank)).map(text=>({text,error:'INVALID_SLOT_FORM'}))}}) }
@@ -82,7 +99,7 @@ function buildQuestion(t,type,id){ const a=t.sentence, f=t.primary_skill_id; con
  if(type==='speak_sentence') Object.assign(base,{prompt:'Fale a frase em inglês.'})
  base.payload=compact(base,t); return base }
 function compact(q,t){ const o={id:q.id,t:q.type}; if(q.prompt_pt)o.pt=q.prompt_pt; if(q.context)o.ctx=q.context; if(q.prompt)o.p=q.prompt; if(q.original)o.original=q.original; if(q.options)o.opt=q.options; if(q.words)o.words=q.words; if(q.payload_contract)o.contract=q.payload_contract; o.a=q.expected_answer; if(q.accepted_answers?.length)o.alt=q.accepted_answers; o.f=q.skill_target; o.template_id=t.template_id; o.family_id=t.family_id; o.skill_ids=t.skill_ids; return o }
-function distractors(skill,correct,wrong){ let opts=[correct]; if(skill==='gerund_after_been'||correct.endsWith('ing')) opts.push(correct.replace(/ing$/,'ed'),correct.replace(/ing$/,'')); else if(skill.includes('preposition')||['at','on','for'].includes(correct)) opts.push(correct==='at'?'in':'at',correct==='on'?'in':'of'); else if(correct==="I've") opts.push('Ive','I have been'); else opts.push(wrong?.split(' ')[0]||'do','make') ; return [...new Set(opts)].slice(0,3) }
+function distractors(skill,correct,wrong){ let opts=[correct]; if(correct.endsWith('ing')) opts.push(correct.replace(/ing$/,'ed'),correct.replace(/ing$/,'')); else if(skill.includes('preposition')||['at','on','for'].includes(correct)) opts.push(correct==='at'?'in':'at',correct==='on'?'in':'of'); else if(correct==="I've") opts.push('Ive','I have been'); else opts.push(wrong?.split(' ')[0]||'do','make') ; return [...new Set(opts)].slice(0,3) }
 function secondWrong(t){ if(t.primary_skill_id==='question_auxiliary') return 'They do have any open positions?'; if(t.primary_skill_id==='question_structure') return t.sentence.replace(/^(Have|Do|Could|How long have) /,''); if(t.primary_skill_id==='workplace_preposition') return t.wrong.includes(' in ')?t.wrong.replace(' in ',' at '):t.wrong.replace(' of ',' for '); if(t.primary_skill_id==='gerund_after_been'||t.primary_skill_id==='present_perfect_continuous') return t.sentence.replace(/been ([a-z]+ing)/,'been '+(t.blank||'work')); return t.wrong.replace('.', '?') }
 function genericWrong(t){ return t.sentence.replace(/\?$/, '').replace(/\.$/, '') + ' please?' }
 function uniqueOptions(xs){ const seen=new Set(); return xs.filter(x=>{const n=normalize(x); if(!n||seen.has(n)) return false; seen.add(n); return true}) }

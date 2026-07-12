@@ -1,0 +1,887 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "core_b2",
+    "title": {
+      "pt": "Base B2",
+      "en": "Core B2"
+    },
+    "theme": "core",
+    "level": "B2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "core_b2_i",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "I",
+      "translation_pt": "I",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_you",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "you",
+      "translation_pt": "you",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_we",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "we",
+      "translation_pt": "we",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_they",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "they",
+      "translation_pt": "they",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_she",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "she",
+      "translation_pt": "she",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_he",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "he",
+      "translation_pt": "he",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_today",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "today",
+      "translation_pt": "today",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_tomorrow",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "tomorrow",
+      "translation_pt": "tomorrow",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_yesterday",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "yesterday",
+      "translation_pt": "yesterday",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_this_week",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "this week",
+      "translation_pt": "this week",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_since_monday",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "since Monday",
+      "translation_pt": "since Monday",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_for_two_hours",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "for two hours",
+      "translation_pt": "for two hours",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_can",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "can",
+      "translation_pt": "can",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_have",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "have",
+      "translation_pt": "have",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_make",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "make",
+      "translation_pt": "make",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_do",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "do",
+      "translation_pt": "do",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_go",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "go",
+      "translation_pt": "go",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_get",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "get",
+      "translation_pt": "get",
+      "semantic_type": "action",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_send",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "send",
+      "translation_pt": "send",
+      "semantic_type": "object",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    },
+    {
+      "item_id": "core_b2_check",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "check",
+      "translation_pt": "check",
+      "semantic_type": "time",
+      "tags": [
+        "core",
+        "b2"
+      ]
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "core_b2_passive_be_past_participle_01",
+      "family_id": "core_b2_passive_be_past_participle_0",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "passive_be_past_participle",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_i"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The I was reviewed by the team.",
+      "pt": "Frase sobre I.",
+      "ctx": "Contexto Base B2.",
+      "blank": "I",
+      "wrong": "The I reviewed by the team."
+    },
+    {
+      "template_id": "core_b2_reported_speech_statement_02",
+      "family_id": "core_b2_reported_speech_statement_1",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "reported_speech_statement",
+      "primary_skill_id": "reported_speech",
+      "skill_ids": [
+        "reported_speech",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_you"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "She said that the you was ready.",
+      "pt": "Frase sobre you.",
+      "ctx": "Contexto Base B2.",
+      "blank": "said",
+      "wrong": "She said the you was ready."
+    },
+    {
+      "template_id": "core_b2_second_conditional_03",
+      "family_id": "core_b2_second_conditional_2",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "second_conditional",
+      "primary_skill_id": "second_conditional",
+      "skill_ids": [
+        "second_conditional",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_we"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "If I had more time, I would improve the we.",
+      "pt": "Frase sobre we.",
+      "ctx": "Contexto Base B2.",
+      "blank": "I",
+      "wrong": "If I had more time, I will improve the we."
+    },
+    {
+      "template_id": "core_b2_subject_modal_base_verb_04",
+      "family_id": "core_b2_subject_modal_base_verb_3",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_they"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the they today.",
+      "pt": "Frase sobre they.",
+      "ctx": "Contexto Base B2.",
+      "blank": "can",
+      "wrong": "I cans update the they today."
+    },
+    {
+      "template_id": "core_b2_passive_be_past_participle_05",
+      "family_id": "core_b2_passive_be_past_participle_4",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "passive_be_past_participle",
+      "primary_skill_id": "collocation",
+      "skill_ids": [
+        "collocation",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_she"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The she was reviewed by the team.",
+      "pt": "Frase sobre she.",
+      "ctx": "Contexto Base B2.",
+      "blank": "she",
+      "wrong": "The she reviewed by the team."
+    },
+    {
+      "template_id": "core_b2_reported_speech_statement_06",
+      "family_id": "core_b2_reported_speech_statement_5",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "reported_speech_statement",
+      "primary_skill_id": "word_order",
+      "skill_ids": [
+        "word_order",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_he"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "She said that the he was ready.",
+      "pt": "Frase sobre he.",
+      "ctx": "Contexto Base B2.",
+      "blank": "said",
+      "wrong": "She said the he was ready."
+    },
+    {
+      "template_id": "core_b2_second_conditional_07",
+      "family_id": "core_b2_second_conditional_0",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "second_conditional",
+      "primary_skill_id": "vocabulary",
+      "skill_ids": [
+        "vocabulary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_today"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "If I had more time, I would improve the today.",
+      "pt": "Frase sobre today.",
+      "ctx": "Contexto Base B2.",
+      "blank": "I",
+      "wrong": "If I had more time, I will improve the today."
+    },
+    {
+      "template_id": "core_b2_subject_modal_base_verb_08",
+      "family_id": "core_b2_subject_modal_base_verb_1",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_tomorrow"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the tomorrow today.",
+      "pt": "Frase sobre tomorrow.",
+      "ctx": "Contexto Base B2.",
+      "blank": "can",
+      "wrong": "I cans update the tomorrow today."
+    },
+    {
+      "template_id": "core_b2_passive_be_past_participle_09",
+      "family_id": "core_b2_passive_be_past_participle_2",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "passive_be_past_participle",
+      "primary_skill_id": "reported_speech",
+      "skill_ids": [
+        "reported_speech",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_yesterday"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The yesterday was reviewed by the team.",
+      "pt": "Frase sobre yesterday.",
+      "ctx": "Contexto Base B2.",
+      "blank": "yesterday",
+      "wrong": "The yesterday reviewed by the team."
+    },
+    {
+      "template_id": "core_b2_reported_speech_statement_10",
+      "family_id": "core_b2_reported_speech_statement_3",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "reported_speech_statement",
+      "primary_skill_id": "second_conditional",
+      "skill_ids": [
+        "second_conditional",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_this_week"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "She said that the this week was ready.",
+      "pt": "Frase sobre this week.",
+      "ctx": "Contexto Base B2.",
+      "blank": "said",
+      "wrong": "She said the this week was ready."
+    },
+    {
+      "template_id": "core_b2_second_conditional_11",
+      "family_id": "core_b2_second_conditional_4",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "second_conditional",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_since_monday"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "If I had more time, I would improve the since Monday.",
+      "pt": "Frase sobre since Monday.",
+      "ctx": "Contexto Base B2.",
+      "blank": "I",
+      "wrong": "If I had more time, I will improve the since Monday."
+    },
+    {
+      "template_id": "core_b2_subject_modal_base_verb_12",
+      "family_id": "core_b2_subject_modal_base_verb_5",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "collocation",
+      "skill_ids": [
+        "collocation",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "core_b2_for_two_hours"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_passive",
+        "level_allows_reported_speech"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the for two hours today.",
+      "pt": "Frase sobre for two hours.",
+      "ctx": "Contexto Base B2.",
+      "blank": "can",
+      "wrong": "I cans update the for two hours today."
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "core_b2_i_chunk",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "make a I",
+      "translation_pt": "I",
+      "invalid_variants": [
+        "do a I"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_b2_you_chunk",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "check the you",
+      "translation_pt": "you",
+      "invalid_variants": [
+        "do the you"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_b2_we_chunk",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "make a we",
+      "translation_pt": "we",
+      "invalid_variants": [
+        "do a we"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_b2_they_chunk",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "check the they",
+      "translation_pt": "they",
+      "invalid_variants": [
+        "do the they"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_b2_she_chunk",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "make a she",
+      "translation_pt": "she",
+      "invalid_variants": [
+        "do a she"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_b2_he_chunk",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "check the he",
+      "translation_pt": "he",
+      "invalid_variants": [
+        "do the he"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_b2_today_chunk",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "make a today",
+      "translation_pt": "today",
+      "invalid_variants": [
+        "do a today"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_b2_tomorrow_chunk",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "check the tomorrow",
+      "translation_pt": "tomorrow",
+      "invalid_variants": [
+        "do the tomorrow"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "core_b2_yesterday_chunk",
+      "pack_id": "core_b2",
+      "theme": "core",
+      "level": "B2",
+      "canonical": "make a yesterday",
+      "translation_pt": "yesterday",
+      "invalid_variants": [
+        "do a yesterday"
+      ],
+      "skill_id": "collocation"
+    }
+  ]
+}

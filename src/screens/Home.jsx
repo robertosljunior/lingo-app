@@ -45,6 +45,8 @@ export default function Home() {
     : null
   const profile = profiles.find((p) => p.profile_id === activeProfile)
   const [genCount, setGenCount] = useState(30)
+  const [genLevel, setGenLevel] = useState('B1')
+  const [genTheme, setGenTheme] = useState('workplace')
   const [generating, setGenerating] = useState(false)
   const [generated, setGenerated] = useState(null)
   const topSkills = skillProfiles.slice(0, 2).map((p) => p.label_pt || p.skill_id)
@@ -52,7 +54,7 @@ export default function Home() {
     if (generating) return
     setGenerating(true)
     try {
-      const res = await generateAdaptiveLesson({ questionCount: genCount })
+      const res = await generateAdaptiveLesson({ questionCount: genCount, level: genLevel, theme: genTheme })
       if (res?.lesson) { setGenerated(res.lesson); showToast('Aula gerada localmente.') }
     } finally { setGenerating(false) }
   }
@@ -140,10 +142,14 @@ export default function Home() {
             <div style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--success-bg)', color: 'var(--success)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><I.spark s={20} /></div>
             <div style={{ flex: 1 }}>
               <div style={{ fontWeight: 800, fontSize: 15 }}>Gerar nova aula adaptativa</div>
-              <div style={{ fontSize: 12, color: 'var(--ink-3)' }} data-testid="generation-focus">B1 · foco: {topSkills.join(', ') || 'workplace English'} · offline</div>
+              <div style={{ fontSize: 12, color: 'var(--ink-3)' }} data-testid="generation-focus">{genLevel} · {genTheme} · {topSkills.join(', ') || 'content packs'} · offline</div>
             </div>
           </div>
-          <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginTop: 12 }}>
+            <select className="input" data-testid="generation-level" value={genLevel} onChange={(e)=>setGenLevel(e.target.value)}>{['A1','A2','B1','B2'].map(l=><option key={l} value={l}>{l}</option>)}</select>
+            <select className="input" data-testid="generation-theme" value={genTheme} onChange={(e)=>setGenTheme(e.target.value)}>{[['daily_life','Vida cotidiana'],['workplace','Trabalho'],['travel','Viagens'],['food_and_restaurants','Comida e restaurantes'],['shopping_and_services','Compras e serviços'],['technology_and_communication','Tecnologia e comunicação']].map(([k,l])=><option key={k} value={k}>{l}</option>)}</select>
+          </div>
+          <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
             {[10,20,30].map((n) => <button key={n} className={`btn btn-sm ${genCount===n?'btn-primary':'btn-secondary'}`} data-testid={`gen-count-${n}`} onClick={() => setGenCount(n)}>{n}</button>)}
             <button className="btn btn-primary" style={{ flex: 1 }} disabled={generating} data-testid="generate-lesson" onClick={onGenerate}>{generating ? 'Gerando aula...' : 'Gerar aula'}</button>
           </div>

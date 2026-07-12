@@ -1,0 +1,615 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "workplace_b1",
+    "title": {
+      "pt": "Trabalho B1",
+      "en": "Workplace B1"
+    },
+    "theme": "workplace",
+    "level": "B1",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_b1"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "workplace_b1_company",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "company",
+      "translation_pt": "company",
+      "semantic_type": "object",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_project",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "project",
+      "translation_pt": "project",
+      "semantic_type": "time",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_client",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "client",
+      "translation_pt": "client",
+      "semantic_type": "action",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_support_team",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "support team",
+      "translation_pt": "support team",
+      "semantic_type": "object",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_deployment",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "deployment",
+      "translation_pt": "deployment",
+      "semantic_type": "time",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_report",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "report",
+      "translation_pt": "report",
+      "semantic_type": "action",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_requirements",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "requirements",
+      "translation_pt": "requirements",
+      "semantic_type": "object",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_open_positions",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "open positions",
+      "translation_pt": "open positions",
+      "semantic_type": "time",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_salary_range",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "salary range",
+      "translation_pt": "salary range",
+      "semantic_type": "action",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_deadline",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "deadline",
+      "translation_pt": "deadline",
+      "semantic_type": "object",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_meeting",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "meeting",
+      "translation_pt": "meeting",
+      "semantic_type": "time",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_feedback",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "feedback",
+      "translation_pt": "feedback",
+      "semantic_type": "action",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_responsibilities",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "responsibilities",
+      "translation_pt": "responsibilities",
+      "semantic_type": "object",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    },
+    {
+      "item_id": "workplace_b1_proposal",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "proposal",
+      "translation_pt": "proposal",
+      "semantic_type": "time",
+      "tags": [
+        "workplace",
+        "b1"
+      ]
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "workplace_b1_subject_have_past_participle_yet_01",
+      "family_id": "workplace_b1_subject_have_past_participle_yet_0",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "subject_have_past_participle_yet",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "workplace_b1_company"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_present_perfect_continuous"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We have checked the company already.",
+      "pt": "Frase sobre company.",
+      "ctx": "Contexto Trabalho B1.",
+      "blank": "have",
+      "wrong": "We have check the company already."
+    },
+    {
+      "template_id": "workplace_b1_subject_have_been_ving_object_duration_02",
+      "family_id": "workplace_b1_subject_have_been_ving_object_duration_1",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "primary_skill_id": "present_perfect_continuous",
+      "skill_ids": [
+        "present_perfect_continuous",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "workplace_b1_project"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_present_perfect_continuous"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "They have been reviewing the project for two hours.",
+      "pt": "Frase sobre project.",
+      "ctx": "Contexto Trabalho B1.",
+      "blank": "have",
+      "wrong": "They have been reviewed the project for two hours."
+    },
+    {
+      "template_id": "workplace_b1_if_present_will_future_03",
+      "family_id": "workplace_b1_if_present_will_future_2",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "if_present_will_future",
+      "primary_skill_id": "gerund_after_been",
+      "skill_ids": [
+        "gerund_after_been",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "workplace_b1_client"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_present_perfect_continuous"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "If we confirm the client, we will start tomorrow.",
+      "pt": "Frase sobre client.",
+      "ctx": "Contexto Trabalho B1.",
+      "blank": "we",
+      "wrong": "If we confirm the client, we will start tomorrow."
+    },
+    {
+      "template_id": "workplace_b1_subject_modal_base_verb_04",
+      "family_id": "workplace_b1_subject_modal_base_verb_3",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "workplace_b1_support_team"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_present_perfect_continuous"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the support team today.",
+      "pt": "Frase sobre support team.",
+      "ctx": "Contexto Trabalho B1.",
+      "blank": "can",
+      "wrong": "I cans update the support team today."
+    },
+    {
+      "template_id": "workplace_b1_subject_have_past_participle_yet_05",
+      "family_id": "workplace_b1_subject_have_past_participle_yet_4",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "subject_have_past_participle_yet",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "workplace_b1_deployment"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_present_perfect_continuous"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We have checked the deployment already.",
+      "pt": "Frase sobre deployment.",
+      "ctx": "Contexto Trabalho B1.",
+      "blank": "have",
+      "wrong": "We have check the deployment already."
+    },
+    {
+      "template_id": "workplace_b1_subject_have_been_ving_object_duration_06",
+      "family_id": "workplace_b1_subject_have_been_ving_object_duration_5",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "subject_have_been_ving_object_duration",
+      "primary_skill_id": "collocation",
+      "skill_ids": [
+        "collocation",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "workplace_b1_report"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_present_perfect_continuous"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "They have been reviewing the report for two hours.",
+      "pt": "Frase sobre report.",
+      "ctx": "Contexto Trabalho B1.",
+      "blank": "have",
+      "wrong": "They have been reviewed the report for two hours."
+    },
+    {
+      "template_id": "workplace_b1_if_present_will_future_07",
+      "family_id": "workplace_b1_if_present_will_future_0",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "if_present_will_future",
+      "primary_skill_id": "preposition",
+      "skill_ids": [
+        "preposition",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "workplace_b1_requirements"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_present_perfect_continuous"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "If we confirm the requirements, we will start tomorrow.",
+      "pt": "Frase sobre requirements.",
+      "ctx": "Contexto Trabalho B1.",
+      "blank": "we",
+      "wrong": "If we confirm the requirements, we will start tomorrow."
+    },
+    {
+      "template_id": "workplace_b1_subject_modal_base_verb_08",
+      "family_id": "workplace_b1_subject_modal_base_verb_1",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "workplace_b1_open_positions"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement",
+        "level_allows_present_perfect_continuous"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I can update the open positions today.",
+      "pt": "Frase sobre open positions.",
+      "ctx": "Contexto Trabalho B1.",
+      "blank": "can",
+      "wrong": "I cans update the open positions today."
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "workplace_b1_company_chunk",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "make a company",
+      "translation_pt": "company",
+      "invalid_variants": [
+        "do a company"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "workplace_b1_project_chunk",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "check the project",
+      "translation_pt": "project",
+      "invalid_variants": [
+        "do the project"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "workplace_b1_client_chunk",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "make a client",
+      "translation_pt": "client",
+      "invalid_variants": [
+        "do a client"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "workplace_b1_support_team_chunk",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "check the support team",
+      "translation_pt": "support team",
+      "invalid_variants": [
+        "do the support team"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "workplace_b1_deployment_chunk",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "make a deployment",
+      "translation_pt": "deployment",
+      "invalid_variants": [
+        "do a deployment"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "workplace_b1_report_chunk",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "check the report",
+      "translation_pt": "report",
+      "invalid_variants": [
+        "do the report"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "workplace_b1_requirements_chunk",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "canonical": "make a requirements",
+      "translation_pt": "requirements",
+      "invalid_variants": [
+        "do a requirements"
+      ],
+      "skill_id": "collocation"
+    }
+  ]
+}

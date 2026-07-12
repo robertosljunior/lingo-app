@@ -1,0 +1,607 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "food_and_restaurants_a2",
+    "title": {
+      "pt": "Comida e restaurantes A2",
+      "en": "Food and restaurants A2"
+    },
+    "theme": "food_and_restaurants",
+    "level": "A2",
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "enabled_by_default": true,
+    "dependencies": [
+      "core_a2"
+    ],
+    "generator_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "lexical_items": [
+    {
+      "item_id": "food_and_restaurants_a2_menu",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "menu",
+      "translation_pt": "menu",
+      "semantic_type": "object",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_table",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "table",
+      "translation_pt": "table",
+      "semantic_type": "time",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_starter",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "starter",
+      "translation_pt": "starter",
+      "semantic_type": "action",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_main_course",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "main course",
+      "translation_pt": "main course",
+      "semantic_type": "object",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_dessert",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "dessert",
+      "translation_pt": "dessert",
+      "semantic_type": "time",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_bill",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "bill",
+      "translation_pt": "bill",
+      "semantic_type": "action",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_waiter",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "waiter",
+      "translation_pt": "waiter",
+      "semantic_type": "object",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_reservation",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "reservation",
+      "translation_pt": "reservation",
+      "semantic_type": "time",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_vegetarian_dish",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "vegetarian dish",
+      "translation_pt": "vegetarian dish",
+      "semantic_type": "action",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_coffee",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "coffee",
+      "translation_pt": "coffee",
+      "semantic_type": "object",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_fresh_salad",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "fresh salad",
+      "translation_pt": "fresh salad",
+      "semantic_type": "time",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_spicy_soup",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "spicy soup",
+      "translation_pt": "spicy soup",
+      "semantic_type": "action",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_breakfast",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "breakfast",
+      "translation_pt": "breakfast",
+      "semantic_type": "object",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    },
+    {
+      "item_id": "food_and_restaurants_a2_restaurant_review",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "restaurant review",
+      "translation_pt": "restaurant review",
+      "semantic_type": "time",
+      "tags": [
+        "food_and_restaurants",
+        "a2"
+      ]
+    }
+  ],
+  "template_definitions": [
+    {
+      "template_id": "food_and_restaurants_a2_subject_past_simple_object_time_01",
+      "family_id": "food_and_restaurants_a2_subject_past_simple_object_time_0",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "pattern_id": "subject_past_simple_object_time",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "food_and_restaurants_a2_menu"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We checked the menu yesterday.",
+      "pt": "Frase sobre menu.",
+      "ctx": "Contexto Comida e restaurantes A2.",
+      "blank": "checked",
+      "wrong": "We check the menu yesterday."
+    },
+    {
+      "template_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_02",
+      "family_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_1",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "food_and_restaurants_a2_table"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "They are going to review the table tomorrow.",
+      "pt": "Frase sobre table.",
+      "ctx": "Contexto Comida e restaurantes A2.",
+      "blank": "are",
+      "wrong": "They go to review the table tomorrow."
+    },
+    {
+      "template_id": "food_and_restaurants_a2_subject_simple_present_object_03",
+      "family_id": "food_and_restaurants_a2_subject_simple_present_object_2",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "future_going_to",
+      "skill_ids": [
+        "future_going_to",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "food_and_restaurants_a2_starter"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the starter every day.",
+      "pt": "Frase sobre starter.",
+      "ctx": "Contexto Comida e restaurantes A2.",
+      "blank": "check",
+      "wrong": "We check the starter every day."
+    },
+    {
+      "template_id": "food_and_restaurants_a2_wh_do_subject_base_verb_04",
+      "family_id": "food_and_restaurants_a2_wh_do_subject_base_verb_3",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "food_and_restaurants_a2_main_course"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the main course?",
+      "pt": "Frase sobre main course.",
+      "ctx": "Contexto Comida e restaurantes A2.",
+      "blank": "do",
+      "wrong": "When you do need the main course?"
+    },
+    {
+      "template_id": "food_and_restaurants_a2_subject_past_simple_object_time_05",
+      "family_id": "food_and_restaurants_a2_subject_past_simple_object_time_4",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "pattern_id": "subject_past_simple_object_time",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "food_and_restaurants_a2_dessert"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We checked the dessert yesterday.",
+      "pt": "Frase sobre dessert.",
+      "ctx": "Contexto Comida e restaurantes A2.",
+      "blank": "checked",
+      "wrong": "We check the dessert yesterday."
+    },
+    {
+      "template_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_06",
+      "family_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_5",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "food_and_restaurants_a2_bill"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "They are going to review the bill tomorrow.",
+      "pt": "Frase sobre bill.",
+      "ctx": "Contexto Comida e restaurantes A2.",
+      "blank": "are",
+      "wrong": "They go to review the bill tomorrow."
+    },
+    {
+      "template_id": "food_and_restaurants_a2_subject_simple_present_object_07",
+      "family_id": "food_and_restaurants_a2_subject_simple_present_object_0",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "vocabulary",
+      "skill_ids": [
+        "vocabulary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "food_and_restaurants_a2_waiter"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We check the waiter every day.",
+      "pt": "Frase sobre waiter.",
+      "ctx": "Contexto Comida e restaurantes A2.",
+      "blank": "check",
+      "wrong": "We check the waiter every day."
+    },
+    {
+      "template_id": "food_and_restaurants_a2_wh_do_subject_base_verb_08",
+      "family_id": "food_and_restaurants_a2_wh_do_subject_base_verb_1",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "past_simple",
+      "skill_ids": [
+        "past_simple",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {
+        "subject": "we",
+        "object": "food_and_restaurants_a2_reservation"
+      },
+      "constraints": [
+        "subject_auxiliary_agreement"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "When do you need the reservation?",
+      "pt": "Frase sobre reservation.",
+      "ctx": "Contexto Comida e restaurantes A2.",
+      "blank": "do",
+      "wrong": "When you do need the reservation?"
+    }
+  ],
+  "collocations": [
+    {
+      "collocation_id": "food_and_restaurants_a2_menu_chunk",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "make a menu",
+      "translation_pt": "menu",
+      "invalid_variants": [
+        "do a menu"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "food_and_restaurants_a2_table_chunk",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "check the table",
+      "translation_pt": "table",
+      "invalid_variants": [
+        "do the table"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "food_and_restaurants_a2_starter_chunk",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "make a starter",
+      "translation_pt": "starter",
+      "invalid_variants": [
+        "do a starter"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "food_and_restaurants_a2_main_course_chunk",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "check the main course",
+      "translation_pt": "main course",
+      "invalid_variants": [
+        "do the main course"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "food_and_restaurants_a2_dessert_chunk",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "make a dessert",
+      "translation_pt": "dessert",
+      "invalid_variants": [
+        "do a dessert"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "food_and_restaurants_a2_bill_chunk",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "check the bill",
+      "translation_pt": "bill",
+      "invalid_variants": [
+        "do the bill"
+      ],
+      "skill_id": "collocation"
+    },
+    {
+      "collocation_id": "food_and_restaurants_a2_waiter_chunk",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "canonical": "make a waiter",
+      "translation_pt": "waiter",
+      "invalid_variants": [
+        "do a waiter"
+      ],
+      "skill_id": "collocation"
+    }
+  ]
+}
