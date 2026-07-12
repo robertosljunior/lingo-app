@@ -7,6 +7,7 @@ import { parseLesson } from './lib/lesson-parser.js'
 import { SAMPLE_YAML } from './lib/sample-lesson.js'
 import { warmupNlp } from './lib/nlp-client.js'
 import { configureTts } from './lib/audio/tts.js'
+import { generateLessonFromContext, buildGeneratedLessonYaml } from './lib/lesson-generator.js'
 
 
 const AppCtx = createContext(null)
@@ -44,6 +45,7 @@ export function AppProvider({ children }) {
   const [toast, setToast] = useState(null)
   const toastTimer = useRef(0)
   const adaptiveStartRef = useRef(false)
+  const generationStartRef = useRef(false)
 
   // ---- boot ----
   useEffect(() => {
@@ -53,12 +55,12 @@ export function AppProvider({ children }) {
       setSettings(s)
       const profile = s.active_profile || db.DEFAULT_PROFILE
       // Seed the sample lesson on first run so the app is usable immediately.
-      let all = await db.getAllLessons()
+      let all = await db.getAllLessons(profile)
       if (all.length === 0) {
         try {
           const lesson = parseLesson(SAMPLE_YAML)
           await db.saveLesson(lesson)
-          all = await db.getAllLessons()
+          all = await db.getAllLessons(profile)
         } catch { /* ignore seed failure */ }
       }
       setLessons(all)
@@ -98,7 +100,7 @@ export function AppProvider({ children }) {
   }, [settings?.theme])
 
   const refreshLibrary = useCallback(async (profile = activeProfile) => {
-    setLessons(await db.getAllLessons())
+    setLessons(await db.getAllLessons(profile))
     setProfiles(await db.getProfiles())
     setSessions(await db.getSessionSummaries(profile))
     setMistakes(await db.getMistakes(profile))
@@ -202,13 +204,31 @@ export function AppProvider({ children }) {
     try {
     const plan = await db.getAdaptivePracticePlan(activeProfile, { requestedSize: 10, targetSkillId })
     if (!plan.selected_questions.length) { showToast('Ainda não há perguntas cadastradas para essa prática.'); return }
-    const all = await db.getAllQuestions()
+    const all = await db.getAllQuestions(activeProfile)
     const byKey = new Map(all.map((q) => [`${q.lesson_id}:${q.id}`, q]))
     const qs = plan.selected_questions.map((sq) => byKey.get(`${sq.lesson_id}:${sq.question_id}`)).filter(Boolean)
     const label = targetSkillId ? `Prática: ${plan.target_skills.find((s) => s.skill_id === targetSkillId)?.skill_id || targetSkillId}` : 'Prática adaptativa'
     startSynthetic(qs, { id: 'adaptive_review', title: label, focus: targetSkillId || 'adaptive_review', mode: 'adaptive_review', plan })
     } finally { adaptiveStartRef.current = false }
   }, [activeProfile, startSynthetic, showToast])
+
+
+  const generateAdaptiveLesson = useCallback(async ({ questionCount = 30, targetSkillId = null, seed = null } = {}) => {
+    if (generationStartRef.current) return null
+    generationStartRef.current = true
+    try {
+      const context = await db.buildLessonGenerationContext(activeProfile)
+      context.profile_id = activeProfile
+      if (targetSkillId) {
+        const found = context.target_skills.find((s) => s.skill_id === targetSkillId) || { skill_id: targetSkillId, priority: 1, mastery: 0.4, evidence: 'emerging' }
+        context.target_skills = [found, ...context.target_skills.filter((s) => s.skill_id !== targetSkillId)]
+      }
+      const lesson = generateLessonFromContext(context, { questionCount, seed, profileId: activeProfile })
+      const saved = await db.saveLesson(lesson)
+      await refreshLibrary(activeProfile)
+      return { lesson: saved, yaml: buildGeneratedLessonYaml(saved), validation: lesson.generation_metadata }
+    } finally { generationStartRef.current = false }
+  }, [activeProfile, refreshLibrary])
 
   const startLesson = useCallback(async (lesson) => {
     // Lessons coming from the list view carry no questions (separate store) —
@@ -308,7 +328,7 @@ export function AppProvider({ children }) {
     ready, screen, params, settings,
     lessons, sessions, mistakes, skillProfiles, dueCount,
     profiles, activeProfile, switchProfile, addProfile, removeProfile,
-    startReviewSession, startPracticeSession,
+    startReviewSession, startPracticeSession, generateAdaptiveLesson,
     activeLesson, session,
     toast,
     SCREENS,

@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import { useApp } from '../store.jsx'
 import { BottomNav, Logo } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { prettyFocus } from '../lib/lesson-parser.js'
+import { buildGeneratedLessonYaml } from '../lib/lesson-generator.js'
+import { downloadText } from '../lib/export-engine.js'
 
 function StreakStrip({ sessions }) {
   // Derive a 14-day activity heatmap from real session timestamps.
@@ -35,12 +38,24 @@ function StreakStrip({ sessions }) {
 }
 
 export default function Home() {
-  const { lessons, sessions, mistakes, dueCount, profiles, activeProfile, skillProfiles = [], startLesson, startReviewSession, startPracticeSession, navigate, setTab, SCREENS } = useApp()
+  const { lessons, sessions, mistakes, dueCount, profiles, activeProfile, skillProfiles = [], startLesson, startReviewSession, startPracticeSession, generateAdaptiveLesson, navigate, setTab, SCREENS, showToast } = useApp()
   const latest = lessons[0] || null
   const avgScore = sessions.length
     ? Math.round(sessions.reduce((a, s) => a + s.score, 0) / sessions.length)
     : null
   const profile = profiles.find((p) => p.profile_id === activeProfile)
+  const [genCount, setGenCount] = useState(30)
+  const [generating, setGenerating] = useState(false)
+  const [generated, setGenerated] = useState(null)
+  const topSkills = skillProfiles.slice(0, 2).map((p) => p.label_pt || p.skill_id)
+  async function onGenerate() {
+    if (generating) return
+    setGenerating(true)
+    try {
+      const res = await generateAdaptiveLesson({ questionCount: genCount })
+      if (res?.lesson) { setGenerated(res.lesson); showToast('Aula gerada localmente.') }
+    } finally { setGenerating(false) }
+  }
 
   return (
     <div className="phone">
@@ -119,6 +134,28 @@ export default function Home() {
           </div>
         </div>
 
+
+        <div className="card" style={{ padding: 14 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--success-bg)', color: 'var(--success)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><I.spark s={20} /></div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 800, fontSize: 15 }}>Gerar nova aula adaptativa</div>
+              <div style={{ fontSize: 12, color: 'var(--ink-3)' }}>B1 · foco: {topSkills.join(', ') || 'workplace English'} · offline</div>
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
+            {[10,20,30].map((n) => <button key={n} className={`btn btn-sm ${genCount===n?'btn-primary':'btn-secondary'}`} onClick={() => setGenCount(n)}>{n}</button>)}
+            <button className="btn btn-primary" style={{ flex: 1 }} disabled={generating} onClick={onGenerate}>{generating ? 'Gerando aula...' : 'Gerar aula'}</button>
+          </div>
+          {generated && <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
+            <div style={{ fontWeight: 800 }}>{generated.title}</div>
+            <div className="muted" style={{ fontSize: 12 }}>{generated.questions?.length || generated.count} perguntas · {(generated.generation_metadata?.target_skills || []).slice(0, 3).join(', ')}</div>
+            <div style={{ display: 'flex', gap: 8, marginTop: 10 }}>
+              <button className="btn btn-secondary btn-sm" onClick={() => startLesson(generated)}>Iniciar aula</button>
+              <button className="btn btn-secondary btn-sm" onClick={() => downloadText(`${generated.lesson_id}.yaml`, buildGeneratedLessonYaml(generated))}>Exportar YAML</button>
+            </div>
+          </div>}
+        </div>
 
         <div className="card tap" onClick={() => startPracticeSession()} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 14 }}>
           <div style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--indigo-50)', color: 'var(--indigo-700)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>

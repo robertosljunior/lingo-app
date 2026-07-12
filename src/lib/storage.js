@@ -1,6 +1,6 @@
 // storage.js — IndexedDB persistence via idb.
 //
-// Stores (v3):
+// Stores (v3, compatible with generated lesson owner metadata):
 //   lessons   { lesson_id*, title, level, focus, raw_content, created_at }
 //   questions { key* (lesson_id:id), lesson_id, id, type, prompt, expected_answer,
 //               accepted_answers, skill_target, mistake_focus (legacy), payload }
@@ -145,6 +145,9 @@ export async function saveLesson(lesson) {
     raw_content: lesson.raw_content,
     count: lesson.questions.length,
     created_at,
+    generated: !!lesson.generated,
+    owner_profile_id: lesson.owner_profile_id || lesson.generation_metadata?.profile_id || null,
+    generation_metadata: lesson.generation_metadata || null,
   })
   const qStore = tx.objectStore('questions')
   for (const q of lesson.questions) {
@@ -165,6 +168,9 @@ export async function saveLesson(lesson) {
       lesson_focus: q.lesson_focus || q.skill_target || q.mistake_focus || null,
       mistake_focus: q.mistake_focus,
       payload: q.payload,
+      metadata: q.metadata || q.payload?.metadata || null,
+      generated: !!lesson.generated,
+      owner_profile_id: lesson.owner_profile_id || lesson.generation_metadata?.profile_id || null,
       skill_index: indexQuestionSkills({ ...q, lesson_id: lesson.lesson_id }, lesson),
     })
   }
@@ -181,16 +187,17 @@ export async function getLesson(lesson_id) {
   return { ...lesson, questions }
 }
 
-export async function getAllQuestions() {
+export async function getAllQuestions(profile_id = null) {
   const d = await db()
   const rows = await d.getAll('questions')
-  return rows.map((q) => q.skill_index?.question_index_version === QUESTION_SKILL_INDEX_VERSION ? q : { ...q, skill_index: indexQuestionSkills(q, q) })
+  const scoped = profile_id ? rows.filter((q) => !q.owner_profile_id || q.owner_profile_id === profile_id) : rows
+  return scoped.map((q) => q.skill_index?.question_index_version === QUESTION_SKILL_INDEX_VERSION ? q : { ...q, skill_index: indexQuestionSkills(q, q) })
 }
 
-export async function getAllLessons() {
+export async function getAllLessons(profile_id = null) {
   const d = await db()
   const lessons = await d.getAllFromIndex('lessons', 'created_at')
-  return lessons.reverse() // newest first
+  return lessons.filter((l) => !l.owner_profile_id || !profile_id || l.owner_profile_id === profile_id).reverse() // newest first
 }
 
 export async function deleteLesson(lesson_id) {
@@ -364,7 +371,7 @@ export async function countDueReviews(profile_id, now = Date.now()) {
 export async function getAdaptivePracticePlan(profile_id = DEFAULT_PROFILE, { requestedSize = 10, seed = null, targetSkillId = null, now = Date.now() } = {}) {
   const d = await db()
   const [questions, answers, skillProfiles, srsRows, settings] = await Promise.all([
-    getAllQuestions(), getAllAnswers(profile_id), getSkillProfiles(profile_id), d.getAllFromIndex('srs', 'profile_id', profile_id), getSettings(),
+    getAllQuestions(profile_id), getAllAnswers(profile_id), getSkillProfiles(profile_id), d.getAllFromIndex('srs', 'profile_id', profile_id), getSettings(),
   ])
   return buildAdaptivePracticePlan({ profile: { profile_id, level: settings.level }, skillProfiles, questions, answerHistory: answers, srsState: srsRows, requestedSize, seed, targetSkillId, now })
 }
@@ -379,7 +386,7 @@ export async function getPersistedAdaptiveSession(profile_id = DEFAULT_PROFILE) 
 }
 
 export async function buildLessonGenerationContext(profile_id = DEFAULT_PROFILE) {
-  const [settings, skillProfiles, answers, questions] = await Promise.all([getSettings(), getSkillProfiles(profile_id), getAllAnswers(profile_id), getAllQuestions()])
+  const [settings, skillProfiles, answers, questions] = await Promise.all([getSettings(), getSkillProfiles(profile_id), getAllAnswers(profile_id), getAllQuestions(profile_id)])
   return buildAdaptiveContextPure({ profileId: profile_id, skillProfiles, answers, questions, level: settings.level })
 }
 
