@@ -1,0 +1,226 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "semantic_at",
+    "pack_kind": "semantic_knowledge",
+    "title": {
+      "pt": "Usos de at",
+      "en": "Uses of at"
+    },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ],
+    "dependencies": [],
+    "min_app_version": "1.0.0",
+    "analysis_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "concepts": [
+    {
+      "concept_id": "at_specific_point",
+      "surface": "at",
+      "lemma": "at",
+      "level": "A1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "at indica ponto ou lugar específico (at the door).",
+      "intent_tags": [
+        "location"
+      ],
+      "grammar_tags": [
+        "place"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "at_address",
+      "surface": "at",
+      "lemma": "at",
+      "level": "A2",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "at com endereços exatos (at 10 Main Street).",
+      "intent_tags": [
+        "location"
+      ],
+      "grammar_tags": [
+        "place"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "at_events",
+      "surface": "at",
+      "lemma": "at",
+      "level": "A2",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "at com eventos (at the party).",
+      "intent_tags": [
+        "location"
+      ],
+      "grammar_tags": [
+        "event"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "at_institution",
+      "surface": "at",
+      "lemma": "at",
+      "level": "A2",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "at com instituições como local (at school, at university).",
+      "intent_tags": [
+        "location"
+      ],
+      "grammar_tags": [
+        "place"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "at_time",
+      "surface": "at",
+      "lemma": "at",
+      "level": "A1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "at com horas exatas (at 8 horas).",
+      "intent_tags": [
+        "time"
+      ],
+      "grammar_tags": [
+        "time"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "at_good_at",
+      "surface": "at",
+      "lemma": "at",
+      "level": "B1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "good at + habilidade.",
+      "intent_tags": [
+        "ability"
+      ],
+      "grammar_tags": [
+        "collocation"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "at_laugh_at",
+      "surface": "at",
+      "lemma": "at",
+      "level": "B1",
+      "roles": [
+        "preposition"
+      ],
+      "meaning_pt": "reações: laugh at, look at.",
+      "intent_tags": [
+        "reaction"
+      ],
+      "grammar_tags": [
+        "collocation"
+      ],
+      "related_concepts": []
+    }
+  ],
+  "usage_rules": [],
+  "semantic_frames": [
+    {
+      "frame_id": "at_location",
+      "level": "A1",
+      "intent": "location",
+      "slots": [
+        "place"
+      ],
+      "positive_exemplars": [
+        "at the station",
+        "at work",
+        "at home"
+      ],
+      "acceptable_variants": [],
+      "naturalness_preferences": []
+    }
+  ],
+  "contrast_sets": [],
+  "patterns": [],
+  "transformations": [],
+  "explanations_pt": [
+    {
+      "explanation_id": "pt_at_point",
+      "locale": "pt-BR",
+      "title": "at para pontos e horas",
+      "summary": "Use at para pontos específicos de lugar e para horas exatas.",
+      "speech_text": "Use at para pontos específicos e horas exatas."
+    }
+  ],
+  "natural_alternatives": [],
+  "retrieval_exemplars": [
+    {
+      "example_id": "at_001",
+      "level": "A1",
+      "text": "I am at the station.",
+      "intent": "location",
+      "polarity": "positive",
+      "weight": 1
+    },
+    {
+      "example_id": "at_002",
+      "level": "A1",
+      "text": "See you at eight.",
+      "intent": "time",
+      "polarity": "positive",
+      "weight": 1
+    },
+    {
+      "example_id": "at_003",
+      "level": "B1",
+      "text": "She is good at math.",
+      "intent": "ability",
+      "polarity": "positive",
+      "weight": 1
+    }
+  ],
+  "golden_tests": [
+    {
+      "input": "I am at the station.",
+      "mode": "free",
+      "expect": {
+        "verdict": "valid"
+      }
+    }
+  ],
+  "coverage": {
+    "concepts_expected": 12,
+    "concepts_implemented": 7,
+    "levels": {
+      "A1": "complete_for_scope",
+      "A2": "partial",
+      "B1": "partial",
+      "B2": "planned"
+    },
+    "known_gaps": [
+      "fixed expressions",
+      "regional usage"
+    ]
+  }
+}

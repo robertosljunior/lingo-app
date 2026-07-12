@@ -12,7 +12,9 @@
     "test:e2e": "playwright test",
     "benchmark:indexeddb": "node scripts/benchmark-indexeddb.mjs",
     "validate:content-packs": "node scripts/validate-content-packs.mjs",
-    "quality:content-packs": "node scripts/quality-content-packs.mjs"
+    "quality:content-packs": "node scripts/quality-content-packs.mjs",
+    "validate:knowledge-packs": "node scripts/validate-knowledge-packs.mjs",
+    "benchmark:structural-nlp": "node scripts/benchmark-structural-nlp.mjs"
   },
   "dependencies": {
     "@fontsource/geist-mono": "^5.2.8",

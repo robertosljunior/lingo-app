@@ -1,0 +1,237 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "semantic_have",
+    "pack_kind": "semantic_knowledge",
+    "title": {
+      "pt": "Usos de have",
+      "en": "Uses of have"
+    },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ],
+    "dependencies": [],
+    "min_app_version": "1.0.0",
+    "analysis_compatibility": {
+      "min_version": "1",
+      "max_version": "1"
+    }
+  },
+  "concepts": [
+    {
+      "concept_id": "have_possession",
+      "surface": "have",
+      "lemma": "have",
+      "level": "A1",
+      "roles": [
+        "lexical_verb"
+      ],
+      "meaning_pt": "have de posse (I have a car).",
+      "intent_tags": [
+        "possession"
+      ],
+      "grammar_tags": [
+        "possession"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "have_relationship",
+      "surface": "have",
+      "lemma": "have",
+      "level": "A1",
+      "roles": [
+        "lexical_verb"
+      ],
+      "meaning_pt": "have de relacionamento (I have two brothers).",
+      "intent_tags": [
+        "possession"
+      ],
+      "grammar_tags": [
+        "relationship"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "have_activity",
+      "surface": "have",
+      "lemma": "have",
+      "level": "A1",
+      "roles": [
+        "lexical_verb"
+      ],
+      "meaning_pt": "have de atividade/refeição (have breakfast, have a meeting).",
+      "intent_tags": [
+        "action"
+      ],
+      "grammar_tags": [
+        "activity",
+        "collocation"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "have_experience",
+      "surface": "have",
+      "lemma": "have",
+      "level": "B1",
+      "roles": [
+        "lexical_verb"
+      ],
+      "meaning_pt": "have de experiência (characteristics/experiences).",
+      "intent_tags": [
+        "description"
+      ],
+      "grammar_tags": [
+        "experience"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "have_perfect_aux",
+      "surface": "have",
+      "lemma": "have",
+      "level": "B1",
+      "roles": [
+        "auxiliary"
+      ],
+      "meaning_pt": "have auxiliar do perfect (I have worked here).",
+      "intent_tags": [
+        "past_experience"
+      ],
+      "grammar_tags": [
+        "perfect"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "have_to",
+      "surface": "have",
+      "lemma": "have",
+      "level": "A2",
+      "roles": [
+        "modal_like"
+      ],
+      "meaning_pt": "have to para obrigação (I have to leave).",
+      "intent_tags": [
+        "obligation"
+      ],
+      "grammar_tags": [
+        "obligation"
+      ],
+      "related_concepts": []
+    },
+    {
+      "concept_id": "have_got",
+      "surface": "have",
+      "lemma": "have",
+      "level": "A2",
+      "roles": [
+        "lexical_verb"
+      ],
+      "meaning_pt": "have got informal para posse (I have got a question).",
+      "intent_tags": [
+        "possession"
+      ],
+      "grammar_tags": [
+        "possession",
+        "informal"
+      ],
+      "related_concepts": []
+    }
+  ],
+  "usage_rules": [],
+  "semantic_frames": [
+    {
+      "frame_id": "have_possession_frame",
+      "level": "A1",
+      "intent": "possession",
+      "slots": [
+        "owner",
+        "item"
+      ],
+      "positive_exemplars": [
+        "I have a car.",
+        "I have two brothers.",
+        "I have a question."
+      ],
+      "acceptable_variants": [],
+      "naturalness_preferences": []
+    }
+  ],
+  "contrast_sets": [],
+  "patterns": [],
+  "transformations": [],
+  "explanations_pt": [
+    {
+      "explanation_id": "pt_have_roles",
+      "locale": "pt-BR",
+      "title": "have além de posse",
+      "summary": "have indica posse, mas também aparece em atividades (have breakfast), como auxiliar do perfect e em have to para obrigação.",
+      "speech_text": "have indica posse, atividades, o perfect e obrigação com have to."
+    }
+  ],
+  "natural_alternatives": [],
+  "retrieval_exemplars": [
+    {
+      "example_id": "have_001",
+      "level": "A1",
+      "text": "I have a car.",
+      "intent": "possession",
+      "polarity": "positive",
+      "weight": 1
+    },
+    {
+      "example_id": "have_002",
+      "level": "A1",
+      "text": "I have breakfast at seven.",
+      "intent": "action",
+      "polarity": "positive",
+      "weight": 1
+    },
+    {
+      "example_id": "have_003",
+      "level": "B1",
+      "text": "I have worked here before.",
+      "intent": "past_experience",
+      "polarity": "positive",
+      "weight": 1
+    },
+    {
+      "example_id": "have_004",
+      "level": "A2",
+      "text": "I have to leave.",
+      "intent": "obligation",
+      "polarity": "positive",
+      "weight": 1
+    }
+  ],
+  "golden_tests": [
+    {
+      "input": "I have a car.",
+      "mode": "free",
+      "expect": {
+        "verdict": "valid"
+      }
+    }
+  ],
+  "coverage": {
+    "concepts_expected": 14,
+    "concepts_implemented": 7,
+    "levels": {
+      "A1": "complete_for_scope",
+      "A2": "partial",
+      "B1": "partial",
+      "B2": "planned"
+    },
+    "known_gaps": [
+      "causative have",
+      "have + object + participle"
+    ]
+  }
+}
