@@ -19,6 +19,7 @@ export const PIPER_VOICES = [
   { id: 'en_US-ryan-medium', label: 'Ryan — masculina', accent: 'en-US', flag: '🇺🇸', sizeMB: 63 },
   { id: 'en_GB-cori-medium', label: 'Cori — feminina', accent: 'en-GB', flag: '🇬🇧', sizeMB: 63 },
   { id: 'en_GB-alan-medium', label: 'Alan — masculina', accent: 'en-GB', flag: '🇬🇧', sizeMB: 63 },
+  { id: 'pt_BR-fabiola-medium', label: 'Fabiola — Português do Brasil', accent: 'pt-BR', flag: '🇧🇷', sizeMB: 60 },
 ]
 
 export const piperSupported = typeof window !== 'undefined'
@@ -77,12 +78,12 @@ function hash(s) {
   return h.toString(36)
 }
 
-const cacheUrl = (voice, text) => `https://piper-audio.cache/${voice}/${hash(text)}`
+const cacheUrl = (voice, text, rate = 1, language = '') => `https://piper-audio.cache/${voice}/${language || 'auto'}/${rate}/${hash(text)}`
 
-async function synthesize(text, voiceId) {
+async function synthesize(text, voiceId, { rate = 1, language = '' } = {}) {
   try {
     const cache = await caches.open(AUDIO_CACHE)
-    const hit = await cache.match(cacheUrl(voiceId, text))
+    const hit = await cache.match(cacheUrl(voiceId, text, rate, language))
     if (hit) return await hit.blob()
     const l = await ensureLib()
     // Only speak with a voice that is already on device — never trigger a
@@ -90,7 +91,7 @@ async function synthesize(text, voiceId) {
     const have = await l.stored()
     if (!have.includes(voiceId)) return null
     const blob = await l.predict({ text, voiceId })
-    await cache.put(cacheUrl(voiceId, text), new Response(blob, { headers: { 'Content-Type': blob.type || 'audio/wav' } }))
+    await cache.put(cacheUrl(voiceId, text, rate, language), new Response(blob, { headers: { 'Content-Type': blob.type || 'audio/wav' } }))
     return blob
   } catch (err) {
     logError('piper', err)
@@ -99,12 +100,12 @@ async function synthesize(text, voiceId) {
 }
 
 // Called by tts.js. Returns false so the caller falls back to the system voice.
-export async function speak(text, { slow = false, rate = 0.95, accent = 'en-US' } = {}) {
+export async function speak(text, { slow = false, rate = 0.95, accent = 'en-US', voiceId: requestedVoiceId = null, language = '' } = {}) {
   if (!piperSupported) return false
-  const voiceId = activeVoice
+  const voiceId = requestedVoiceId || activeVoice
     || PIPER_VOICES.find((v) => v.accent === accent)?.id
     || PIPER_VOICES[0].id
-  const blob = await synthesize(text, voiceId)
+  const blob = await synthesize(text, voiceId, { rate, language: language || accent })
   if (!blob) return false
   stop()
   const audio = new Audio(URL.createObjectURL(blob))
@@ -126,7 +127,7 @@ export async function warmCache(texts, voiceId = activeVoice) {
   if (!piperSupported || !voiceId) return 0
   let done = 0
   for (const t of texts) {
-    if (await synthesize(t, voiceId)) done++
+    if (await synthesize(t, voiceId, { language: PIPER_VOICES.find(v=>v.id===voiceId)?.accent || '' })) done++
   }
   return done
 }

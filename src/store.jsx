@@ -17,7 +17,7 @@ export const useApp = () => useContext(AppCtx)
 export const SCREENS = {
   HOME: 'home', IMPORT: 'import', EXERCISE: 'exercise', RESULT: 'result',
   REVIEW: 'review', EXPORT: 'export', HISTORY: 'history',
-  MISTAKES: 'mistakes', SETTINGS: 'settings',
+  MISTAKES: 'mistakes', SETTINGS: 'settings', TRAINING: 'training',
 }
 
 const TABS = new Set([SCREENS.HOME, SCREENS.HISTORY, SCREENS.MISTAKES, SCREENS.SETTINGS])

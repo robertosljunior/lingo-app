@@ -4,11 +4,13 @@ import { Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { analyze } from '../lib/nlp-client.js'
 import { buildIncorrectChoiceEvaluation } from '../lib/correction-engine.js'
-import { speak, speechSupported } from '../lib/audio/tts.js'
+import { speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
 import { SpeakButton, SpeakableText } from '../components/speak-button.jsx'
 import { MicButton } from '../components/mic-button.jsx'
 import { AnswerDiff, TypoNote } from '../components/answer-diff.jsx'
+import { buildFeedbackPresentation } from '../lib/feedback-presentation.js'
+import { speakFeedbackSequence, speakSegment } from '../lib/speech-router.js'
 
 export default function Exercise() {
   const { activeLesson, session, submitAnswer, rateAnswer, nextQuestion, back, settings } = useApp()
@@ -76,6 +78,8 @@ export default function Exercise() {
           expected_answer: q.expected_answer,
           skill_target: q.skill_target || q.lesson_focus || q.mistake_focus,
         }))
+        const selectedMeta = q.metadata?.distractors?.[ans] || q.options_meta?.find?.((o) => o.text === ans)
+        if (selectedMeta) analysis.selected_distractor = { text: ans, invalid_rule_id: selectedMeta.invalid_rule_id || selectedMeta.rule_id }
       }
     }
     // Speaking drill: what the recognizer heard doubles as a rough
@@ -217,6 +221,7 @@ function TranslateBody({ q, user, setUser, disabled, showHint }) {
 // heard. Where TTS is unavailable the sentence is shown as text so the
 // exercise still works (as a copy/attention drill).
 function DictationBody({ q, user, setUser, disabled, showHint }) {
+  const { settings } = useApp()
   const words = user.trim().split(/\s+/).filter(Boolean).length
   return (
     <>
@@ -250,10 +255,10 @@ function DictationBody({ q, user, setUser, disabled, showHint }) {
           <span>{words} {words === 1 ? 'palavra' : 'palavras'}</span>
           {speechSupported && (
             <span style={{ display: 'inline-flex', gap: 4 }}>
-              <button className="btn btn-sm btn-ghost" style={{ padding: '2px 8px', minHeight: 0 }} onClick={() => speak(q.expected_answer)} disabled={disabled}>
+              <button className="btn btn-sm btn-ghost" style={{ padding: '2px 8px', minHeight: 0 }} onClick={() => speakSegment({ text: q.expected_answer, language: 'en', role: 'exercise_en', settings })} disabled={disabled}>
                 <I.speaker s={14} /> de novo
               </button>
-              <button className="btn btn-sm btn-ghost" style={{ padding: '2px 8px', minHeight: 0 }} onClick={() => speak(q.expected_answer, { slow: true })} disabled={disabled} aria-label="Ouvir devagar">
+              <button className="btn btn-sm btn-ghost" style={{ padding: '2px 8px', minHeight: 0 }} onClick={() => speakSegment({ text: q.expected_answer, language: 'en', role: 'exercise_en', settings, rate: 0.65 })} disabled={disabled} aria-label="Ouvir devagar">
                 <I.turtle s={14} /> devagar
               </button>
             </span>
@@ -434,131 +439,89 @@ function ChoiceBody({ q, choice, setChoice, disabled }) {
 }
 
 
-function ErrorList({ result, q, tone, inkVar }) {
-  const errors = result.detected_errors?.length
-    ? result.detected_errors
-    : legacyErrorFromResult(result, q)
-  const primary = errors.find((e) => e.role === 'primary') || errors[0]
-  const secondary = errors.filter((e) => e !== primary)
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      {primary && <ErrorCard error={primary} title="Erro principal" tone={tone} inkVar={inkVar} testid="error-primary" />}
-      {secondary.length > 0 && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {secondary.map((e, i) => <ErrorCard key={`${e.rule_id || e.category}-${i}`} error={e} title={e.category === 'preposition' ? 'Melhoria de naturalidade' : 'Também revisar'} tone="warn" inkVar={inkVar} compact testid="error-secondary" />)}
-        </div>
-      )}
-      {!primary && <div style={{ fontSize: 14, color: inkVar, lineHeight: 1.5 }}>{result.feedback}</div>}
-    </div>
-  )
-}
 
-function ErrorCard({ error, title, tone, inkVar, compact = false, testid = null }) {
-  const chipTone = tone === 'warn' || error.severity === 'low' ? 'warn' : 'error'
+function TechnicalDiagnostics({ result }) {
+  const [open, setOpen] = useState(false)
+  if (!import.meta.env.DEV) return null
+  const errors = result.detected_errors?.length ? result.detected_errors : (result.primary_error ? [result.primary_error] : [])
   return (
-    <div data-testid={testid} data-error-category={error.category} data-error-subtype={error.subtype || ''}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 5, flexWrap: 'wrap' }}>
-        <span className={`chip chip-${chipTone}`} style={{ fontFamily: 'var(--font-mono)' }}>
-          {error.category}{error.subtype ? `/${error.subtype}` : ''}
-        </span>
-        <span style={{ fontSize: 12, color: inkVar, opacity: .75, fontWeight: 700 }}>{title} · {error.severity}</span>
-      </div>
-      <div style={{ fontSize: 14, color: inkVar, lineHeight: 1.5 }}>{error.feedback}</div>
-      {!compact && (error.actual || error.expected) && (
-        <div style={{ fontSize: 13, color: inkVar, opacity: .85, marginTop: 5 }}>
-          {error.actual && <>Errado: <strong>{error.actual}</strong></>} {error.expected && <>Correto: <strong>{error.expected}</strong></>}
-        </div>
-      )}
-    </div>
+    <details open={open} onToggle={(e) => setOpen(e.currentTarget.open)} style={{ fontSize: 12, color: 'var(--ink-2)' }}>
+      <summary style={{ cursor: 'pointer', fontWeight: 800 }}>Mostrar diagnóstico técnico</summary>
+      <pre style={{ whiteSpace: 'pre-wrap', background: 'rgba(255,255,255,.55)', borderRadius: 10, padding: 10, overflowX: 'auto' }}>
+        {JSON.stringify(errors.map(e => ({ category:e.category, subtype:e.subtype, severity:e.severity, confidence:e.confidence, rule_id:e.rule_id })), null, 2)}
+      </pre>
+    </details>
   )
-}
-
-function legacyErrorFromResult(result, q) {
-  const category = result.possible_mistake_type || 'vocabulary'
-  return [{
-    role: 'primary', category, subtype: category, severity: result.verdict === 'partial' ? 'medium' : 'high', confidence: 0.4,
-    actual: result.user_answer || '', expected: result.target || q.expected_answer || '', rule_id: 'legacy.feedback',
-    feedback: result.feedback || 'Compare com a resposta esperada.', evidence: { legacy: true },
-  }]
 }
 
 function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
   const { settings } = useApp()
   const target = result.target || q.expected_answer
+  const presentation = useMemo(() => buildFeedbackPresentation({
+    evaluation: result,
+    question: q,
+    userAnswer: result.user_answer ?? result.normalized_user_answer,
+    expectedAnswer: target,
+    selectedOption: result.user_answer,
+    skillTarget: q.skill_target || q.lesson_focus || q.mistake_focus,
+  }), [result, q, target])
 
-  // Duolingo-style: hearing the right sentence after every answer is how the
-  // sound of the language sticks — speak it when the sheet opens (opt-out).
-  useEffect(() => {
-    if (settings?.tts_autoplay !== false && speechSupported && target) speak(target)
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { speakFeedbackSequence(presentation, settings) }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const tone = result.verdict === 'correct' ? 'success' : result.verdict === 'partial' ? 'warn' : 'error'
-  const titles = {
-    correct: 'Natural! 🎯',
-    partial: 'Quase lá. Mais natural assim:',
-    incorrect: q.mistake_focus === 'question_structure' ? 'Quase. Faltou o auxiliar.' : 'Não exatamente.',
-  }
+  const tone = presentation.tone === 'correct' ? 'success' : presentation.tone === 'almost' ? 'warn' : 'error'
+  const header = presentation.tone === 'correct' ? 'Muito bem' : presentation.tone === 'almost' ? 'Quase lá' : 'Vamos ajustar uma coisa'
   const inkVar = tone === 'success' ? 'var(--success-ink)' : tone === 'warn' ? 'var(--warn-ink)' : 'var(--error-ink)'
   const baseColor = tone === 'success' ? 'var(--success)' : tone === 'warn' ? 'var(--warn)' : 'var(--error)'
   const shadow = tone === 'success' ? '#14532D' : tone === 'warn' ? '#78350F' : '#7F1D1D'
+  const secondary = presentation.secondary_suggestions || []
 
   return (
-    <div className={`sheet sheet-${tone} sheet-anim`} data-testid="feedback-sheet" data-verdict={result.verdict}>
+    <div className={`sheet sheet-${tone} sheet-anim`} data-testid="feedback-sheet" data-verdict={result.verdict} aria-live="polite">
       <div className="handle" style={{ background: 'rgba(0,0,0,.15)' }} />
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <div style={{ width: 36, height: 36, borderRadius: '50%', background: baseColor, color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800 }}>
-          {result.verdict === 'correct' ? <I.check s={20} /> : result.verdict === 'partial' ? '~' : <I.x s={18} />}
+        <div style={{ width: 40, height: 40, borderRadius: '50%', background: baseColor, color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900 }} aria-hidden="true">
+          {result.verdict === 'correct' ? <I.check s={22} /> : result.verdict === 'partial' ? '~' : <I.x s={18} />}
         </div>
-        <div className="sheet-title">{titles[result.verdict]}</div>
+        <div>
+          <div className="sheet-title" style={{ fontSize: 22 }}>{header}</div>
+          {presentation.primary_skill_label && <div style={{ fontSize: 12, fontWeight: 800, color: inkVar, opacity: .75 }}>{presentation.primary_skill_label}</div>}
+        </div>
       </div>
+
+      <section className="card" style={{ padding: 14, background: 'rgba(255,255,255,.68)', borderColor: 'transparent' }} aria-label="Explicação">
+        <h3 style={{ margin: 0, fontSize: 18, lineHeight: 1.25, color: inkVar }}>{presentation.title}</h3>
+        <p style={{ margin: '8px 0 0', fontSize: 15, lineHeight: 1.5, color: inkVar }}>{presentation.explanation_pt}</p>
+        <p style={{ margin: '8px 0 0', fontSize: 14, lineHeight: 1.45, color: inkVar, opacity: .86 }}>{presentation.learner_tip_pt}</p>
+        <button className="btn btn-sm btn-secondary" style={{ marginTop: 10 }} aria-label="Ouvir explicação" onClick={() => speakSegment({ text: presentation.speech_segments[0].text, language: 'pt-BR', role: 'explanation_pt', settings })}><I.speaker s={14} /> Ouvir explicação</button>
+      </section>
 
       {result.verdict !== 'correct' && (
         <div className="card" style={{ padding: 12, background: 'rgba(255,255,255,.55)', borderColor: 'transparent' }}>
-          <AnswerDiff
-            user={result.user_answer ?? result.normalized_user_answer}
-            target={result.target || q.expected_answer}
-            missing={result.missing_words} extra={result.extra_words} typos={result.typos}
-            alignment={result.alignment}
-            inkVar={inkVar}
-          />
+          <AnswerDiff user={presentation.comparison.user_text} target={presentation.comparison.expected_text} missing={result.missing_words} extra={result.extra_words} typos={result.typos} alignment={result.alignment} inkVar={inkVar} />
         </div>
       )}
-
       {result.verdict === 'correct' && <TypoNote typos={result.typos} inkVar={inkVar} />}
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <SpeakButton text={target} size="sm" turtle label=" ouvir" />
-        <span style={{ fontSize: 11, color: inkVar, opacity: .6 }}>toque numa palavra para ouvi-la</span>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 10 }}>
+        <div className="card" style={{ padding: 12, background: 'rgba(255,255,255,.5)' }}>
+          <div className="label-eyebrow">{presentation.comparison.user_label}</div>
+          <div style={{ fontSize: 15, lineHeight: 1.4, color: inkVar, marginTop: 4 }}>{presentation.comparison.user_text || '—'}</div>
+          {presentation.comparison.user_text && <button className="btn btn-sm btn-ghost" aria-label="Ouvir sua resposta" onClick={() => speakSegment({ text: presentation.comparison.user_text, language: 'en', role: 'user_answer_en', settings })}><I.speaker s={14} /> Ouvir</button>}
+        </div>
+        <div className="card" style={{ padding: 14, background: 'white', borderColor: baseColor, boxShadow: 'var(--shadow-sm)' }}>
+          <div className="label-eyebrow">{presentation.comparison.expected_label}</div>
+          <div style={{ fontSize: 18, fontWeight: 800, lineHeight: 1.35, color: 'var(--ink)', marginTop: 4 }}>{presentation.comparison.expected_text}</div>
+          <button className="btn btn-sm btn-secondary" aria-label="Ouvir forma correta" onClick={() => speakSegment({ text: presentation.comparison.expected_text, language: 'en', role: 'correct_answer_en', settings })}><I.speaker s={14} /> Ouvir forma correta</button>
+        </div>
       </div>
 
-      {q.type === 'speak_sentence' && (
-        <div style={{ fontSize: 13, color: inkVar }}>
-          🎙️ Pronúncia reconhecida: <strong>{Math.round((result.similarity_score || 0) * 100)}%</strong> das palavras
-        </div>
-      )}
-
-      {result.verdict === 'correct' && q.accepted_answers?.length > 0 && (
-        <div>
-          <div style={{ fontSize: 12, color: inkVar, opacity: .7, fontWeight: 700, marginBottom: 6 }}>ALTERNATIVAS NATURAIS</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            {q.accepted_answers.map((a, i) => <div key={i} style={{ fontSize: 14, color: inkVar }}>· {a}</div>)}
-          </div>
-        </div>
-      )}
-
-      {result.verdict !== 'correct' && (
-        <ErrorList result={result} q={q} tone={tone} inkVar={inkVar} />
-      )}
-
+      {q.type === 'speak_sentence' && <div style={{ fontSize: 13, color: inkVar }}>🎙️ Pronúncia reconhecida: <strong>{Math.round((result.similarity_score || 0) * 100)}%</strong> das palavras</div>}
+      {secondary.length > 0 && <details><summary style={{ cursor:'pointer', fontWeight:800, color:inkVar }}>Outros pontos para observar</summary>{secondary.map((s,i)=><p key={i} style={{fontSize:14,color:inkVar,lineHeight:1.45}}><strong>{s.title}:</strong> {s.explanation_pt}</p>)}</details>}
+      <TechnicalDiagnostics result={result} />
       <ConfidenceRow inkVar={inkVar} onRate={onRate} />
-
       <div style={{ display: 'flex', gap: 8, marginTop: 6 }}>
-        {result.verdict !== 'correct' && (
-          <button className="btn btn-secondary" style={{ flex: 1 }} onClick={onRetry}>Tentar de novo</button>
-        )}
-        <button className="btn btn-primary" style={{ flex: 1, background: baseColor, boxShadow: `0 2px 0 ${shadow}` }} onClick={onNext}>
-          Próxima <I.chevR s={18} />
-        </button>
+        {result.verdict !== 'correct' && <button className="btn btn-secondary" style={{ flex: 1 }} onClick={onRetry}>Tentar de novo</button>}
+        <button className="btn btn-primary" style={{ flex: 1, background: baseColor, boxShadow: `0 2px 0 ${shadow}` }} onClick={onNext}>Próxima <I.chevR s={18} /></button>
       </div>
     </div>
   )

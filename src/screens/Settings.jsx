@@ -5,6 +5,7 @@ import { I } from '../components/icons.jsx'
 import { getErrorLog, clearErrorLog, formatErrorLog } from '../lib/error-log.js'
 import { ACCENTS, listVoices, onVoicesChanged, speak, speechSupported } from '../lib/audio/tts.js'
 import { PIPER_VOICES, piperSupported, storedVoices, downloadVoice, removeVoice } from '../lib/audio/tts-piper.js'
+import { PORTUGUESE_VOICES, speakSegment } from '../lib/speech-router.js'
 
 export default function Settings() {
   const { settings, updateSetting, setTab, showToast, db, refreshLibrary } = useApp()
@@ -259,7 +260,7 @@ function AudioSection({ Row, SectionHead, Segmented, settings, updateSetting }) 
   if (!speechSupported) {
     return (
       <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
-        <SectionHead>áudio</SectionHead>
+        <SectionHead>Voz e áudio</SectionHead>
         <Row last>
           <div className="muted" style={{ fontSize: 13 }}>Este navegador não tem síntese de voz. No Android, use o Chrome.</div>
         </Row>
@@ -272,7 +273,7 @@ function AudioSection({ Row, SectionHead, Segmented, settings, updateSetting }) 
 
   return (
     <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
-      <SectionHead>áudio</SectionHead>
+      <SectionHead>Voz e áudio</SectionHead>
 
       <Row>
         <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Sotaque do inglês</div>
@@ -299,7 +300,7 @@ function AudioSection({ Row, SectionHead, Segmented, settings, updateSetting }) 
       </Row>
 
       <Row>
-        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Voz</div>
+        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Voz dos exercícios em inglês</div>
         <select className="input" style={{ fontSize: 14, padding: '10px 12px' }}
           value={settings.tts_voice || ''}
           onChange={(e) => updateSetting('tts_voice', e.target.value)}
@@ -315,22 +316,36 @@ function AudioSection({ Row, SectionHead, Segmented, settings, updateSetting }) 
 
       <Row>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-          <div style={{ fontWeight: 700, fontSize: 15 }}>Velocidade da fala</div>
+          <div style={{ fontWeight: 700, fontSize: 15 }}>Velocidade do inglês</div>
           <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--indigo-700)', fontVariantNumeric: 'tabular-nums' }}>{Number(settings.tts_rate).toFixed(2)}×</div>
         </div>
         <input type="range" min="0.5" max="1.2" step="0.05" value={settings.tts_rate}
-          onChange={(e) => updateSetting('tts_rate', +e.target.value)} aria-label="Velocidade da fala" />
+          onChange={(e) => { updateSetting('tts_rate', +e.target.value); updateSetting('english_voice_rate', +e.target.value) }} aria-label="Velocidade do inglês" />
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--ink-3)', marginTop: 6 }}>
           <span>0.5× devagar</span><span>1.2× rápido</span>
         </div>
       </Row>
 
       <Row>
-        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Falar resposta ao corrigir</div>
-        <Segmented value={settings.tts_autoplay ? 'on' : 'off'}
-          onChange={(k) => updateSetting('tts_autoplay', k === 'on')}
+        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Ler a resposta correta depois da explicação</div>
+        <Segmented value={settings.auto_read_correct_answer !== false ? 'on' : 'off'}
+          onChange={(k) => { updateSetting('auto_read_correct_answer', k === 'on'); updateSetting('tts_autoplay', k === 'on') }}
           options={[{ k: 'on', l: 'Sim' }, { k: 'off', l: 'Não' }]} />
-        <div className="muted" style={{ fontSize: 12, marginTop: 8 }}>Ao abrir o resultado, a frase correta é falada em voz alta.</div>
+        <div className="muted" style={{ fontSize: 12, marginTop: 8 }}>Quando a leitura automática estiver ativa, a forma correta em inglês é falada após a explicação.</div>
+      </Row>
+
+      <Row>
+        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Ler explicações automaticamente</div>
+        <Segmented value={settings.auto_read_explanations ? 'on' : 'off'}
+          onChange={(k) => updateSetting('auto_read_explanations', k === 'on')}
+          options={[{ k: 'on', l: 'Sim' }, { k: 'off', l: 'Não' }]} />
+        <div className="muted" style={{ fontSize: 12, marginTop: 8 }}>Usa uma voz offline em português quando estiver disponível.</div>
+      </Row>
+
+      <Row>
+        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Velocidade das explicações</div>
+        <input type="range" min="0.5" max="1.2" step="0.05" value={settings.portuguese_voice_rate || 1}
+          onChange={(e) => updateSetting('portuguese_voice_rate', +e.target.value)} aria-label="Velocidade das explicações" />
       </Row>
 
       {piperSupported && (
@@ -350,7 +365,7 @@ function AudioSection({ Row, SectionHead, Segmented, settings, updateSetting }) 
       )}
 
       <Row last>
-        <button className="btn btn-secondary" style={{ width: '100%' }} onClick={() => speak(TEST_SENTENCE)}>
+        <button className="btn btn-secondary" style={{ width: '100%' }} onClick={() => speakSegment({ text: TEST_SENTENCE, language: 'en', role: 'ui_preview', settings })}>
           <I.speaker s={18} /> Testar voz
         </button>
       </Row>
@@ -373,7 +388,7 @@ function PiperVoicesRow({ settings, updateSetting }) {
     try {
       await downloadVoice(v.id, (pct) => setProgress((p) => ({ ...p, [v.id]: pct })))
       showToast(`${v.label} pronta para uso offline`)
-      updateSetting('piper_voice', v.id)
+      updateSetting('piper_voice', v.id); if (v.accent?.startsWith('en')) updateSetting('english_voice_id', v.id); if (v.accent?.startsWith('pt')) updateSetting('portuguese_explanation_voice_id', v.id)
     } catch {
       showToast('Falha no download — verifique a internet')
     } finally {
@@ -397,11 +412,11 @@ function PiperVoicesRow({ settings, updateSetting }) {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         {PIPER_VOICES.map((v) => {
           const isStored = stored.includes(v.id)
-          const isActive = settings.piper_voice === v.id
+          const isActive = (v.accent?.startsWith('pt') ? settings.portuguese_explanation_voice_id : (settings.english_voice_id || settings.piper_voice)) === v.id
           const pct = progress[v.id]
           return (
             <div key={v.id} style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--bg-alt)', borderRadius: 12, padding: '10px 12px' }}>
-              <button onClick={() => isStored && updateSetting('piper_voice', v.id)}
+              <button onClick={() => { if (!isStored) return; updateSetting('piper_voice', v.id); if (v.accent?.startsWith('en')) updateSetting('english_voice_id', v.id); if (v.accent?.startsWith('pt')) updateSetting('portuguese_explanation_voice_id', v.id) }}
                 aria-label={`Usar voz ${v.label}`} disabled={!isStored}
                 style={{
                   width: 20, height: 20, borderRadius: '50%', flexShrink: 0, cursor: isStored ? 'pointer' : 'default',

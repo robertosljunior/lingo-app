@@ -84,6 +84,14 @@ export default function Home() {
           <p className="muted-2" style={{ margin: '6px 0 0', fontSize: 14 }}>Pronto pra travar menos hoje?</p>
         </div>
 
+
+        <div className="card tap" onClick={() => navigate(SCREENS.TRAINING)} style={{ padding: 18, borderRadius: 22, background: 'linear-gradient(135deg,#EEF2FF,#FFFFFF)', borderColor: 'transparent' }} data-testid="open-training-hub">
+          <div className="label-eyebrow">novo</div>
+          <div style={{ fontWeight: 900, fontSize: 20, marginTop: 4 }}>Escolha o que treinar</div>
+          <p className="muted" style={{ fontSize: 13, margin: '6px 0 12px' }}>Temas, níveis A1–B2 e habilidades com progresso real.</p>
+          <button className="btn btn-primary">Abrir hub de treinamento <I.chevR s={16} /></button>
+        </div>
+
         {/* Continue / start latest lesson */}
         {latest ? (
           <div className="card tap" onClick={() => startLesson(latest)} style={{

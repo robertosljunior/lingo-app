@@ -24,6 +24,8 @@ const state = {
   voiceURI: '', // '' = auto-pick best for accent
   rate: 0.95,
   piperVoice: '',
+  overrideVoiceId: '',
+  overrideLang: '',
   piper: null, // lazy handle to the piper engine module
 }
 
@@ -73,8 +75,9 @@ export function onVoicesChanged(cb) {
 
 function pickVoice() {
   const voices = listVoices()
-  if (state.voiceURI) {
-    const chosen = voices.find((v) => v.voiceURI === state.voiceURI)
+  const wanted = state.overrideVoiceId || state.voiceURI
+  if (wanted) {
+    const chosen = voices.find((v) => v.voiceURI === wanted)
     if (chosen) return chosen
   }
   const forAccent = listVoices(state.accent)
@@ -91,11 +94,16 @@ export async function speak(text, opts = {}) {
   const t = String(text || '').trim()
   if (!t) return false
 
-  if (state.engine === 'piper') {
+  const prevOverride = { voice: state.overrideVoiceId, lang: state.overrideLang }
+  state.overrideVoiceId = opts.voiceId || ''
+  state.overrideLang = opts.language || ''
+  if (state.engine === 'piper' || opts.voiceId) {
     const ok = await speakPiper(t, opts)
-    if (ok) return true // otherwise fall through to the system engine
+    if (ok) { state.overrideVoiceId = prevOverride.voice; state.overrideLang = prevOverride.lang; return true } // otherwise fall through to the system engine
   }
-  return speakSystem(t, opts)
+  const ok = speakSystem(t, opts)
+  state.overrideVoiceId = prevOverride.voice; state.overrideLang = prevOverride.lang
+  return ok
 }
 
 function speakSystem(text, opts = {}) {
@@ -108,7 +116,7 @@ function speakSystem(text, opts = {}) {
       u.voice = voice
       u.lang = voice.lang
     } else {
-      u.lang = state.accent
+      u.lang = state.overrideLang || state.accent
     }
     const base = opts.rate ?? state.rate
     u.rate = opts.slow ? Math.max(0.5, base * 0.6) : base
@@ -125,7 +133,7 @@ async function speakPiper(text, opts) {
       state.piper = await import('./tts-piper.js')
       state.piper.configurePiper?.({ piper_voice: state.piperVoice })
     }
-    return await state.piper.speak(text, { ...opts, rate: opts.rate ?? state.rate, accent: state.accent })
+    return await state.piper.speak(text, { ...opts, rate: opts.rate ?? state.rate, accent: state.accent, voiceId: opts.voiceId || state.piperVoice, language: opts.language || state.accent })
   } catch {
     return false
   }

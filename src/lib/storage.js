@@ -502,6 +502,12 @@ const SETTINGS_DEFAULTS = {
   // audio
   tts_engine: 'system', // system | piper
   piper_voice: 'en_US-hfc_female-medium',
+  english_voice_id: 'en_US-hfc_female-medium',
+  portuguese_explanation_voice_id: 'pt_BR-fabiola-medium',
+  auto_read_explanations: false,
+  auto_read_correct_answer: true,
+  english_voice_rate: 1,
+  portuguese_voice_rate: 1,
   tts_accent: 'en-US',
   tts_voice: '', // '' = auto-pick best voice for the accent
   tts_rate: 0.95,
@@ -512,7 +518,10 @@ export async function getSettings() {
   const d = await db()
   const rows = await d.getAll('settings')
   const map = Object.fromEntries(rows.map((r) => [r.key, r.value]))
-  return { ...SETTINGS_DEFAULTS, ...map }
+  const merged = { ...SETTINGS_DEFAULTS, ...map }
+  if (!map.english_voice_id && map.piper_voice) merged.english_voice_id = map.piper_voice
+  if (!map.english_voice_rate && map.tts_rate) merged.english_voice_rate = map.tts_rate
+  return merged
 }
 
 export async function setSetting(key, value) {
@@ -597,3 +606,39 @@ export async function disableContentPack(packId){ const d=await db(); const p=aw
 export async function restoreBuiltinContentPack(packId){ const pack=getBuiltinContentPack(packId); if(!pack) return null; const d=await db(); await d.delete('content_packs',packId); return seedBuiltinContentPacks() }
 export function buildImportedLessonId(lesson, policy='yaml_import_v1') { return `import_${String(lesson.level||'b1').toLowerCase()}_${stableHash({source_lesson_id:lesson.lesson_id,raw_content:lesson.raw_content||'',questions:(lesson.questions||[]).map(q=>({t:q.type,p:q.prompt,a:q.expected_answer})),schema:'1',policy}).slice(0,10)}` }
 export async function importLessonCopy(lesson){ const source_lesson_id=lesson.lesson_id; const lesson_id=buildImportedLessonId(lesson); const existing=await getLesson(lesson_id,null); if(existing) return existing; return saveLesson({...lesson,lesson_id,source_lesson_id,imported:true,owner_profile_id:null,generated:false,questions:lesson.questions.map(q=>({...q,owner_profile_id:null})),generation_metadata:null}) }
+
+// ---------- Slice 6 training hub preferences/progress ----------
+export async function getTrainingPreferences(profile_id = DEFAULT_PROFILE) {
+  return (await db().then(d => d.get('settings', `training_preferences:${profile_id}`)))?.value || { preferred_theme: null, preferred_level: null, last_training_mode: null }
+}
+export async function setTrainingPreferences(profile_id = DEFAULT_PROFILE, patch = {}) {
+  const current = await getTrainingPreferences(profile_id)
+  const next = { ...current, ...patch }
+  await setSetting(`training_preferences:${profile_id}`, next)
+  return next
+}
+export async function getTrainingHubSummary(profile_id = DEFAULT_PROFILE) {
+  await seedBuiltinContentPacks().catch(() => {})
+  const [packs, answers, skillProfiles, prefs] = await Promise.all([listContentPacks(), getAllAnswers(profile_id), getSkillProfiles(profile_id), getTrainingPreferences(profile_id)])
+  const themes = packs.filter(p => p.theme !== 'core').reduce((m, p) => {
+    const row = m.get(p.theme) || { theme: p.theme, title: p.title, description: p.description, levels: [], packs: [], question_count: 0, last_activity: null, enabled_levels: [] }
+    row.packs.push(p); if (!row.levels.includes(p.level)) row.levels.push(p.level); if (p.enabled && !row.enabled_levels.includes(p.level)) row.enabled_levels.push(p.level)
+    m.set(p.theme, row); return m
+  }, new Map())
+  for (const a of answers) {
+    const meta = a.evaluation?.content || a.question?.metadata || {}
+    const ids = a.evaluation?.content_pack_ids || a.evaluation?.generation_metadata?.content_pack_ids || []
+    for (const t of themes.keys()) if (ids.some(id => id.startsWith(`${t}_`)) || meta.theme === t) { const row = themes.get(t); row.question_count++; row.last_activity = Math.max(row.last_activity || 0, a.answered_at || 0) }
+  }
+  return { profile_id, preferences: prefs, themes: [...themes.values()].map(t => ({ ...t, levels: t.levels.sort(), enabled_levels: t.enabled_levels.sort() })), priority_skills: skillProfiles.slice(0, 6) }
+}
+export async function getThemeLevelProgress(profile_id = DEFAULT_PROFILE, theme, level) {
+  const [packs, answers, templates] = await Promise.all([listContentPacks(), getAllAnswers(profile_id), getTemplatesForPacks([`core_${String(level).toLowerCase()}`, `${theme}_${String(level).toLowerCase()}`])])
+  const relevantPacks = packs.filter(p => (p.theme === theme || p.theme === 'core') && p.level === level)
+  const themePack = relevantPacks.find(p => p.theme === theme)
+  const ids = relevantPacks.filter(p => p.enabled).map(p => p.pack_id)
+  const practiced = answers.filter(a => (a.evaluation?.content_pack_ids || a.evaluation?.generation_metadata?.content_pack_ids || []).some(id => ids.includes(id)))
+  const last = practiced.reduce((m, a) => Math.max(m, a.answered_at || 0), 0)
+  const skills = [...new Set(templates.map(t => t.primary_skill_id).filter(Boolean))].slice(0, 5)
+  return { profile_id, theme, level, available: !!themePack?.enabled, disabled_reason: themePack && !themePack.enabled ? 'Pacote deste tema desabilitado nas configurações.' : null, pack_count: relevantPacks.length, template_count: templates.length, question_count: practiced.length, last_activity: last || null, evidence: practiced.length ? 'answers' : 'insufficient', status: practiced.length ? 'Em andamento' : 'Ainda sem dados suficientes', skills }
+}
