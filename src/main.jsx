@@ -20,6 +20,10 @@ import { installGlobalErrorLogging } from './lib/error-log.js'
 // before anything else can fail.
 installGlobalErrorLogging()
 
+if (typeof window !== 'undefined' && sessionStorage.getItem('e2e:enabled') === '1') {
+  window.__LINGO_E2E__ = window.__LINGO_E2E__ || { ttsEvents: [] }
+}
+
 // Register the PWA service worker (offline caching).
 import { registerSW } from 'virtual:pwa-register'
 registerSW({ immediate: true })

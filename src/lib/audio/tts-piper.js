@@ -26,7 +26,8 @@ export const piperSupported = typeof window !== 'undefined'
   && typeof Worker !== 'undefined'
   && !!navigator.storage?.getDirectory // OPFS, where models are kept
 
-const AUDIO_CACHE = 'piper-audio-v1'
+const AUDIO_CACHE = 'piper-audio-v2'
+const MODEL_VERSION = '1'
 
 let lib = null // the piper-tts-web module, loaded on demand
 let currentAudio = null
@@ -78,7 +79,8 @@ function hash(s) {
   return h.toString(36)
 }
 
-const cacheUrl = (voice, text, rate = 1, language = '') => `https://piper-audio.cache/${voice}/${language || 'auto'}/${rate}/${hash(text)}`
+const normalizeText = (text) => String(text || '').trim().replace(/\s+/g, ' ').toLowerCase()
+const cacheUrl = (voice, text, rate = 1, language = '') => `https://piper-audio.cache/${voice}/${MODEL_VERSION}/${language || 'auto'}/${rate}/${hash(normalizeText(text))}`
 
 async function synthesize(text, voiceId, { rate = 1, language = '' } = {}) {
   try {
@@ -100,13 +102,33 @@ async function synthesize(text, voiceId, { rate = 1, language = '' } = {}) {
 }
 
 // Called by tts.js. Returns false so the caller falls back to the system voice.
-export async function speak(text, { slow = false, rate = 0.95, accent = 'en-US', voiceId: requestedVoiceId = null, language = '' } = {}) {
+function recordTtsEvent(event) {
+  if (typeof window === 'undefined' || !window.__LINGO_E2E__?.ttsEvents) return
+  window.__LINGO_E2E__.ttsEvents.push({
+    requested_voice_id: event.requested_voice_id || '',
+    effective_voice_id: event.effective_voice_id || '',
+    language: event.language || '',
+    role: event.role || 'exercise_en',
+    engine: 'piper',
+    rate: event.rate ?? 1,
+    fallback_used: !!event.fallback_used,
+    fallback_reason: event.fallback_reason || '',
+    model_state: event.model_state || '',
+    timestamp: Date.now(),
+  })
+}
+
+export async function speak(text, { slow = false, rate = 0.95, accent = 'en-US', voiceId: requestedVoiceId = null, requestedVoiceId: explicitRequested = null, language = '', role = 'exercise_en' } = {}) {
   if (!piperSupported) return false
+  const requested = explicitRequested || requestedVoiceId || activeVoice
   const voiceId = requestedVoiceId || activeVoice
     || PIPER_VOICES.find((v) => v.accent === accent)?.id
     || PIPER_VOICES[0].id
   const blob = await synthesize(text, voiceId, { rate, language: language || accent })
-  if (!blob) return false
+  if (!blob) {
+    recordTtsEvent({ requested_voice_id: requested || voiceId, effective_voice_id: '', language: language || accent, role, rate, fallback_used: true, fallback_reason: 'MODEL_NOT_INSTALLED', model_state: 'not_installed' })
+    return false
+  }
   stop()
   const audio = new Audio(URL.createObjectURL(blob))
   currentAudio = audio
@@ -114,6 +136,7 @@ export async function speak(text, { slow = false, rate = 0.95, accent = 'en-US',
   audio.onended = () => URL.revokeObjectURL(audio.src)
   try {
     await audio.play()
+    recordTtsEvent({ requested_voice_id: requested || voiceId, effective_voice_id: voiceId, language: language || accent, role, rate: audio.playbackRate, fallback_used: false, fallback_reason: '', model_state: 'ready' })
     return true
   } catch {
     URL.revokeObjectURL(audio.src)

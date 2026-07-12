@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useApp } from '../store.jsx'
 import { Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
@@ -8,9 +8,10 @@ import { speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
 import { SpeakButton, SpeakableText } from '../components/speak-button.jsx'
 import { MicButton } from '../components/mic-button.jsx'
-import { AnswerDiff, TypoNote } from '../components/answer-diff.jsx'
+import { MarkedText, TypoNote } from '../components/answer-diff.jsx'
 import { buildFeedbackPresentation } from '../lib/feedback-presentation.js'
 import { speakFeedbackSequence, speakSegment } from '../lib/speech-router.js'
+import { stopSpeaking } from '../lib/audio/tts.js'
 
 export default function Exercise() {
   const { activeLesson, session, submitAnswer, rateAnswer, nextQuestion, back, settings } = useApp()
@@ -93,10 +94,10 @@ export default function Exercise() {
   }
 
   const handleNext = () => {
-    setUser(''); setPlaced([]); setChoice(null); setShowHint(false); setFeedback(null)
+    stopSpeaking(); setUser(''); setPlaced([]); setChoice(null); setShowHint(false); setFeedback(null)
     nextQuestion()
   }
-  const handleRetry = () => { setFeedback(null); setShowHint(false) }
+  const handleRetry = () => { stopSpeaking(); setFeedback(null); setShowHint(false) }
 
   return (
     <div className="phone">
@@ -456,6 +457,7 @@ function TechnicalDiagnostics({ result }) {
 
 function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
   const { settings } = useApp()
+  const scrollRef = useRef(null)
   const target = result.target || q.expected_answer
   const presentation = useMemo(() => buildFeedbackPresentation({
     evaluation: result,
@@ -466,62 +468,68 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
     skillTarget: q.skill_target || q.lesson_focus || q.mistake_focus,
   }), [result, q, target])
 
-  useEffect(() => { speakFeedbackSequence(presentation, settings) }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    const id = requestAnimationFrame(() => scrollRef.current?.scrollTo({ top: 0, behavior: 'instant' }))
+    return () => cancelAnimationFrame(id)
+  }, [result.answerKey, q.id])
+  useEffect(() => { speakFeedbackSequence(presentation, settings); return () => stopSpeaking() }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const tone = presentation.tone === 'correct' ? 'success' : presentation.tone === 'almost' ? 'warn' : 'error'
   const header = presentation.tone === 'correct' ? 'Muito bem' : presentation.tone === 'almost' ? 'Quase lá' : 'Vamos ajustar uma coisa'
-  const inkVar = tone === 'success' ? 'var(--success-ink)' : tone === 'warn' ? 'var(--warn-ink)' : 'var(--error-ink)'
-  const baseColor = tone === 'success' ? 'var(--success)' : tone === 'warn' ? 'var(--warn)' : 'var(--error)'
-  const shadow = tone === 'success' ? '#14532D' : tone === 'warn' ? '#78350F' : '#7F1D1D'
   const secondary = presentation.secondary_suggestions || []
+  const missing = result.missing_words || []
+  const extra = result.extra_words || []
+  const typos = result.typos || []
+  const typoGot = typos.map((t) => t.got)
+  const typoExpected = typos.map((t) => t.expected)
 
   return (
-    <div className={`sheet sheet-${tone} sheet-anim`} data-testid="feedback-sheet" data-verdict={result.verdict} aria-live="polite">
-      <div className="handle" style={{ background: 'rgba(0,0,0,.15)' }} />
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <div style={{ width: 40, height: 40, borderRadius: '50%', background: baseColor, color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900 }} aria-hidden="true">
-          {result.verdict === 'correct' ? <I.check s={22} /> : result.verdict === 'partial' ? '~' : <I.x s={18} />}
-        </div>
-        <div>
-          <div className="sheet-title" style={{ fontSize: 22 }}>{header}</div>
-          {presentation.primary_skill_label && <div style={{ fontSize: 12, fontWeight: 800, color: inkVar, opacity: .75 }}>{presentation.primary_skill_label}</div>}
-        </div>
-      </div>
+    <div className={`sheet feedback-sheet sheet-anim`} data-testid="feedback-sheet" data-verdict={result.verdict} aria-live="polite">
+      <div className="feedback-scroll" ref={scrollRef} data-testid="feedback-scroll">
+        <div className="feedback-content">
+          <div className="feedback-status" data-testid="feedback-title">
+            <div className={`feedback-status-icon ${tone}`} aria-hidden="true">
+              {result.verdict === 'correct' ? <I.check s={22} /> : result.verdict === 'partial' ? '~' : <I.x s={18} />}
+            </div>
+            <div>
+              <h2 className="feedback-title">{header}</h2>
+              {presentation.primary_skill_label && <div className="feedback-skill">{presentation.primary_skill_label}</div>}
+            </div>
+          </div>
 
-      <section className="card" style={{ padding: 14, background: 'rgba(255,255,255,.68)', borderColor: 'transparent' }} aria-label="Explicação">
-        <h3 style={{ margin: 0, fontSize: 18, lineHeight: 1.25, color: inkVar }}>{presentation.title}</h3>
-        <p style={{ margin: '8px 0 0', fontSize: 15, lineHeight: 1.5, color: inkVar }}>{presentation.explanation_pt}</p>
-        <p style={{ margin: '8px 0 0', fontSize: 14, lineHeight: 1.45, color: inkVar, opacity: .86 }}>{presentation.learner_tip_pt}</p>
-        <button className="btn btn-sm btn-secondary" style={{ marginTop: 10 }} aria-label="Ouvir explicação" onClick={() => speakSegment({ text: presentation.speech_segments[0].text, language: 'pt-BR', role: 'explanation_pt', settings })}><I.speaker s={14} /> Ouvir explicação</button>
-      </section>
+          <section className="feedback-card feedback-explanation" aria-label="Explicação" data-testid="feedback-explanation-card">
+            <h3>{presentation.title}</h3>
+            <p>{presentation.explanation_pt}</p>
+            {presentation.learner_tip_pt && <p>{presentation.learner_tip_pt}</p>}
+            <button className="btn btn-sm btn-secondary" style={{ marginTop: 10 }} aria-label="Ouvir explicação" onClick={() => speakSegment({ text: presentation.speech_segments[0].text, language: 'pt-BR', role: 'explanation_pt', settings })}><I.speaker s={14} /> Ouvir explicação</button>
+          </section>
 
-      {result.verdict !== 'correct' && (
-        <div className="card" style={{ padding: 12, background: 'rgba(255,255,255,.55)', borderColor: 'transparent' }}>
-          <AnswerDiff user={presentation.comparison.user_text} target={presentation.comparison.expected_text} missing={result.missing_words} extra={result.extra_words} typos={result.typos} alignment={result.alignment} inkVar={inkVar} />
-        </div>
-      )}
-      {result.verdict === 'correct' && <TypoNote typos={result.typos} inkVar={inkVar} />}
+          {result.verdict === 'correct' && <TypoNote typos={result.typos} inkVar="var(--feedback-text-secondary)" />}
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 10 }}>
-        <div className="card" style={{ padding: 12, background: 'rgba(255,255,255,.5)' }}>
-          <div className="label-eyebrow">{presentation.comparison.user_label}</div>
-          <div style={{ fontSize: 15, lineHeight: 1.4, color: inkVar, marginTop: 4 }}>{presentation.comparison.user_text || '—'}</div>
-          {presentation.comparison.user_text && <button className="btn btn-sm btn-ghost" aria-label="Ouvir sua resposta" onClick={() => speakSegment({ text: presentation.comparison.user_text, language: 'en', role: 'user_answer_en', settings })}><I.speaker s={14} /> Ouvir</button>}
-        </div>
-        <div className="card" style={{ padding: 14, background: 'white', borderColor: baseColor, boxShadow: 'var(--shadow-sm)' }}>
-          <div className="label-eyebrow">{presentation.comparison.expected_label}</div>
-          <div style={{ fontSize: 18, fontWeight: 800, lineHeight: 1.35, color: 'var(--ink)', marginTop: 4 }}>{presentation.comparison.expected_text}</div>
-          <button className="btn btn-sm btn-secondary" aria-label="Ouvir forma correta" onClick={() => speakSegment({ text: presentation.comparison.expected_text, language: 'en', role: 'correct_answer_en', settings })}><I.speaker s={14} /> Ouvir forma correta</button>
-        </div>
-      </div>
+          <section className="feedback-comparison" aria-label="Comparação da resposta" data-testid="feedback-comparison">
+            <div className="feedback-answer">
+              <div className="feedback-answer-label">{presentation.comparison.user_label}</div>
+              <div className="feedback-answer-text"><MarkedText text={presentation.comparison.user_text} marked={extra} typos={typoGot} variant="extra" speakable={false} /></div>
+              {presentation.comparison.user_text && <button className="btn btn-sm btn-ghost" aria-label="Ouvir sua resposta" onClick={() => speakSegment({ text: presentation.comparison.user_text, language: 'en', role: 'user_answer_en', settings })}><I.speaker s={14} /> Ouvir</button>}
+            </div>
+            <div className="feedback-answer correct">
+              <div className="feedback-answer-label">{presentation.comparison.expected_label}</div>
+              <div className="feedback-answer-text"><MarkedText text={presentation.comparison.expected_text} marked={missing} typos={typoExpected} variant="missing" speakable={false} /></div>
+              <button className="btn btn-sm btn-secondary" aria-label="Ouvir forma correta" onClick={() => speakSegment({ text: presentation.comparison.expected_text, language: 'en', role: 'correct_answer_en', settings })}><I.speaker s={14} /> Ouvir forma correta</button>
+            </div>
+          </section>
 
-      {q.type === 'speak_sentence' && <div style={{ fontSize: 13, color: inkVar }}>🎙️ Pronúncia reconhecida: <strong>{Math.round((result.similarity_score || 0) * 100)}%</strong> das palavras</div>}
-      {secondary.length > 0 && <details><summary style={{ cursor:'pointer', fontWeight:800, color:inkVar }}>Outros pontos para observar</summary>{secondary.map((s,i)=><p key={i} style={{fontSize:14,color:inkVar,lineHeight:1.45}}><strong>{s.title}:</strong> {s.explanation_pt}</p>)}</details>}
-      <TechnicalDiagnostics result={result} />
-      <ConfidenceRow inkVar={inkVar} onRate={onRate} />
-      <div style={{ display: 'flex', gap: 8, marginTop: 6 }}>
-        {result.verdict !== 'correct' && <button className="btn btn-secondary" style={{ flex: 1 }} onClick={onRetry}>Tentar de novo</button>}
-        <button className="btn btn-primary" style={{ flex: 1, background: baseColor, boxShadow: `0 2px 0 ${shadow}` }} onClick={onNext}>Próxima <I.chevR s={18} /></button>
+          {q.type === 'speak_sentence' && <div style={{ fontSize: 13, color: 'var(--feedback-text-secondary)' }}>🎙️ Pronúncia reconhecida: <strong>{Math.round((result.similarity_score || 0) * 100)}%</strong> das palavras</div>}
+          {secondary.length > 0 && <section className="feedback-card feedback-secondary" style={{ padding: 14 }}><details><summary>Outros pontos para observar ({secondary.length})</summary>{secondary.map((s,i)=><p key={i} style={{fontSize:14,color:'var(--feedback-text-secondary)',lineHeight:1.45}}><strong>{s.title}:</strong> {s.explanation_pt}</p>)}</details></section>}
+          <TechnicalDiagnostics result={result} />
+          <div className="feedback-footer" data-testid="feedback-footer">
+            <ConfidenceRow onRate={onRate} />
+            <div className="feedback-actions">
+              {result.verdict !== 'correct' && <button className="btn feedback-secondary-action" onClick={onRetry}>Tentar de novo</button>}
+              <button className="btn btn-primary feedback-primary-action" onClick={onNext}>Próxima <I.chevR s={18} /></button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -529,7 +537,7 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
 
 // Self-rated difficulty — persisted with the answer (future input for spaced
 // repetition scheduling).
-function ConfidenceRow({ inkVar, onRate }) {
+function ConfidenceRow({ onRate }) {
   const [sel, setSel] = useState(null)
   const opts = [
     { value: 'hard', label: '😅 Difícil' },
@@ -537,12 +545,12 @@ function ConfidenceRow({ inkVar, onRate }) {
     { value: 'easy', label: '😎 Fácil' },
   ]
   return (
-    <div style={{ display: 'flex', gap: 8, marginTop: 4, alignItems: 'center', flexWrap: 'wrap' }}>
-      <div style={{ fontSize: 12, color: inkVar, opacity: .7, fontWeight: 700, marginRight: 4 }}>FOI:</div>
+    <div className="feedback-difficulty">
+      <div className="feedback-difficulty-label">FOI:</div>
       {opts.map((o) => (
         <button key={o.value} className="btn btn-sm btn-secondary"
           onClick={() => { setSel(o.value); onRate?.(o.value) }}
-          style={{ minHeight: 36, padding: '6px 12px', ...(sel === o.value ? { borderColor: inkVar, color: inkVar, background: 'rgba(255,255,255,.6)' } : {}) }}>
+          style={{ minHeight: 36, padding: '6px 12px', ...(sel === o.value ? { borderColor: 'var(--feedback-primary-action)', color: 'var(--feedback-primary-action)', background: 'var(--indigo-50)' } : {}) }}>
           {o.label}
         </button>
       ))}

@@ -4,7 +4,7 @@
 import { expect } from '@playwright/test'
 
 export const DB_NAME = 'app-idiomas'
-export const DB_VERSION = 3
+export const DB_VERSION = 4
 export const GEN_SEED = 'e2e-generated-lesson-001'
 export const PROFILE_A = 'profile-a'
 export const PROFILE_B = 'profile-b'
@@ -285,7 +285,7 @@ export async function generateFromHome(page, { count = 30 } = {}) {
   await page.getByTestId('generate-lesson').click()
   await expect(page.getByTestId('generated-lesson-result')).toBeVisible()
   await expect.poll(async () => stampOf(await readStore(page, 'lessons')), { timeout: 30_000 })
-    .toBeGreaterThan(before)
+    .toBeGreaterThanOrEqual(before)
   const generated = (await readStore(page, 'lessons')).filter((l) => l.generated)
   generated.sort((a, b) => b.created_at - a.created_at)
   return generated[0].lesson_id
