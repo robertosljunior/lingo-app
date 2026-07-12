@@ -58,22 +58,44 @@ function builtinDeterministicRules(structure) {
   return errors
 }
 
-function mapGrammarIssue(issue, kb) {
-  // Try to map to a pedagogical explanation; otherwise keep technical issue with
-  // a conservative generic explanation (never invent a specific rule).
+function mapGrammarIssue(issue) {
+  // Harper "Agreement" issues (subject-verb, pronoun agreement) are genuine
+  // grammar errors and carry a span + replacement, so they can drive a corrected
+  // version. Other categories stay conservative.
+  const isAgreement = /agreement/i.test(issue.source_rule || '') || issue.category === 'grammar'
+  const hasFix = Array.isArray(issue.suggestions) && issue.suggestions.length > 0
+  const severity = isAgreement && hasFix ? 'high' : (issue.category === 'spelling' ? 'medium' : 'low')
   return {
     error_id: issue.issue_id,
-    category: issue.category,
+    category: isAgreement ? 'verb_form' : issue.category,
     subtype: issue.source_rule,
-    severity: issue.category === 'spelling' || issue.category === 'grammar' ? 'medium' : 'low',
+    severity,
     confidence: issue.confidence,
     original: issue.original,
     span: issue.span,
     suggestions: issue.suggestions,
+    grammar_fix: hasFix ? { span: issue.span, replacement: issue.suggestions[0] } : null,
     message: issue.message,
-    explanation_pt: { title: 'Revisão de escrita', summary: genericGrammarExplanation(issue) },
+    explanation_pt: isAgreement && hasFix
+      ? { title: 'Concordância', summary: pedagogicalAgreementSummary(issue) }
+      : { title: 'Revisão de escrita', summary: genericGrammarExplanation(issue) },
     source: 'grammar',
   }
+}
+
+function pedagogicalAgreementSummary(issue) {
+  const s = (issue.suggestions?.[0] || '').toLowerCase()
+  const o = (issue.original || '').toLowerCase()
+  if (/^(he|she|it)$/.test(o) || /s$/.test(s)) return `O verbo deve concordar com o sujeito. Use "${issue.suggestions[0]}".`
+  return `A forma do verbo deve concordar com o sujeito. Sugestão: "${issue.suggestions?.[0]}".`
+}
+
+function applyGrammarFix(text, fix) {
+  if (!fix || !fix.span) return null
+  const { start, end } = fix.span
+  if (typeof start !== 'number' || typeof end !== 'number' || start < 0 || end > text.length || start > end) return null
+  const out = text.slice(0, start) + fix.replacement + text.slice(end)
+  return out !== text ? out : null
 }
 
 function genericGrammarExplanation(issue) {
@@ -160,8 +182,18 @@ export async function analyzeUserProduction(params) {
     }
   }
 
-  // 4. Map grammar issues (skip ones already covered by a deterministic rule).
-  for (const issue of grammarIssues) detected_errors.push(mapGrammarIssue(issue, kb))
+  // 4. Map grammar issues, skipping any whose span overlaps an error a
+  //    deterministic rule already produced (avoid double-reporting "He go").
+  const coveredSpans = detected_errors
+    .map((e) => e.evidence?.verb)
+    .filter(Boolean)
+  for (const issue of grammarIssues) {
+    const mapped = mapGrammarIssue(issue)
+    const overlapsBuiltin = mapped.original && coveredSpans.some((v) => v && v.toLowerCase() === mapped.original.toLowerCase())
+    if (overlapsBuiltin) { evidence.push({ type: 'grammar_deduped', issue: mapped.error_id }); continue }
+    detected_errors.push(mapped)
+    evidence.push({ type: 'grammar_issue', engine: grammar.engine, issue: mapped.error_id })
+  }
 
   // 4b. Pack-driven naturalness hints (low severity, context-dependent — never
   //     an absolute grammar error).
@@ -196,6 +228,8 @@ export async function analyzeUserProduction(params) {
   const primaryError = detected_errors.slice().sort((a, b) => sev(b.severity) - sev(a.severity) || (b.confidence || 0) - (a.confidence || 0))[0] || null
   if (primaryError?.transformation) {
     corrected_version = applyTransformation(primaryError.transformation.operation_id, trimmed, primaryError.transformation.ctx)
+  } else if (primaryError?.grammar_fix) {
+    corrected_version = applyGrammarFix(trimmed, primaryError.grammar_fix)
   }
 
   const natural_alternatives = buildAlternatives({ kb, structure, frame: semantics.topFrame, level, corrected_version, primaryError, text: trimmed })
@@ -209,12 +243,34 @@ export async function analyzeUserProduction(params) {
     natural_alternatives, kb,
   })
 
+  // Engine-effective reporting (requested vs effective, fallback events).
+  const grammar_requested = /harper/.test(grammarChecker.engine || '') ? 'harper' : 'internal'
+  const grammar_effective = grammar.ok ? (/(harper)/.test(grammar.engine || '') ? 'harper' : 'internal') : 'internal'
+  const semReport = typeof semanticEncoder.report === 'function'
+    ? semanticEncoder.report()
+    : { requested_engine: semanticEncoder.kind || 'hashing', effective_engine: semanticEncoder.kind || 'hashing', fallback_used: false, fallback_reason: null }
+  const fallback_events = []
+  if (!grammar.ok) fallback_events.push({ engine: 'grammar', code: grammar.code || 'GRAMMAR_ENGINE_UNAVAILABLE' })
+  if (semReport.fallback_used) fallback_events.push({ engine: 'semantic', code: semReport.fallback_reason || 'SEMANTIC_FALLBACK' })
+
+  const engineReport = {
+    grammar_requested,
+    grammar_effective,
+    structural: structure.engine,
+    semantic_requested: semReport.requested_engine,
+    semantic_effective: semReport.effective_engine,
+  }
+
   return baseResult({
-    grammar, structure, semantics: { top_frame: semantics.topFrame?.frame_id || null, top_score: semantics.topScore, intents: semantics.intents },
+    assessment_mode: assessmentMode,
+    grammar, structure, semantics: { top_frame: semantics.topFrame?.frame_id || null, top_score: semantics.topScore, intents: semantics.intents, engine: semReport.effective_engine },
     detected_errors: fusion.detected_errors, detected_intents, matched_concepts,
     corrected_version: fusion.corrected_version ?? corrected_version,
     natural_alternatives: fusion.natural_alternatives ?? natural_alternatives,
     verdict: fusion.verdict, confidence: fusion.confidence, evidence,
+    engines: engineReport,
+    fallback_events,
+    knowledge_pack_versions: Object.fromEntries((kb.packs || []).map((p) => [p.manifest.pack_id, p.manifest.version])),
   })
 }
 
@@ -253,8 +309,52 @@ function buildAlternatives({ kb, structure, frame, level, corrected_version, pri
       }
     } catch { /* unknown op — impossible for builtin list */ }
   }
-  // De-duplicate against the corrected version.
-  return out.filter((o) => o.text && o.text !== corrected_version).slice(0, 4)
+  // Intent-preservation guard: every alternative must keep the original intent,
+  // essential entities and polarity. USE similarity alone never approves one.
+  return out
+    .filter((o) => o.text && o.text !== corrected_version)
+    .filter((o) => preservesIntent(corrected_version || text, o.text, structure))
+    .slice(0, 4)
+}
+
+// Exported so screens/tests can reuse the exact guard before display.
+export function preservesIntent(original, alternative, structure) {
+  if (!alternative) return false
+  const origToks = new Set(normSurface(original).split(' ').filter(Boolean))
+  const altToks = new Set(normSurface(alternative).split(' ').filter(Boolean))
+  // Polarity must match (both negative or both positive).
+  const origNeg = hasNegation(origToks)
+  const altNeg = hasNegation(altToks)
+  if (origNeg !== altNeg) return false
+  // Essential entities: for requests, the requested item must survive. (Skipped
+  // for statements/agreement fixes where a noun may legitimately become a verb,
+  // e.g. "go to work" → "works".)
+  const isRequestLike = structure?.sentence_type === 'imperative' || structure?.intent_signals?.includes('request') || structure?.intent_signals?.includes('polite_request')
+  if (isRequestLike) {
+    const entities = essentialEntities(original, structure)
+    for (const e of entities) if (!altToks.has(e)) return false
+  }
+  // Reject content that shares only a topic word but flips the frame (e.g.
+  // "Please give me a dessert" → "The dessert is important"): an alternative may
+  // not introduce a copula/description when the source was a request.
+  if ((structure?.sentence_type === 'imperative' || structure?.intent_signals?.includes('request')) &&
+      /\b(is|are|was|were|important|good|bad|nice)\b/i.test(alternative) &&
+      !/\b(could|can|would|like|please|give|have|see)\b/i.test(alternative)) {
+    return false
+  }
+  return true
+}
+
+const STOPWORDS = new Set(['a', 'an', 'the', 'me', 'us', 'i', 'you', 'he', 'she', 'it', 'we', 'they', 'to', 'please', 'could', 'can', 'would', 'give', 'have', 'like', 'my', 'your', 'some', 'of', 'for', 'and'])
+function essentialEntities(text, structure) {
+  const obj = structure?.objects?.map((o) => o.token.toLowerCase()) || []
+  const fromStructure = obj.filter((w) => !STOPWORDS.has(w))
+  if (fromStructure.length) return [...new Set(fromStructure)]
+  // Fallback: content nouns (non-stopword tokens longer than 2 chars).
+  return [...new Set(normSurface(text).split(' ').filter((w) => w.length > 2 && !STOPWORDS.has(w)))].slice(0, 2)
+}
+function hasNegation(tokenSet) {
+  return tokenSet.has('not') || tokenSet.has('never') || tokenSet.has('no') || tokenSet.has("n't") || tokenSet.has('dont') || tokenSet.has('cant')
 }
 
 function fuseVerdict(ctx) {
@@ -323,10 +423,12 @@ function sev(s) { return { critical: 5, high: 4, medium: 3, low: 2 }[s] || 1 }
 function baseResult(overrides) {
   return {
     analysis_version: ANALYSIS_VERSION,
+    assessment_mode: null,
     grammar: {}, structure: {}, semantics: {},
     detected_errors: [], detected_intents: [], matched_concepts: [],
     corrected_version: null, natural_alternatives: [],
     verdict: 'unable_to_assess', confidence: 0, evidence: [],
+    engines: null, fallback_events: [], knowledge_pack_versions: {},
     ...overrides,
   }
 }

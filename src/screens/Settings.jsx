@@ -7,6 +7,7 @@ import { ACCENTS, listVoices, onVoicesChanged, speak, speechSupported } from '..
 import { PIPER_VOICES, piperSupported, storedVoices, downloadVoice, removeVoice } from '../lib/audio/tts-piper.js'
 import { PORTUGUESE_VOICES, speakSegment } from '../lib/speech-router.js'
 import { getInstallEligibility, requestInstall } from '../lib/pwa-install-controller.js'
+import { getKnowledgeOverview, removeInstalledPack } from '../lib/language-analysis/knowledge-catalog-service.js'
 
 export default function Settings() {
   const { settings, updateSetting, setTab, showToast, db, refreshLibrary } = useApp()
@@ -117,6 +118,8 @@ export default function Settings() {
           </Row>
         </div>
 
+        <KnowledgeSection Row={Row} SectionHead={SectionHead} showToast={showToast} />
+
         <AudioSection Row={Row} SectionHead={SectionHead} Segmented={Segmented} settings={settings} updateSetting={updateSetting} />
 
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
@@ -208,6 +211,74 @@ export default function Settings() {
 }
 
 // Family profiles: each member keeps their own history, mistakes and reviews.
+const STATUS_LABEL = {
+  installed: 'Instalado',
+  available: 'Disponível',
+  update_available: 'Atualização disponível',
+  downloading: 'Baixando…',
+  validating: 'Validando…',
+  failed: 'Falha',
+  incompatible: 'Incompatível',
+}
+
+// "Conhecimento linguístico" — the semantic knowledge packs powering the local
+// tutor engine. Builtin packs ship with the app (offline). Additional packs can
+// be installed from the allowlisted, checksum-verified catalog.
+function KnowledgeSection({ Row, SectionHead, showToast }) {
+  const [packs, setPacks] = useState([])
+  const [busy, setBusy] = useState(null)
+  async function refresh() { try { setPacks(await getKnowledgeOverview()) } catch { setPacks([]) } }
+  useEffect(() => { refresh() }, [])
+
+  async function onRemove(pack_id) {
+    setBusy(pack_id)
+    try { await removeInstalledPack(pack_id); await refresh(); showToast('Pacote removido — histórico preservado.') }
+    catch { showToast('Não foi possível remover o pacote.') }
+    finally { setBusy(null) }
+  }
+
+  return (
+    <div className="card" style={{ padding: 0, overflow: 'hidden' }} data-testid="knowledge-packs-settings">
+      <SectionHead>conhecimento linguístico</SectionHead>
+      <Row last>
+        <div className="muted" style={{ fontSize: 12, marginBottom: 10 }}>
+          Conhecimento que alimenta a análise de escrita e fala livre. Funciona offline após instalado.
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 360, overflowY: 'auto' }}>
+          {packs.map((p) => (
+            <div key={p.pack_id} data-testid={`knowledge-pack-${p.pack_id}`} style={{ border: '1px solid var(--border)', borderRadius: 10, padding: 10 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'flex-start' }}>
+                <div>
+                  <div style={{ fontWeight: 800, fontSize: 13 }}>{p.title_pt}</div>
+                  <div className="muted" style={{ fontSize: 11 }}>
+                    {p.pack_id} · v{p.version} · {(p.levels || []).join('/')} · {p.source === 'builtin' ? 'embutido' : p.source}
+                  </div>
+                </div>
+                <span className="chip" data-testid={`knowledge-status-${p.pack_id}`} style={{ fontSize: 11, whiteSpace: 'nowrap' }}>{STATUS_LABEL[p.status] || p.status}</span>
+              </div>
+              {p.coverage && (
+                <div className="muted" style={{ fontSize: 11, marginTop: 6 }}>
+                  cobertura: {Object.entries(p.coverage.levels || {}).map(([lvl, st]) => `${lvl} ${st === 'complete_for_scope' ? '✓' : st}`).join(' · ')}
+                  {(p.coverage.known_gaps || []).length ? ` · lacunas: ${p.coverage.known_gaps.join(', ')}` : ''}
+                </div>
+              )}
+              <div className="muted" style={{ fontSize: 11, marginTop: 4 }}>
+                dependências: {(p.dependencies || []).join(', ') || '—'}
+                {p.installed_at ? ` · instalado em ${new Date(p.installed_at).toLocaleDateString('pt-BR')}` : ''}
+              </div>
+              {p.source !== 'builtin' && (
+                <button className="btn btn-sm btn-ghost" style={{ marginTop: 6 }} disabled={busy === p.pack_id} onClick={() => onRemove(p.pack_id)}>
+                  {busy === p.pack_id ? 'Removendo…' : 'Remover'}
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+      </Row>
+    </div>
+  )
+}
+
 function ProfilesRow() {
   const { profiles, activeProfile, switchProfile, addProfile, removeProfile, showToast } = useApp()
   const handleAdd = async () => {

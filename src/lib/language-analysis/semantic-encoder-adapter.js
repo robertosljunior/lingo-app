@@ -46,6 +46,7 @@ function normTokens(text) {
  */
 export class HashingSemanticEncoder {
   constructor() {
+    this.kind = 'hashing'
     this.model_version = 'hashing-1'
     this.contract_version = SEMANTIC_CONTRACT_VERSION
   }
@@ -100,6 +101,7 @@ export class HashingSemanticEncoder {
  */
 export class UseSemanticEncoderAdapter {
   constructor({ loadModel, modelVersion = 'use-lite-1' } = {}) {
+    this.kind = 'use'
     this._loadModel = loadModel
     this._model = null
     this.model_version = modelVersion
@@ -141,6 +143,77 @@ export class UseSemanticEncoderAdapter {
       if (!byIntent.has(intent) || r.score > byIntent.get(intent)) byIntent.set(intent, r.score)
     }
     return [...byIntent.entries()].map(([intent, score]) => ({ intent, score })).sort((a, b) => b.score - a.score)
+  }
+}
+
+/**
+ * Resilient encoder: attempts real USE, falls back to the hashing encoder on any
+ * failure while reporting exactly what happened. `requested` is always the ideal
+ * engine; `effectiveKind()` and `lastFallback` reflect reality. Never pretends
+ * hashing is USE.
+ */
+export class ResilientSemanticEncoder {
+  constructor({ useLoader } = {}) {
+    this.requested = useLoader ? 'use' : 'hashing'
+    this._use = useLoader ? new UseSemanticEncoderAdapter({ loadModel: useLoader }) : null
+    this._hashing = new HashingSemanticEncoder()
+    this._effective = this._use ? null : 'hashing'
+    this.lastFallback = null
+    this.model_version = this._use ? this._use.model_version : this._hashing.model_version
+  }
+
+  effectiveKind() { return this._effective || this.requested }
+
+  async _active() {
+    if (!this._use) return this._hashing
+    if (this._effective === 'use') return this._use
+    if (this._effective === 'hashing') return this._hashing
+    try {
+      await this._use.ensure()
+      this._effective = 'use'
+      this.model_version = this._use.model_version
+      return this._use
+    } catch (e) {
+      this._effective = 'hashing'
+      this.lastFallback = e?.message === 'no_model_loader' ? 'MODEL_NOT_INSTALLED' : 'MODEL_LOAD_FAILED'
+      this.model_version = this._hashing.model_version
+      return this._hashing
+    }
+  }
+
+  async embed(texts) { return (await this._active()).embed(texts) }
+  async rank(query, candidates) { return (await this._active()).rank(query, candidates) }
+  async classifyIntent(text, exemplars) { return (await this._active()).classifyIntent(text, exemplars) }
+
+  report() {
+    return {
+      requested_engine: this.requested,
+      effective_engine: this.effectiveKind(),
+      fallback_used: this.requested === 'use' && this.effectiveKind() !== 'use',
+      fallback_reason: this.lastFallback,
+    }
+  }
+}
+
+/**
+ * Production USE loader: real TensorFlow.js Universal Sentence Encoder, pointed
+ * at LOCAL model + vocab assets (no CDN). The tfjs/USE packages and the model
+ * assets are dynamically imported so the app runs without them (hashing
+ * fallback) until they are provisioned.
+ * @param {object} opts
+ * @param {string} opts.modelUrl  local URL to the USE model.json
+ * @param {string} opts.vocabUrl  local URL to the vocabulary
+ */
+export function createProductionUseLoader({ modelUrl, vocabUrl, tfjsModule = '@tensorflow/tfjs', useModule = '@tensorflow-models/universal-sentence-encoder' } = {}) {
+  return async () => {
+    if (!modelUrl || !vocabUrl) throw new Error('no_model_loader') // MODEL_NOT_INSTALLED
+    // Computed specifiers + @vite-ignore keep tfjs/USE OUT of the base bundle:
+    // they are optional, provisioned assets loaded only when a local model URL is
+    // configured. Until then the app runs on the hashing fallback.
+    // eslint-disable-next-line no-unused-vars
+    const tf = await import(/* @vite-ignore */ tfjsModule)
+    const use = await import(/* @vite-ignore */ useModule)
+    return use.load({ modelUrl, vocabUrl })
   }
 }
 

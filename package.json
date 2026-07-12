@@ -14,12 +14,14 @@
     "validate:content-packs": "node scripts/validate-content-packs.mjs",
     "quality:content-packs": "node scripts/quality-content-packs.mjs",
     "validate:knowledge-packs": "node scripts/validate-knowledge-packs.mjs",
-    "benchmark:structural-nlp": "node scripts/benchmark-structural-nlp.mjs"
+    "benchmark:structural-nlp": "node scripts/benchmark-structural-nlp.mjs",
+    "benchmark:semantic": "node scripts/benchmark-semantic.mjs"
   },
   "dependencies": {
     "@fontsource/geist-mono": "^5.2.8",
     "@mintplex-labs/piper-tts-web": "^1.0.4",
     "compromise": "^14.14.4",
+    "harper.js": "^2.4.0",
     "idb": "^8.0.0",
     "js-yaml": "^4.1.0",
     "react": "^18.3.1",

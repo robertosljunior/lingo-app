@@ -159,22 +159,58 @@ export class HarperGrammarCheckerAdapter extends GrammarCheckerAdapter {
   }
 }
 
+function callable(obj, name) {
+  return obj && typeof obj[name] === 'function'
+}
+
 function normalizeHarperLint(lint, index, src) {
-  // Harper lint shapes vary by version; read defensively.
-  const span = lint?.span
-    ? { start: lint.span.start ?? lint.span[0] ?? 0, end: lint.span.end ?? lint.span[1] ?? 0 }
+  // Real harper.js Lint (v2.x): span() → {start,end}; lint_kind(); message();
+  // suggestions() → [{ get_replacement_text() }]. Also tolerate plain-object
+  // test doubles that expose the same fields as properties.
+  const rawSpan = callable(lint, 'span') ? lint.span() : lint?.span
+  const span = rawSpan
+    ? { start: rawSpan.start ?? rawSpan[0] ?? 0, end: rawSpan.end ?? rawSpan[1] ?? 0 }
     : { start: 0, end: 0 }
-  const kind = lint?.lint_kind || lint?.kind || 'Miscellaneous'
-  const suggestions = (lint?.suggestions || []).map((s) => (typeof s === 'string' ? s : s?.replacement ?? s?.text ?? '')).filter(Boolean)
+  const kind = callable(lint, 'lint_kind') ? lint.lint_kind() : (lint?.lint_kind || lint?.kind || 'Miscellaneous')
+  const message = callable(lint, 'message') ? lint.message() : (lint?.message || lint?.problem_text || 'Grammar issue.')
+  const rawSuggestions = callable(lint, 'suggestions') ? lint.suggestions() : (lint?.suggestions || [])
+  const suggestions = rawSuggestions.map((s) => {
+    if (typeof s === 'string') return s
+    if (callable(s, 'get_replacement_text')) { try { return s.get_replacement_text() } catch { return '' } }
+    return s?.replacement ?? s?.text ?? ''
+  }).filter(Boolean)
   return {
-    issue_id: lint?.id || `harper.${kind}.${index}`,
+    issue_id: `harper.${kind}.${span.start}.${index}`,
     category: HARPER_CATEGORY[kind] || 'grammar',
-    message: lint?.message || lint?.problem_text || 'Grammar issue.',
+    message,
     span,
     original: src.slice(span.start, span.end),
     suggestions,
-    confidence: typeof lint?.confidence === 'number' ? lint.confidence : 0.7,
+    confidence: typeof lint?.confidence === 'number' ? lint.confidence : 0.75,
     source_rule: `harper.${kind}`,
+  }
+}
+
+/**
+ * Production Harper loader: real WebAssembly linter with the WASM inlined in the
+ * bundle (no CDN, offline-safe). `LocalLinter` runs in both browser and Node.
+ * Callers wrap this in HarperGrammarCheckerAdapter (which owns setup/timeout/
+ * caching) or a worker.
+ */
+export function createProductionHarperLoader() {
+  return async () => {
+    // `binary` loads the WASM as a separate local asset (served from origin, no
+    // CDN) — lighter than inlining ~18 MB as a data URL in a JS chunk.
+    const [{ LocalLinter }, { binary }] = await Promise.all([
+      import('harper.js'),
+      import('harper.js/binary'),
+    ])
+    const linter = new LocalLinter({ binary })
+    await linter.setup()
+    return {
+      lint: (text, options) => linter.lint(text, options),
+      getVersion: async () => 'harper.js@2',
+    }
   }
 }
 

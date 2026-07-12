@@ -81,16 +81,41 @@ npm run benchmark:structural-nlp     # wink vs compromise over 300+ labeled case
 npm run build && npm test
 ```
 
+## Slice 7.1 — runtime integration
+
+- **Real Harper** (`harper.js` 2.4.0) runs locally via `createProductionHarperLoader()`
+  (WASM served as a same-origin asset, runtime-cached for offline; no CDN). It
+  drives real corrections, e.g. `She don't like coffee.` → `She doesn't like coffee.`
+  On load failure → `GRAMMAR_ENGINE_UNAVAILABLE` + internal rules, no crash.
+- **USE** is wired via `createProductionUseLoader({ modelUrl, vocabUrl })` (tfjs +
+  USE dynamically imported, local model assets, `@vite-ignore` so they stay out of
+  the base bundle). Until a local model is provisioned, `ResilientSemanticEncoder`
+  falls back to the hashing encoder and reports it honestly in `result.engines`
+  (`semantic_requested` / `semantic_effective` / `fallback_events`).
+- **Exercise** routes free / guided (and opt-in equivalent) through
+  `analyzeProduction`; free & guided never surface the model answer (see
+  `exercise-bridge.js`). Legacy translate/rewrite keep their engine to avoid
+  regression.
+- **Alternative-preservation guard** (`preservesIntent`) enforces intent /
+  entities / polarity before any alternative is shown; similarity alone never
+  approves one.
+- **Settings → "Conhecimento linguístico"** lists installed packs (builtin +
+  remote) with coverage/status and Remove; `knowledge-catalog-service.js` does
+  guarded download → checksum → schema → transactional install.
+- Benchmarks: `benchmark:structural-nlp` (500+ corpus, raw wink-vs-Compromise
+  extraction — wink chosen on latency) and `benchmark:semantic` (calibration
+  pairs; documents that the hashing fallback cannot discriminate meaning, which
+  is *why* the pipeline never trusts similarity alone).
+
 ## Known limitations
 
-- Structural adapters share the heuristic's aux/negation/sentence-type bookkeeping
-  and override only POS/lemmas, so the wink/compromise benchmark chiefly separates
-  them on latency; deeper POS-level comparison is future work.
-- Harper.js and USE loaders are wired as injectable adapters with local-asset
-  contracts and graceful fallback, but the production WASM/model assets are not
-  bundled in this slice — the app runs fully on internal rules + the hashing
-  encoder until those assets are provisioned.
-- The download UI (Settings → "Conhecimento linguístico") is specified and backed
-  by tested install/remove/catalog logic; the React screen wiring is the remaining
-  integration step.
+- USE model weights are not yet bundled/hosted; until a local `modelUrl`/`vocabUrl`
+  is provisioned the semantic stage uses the hashing fallback (reported honestly).
+  Everything else — grammar (real Harper), structure, packs, alternatives — runs
+  fully offline.
+- Harper's ~18 MB WASM exceeds the SW precache cap; it is runtime-cached on first
+  (online) use. Before that first use while offline, grammar degrades to the
+  internal checker.
+- The raw structural benchmark separates wink/Compromise mainly on latency; for
+  the coarse features the pipeline consumes, both engines score similarly.
 ```
