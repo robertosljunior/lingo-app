@@ -216,7 +216,6 @@ export function AppProvider({ children }) {
       primary_error: a.primary_error || null,
       detected_errors: a.detected_errors || [],
       alignment: a.alignment || [],
-      assessed_skills: a.assessed_skills || [],
       accepted_differences: a.accepted_differences || [],
       target_answer: a.target_answer || a.target || q.expected_answer,
       normalized_user_answer: a.normalized_user_answer,

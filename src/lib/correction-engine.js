@@ -3,8 +3,6 @@
 // fields such as `possible_mistake_type`, `missing_words` and `extra_words` are
 // still derived for older screens/data.
 
-import { inferAssessedSkills } from './skill-profile.js'
-
 export const ENGINE_VERSION = '2'
 
 export const MISTAKE_TYPES = [
@@ -298,12 +296,6 @@ export function analyzeAnswer({ user_answer, expected_answer, accepted_answers =
   const verdict = is_probably_correct ? 'correct' : is_partial ? 'partial' : 'incorrect'
   detected_errors = assignRoles(sortErrors(detected_errors))
   const primary_error = detected_errors.find((e) => e.role === 'primary') || null
-  const assessed_skills = inferAssessedSkills({
-    evaluation: { ...arguments[0], verdict, detected_errors, target_tokens: targetTokens, user_tokens: userTokens, skill_target: skill_target ?? mistake_focus ?? null },
-    question: { skill_target: skill_target ?? mistake_focus ?? null },
-    user_answer,
-    expected_answer: target,
-  })
   const possible_mistake_type = primary_error ? legacyTypeFor(primary_error.category, primary_error) : null
   const feedback = buildEvaluationFeedback(verdict, primary_error)
   const diff = wordDiff(user_answer, target)
@@ -326,7 +318,6 @@ export function analyzeAnswer({ user_answer, expected_answer, accepted_answers =
     alignment,
     detected_errors,
     primary_error,
-    assessed_skills,
     accepted_differences,
     // Legacy derived fields below.
     possible_mistake_type,
@@ -704,7 +695,6 @@ export function buildIncorrectChoiceEvaluation({ user_answer = '', expected_answ
     alignment: alignTokens(user_answer, expected_answer),
     detected_errors: [err],
     primary_error: err,
-    assessed_skills: inferAssessedSkills({ evaluation: { verdict: 'incorrect', detected_errors: [err], skill_target }, question: { skill_target }, user_answer, expected_answer }),
     accepted_differences: [],
     possible_mistake_type: 'incorrect_choice',
     missing_words: wordDiff(user_answer, expected_answer).missing_words,
