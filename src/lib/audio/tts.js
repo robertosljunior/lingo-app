@@ -61,7 +61,7 @@ function refreshVoices() {
 function langFamily(tag) { return String(tag || '').toLowerCase().replace('_', '-').split('-')[0] }
 export function resolveDeviceVoiceForLanguage(language) {
   if (!speechSupported) return null
-  if (allVoices.length === 0) refreshVoices()
+  refreshVoices() // always read the live list — voices can arrive after import
   const fam = langFamily(language)
   if (!fam) return null
   const matches = allVoices.filter((v) => langFamily(v.lang) === fam)

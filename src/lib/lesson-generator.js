@@ -211,14 +211,15 @@ function templatesFromSnapshot(snapshot){
     const sentence=sanitizeSentence(t.sentence,t)
     const wrong=sanitizeWrong(t.wrong,sentence,t)
     const blank = (t.blank && canonicalText(sentence).includes(canonicalText(t.blank))) ? t.blank : (String(sentence||'').match(/\b\w+(?:'\w+)?\b/g)?.[1] || '')
-    return {template_id:t.template_id,family_id:t.family_id,level:t.level,primary_skill_id:t.primary_skill_id,skill_ids:t.skill_ids||[t.primary_skill_id],exercise_types:t.exercise_types||SUPPORTED_GENERATED_TYPES,domain:t.theme||t.domain,difficulty:t.difficulty||'medium',slots:t.slots||{},constraints:[...(t.constraints||[]),'curated_sentence'],sentence,pt:objectivePt(t.pt,sentence,t),ctx:objectiveContext(t.ctx,t),blank,wrong}
+    const ptReal=hasRealPt(t.pt)
+    return {template_id:t.template_id,family_id:t.family_id,level:t.level,primary_skill_id:t.primary_skill_id,skill_ids:t.skill_ids||[t.primary_skill_id],exercise_types:t.exercise_types||SUPPORTED_GENERATED_TYPES,domain:t.theme||t.domain,difficulty:t.difficulty||'medium',slots:t.slots||{},constraints:[...(t.constraints||[]),'curated_sentence'],sentence,pt:ptReal?t.pt:guidedPtInstruction(t),pt_is_guided:!ptReal,ctx:objectiveContext(t.ctx,t),blank,wrong}
   }).filter(t=>t.sentence && !isBadContent(t.sentence) && !isBadContent(t.wrong))
 }
 
 function actualTypeCounts(qs){ const m={}; for(const q of qs) m[q.type]=(m[q.type]||0)+1; return m }
 function titleFor(context){ const labels=(context.target_skills||[]).slice(0,2).map(s=>getSkill(s.skill_id)?.label_pt).filter(Boolean); return labels.length?`Revisão ${context.theme||'workplace'}: ${labels.join(' e ')}`:`Revisão ${context.theme||'workplace'} adaptativa` }
 function buildQuestion(t,type,id){ const a=t.sentence, f=t.primary_skill_id; const base={id,type,prompt:'',prompt_pt:t.pt,context:t.ctx,expected_answer:a,accepted_answers:[],options:null,words:null,original:null,skill_target:f,lesson_focus:f,mistake_focus:f,payload:null,assessment_mode:assessmentMode(type)}
- if(type==='translate_natural') Object.assign(base,{prompt:`Traduza naturalmente para o inglês:\n"${t.pt}"`, accepted_answers: a.includes("I've")?[a.replace("I've",'I have')]:[]})
+ if(type==='translate_natural') Object.assign(base,{prompt: t.pt_is_guided ? t.pt : `Traduza naturalmente para o inglês:\n"${t.pt}"`, accepted_answers: a.includes("I've")?[a.replace("I've",'I have')]:[]})
  if(type==='fill_blank') { const opts=distractors(t.primary_skill_id,t.blank,t.wrong); Object.assign(base,{prompt:`Complete a frase com a opção correta: ${blankOnce(a,t.blank)}`, expected_answer:t.blank, options:opts, payload_contract:{blank_skill:t.primary_skill_id,expected_slot_type:t.blank?.endsWith('ing')?'VBG':'LEXICAL',correct_option:t.blank,distractors:opts.filter(o=>canonicalText(o)!==canonicalText(t.blank)).map(text=>({text,error:'INVALID_SLOT_FORM'}))}}) }
  if(type==='build_sentence') Object.assign(base,{prompt:'Monte a frase em inglês na ordem correta.', words:tokenize(a)})
  if(type==='choose_best') { let ds=uniqueOptions([t.wrong,secondWrong(t),genericWrong(t),'Please '+a.replace(/^\w+\s*/,'').replace(/\?$/, '.')]).map(cleanOption).filter(x=>x&&!isBadContent(x)&&canonicalText(x)!==canonicalText(a)).slice(0,2); if(ds.length<2) ds=uniqueOptions([...ds,a.replace(/\.$/,'?'),'Do '+a.charAt(0).toLowerCase()+a.slice(1)]).filter(x=>canonicalText(x)!==canonicalText(a)).slice(0,2); Object.assign(base,{prompt:'Escolha a única frase correta.', options:shuffleFixed([a,...ds],t.template_id), correct_option_id:'correct', options_meta:[{id:'correct',text:a,role:'correct',invalid_rule_id:null},...ds.map((text,i)=>({id:`d${i+1}`,text,role:'distractor',invalid_rule_id:`${t.family_id}.distractor_${i+1}`}))], payload_contract:{correct:a,correct_option_id:'correct',instruction:'Escolha a única frase correta.',rule_id:`${t.family_id}.correct`,distractors:ds.map((text,i)=>({text,invalid_rule_id:`${t.family_id}.distractor_${i+1}`})),context_required:!!t.ctx}}) }
@@ -253,5 +254,11 @@ function sanitizeSentence(s,t){ let x=cleanOption(s); if(!isBadContent(x)) retur
 }[t.primary_skill_id] || `We use the ${w} every day.`) }
 function sanitizeWrong(wrong,sentence,t){ let x=cleanOption(wrong); if(x && !isBadContent(x) && normalize(x)!==normalize(sentence)) return x; if(t.primary_skill_id==='question_auxiliary') return 'They have any open positions?'; if(t.primary_skill_id==='gerund_after_been'||t.primary_skill_id==='present_perfect_continuous') return "I've been work here for three years."; if(sentence.endsWith('?')) return sentence.replace(/^Can I /,'I can ').replace(/^Do they /,'They ').replace(/\?$/, '.'); return `Please ${sentence.charAt(0).toLowerCase()}${sentence.slice(1)}` }
 function objectiveContext(ctx,t){ if(ctx && !/Contexto Base/i.test(ctx)) return ctx; return `Situação: você está praticando ${getSkill(t.primary_skill_id)?.label_pt || 'inglês'} em ${t.domain || 'uma conversa cotidiana'}.` }
-function objectivePt(pt,sentence){ if(pt && !/Contexto Base/i.test(pt) && !/^Frase sobre/i.test(pt)) return pt; return `Diga em inglês: "${sentence}"` }
+// A real Portuguese source is one the packs actually authored — not a
+// placeholder ("Frase sobre X", "Contexto Base") and not an English echo.
+function hasRealPt(pt){ const s=String(pt||''); return !!s && !/Contexto Base/i.test(s) && !/^Frase sobre/i.test(s) && !/^Diga em inglês/i.test(s) }
+// When there is no authored Portuguese translation, present a Portuguese guided
+// production instruction that never reveals the English answer. Graded in the
+// lenient 'equivalent' mode, so a natural sentence still earns credit.
+function guidedPtInstruction(t){ const label=getSkill(t.primary_skill_id)?.label_pt || 'inglês do dia a dia'; return `Escreva em inglês, de forma natural, uma frase praticando ${label}.` }
 function blankOnce(sentence,blank){ const tokens=String(sentence).split(/\b/); let done=false; return tokens.map(tok=>{ if(!done && canonicalText(tok)===canonicalText(blank)){ done=true; return '____' } return tok }).join('') }

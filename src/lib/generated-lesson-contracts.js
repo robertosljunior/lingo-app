@@ -74,13 +74,18 @@ export function questionLanguageContract(q = {}) {
 export function questionLanguageIssues(q = {}) {
   const c = questionLanguageContract(q)
   const issues = []
-  const visible = [q.prompt_pt, q.prompt, q.context, q.ctx, c.hide_source ? '' : c.source_text]
+  const visibleFields = [q.prompt_pt, q.prompt, q.context, q.ctx, c.hide_source ? '' : c.source_text]
     .filter(Boolean).map((s) => canonicalText(s))
+  const visibleText = visibleFields.join(' ')
   const answerCanon = c.expected_answers.map(canonicalText).filter(Boolean)
   if (!c.instruction_pt) issues.push('MISSING_INSTRUCTION')
   // The exact answer must never appear inside a visible prompt field for a
-  // hide-answer type (translation / guided / free / listen / recognition slot).
-  if (c.hide_answer && answerCanon.some((a) => a && visible.includes(a))) issues.push('PROMPT_LEAKS_ANSWER')
+  // hide-answer type — as a whole field OR embedded as a substring (e.g. a
+  // translation prompt that quotes the English sentence). fill_blank/choose_best
+  // legitimately show an English sentence with the slot removed, so the full
+  // answer only counts when it appears intact.
+  const answerLeaks = (a) => a && (visibleFields.includes(a) || (a.length >= 6 && visibleText.includes(a)))
+  if (c.hide_answer && answerCanon.some(answerLeaks)) issues.push('PROMPT_LEAKS_ANSWER')
   // PT→EN translation must present a Portuguese source.
   if (c.type === 'translate_natural' && c.source_locale !== 'pt-BR') issues.push('TRANSLATION_SOURCE_NOT_PT')
   // Guided / free writing must not surface the model answer as source or context.
