@@ -12,8 +12,12 @@ const DB_NAME = 'app-idiomas-knowledge'
 // Upgrades are additive so installed packs / caches survive the bump.
 const DB_VERSION = 2
 
-export function open() {
-  return openDB(DB_NAME, DB_VERSION, {
+export async function open() {
+  const db = await openDB(DB_NAME, DB_VERSION, {
+    // Never let a lingering older connection deadlock the v1→v2 upgrade: if this
+    // connection is blocking a newer one, close it. Prevents the classic
+    // IndexedDB upgrade hang under reloads/parallel access.
+    blocking(_current, _blocked, event) { try { event?.target?.close?.() } catch { /* noop */ } },
     upgrade(db) {
       if (!db.objectStoreNames.contains('semantic_packs')) {
         const s = db.createObjectStore('semantic_packs', { keyPath: 'pack_id' })
@@ -37,6 +41,9 @@ export function open() {
       }
     },
   })
+  // If another connection needs a future upgrade, step aside so it never blocks.
+  try { db.addEventListener('versionchange', () => { try { db.close() } catch { /* noop */ } }) } catch { /* noop */ }
+  return db
 }
 
 /**
