@@ -14,6 +14,7 @@ import { createSemanticEncoder } from './semantic-encoder-adapter.js'
 import { KnowledgeBase } from './knowledge-base.js'
 import { matchesWhen } from './usage-rule-resolvers.js'
 import { applyTransformation } from './transformation-registry.js'
+import { resolveFrameThresholds, assessFrameChoice } from './frame-thresholds.js'
 
 export const ANALYSIS_VERSION = '1'
 
@@ -112,9 +113,11 @@ async function retrieveSemantics(encoder, structure, text, kb) {
   if (!exemplars.length) return { intents: structure.intent_signals.map((i) => ({ intent: i, score: 0.5 })), topFrame: null, ranked: [] }
   const ranked = await encoder.rank(text, exemplars)
   const intents = await encoder.classifyIntent(text, exemplars)
-  // Prefer a frame supported by BOTH structural intent signals and retrieval.
+  // Prefer a frame supported by BOTH structural intent signals and retrieval,
+  // gated by that frame's OWN threshold (no global cutoff — see frame-thresholds).
   const top = ranked[0]
   let topFrame = null
+  let topFrameScore = 0
   for (const r of ranked) {
     const frameId = r.candidate.frame_id
     if (!frameId) continue
@@ -124,9 +127,18 @@ async function retrieveSemantics(encoder, structure, text, kb) {
     // a frame, or "I have a car" would inherit "Could I have a dessert" phrasing.
     const intentAgrees = structure.intent_signals.includes(frame.intent) ||
       (frame.intent === 'polite_request' && structure.intent_signals.includes('request'))
-    if (r.candidate.polarity !== 'negative' && intentAgrees && r.score >= 0.15) { topFrame = frame; break }
+    const { threshold } = resolveFrameThresholds(frame)
+    if (r.candidate.polarity !== 'negative' && intentAgrees && r.score >= threshold) {
+      topFrame = frame; topFrameScore = r.score; break
+    }
   }
-  return { intents, topFrame, ranked, topScore: top?.score ?? 0 }
+  // Ambiguity: if a competing frame (different intent) is within the frame's
+  // margin, we corroborated but with low certainty — surfaced so guided/equivalent
+  // do not assert a frame with false confidence.
+  const frameChoice = topFrame
+    ? assessFrameChoice({ chosenFrame: topFrame, chosenScore: topFrameScore, ranked, frameOf: (id) => (id ? kb.frame(id) : null) })
+    : { accepted: false, ambiguous: false, margin: null, threshold: null }
+  return { intents, topFrame, topFrameScore, ranked, topScore: top?.score ?? 0, ambiguous: frameChoice.ambiguous, frameMargin: frameChoice.margin, frameThreshold: frameChoice.threshold }
 }
 
 /**
@@ -407,7 +419,8 @@ function fuseVerdict(ctx) {
   // authority; USE only corroborates).
   if (assessmentMode === 'guided' && requestedIntent) {
     if (hasHardError) return { ...ctx, verdict: 'needs_revision', confidence: 0.85 }
-    const intentPresent = structure.intent_signals.includes(requestedIntent) || (semantics.topFrame && semantics.topFrame.intent === requestedIntent)
+    const intentPresent = structure.intent_signals.includes(requestedIntent) ||
+      (semantics.topFrame && semantics.topFrame.intent === requestedIntent && !semantics.ambiguous)
     if (!intentPresent) {
       return {
         ...ctx, verdict: 'needs_revision', confidence: 0.6,

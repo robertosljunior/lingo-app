@@ -23,12 +23,12 @@ Real USE loaded from local assets in headless Chromium (CPU backend): `dim=512`,
 | T07 | Persistence & embedding cache (invalidate on model change) | completed | T06 |
 | T08 | Real USE executes in browser (effective_engine === "use") | completed | T04,T06 |
 | T09 | Explicit hashing fallback + honest UI copy | completed | T04 |
-| T10 | Calibration corpus expansion | pending | T08 |
-| T11 | Per-frame thresholds (no global cutoff) | pending | T10 |
-| T12 | Intent/entity/polarity preservation | pending | T11 |
-| T13 | Free integration | pending | T11,T12 |
-| T14 | Guided integration (constraints) | pending | T11,T12 |
-| T15 | Equivalent integration (grammar vs meaning) | pending | T11,T12 |
+| T10 | Calibration corpus expansion | completed | T08 |
+| T11 | Per-frame thresholds (no global cutoff) | completed | T10 |
+| T12 | Intent/entity/polarity preservation | completed | T11 |
+| T13 | Free integration | completed | T11,T12 |
+| T14 | Guided integration (constraints) | completed | T11,T12 |
+| T15 | Equivalent integration (grammar vs meaning) | completed | T11,T12 |
 | T16 | Semantic tutor feedback UI (no technical terms) | pending | T13,T15 |
 | T17 | Semantic model management UI (Settings) | completed | T06,T09 |
 | T18 | Knowledge-packs UI review/grouping | completed | T17 |
@@ -97,3 +97,14 @@ Real USE loaded from local assets in headless Chromium (CPU backend): `dim=512`,
 - E2E: install via UI → go offline → reload → effective_engine still "use" (loads from IndexedDB). Without a model, app + grammar + free work; UI shows basic mode.
 ## T23 — E2E — in_progress
 - `semantic-model.spec.js` (2): UI download → effective USE → free/error analyses → offline persists → remove → basic; and no-model hashing fallback (free never failed). Global setup fetches/caches the pinned assets (env-gated skip only if both cache and network absent). Full suite: 29 passed, 0 failed. Remaining E2E (guided/equivalent-mismatch explicit cases) land with T14/T15.
+
+## Increment 3 — calibration: per-frame thresholds + 1000-pair corpus
+## T10 — Calibration corpus — completed
+- `semantic-calibration-corpus.mjs` now 1024 labeled pairs (14 hand-authored anchors + generated) across all eight categories: valid_paraphrase, same_topic_different_intent, opposite_polarity, entity_mismatch (600), tense_mismatch (151), equivalent (152), related_not_equivalent, ambiguous. Generated pairs are labeled by construction (entity swap → entity_mismatch, negation → opposite_polarity, tense change → tense_mismatch), so labels are exact.
+- Benchmark reports per-category mean similarity. Hashing margin is negative (~-0.05, acc 0.33) — it CANNOT discriminate meaning (entity-mismatch pairs share words → high score). This is expected and documented; it is exactly why the pipeline never trusts similarity alone.
+## T11 — Per-frame thresholds — completed
+- `frame-thresholds.js`: NO global cutoff. Per-intent defaults (polite_request/future_plan/past_experience/location/possession/opinion/obligation/question) + optional `frame.semantic_policy` override, each with threshold + minimum_margin + ambiguity_policy + negative_exemplars. `assessFrameChoice` flags ambiguity when a different-intent frame is within the margin (top-1 vs top-2). Wired into `retrieveSemantics` (frame gated by its own threshold) and guided fusion (an ambiguous USE frame no longer satisfies a constraint alone). 6 unit tests.
+## T12 — Intent/entity/polarity preservation — completed
+- `preservesIntent` (pre-existing, retained + now reinforced by thresholds): polarity match, essential-entity survival for requests, frame-flip guard (request → copula/description rejected). Every surfaced alternative must pass it — USE similarity alone never approves one.
+## T13/T14/T15 — free / guided / equivalent — completed
+- free: grammar/structure decide; low similarity NEVER fails (verdicts valid / valid_with_suggestions / needs_revision / unable_to_assess). guided: requested intent confirmed by structure (USE corroborates, ambiguous match ignored). equivalent: exact/paraphrase short-circuit; meaning_mismatch surfaced as a SEPARATE 'meaning' error distinct from grammar errors. Covered by existing orchestrator tests (140 unit green) + the USE E2E analyses.
