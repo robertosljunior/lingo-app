@@ -27,7 +27,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "company",
-      "translation_pt": "company",
+      "translation_pt": "empresa",
       "semantic_type": "object",
       "tags": [
         "workplace",
@@ -40,7 +40,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "project",
-      "translation_pt": "project",
+      "translation_pt": "projeto",
       "semantic_type": "time",
       "tags": [
         "workplace",
@@ -53,7 +53,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "client",
-      "translation_pt": "client",
+      "translation_pt": "cliente",
       "semantic_type": "action",
       "tags": [
         "workplace",
@@ -66,7 +66,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "support team",
-      "translation_pt": "support team",
+      "translation_pt": "equipe de suporte",
       "semantic_type": "object",
       "tags": [
         "workplace",
@@ -79,7 +79,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "deployment",
-      "translation_pt": "deployment",
+      "translation_pt": "implantação",
       "semantic_type": "time",
       "tags": [
         "workplace",
@@ -92,7 +92,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "report",
-      "translation_pt": "report",
+      "translation_pt": "relatório",
       "semantic_type": "action",
       "tags": [
         "workplace",
@@ -105,7 +105,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "requirements",
-      "translation_pt": "requirements",
+      "translation_pt": "requisitos",
       "semantic_type": "object",
       "tags": [
         "workplace",
@@ -118,7 +118,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "open positions",
-      "translation_pt": "open positions",
+      "translation_pt": "vagas abertas",
       "semantic_type": "time",
       "tags": [
         "workplace",
@@ -131,7 +131,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "salary range",
-      "translation_pt": "salary range",
+      "translation_pt": "faixa salarial",
       "semantic_type": "action",
       "tags": [
         "workplace",
@@ -144,7 +144,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "deadline",
-      "translation_pt": "deadline",
+      "translation_pt": "prazo",
       "semantic_type": "object",
       "tags": [
         "workplace",
@@ -157,7 +157,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "meeting",
-      "translation_pt": "meeting",
+      "translation_pt": "reunião",
       "semantic_type": "time",
       "tags": [
         "workplace",
@@ -170,7 +170,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "feedback",
-      "translation_pt": "feedback",
+      "translation_pt": "retorno",
       "semantic_type": "action",
       "tags": [
         "workplace",
@@ -183,7 +183,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "responsibilities",
-      "translation_pt": "responsibilities",
+      "translation_pt": "responsabilidades",
       "semantic_type": "object",
       "tags": [
         "workplace",
@@ -196,7 +196,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "proposal",
-      "translation_pt": "proposal",
+      "translation_pt": "proposta",
       "semantic_type": "time",
       "tags": [
         "workplace",
@@ -239,8 +239,19 @@
         "wrong_collocation"
       ],
       "sentence": "We checked the company yesterday.",
-      "pt": "Frase sobre company.",
-      "ctx": "Contexto Trabalho A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos a empresa ontem.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We checked the company yesterday."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "skill_targets": [
+        "past_simple"
+      ],
+      "pt": "Nós verificamos a empresa ontem.",
+      "ctx": "Contexto de trabalho (nível A2).",
       "blank": "checked",
       "wrong": "We check the company yesterday."
     },
@@ -278,8 +289,21 @@
         "wrong_collocation"
       ],
       "sentence": "They are going to review the project tomorrow.",
-      "pt": "Frase sobre project.",
-      "ctx": "Contexto Trabalho A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eles vão revisar o projeto amanhã.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "They are going to review the project tomorrow."
+      ],
+      "accepted_variants_en": [
+        "They're going to review the project tomorrow."
+      ],
+      "explanation_pt": "Futuro com be going to para planos.",
+      "skill_targets": [
+        "present_continuous"
+      ],
+      "pt": "Eles vão revisar o projeto amanhã.",
+      "ctx": "Contexto de trabalho (nível A2).",
       "blank": "are",
       "wrong": "They go to review the project tomorrow."
     },
@@ -317,8 +341,19 @@
         "wrong_collocation"
       ],
       "sentence": "We check the client every day.",
-      "pt": "Frase sobre client.",
-      "ctx": "Contexto Trabalho A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos o cliente todos os dias.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We check the client every day."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "skill_targets": [
+        "future_going_to"
+      ],
+      "pt": "Nós verificamos o cliente todos os dias.",
+      "ctx": "Contexto de trabalho (nível A2).",
       "blank": "check",
       "wrong": "We check the client every day."
     },
@@ -356,8 +391,19 @@
         "wrong_collocation"
       ],
       "sentence": "When do you need the support team?",
-      "pt": "Frase sobre support team.",
-      "ctx": "Contexto Trabalho A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quando você precisa da equipe de suporte?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "When do you need the support team?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "skill_targets": [
+        "comparatives"
+      ],
+      "pt": "Quando você precisa da equipe de suporte?",
+      "ctx": "Contexto de trabalho (nível A2).",
       "blank": "do",
       "wrong": "When you do need the support team?"
     },
@@ -395,8 +441,19 @@
         "wrong_collocation"
       ],
       "sentence": "We checked the deployment yesterday.",
-      "pt": "Frase sobre deployment.",
-      "ctx": "Contexto Trabalho A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos a implantação ontem.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We checked the deployment yesterday."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "pt": "Nós verificamos a implantação ontem.",
+      "ctx": "Contexto de trabalho (nível A2).",
       "blank": "checked",
       "wrong": "We check the deployment yesterday."
     },
@@ -434,8 +491,21 @@
         "wrong_collocation"
       ],
       "sentence": "They are going to review the report tomorrow.",
-      "pt": "Frase sobre report.",
-      "ctx": "Contexto Trabalho A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eles vão revisar o relatório amanhã.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "They are going to review the report tomorrow."
+      ],
+      "accepted_variants_en": [
+        "They're going to review the report tomorrow."
+      ],
+      "explanation_pt": "Futuro com be going to para planos.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "pt": "Eles vão revisar o relatório amanhã.",
+      "ctx": "Contexto de trabalho (nível A2).",
       "blank": "are",
       "wrong": "They go to review the report tomorrow."
     },
@@ -473,8 +543,19 @@
         "wrong_collocation"
       ],
       "sentence": "We check the requirements every day.",
-      "pt": "Frase sobre requirements.",
-      "ctx": "Contexto Trabalho A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos os requisitos todos os dias.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We check the requirements every day."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "skill_targets": [
+        "vocabulary"
+      ],
+      "pt": "Nós verificamos os requisitos todos os dias.",
+      "ctx": "Contexto de trabalho (nível A2).",
       "blank": "check",
       "wrong": "We check the requirements every day."
     },
@@ -512,8 +593,19 @@
         "wrong_collocation"
       ],
       "sentence": "When do you need the open positions?",
-      "pt": "Frase sobre open positions.",
-      "ctx": "Contexto Trabalho A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quando você precisa das vagas abertas?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "When do you need the open positions?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "skill_targets": [
+        "past_simple"
+      ],
+      "pt": "Quando você precisa das vagas abertas?",
+      "ctx": "Contexto de trabalho (nível A2).",
       "blank": "do",
       "wrong": "When you do need the open positions?"
     }
@@ -525,7 +617,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "make a company",
-      "translation_pt": "company",
+      "translation_pt": "empresa",
       "invalid_variants": [
         "do a company"
       ],
@@ -537,7 +629,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "check the project",
-      "translation_pt": "project",
+      "translation_pt": "projeto",
       "invalid_variants": [
         "do the project"
       ],
@@ -549,7 +641,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "make a client",
-      "translation_pt": "client",
+      "translation_pt": "cliente",
       "invalid_variants": [
         "do a client"
       ],
@@ -561,7 +653,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "check the support team",
-      "translation_pt": "support team",
+      "translation_pt": "equipe de suporte",
       "invalid_variants": [
         "do the support team"
       ],
@@ -573,7 +665,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "make a deployment",
-      "translation_pt": "deployment",
+      "translation_pt": "implantação",
       "invalid_variants": [
         "do a deployment"
       ],
@@ -585,7 +677,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "check the report",
-      "translation_pt": "report",
+      "translation_pt": "relatório",
       "invalid_variants": [
         "do the report"
       ],
@@ -597,7 +689,7 @@
       "theme": "workplace",
       "level": "A2",
       "canonical": "make a requirements",
-      "translation_pt": "requirements",
+      "translation_pt": "requisitos",
       "invalid_variants": [
         "do a requirements"
       ],

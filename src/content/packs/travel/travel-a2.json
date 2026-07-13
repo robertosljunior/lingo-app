@@ -27,7 +27,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "ticket",
-      "translation_pt": "ticket",
+      "translation_pt": "passagem",
       "semantic_type": "object",
       "tags": [
         "travel",
@@ -53,7 +53,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "passport",
-      "translation_pt": "passport",
+      "translation_pt": "passaporte",
       "semantic_type": "action",
       "tags": [
         "travel",
@@ -66,7 +66,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "train station",
-      "translation_pt": "train station",
+      "translation_pt": "estação de trem",
       "semantic_type": "object",
       "tags": [
         "travel",
@@ -79,7 +79,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "boarding gate",
-      "translation_pt": "boarding gate",
+      "translation_pt": "portão de embarque",
       "semantic_type": "time",
       "tags": [
         "travel",
@@ -92,7 +92,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "luggage",
-      "translation_pt": "luggage",
+      "translation_pt": "bagagem",
       "semantic_type": "action",
       "tags": [
         "travel",
@@ -105,7 +105,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "reservation",
-      "translation_pt": "reservation",
+      "translation_pt": "reserva",
       "semantic_type": "object",
       "tags": [
         "travel",
@@ -118,7 +118,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "city map",
-      "translation_pt": "city map",
+      "translation_pt": "mapa da cidade",
       "semantic_type": "time",
       "tags": [
         "travel",
@@ -131,7 +131,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "tour guide",
-      "translation_pt": "tour guide",
+      "translation_pt": "guia turístico",
       "semantic_type": "action",
       "tags": [
         "travel",
@@ -144,7 +144,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "beach trip",
-      "translation_pt": "beach trip",
+      "translation_pt": "viagem à praia",
       "semantic_type": "object",
       "tags": [
         "travel",
@@ -157,7 +157,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "flight delay",
-      "translation_pt": "flight delay",
+      "translation_pt": "atraso do voo",
       "semantic_type": "time",
       "tags": [
         "travel",
@@ -170,7 +170,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "taxi ride",
-      "translation_pt": "taxi ride",
+      "translation_pt": "corrida de táxi",
       "semantic_type": "action",
       "tags": [
         "travel",
@@ -183,7 +183,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "museum pass",
-      "translation_pt": "museum pass",
+      "translation_pt": "ingresso do museu",
       "semantic_type": "object",
       "tags": [
         "travel",
@@ -196,7 +196,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "travel insurance",
-      "translation_pt": "travel insurance",
+      "translation_pt": "seguro viagem",
       "semantic_type": "time",
       "tags": [
         "travel",
@@ -239,8 +239,19 @@
         "wrong_collocation"
       ],
       "sentence": "We checked the ticket yesterday.",
-      "pt": "Frase sobre ticket.",
-      "ctx": "Contexto Viagens A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos a passagem ontem.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We checked the ticket yesterday."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "skill_targets": [
+        "past_simple"
+      ],
+      "pt": "Nós verificamos a passagem ontem.",
+      "ctx": "Contexto de viagens (nível A2).",
       "blank": "checked",
       "wrong": "We check the ticket yesterday."
     },
@@ -278,8 +289,21 @@
         "wrong_collocation"
       ],
       "sentence": "They are going to review the hotel tomorrow.",
-      "pt": "Frase sobre hotel.",
-      "ctx": "Contexto Viagens A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eles vão revisar o hotel amanhã.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "They are going to review the hotel tomorrow."
+      ],
+      "accepted_variants_en": [
+        "They're going to review the hotel tomorrow."
+      ],
+      "explanation_pt": "Futuro com be going to para planos.",
+      "skill_targets": [
+        "present_continuous"
+      ],
+      "pt": "Eles vão revisar o hotel amanhã.",
+      "ctx": "Contexto de viagens (nível A2).",
       "blank": "are",
       "wrong": "They go to review the hotel tomorrow."
     },
@@ -317,8 +341,19 @@
         "wrong_collocation"
       ],
       "sentence": "We check the passport every day.",
-      "pt": "Frase sobre passport.",
-      "ctx": "Contexto Viagens A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos o passaporte todos os dias.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We check the passport every day."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "skill_targets": [
+        "future_going_to"
+      ],
+      "pt": "Nós verificamos o passaporte todos os dias.",
+      "ctx": "Contexto de viagens (nível A2).",
       "blank": "check",
       "wrong": "We check the passport every day."
     },
@@ -356,8 +391,19 @@
         "wrong_collocation"
       ],
       "sentence": "When do you need the train station?",
-      "pt": "Frase sobre train station.",
-      "ctx": "Contexto Viagens A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quando você precisa da estação de trem?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "When do you need the train station?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "skill_targets": [
+        "comparatives"
+      ],
+      "pt": "Quando você precisa da estação de trem?",
+      "ctx": "Contexto de viagens (nível A2).",
       "blank": "do",
       "wrong": "When you do need the train station?"
     },
@@ -395,8 +441,19 @@
         "wrong_collocation"
       ],
       "sentence": "We checked the boarding gate yesterday.",
-      "pt": "Frase sobre boarding gate.",
-      "ctx": "Contexto Viagens A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos o portão de embarque ontem.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We checked the boarding gate yesterday."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "pt": "Nós verificamos o portão de embarque ontem.",
+      "ctx": "Contexto de viagens (nível A2).",
       "blank": "checked",
       "wrong": "We check the boarding gate yesterday."
     },
@@ -434,8 +491,21 @@
         "wrong_collocation"
       ],
       "sentence": "They are going to review the luggage tomorrow.",
-      "pt": "Frase sobre luggage.",
-      "ctx": "Contexto Viagens A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eles vão revisar a bagagem amanhã.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "They are going to review the luggage tomorrow."
+      ],
+      "accepted_variants_en": [
+        "They're going to review the luggage tomorrow."
+      ],
+      "explanation_pt": "Futuro com be going to para planos.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "pt": "Eles vão revisar a bagagem amanhã.",
+      "ctx": "Contexto de viagens (nível A2).",
       "blank": "are",
       "wrong": "They go to review the luggage tomorrow."
     },
@@ -473,8 +543,19 @@
         "wrong_collocation"
       ],
       "sentence": "We check the reservation every day.",
-      "pt": "Frase sobre reservation.",
-      "ctx": "Contexto Viagens A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos a reserva todos os dias.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We check the reservation every day."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "skill_targets": [
+        "vocabulary"
+      ],
+      "pt": "Nós verificamos a reserva todos os dias.",
+      "ctx": "Contexto de viagens (nível A2).",
       "blank": "check",
       "wrong": "We check the reservation every day."
     },
@@ -512,8 +593,19 @@
         "wrong_collocation"
       ],
       "sentence": "When do you need the city map?",
-      "pt": "Frase sobre city map.",
-      "ctx": "Contexto Viagens A2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quando você precisa do mapa da cidade?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "When do you need the city map?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "skill_targets": [
+        "past_simple"
+      ],
+      "pt": "Quando você precisa do mapa da cidade?",
+      "ctx": "Contexto de viagens (nível A2).",
       "blank": "do",
       "wrong": "When you do need the city map?"
     }
@@ -525,7 +617,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "make a ticket",
-      "translation_pt": "ticket",
+      "translation_pt": "passagem",
       "invalid_variants": [
         "do a ticket"
       ],
@@ -549,7 +641,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "make a passport",
-      "translation_pt": "passport",
+      "translation_pt": "passaporte",
       "invalid_variants": [
         "do a passport"
       ],
@@ -561,7 +653,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "check the train station",
-      "translation_pt": "train station",
+      "translation_pt": "estação de trem",
       "invalid_variants": [
         "do the train station"
       ],
@@ -573,7 +665,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "make a boarding gate",
-      "translation_pt": "boarding gate",
+      "translation_pt": "portão de embarque",
       "invalid_variants": [
         "do a boarding gate"
       ],
@@ -585,7 +677,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "check the luggage",
-      "translation_pt": "luggage",
+      "translation_pt": "bagagem",
       "invalid_variants": [
         "do the luggage"
       ],
@@ -597,7 +689,7 @@
       "theme": "travel",
       "level": "A2",
       "canonical": "make a reservation",
-      "translation_pt": "reservation",
+      "translation_pt": "reserva",
       "invalid_variants": [
         "do a reservation"
       ],

@@ -20,12 +20,12 @@
   },
   "lexical_items": [
     {
-      "item_id": "core_a2_i",
+      "item_id": "core_a2_plan",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "I",
-      "translation_pt": "I",
+      "canonical": "plan",
+      "translation_pt": "plano",
       "semantic_type": "object",
       "tags": [
         "core",
@@ -33,12 +33,12 @@
       ]
     },
     {
-      "item_id": "core_a2_you",
+      "item_id": "core_a2_answer",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "you",
-      "translation_pt": "you",
+      "canonical": "answer",
+      "translation_pt": "resposta",
       "semantic_type": "time",
       "tags": [
         "core",
@@ -46,12 +46,12 @@
       ]
     },
     {
-      "item_id": "core_a2_we",
+      "item_id": "core_a2_question",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "we",
-      "translation_pt": "we",
+      "canonical": "question",
+      "translation_pt": "pergunta",
       "semantic_type": "action",
       "tags": [
         "core",
@@ -59,12 +59,12 @@
       ]
     },
     {
-      "item_id": "core_a2_they",
+      "item_id": "core_a2_idea",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "they",
-      "translation_pt": "they",
+      "canonical": "idea",
+      "translation_pt": "ideia",
       "semantic_type": "object",
       "tags": [
         "core",
@@ -72,12 +72,12 @@
       ]
     },
     {
-      "item_id": "core_a2_she",
+      "item_id": "core_a2_problem",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "she",
-      "translation_pt": "she",
+      "canonical": "problem",
+      "translation_pt": "problema",
       "semantic_type": "time",
       "tags": [
         "core",
@@ -85,12 +85,12 @@
       ]
     },
     {
-      "item_id": "core_a2_he",
+      "item_id": "core_a2_word",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "he",
-      "translation_pt": "he",
+      "canonical": "word",
+      "translation_pt": "palavra",
       "semantic_type": "action",
       "tags": [
         "core",
@@ -98,12 +98,12 @@
       ]
     },
     {
-      "item_id": "core_a2_today",
+      "item_id": "core_a2_name",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "today",
-      "translation_pt": "today",
+      "canonical": "name",
+      "translation_pt": "nome",
       "semantic_type": "object",
       "tags": [
         "core",
@@ -111,12 +111,12 @@
       ]
     },
     {
-      "item_id": "core_a2_tomorrow",
+      "item_id": "core_a2_number",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "tomorrow",
-      "translation_pt": "tomorrow",
+      "canonical": "number",
+      "translation_pt": "número",
       "semantic_type": "time",
       "tags": [
         "core",
@@ -124,12 +124,12 @@
       ]
     },
     {
-      "item_id": "core_a2_yesterday",
+      "item_id": "core_a2_place",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "yesterday",
-      "translation_pt": "yesterday",
+      "canonical": "place",
+      "translation_pt": "lugar",
       "semantic_type": "action",
       "tags": [
         "core",
@@ -137,12 +137,12 @@
       ]
     },
     {
-      "item_id": "core_a2_this_week",
+      "item_id": "core_a2_time",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "this week",
-      "translation_pt": "this week",
+      "canonical": "time",
+      "translation_pt": "horário",
       "semantic_type": "object",
       "tags": [
         "core",
@@ -150,12 +150,12 @@
       ]
     },
     {
-      "item_id": "core_a2_since_monday",
+      "item_id": "core_a2_reason",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "since Monday",
-      "translation_pt": "since Monday",
+      "canonical": "reason",
+      "translation_pt": "motivo",
       "semantic_type": "time",
       "tags": [
         "core",
@@ -163,12 +163,12 @@
       ]
     },
     {
-      "item_id": "core_a2_for_two_hours",
+      "item_id": "core_a2_example",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "for two hours",
-      "translation_pt": "for two hours",
+      "canonical": "example",
+      "translation_pt": "exemplo",
       "semantic_type": "action",
       "tags": [
         "core",
@@ -176,12 +176,12 @@
       ]
     },
     {
-      "item_id": "core_a2_can",
+      "item_id": "core_a2_list",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "can",
-      "translation_pt": "can",
+      "canonical": "list",
+      "translation_pt": "lista",
       "semantic_type": "object",
       "tags": [
         "core",
@@ -189,12 +189,12 @@
       ]
     },
     {
-      "item_id": "core_a2_have",
+      "item_id": "core_a2_note",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "have",
-      "translation_pt": "have",
+      "canonical": "note",
+      "translation_pt": "anotação",
       "semantic_type": "time",
       "tags": [
         "core",
@@ -202,12 +202,12 @@
       ]
     },
     {
-      "item_id": "core_a2_make",
+      "item_id": "core_a2_rule",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "make",
-      "translation_pt": "make",
+      "canonical": "rule",
+      "translation_pt": "regra",
       "semantic_type": "action",
       "tags": [
         "core",
@@ -215,12 +215,12 @@
       ]
     },
     {
-      "item_id": "core_a2_do",
+      "item_id": "core_a2_change",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "do",
-      "translation_pt": "do",
+      "canonical": "change",
+      "translation_pt": "mudança",
       "semantic_type": "object",
       "tags": [
         "core",
@@ -228,12 +228,12 @@
       ]
     },
     {
-      "item_id": "core_a2_go",
+      "item_id": "core_a2_part",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "go",
-      "translation_pt": "go",
+      "canonical": "part",
+      "translation_pt": "parte",
       "semantic_type": "time",
       "tags": [
         "core",
@@ -241,12 +241,12 @@
       ]
     },
     {
-      "item_id": "core_a2_get",
+      "item_id": "core_a2_group",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "get",
-      "translation_pt": "get",
+      "canonical": "group",
+      "translation_pt": "grupo",
       "semantic_type": "action",
       "tags": [
         "core",
@@ -254,12 +254,12 @@
       ]
     },
     {
-      "item_id": "core_a2_send",
+      "item_id": "core_a2_point",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "send",
-      "translation_pt": "send",
+      "canonical": "point",
+      "translation_pt": "ponto",
       "semantic_type": "object",
       "tags": [
         "core",
@@ -267,12 +267,12 @@
       ]
     },
     {
-      "item_id": "core_a2_check",
+      "item_id": "core_a2_story",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "check",
-      "translation_pt": "check",
+      "canonical": "story",
+      "translation_pt": "história",
       "semantic_type": "time",
       "tags": [
         "core",
@@ -304,7 +304,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_i"
+        "object": "core_a2_plan"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -314,11 +314,22 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the I yesterday.",
-      "pt": "Frase sobre I.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "We checked the plan yesterday.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos o plano ontem.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We checked the plan yesterday."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "skill_targets": [
+        "past_simple"
+      ],
+      "pt": "Nós verificamos o plano ontem.",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "checked",
-      "wrong": "We check the I yesterday."
+      "wrong": "We check the plan yesterday."
     },
     {
       "template_id": "core_a2_subject_be_going_to_verb_time_02",
@@ -343,7 +354,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_you"
+        "object": "core_a2_answer"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -353,11 +364,24 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They are going to review the you tomorrow.",
-      "pt": "Frase sobre you.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "They are going to review the answer tomorrow.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eles vão revisar a resposta amanhã.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "They are going to review the answer tomorrow."
+      ],
+      "accepted_variants_en": [
+        "They're going to review the answer tomorrow."
+      ],
+      "explanation_pt": "Futuro com be going to para planos.",
+      "skill_targets": [
+        "present_continuous"
+      ],
+      "pt": "Eles vão revisar a resposta amanhã.",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "are",
-      "wrong": "They go to review the you tomorrow."
+      "wrong": "They go to review the answer tomorrow."
     },
     {
       "template_id": "core_a2_subject_simple_present_object_03",
@@ -382,7 +406,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_we"
+        "object": "core_a2_question"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -392,11 +416,22 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We check the we every day.",
-      "pt": "Frase sobre we.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "We check the question every day.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos a pergunta todos os dias.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We check the question every day."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "skill_targets": [
+        "future_going_to"
+      ],
+      "pt": "Nós verificamos a pergunta todos os dias.",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "check",
-      "wrong": "We check the we every day."
+      "wrong": "We check the question every day."
     },
     {
       "template_id": "core_a2_wh_do_subject_base_verb_04",
@@ -421,7 +456,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_they"
+        "object": "core_a2_idea"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -431,11 +466,22 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the they?",
-      "pt": "Frase sobre they.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "When do you need the idea?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quando você precisa da ideia?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "When do you need the idea?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "skill_targets": [
+        "comparatives"
+      ],
+      "pt": "Quando você precisa da ideia?",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "do",
-      "wrong": "When you do need the they?"
+      "wrong": "When you do need the idea?"
     },
     {
       "template_id": "core_a2_subject_past_simple_object_time_05",
@@ -460,7 +506,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_she"
+        "object": "core_a2_problem"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -470,11 +516,22 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the she yesterday.",
-      "pt": "Frase sobre she.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "We checked the problem yesterday.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos o problema ontem.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We checked the problem yesterday."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "pt": "Nós verificamos o problema ontem.",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "checked",
-      "wrong": "We check the she yesterday."
+      "wrong": "We check the problem yesterday."
     },
     {
       "template_id": "core_a2_subject_be_going_to_verb_time_06",
@@ -499,7 +556,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_he"
+        "object": "core_a2_word"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -509,11 +566,24 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They are going to review the he tomorrow.",
-      "pt": "Frase sobre he.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "They are going to review the word tomorrow.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eles vão revisar a palavra amanhã.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "They are going to review the word tomorrow."
+      ],
+      "accepted_variants_en": [
+        "They're going to review the word tomorrow."
+      ],
+      "explanation_pt": "Futuro com be going to para planos.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "pt": "Eles vão revisar a palavra amanhã.",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "are",
-      "wrong": "They go to review the he tomorrow."
+      "wrong": "They go to review the word tomorrow."
     },
     {
       "template_id": "core_a2_subject_simple_present_object_07",
@@ -538,7 +608,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_today"
+        "object": "core_a2_name"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -548,11 +618,22 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We check the today every day.",
-      "pt": "Frase sobre today.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "We check the name every day.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos o nome todos os dias.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We check the name every day."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "skill_targets": [
+        "vocabulary"
+      ],
+      "pt": "Nós verificamos o nome todos os dias.",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "check",
-      "wrong": "We check the today every day."
+      "wrong": "We check the name every day."
     },
     {
       "template_id": "core_a2_wh_do_subject_base_verb_08",
@@ -577,7 +658,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_tomorrow"
+        "object": "core_a2_number"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -587,11 +668,22 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the tomorrow?",
-      "pt": "Frase sobre tomorrow.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "When do you need the number?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quando você precisa do número?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "When do you need the number?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "skill_targets": [
+        "past_simple"
+      ],
+      "pt": "Quando você precisa do número?",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "do",
-      "wrong": "When you do need the tomorrow?"
+      "wrong": "When you do need the number?"
     },
     {
       "template_id": "core_a2_subject_past_simple_object_time_09",
@@ -616,7 +708,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_yesterday"
+        "object": "core_a2_place"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -626,11 +718,22 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the yesterday yesterday.",
-      "pt": "Frase sobre yesterday.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "We checked the place yesterday.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos o lugar ontem.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We checked the place yesterday."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "skill_targets": [
+        "present_continuous"
+      ],
+      "pt": "Nós verificamos o lugar ontem.",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "checked",
-      "wrong": "We check the yesterday yesterday."
+      "wrong": "We check the place yesterday."
     },
     {
       "template_id": "core_a2_subject_be_going_to_verb_time_10",
@@ -655,7 +758,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_this_week"
+        "object": "core_a2_time"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -665,11 +768,24 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They are going to review the this week tomorrow.",
-      "pt": "Frase sobre this week.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "They are going to review the time tomorrow.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eles vão revisar o horário amanhã.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "They are going to review the time tomorrow."
+      ],
+      "accepted_variants_en": [
+        "They're going to review the time tomorrow."
+      ],
+      "explanation_pt": "Futuro com be going to para planos.",
+      "skill_targets": [
+        "future_going_to"
+      ],
+      "pt": "Eles vão revisar o horário amanhã.",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "are",
-      "wrong": "They go to review the this week tomorrow."
+      "wrong": "They go to review the time tomorrow."
     },
     {
       "template_id": "core_a2_subject_simple_present_object_11",
@@ -694,7 +810,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_since_monday"
+        "object": "core_a2_reason"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -704,11 +820,22 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We check the since Monday every day.",
-      "pt": "Frase sobre since Monday.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "We check the reason every day.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós verificamos o motivo todos os dias.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We check the reason every day."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "skill_targets": [
+        "comparatives"
+      ],
+      "pt": "Nós verificamos o motivo todos os dias.",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "check",
-      "wrong": "We check the since Monday every day."
+      "wrong": "We check the reason every day."
     },
     {
       "template_id": "core_a2_wh_do_subject_base_verb_12",
@@ -733,7 +860,7 @@
       ],
       "slots": {
         "subject": "we",
-        "object": "core_a2_for_two_hours"
+        "object": "core_a2_example"
       },
       "constraints": [
         "subject_auxiliary_agreement"
@@ -743,119 +870,130 @@
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the for two hours?",
-      "pt": "Frase sobre for two hours.",
-      "ctx": "Contexto Base A2.",
+      "sentence": "When do you need the example?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quando você precisa do exemplo?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "When do you need the example?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "pt": "Quando você precisa do exemplo?",
+      "ctx": "Contexto de base (nível A2).",
       "blank": "do",
-      "wrong": "When you do need the for two hours?"
+      "wrong": "When you do need the example?"
     }
   ],
   "collocations": [
     {
-      "collocation_id": "core_a2_i_chunk",
+      "collocation_id": "core_a2_plan_chunk",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "make a I",
-      "translation_pt": "I",
+      "canonical": "make a plan",
+      "translation_pt": "plano",
       "invalid_variants": [
-        "do a I"
+        "do a plan"
       ],
       "skill_id": "collocation"
     },
     {
-      "collocation_id": "core_a2_you_chunk",
+      "collocation_id": "core_a2_answer_chunk",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "check the you",
-      "translation_pt": "you",
+      "canonical": "check the answer",
+      "translation_pt": "resposta",
       "invalid_variants": [
-        "do the you"
+        "do the answer"
       ],
       "skill_id": "collocation"
     },
     {
-      "collocation_id": "core_a2_we_chunk",
+      "collocation_id": "core_a2_question_chunk",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "make a we",
-      "translation_pt": "we",
+      "canonical": "make a question",
+      "translation_pt": "pergunta",
       "invalid_variants": [
-        "do a we"
+        "do a question"
       ],
       "skill_id": "collocation"
     },
     {
-      "collocation_id": "core_a2_they_chunk",
+      "collocation_id": "core_a2_idea_chunk",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "check the they",
-      "translation_pt": "they",
+      "canonical": "check the idea",
+      "translation_pt": "ideia",
       "invalid_variants": [
-        "do the they"
+        "do the idea"
       ],
       "skill_id": "collocation"
     },
     {
-      "collocation_id": "core_a2_she_chunk",
+      "collocation_id": "core_a2_problem_chunk",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "make a she",
-      "translation_pt": "she",
+      "canonical": "make a problem",
+      "translation_pt": "problema",
       "invalid_variants": [
-        "do a she"
+        "do a problem"
       ],
       "skill_id": "collocation"
     },
     {
-      "collocation_id": "core_a2_he_chunk",
+      "collocation_id": "core_a2_word_chunk",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "check the he",
-      "translation_pt": "he",
+      "canonical": "check the word",
+      "translation_pt": "palavra",
       "invalid_variants": [
-        "do the he"
+        "do the word"
       ],
       "skill_id": "collocation"
     },
     {
-      "collocation_id": "core_a2_today_chunk",
+      "collocation_id": "core_a2_name_chunk",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "make a today",
-      "translation_pt": "today",
+      "canonical": "make a name",
+      "translation_pt": "nome",
       "invalid_variants": [
-        "do a today"
+        "do a name"
       ],
       "skill_id": "collocation"
     },
     {
-      "collocation_id": "core_a2_tomorrow_chunk",
+      "collocation_id": "core_a2_number_chunk",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "check the tomorrow",
-      "translation_pt": "tomorrow",
+      "canonical": "check the number",
+      "translation_pt": "número",
       "invalid_variants": [
-        "do the tomorrow"
+        "do the number"
       ],
       "skill_id": "collocation"
     },
     {
-      "collocation_id": "core_a2_yesterday_chunk",
+      "collocation_id": "core_a2_place_chunk",
       "pack_id": "core_a2",
       "theme": "core",
       "level": "A2",
-      "canonical": "make a yesterday",
-      "translation_pt": "yesterday",
+      "canonical": "make a place",
+      "translation_pt": "lugar",
       "invalid_variants": [
-        "do a yesterday"
+        "do a place"
       ],
       "skill_id": "collocation"
     }

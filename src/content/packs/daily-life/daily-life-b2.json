@@ -27,7 +27,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "morning routine",
-      "translation_pt": "morning routine",
+      "translation_pt": "rotina matinal",
       "semantic_type": "object",
       "tags": [
         "daily_life",
@@ -40,7 +40,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "family dinner",
-      "translation_pt": "family dinner",
+      "translation_pt": "jantar em família",
       "semantic_type": "time",
       "tags": [
         "daily_life",
@@ -53,7 +53,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "bus stop",
-      "translation_pt": "bus stop",
+      "translation_pt": "ponto de ônibus",
       "semantic_type": "action",
       "tags": [
         "daily_life",
@@ -66,7 +66,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "homework",
-      "translation_pt": "homework",
+      "translation_pt": "lição de casa",
       "semantic_type": "object",
       "tags": [
         "daily_life",
@@ -79,7 +79,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "neighbor",
-      "translation_pt": "neighbor",
+      "translation_pt": "vizinho",
       "semantic_type": "time",
       "tags": [
         "daily_life",
@@ -92,7 +92,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "weekend plan",
-      "translation_pt": "weekend plan",
+      "translation_pt": "plano de fim de semana",
       "semantic_type": "action",
       "tags": [
         "daily_life",
@@ -105,7 +105,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "appointment",
-      "translation_pt": "appointment",
+      "translation_pt": "compromisso",
       "semantic_type": "object",
       "tags": [
         "daily_life",
@@ -118,7 +118,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "coffee break",
-      "translation_pt": "coffee break",
+      "translation_pt": "pausa para o café",
       "semantic_type": "time",
       "tags": [
         "daily_life",
@@ -131,7 +131,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "grocery list",
-      "translation_pt": "grocery list",
+      "translation_pt": "lista de compras",
       "semantic_type": "action",
       "tags": [
         "daily_life",
@@ -144,7 +144,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "phone call",
-      "translation_pt": "phone call",
+      "translation_pt": "ligação",
       "semantic_type": "object",
       "tags": [
         "daily_life",
@@ -157,7 +157,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "clean kitchen",
-      "translation_pt": "clean kitchen",
+      "translation_pt": "cozinha limpa",
       "semantic_type": "time",
       "tags": [
         "daily_life",
@@ -170,7 +170,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "quiet street",
-      "translation_pt": "quiet street",
+      "translation_pt": "rua tranquila",
       "semantic_type": "action",
       "tags": [
         "daily_life",
@@ -183,7 +183,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "birthday party",
-      "translation_pt": "birthday party",
+      "translation_pt": "festa de aniversário",
       "semantic_type": "object",
       "tags": [
         "daily_life",
@@ -196,7 +196,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "daily schedule",
-      "translation_pt": "daily schedule",
+      "translation_pt": "agenda diária",
       "semantic_type": "time",
       "tags": [
         "daily_life",
@@ -241,8 +241,19 @@
         "wrong_collocation"
       ],
       "sentence": "The morning routine was reviewed by the team.",
-      "pt": "Frase sobre morning routine.",
-      "ctx": "Contexto Vida cotidiana B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "A rotina matinal foi revisada pela equipe.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The morning routine was reviewed by the team."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "pt": "A rotina matinal foi revisada pela equipe.",
+      "ctx": "Contexto de vida cotidiana (nível B2).",
       "blank": "morning",
       "wrong": "The morning routine reviewed by the team."
     },
@@ -282,8 +293,19 @@
         "wrong_collocation"
       ],
       "sentence": "She said that the family dinner was ready.",
-      "pt": "Frase sobre family dinner.",
-      "ctx": "Contexto Vida cotidiana B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Ela disse que o jantar em família estava pronto.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "She said that the family dinner was ready."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Discurso indireto com said that.",
+      "skill_targets": [
+        "reported_speech"
+      ],
+      "pt": "Ela disse que o jantar em família estava pronto.",
+      "ctx": "Contexto de vida cotidiana (nível B2).",
       "blank": "said",
       "wrong": "She said the family dinner was ready."
     },
@@ -323,8 +345,21 @@
         "wrong_collocation"
       ],
       "sentence": "If I had more time, I would improve the bus stop.",
-      "pt": "Frase sobre bus stop.",
-      "ctx": "Contexto Vida cotidiana B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o ponto de ônibus.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If I had more time, I would improve the bus stop."
+      ],
+      "accepted_variants_en": [
+        "If I had more time, I'd improve the bus stop."
+      ],
+      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "skill_targets": [
+        "second_conditional"
+      ],
+      "pt": "Se eu tivesse mais tempo, eu melhoraria o ponto de ônibus.",
+      "ctx": "Contexto de vida cotidiana (nível B2).",
       "blank": "I",
       "wrong": "If I had more time, I will improve the bus stop."
     },
@@ -364,8 +399,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the homework today.",
-      "pt": "Frase sobre homework.",
-      "ctx": "Contexto Vida cotidiana B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar a lição de casa hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the homework today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "modal_deduction"
+      ],
+      "pt": "Eu posso atualizar a lição de casa hoje.",
+      "ctx": "Contexto de vida cotidiana (nível B2).",
       "blank": "can",
       "wrong": "I cans update the homework today."
     },
@@ -405,8 +451,19 @@
         "wrong_collocation"
       ],
       "sentence": "The neighbor was reviewed by the team.",
-      "pt": "Frase sobre neighbor.",
-      "ctx": "Contexto Vida cotidiana B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "O vizinho foi revisado pela equipe.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The neighbor was reviewed by the team."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "skill_targets": [
+        "collocation"
+      ],
+      "pt": "O vizinho foi revisado pela equipe.",
+      "ctx": "Contexto de vida cotidiana (nível B2).",
       "blank": "neighbor",
       "wrong": "The neighbor reviewed by the team."
     },
@@ -446,8 +503,19 @@
         "wrong_collocation"
       ],
       "sentence": "She said that the weekend plan was ready.",
-      "pt": "Frase sobre weekend plan.",
-      "ctx": "Contexto Vida cotidiana B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Ela disse que o plano de fim de semana estava pronto.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "She said that the weekend plan was ready."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Discurso indireto com said that.",
+      "skill_targets": [
+        "word_order"
+      ],
+      "pt": "Ela disse que o plano de fim de semana estava pronto.",
+      "ctx": "Contexto de vida cotidiana (nível B2).",
       "blank": "said",
       "wrong": "She said the weekend plan was ready."
     },
@@ -487,8 +555,21 @@
         "wrong_collocation"
       ],
       "sentence": "If I had more time, I would improve the appointment.",
-      "pt": "Frase sobre appointment.",
-      "ctx": "Contexto Vida cotidiana B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o compromisso.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If I had more time, I would improve the appointment."
+      ],
+      "accepted_variants_en": [
+        "If I had more time, I'd improve the appointment."
+      ],
+      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "skill_targets": [
+        "vocabulary"
+      ],
+      "pt": "Se eu tivesse mais tempo, eu melhoraria o compromisso.",
+      "ctx": "Contexto de vida cotidiana (nível B2).",
       "blank": "I",
       "wrong": "If I had more time, I will improve the appointment."
     },
@@ -528,8 +609,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the coffee break today.",
-      "pt": "Frase sobre coffee break.",
-      "ctx": "Contexto Vida cotidiana B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar a pausa para o café hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the coffee break today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "pt": "Eu posso atualizar a pausa para o café hoje.",
+      "ctx": "Contexto de vida cotidiana (nível B2).",
       "blank": "can",
       "wrong": "I cans update the coffee break today."
     }
@@ -541,7 +633,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "make a morning routine",
-      "translation_pt": "morning routine",
+      "translation_pt": "rotina matinal",
       "invalid_variants": [
         "do a morning routine"
       ],
@@ -553,7 +645,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "check the family dinner",
-      "translation_pt": "family dinner",
+      "translation_pt": "jantar em família",
       "invalid_variants": [
         "do the family dinner"
       ],
@@ -565,7 +657,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "make a bus stop",
-      "translation_pt": "bus stop",
+      "translation_pt": "ponto de ônibus",
       "invalid_variants": [
         "do a bus stop"
       ],
@@ -577,7 +669,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "check the homework",
-      "translation_pt": "homework",
+      "translation_pt": "lição de casa",
       "invalid_variants": [
         "do the homework"
       ],
@@ -589,7 +681,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "make a neighbor",
-      "translation_pt": "neighbor",
+      "translation_pt": "vizinho",
       "invalid_variants": [
         "do a neighbor"
       ],
@@ -601,7 +693,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "check the weekend plan",
-      "translation_pt": "weekend plan",
+      "translation_pt": "plano de fim de semana",
       "invalid_variants": [
         "do the weekend plan"
       ],
@@ -613,7 +705,7 @@
       "theme": "daily_life",
       "level": "B2",
       "canonical": "make a appointment",
-      "translation_pt": "appointment",
+      "translation_pt": "compromisso",
       "invalid_variants": [
         "do a appointment"
       ],
