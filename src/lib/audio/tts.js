@@ -41,13 +41,36 @@ export function configureTts({ tts_engine, tts_accent, tts_voice, tts_rate, pipe
 // ---------- voice enumeration (Web Speech) ----------
 // getVoices() is empty until the async `voiceschanged` event on some browsers.
 let cachedVoices = []
+let allVoices = []
 const voiceListeners = new Set()
 
 function refreshVoices() {
   if (!speechSupported) return
   const all = window.speechSynthesis.getVoices() || []
+  allVoices = all
+  // The English-only list drives the English accent picker in Settings.
   cachedVoices = all.filter((v) => (v.lang || '').toLowerCase().startsWith('en'))
   voiceListeners.forEach((cb) => cb(cachedVoices))
+}
+
+// Resolve a device (Web Speech) voice for an arbitrary language tag. Unlike
+// listVoices() this is NOT restricted to English — Portuguese explanations must
+// never be spoken with an English voice. Returns null when the device has no
+// voice for that language family (caller then reports audio unavailable rather
+// than silently substituting the wrong language).
+function langFamily(tag) { return String(tag || '').toLowerCase().replace('_', '-').split('-')[0] }
+export function resolveDeviceVoiceForLanguage(language) {
+  if (!speechSupported) return null
+  if (allVoices.length === 0) refreshVoices()
+  const fam = langFamily(language)
+  if (!fam) return null
+  const matches = allVoices.filter((v) => langFamily(v.lang) === fam)
+  if (!matches.length) return null
+  // Prefer an exact region match (pt-BR over pt-PT), then a local/offline voice.
+  const region = String(language || '').toLowerCase().replace('_', '-')
+  const exact = matches.filter((v) => (v.lang || '').toLowerCase().replace('_', '-') === region)
+  const pool = exact.length ? exact : matches
+  return pool.find((v) => v.localService) || pool[0]
 }
 
 if (speechSupported) {
@@ -105,6 +128,16 @@ export async function speak(text, opts = {}) {
   }
   const ok = speakSystem(t, fallbackOpts)
   state.overrideVoiceId = prevOverride.voice; state.overrideLang = prevOverride.lang
+  if (!ok) {
+    // Record an honest unavailable event so observers never see a wrong-language
+    // substitution — effective voice/language stay empty, not the English voice.
+    recordTtsEvent({
+      requested_voice_id: opts.requestedVoiceId || opts.voiceId || opts.language || '',
+      effective_voice_id: '', language: opts.language || '', role: opts.role,
+      engine: 'system', rate: opts.rate ?? state.rate, fallback_used: true,
+      fallback_reason: 'NO_VOICE_FOR_LANGUAGE', model_state: 'unavailable',
+    })
+  }
   return ok ? { ok: true, engine: 'system', fallback_used: !!fallbackOpts.fallback_used } : unavailable(opts)
 }
 
@@ -127,6 +160,29 @@ function recordTtsEvent(event) {
 function speakSystem(text, opts = {}) {
   try {
     if (!speechSupported) return false
+    const reqLang = opts.language || state.overrideLang || ''
+    const fam = langFamily(reqLang)
+    // Non-English requests (Portuguese explanations) must use a matching-language
+    // device voice — never an English one. If the device has no such voice we
+    // report unavailable so the caller can surface "áudio indisponível".
+    if (fam && fam !== 'en') {
+      const nativeVoice = resolveDeviceVoiceForLanguage(reqLang)
+      if (!nativeVoice) return false
+      if (opts.interrupt !== false) window.speechSynthesis.cancel()
+      const u = new SpeechSynthesisUtterance(text)
+      u.voice = nativeVoice
+      u.lang = nativeVoice.lang
+      u.rate = opts.slow ? Math.max(0.5, (opts.rate ?? state.rate) * 0.6) : (opts.rate ?? state.rate)
+      window.speechSynthesis.speak(u)
+      recordTtsEvent({
+        requested_voice_id: opts.requestedVoiceId || opts.voiceId || reqLang,
+        effective_voice_id: nativeVoice.voiceURI || nativeVoice.lang,
+        language: reqLang, role: opts.role, engine: 'system', rate: u.rate,
+        fallback_used: !!opts.fallback_used, fallback_reason: opts.fallback_reason || '',
+        model_state: 'system_native_voice_selected',
+      })
+      return true
+    }
     if (opts.interrupt !== false) window.speechSynthesis.cancel()
     const u = new SpeechSynthesisUtterance(text)
     const voice = pickVoice()

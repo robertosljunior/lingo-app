@@ -5,7 +5,7 @@ import { I } from '../components/icons.jsx'
 import { getSkill, listSkills } from '../lib/skill-registry.js'
 
 const VISUAL = {
-  everyday_life: { icon:'🏠', color:'#2563EB', desc:'Rotina, casa, amigos e situações do dia a dia.' },
+  daily_life: { icon:'🏠', color:'#2563EB', desc:'Rotina, casa, amigos e situações do dia a dia.' },
   workplace: { icon:'💼', color:'#4F46E5', desc:'Reuniões, projetos, clientes e carreira.' },
   travel: { icon:'✈️', color:'#0891B2', desc:'Aeroporto, hotel, trajetos e pedidos durante viagens.' },
   food_and_restaurants: { icon:'🍽️', color:'#D97706', desc:'Pedidos, reservas, cardápios e preferências.' },
@@ -45,7 +45,16 @@ export default function TrainingHub() {
     try {
       await db.setTrainingPreferences(activeProfile, { preferred_theme: theme.theme, preferred_level: level, last_training_mode: mode })
       const res = await generateAdaptiveLesson({ questionCount: mode === 'lesson' ? 30 : 10, level, theme: theme.theme })
-      if (res?.lesson) startLesson(res.lesson)
+      // Safe failure: never leave the user on a broken/empty lesson. If the pack
+      // could not produce a usable lesson, keep them on the Hub with guidance.
+      if (!res?.lesson || !(res.lesson.questions?.length > 0)) {
+        showToast('Não foi possível montar esta aula. Tente outro nível ou restaure o pacote de conteúdo.')
+        return
+      }
+      startLesson(res.lesson)
+    } catch (err) {
+      if (import.meta.env?.DEV) console.error('hub_lesson_open_failed', err)
+      showToast('Não foi possível montar esta aula. Tente outro nível ou restaure o pacote de conteúdo.')
     } finally { setBusy(false) }
   }
   if (!summary) return <div className="phone"><div className="screen-body"><div className="muted">Carregando hub…</div></div></div>

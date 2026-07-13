@@ -381,9 +381,13 @@ function DictationBody({ q, user, setUser, disabled, showHint }) {
           <SpeakButton text={q.expected_answer} size="lg" turtle label=" Ouvir frase" />
         </div>
       ) : (
-        <div className="card" style={{ padding: 14, background: 'var(--bg-alt)' }}>
-          <div className="label-eyebrow" style={{ marginBottom: 6 }}>sem áudio neste navegador — copie a frase</div>
-          <div style={{ fontSize: 16, fontWeight: 700 }}>{q.expected_answer}</div>
+        <div className="card" style={{ padding: 14, background: 'var(--warn-bg)', borderColor: 'transparent' }}>
+          <div className="label-eyebrow" style={{ marginBottom: 6, color: 'var(--warn-ink)' }}>áudio indisponível neste navegador</div>
+          <div style={{ fontSize: 13, color: 'var(--warn-ink)', lineHeight: 1.5 }}>
+            {/* Never reveal the transcript before submitting — show it only in the feedback. */}
+            {disabled ? <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)' }}>{q.expected_answer}</span>
+              : 'Escreva a frase que você espera ouvir. A frase correta aparece na correção.'}
+          </div>
         </div>
       )}
 

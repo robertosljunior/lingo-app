@@ -186,11 +186,39 @@ function reasonForSkill(p) {
   return 'low_mastery'
 }
 
+// Group exercise types into families (mirrors lesson-generator's EXERCISE_FAMILIES;
+// inlined here to avoid a circular import).
+const EXERCISE_FAMILY = {
+  translate_natural: 'production', rewrite_natural: 'production', free_write: 'production', guided_write: 'production',
+  listen_type: 'listening', speak_sentence: 'listening',
+  build_sentence: 'ordering', word_order: 'ordering',
+  choose_best: 'recognition', fill_blank: 'recognition',
+}
+// The family the learner struggles with most recently, used to bias the plan
+// toward that family without eliminating the others. Requires a minimum of
+// evidence so a couple of misses never skews a whole lesson.
+export function weakestExerciseFamily(scopedAnswers = []) {
+  const err = {}, tot = {}
+  for (const a of scopedAnswers.slice(0, 40)) {
+    const fam = EXERCISE_FAMILY[a.question?.type || a.exercise_type]
+    if (!fam) continue
+    tot[fam] = (tot[fam] || 0) + 1
+    if (a.verdict && a.verdict !== 'correct') err[fam] = (err[fam] || 0) + 1
+  }
+  let family = null, worst = 0
+  for (const fam of Object.keys(err)) {
+    const rate = err[fam] / Math.max(1, tot[fam])
+    if (err[fam] >= 3 && rate > 0.4 && rate > worst) { worst = rate; family = fam }
+  }
+  return family
+}
+
 export function buildLessonGenerationContext({ profileId = 'default', skillProfiles = [], answers = [], questions = [], level = 'B1', now = Date.now() } = {}) {
   const ranked = rankSkillsForReview(skillProfiles, now)
   const scoped = answers.filter((a) => (a.profile_id || profileId) === profileId).sort((a, b) => (b.answered_at || 0) - (a.answered_at || 0))
   return {
     level,
+    priority_family: weakestExerciseFamily(scoped),
     target_skills: ranked.filter((p) => p.mastery < 0.8 || p.evidence_level === 'insufficient').slice(0, 8).map((p) => ({ skill_id: p.skill_id, priority: p.priority, mastery: p.mastery, evidence: p.evidence_level, attempts: p.attempts, recent_errors: (p.recent_examples || []).slice(0, 3).map(({ actual, expected, severity }) => ({ actual, expected, severity })) })),
     reinforcement_skills: ranked.filter((p) => p.mastery >= 0.65 && p.mastery < 0.85).slice(0, 5).map((p) => ({ skill_id: p.skill_id, mastery: p.mastery })),
     avoid_overtraining_skills: ranked.filter((p) => p.mastery >= 0.85 && (p.current_correct_streak || 0) >= 3).slice(0, 5).map((p) => p.skill_id),
