@@ -3,7 +3,7 @@ import { useApp } from '../store.jsx'
 import { Progress } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { analyze } from '../lib/nlp-client.js'
-import { analyzeProduction, resolveAssessmentMode, usesSemanticPipeline, toExerciseAnalysis, essentialWords } from '../lib/language-analysis/index.js'
+import { analyzeProduction, resolveAssessmentMode, usesSemanticPipeline, toExerciseAnalysis, essentialWords, cancelSemanticAnalysis } from '../lib/language-analysis/index.js'
 import { buildIncorrectChoiceEvaluation } from '../lib/correction-engine.js'
 import { speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
@@ -24,7 +24,18 @@ export default function Exercise() {
   const [choice, setChoice] = useState(null)
   const [showHint, setShowHint] = useState(false)
   const [analyzing, setAnalyzing] = useState(false)
+  const [canCancel, setCanCancel] = useState(false) // show "cancel" only if analysis drags
   const [feedback, setFeedback] = useState(null) // analysis result once answered
+  // Monotonic token so a late analysis can never update a newer question, and a
+  // flag distinguishing a user-initiated cancel from a genuine engine failure.
+  const analysisToken = useRef(0)
+  const cancelTimer = useRef(null)
+  const userCancelled = useRef(false)
+
+  // Leaving the exercise (unmount) must cancel any in-flight worker analysis.
+  useEffect(() => () => { analysisToken.current++; clearTimeout(cancelTimer.current); cancelSemanticAnalysis() }, [])
+  // Changing question resets scroll-sensitive local UI and abandons stale analysis.
+  useEffect(() => { setCanCancel(false); userCancelled.current = false }, [q.id])
 
   // Shuffle the word bank once per question.
   const bank = useMemo(() => {
@@ -49,16 +60,30 @@ export default function Exercise() {
 
   const handleSubmit = async () => {
     if (analyzing) return
+    const token = ++analysisToken.current
+    userCancelled.current = false
     setAnalyzing(true)
+    setCanCancel(false)
+    // Offer to interrupt the advanced (worker) analysis only if it drags — a fast
+    // analysis never flashes a cancel control.
+    cancelTimer.current = setTimeout(() => { if (token === analysisToken.current) setCanCancel(true) }, 1200)
     try {
-      await runSubmission()
+      await runSubmission(token)
     } finally {
-      // Never leave the screen stuck on "Analisando…" if analysis throws.
-      setAnalyzing(false)
+      clearTimeout(cancelTimer.current)
+      // Never leave the screen stuck on "Analisando…" if analysis throws; ignore
+      // a stale run whose question has already moved on.
+      if (token === analysisToken.current) { setAnalyzing(false); setCanCancel(false) }
     }
   }
 
-  const runSubmission = async () => {
+  // Interrupt the advanced analysis but keep the basic correction (never blocks).
+  const handleCancelAnalysis = () => {
+    userCancelled.current = true
+    cancelSemanticAnalysis()
+  }
+
+  const runSubmission = async (token) => {
     const ans = answerText()
     const strict = settings?.correction_mode === 'strict'
     let analysis
@@ -80,7 +105,7 @@ export default function Exercise() {
         })
         analysis = toExerciseAnalysis(result, { question: q, mode: semanticMode })
       } catch (err) {
-        analysis = buildSemanticFallbackAnalysis({ mode: semanticMode, userAnswer: ans })
+        analysis = buildSemanticFallbackAnalysis({ mode: semanticMode, userAnswer: ans, interrupted: userCancelled.current })
       }
     } else {
       analysis = await analyze({
@@ -121,11 +146,15 @@ export default function Exercise() {
     const spoken = q.type === 'speak_sentence'
       ? { spoken_transcript: ans, pronunciation_score: analysis.similarity_score }
       : {}
+    // A stale analysis (question already advanced) must never persist or update UI.
+    if (token !== analysisToken.current) return
     const entry = await submitAnswer({ question: q, user_answer: ans, analysis, ...spoken, attempt_number: 1, hint_used: showHint })
+    if (token !== analysisToken.current) return
     setFeedback({ ...analysis, answerKey: entry.key, user_answer: ans })
   }
 
   const handleNext = () => {
+    analysisToken.current++; cancelSemanticAnalysis()
     stopSpeaking(); setUser(''); setPlaced([]); setChoice(null); setShowHint(false); setFeedback(null)
     nextQuestion()
   }
@@ -171,15 +200,30 @@ export default function Exercise() {
 
       {!feedback && (
         <div style={{
-          position: 'absolute', left: 0, right: 0, bottom: 0, padding: '12px 20px 28px',
-          background: 'linear-gradient(to top, var(--bg) 70%, transparent)', display: 'flex', gap: 10,
+          position: 'absolute', left: 0, right: 0, bottom: 0, padding: '12px 20px calc(28px + env(safe-area-inset-bottom))',
+          background: 'linear-gradient(to top, var(--bg) 70%, transparent)', display: 'flex', flexDirection: 'column', gap: 8,
         }}>
-          <button className="btn btn-secondary" style={{ minWidth: 56, padding: '12px 14px' }} onClick={() => setShowHint(true)} aria-label="Dica">
-            <I.lightbulb s={20} />
-          </button>
-          <button className="btn btn-primary" style={{ flex: 1 }} disabled={!canSubmit()} onClick={handleSubmit}>
-            {analyzing ? 'Analisando…' : q.type === 'build_sentence' ? 'Verificar' : 'Responder'}
-          </button>
+          {analyzing && (
+            <div data-testid="analyzing-status" aria-live="polite" style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+              fontSize: 13, color: 'var(--ink-3)',
+            }}>
+              <span className="spinner-dot" aria-hidden="true" />
+              <span>Analisando sua frase…</span>
+              {canCancel && (
+                <button className="btn btn-sm btn-ghost" style={{ padding: '2px 10px', minHeight: 0 }}
+                  data-testid="cancel-analysis" onClick={handleCancelAnalysis}>Cancelar</button>
+              )}
+            </div>
+          )}
+          <div style={{ display: 'flex', gap: 10 }}>
+            <button className="btn btn-secondary" style={{ minWidth: 56, padding: '12px 14px' }} onClick={() => setShowHint(true)} aria-label="Dica" disabled={analyzing}>
+              <I.lightbulb s={20} />
+            </button>
+            <button className="btn btn-primary" style={{ flex: 1 }} disabled={!canSubmit() || analyzing} onClick={handleSubmit}>
+              {analyzing ? 'Analisando…' : q.type === 'build_sentence' ? 'Verificar' : 'Responder'}
+            </button>
+          </div>
         </div>
       )}
 
@@ -230,8 +274,13 @@ function SemanticFeedbackBlock({ sem, userText, settings }) {
 // Conservative degrade when the local semantic pipeline throws (e.g. a chunk
 // fails to load). Free production is never a total failure and the model answer
 // is never shown; the learner sees a neutral, valid acknowledgement.
-function buildSemanticFallbackAnalysis({ mode, userAnswer }) {
-  const headline = 'Sua frase foi registrada.'
+function buildSemanticFallbackAnalysis({ mode, userAnswer, interrupted = false }) {
+  const headline = interrupted
+    ? 'A análise avançada foi interrompida. A correção básica continua disponível.'
+    : 'Sua frase foi registrada.'
+  const summary = interrupted
+    ? 'Você interrompeu a análise avançada. Sua resposta foi registrada com a correção básica.'
+    : 'Não foi possível analisar em detalhe agora. Sua resposta foi registrada.'
   return {
     analysis_version: '1', assessment_mode: mode, verdict: 'correct', is_probably_correct: true,
     score: 1, similarity_score: 1, target: null, target_answer: null,
@@ -241,7 +290,7 @@ function buildSemanticFallbackAnalysis({ mode, userAnswer }) {
     semantic_feedback: {
       mode, hide_model_answer: mode === 'free' || mode === 'guided', verdict: 'valid',
       headline, corrected_version: null, natural_alternatives: [],
-      explanation_pt: { title: 'Análise indisponível', summary: 'Não foi possível analisar em detalhe agora. Sua resposta foi registrada.' },
+      explanation_pt: { title: interrupted ? 'Análise interrompida' : 'Análise indisponível', summary },
     },
     engines: null, fallback_events: [{ engine: 'pipeline', code: 'ANALYSIS_FAILED' }], knowledge_pack_versions: {},
     assessed_skills: null,

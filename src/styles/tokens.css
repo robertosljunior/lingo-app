@@ -574,3 +574,13 @@ input[type="range"]::-moz-range-thumb {
   .feedback-footer { margin-left:-16px; margin-right:-16px; padding-left:16px; padding-right:16px; }
   .feedback-title { font-size:20px; }
 }
+
+/* Discrete inline spinner for the "Analisando sua frase…" status (worker
+   analysis in flight). Uses a semantic accent, never blocks the screen. */
+.spinner-dot {
+  width: 14px; height: 14px; border-radius: 999px; flex: 0 0 auto;
+  border: 2px solid color-mix(in srgb, var(--indigo-600) 30%, transparent);
+  border-top-color: var(--indigo-600);
+  animation: spinner-rot .7s linear infinite;
+}
+@keyframes spinner-rot { to { transform: rotate(360deg); } }

@@ -7,12 +7,13 @@ import { BUILTIN_KNOWLEDGE_PACKS } from '../../content/knowledge-packs/index.js'
 import { getActiveKnowledgePacks } from './knowledge-pack-store.js'
 import { createGrammarChecker, createProductionHarperLoader } from './grammar-checker-adapter.js'
 import { createStructuralNlp } from './structural-nlp-adapter.js'
-import { ResilientSemanticEncoder, createProductionUseLoader } from './semantic-encoder-adapter.js'
+import { ResilientSemanticEncoder } from './semantic-encoder-adapter.js'
+import { WorkerSemanticEncoder } from './worker-semantic-encoder.js'
 
 export { analyzeUserProduction } from './language-analysis-orchestrator.js'
 export { createGrammarChecker, createProductionHarperLoader } from './grammar-checker-adapter.js'
 export { createStructuralNlp } from './structural-nlp-adapter.js'
-export { createSemanticEncoder, createProductionUseLoader, ResilientSemanticEncoder } from './semantic-encoder-adapter.js'
+export { createSemanticEncoder, ResilientSemanticEncoder } from './semantic-encoder-adapter.js'
 export { resolveAssessmentMode, usesSemanticPipeline, toExerciseAnalysis, essentialWords } from './exercise-bridge.js'
 export { KnowledgeBase } from './knowledge-base.js'
 export {
@@ -75,15 +76,33 @@ async function resolveSemanticEncoder() {
   } catch { installed = null }
   const signature = installed ? `${installed.model_id}@${installed.version}` : 'hashing'
   if (_semantic && signature === _semanticSignature) return _semantic
-  const useLoader = installed ? createProductionUseLoader({ modelId: installed.model_id }) : null
-  _semantic = new ResilientSemanticEncoder({ useLoader })
+  // Dispose the previous worker before rebinding so a model swap never leaks a
+  // thread or keeps stale weights warm.
+  try { _semantic?.dispose?.() } catch { /* noop */ }
+  // Real USE loads + infers ONLY inside a Web Worker (no main-thread jank, and the
+  // heavy tfjs chunks stay in the worker graph — never in the base bundle). Where
+  // Worker is unavailable (SSR / node) the pipeline runs on the hashing fallback;
+  // correctness never depends on the model. The node benchmark uses the hashing
+  // encoder directly, so nothing needs the main-thread USE loader anymore.
+  const useAdapter = installed && typeof Worker !== 'undefined'
+    ? new WorkerSemanticEncoder({ modelId: installed.model_id })
+    : null
+  _semantic = new ResilientSemanticEncoder({ useAdapter })
   _semanticSignature = signature
   return _semantic
 }
 
 /** Reset the cached semantic encoder (call after install/remove so the next
  * analysis rebinds to the new model state). */
-export function resetSemanticEncoder() { _semantic = null; _semanticSignature = '' }
+export function resetSemanticEncoder() {
+  try { _semantic?.dispose?.() } catch { /* noop */ }
+  _semantic = null; _semanticSignature = ''
+}
+
+/** Cancel any in-flight semantic analysis (call on question change / Next / exit
+ * so a stale worker result can never update the new question). Safe no-op when no
+ * analysis is running or the hashing fallback is active. */
+export function cancelSemanticAnalysis() { try { _semantic?.cancelInFlight?.() } catch { /* noop */ } }
 
 /**
  * Convenience for screens: analyze a learner's production with the current
