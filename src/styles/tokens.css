@@ -5,46 +5,48 @@
 
 :root {
   /* Type */
-  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-sans: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Baloo 2', 'Nunito', -apple-system, system-ui, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* Indigo accent */
-  --indigo-50:  #EEF2FF;
-  --indigo-100: #E0E7FF;
-  --indigo-200: #C7D2FE;
-  --indigo-300: #A5B4FC;
-  --indigo-400: #818CF8;
-  --indigo-500: #6366F1;
-  --indigo-600: #4F46E5;
-  --indigo-700: #4338CA;
-  --indigo-900: #312E81;
+  /* Accent — "Bob" blue. The interactive tone (600/700) is intentionally a bit
+     darker than the light accent (500/400) so white text stays accessible. */
+  --indigo-50:  #EAF7FE;
+  --indigo-100: #D6EEFB;
+  --indigo-200: #B7E1F8;
+  --indigo-300: #8AD4F8;
+  --indigo-400: #57B9EE;
+  --indigo-500: #47B8F2;
+  --indigo-600: #2E86BC;
+  --indigo-700: #1F6EA0;
+  --indigo-900: #124867;
 
-  /* Warm light surfaces (cream undertone, not cold gray) */
-  --bg:         #FBF9F4;
-  --bg-alt:    #F4F1EA;
+  /* Cool light surfaces (Bob sky), white cards */
+  --bg:         #EAF3F9;
+  --bg-alt:    #DDEBF3;
   --surface:    #FFFFFF;
-  --surface-2: #FAF7F1;
-  --border:     #ECE7DC;
-  --border-strong: #D7D1C2;
+  --surface-2: #F2F8FC;
+  --border:     #E3EDF3;
+  --border-strong: #C9DCE7;
 
   /* Text */
-  --ink:        #1A1626;
-  --ink-2:      #4A4458;
-  --ink-3:      #807A8C;
-  --ink-4:      #B5AFC0;
+  --ink:        #22333E;
+  --ink-2:      #41586B;
+  --ink-3:      #64798A;
+  --ink-4:      #93A9B7;
 
-  /* Semantic */
-  --success:    #16A34A;
-  --success-bg: #DCFCE7;
-  --success-ink:#14532D;
+  /* Semantic — cheerful but color-as-support */
+  --success:    #2E9E58;
+  --success-bg: #E7F8EC;
+  --success-ink:#1C6B3A;
 
-  --error:      #DC2626;
-  --error-bg:   #FEE2E2;
-  --error-ink:  #7F1D1D;
+  --error:      #E4574F;
+  --error-bg:   #FDECEA;
+  --error-ink:  #B0362F;
 
-  --warn:       #D97706;
-  --warn-bg:    #FEF3C7;
-  --warn-ink:   #78350F;
+  --warn:       #E8A13D;
+  --warn-bg:    #FEF3DC;
+  --warn-ink:   #8A5A12;
 
   --info:       #0EA5E9;
   --info-bg:    #E0F2FE;
@@ -109,10 +111,10 @@
     --ink-3:      #8E88A6;
     --ink-4:      #5C5775;
 
-    --indigo-50:  #1E1B3E;
-    --indigo-100: #2A2655;
-    --indigo-600: #818CF8;
-    --indigo-700: #6366F1;
+    --indigo-50:  #10303F;
+    --indigo-100: #163F54;
+    --indigo-600: #3FA9E0;
+    --indigo-700: #57B9EE;
 
     --success-bg:#0F3D26;
     --success-ink:#86EFAC;
@@ -140,10 +142,10 @@
   --ink-3:      #8E88A6;
   --ink-4:      #5C5775;
 
-  --indigo-50:  #1E1B3E;
-  --indigo-100: #2A2655;
-  --indigo-600: #818CF8;
-  --indigo-700: #6366F1;
+  --indigo-50:  #10303F;
+  --indigo-100: #163F54;
+  --indigo-600: #3FA9E0;
+  --indigo-700: #57B9EE;
 
   --success-bg:#0F3D26;
   --success-ink:#86EFAC;
@@ -218,23 +220,26 @@ button { font-family: inherit; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  font-family: inherit; font-weight: 700; font-size: 16px;
+  font-family: var(--font-display); font-weight: 700; font-size: 16.5px;
   border: 0; cursor: pointer; user-select: none;
   border-radius: var(--r-md);
   padding: 14px 20px; min-height: 52px;
   transition: transform .08s ease, box-shadow .12s ease, background .12s;
   color: var(--ink);
 }
-.btn:active { transform: translateY(1px); }
+.btn:active { transform: translateY(2px); }
 .btn:focus-visible { outline: 3px solid var(--indigo-400); outline-offset: 2px; }
 
+/* Bob "3D" primary: solid accent, inset bottom lip and a soft diagonal shine. */
 .btn-primary {
-  background: var(--indigo-600);
+  background-color: var(--indigo-600);
+  background-image: linear-gradient(105deg,transparent 10%,rgba(255,255,255,.22) 10%,rgba(255,255,255,.22) 15%,transparent 15%,transparent 20%,rgba(255,255,255,.22) 20%,rgba(255,255,255,.22) 23%,transparent 23%);
   color: white;
-  box-shadow: var(--shadow-btn);
+  box-shadow: inset 0 -4px 0 rgba(0,0,0,.16), var(--shadow-btn);
 }
-.btn-primary:hover { background: var(--indigo-700); }
-.btn-primary:disabled { background: var(--ink-4); cursor: not-allowed; box-shadow:none; }
+.btn-primary:hover { background-color: var(--indigo-700); }
+.btn-primary:active { box-shadow: inset 0 -1px 0 rgba(0,0,0,.16); }
+.btn-primary:disabled { background: var(--ink-4); background-image:none; cursor: not-allowed; box-shadow:none; }
 
 .btn-secondary {
   background: var(--surface);
@@ -265,8 +270,8 @@ button { font-family: inherit; }
 .chip-warn { background: var(--warn-bg); color: var(--warn-ink); border-color: transparent; }
 
 /* Headings */
-.h1 { font-size: 26px; font-weight: 800; letter-spacing:-0.02em; line-height:1.1; margin:0; text-wrap: balance; }
-.h2 { font-size: 20px; font-weight: 700; letter-spacing:-0.015em; line-height:1.2; margin:0; text-wrap: balance; }
+.h1 { font-family: var(--font-display); font-size: 27px; font-weight: 800; letter-spacing:-0.01em; line-height:1.12; margin:0; text-wrap: balance; }
+.h2 { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing:-0.01em; line-height:1.2; margin:0; text-wrap: balance; }
 .h3 { font-size: 16px; font-weight: 700; letter-spacing:-0.01em; margin:0; }
 .label-eyebrow { font-size: 11px; font-weight: 700; letter-spacing:.08em; text-transform: uppercase; color: var(--ink-3); }
 .muted { color: var(--ink-3); }
@@ -584,3 +589,13 @@ input[type="range"]::-moz-range-thumb {
   animation: spinner-rot .7s linear infinite;
 }
 @keyframes spinner-rot { to { transform: rotate(360deg); } }
+
+/* ---------- Bob redesign — playful animations (Slice: UI reskin) ---------- */
+@keyframes bobfloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes bob-pop { 0%{transform:translateY(24px);opacity:0} 100%{transform:translateY(0);opacity:1} }
+@keyframes bob-drift { 0%{transform:translateX(0)} 50%{transform:translateX(14px)} 100%{transform:translateX(0)} }
+@keyframes bob-eq { 0%,100%{transform:scaleY(.4)} 50%{transform:scaleY(1)} }
+@keyframes bob-dots { 0%,60%,100%{opacity:.25} 30%{opacity:1} }
+@keyframes bob-pulse { 0%{box-shadow:0 0 0 0 rgba(71,184,242,.45)} 100%{box-shadow:0 0 0 16px rgba(71,184,242,0)} }
+.bob-float { animation: bobfloat 4s ease-in-out infinite; }
+.bob-pulse { animation: bob-pulse 1.8s ease-out infinite; }

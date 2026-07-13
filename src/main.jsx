@@ -2,13 +2,17 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 // Self-hosted fonts (bundled by Vite → available offline).
-import '@fontsource/manrope/400.css'
-import '@fontsource/manrope/500.css'
-import '@fontsource/manrope/600.css'
-import '@fontsource/manrope/700.css'
-import '@fontsource/manrope/800.css'
 import '@fontsource/geist-mono/400.css'
 import '@fontsource/geist-mono/500.css'
+// Bob redesign — playful display + body faces (self-hosted, latin-only so the
+// offline precache stays lean).
+import '@fontsource/nunito/latin-400.css'
+import '@fontsource/nunito/latin-600.css'
+import '@fontsource/nunito/latin-700.css'
+import '@fontsource/nunito/latin-800.css'
+import '@fontsource/baloo-2/latin-500.css'
+import '@fontsource/baloo-2/latin-700.css'
+import '@fontsource/baloo-2/latin-800.css'
 
 import './styles/tokens.css'
 import { AppProvider } from './store.jsx'

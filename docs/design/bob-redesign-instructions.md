@@ -142,6 +142,14 @@ Acessos seguintes →  Home direto
   chamar?"** com um único `input` de nome (sem e-mail/gênero/idade). Persistir o nome no
   perfil/`settings` existentes (reaproveitar o sistema de perfil atual; se hoje há
   múltiplos perfis, manter **um único perfil ativo** — não expor troca de perfil).
+- **Modo Kids vs Adulto (no início do onboarding):** primeira escolha do onboarding é
+  **"Para quem é?" → Kids ou Adulto**, salva no perfil (`profile_mode`).
+  - **Kids:** habilita a aba/feature **Histórias** (ilustradas, simples, todas abertas);
+    mascote Bob na versão **fofa**.
+  - **Adulto:** **sem Histórias** (aba oculta); mascote Bob mais **jovem/descolado**
+    (ex.: com fone/óculos escuros) — mesma identidade, vibe adulta.
+  - A UI de conteúdo e a engine são as mesmas; muda o mascote, o tom e a presença de
+    Histórias. Componha o mascote por um prop `mode` ('kids' | 'adult').
 - **Onboarding de nível (opcional, manter a diversão):** as 4 opções ("Não sei nada",
   "Sei palavras básicas", "Converso mas não falo bem", "Discussão básica") mapeiam para o
   **nível CEFR inicial** que o app já usa (A1–B2). É a única tela de onboarding que fica.
@@ -169,8 +177,8 @@ primeiro-acesso vs. retorno pelo nome salvo; (b) remover rotas de login/idiomas.
 | **Lição — exercício** | `src/screens/Exercise.jsx` | Reskin: barra de progresso (sem corações), imagem/tema, botões áudio+dica, folhas verde/rosa, reação do Bob. **Manter os 7 tipos e todos os testids/labels**. `exIsChoice`→múltipla escolha; `exIsBlocks`→`build_sentence` |
 | **Lição concluída** | `src/screens/Result.jsx` | Celebração com Bob; **sem XP** — mostrar acurácia/encorajamento e a `lesson-justification`; manter `result-score` |
 | **Fale com o Bob** | Modo Fala (reusar `speak_sentence`/STT) | Cena do Bob no microfone, waveform (`eq`), feedback verde/rosa; **sem corações**; degrada para digitar quando não há mic (mantém `speak-type-fallback`) |
-| **Histórias** | **Opcional/《futuro》** | O app **não tem conteúdo de histórias**. Não inventar engine nova. Ou (a) ocultar a aba por enquanto, ou (b) stub claramente marcado "em breve". **Sem "Pro"/Unlock.** |
-| **História — player** | idem | idem |
+| **Histórias** | **Feature Kids** (obrigatória, pode ser simples) | Só aparece no **modo Kids**. Sem "Pro"/Unlock — todas abertas |
+| **História — player** | player simples de história ilustrada | Kids apenas |
 | **Revisar erros** | `src/screens/Mistakes.jsx` / `Review.jsx` | Reskin da lista de erros; **remover "+X XP" e "Review All 200 gems"**; ação "Revisar tudo" gratuita |
 | **Perfil e idiomas** | `src/screens/Settings.jsx` | **Remover lista de idiomas e "Add New Language"**. Manter: nome, nível, voz/áudio (Piper/Fabiola), modelo semântico, exportar/importar, diagnóstico. Cabeçalho com o nome do usuário |
 | **Bottom nav** | `src/components/ui.jsx` (`BottomNav`) | 5 abas reestilizadas → **Início (mapa)**, **Níveis (Hub)**, **Fale**, **Revisar**, **Perfil**. (Histórias fica de fora ou como 6ª só se decidirem manter.) Ícones no estilo do mockup; manter navegação existente |
