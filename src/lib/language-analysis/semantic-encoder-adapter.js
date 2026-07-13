@@ -110,8 +110,13 @@ export class UseSemanticEncoderAdapter {
 
   async ensure() {
     if (this._model) return this._model
-    if (!this._loadModel) throw new Error('no_model_loader')
+    if (!this._loadModel) throw new Error('MODEL_NOT_INSTALLED')
     this._model = await this._loadModel()
+    if (this._model?.__lingo?.model_version) {
+      this.model_version = this._model.__lingo.model_version
+      this.backend = this._model.__lingo.backend
+      this.load_ms = this._model.__lingo.load_ms
+    }
     return this._model
   }
 
@@ -172,10 +177,13 @@ export class ResilientSemanticEncoder {
       await this._use.ensure()
       this._effective = 'use'
       this.model_version = this._use.model_version
+      this.backend = this._use.backend
       return this._use
     } catch (e) {
       this._effective = 'hashing'
-      this.lastFallback = e?.message === 'no_model_loader' ? 'MODEL_NOT_INSTALLED' : 'MODEL_LOAD_FAILED'
+      // Preserve the structured loader code so the UI can explain honestly.
+      const KNOWN = new Set(['MODEL_NOT_INSTALLED', 'MODEL_CORRUPTED', 'MODEL_INCOMPATIBLE', 'TFJS_BACKEND_UNAVAILABLE', 'MODEL_LOAD_FAILED'])
+      this.lastFallback = KNOWN.has(e?.message) ? e.message : 'MODEL_LOAD_FAILED'
       this.model_version = this._hashing.model_version
       return this._hashing
     }
@@ -196,24 +204,66 @@ export class ResilientSemanticEncoder {
 }
 
 /**
- * Production USE loader: real TensorFlow.js Universal Sentence Encoder, pointed
- * at LOCAL model + vocab assets (no CDN). The tfjs/USE packages and the model
- * assets are dynamically imported so the app runs without them (hashing
- * fallback) until they are provisioned.
- * @param {object} opts
- * @param {string} opts.modelUrl  local URL to the USE model.json
- * @param {string} opts.vocabUrl  local URL to the vocabulary
+ * Production USE loader: real TensorFlow.js Universal Sentence Encoder assembled
+ * from LOCALLY PERSISTED, checksum-verified bytes (no CDN, no service worker).
+ * The model is handed to USE via `tf.io.fromMemory` and the vocabulary via a
+ * `blob:` URL, so loading is fully offline once the model is installed.
+ *
+ * tfjs + USE are imported dynamically so Vite code-splits them into a lazy chunk
+ * kept OUT of the base bundle — the app runs on the hashing fallback until the
+ * user opts into the download. `loadArtifacts` is injected (defaults to the model
+ * store) so this stays unit-testable without a real IndexedDB or 27 MB of weights.
+ *
+ * On success returns the USE model (with `.embed`) tagged with `__lingo`
+ * telemetry. Throws a structured Error(code) on failure; ResilientSemanticEncoder
+ * maps it to a fallback reason and never lets it reach React.
  */
-export function createProductionUseLoader({ modelUrl, vocabUrl, tfjsModule = '@tensorflow/tfjs', useModule = '@tensorflow-models/universal-sentence-encoder' } = {}) {
+export function createProductionUseLoader({
+  loadArtifacts,
+  importTf = () => import('@tensorflow/tfjs'),
+  importUse = () => import('@tensorflow-models/universal-sentence-encoder'),
+  modelId = 'use-en-v1',
+} = {}) {
   return async () => {
-    if (!modelUrl || !vocabUrl) throw new Error('no_model_loader') // MODEL_NOT_INSTALLED
-    // Computed specifiers + @vite-ignore keep tfjs/USE OUT of the base bundle:
-    // they are optional, provisioned assets loaded only when a local model URL is
-    // configured. Until then the app runs on the hashing fallback.
-    // eslint-disable-next-line no-unused-vars
-    const tf = await import(/* @vite-ignore */ tfjsModule)
-    const use = await import(/* @vite-ignore */ useModule)
-    return use.load({ modelUrl, vocabUrl })
+    const load = loadArtifacts || (async () => {
+      const { readModelArtifacts } = await import('./semantic-model-store.js')
+      return readModelArtifacts(modelId)
+    })
+    const art = await load()
+    if (!art?.ok) throw new Error(art?.code || 'MODEL_NOT_INSTALLED')
+
+    const t0 = (globalThis.performance?.now?.() ?? Date.now())
+    let tf, use
+    try {
+      tf = await importTf()
+      use = await importUse()
+    } catch { throw new Error('MODEL_LOAD_FAILED') }
+    tf = tf.default || tf
+    use = use.default || use
+
+    // Prefer WebGL (real devices); fall back to CPU (headless / no GPU). The WASM
+    // backend is intentionally unused — it lacks the SparseToDense kernel USE needs.
+    let backend = 'cpu'
+    try { await tf.setBackend('webgl'); await tf.ready(); backend = tf.getBackend() } catch { /* try cpu */ }
+    if (tf.getBackend() !== 'webgl') { try { await tf.setBackend('cpu'); await tf.ready(); backend = tf.getBackend() } catch { throw new Error('TFJS_BACKEND_UNAVAILABLE') } }
+
+    let vocabUrl
+    try {
+      const blob = new Blob([JSON.stringify(art.vocab)], { type: 'application/json' })
+      vocabUrl = URL.createObjectURL(blob)
+    } catch { throw new Error('MODEL_LOAD_FAILED') }
+
+    let model
+    try {
+      model = await use.load({ modelUrl: tf.io.fromMemory(art.modelArtifacts), vocabUrl })
+    } catch { throw new Error('MODEL_LOAD_FAILED') }
+    finally { try { URL.revokeObjectURL(vocabUrl) } catch { /* noop */ } }
+
+    model.__lingo = {
+      model_version: art.model_version, dim: art.dim, backend,
+      load_ms: Math.round((globalThis.performance?.now?.() ?? Date.now()) - t0),
+    }
+    return model
   }
 }
 

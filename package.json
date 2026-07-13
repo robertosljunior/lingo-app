@@ -20,6 +20,9 @@
   "dependencies": {
     "@fontsource/geist-mono": "^5.2.8",
     "@mintplex-labs/piper-tts-web": "^1.0.4",
+    "@tensorflow-models/universal-sentence-encoder": "^1.3.3",
+    "@tensorflow/tfjs": "^3.21.0",
+    "@tensorflow/tfjs-backend-wasm": "^3.21.0",
     "compromise": "^14.14.4",
     "harper.js": "^2.4.0",
     "idb": "^8.0.0",
