@@ -37,9 +37,9 @@ Real USE loaded from local assets in headless Chromium (CPU backend): `dim=512`,
 | T21 | Performance & memory | completed | T08 |
 | T22 | Unit tests | completed | T04-T15 |
 | T23 | E2E | completed | T08-T18 |
-| T24 | Build & validators & full suites | pending | all |
-| T25 | Diff review | pending | T24 |
-| T26 | Commits & report | pending | T25 |
+| T24 | Build & validators & full suites | completed | all |
+| T25 | Diff review | completed | T24 |
+| T26 | Commits & report | completed | T25 |
 
 ---
 
@@ -122,3 +122,25 @@ Real USE loaded from local assets in headless Chromium (CPU backend): `dim=512`,
 - 140 unit tests: model catalog/store (install/checksum/cancel/artifacts/removal/invalidation), frame thresholds (defaults/override/ambiguity/margin), plus the existing orchestrator free/guided/equivalent/fallback coverage.
 ## T23 — E2E — completed
 - semantic-model.spec.js (real UI download → effective "use" → analyses → offline persists → remove → basic; no-model hashing fallback), knowledge-pack-download.spec.js, mobile-smoke Settings overflow. Full suite green (see T24).
+
+## T24 — Build & validators & full suites — completed
+- npm test: 140 passed · build: clean (semantic-runtime chunk 1.86MB excluded from precache) · validate:content-packs ok · validate:knowledge-packs ok · benchmark:structural-nlp ok · benchmark:semantic (1024 pairs, per-category) · benchmark:indexeddb ok.
+- Playwright full suite (--retries=0): **29 passed, 0 failed, 0 flaky** (28 desktop + 1 mobile). Previously-flaky semantic-free-feedback stress-tested 10/10 at repeat-each=5 × 4 workers after the IndexedDB upgrade-block fix.
+
+## T25 — Diff review — completed
+- `git diff --check`: clean (only benign warnings inside the minified tfjs vendor chunk in dist). Source diff focused: model provisioning (catalog/store/service), loader rewrite, frame-thresholds, orchestrator wiring, Settings model UI, main.jsx E2E hook, vite config (opt-in chunk), E2E + unit tests, corpus. No LLM, no remote inference, no eval/new Function, no mandatory CDN.
+
+## T26 — Commits & report — completed
+- Commits: `3d439e3` real USE runtime · `92cc295` model management UI + fallback copy · `16d5129` per-frame thresholds + 1024-pair corpus · `ae421da` mobile/perf · `27c3775` IndexedDB upgrade-deadlock fix.
+
+## FINAL CLASSIFICATION: PASS_SLICE_7_2_REAL_SEMANTIC_RUNTIME
+All 21 acceptance criteria met:
+1. USE runs for real in the browser (PROVEN, effective_engine "use") ✓
+2. weights installable (opt-in, ~27MB) ✓  · 3. no mandatory CDN ✓  · 4. checksum-verified download ✓
+5. transactional install ✓  · 6. offline works (loads from IndexedDB, proven) ✓  · 7. hashing explicit fallback ✓
+8. thresholds per-frame, not global ✓  · 9. free never fails on low similarity ✓  · 10. guided evaluates constraints ✓
+11. equivalent distinguishes grammar vs meaning ✓  · 12. alternatives preserve intent ✓  · 13. UI has no technical terms ✓
+14. model management UI exists ✓  · 15. knowledge packs UI organized (3 separate cards) ✓  · 16. mobile no overflow ✓
+17. performance measured ✓  · 18. unit tests pass (140) ✓  · 19. E2E pass (29) ✓  · 20. no LLM ✓  · 21. no remote inference ✓
+
+Deferred (documented, NOT in the PASS criteria): T05 semantic Web Worker — USE runs on the main thread; correct and fine on WebGL devices; a worker would remove CPU-path jank on low-end devices. Follow-up.
