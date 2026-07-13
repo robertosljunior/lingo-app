@@ -18,13 +18,16 @@ describe('assessment mode mapping', () => {
     expect(resolveAssessmentMode({ type: 'answer_question' })).toBe('free')
     expect(resolveAssessmentMode({ type: 'x', assessment_mode: 'guided' })).toBe('guided')
   })
-  it('routes free/guided (and opt-in equivalent) through the pipeline; legacy translate stays on the old engine', () => {
+  it('routes free/guided through the pipeline; generated legacy types keep the old engine', () => {
     expect(usesSemanticPipeline({ type: 'answer_question' })).toBe(true)
     expect(usesSemanticPipeline({ type: 'free_write' })).toBe(true)
     expect(usesSemanticPipeline({ type: 'x', assessment_mode: 'guided' })).toBe(true)
     expect(usesSemanticPipeline({ type: 'x', assessment_mode: 'equivalent' })).toBe(true)
-    // Legacy translate/rewrite keep the established engine unless opted in.
-    expect(usesSemanticPipeline({ type: 'translate_natural' })).toBe(false)
+    // Generated legacy types keep the established engine even though the
+    // generator stamps them with assessment_mode ('equivalent'/'guided').
+    expect(usesSemanticPipeline({ type: 'translate_natural', assessment_mode: 'equivalent' })).toBe(false)
+    expect(usesSemanticPipeline({ type: 'rewrite_natural', assessment_mode: 'equivalent' })).toBe(false)
+    expect(usesSemanticPipeline({ type: 'speak_sentence', assessment_mode: 'guided' })).toBe(false)
     expect(usesSemanticPipeline({ type: 'fill_blank' })).toBe(false)
   })
   it('essentialWords keeps content words only', () => {

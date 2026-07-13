@@ -15,6 +15,7 @@ const executablePath = process.env.PW_CHROMIUM_EXECUTABLE || undefined
 
 export default defineConfig({
   testDir: './e2e',
+  globalSetup: './e2e/use-model-setup.mjs',
   timeout: 180_000,
   expect: { timeout: 15_000 },
   fullyParallel: true,
@@ -36,7 +37,7 @@ export default defineConfig({
     {
       // Essential smoke on a mobile viewport; the full flows run on desktop.
       name: 'chromium-mobile',
-      use: { ...devices['Pixel 7'] },
+      use: { ...devices['Pixel 7'], launchOptions: { executablePath } },
       testMatch: /mobile-smoke/,
     },
   ],

@@ -21,7 +21,39 @@ import { installGlobalErrorLogging } from './lib/error-log.js'
 installGlobalErrorLogging()
 
 if (typeof window !== 'undefined' && sessionStorage.getItem('e2e:enabled') === '1') {
-  window.__LINGO_E2E__ = window.__LINGO_E2E__ || { ttsEvents: [] }
+  // Merge defaults without clobbering values a test pre-set via an init script.
+  const e2e = (window.__LINGO_E2E__ = window.__LINGO_E2E__ || {})
+  e2e.ttsEvents = e2e.ttsEvents || []
+  // Default the PWA install prompt to `disabled` so non-PWA specs are not
+  // affected by the bottom install card; PWA specs opt into other modes.
+  e2e.pwaInstall = e2e.pwaInstall || { mode: 'disabled', promptOutcome: null }
+  // Deterministic semantic-runtime hooks. These drive the REAL provisioning and
+  // analysis code (no mocks): they lazily import the production modules and run
+  // the genuine install / status / analyze paths. Present only under E2E; the
+  // production build never defines them.
+  e2e.semantic = e2e.semantic || {
+    async installModel(entry) {
+      const m = await import('./lib/language-analysis/index.js')
+      const res = await m.installModel(entry, { onProgress: (p) => { e2e.semantic.lastProgress = p } })
+      m.resetSemanticEncoder()
+      return res
+    },
+    async removeModel(id = 'use-en-v1') {
+      const m = await import('./lib/language-analysis/index.js')
+      const res = await m.removeModel(id)
+      m.resetSemanticEncoder()
+      return res
+    },
+    async status() {
+      const m = await import('./lib/language-analysis/index.js')
+      return m.getSemanticEngineStatus()
+    },
+    async analyze(params) {
+      const m = await import('./lib/language-analysis/index.js')
+      return m.analyzeProduction(params)
+    },
+    lastProgress: null,
+  }
 }
 
 // Register the PWA service worker (offline caching).

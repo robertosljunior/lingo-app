@@ -7,7 +7,8 @@ import { ACCENTS, listVoices, onVoicesChanged, speak, speechSupported } from '..
 import { PIPER_VOICES, piperSupported, storedVoices, downloadVoice, removeVoice } from '../lib/audio/tts-piper.js'
 import { PORTUGUESE_VOICES, speakSegment } from '../lib/speech-router.js'
 import { getInstallEligibility, requestInstall } from '../lib/pwa-install-controller.js'
-import { getKnowledgeOverview, removeInstalledPack } from '../lib/language-analysis/knowledge-catalog-service.js'
+import { getKnowledgeOverview, removeInstalledPack, fetchCatalog, installFromCatalogEntry, deriveCatalogState, DEFAULT_CATALOG_URL } from '../lib/language-analysis/knowledge-catalog-service.js'
+import { getDefaultModelEntry, getInstalledModel, installModel, removeModel } from '../lib/language-analysis/semantic-model-catalog-service.js'
 
 export default function Settings() {
   const { settings, updateSetting, setTab, showToast, db, refreshLibrary } = useApp()
@@ -118,6 +119,8 @@ export default function Settings() {
           </Row>
         </div>
 
+        <SemanticModelSection Row={Row} SectionHead={SectionHead} showToast={showToast} />
+
         <KnowledgeSection Row={Row} SectionHead={SectionHead} showToast={showToast} />
 
         <AudioSection Row={Row} SectionHead={SectionHead} Segmented={Segmented} settings={settings} updateSetting={updateSetting} />
@@ -224,9 +227,130 @@ const STATUS_LABEL = {
 // "Conhecimento linguístico" — the semantic knowledge packs powering the local
 // tutor engine. Builtin packs ship with the app (offline). Additional packs can
 // be installed from the allowlisted, checksum-verified catalog.
+const CATALOG_STATE_LABEL = {
+  available: 'Disponível',
+  installed: 'Instalado',
+  update_available: 'Atualização disponível',
+  incompatible: 'Incompatível',
+  downloading: 'Baixando…',
+  validating: 'Verificando…',
+  installing: 'Instalando…',
+  failed: 'Falha',
+}
+function formatBytes(n) {
+  if (!n && n !== 0) return '—'
+  if (n < 1024) return `${n} B`
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} KB`
+  return `${(n / (1024 * 1024)).toFixed(1)} MB`
+}
+const CATALOG_URL = () => {
+  try { return (typeof window !== 'undefined' && window.__LINGO_E2E__ && window.__LINGO_E2E__.knowledgeCatalogUrl) || DEFAULT_CATALOG_URL }
+  catch { return DEFAULT_CATALOG_URL }
+}
+
+// "Análise semântica" — the optional, opt-in offline model that lets the app
+// understand intent, meaning and natural alternatives. The app works fully
+// without it (grammar + rules + packs); when absent the tutor runs in "modo
+// básico". No technical terms (USE / TensorFlow / embedding) in the main UI.
+const MODEL_STATE_LABEL = {
+  not_installed: 'Não instalado',
+  downloading: 'Baixando…',
+  verifying: 'Verificando…',
+  installing: 'Instalando…',
+  ready: 'Pronto para uso offline',
+  failed: 'Falha',
+}
+function SemanticModelSection({ Row, SectionHead, showToast }) {
+  const entry = getDefaultModelEntry()
+  const [installed, setInstalled] = useState(null)   // metadata row or null
+  const [phase, setPhase] = useState('idle')          // idle|downloading|verifying|installing
+  const [progress, setProgress] = useState(0)         // 0..1
+  const [failed, setFailed] = useState(null)
+  const [busy, setBusy] = useState(false)
+  const [ctrl, setCtrl] = useState(null)
+
+  async function refresh() { try { setInstalled(await getInstalledModel()) } catch { setInstalled(null) } }
+  useEffect(() => { refresh() }, [])
+
+  async function onDownload() {
+    setFailed(null); setBusy(true); setProgress(0); setPhase('downloading')
+    const controller = new AbortController(); setCtrl(controller)
+    const res = await installModel(entry, {
+      signal: controller.signal,
+      onProgress: (p) => {
+        setPhase(p.phase)
+        if (p.totalBytes) setProgress(Math.min(1, (p.bytes || 0) / p.totalBytes))
+      },
+    })
+    setBusy(false); setCtrl(null); setPhase('idle')
+    if (res.ok) { setProgress(1); showToast('Análise semântica pronta — disponível offline.'); await refresh() }
+    else if (res.code === 'CANCELLED') { showToast('Download cancelado.') }
+    else { setFailed(res.code || 'FALHA'); showToast('Não foi possível instalar a análise semântica.') }
+  }
+  function onCancel() { if (ctrl) ctrl.abort() }
+  async function onRemove() {
+    setBusy(true)
+    try { await removeModel(entry.model_id); showToast('Análise semântica removida. Modo básico ativo.'); await refresh() }
+    catch { showToast('Não foi possível remover.') }
+    finally { setBusy(false) }
+  }
+
+  const state = installed ? 'ready' : (phase !== 'idle' ? phase : (failed ? 'failed' : 'not_installed'))
+  const pct = Math.round(progress * 100)
+
+  return (
+    <div className="card" style={{ padding: 0, overflow: 'hidden' }} data-testid="semantic-model-settings">
+      <SectionHead>análise semântica</SectionHead>
+      <Row last>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'flex-start' }}>
+          <div>
+            <div style={{ fontWeight: 800, fontSize: 15 }}>{entry.title_pt}</div>
+            <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>{entry.description_pt}</div>
+          </div>
+          <span className="chip" data-testid="semantic-model-status" style={{ fontSize: 11, whiteSpace: 'nowrap' }}>{MODEL_STATE_LABEL[state] || state}</span>
+        </div>
+        <div className="muted" style={{ fontSize: 11, marginTop: 6 }}>Tamanho: {formatBytes(entry.size_bytes)} · download único, funciona offline depois.</div>
+
+        {!installed && phase === 'idle' && (
+          <div style={{ marginTop: 10 }}>
+            <div className="muted" data-testid="semantic-model-mode" style={{ fontSize: 12, marginBottom: 8 }}>
+              Modo básico ativo. A correção gramatical continua disponível; a análise avançada de significado ainda não está instalada.
+            </div>
+            <button className="btn btn-primary btn-sm" data-testid="semantic-model-download" disabled={busy} onClick={onDownload}>Baixar</button>
+            {failed && <button className="btn btn-secondary btn-sm" data-testid="semantic-model-retry" style={{ marginLeft: 8 }} onClick={onDownload}>Tentar novamente</button>}
+          </div>
+        )}
+
+        {phase !== 'idle' && (
+          <div style={{ marginTop: 10 }} data-testid="semantic-model-progress">
+            <div role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label="Progresso do download"
+              style={{ height: 8, borderRadius: 6, background: 'var(--border)', overflow: 'hidden' }}>
+              <div style={{ width: `${pct}%`, height: '100%', background: 'var(--primary, #4F46E5)', transition: 'width .2s' }} />
+            </div>
+            <div className="muted" style={{ fontSize: 11, marginTop: 6 }}>{MODEL_STATE_LABEL[phase] || phase} {pct}%</div>
+            <button className="btn btn-ghost btn-sm" data-testid="semantic-model-cancel" style={{ marginTop: 6 }} onClick={onCancel}>Cancelar</button>
+          </div>
+        )}
+
+        {installed && (
+          <div style={{ marginTop: 10 }}>
+            <div className="muted" data-testid="semantic-model-ready" style={{ fontSize: 12, marginBottom: 8 }}>Pronto para uso offline. O app entende melhor intenção e significado.</div>
+            <button className="btn btn-ghost btn-sm" data-testid="semantic-model-remove" disabled={busy} onClick={onRemove}>{busy ? 'Removendo…' : 'Remover'}</button>
+          </div>
+        )}
+      </Row>
+    </div>
+  )
+}
+
 function KnowledgeSection({ Row, SectionHead, showToast }) {
   const [packs, setPacks] = useState([])
   const [busy, setBusy] = useState(null)
+  const [catalog, setCatalog] = useState(null)          // derived catalog entries
+  const [catalogError, setCatalogError] = useState(null)
+  const [loadingCatalog, setLoadingCatalog] = useState(false)
+  const [entryState, setEntryState] = useState({})       // pack_id -> transient UI state
+
   async function refresh() { try { setPacks(await getKnowledgeOverview()) } catch { setPacks([]) } }
   useEffect(() => { refresh() }, [])
 
@@ -237,13 +361,73 @@ function KnowledgeSection({ Row, SectionHead, showToast }) {
     finally { setBusy(null) }
   }
 
+  async function loadCatalog() {
+    setLoadingCatalog(true); setCatalogError(null)
+    try {
+      const res = await fetchCatalog({ url: CATALOG_URL() })
+      if (!res.ok) { setCatalogError(res.code); setCatalog([]); return }
+      const overview = await getKnowledgeOverview()
+      setCatalog(deriveCatalogState(res.catalog.packs, overview))
+    } catch (e) {
+      setCatalogError(String(e?.message || e)); setCatalog([])
+    } finally { setLoadingCatalog(false) }
+  }
+
+  async function onDownload(entry) {
+    setEntryState((s) => ({ ...s, [entry.pack_id]: 'downloading' }))
+    const res = await installFromCatalogEntry(entry, { onProgress: (step) => setEntryState((s) => ({ ...s, [entry.pack_id]: step })) })
+    if (res.ok) {
+      setEntryState((s) => ({ ...s, [entry.pack_id]: 'installed' }))
+      showToast('Pacote instalado e disponível offline.')
+      await refresh(); await loadCatalog()
+    } else {
+      const label = res.code === 'CHECKSUM_MISMATCH' ? 'checksum' : res.code
+      setEntryState((s) => ({ ...s, [entry.pack_id]: 'failed' }))
+      showToast(`Falha ao instalar (${label}).`)
+    }
+  }
+
   return (
     <div className="card" style={{ padding: 0, overflow: 'hidden' }} data-testid="knowledge-packs-settings">
       <SectionHead>conhecimento linguístico</SectionHead>
-      <Row last>
+      <Row>
         <div className="muted" style={{ fontSize: 12, marginBottom: 10 }}>
           Conhecimento que alimenta a análise de escrita e fala livre. Funciona offline após instalado.
         </div>
+        <button className="btn btn-sm btn-secondary" data-testid="knowledge-load-catalog" disabled={loadingCatalog} onClick={loadCatalog}>
+          {loadingCatalog ? 'Carregando catálogo…' : 'Verificar catálogo'}
+        </button>
+        {catalogError && <div className="muted" data-testid="knowledge-catalog-error" style={{ fontSize: 11, marginTop: 8, color: 'var(--error, #c00)' }}>Não foi possível carregar o catálogo ({catalogError}).</div>}
+        {catalog && catalog.length > 0 && (
+          <div data-testid="knowledge-catalog" style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 10 }}>
+            {catalog.map((e) => {
+              const st = entryState[e.pack_id] || e.state
+              const canDownload = (e.state === 'available' || e.state === 'update_available') && !['downloading', 'validating', 'installing', 'failed'].includes(st)
+              return (
+                <div key={e.pack_id} data-testid={`catalog-pack-${e.pack_id}`} style={{ border: '1px solid var(--border)', borderRadius: 10, padding: 10 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'flex-start' }}>
+                    <div>
+                      <div style={{ fontWeight: 800, fontSize: 13 }}>{e.title_pt || e.pack_id}</div>
+                      <div className="muted" style={{ fontSize: 11 }}>{e.pack_id} · v{e.version} · {(e.levels || []).join('/')} · {formatBytes(e.size_bytes)}</div>
+                    </div>
+                    <span className="chip" data-testid={`catalog-state-${e.pack_id}`} style={{ fontSize: 11, whiteSpace: 'nowrap' }}>{CATALOG_STATE_LABEL[st] || st}</span>
+                  </div>
+                  {e.coverage && <div className="muted" style={{ fontSize: 11, marginTop: 4 }}>cobertura: {Object.entries(e.coverage.levels || {}).map(([l, s]) => `${l} ${s === 'complete_for_scope' ? '✓' : s}`).join(' · ')}</div>}
+                  {e.state === 'incompatible'
+                    ? <div className="muted" style={{ fontSize: 11, marginTop: 6 }}>Incompatível com esta versão do app.</div>
+                    : canDownload
+                      ? <button className="btn btn-sm btn-primary" data-testid={`catalog-download-${e.pack_id}`} style={{ marginTop: 6 }} onClick={() => onDownload(e)}>{e.state === 'update_available' ? 'Atualizar' : 'Baixar'}</button>
+                      : st === 'failed'
+                        ? <button className="btn btn-sm btn-secondary" data-testid={`catalog-retry-${e.pack_id}`} style={{ marginTop: 6 }} onClick={() => onDownload(e)}>Tentar novamente</button>
+                        : null}
+                </div>
+              )
+            })}
+          </div>
+        )}
+      </Row>
+      <Row last>
+        <div className="muted" style={{ fontSize: 12, marginBottom: 8 }}>Instalados</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 360, overflowY: 'auto' }}>
           {packs.map((p) => (
             <div key={p.pack_id} data-testid={`knowledge-pack-${p.pack_id}`} style={{ border: '1px solid var(--border)', borderRadius: 10, padding: 10 }}>

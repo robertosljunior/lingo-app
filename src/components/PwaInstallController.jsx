@@ -4,14 +4,18 @@ import { dismissInstallPrompt, getInstallEligibility, initPwaInstallController, 
 export default function PwaInstallController(){
   const [eligible,setEligible]=useState(null)
   const [voice,setVoice]=useState(()=>loadFabiolaState())
+  // The controller always runs its real logic. Determinism in E2E comes from the
+  // window.__LINGO_E2E__ hook (read inside getInstallEligibility), NOT from hiding
+  // the component — non-PWA specs pin mode:'disabled' so the card simply isn't
+  // eligible, exactly as the real code path decides.
   useEffect(()=>{ initPwaInstallController(); const t=setTimeout(()=>setEligible(getInstallEligibility({allowManualFallback:true})),1200); return()=>clearTimeout(t)},[])
   useEffect(()=>{ if(markStandaloneLaunch() || isStandalone()){ startFabiolaDownload(setVoice) } },[])
   if(voice.fabiola_status && voice.fabiola_status!=='ready') return <VoiceBanner state={voice} onRetry={()=>startFabiolaDownload(setVoice,true)} />
   if(!eligible?.eligible) return null
-  return <div className="card" role="dialog" aria-label="Instalar o aplicativo" style={{position:'fixed',left:16,right:16,bottom:16,zIndex:50,padding:16,boxShadow:'var(--shadow-lg)'}}>
+  return <div className="card" role="dialog" aria-label="Instalar o aplicativo" data-testid="pwa-install-card" style={{position:'fixed',left:16,right:16,bottom:16,zIndex:50,padding:16,boxShadow:'var(--shadow-lg)'}}>
     <div style={{fontWeight:800,fontSize:16}}>Instalar o aplicativo</div>
     <p className="muted" style={{fontSize:13,lineHeight:1.45,margin:'6px 0 12px'}}>Use as lições e vozes offline mesmo sem internet.</p>
-    {eligible.mode==='manual' && <p style={{fontSize:13}}>Para instalar, abra o menu do navegador e escolha “Adicionar à Tela de Início”.</p>}
+    {eligible.mode==='manual' && <p data-testid="pwa-manual-instructions" style={{fontSize:13}}>Para instalar, abra o menu do navegador e escolha “Adicionar à Tela de Início”.</p>}
     <div style={{display:'flex',gap:8,justifyContent:'flex-end'}}><button className="btn btn-secondary" onClick={()=>{dismissInstallPrompt();setEligible(null)}}>Agora não</button>{eligible.mode==='prompt'&&<button className="btn btn-primary" onClick={async()=>{await requestInstall();setEligible(null)}}>Instalar</button>}</div>
   </div>
 }

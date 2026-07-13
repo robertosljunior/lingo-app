@@ -18,6 +18,8 @@ export { KnowledgeBase } from './knowledge-base.js'
 export {
   installKnowledgePack, removeKnowledgePack, listInstalledPacks,
 } from './knowledge-pack-store.js'
+export { getDefaultModelEntry, SEMANTIC_MODEL_CATALOG } from './semantic-model-catalog.js'
+export { installModel, removeModel, getInstalledModel } from './semantic-model-store.js'
 
 let _kbCache = null
 let _kbSignature = ''
@@ -50,26 +52,54 @@ function mergePacks(builtin, installed) {
 let _grammar = null
 let _structural = null
 let _semantic = null
+let _semanticSignature = ''
 
-function productionEngines(opts = {}) {
+function baseEngines() {
   if (!_grammar) _grammar = createGrammarChecker({ harperLoader: createProductionHarperLoader() })
   if (!_structural) _structural = createStructuralNlp({ primary: 'heuristic' })
-  if (!_semantic) {
-    const useLoader = opts.useModelUrls?.modelUrl
-      ? createProductionUseLoader(opts.useModelUrls)
-      : null // no local model provisioned yet → hashing fallback, reported honestly
-    _semantic = new ResilientSemanticEncoder({ useLoader })
-  }
-  return { grammarChecker: _grammar, structuralNlp: _structural, semanticEncoder: _semantic }
+  return { grammarChecker: _grammar, structuralNlp: _structural }
 }
 
 /**
+ * Choose the semantic encoder from the CURRENT install state: a USE-backed
+ * ResilientSemanticEncoder when a model is installed (loaded from local bytes),
+ * hashing otherwise. Rebuilt only when the installed model changes, so the loaded
+ * USE model stays warm across questions. Falls back to hashing if the store can't
+ * be read (e.g. no IndexedDB) — correctness never depends on the model.
+ */
+async function resolveSemanticEncoder() {
+  let installed = null
+  try {
+    const { getInstalledModel } = await import('./semantic-model-store.js')
+    installed = await getInstalledModel()
+  } catch { installed = null }
+  const signature = installed ? `${installed.model_id}@${installed.version}` : 'hashing'
+  if (_semantic && signature === _semanticSignature) return _semantic
+  const useLoader = installed ? createProductionUseLoader({ modelId: installed.model_id }) : null
+  _semantic = new ResilientSemanticEncoder({ useLoader })
+  _semanticSignature = signature
+  return _semantic
+}
+
+/** Reset the cached semantic encoder (call after install/remove so the next
+ * analysis rebinds to the new model state). */
+export function resetSemanticEncoder() { _semantic = null; _semanticSignature = '' }
+
+/**
  * Convenience for screens: analyze a learner's production with the current
- * knowledge base and production adapters (real Harper; USE when provisioned,
+ * knowledge base and production adapters (real Harper; real USE when installed,
  * hashing fallback otherwise — always reported in `result.engines`).
  */
 export async function analyzeProduction(params) {
   const knowledgeBase = params.engines?.knowledgeBase || await loadKnowledgeBase()
-  const engines = { ...productionEngines(params.engineOptions), ...params.engines, knowledgeBase }
+  const semanticEncoder = params.engines?.semanticEncoder || await resolveSemanticEncoder()
+  const engines = { ...baseEngines(), semanticEncoder, ...params.engines, knowledgeBase }
   return analyzeUserProduction({ ...params, engines })
+}
+
+/** Report the effective semantic engine for the current install state (UI copy). */
+export async function getSemanticEngineStatus() {
+  const enc = await resolveSemanticEncoder()
+  try { await enc.embed(['warm']) } catch { /* report reflects the attempt */ }
+  return typeof enc.report === 'function' ? enc.report() : { requested_engine: 'hashing', effective_engine: 'hashing', fallback_used: false, fallback_reason: null }
 }

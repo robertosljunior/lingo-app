@@ -48,5 +48,17 @@ test('generates and completes a 10-question lesson on a mobile viewport', async 
   await expectNoHorizontalOverflow(page, 'result')
   await testInfo.attach('mobile-result', { body: await page.screenshot(), contentType: 'image/png' })
 
+  // Settings: semantic model + knowledge pack cards render without overflow, the
+  // status chip and download control are reachable, and the progress bar exposes
+  // an accessible role.
+  await page.getByRole('button', { name: 'Início', exact: true }).click()
+  await page.getByRole('button', { name: 'Ajustes' }).click()
+  await expect(page.getByTestId('semantic-model-settings')).toBeVisible()
+  await expect(page.getByTestId('semantic-model-status')).toBeVisible()
+  await expect(page.getByTestId('semantic-model-download')).toBeVisible()
+  await expect(page.getByTestId('knowledge-packs-settings')).toBeVisible()
+  await expectNoHorizontalOverflow(page, 'settings-semantic-model')
+  await testInfo.attach('mobile-settings-model', { body: await page.screenshot(), contentType: 'image/png' })
+
   monitor.assertClean()
 })

@@ -14,6 +14,7 @@ import { createSemanticEncoder } from './semantic-encoder-adapter.js'
 import { KnowledgeBase } from './knowledge-base.js'
 import { matchesWhen } from './usage-rule-resolvers.js'
 import { applyTransformation } from './transformation-registry.js'
+import { resolveFrameThresholds, assessFrameChoice } from './frame-thresholds.js'
 
 export const ANALYSIS_VERSION = '1'
 
@@ -112,9 +113,11 @@ async function retrieveSemantics(encoder, structure, text, kb) {
   if (!exemplars.length) return { intents: structure.intent_signals.map((i) => ({ intent: i, score: 0.5 })), topFrame: null, ranked: [] }
   const ranked = await encoder.rank(text, exemplars)
   const intents = await encoder.classifyIntent(text, exemplars)
-  // Prefer a frame supported by BOTH structural intent signals and retrieval.
+  // Prefer a frame supported by BOTH structural intent signals and retrieval,
+  // gated by that frame's OWN threshold (no global cutoff — see frame-thresholds).
   const top = ranked[0]
   let topFrame = null
+  let topFrameScore = 0
   for (const r of ranked) {
     const frameId = r.candidate.frame_id
     if (!frameId) continue
@@ -124,9 +127,18 @@ async function retrieveSemantics(encoder, structure, text, kb) {
     // a frame, or "I have a car" would inherit "Could I have a dessert" phrasing.
     const intentAgrees = structure.intent_signals.includes(frame.intent) ||
       (frame.intent === 'polite_request' && structure.intent_signals.includes('request'))
-    if (r.candidate.polarity !== 'negative' && intentAgrees && r.score >= 0.15) { topFrame = frame; break }
+    const { threshold } = resolveFrameThresholds(frame)
+    if (r.candidate.polarity !== 'negative' && intentAgrees && r.score >= threshold) {
+      topFrame = frame; topFrameScore = r.score; break
+    }
   }
-  return { intents, topFrame, ranked, topScore: top?.score ?? 0 }
+  // Ambiguity: if a competing frame (different intent) is within the frame's
+  // margin, we corroborated but with low certainty — surfaced so guided/equivalent
+  // do not assert a frame with false confidence.
+  const frameChoice = topFrame
+    ? assessFrameChoice({ chosenFrame: topFrame, chosenScore: topFrameScore, ranked, frameOf: (id) => (id ? kb.frame(id) : null) })
+    : { accepted: false, ambiguous: false, margin: null, threshold: null }
+  return { intents, topFrame, topFrameScore, ranked, topScore: top?.score ?? 0, ambiguous: frameChoice.ambiguous, frameMargin: frameChoice.margin, frameThreshold: frameChoice.threshold }
 }
 
 /**
@@ -365,10 +377,24 @@ function fuseVerdict(ctx) {
   // Equivalent mode: meaning must match the target. Combine similarity with
   // essential-word / intent evidence — never on similarity alone.
   if (assessmentMode === 'equivalent' && equivalentTarget) {
+    // Exact / paraphrase short-circuit: if the learner reproduced the target (or
+    // used every essential content word), it is a meaning match by definition.
+    const userNorm = normSurface(structure.sentences?.[0] || structure.tokens.join(' '))
+    const targetNorm = normSurface(equivalentTarget.text || '')
+    if (userNorm && userNorm === targetNorm) {
+      return { ...ctx, verdict: hasSoftIssue ? 'valid_with_suggestions' : 'valid', confidence: 0.9 }
+    }
     const essential = (equivalentTarget.essential_words || []).map((w) => w.toLowerCase())
-    const userLower = structure.tokens.map((t) => t.toLowerCase())
-    const missingEssential = essential.filter((w) => !userLower.includes(w))
-    const meaningMismatch = missingEssential.length > 0
+    // Match essential CONTENT words against the normalized user surface (word
+    // boundaries), not the split-clitic token list — so contractions/morphology
+    // never cause false "missing word" mismatches.
+    const userWords = new Set(userNorm.split(' ').filter(Boolean))
+    const missingEssential = essential.filter((w) => !userWords.has(w))
+    // A missing essential CONTENT word signals a different meaning (e.g. target
+    // "The dessert is important" vs "Please give me a dessert" drops "important").
+    // Contractions/function words are excluded from `essential`, so exact answers
+    // and legitimate paraphrases keep all content words and pass.
+    const meaningMismatch = essential.length > 0 && missingEssential.length > 0
     if (hasHardError) return { ...ctx, verdict: 'needs_revision', confidence: 0.9 }
     if (meaningMismatch) {
       return {
@@ -393,7 +419,8 @@ function fuseVerdict(ctx) {
   // authority; USE only corroborates).
   if (assessmentMode === 'guided' && requestedIntent) {
     if (hasHardError) return { ...ctx, verdict: 'needs_revision', confidence: 0.85 }
-    const intentPresent = structure.intent_signals.includes(requestedIntent) || (semantics.topFrame && semantics.topFrame.intent === requestedIntent)
+    const intentPresent = structure.intent_signals.includes(requestedIntent) ||
+      (semantics.topFrame && semantics.topFrame.intent === requestedIntent && !semantics.ambiguous)
     if (!intentPresent) {
       return {
         ...ctx, verdict: 'needs_revision', confidence: 0.6,

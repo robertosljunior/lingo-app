@@ -29,6 +29,12 @@ export default defineConfig({
       includeAssets: ['favicon.svg'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,woff,woff2}'],
+        // The TensorFlow.js + USE runtime (~3.8 MB) is an OPT-IN dependency: it
+        // must NOT bloat every install. It is forced into a single predictable
+        // `semantic-runtime-*.js` chunk (see build.rollupOptions), excluded from
+        // the precache here, and runtime-cached below on first use (which happens
+        // while the user is online downloading the model).
+        globIgnores: ['**/semantic-runtime-*.js'],
         // The NLP worker + Compromise bundle can exceed the default 2 MiB cap.
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         // Piper (neural TTS) runtimes come from CDNs; cache them so the
@@ -41,6 +47,18 @@ export default defineConfig({
             options: {
               cacheName: 'piper-runtime-v1',
               expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            // The opt-in semantic runtime (TensorFlow.js + USE) chunk: cache on
+            // first use so USE keeps working offline afterwards. Excluded from the
+            // precache above so users who never download the model never pay for it.
+            urlPattern: ({ url }) => url.origin === self.location.origin && /semantic-runtime-.*\.js$/.test(url.pathname),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'semantic-runtime-v1',
+              expiration: { maxEntries: 6, maxAgeSeconds: 60 * 60 * 24 * 365 },
               cacheableResponse: { statuses: [0, 200] },
             },
           },
@@ -78,6 +96,18 @@ export default defineConfig({
   ],
   worker: {
     format: 'es',
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        // Keep the whole optional semantic runtime in ONE predictable chunk so
+        // the service worker can exclude it from the precache and runtime-cache
+        // it on demand (see VitePWA workbox config above).
+        manualChunks(id) {
+          if (id.includes('@tensorflow') || id.includes('universal-sentence-encoder')) return 'semantic-runtime'
+        },
+      },
+    },
   },
   // Vitest: unit tests only — Playwright owns e2e/*.spec.js.
   test: {

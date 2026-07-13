@@ -35,7 +35,9 @@ async function importLesson(page) {
 
 async function answer(page, text) {
   await page.locator('textarea.input').fill(text)
-  await page.getByRole('button', { name: /Responder/ }).click()
+  const submit = page.getByRole('button', { name: /Responder/ })
+  await expect(submit).toBeEnabled()
+  await submit.click()
   await expect(page.getByTestId('feedback-sheet')).toBeVisible({ timeout: 60000 })
 }
 
