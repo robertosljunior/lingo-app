@@ -35,6 +35,7 @@ function e2eGenerationSeed() {
 
 export function AppProvider({ children }) {
   const [ready, setReady] = useState(false)
+  const [needsOnboarding, setNeedsOnboarding] = useState(false)
   const [screen, setScreen] = useState(SCREENS.HOME)
   const [params, setParams] = useState({})
   const navStack = useRef([])
@@ -64,6 +65,8 @@ export function AppProvider({ children }) {
       try { if (window.sessionStorage.getItem('e2e:enabled')) window.__e2e = { db } } catch { /* noop */ }
       const s = await db.getSettings()
       setSettings(s)
+      // First run shows the Bob onboarding (name + Kids/Adult + level). No login.
+      setNeedsOnboarding(!s.onboarding_completed)
       const profile = s.active_profile || db.DEFAULT_PROFILE
       // Seed the sample lesson on first run so the app is usable immediately.
       let all = await db.getAllLessons(profile)
@@ -367,8 +370,22 @@ export function AppProvider({ children }) {
     await db.setSetting(key, value)
   }, [])
 
+  // Finish the first-run onboarding: name the active profile, store the mode
+  // (kids/adult) and starting level, and mark onboarding done.
+  const completeOnboarding = useCallback(async ({ name, mode = 'adult', level = 'A1' } = {}) => {
+    const clean = String(name || '').trim() || 'Você'
+    await db.saveProfile({ profile_id: activeProfile, name: clean })
+    await db.setSetting('profile_mode', mode)
+    await db.setSetting('level', level)
+    await db.setSetting('onboarding_completed', true)
+    setSettings((s) => ({ ...s, profile_mode: mode, level, onboarding_completed: true }))
+    setProfiles(await db.getProfiles())
+    setNeedsOnboarding(false)
+  }, [activeProfile])
+
   const value = {
     ready, screen, params, settings,
+    needsOnboarding, completeOnboarding,
     lessons, sessions, mistakes, skillProfiles, dueCount,
     profiles, activeProfile, switchProfile, addProfile, removeProfile,
     startReviewSession, startPracticeSession, generateAdaptiveLesson,
