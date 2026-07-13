@@ -14,6 +14,17 @@ import { buildFeedbackPresentation } from '../lib/feedback-presentation.js'
 import { speakFeedbackSequence, speakSegment } from '../lib/speech-router.js'
 import { stopSpeaking } from '../lib/audio/tts.js'
 
+// The four real semantic-feedback states. `header` is the outcome line
+// (resultado); `explanation` is a distinct "why" used only when there is no
+// specific error explanation, so the header is never duplicated in the body.
+// Colour is only a support: "no clear error" is neutral (warn), not error-red.
+const SEM_STATE = {
+  valid: { header: 'Sua frase está correta', tone: 'success', explanation: 'Está natural e o significado corresponde ao que foi pedido.' },
+  valid_with_suggestions: { header: 'Sua frase está correta e é compreensível', tone: 'success', explanation: 'Está clara. Veja abaixo formas ainda mais naturais neste contexto.' },
+  needs_revision: { header: 'Vamos ajustar uma coisa', tone: 'error', explanation: 'Há um ponto para ajustar. Veja a versão corrigida abaixo.' },
+  unable_to_assess: { header: 'Não encontrei um erro claro', tone: 'warn', explanation: 'Não identifiquei um erro evidente. Confira a sua frase abaixo.' },
+}
+
 export default function Exercise() {
   const { activeLesson, session, submitAnswer, rateAnswer, nextQuestion, back, settings } = useApp()
   const total = activeLesson.questions.length
@@ -607,8 +618,19 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
   useEffect(() => { speakFeedbackSequence(presentation, settings); return () => stopSpeaking() }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const sem = result.semantic_feedback || null
-  const tone = presentation.tone === 'correct' ? 'success' : presentation.tone === 'almost' ? 'warn' : 'error'
-  const header = presentation.tone === 'correct' ? 'Muito bem' : presentation.tone === 'almost' ? 'Quase lá' : 'Vamos ajustar uma coisa'
+  // Four distinct, non-duplicated feedback states driven by the semantic verdict.
+  // `resultado` (header) states the outcome; `explicação` (body) says WHY without
+  // repeating the header line. Non-semantic answers keep the legacy tri-state.
+  const semView = sem ? SEM_STATE[sem.verdict] || SEM_STATE.needs_revision : null
+  const tone = semView ? semView.tone
+    : presentation.tone === 'correct' ? 'success' : presentation.tone === 'almost' ? 'warn' : 'error'
+  const header = semView ? semView.header
+    : presentation.tone === 'correct' ? 'Muito bem' : presentation.tone === 'almost' ? 'Quase lá' : 'Vamos ajustar uma coisa'
+  // For a real revision the primary error explanation is the "why"; otherwise a
+  // state-specific line that is deliberately different from the header.
+  const semExplanation = semView
+    ? (sem.explanation_pt?.summary || semView.explanation)
+    : null
   const secondary = presentation.secondary_suggestions || []
   const missing = result.missing_words || []
   const extra = result.extra_words || []
@@ -632,10 +654,9 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
 
           <section className="feedback-card feedback-explanation" aria-label="Explicação" data-testid="feedback-explanation-card">
             <h3>{sem?.explanation_pt?.title || presentation.title}</h3>
-            <p>{sem ? sem.headline : presentation.explanation_pt}</p>
-            {sem?.explanation_pt?.summary && sem.explanation_pt.summary !== sem.headline && <p>{sem.explanation_pt.summary}</p>}
+            <p>{sem ? semExplanation : presentation.explanation_pt}</p>
             {!sem && presentation.learner_tip_pt && <p>{presentation.learner_tip_pt}</p>}
-            <button className="btn btn-sm btn-secondary" style={{ marginTop: 10 }} aria-label="Ouvir explicação" onClick={() => speakSegment({ text: sem ? sem.headline : presentation.speech_segments[0].text, language: 'pt-BR', role: 'explanation_pt', settings })}><I.speaker s={14} /> Ouvir explicação</button>
+            <button className="btn btn-sm btn-secondary" style={{ marginTop: 10 }} aria-label="Ouvir explicação" onClick={() => speakSegment({ text: sem ? semExplanation : presentation.speech_segments[0].text, language: 'pt-BR', role: 'explanation_pt', settings })}><I.speaker s={14} /> Ouvir explicação</button>
           </section>
 
           {result.verdict === 'correct' && !sem && <TypoNote typos={result.typos} inkVar="var(--feedback-text-secondary)" />}

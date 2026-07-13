@@ -14,6 +14,13 @@
 
 import { createProductionUseLoader } from '../lib/language-analysis/use-model-loader.js'
 
+// TensorFlow.js has a couple of bare `window` references in its platform
+// detection. In a Worker there is no `window` (only `self`), so provide a
+// minimal alias BEFORE tf is dynamically imported (at LOAD_MODEL time). No
+// `document` is added, so tf's WebGL probe fails cleanly and the loader falls
+// back to the CPU backend — exactly the intended offline path.
+if (typeof window === 'undefined') { globalThis.window = globalThis }
+
 let model = null           // loaded USE model singleton (has .embed + __lingo)
 let loadPromise = null     // in-flight load, so concurrent LOAD_MODEL coalesce
 let tfRef = null           // tf module handle, kept only to dispose the backend
