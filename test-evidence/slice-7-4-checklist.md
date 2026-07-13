@@ -49,5 +49,34 @@ Added `questionLanguageContract(q)` (explicit `instruction_locale/instruction_pt
 ## Part 4 — Balancing (T12–T14)
 Added family grouping (production/listening/ordering/recognition) and a size-aware policy (10/20/30) with per-family minimums, a per-type adaptive cap, and adaptivity (boost production when writing mastery is weak without eliminating other families). The lesson records `planner_reason`, `target_distribution`, `actual_distribution`, and `constraints`; a friendly pedagogical justification is surfaced (no scores/mastery/weights/skill IDs).
 
-## FINAL CLASSIFICATION
-(pending — filled after the full walk)
+## Test evidence summary
+- **Unit:** `npm test` → **167 passed** (adds `tts.test.js`, `language-contract.test.js`, `exercise-balance.test.js`; updates `lesson-generator.test.js`).
+- **Build / validators / benchmarks:** `npm run build` clean (precache 4.39 MB, unchanged); `validate:content-packs`, `validate:knowledge-packs`, `quality:content-packs`, `benchmark:structural-nlp`, `benchmark:semantic`, `benchmark:indexeddb` all green.
+- **E2E (new):** `training-hub-lessons.spec.js` — **all 24 theme/level combos** open through the real Hub UI, run to Result (24 passed); `portuguese-voice.spec.js` — pt-BR routing + no-English fallback (2 passed); `question-language-contract.spec.js` — no answer/transcript leak across all 7 types (passed).
+- **E2E (regression):** full suite 57/58 green; `generated-lesson-exercises`, `-skill` (updated for balanced ordering), `-offline`, `mobile-smoke` all pass.
+- **Distribution (Part 9):** covered deterministically by `exercise-balance.test.js` — neutral / writing-weak / listening-weak / insufficient-templates profiles, seed-determinism, and the friendly-justification content rules.
+
+### Environment caveat
+The two Slice 7.3 `semantic-worker-ux` specs (real 25 MB USE download + in-worker load) are timing-sensitive under full parallel CPU contention — a different one flakes per full run, and each passes in isolation. They are outside the Slice 7.4 acceptance criteria (voice/language/balance/hub) and untouched by this slice's changes.
+
+## FINAL CLASSIFICATION — PASS_SLICE_7_4_CORE_LEARNING_FLOW
+
+| Acceptance criterion | Status | Evidence |
+|----------------------|--------|----------|
+| 24 combos open | ✅ | `training-hub-lessons.spec.js` (24 passed) |
+| No Hub lesson breaks | ✅ | root-cause `chevL` crash fixed + safe-failure guard |
+| Portuguese voice uses pt-BR | ✅ | `tts.js` language-aware resolver; `portuguese-voice.spec.js` |
+| Portuguese fallback never English | ✅ | reports unavailable (NO_VOICE_FOR_LANGUAGE), never substitutes en |
+| English keeps English voice | ✅ | English path unchanged; e2e asserts en |
+| Translation hides the answer | ✅ | guided PT instruction, no English echo; `question-language-contract.spec.js` |
+| Guided hides model answer | ✅ | contract `hide_answer`; validator |
+| Free hides model answer | ✅ | contract; validator |
+| Listen hides transcript | ✅ | `hide_source`; dictation no-audio no reveal |
+| Planner minimum variety | ✅ | family policy; `exercise-balance.test.js` |
+| Weak writing keeps listening/ordering | ✅ | adaptivity test (production≤4, others ≥1) |
+| Pedagogical justification shown | ✅ | `Result` `lesson-justification`; hub e2e asserts visible |
+| Distribution persisted | ✅ | `generation_metadata.{planner_reason,target_distribution,actual_distribution,constraints}` |
+| Unit pass | ✅ | 167 passed |
+| E2E pass | ✅ | new suites green; 57/58 full (7.3 USE-load flake noted) |
+| Build pass | ✅ | clean |
+| No LLM / no remote API | ✅ | no new engines/models/infra; deterministic + structural only |
