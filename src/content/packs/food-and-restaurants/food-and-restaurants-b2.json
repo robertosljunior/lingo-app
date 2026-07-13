@@ -27,7 +27,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "menu",
-      "translation_pt": "menu",
+      "translation_pt": "cardápio",
       "semantic_type": "object",
       "tags": [
         "food_and_restaurants",
@@ -40,7 +40,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "table",
-      "translation_pt": "table",
+      "translation_pt": "mesa",
       "semantic_type": "time",
       "tags": [
         "food_and_restaurants",
@@ -53,7 +53,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "starter",
-      "translation_pt": "starter",
+      "translation_pt": "entrada",
       "semantic_type": "action",
       "tags": [
         "food_and_restaurants",
@@ -66,7 +66,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "main course",
-      "translation_pt": "main course",
+      "translation_pt": "prato principal",
       "semantic_type": "object",
       "tags": [
         "food_and_restaurants",
@@ -79,7 +79,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "dessert",
-      "translation_pt": "dessert",
+      "translation_pt": "sobremesa",
       "semantic_type": "time",
       "tags": [
         "food_and_restaurants",
@@ -92,7 +92,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "bill",
-      "translation_pt": "bill",
+      "translation_pt": "conta",
       "semantic_type": "action",
       "tags": [
         "food_and_restaurants",
@@ -105,7 +105,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "waiter",
-      "translation_pt": "waiter",
+      "translation_pt": "garçom",
       "semantic_type": "object",
       "tags": [
         "food_and_restaurants",
@@ -118,7 +118,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "reservation",
-      "translation_pt": "reservation",
+      "translation_pt": "reserva",
       "semantic_type": "time",
       "tags": [
         "food_and_restaurants",
@@ -131,7 +131,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "vegetarian dish",
-      "translation_pt": "vegetarian dish",
+      "translation_pt": "prato vegetariano",
       "semantic_type": "action",
       "tags": [
         "food_and_restaurants",
@@ -144,7 +144,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "coffee",
-      "translation_pt": "coffee",
+      "translation_pt": "café",
       "semantic_type": "object",
       "tags": [
         "food_and_restaurants",
@@ -157,7 +157,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "fresh salad",
-      "translation_pt": "fresh salad",
+      "translation_pt": "salada fresca",
       "semantic_type": "time",
       "tags": [
         "food_and_restaurants",
@@ -170,7 +170,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "spicy soup",
-      "translation_pt": "spicy soup",
+      "translation_pt": "sopa apimentada",
       "semantic_type": "action",
       "tags": [
         "food_and_restaurants",
@@ -183,7 +183,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "breakfast",
-      "translation_pt": "breakfast",
+      "translation_pt": "café da manhã",
       "semantic_type": "object",
       "tags": [
         "food_and_restaurants",
@@ -196,7 +196,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "restaurant review",
-      "translation_pt": "restaurant review",
+      "translation_pt": "avaliação do restaurante",
       "semantic_type": "time",
       "tags": [
         "food_and_restaurants",
@@ -241,8 +241,19 @@
         "wrong_collocation"
       ],
       "sentence": "The menu was reviewed by the team.",
-      "pt": "Frase sobre menu.",
-      "ctx": "Contexto Comida e restaurantes B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "O cardápio foi revisado pela equipe.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The menu was reviewed by the team."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "pt": "O cardápio foi revisado pela equipe.",
+      "ctx": "Contexto de comida e restaurantes (nível B2).",
       "blank": "menu",
       "wrong": "The menu reviewed by the team."
     },
@@ -282,8 +293,19 @@
         "wrong_collocation"
       ],
       "sentence": "She said that the table was ready.",
-      "pt": "Frase sobre table.",
-      "ctx": "Contexto Comida e restaurantes B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Ela disse que a mesa estava pronta.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "She said that the table was ready."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Discurso indireto com said that.",
+      "skill_targets": [
+        "reported_speech"
+      ],
+      "pt": "Ela disse que a mesa estava pronta.",
+      "ctx": "Contexto de comida e restaurantes (nível B2).",
       "blank": "said",
       "wrong": "She said the table was ready."
     },
@@ -323,8 +345,21 @@
         "wrong_collocation"
       ],
       "sentence": "If I had more time, I would improve the starter.",
-      "pt": "Frase sobre starter.",
-      "ctx": "Contexto Comida e restaurantes B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a entrada.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If I had more time, I would improve the starter."
+      ],
+      "accepted_variants_en": [
+        "If I had more time, I'd improve the starter."
+      ],
+      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "skill_targets": [
+        "second_conditional"
+      ],
+      "pt": "Se eu tivesse mais tempo, eu melhoraria a entrada.",
+      "ctx": "Contexto de comida e restaurantes (nível B2).",
       "blank": "I",
       "wrong": "If I had more time, I will improve the starter."
     },
@@ -364,8 +399,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the main course today.",
-      "pt": "Frase sobre main course.",
-      "ctx": "Contexto Comida e restaurantes B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar o prato principal hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the main course today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "modal_deduction"
+      ],
+      "pt": "Eu posso atualizar o prato principal hoje.",
+      "ctx": "Contexto de comida e restaurantes (nível B2).",
       "blank": "can",
       "wrong": "I cans update the main course today."
     },
@@ -405,8 +451,19 @@
         "wrong_collocation"
       ],
       "sentence": "The dessert was reviewed by the team.",
-      "pt": "Frase sobre dessert.",
-      "ctx": "Contexto Comida e restaurantes B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "A sobremesa foi revisada pela equipe.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The dessert was reviewed by the team."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "skill_targets": [
+        "collocation"
+      ],
+      "pt": "A sobremesa foi revisada pela equipe.",
+      "ctx": "Contexto de comida e restaurantes (nível B2).",
       "blank": "dessert",
       "wrong": "The dessert reviewed by the team."
     },
@@ -446,8 +503,19 @@
         "wrong_collocation"
       ],
       "sentence": "She said that the bill was ready.",
-      "pt": "Frase sobre bill.",
-      "ctx": "Contexto Comida e restaurantes B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Ela disse que a conta estava pronta.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "She said that the bill was ready."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Discurso indireto com said that.",
+      "skill_targets": [
+        "word_order"
+      ],
+      "pt": "Ela disse que a conta estava pronta.",
+      "ctx": "Contexto de comida e restaurantes (nível B2).",
       "blank": "said",
       "wrong": "She said the bill was ready."
     },
@@ -487,8 +555,21 @@
         "wrong_collocation"
       ],
       "sentence": "If I had more time, I would improve the waiter.",
-      "pt": "Frase sobre waiter.",
-      "ctx": "Contexto Comida e restaurantes B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o garçom.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If I had more time, I would improve the waiter."
+      ],
+      "accepted_variants_en": [
+        "If I had more time, I'd improve the waiter."
+      ],
+      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "skill_targets": [
+        "vocabulary"
+      ],
+      "pt": "Se eu tivesse mais tempo, eu melhoraria o garçom.",
+      "ctx": "Contexto de comida e restaurantes (nível B2).",
       "blank": "I",
       "wrong": "If I had more time, I will improve the waiter."
     },
@@ -528,8 +609,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the reservation today.",
-      "pt": "Frase sobre reservation.",
-      "ctx": "Contexto Comida e restaurantes B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar a reserva hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the reservation today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "pt": "Eu posso atualizar a reserva hoje.",
+      "ctx": "Contexto de comida e restaurantes (nível B2).",
       "blank": "can",
       "wrong": "I cans update the reservation today."
     }
@@ -541,7 +633,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "make a menu",
-      "translation_pt": "menu",
+      "translation_pt": "cardápio",
       "invalid_variants": [
         "do a menu"
       ],
@@ -553,7 +645,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "check the table",
-      "translation_pt": "table",
+      "translation_pt": "mesa",
       "invalid_variants": [
         "do the table"
       ],
@@ -565,7 +657,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "make a starter",
-      "translation_pt": "starter",
+      "translation_pt": "entrada",
       "invalid_variants": [
         "do a starter"
       ],
@@ -577,7 +669,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "check the main course",
-      "translation_pt": "main course",
+      "translation_pt": "prato principal",
       "invalid_variants": [
         "do the main course"
       ],
@@ -589,7 +681,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "make a dessert",
-      "translation_pt": "dessert",
+      "translation_pt": "sobremesa",
       "invalid_variants": [
         "do a dessert"
       ],
@@ -601,7 +693,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "check the bill",
-      "translation_pt": "bill",
+      "translation_pt": "conta",
       "invalid_variants": [
         "do the bill"
       ],
@@ -613,7 +705,7 @@
       "theme": "food_and_restaurants",
       "level": "B2",
       "canonical": "make a waiter",
-      "translation_pt": "waiter",
+      "translation_pt": "garçom",
       "invalid_variants": [
         "do a waiter"
       ],

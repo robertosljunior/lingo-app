@@ -27,7 +27,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "company",
-      "translation_pt": "company",
+      "translation_pt": "empresa",
       "semantic_type": "object",
       "tags": [
         "workplace",
@@ -40,7 +40,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "project",
-      "translation_pt": "project",
+      "translation_pt": "projeto",
       "semantic_type": "time",
       "tags": [
         "workplace",
@@ -53,7 +53,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "client",
-      "translation_pt": "client",
+      "translation_pt": "cliente",
       "semantic_type": "action",
       "tags": [
         "workplace",
@@ -66,7 +66,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "support team",
-      "translation_pt": "support team",
+      "translation_pt": "equipe de suporte",
       "semantic_type": "object",
       "tags": [
         "workplace",
@@ -79,7 +79,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "deployment",
-      "translation_pt": "deployment",
+      "translation_pt": "implantação",
       "semantic_type": "time",
       "tags": [
         "workplace",
@@ -92,7 +92,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "report",
-      "translation_pt": "report",
+      "translation_pt": "relatório",
       "semantic_type": "action",
       "tags": [
         "workplace",
@@ -105,7 +105,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "requirements",
-      "translation_pt": "requirements",
+      "translation_pt": "requisitos",
       "semantic_type": "object",
       "tags": [
         "workplace",
@@ -118,7 +118,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "open positions",
-      "translation_pt": "open positions",
+      "translation_pt": "vagas abertas",
       "semantic_type": "time",
       "tags": [
         "workplace",
@@ -131,7 +131,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "salary range",
-      "translation_pt": "salary range",
+      "translation_pt": "faixa salarial",
       "semantic_type": "action",
       "tags": [
         "workplace",
@@ -144,7 +144,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "deadline",
-      "translation_pt": "deadline",
+      "translation_pt": "prazo",
       "semantic_type": "object",
       "tags": [
         "workplace",
@@ -157,7 +157,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "meeting",
-      "translation_pt": "meeting",
+      "translation_pt": "reunião",
       "semantic_type": "time",
       "tags": [
         "workplace",
@@ -170,7 +170,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "feedback",
-      "translation_pt": "feedback",
+      "translation_pt": "retorno",
       "semantic_type": "action",
       "tags": [
         "workplace",
@@ -183,7 +183,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "responsibilities",
-      "translation_pt": "responsibilities",
+      "translation_pt": "responsabilidades",
       "semantic_type": "object",
       "tags": [
         "workplace",
@@ -196,7 +196,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "proposal",
-      "translation_pt": "proposal",
+      "translation_pt": "proposta",
       "semantic_type": "time",
       "tags": [
         "workplace",
@@ -241,8 +241,19 @@
         "wrong_collocation"
       ],
       "sentence": "The company was reviewed by the team.",
-      "pt": "Frase sobre company.",
-      "ctx": "Contexto Trabalho B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "A empresa foi revisada pela equipe.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The company was reviewed by the team."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "pt": "A empresa foi revisada pela equipe.",
+      "ctx": "Contexto de trabalho (nível B2).",
       "blank": "company",
       "wrong": "The company reviewed by the team."
     },
@@ -282,8 +293,19 @@
         "wrong_collocation"
       ],
       "sentence": "She said that the project was ready.",
-      "pt": "Frase sobre project.",
-      "ctx": "Contexto Trabalho B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Ela disse que o projeto estava pronto.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "She said that the project was ready."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Discurso indireto com said that.",
+      "skill_targets": [
+        "reported_speech"
+      ],
+      "pt": "Ela disse que o projeto estava pronto.",
+      "ctx": "Contexto de trabalho (nível B2).",
       "blank": "said",
       "wrong": "She said the project was ready."
     },
@@ -323,8 +345,21 @@
         "wrong_collocation"
       ],
       "sentence": "If I had more time, I would improve the client.",
-      "pt": "Frase sobre client.",
-      "ctx": "Contexto Trabalho B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o cliente.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If I had more time, I would improve the client."
+      ],
+      "accepted_variants_en": [
+        "If I had more time, I'd improve the client."
+      ],
+      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "skill_targets": [
+        "second_conditional"
+      ],
+      "pt": "Se eu tivesse mais tempo, eu melhoraria o cliente.",
+      "ctx": "Contexto de trabalho (nível B2).",
       "blank": "I",
       "wrong": "If I had more time, I will improve the client."
     },
@@ -364,8 +399,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the support team today.",
-      "pt": "Frase sobre support team.",
-      "ctx": "Contexto Trabalho B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar a equipe de suporte hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the support team today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "modal_deduction"
+      ],
+      "pt": "Eu posso atualizar a equipe de suporte hoje.",
+      "ctx": "Contexto de trabalho (nível B2).",
       "blank": "can",
       "wrong": "I cans update the support team today."
     },
@@ -405,8 +451,19 @@
         "wrong_collocation"
       ],
       "sentence": "The deployment was reviewed by the team.",
-      "pt": "Frase sobre deployment.",
-      "ctx": "Contexto Trabalho B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "A implantação foi revisada pela equipe.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The deployment was reviewed by the team."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "skill_targets": [
+        "collocation"
+      ],
+      "pt": "A implantação foi revisada pela equipe.",
+      "ctx": "Contexto de trabalho (nível B2).",
       "blank": "deployment",
       "wrong": "The deployment reviewed by the team."
     },
@@ -446,8 +503,19 @@
         "wrong_collocation"
       ],
       "sentence": "She said that the report was ready.",
-      "pt": "Frase sobre report.",
-      "ctx": "Contexto Trabalho B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Ela disse que o relatório estava pronto.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "She said that the report was ready."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Discurso indireto com said that.",
+      "skill_targets": [
+        "word_order"
+      ],
+      "pt": "Ela disse que o relatório estava pronto.",
+      "ctx": "Contexto de trabalho (nível B2).",
       "blank": "said",
       "wrong": "She said the report was ready."
     },
@@ -487,8 +555,21 @@
         "wrong_collocation"
       ],
       "sentence": "If I had more time, I would improve the requirements.",
-      "pt": "Frase sobre requirements.",
-      "ctx": "Contexto Trabalho B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria os requisitos.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If I had more time, I would improve the requirements."
+      ],
+      "accepted_variants_en": [
+        "If I had more time, I'd improve the requirements."
+      ],
+      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "skill_targets": [
+        "vocabulary"
+      ],
+      "pt": "Se eu tivesse mais tempo, eu melhoraria os requisitos.",
+      "ctx": "Contexto de trabalho (nível B2).",
       "blank": "I",
       "wrong": "If I had more time, I will improve the requirements."
     },
@@ -528,8 +609,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the open positions today.",
-      "pt": "Frase sobre open positions.",
-      "ctx": "Contexto Trabalho B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar as vagas abertas hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the open positions today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "pt": "Eu posso atualizar as vagas abertas hoje.",
+      "ctx": "Contexto de trabalho (nível B2).",
       "blank": "can",
       "wrong": "I cans update the open positions today."
     }
@@ -541,7 +633,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "make a company",
-      "translation_pt": "company",
+      "translation_pt": "empresa",
       "invalid_variants": [
         "do a company"
       ],
@@ -553,7 +645,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "check the project",
-      "translation_pt": "project",
+      "translation_pt": "projeto",
       "invalid_variants": [
         "do the project"
       ],
@@ -565,7 +657,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "make a client",
-      "translation_pt": "client",
+      "translation_pt": "cliente",
       "invalid_variants": [
         "do a client"
       ],
@@ -577,7 +669,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "check the support team",
-      "translation_pt": "support team",
+      "translation_pt": "equipe de suporte",
       "invalid_variants": [
         "do the support team"
       ],
@@ -589,7 +681,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "make a deployment",
-      "translation_pt": "deployment",
+      "translation_pt": "implantação",
       "invalid_variants": [
         "do a deployment"
       ],
@@ -601,7 +693,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "check the report",
-      "translation_pt": "report",
+      "translation_pt": "relatório",
       "invalid_variants": [
         "do the report"
       ],
@@ -613,7 +705,7 @@
       "theme": "workplace",
       "level": "B2",
       "canonical": "make a requirements",
-      "translation_pt": "requirements",
+      "translation_pt": "requisitos",
       "invalid_variants": [
         "do a requirements"
       ],

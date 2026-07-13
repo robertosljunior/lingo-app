@@ -27,7 +27,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "ticket",
-      "translation_pt": "ticket",
+      "translation_pt": "passagem",
       "semantic_type": "object",
       "tags": [
         "travel",
@@ -53,7 +53,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "passport",
-      "translation_pt": "passport",
+      "translation_pt": "passaporte",
       "semantic_type": "action",
       "tags": [
         "travel",
@@ -66,7 +66,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "train station",
-      "translation_pt": "train station",
+      "translation_pt": "estação de trem",
       "semantic_type": "object",
       "tags": [
         "travel",
@@ -79,7 +79,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "boarding gate",
-      "translation_pt": "boarding gate",
+      "translation_pt": "portão de embarque",
       "semantic_type": "time",
       "tags": [
         "travel",
@@ -92,7 +92,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "luggage",
-      "translation_pt": "luggage",
+      "translation_pt": "bagagem",
       "semantic_type": "action",
       "tags": [
         "travel",
@@ -105,7 +105,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "reservation",
-      "translation_pt": "reservation",
+      "translation_pt": "reserva",
       "semantic_type": "object",
       "tags": [
         "travel",
@@ -118,7 +118,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "city map",
-      "translation_pt": "city map",
+      "translation_pt": "mapa da cidade",
       "semantic_type": "time",
       "tags": [
         "travel",
@@ -131,7 +131,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "tour guide",
-      "translation_pt": "tour guide",
+      "translation_pt": "guia turístico",
       "semantic_type": "action",
       "tags": [
         "travel",
@@ -144,7 +144,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "beach trip",
-      "translation_pt": "beach trip",
+      "translation_pt": "viagem à praia",
       "semantic_type": "object",
       "tags": [
         "travel",
@@ -157,7 +157,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "flight delay",
-      "translation_pt": "flight delay",
+      "translation_pt": "atraso do voo",
       "semantic_type": "time",
       "tags": [
         "travel",
@@ -170,7 +170,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "taxi ride",
-      "translation_pt": "taxi ride",
+      "translation_pt": "corrida de táxi",
       "semantic_type": "action",
       "tags": [
         "travel",
@@ -183,7 +183,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "museum pass",
-      "translation_pt": "museum pass",
+      "translation_pt": "ingresso do museu",
       "semantic_type": "object",
       "tags": [
         "travel",
@@ -196,7 +196,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "travel insurance",
-      "translation_pt": "travel insurance",
+      "translation_pt": "seguro viagem",
       "semantic_type": "time",
       "tags": [
         "travel",
@@ -241,8 +241,19 @@
         "wrong_collocation"
       ],
       "sentence": "The ticket was reviewed by the team.",
-      "pt": "Frase sobre ticket.",
-      "ctx": "Contexto Viagens B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "A passagem foi revisada pela equipe.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The ticket was reviewed by the team."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "pt": "A passagem foi revisada pela equipe.",
+      "ctx": "Contexto de viagens (nível B2).",
       "blank": "ticket",
       "wrong": "The ticket reviewed by the team."
     },
@@ -282,8 +293,19 @@
         "wrong_collocation"
       ],
       "sentence": "She said that the hotel was ready.",
-      "pt": "Frase sobre hotel.",
-      "ctx": "Contexto Viagens B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Ela disse que o hotel estava pronto.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "She said that the hotel was ready."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Discurso indireto com said that.",
+      "skill_targets": [
+        "reported_speech"
+      ],
+      "pt": "Ela disse que o hotel estava pronto.",
+      "ctx": "Contexto de viagens (nível B2).",
       "blank": "said",
       "wrong": "She said the hotel was ready."
     },
@@ -323,8 +345,21 @@
         "wrong_collocation"
       ],
       "sentence": "If I had more time, I would improve the passport.",
-      "pt": "Frase sobre passport.",
-      "ctx": "Contexto Viagens B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o passaporte.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If I had more time, I would improve the passport."
+      ],
+      "accepted_variants_en": [
+        "If I had more time, I'd improve the passport."
+      ],
+      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "skill_targets": [
+        "second_conditional"
+      ],
+      "pt": "Se eu tivesse mais tempo, eu melhoraria o passaporte.",
+      "ctx": "Contexto de viagens (nível B2).",
       "blank": "I",
       "wrong": "If I had more time, I will improve the passport."
     },
@@ -364,8 +399,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the train station today.",
-      "pt": "Frase sobre train station.",
-      "ctx": "Contexto Viagens B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar a estação de trem hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the train station today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "modal_deduction"
+      ],
+      "pt": "Eu posso atualizar a estação de trem hoje.",
+      "ctx": "Contexto de viagens (nível B2).",
       "blank": "can",
       "wrong": "I cans update the train station today."
     },
@@ -405,8 +451,19 @@
         "wrong_collocation"
       ],
       "sentence": "The boarding gate was reviewed by the team.",
-      "pt": "Frase sobre boarding gate.",
-      "ctx": "Contexto Viagens B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "O portão de embarque foi revisado pela equipe.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The boarding gate was reviewed by the team."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "skill_targets": [
+        "collocation"
+      ],
+      "pt": "O portão de embarque foi revisado pela equipe.",
+      "ctx": "Contexto de viagens (nível B2).",
       "blank": "boarding",
       "wrong": "The boarding gate reviewed by the team."
     },
@@ -446,8 +503,19 @@
         "wrong_collocation"
       ],
       "sentence": "She said that the luggage was ready.",
-      "pt": "Frase sobre luggage.",
-      "ctx": "Contexto Viagens B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Ela disse que a bagagem estava pronta.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "She said that the luggage was ready."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Discurso indireto com said that.",
+      "skill_targets": [
+        "word_order"
+      ],
+      "pt": "Ela disse que a bagagem estava pronta.",
+      "ctx": "Contexto de viagens (nível B2).",
       "blank": "said",
       "wrong": "She said the luggage was ready."
     },
@@ -487,8 +555,21 @@
         "wrong_collocation"
       ],
       "sentence": "If I had more time, I would improve the reservation.",
-      "pt": "Frase sobre reservation.",
-      "ctx": "Contexto Viagens B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a reserva.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If I had more time, I would improve the reservation."
+      ],
+      "accepted_variants_en": [
+        "If I had more time, I'd improve the reservation."
+      ],
+      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "skill_targets": [
+        "vocabulary"
+      ],
+      "pt": "Se eu tivesse mais tempo, eu melhoraria a reserva.",
+      "ctx": "Contexto de viagens (nível B2).",
       "blank": "I",
       "wrong": "If I had more time, I will improve the reservation."
     },
@@ -528,8 +609,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the city map today.",
-      "pt": "Frase sobre city map.",
-      "ctx": "Contexto Viagens B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar o mapa da cidade hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the city map today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "pt": "Eu posso atualizar o mapa da cidade hoje.",
+      "ctx": "Contexto de viagens (nível B2).",
       "blank": "can",
       "wrong": "I cans update the city map today."
     }
@@ -541,7 +633,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "make a ticket",
-      "translation_pt": "ticket",
+      "translation_pt": "passagem",
       "invalid_variants": [
         "do a ticket"
       ],
@@ -565,7 +657,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "make a passport",
-      "translation_pt": "passport",
+      "translation_pt": "passaporte",
       "invalid_variants": [
         "do a passport"
       ],
@@ -577,7 +669,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "check the train station",
-      "translation_pt": "train station",
+      "translation_pt": "estação de trem",
       "invalid_variants": [
         "do the train station"
       ],
@@ -589,7 +681,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "make a boarding gate",
-      "translation_pt": "boarding gate",
+      "translation_pt": "portão de embarque",
       "invalid_variants": [
         "do a boarding gate"
       ],
@@ -601,7 +693,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "check the luggage",
-      "translation_pt": "luggage",
+      "translation_pt": "bagagem",
       "invalid_variants": [
         "do the luggage"
       ],
@@ -613,7 +705,7 @@
       "theme": "travel",
       "level": "B2",
       "canonical": "make a reservation",
-      "translation_pt": "reservation",
+      "translation_pt": "reserva",
       "invalid_variants": [
         "do a reservation"
       ],

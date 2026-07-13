@@ -115,6 +115,8 @@ export async function seedFixtures(page, { active = PROFILE_A } = {}) {
     await put('profiles', { profile_id: B, name: 'Perfil B', created_at: Date.now() - 5_000 })
     for (const row of rows) await put('skill_profiles', row)
     await put('settings', { key: 'active_profile', value: active })
+    // The seeded profiles already exist, so skip the first-run onboarding.
+    await put('settings', { key: 'onboarding_completed', value: true })
     // Mark the profiles as already rebuilt so boot does not wipe the fixture.
     await put('settings', { key: `skill_profile_rebuild_version:${A}`, value: '1' })
     await put('settings', { key: `skill_profile_rebuild_version:${B}`, value: '1' })

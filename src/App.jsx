@@ -10,6 +10,7 @@ import History from './screens/History.jsx'
 import Mistakes from './screens/Mistakes.jsx'
 import Settings from './screens/Settings.jsx'
 import TrainingHub from './screens/TrainingHub.jsx'
+import Onboarding from './screens/Onboarding.jsx'
 import PwaInstallController from './components/PwaInstallController.jsx'
 
 const SCREEN_COMPONENTS = {
@@ -30,7 +31,16 @@ const SCREEN_COMPONENTS = {
 const NEEDS_SESSION = new Set([SCREENS.EXERCISE, SCREENS.RESULT, SCREENS.REVIEW])
 
 export default function App() {
-  const { ready, screen, activeLesson, toast } = useApp()
+  const { ready, screen, activeLesson, toast, needsOnboarding } = useApp()
+
+  if (ready && needsOnboarding) {
+    return (
+      <div className="app-shell">
+        <Onboarding />
+        <Toast show={!!toast}>{toast}</Toast>
+      </div>
+    )
+  }
 
   if (!ready) {
     return (

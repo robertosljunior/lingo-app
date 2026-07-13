@@ -22,12 +22,12 @@ export const GENERATED_CONTENT_PACKS = [
     },
     "lexical_items": [
       {
-        "item_id": "core_a1_i",
+        "item_id": "core_a1_plan",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "I",
-        "translation_pt": "I",
+        "canonical": "plan",
+        "translation_pt": "plano",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -35,12 +35,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_you",
+        "item_id": "core_a1_answer",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "you",
-        "translation_pt": "you",
+        "canonical": "answer",
+        "translation_pt": "resposta",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -48,12 +48,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_we",
+        "item_id": "core_a1_question",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "we",
-        "translation_pt": "we",
+        "canonical": "question",
+        "translation_pt": "pergunta",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -61,12 +61,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_they",
+        "item_id": "core_a1_idea",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "they",
-        "translation_pt": "they",
+        "canonical": "idea",
+        "translation_pt": "ideia",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -74,12 +74,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_she",
+        "item_id": "core_a1_problem",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "she",
-        "translation_pt": "she",
+        "canonical": "problem",
+        "translation_pt": "problema",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -87,12 +87,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_he",
+        "item_id": "core_a1_word",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "he",
-        "translation_pt": "he",
+        "canonical": "word",
+        "translation_pt": "palavra",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -100,12 +100,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_today",
+        "item_id": "core_a1_name",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "today",
-        "translation_pt": "today",
+        "canonical": "name",
+        "translation_pt": "nome",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -113,12 +113,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_tomorrow",
+        "item_id": "core_a1_number",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "tomorrow",
-        "translation_pt": "tomorrow",
+        "canonical": "number",
+        "translation_pt": "número",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -126,12 +126,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_yesterday",
+        "item_id": "core_a1_place",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "yesterday",
-        "translation_pt": "yesterday",
+        "canonical": "place",
+        "translation_pt": "lugar",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -139,12 +139,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_this_week",
+        "item_id": "core_a1_time",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "this week",
-        "translation_pt": "this week",
+        "canonical": "time",
+        "translation_pt": "horário",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -152,12 +152,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_since_monday",
+        "item_id": "core_a1_reason",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "since Monday",
-        "translation_pt": "since Monday",
+        "canonical": "reason",
+        "translation_pt": "motivo",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -165,12 +165,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_for_two_hours",
+        "item_id": "core_a1_example",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "for two hours",
-        "translation_pt": "for two hours",
+        "canonical": "example",
+        "translation_pt": "exemplo",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -178,12 +178,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_can",
+        "item_id": "core_a1_list",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "can",
-        "translation_pt": "can",
+        "canonical": "list",
+        "translation_pt": "lista",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -191,12 +191,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_have",
+        "item_id": "core_a1_note",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "have",
-        "translation_pt": "have",
+        "canonical": "note",
+        "translation_pt": "anotação",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -204,12 +204,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_make",
+        "item_id": "core_a1_rule",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "make",
-        "translation_pt": "make",
+        "canonical": "rule",
+        "translation_pt": "regra",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -217,12 +217,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_do",
+        "item_id": "core_a1_change",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "do",
-        "translation_pt": "do",
+        "canonical": "change",
+        "translation_pt": "mudança",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -230,12 +230,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_go",
+        "item_id": "core_a1_part",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "go",
-        "translation_pt": "go",
+        "canonical": "part",
+        "translation_pt": "parte",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -243,12 +243,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_get",
+        "item_id": "core_a1_group",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "get",
-        "translation_pt": "get",
+        "canonical": "group",
+        "translation_pt": "grupo",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -256,12 +256,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_send",
+        "item_id": "core_a1_point",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "send",
-        "translation_pt": "send",
+        "canonical": "point",
+        "translation_pt": "ponto",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -269,12 +269,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a1_check",
+        "item_id": "core_a1_story",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "check",
-        "translation_pt": "check",
+        "canonical": "story",
+        "translation_pt": "história",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -306,7 +306,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_i"
+          "object": "core_a1_plan"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -316,11 +316,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The I is important.",
-        "pt": "Frase sobre I.",
-        "ctx": "Contexto Base A1.",
-        "blank": "I",
-        "wrong": "The I is important."
+        "sentence": "The plan is important.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O plano é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The plan is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "O plano é importante.",
+        "ctx": "Contexto de base (nível A1).",
+        "blank": "plan",
+        "wrong": "The plan is important."
       },
       {
         "template_id": "core_a1_subject_simple_present_object_02",
@@ -345,7 +356,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_you"
+          "object": "core_a1_answer"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -355,11 +366,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the you every day.",
-        "pt": "Frase sobre you.",
-        "ctx": "Contexto Base A1.",
+        "sentence": "We check the answer every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a resposta todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the answer every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "pt": "Nós verificamos a resposta todos os dias.",
+        "ctx": "Contexto de base (nível A1).",
         "blank": "check",
-        "wrong": "We check the you every day."
+        "wrong": "We check the answer every day."
       },
       {
         "template_id": "core_a1_wh_do_subject_base_verb_03",
@@ -384,7 +406,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_we"
+          "object": "core_a1_question"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -394,11 +416,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the we?",
-        "pt": "Frase sobre we.",
-        "ctx": "Contexto Base A1.",
+        "sentence": "When do you need the question?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da pergunta?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the question?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "pt": "Quando você precisa da pergunta?",
+        "ctx": "Contexto de base (nível A1).",
         "blank": "do",
-        "wrong": "When you do need the we?"
+        "wrong": "When you do need the question?"
       },
       {
         "template_id": "core_a1_subject_modal_base_verb_04",
@@ -423,7 +456,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_they"
+          "object": "core_a1_idea"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -433,11 +466,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the they today.",
-        "pt": "Frase sobre they.",
-        "ctx": "Contexto Base A1.",
+        "sentence": "I can update the idea today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a ideia hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the idea today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "can_ability"
+        ],
+        "pt": "Eu posso atualizar a ideia hoje.",
+        "ctx": "Contexto de base (nível A1).",
         "blank": "can",
-        "wrong": "I cans update the they today."
+        "wrong": "I cans update the idea today."
       },
       {
         "template_id": "core_a1_subject_be_complement_05",
@@ -462,7 +506,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_she"
+          "object": "core_a1_problem"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -472,11 +516,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The she is important.",
-        "pt": "Frase sobre she.",
-        "ctx": "Contexto Base A1.",
-        "blank": "she",
-        "wrong": "The she is important."
+        "sentence": "The problem is important.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O problema é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The problem is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "pt": "O problema é importante.",
+        "ctx": "Contexto de base (nível A1).",
+        "blank": "problem",
+        "wrong": "The problem is important."
       },
       {
         "template_id": "core_a1_subject_simple_present_object_06",
@@ -501,7 +556,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_he"
+          "object": "core_a1_word"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -511,11 +566,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the he every day.",
-        "pt": "Frase sobre he.",
-        "ctx": "Contexto Base A1.",
+        "sentence": "We check the word every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a palavra todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the word every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "question_structure"
+        ],
+        "pt": "Nós verificamos a palavra todos os dias.",
+        "ctx": "Contexto de base (nível A1).",
         "blank": "check",
-        "wrong": "We check the he every day."
+        "wrong": "We check the word every day."
       },
       {
         "template_id": "core_a1_wh_do_subject_base_verb_07",
@@ -540,7 +606,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_today"
+          "object": "core_a1_name"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -550,11 +616,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the today?",
-        "pt": "Frase sobre today.",
-        "ctx": "Contexto Base A1.",
+        "sentence": "When do you need the name?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do nome?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the name?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Quando você precisa do nome?",
+        "ctx": "Contexto de base (nível A1).",
         "blank": "do",
-        "wrong": "When you do need the today?"
+        "wrong": "When you do need the name?"
       },
       {
         "template_id": "core_a1_subject_modal_base_verb_08",
@@ -579,7 +656,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_tomorrow"
+          "object": "core_a1_number"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -589,11 +666,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the tomorrow today.",
-        "pt": "Frase sobre tomorrow.",
-        "ctx": "Contexto Base A1.",
+        "sentence": "I can update the number today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o número hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the number today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "Eu posso atualizar o número hoje.",
+        "ctx": "Contexto de base (nível A1).",
         "blank": "can",
-        "wrong": "I cans update the tomorrow today."
+        "wrong": "I cans update the number today."
       },
       {
         "template_id": "core_a1_subject_be_complement_09",
@@ -618,7 +706,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_yesterday"
+          "object": "core_a1_place"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -628,11 +716,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The yesterday is important.",
-        "pt": "Frase sobre yesterday.",
-        "ctx": "Contexto Base A1.",
-        "blank": "yesterday",
-        "wrong": "The yesterday is important."
+        "sentence": "The place is important.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O lugar é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The place is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "pt": "O lugar é importante.",
+        "ctx": "Contexto de base (nível A1).",
+        "blank": "place",
+        "wrong": "The place is important."
       },
       {
         "template_id": "core_a1_subject_simple_present_object_10",
@@ -657,7 +756,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_this_week"
+          "object": "core_a1_time"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -667,11 +766,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the this week every day.",
-        "pt": "Frase sobre this week.",
-        "ctx": "Contexto Base A1.",
+        "sentence": "We check the time every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o horário todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the time every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "pt": "Nós verificamos o horário todos os dias.",
+        "ctx": "Contexto de base (nível A1).",
         "blank": "check",
-        "wrong": "We check the this week every day."
+        "wrong": "We check the time every day."
       },
       {
         "template_id": "core_a1_wh_do_subject_base_verb_11",
@@ -696,7 +806,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_since_monday"
+          "object": "core_a1_reason"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -706,11 +816,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the since Monday?",
-        "pt": "Frase sobre since Monday.",
-        "ctx": "Contexto Base A1.",
+        "sentence": "When do you need the reason?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do motivo?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the reason?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "can_ability"
+        ],
+        "pt": "Quando você precisa do motivo?",
+        "ctx": "Contexto de base (nível A1).",
         "blank": "do",
-        "wrong": "When you do need the since Monday?"
+        "wrong": "When you do need the reason?"
       },
       {
         "template_id": "core_a1_subject_modal_base_verb_12",
@@ -735,7 +856,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a1_for_two_hours"
+          "object": "core_a1_example"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -745,119 +866,130 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the for two hours today.",
-        "pt": "Frase sobre for two hours.",
-        "ctx": "Contexto Base A1.",
+        "sentence": "I can update the example today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o exemplo hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the example today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "pt": "Eu posso atualizar o exemplo hoje.",
+        "ctx": "Contexto de base (nível A1).",
         "blank": "can",
-        "wrong": "I cans update the for two hours today."
+        "wrong": "I cans update the example today."
       }
     ],
     "collocations": [
       {
-        "collocation_id": "core_a1_i_chunk",
+        "collocation_id": "core_a1_plan_chunk",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "make a I",
-        "translation_pt": "I",
+        "canonical": "make a plan",
+        "translation_pt": "plano",
         "invalid_variants": [
-          "do a I"
+          "do a plan"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a1_you_chunk",
+        "collocation_id": "core_a1_answer_chunk",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "check the you",
-        "translation_pt": "you",
+        "canonical": "check the answer",
+        "translation_pt": "resposta",
         "invalid_variants": [
-          "do the you"
+          "do the answer"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a1_we_chunk",
+        "collocation_id": "core_a1_question_chunk",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "make a we",
-        "translation_pt": "we",
+        "canonical": "make a question",
+        "translation_pt": "pergunta",
         "invalid_variants": [
-          "do a we"
+          "do a question"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a1_they_chunk",
+        "collocation_id": "core_a1_idea_chunk",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "check the they",
-        "translation_pt": "they",
+        "canonical": "check the idea",
+        "translation_pt": "ideia",
         "invalid_variants": [
-          "do the they"
+          "do the idea"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a1_she_chunk",
+        "collocation_id": "core_a1_problem_chunk",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "make a she",
-        "translation_pt": "she",
+        "canonical": "make a problem",
+        "translation_pt": "problema",
         "invalid_variants": [
-          "do a she"
+          "do a problem"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a1_he_chunk",
+        "collocation_id": "core_a1_word_chunk",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "check the he",
-        "translation_pt": "he",
+        "canonical": "check the word",
+        "translation_pt": "palavra",
         "invalid_variants": [
-          "do the he"
+          "do the word"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a1_today_chunk",
+        "collocation_id": "core_a1_name_chunk",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "make a today",
-        "translation_pt": "today",
+        "canonical": "make a name",
+        "translation_pt": "nome",
         "invalid_variants": [
-          "do a today"
+          "do a name"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a1_tomorrow_chunk",
+        "collocation_id": "core_a1_number_chunk",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "check the tomorrow",
-        "translation_pt": "tomorrow",
+        "canonical": "check the number",
+        "translation_pt": "número",
         "invalid_variants": [
-          "do the tomorrow"
+          "do the number"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a1_yesterday_chunk",
+        "collocation_id": "core_a1_place_chunk",
         "pack_id": "core_a1",
         "theme": "core",
         "level": "A1",
-        "canonical": "make a yesterday",
-        "translation_pt": "yesterday",
+        "canonical": "make a place",
+        "translation_pt": "lugar",
         "invalid_variants": [
-          "do a yesterday"
+          "do a place"
         ],
         "skill_id": "collocation"
       }
@@ -885,12 +1017,12 @@ export const GENERATED_CONTENT_PACKS = [
     },
     "lexical_items": [
       {
-        "item_id": "core_a2_i",
+        "item_id": "core_a2_plan",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "I",
-        "translation_pt": "I",
+        "canonical": "plan",
+        "translation_pt": "plano",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -898,12 +1030,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_you",
+        "item_id": "core_a2_answer",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "you",
-        "translation_pt": "you",
+        "canonical": "answer",
+        "translation_pt": "resposta",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -911,12 +1043,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_we",
+        "item_id": "core_a2_question",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "we",
-        "translation_pt": "we",
+        "canonical": "question",
+        "translation_pt": "pergunta",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -924,12 +1056,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_they",
+        "item_id": "core_a2_idea",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "they",
-        "translation_pt": "they",
+        "canonical": "idea",
+        "translation_pt": "ideia",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -937,12 +1069,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_she",
+        "item_id": "core_a2_problem",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "she",
-        "translation_pt": "she",
+        "canonical": "problem",
+        "translation_pt": "problema",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -950,12 +1082,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_he",
+        "item_id": "core_a2_word",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "he",
-        "translation_pt": "he",
+        "canonical": "word",
+        "translation_pt": "palavra",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -963,12 +1095,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_today",
+        "item_id": "core_a2_name",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "today",
-        "translation_pt": "today",
+        "canonical": "name",
+        "translation_pt": "nome",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -976,12 +1108,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_tomorrow",
+        "item_id": "core_a2_number",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "tomorrow",
-        "translation_pt": "tomorrow",
+        "canonical": "number",
+        "translation_pt": "número",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -989,12 +1121,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_yesterday",
+        "item_id": "core_a2_place",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "yesterday",
-        "translation_pt": "yesterday",
+        "canonical": "place",
+        "translation_pt": "lugar",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -1002,12 +1134,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_this_week",
+        "item_id": "core_a2_time",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "this week",
-        "translation_pt": "this week",
+        "canonical": "time",
+        "translation_pt": "horário",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -1015,12 +1147,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_since_monday",
+        "item_id": "core_a2_reason",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "since Monday",
-        "translation_pt": "since Monday",
+        "canonical": "reason",
+        "translation_pt": "motivo",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -1028,12 +1160,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_for_two_hours",
+        "item_id": "core_a2_example",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "for two hours",
-        "translation_pt": "for two hours",
+        "canonical": "example",
+        "translation_pt": "exemplo",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -1041,12 +1173,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_can",
+        "item_id": "core_a2_list",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "can",
-        "translation_pt": "can",
+        "canonical": "list",
+        "translation_pt": "lista",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -1054,12 +1186,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_have",
+        "item_id": "core_a2_note",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "have",
-        "translation_pt": "have",
+        "canonical": "note",
+        "translation_pt": "anotação",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -1067,12 +1199,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_make",
+        "item_id": "core_a2_rule",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "make",
-        "translation_pt": "make",
+        "canonical": "rule",
+        "translation_pt": "regra",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -1080,12 +1212,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_do",
+        "item_id": "core_a2_change",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "do",
-        "translation_pt": "do",
+        "canonical": "change",
+        "translation_pt": "mudança",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -1093,12 +1225,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_go",
+        "item_id": "core_a2_part",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "go",
-        "translation_pt": "go",
+        "canonical": "part",
+        "translation_pt": "parte",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -1106,12 +1238,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_get",
+        "item_id": "core_a2_group",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "get",
-        "translation_pt": "get",
+        "canonical": "group",
+        "translation_pt": "grupo",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -1119,12 +1251,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_send",
+        "item_id": "core_a2_point",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "send",
-        "translation_pt": "send",
+        "canonical": "point",
+        "translation_pt": "ponto",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -1132,12 +1264,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_a2_check",
+        "item_id": "core_a2_story",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "check",
-        "translation_pt": "check",
+        "canonical": "story",
+        "translation_pt": "história",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -1169,7 +1301,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_i"
+          "object": "core_a2_plan"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1179,11 +1311,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the I yesterday.",
-        "pt": "Frase sobre I.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "We checked the plan yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o plano ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the plan yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Nós verificamos o plano ontem.",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "checked",
-        "wrong": "We check the I yesterday."
+        "wrong": "We check the plan yesterday."
       },
       {
         "template_id": "core_a2_subject_be_going_to_verb_time_02",
@@ -1208,7 +1351,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_you"
+          "object": "core_a2_answer"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1218,11 +1361,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They are going to review the you tomorrow.",
-        "pt": "Frase sobre you.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "They are going to review the answer tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar a resposta amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the answer tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the answer tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "pt": "Eles vão revisar a resposta amanhã.",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "are",
-        "wrong": "They go to review the you tomorrow."
+        "wrong": "They go to review the answer tomorrow."
       },
       {
         "template_id": "core_a2_subject_simple_present_object_03",
@@ -1247,7 +1403,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_we"
+          "object": "core_a2_question"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1257,11 +1413,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the we every day.",
-        "pt": "Frase sobre we.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "We check the question every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a pergunta todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the question every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "future_going_to"
+        ],
+        "pt": "Nós verificamos a pergunta todos os dias.",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "check",
-        "wrong": "We check the we every day."
+        "wrong": "We check the question every day."
       },
       {
         "template_id": "core_a2_wh_do_subject_base_verb_04",
@@ -1286,7 +1453,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_they"
+          "object": "core_a2_idea"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1296,11 +1463,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the they?",
-        "pt": "Frase sobre they.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "When do you need the idea?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da ideia?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the idea?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "pt": "Quando você precisa da ideia?",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "do",
-        "wrong": "When you do need the they?"
+        "wrong": "When you do need the idea?"
       },
       {
         "template_id": "core_a2_subject_past_simple_object_time_05",
@@ -1325,7 +1503,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_she"
+          "object": "core_a2_problem"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1335,11 +1513,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the she yesterday.",
-        "pt": "Frase sobre she.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "We checked the problem yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o problema ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the problem yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós verificamos o problema ontem.",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "checked",
-        "wrong": "We check the she yesterday."
+        "wrong": "We check the problem yesterday."
       },
       {
         "template_id": "core_a2_subject_be_going_to_verb_time_06",
@@ -1364,7 +1553,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_he"
+          "object": "core_a2_word"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1374,11 +1563,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They are going to review the he tomorrow.",
-        "pt": "Frase sobre he.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "They are going to review the word tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar a palavra amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the word tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the word tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Eles vão revisar a palavra amanhã.",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "are",
-        "wrong": "They go to review the he tomorrow."
+        "wrong": "They go to review the word tomorrow."
       },
       {
         "template_id": "core_a2_subject_simple_present_object_07",
@@ -1403,7 +1605,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_today"
+          "object": "core_a2_name"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1413,11 +1615,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the today every day.",
-        "pt": "Frase sobre today.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "We check the name every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o nome todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the name every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Nós verificamos o nome todos os dias.",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "check",
-        "wrong": "We check the today every day."
+        "wrong": "We check the name every day."
       },
       {
         "template_id": "core_a2_wh_do_subject_base_verb_08",
@@ -1442,7 +1655,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_tomorrow"
+          "object": "core_a2_number"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1452,11 +1665,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the tomorrow?",
-        "pt": "Frase sobre tomorrow.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "When do you need the number?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do número?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the number?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Quando você precisa do número?",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "do",
-        "wrong": "When you do need the tomorrow?"
+        "wrong": "When you do need the number?"
       },
       {
         "template_id": "core_a2_subject_past_simple_object_time_09",
@@ -1481,7 +1705,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_yesterday"
+          "object": "core_a2_place"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1491,11 +1715,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the yesterday yesterday.",
-        "pt": "Frase sobre yesterday.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "We checked the place yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o lugar ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the place yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "pt": "Nós verificamos o lugar ontem.",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "checked",
-        "wrong": "We check the yesterday yesterday."
+        "wrong": "We check the place yesterday."
       },
       {
         "template_id": "core_a2_subject_be_going_to_verb_time_10",
@@ -1520,7 +1755,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_this_week"
+          "object": "core_a2_time"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1530,11 +1765,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They are going to review the this week tomorrow.",
-        "pt": "Frase sobre this week.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "They are going to review the time tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar o horário amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the time tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the time tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "future_going_to"
+        ],
+        "pt": "Eles vão revisar o horário amanhã.",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "are",
-        "wrong": "They go to review the this week tomorrow."
+        "wrong": "They go to review the time tomorrow."
       },
       {
         "template_id": "core_a2_subject_simple_present_object_11",
@@ -1559,7 +1807,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_since_monday"
+          "object": "core_a2_reason"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1569,11 +1817,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the since Monday every day.",
-        "pt": "Frase sobre since Monday.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "We check the reason every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o motivo todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the reason every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "pt": "Nós verificamos o motivo todos os dias.",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "check",
-        "wrong": "We check the since Monday every day."
+        "wrong": "We check the reason every day."
       },
       {
         "template_id": "core_a2_wh_do_subject_base_verb_12",
@@ -1598,7 +1857,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_a2_for_two_hours"
+          "object": "core_a2_example"
         },
         "constraints": [
           "subject_auxiliary_agreement"
@@ -1608,119 +1867,130 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the for two hours?",
-        "pt": "Frase sobre for two hours.",
-        "ctx": "Contexto Base A2.",
+        "sentence": "When do you need the example?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do exemplo?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the example?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Quando você precisa do exemplo?",
+        "ctx": "Contexto de base (nível A2).",
         "blank": "do",
-        "wrong": "When you do need the for two hours?"
+        "wrong": "When you do need the example?"
       }
     ],
     "collocations": [
       {
-        "collocation_id": "core_a2_i_chunk",
+        "collocation_id": "core_a2_plan_chunk",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "make a I",
-        "translation_pt": "I",
+        "canonical": "make a plan",
+        "translation_pt": "plano",
         "invalid_variants": [
-          "do a I"
+          "do a plan"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a2_you_chunk",
+        "collocation_id": "core_a2_answer_chunk",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "check the you",
-        "translation_pt": "you",
+        "canonical": "check the answer",
+        "translation_pt": "resposta",
         "invalid_variants": [
-          "do the you"
+          "do the answer"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a2_we_chunk",
+        "collocation_id": "core_a2_question_chunk",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "make a we",
-        "translation_pt": "we",
+        "canonical": "make a question",
+        "translation_pt": "pergunta",
         "invalid_variants": [
-          "do a we"
+          "do a question"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a2_they_chunk",
+        "collocation_id": "core_a2_idea_chunk",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "check the they",
-        "translation_pt": "they",
+        "canonical": "check the idea",
+        "translation_pt": "ideia",
         "invalid_variants": [
-          "do the they"
+          "do the idea"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a2_she_chunk",
+        "collocation_id": "core_a2_problem_chunk",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "make a she",
-        "translation_pt": "she",
+        "canonical": "make a problem",
+        "translation_pt": "problema",
         "invalid_variants": [
-          "do a she"
+          "do a problem"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a2_he_chunk",
+        "collocation_id": "core_a2_word_chunk",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "check the he",
-        "translation_pt": "he",
+        "canonical": "check the word",
+        "translation_pt": "palavra",
         "invalid_variants": [
-          "do the he"
+          "do the word"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a2_today_chunk",
+        "collocation_id": "core_a2_name_chunk",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "make a today",
-        "translation_pt": "today",
+        "canonical": "make a name",
+        "translation_pt": "nome",
         "invalid_variants": [
-          "do a today"
+          "do a name"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a2_tomorrow_chunk",
+        "collocation_id": "core_a2_number_chunk",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "check the tomorrow",
-        "translation_pt": "tomorrow",
+        "canonical": "check the number",
+        "translation_pt": "número",
         "invalid_variants": [
-          "do the tomorrow"
+          "do the number"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_a2_yesterday_chunk",
+        "collocation_id": "core_a2_place_chunk",
         "pack_id": "core_a2",
         "theme": "core",
         "level": "A2",
-        "canonical": "make a yesterday",
-        "translation_pt": "yesterday",
+        "canonical": "make a place",
+        "translation_pt": "lugar",
         "invalid_variants": [
-          "do a yesterday"
+          "do a place"
         ],
         "skill_id": "collocation"
       }
@@ -1748,12 +2018,12 @@ export const GENERATED_CONTENT_PACKS = [
     },
     "lexical_items": [
       {
-        "item_id": "core_b1_i",
+        "item_id": "core_b1_plan",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "I",
-        "translation_pt": "I",
+        "canonical": "plan",
+        "translation_pt": "plano",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -1761,12 +2031,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_you",
+        "item_id": "core_b1_answer",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "you",
-        "translation_pt": "you",
+        "canonical": "answer",
+        "translation_pt": "resposta",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -1774,12 +2044,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_we",
+        "item_id": "core_b1_question",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "we",
-        "translation_pt": "we",
+        "canonical": "question",
+        "translation_pt": "pergunta",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -1787,12 +2057,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_they",
+        "item_id": "core_b1_idea",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "they",
-        "translation_pt": "they",
+        "canonical": "idea",
+        "translation_pt": "ideia",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -1800,12 +2070,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_she",
+        "item_id": "core_b1_problem",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "she",
-        "translation_pt": "she",
+        "canonical": "problem",
+        "translation_pt": "problema",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -1813,12 +2083,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_he",
+        "item_id": "core_b1_word",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "he",
-        "translation_pt": "he",
+        "canonical": "word",
+        "translation_pt": "palavra",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -1826,12 +2096,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_today",
+        "item_id": "core_b1_name",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "today",
-        "translation_pt": "today",
+        "canonical": "name",
+        "translation_pt": "nome",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -1839,12 +2109,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_tomorrow",
+        "item_id": "core_b1_number",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "tomorrow",
-        "translation_pt": "tomorrow",
+        "canonical": "number",
+        "translation_pt": "número",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -1852,12 +2122,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_yesterday",
+        "item_id": "core_b1_place",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "yesterday",
-        "translation_pt": "yesterday",
+        "canonical": "place",
+        "translation_pt": "lugar",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -1865,12 +2135,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_this_week",
+        "item_id": "core_b1_time",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "this week",
-        "translation_pt": "this week",
+        "canonical": "time",
+        "translation_pt": "horário",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -1878,12 +2148,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_since_monday",
+        "item_id": "core_b1_reason",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "since Monday",
-        "translation_pt": "since Monday",
+        "canonical": "reason",
+        "translation_pt": "motivo",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -1891,12 +2161,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_for_two_hours",
+        "item_id": "core_b1_example",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "for two hours",
-        "translation_pt": "for two hours",
+        "canonical": "example",
+        "translation_pt": "exemplo",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -1904,12 +2174,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_can",
+        "item_id": "core_b1_list",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "can",
-        "translation_pt": "can",
+        "canonical": "list",
+        "translation_pt": "lista",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -1917,12 +2187,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_have",
+        "item_id": "core_b1_note",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "have",
-        "translation_pt": "have",
+        "canonical": "note",
+        "translation_pt": "anotação",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -1930,12 +2200,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_make",
+        "item_id": "core_b1_rule",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "make",
-        "translation_pt": "make",
+        "canonical": "rule",
+        "translation_pt": "regra",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -1943,12 +2213,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_do",
+        "item_id": "core_b1_change",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "do",
-        "translation_pt": "do",
+        "canonical": "change",
+        "translation_pt": "mudança",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -1956,12 +2226,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_go",
+        "item_id": "core_b1_part",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "go",
-        "translation_pt": "go",
+        "canonical": "part",
+        "translation_pt": "parte",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -1969,12 +2239,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_get",
+        "item_id": "core_b1_group",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "get",
-        "translation_pt": "get",
+        "canonical": "group",
+        "translation_pt": "grupo",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -1982,12 +2252,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_send",
+        "item_id": "core_b1_point",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "send",
-        "translation_pt": "send",
+        "canonical": "point",
+        "translation_pt": "ponto",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -1995,12 +2265,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b1_check",
+        "item_id": "core_b1_story",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "check",
-        "translation_pt": "check",
+        "canonical": "story",
+        "translation_pt": "história",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -2032,7 +2302,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_i"
+          "object": "core_b1_plan"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2043,11 +2313,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We have checked the I already.",
-        "pt": "Frase sobre I.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "We have checked the plan already.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos o plano.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the plan already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the plan already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós já verificamos o plano.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "have",
-        "wrong": "We have check the I already."
+        "wrong": "We have check the plan already."
       },
       {
         "template_id": "core_b1_subject_have_been_ving_object_duration_02",
@@ -2072,7 +2355,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_you"
+          "object": "core_b1_answer"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2083,11 +2366,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They have been reviewing the you for two hours.",
-        "pt": "Frase sobre you.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "They have been reviewing the answer for two hours.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando a resposta há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the answer for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the answer for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "present_perfect_continuous"
+        ],
+        "pt": "Eles estão revisando a resposta há duas horas.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "have",
-        "wrong": "They have been reviewed the you for two hours."
+        "wrong": "They have been reviewed the answer for two hours."
       },
       {
         "template_id": "core_b1_if_present_will_future_03",
@@ -2112,7 +2408,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_we"
+          "object": "core_b1_question"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2123,11 +2419,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If we confirm the we, we will start tomorrow.",
-        "pt": "Frase sobre we.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "If we confirm the question, we will start tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos a pergunta, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the question, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the question, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "gerund_after_been"
+        ],
+        "pt": "Se confirmarmos a pergunta, vamos começar amanhã.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "we",
-        "wrong": "If we confirm the we, we will start tomorrow."
+        "wrong": "If we confirm the question, we will start tomorrow."
       },
       {
         "template_id": "core_b1_subject_modal_base_verb_04",
@@ -2152,7 +2461,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_they"
+          "object": "core_b1_idea"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2163,11 +2472,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the they today.",
-        "pt": "Frase sobre they.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "I can update the idea today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a ideia hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the idea today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "pt": "Eu posso atualizar a ideia hoje.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "can",
-        "wrong": "I cans update the they today."
+        "wrong": "I cans update the idea today."
       },
       {
         "template_id": "core_b1_subject_have_past_participle_yet_05",
@@ -2192,7 +2512,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_she"
+          "object": "core_b1_problem"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2203,11 +2523,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We have checked the she already.",
-        "pt": "Frase sobre she.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "We have checked the problem already.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos o problema.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the problem already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the problem already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Nós já verificamos o problema.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "have",
-        "wrong": "We have check the she already."
+        "wrong": "We have check the problem already."
       },
       {
         "template_id": "core_b1_subject_have_been_ving_object_duration_06",
@@ -2232,7 +2565,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_he"
+          "object": "core_b1_word"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2243,11 +2576,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They have been reviewing the he for two hours.",
-        "pt": "Frase sobre he.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "They have been reviewing the word for two hours.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando a palavra há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the word for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the word for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "Eles estão revisando a palavra há duas horas.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "have",
-        "wrong": "They have been reviewed the he for two hours."
+        "wrong": "They have been reviewed the word for two hours."
       },
       {
         "template_id": "core_b1_if_present_will_future_07",
@@ -2272,7 +2618,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_today"
+          "object": "core_b1_name"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2283,11 +2629,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If we confirm the today, we will start tomorrow.",
-        "pt": "Frase sobre today.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "If we confirm the name, we will start tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos o nome, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the name, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the name, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "preposition"
+        ],
+        "pt": "Se confirmarmos o nome, vamos começar amanhã.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "we",
-        "wrong": "If we confirm the today, we will start tomorrow."
+        "wrong": "If we confirm the name, we will start tomorrow."
       },
       {
         "template_id": "core_b1_subject_modal_base_verb_08",
@@ -2312,7 +2671,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_tomorrow"
+          "object": "core_b1_number"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2323,11 +2682,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the tomorrow today.",
-        "pt": "Frase sobre tomorrow.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "I can update the number today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o número hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the number today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Eu posso atualizar o número hoje.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "can",
-        "wrong": "I cans update the tomorrow today."
+        "wrong": "I cans update the number today."
       },
       {
         "template_id": "core_b1_subject_have_past_participle_yet_09",
@@ -2352,7 +2722,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_yesterday"
+          "object": "core_b1_place"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2363,11 +2733,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We have checked the yesterday already.",
-        "pt": "Frase sobre yesterday.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "We have checked the place already.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos o lugar.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the place already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the place already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "present_perfect_continuous"
+        ],
+        "pt": "Nós já verificamos o lugar.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "have",
-        "wrong": "We have check the yesterday already."
+        "wrong": "We have check the place already."
       },
       {
         "template_id": "core_b1_subject_have_been_ving_object_duration_10",
@@ -2392,7 +2775,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_this_week"
+          "object": "core_b1_time"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2403,11 +2786,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They have been reviewing the this week for two hours.",
-        "pt": "Frase sobre this week.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "They have been reviewing the time for two hours.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando o horário há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the time for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the time for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "gerund_after_been"
+        ],
+        "pt": "Eles estão revisando o horário há duas horas.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "have",
-        "wrong": "They have been reviewed the this week for two hours."
+        "wrong": "They have been reviewed the time for two hours."
       },
       {
         "template_id": "core_b1_if_present_will_future_11",
@@ -2432,7 +2828,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_since_monday"
+          "object": "core_b1_reason"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2443,11 +2839,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If we confirm the since Monday, we will start tomorrow.",
-        "pt": "Frase sobre since Monday.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "If we confirm the reason, we will start tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos o motivo, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the reason, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the reason, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "pt": "Se confirmarmos o motivo, vamos começar amanhã.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "we",
-        "wrong": "If we confirm the since Monday, we will start tomorrow."
+        "wrong": "If we confirm the reason, we will start tomorrow."
       },
       {
         "template_id": "core_b1_subject_modal_base_verb_12",
@@ -2472,7 +2881,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b1_for_two_hours"
+          "object": "core_b1_example"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2483,119 +2892,130 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the for two hours today.",
-        "pt": "Frase sobre for two hours.",
-        "ctx": "Contexto Base B1.",
+        "sentence": "I can update the example today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o exemplo hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the example today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Eu posso atualizar o exemplo hoje.",
+        "ctx": "Contexto de base (nível B1).",
         "blank": "can",
-        "wrong": "I cans update the for two hours today."
+        "wrong": "I cans update the example today."
       }
     ],
     "collocations": [
       {
-        "collocation_id": "core_b1_i_chunk",
+        "collocation_id": "core_b1_plan_chunk",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "make a I",
-        "translation_pt": "I",
+        "canonical": "make a plan",
+        "translation_pt": "plano",
         "invalid_variants": [
-          "do a I"
+          "do a plan"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b1_you_chunk",
+        "collocation_id": "core_b1_answer_chunk",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "check the you",
-        "translation_pt": "you",
+        "canonical": "check the answer",
+        "translation_pt": "resposta",
         "invalid_variants": [
-          "do the you"
+          "do the answer"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b1_we_chunk",
+        "collocation_id": "core_b1_question_chunk",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "make a we",
-        "translation_pt": "we",
+        "canonical": "make a question",
+        "translation_pt": "pergunta",
         "invalid_variants": [
-          "do a we"
+          "do a question"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b1_they_chunk",
+        "collocation_id": "core_b1_idea_chunk",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "check the they",
-        "translation_pt": "they",
+        "canonical": "check the idea",
+        "translation_pt": "ideia",
         "invalid_variants": [
-          "do the they"
+          "do the idea"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b1_she_chunk",
+        "collocation_id": "core_b1_problem_chunk",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "make a she",
-        "translation_pt": "she",
+        "canonical": "make a problem",
+        "translation_pt": "problema",
         "invalid_variants": [
-          "do a she"
+          "do a problem"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b1_he_chunk",
+        "collocation_id": "core_b1_word_chunk",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "check the he",
-        "translation_pt": "he",
+        "canonical": "check the word",
+        "translation_pt": "palavra",
         "invalid_variants": [
-          "do the he"
+          "do the word"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b1_today_chunk",
+        "collocation_id": "core_b1_name_chunk",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "make a today",
-        "translation_pt": "today",
+        "canonical": "make a name",
+        "translation_pt": "nome",
         "invalid_variants": [
-          "do a today"
+          "do a name"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b1_tomorrow_chunk",
+        "collocation_id": "core_b1_number_chunk",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "check the tomorrow",
-        "translation_pt": "tomorrow",
+        "canonical": "check the number",
+        "translation_pt": "número",
         "invalid_variants": [
-          "do the tomorrow"
+          "do the number"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b1_yesterday_chunk",
+        "collocation_id": "core_b1_place_chunk",
         "pack_id": "core_b1",
         "theme": "core",
         "level": "B1",
-        "canonical": "make a yesterday",
-        "translation_pt": "yesterday",
+        "canonical": "make a place",
+        "translation_pt": "lugar",
         "invalid_variants": [
-          "do a yesterday"
+          "do a place"
         ],
         "skill_id": "collocation"
       }
@@ -2623,12 +3043,12 @@ export const GENERATED_CONTENT_PACKS = [
     },
     "lexical_items": [
       {
-        "item_id": "core_b2_i",
+        "item_id": "core_b2_plan",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "I",
-        "translation_pt": "I",
+        "canonical": "plan",
+        "translation_pt": "plano",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -2636,12 +3056,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_you",
+        "item_id": "core_b2_answer",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "you",
-        "translation_pt": "you",
+        "canonical": "answer",
+        "translation_pt": "resposta",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -2649,12 +3069,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_we",
+        "item_id": "core_b2_question",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "we",
-        "translation_pt": "we",
+        "canonical": "question",
+        "translation_pt": "pergunta",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -2662,12 +3082,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_they",
+        "item_id": "core_b2_idea",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "they",
-        "translation_pt": "they",
+        "canonical": "idea",
+        "translation_pt": "ideia",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -2675,12 +3095,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_she",
+        "item_id": "core_b2_problem",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "she",
-        "translation_pt": "she",
+        "canonical": "problem",
+        "translation_pt": "problema",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -2688,12 +3108,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_he",
+        "item_id": "core_b2_word",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "he",
-        "translation_pt": "he",
+        "canonical": "word",
+        "translation_pt": "palavra",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -2701,12 +3121,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_today",
+        "item_id": "core_b2_name",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "today",
-        "translation_pt": "today",
+        "canonical": "name",
+        "translation_pt": "nome",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -2714,12 +3134,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_tomorrow",
+        "item_id": "core_b2_number",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "tomorrow",
-        "translation_pt": "tomorrow",
+        "canonical": "number",
+        "translation_pt": "número",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -2727,12 +3147,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_yesterday",
+        "item_id": "core_b2_place",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "yesterday",
-        "translation_pt": "yesterday",
+        "canonical": "place",
+        "translation_pt": "lugar",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -2740,12 +3160,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_this_week",
+        "item_id": "core_b2_time",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "this week",
-        "translation_pt": "this week",
+        "canonical": "time",
+        "translation_pt": "horário",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -2753,12 +3173,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_since_monday",
+        "item_id": "core_b2_reason",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "since Monday",
-        "translation_pt": "since Monday",
+        "canonical": "reason",
+        "translation_pt": "motivo",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -2766,12 +3186,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_for_two_hours",
+        "item_id": "core_b2_example",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "for two hours",
-        "translation_pt": "for two hours",
+        "canonical": "example",
+        "translation_pt": "exemplo",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -2779,12 +3199,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_can",
+        "item_id": "core_b2_list",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "can",
-        "translation_pt": "can",
+        "canonical": "list",
+        "translation_pt": "lista",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -2792,12 +3212,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_have",
+        "item_id": "core_b2_note",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "have",
-        "translation_pt": "have",
+        "canonical": "note",
+        "translation_pt": "anotação",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -2805,12 +3225,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_make",
+        "item_id": "core_b2_rule",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "make",
-        "translation_pt": "make",
+        "canonical": "rule",
+        "translation_pt": "regra",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -2818,12 +3238,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_do",
+        "item_id": "core_b2_change",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "do",
-        "translation_pt": "do",
+        "canonical": "change",
+        "translation_pt": "mudança",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -2831,12 +3251,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_go",
+        "item_id": "core_b2_part",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "go",
-        "translation_pt": "go",
+        "canonical": "part",
+        "translation_pt": "parte",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -2844,12 +3264,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_get",
+        "item_id": "core_b2_group",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "get",
-        "translation_pt": "get",
+        "canonical": "group",
+        "translation_pt": "grupo",
         "semantic_type": "action",
         "tags": [
           "core",
@@ -2857,12 +3277,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_send",
+        "item_id": "core_b2_point",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "send",
-        "translation_pt": "send",
+        "canonical": "point",
+        "translation_pt": "ponto",
         "semantic_type": "object",
         "tags": [
           "core",
@@ -2870,12 +3290,12 @@ export const GENERATED_CONTENT_PACKS = [
         ]
       },
       {
-        "item_id": "core_b2_check",
+        "item_id": "core_b2_story",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "check",
-        "translation_pt": "check",
+        "canonical": "story",
+        "translation_pt": "história",
         "semantic_type": "time",
         "tags": [
           "core",
@@ -2907,7 +3327,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_i"
+          "object": "core_b2_plan"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2919,11 +3339,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The I was reviewed by the team.",
-        "pt": "Frase sobre I.",
-        "ctx": "Contexto Base B2.",
-        "blank": "I",
-        "wrong": "The I reviewed by the team."
+        "sentence": "The plan was reviewed by the team.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O plano foi revisado pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The plan was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "O plano foi revisado pela equipe.",
+        "ctx": "Contexto de base (nível B2).",
+        "blank": "plan",
+        "wrong": "The plan reviewed by the team."
       },
       {
         "template_id": "core_b2_reported_speech_statement_02",
@@ -2948,7 +3379,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_you"
+          "object": "core_b2_answer"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -2960,11 +3391,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "She said that the you was ready.",
-        "pt": "Frase sobre you.",
-        "ctx": "Contexto Base B2.",
+        "sentence": "She said that the answer was ready.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que a resposta estava pronta.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the answer was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "reported_speech"
+        ],
+        "pt": "Ela disse que a resposta estava pronta.",
+        "ctx": "Contexto de base (nível B2).",
         "blank": "said",
-        "wrong": "She said the you was ready."
+        "wrong": "She said the answer was ready."
       },
       {
         "template_id": "core_b2_second_conditional_03",
@@ -2989,7 +3431,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_we"
+          "object": "core_b2_question"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -3001,11 +3443,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If I had more time, I would improve the we.",
-        "pt": "Frase sobre we.",
-        "ctx": "Contexto Base B2.",
+        "sentence": "If I had more time, I would improve the question.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a pergunta.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the question."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the question."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "second_conditional"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria a pergunta.",
+        "ctx": "Contexto de base (nível B2).",
         "blank": "I",
-        "wrong": "If I had more time, I will improve the we."
+        "wrong": "If I had more time, I will improve the question."
       },
       {
         "template_id": "core_b2_subject_modal_base_verb_04",
@@ -3030,7 +3485,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_they"
+          "object": "core_b2_idea"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -3042,11 +3497,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the they today.",
-        "pt": "Frase sobre they.",
-        "ctx": "Contexto Base B2.",
+        "sentence": "I can update the idea today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a ideia hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the idea today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "pt": "Eu posso atualizar a ideia hoje.",
+        "ctx": "Contexto de base (nível B2).",
         "blank": "can",
-        "wrong": "I cans update the they today."
+        "wrong": "I cans update the idea today."
       },
       {
         "template_id": "core_b2_passive_be_past_participle_05",
@@ -3071,7 +3537,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_she"
+          "object": "core_b2_problem"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -3083,11 +3549,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The she was reviewed by the team.",
-        "pt": "Frase sobre she.",
-        "ctx": "Contexto Base B2.",
-        "blank": "she",
-        "wrong": "The she reviewed by the team."
+        "sentence": "The problem was reviewed by the team.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O problema foi revisado pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The problem was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "O problema foi revisado pela equipe.",
+        "ctx": "Contexto de base (nível B2).",
+        "blank": "problem",
+        "wrong": "The problem reviewed by the team."
       },
       {
         "template_id": "core_b2_reported_speech_statement_06",
@@ -3112,7 +3589,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_he"
+          "object": "core_b2_word"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -3124,11 +3601,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "She said that the he was ready.",
-        "pt": "Frase sobre he.",
-        "ctx": "Contexto Base B2.",
+        "sentence": "She said that the word was ready.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que a palavra estava pronta.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the word was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "word_order"
+        ],
+        "pt": "Ela disse que a palavra estava pronta.",
+        "ctx": "Contexto de base (nível B2).",
         "blank": "said",
-        "wrong": "She said the he was ready."
+        "wrong": "She said the word was ready."
       },
       {
         "template_id": "core_b2_second_conditional_07",
@@ -3153,7 +3641,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_today"
+          "object": "core_b2_name"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -3165,11 +3653,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If I had more time, I would improve the today.",
-        "pt": "Frase sobre today.",
-        "ctx": "Contexto Base B2.",
+        "sentence": "If I had more time, I would improve the name.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o nome.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the name."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the name."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria o nome.",
+        "ctx": "Contexto de base (nível B2).",
         "blank": "I",
-        "wrong": "If I had more time, I will improve the today."
+        "wrong": "If I had more time, I will improve the name."
       },
       {
         "template_id": "core_b2_subject_modal_base_verb_08",
@@ -3194,7 +3695,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_tomorrow"
+          "object": "core_b2_number"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -3206,11 +3707,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the tomorrow today.",
-        "pt": "Frase sobre tomorrow.",
-        "ctx": "Contexto Base B2.",
+        "sentence": "I can update the number today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o número hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the number today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "Eu posso atualizar o número hoje.",
+        "ctx": "Contexto de base (nível B2).",
         "blank": "can",
-        "wrong": "I cans update the tomorrow today."
+        "wrong": "I cans update the number today."
       },
       {
         "template_id": "core_b2_passive_be_past_participle_09",
@@ -3235,7 +3747,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_yesterday"
+          "object": "core_b2_place"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -3247,11 +3759,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The yesterday was reviewed by the team.",
-        "pt": "Frase sobre yesterday.",
-        "ctx": "Contexto Base B2.",
-        "blank": "yesterday",
-        "wrong": "The yesterday reviewed by the team."
+        "sentence": "The place was reviewed by the team.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O lugar foi revisado pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The place was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "reported_speech"
+        ],
+        "pt": "O lugar foi revisado pela equipe.",
+        "ctx": "Contexto de base (nível B2).",
+        "blank": "place",
+        "wrong": "The place reviewed by the team."
       },
       {
         "template_id": "core_b2_reported_speech_statement_10",
@@ -3276,7 +3799,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_this_week"
+          "object": "core_b2_time"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -3288,11 +3811,22 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "She said that the this week was ready.",
-        "pt": "Frase sobre this week.",
-        "ctx": "Contexto Base B2.",
+        "sentence": "She said that the time was ready.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que o horário estava pronto.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the time was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "second_conditional"
+        ],
+        "pt": "Ela disse que o horário estava pronto.",
+        "ctx": "Contexto de base (nível B2).",
         "blank": "said",
-        "wrong": "She said the this week was ready."
+        "wrong": "She said the time was ready."
       },
       {
         "template_id": "core_b2_second_conditional_11",
@@ -3317,7 +3851,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_since_monday"
+          "object": "core_b2_reason"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -3329,11 +3863,24 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If I had more time, I would improve the since Monday.",
-        "pt": "Frase sobre since Monday.",
-        "ctx": "Contexto Base B2.",
+        "sentence": "If I had more time, I would improve the reason.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o motivo.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the reason."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the reason."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria o motivo.",
+        "ctx": "Contexto de base (nível B2).",
         "blank": "I",
-        "wrong": "If I had more time, I will improve the since Monday."
+        "wrong": "If I had more time, I will improve the reason."
       },
       {
         "template_id": "core_b2_subject_modal_base_verb_12",
@@ -3358,7 +3905,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "slots": {
           "subject": "we",
-          "object": "core_b2_for_two_hours"
+          "object": "core_b2_example"
         },
         "constraints": [
           "subject_auxiliary_agreement",
@@ -3370,119 +3917,130 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the for two hours today.",
-        "pt": "Frase sobre for two hours.",
-        "ctx": "Contexto Base B2.",
+        "sentence": "I can update the example today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o exemplo hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the example today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "Eu posso atualizar o exemplo hoje.",
+        "ctx": "Contexto de base (nível B2).",
         "blank": "can",
-        "wrong": "I cans update the for two hours today."
+        "wrong": "I cans update the example today."
       }
     ],
     "collocations": [
       {
-        "collocation_id": "core_b2_i_chunk",
+        "collocation_id": "core_b2_plan_chunk",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "make a I",
-        "translation_pt": "I",
+        "canonical": "make a plan",
+        "translation_pt": "plano",
         "invalid_variants": [
-          "do a I"
+          "do a plan"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b2_you_chunk",
+        "collocation_id": "core_b2_answer_chunk",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "check the you",
-        "translation_pt": "you",
+        "canonical": "check the answer",
+        "translation_pt": "resposta",
         "invalid_variants": [
-          "do the you"
+          "do the answer"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b2_we_chunk",
+        "collocation_id": "core_b2_question_chunk",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "make a we",
-        "translation_pt": "we",
+        "canonical": "make a question",
+        "translation_pt": "pergunta",
         "invalid_variants": [
-          "do a we"
+          "do a question"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b2_they_chunk",
+        "collocation_id": "core_b2_idea_chunk",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "check the they",
-        "translation_pt": "they",
+        "canonical": "check the idea",
+        "translation_pt": "ideia",
         "invalid_variants": [
-          "do the they"
+          "do the idea"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b2_she_chunk",
+        "collocation_id": "core_b2_problem_chunk",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "make a she",
-        "translation_pt": "she",
+        "canonical": "make a problem",
+        "translation_pt": "problema",
         "invalid_variants": [
-          "do a she"
+          "do a problem"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b2_he_chunk",
+        "collocation_id": "core_b2_word_chunk",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "check the he",
-        "translation_pt": "he",
+        "canonical": "check the word",
+        "translation_pt": "palavra",
         "invalid_variants": [
-          "do the he"
+          "do the word"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b2_today_chunk",
+        "collocation_id": "core_b2_name_chunk",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "make a today",
-        "translation_pt": "today",
+        "canonical": "make a name",
+        "translation_pt": "nome",
         "invalid_variants": [
-          "do a today"
+          "do a name"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b2_tomorrow_chunk",
+        "collocation_id": "core_b2_number_chunk",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "check the tomorrow",
-        "translation_pt": "tomorrow",
+        "canonical": "check the number",
+        "translation_pt": "número",
         "invalid_variants": [
-          "do the tomorrow"
+          "do the number"
         ],
         "skill_id": "collocation"
       },
       {
-        "collocation_id": "core_b2_yesterday_chunk",
+        "collocation_id": "core_b2_place_chunk",
         "pack_id": "core_b2",
         "theme": "core",
         "level": "B2",
-        "canonical": "make a yesterday",
-        "translation_pt": "yesterday",
+        "canonical": "make a place",
+        "translation_pt": "lugar",
         "invalid_variants": [
-          "do a yesterday"
+          "do a place"
         ],
         "skill_id": "collocation"
       }
@@ -3517,7 +4075,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "morning routine",
-        "translation_pt": "morning routine",
+        "translation_pt": "rotina matinal",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -3530,7 +4088,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "family dinner",
-        "translation_pt": "family dinner",
+        "translation_pt": "jantar em família",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -3543,7 +4101,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "bus stop",
-        "translation_pt": "bus stop",
+        "translation_pt": "ponto de ônibus",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -3556,7 +4114,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "homework",
-        "translation_pt": "homework",
+        "translation_pt": "lição de casa",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -3569,7 +4127,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "neighbor",
-        "translation_pt": "neighbor",
+        "translation_pt": "vizinho",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -3582,7 +4140,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "weekend plan",
-        "translation_pt": "weekend plan",
+        "translation_pt": "plano de fim de semana",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -3595,7 +4153,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "appointment",
-        "translation_pt": "appointment",
+        "translation_pt": "compromisso",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -3608,7 +4166,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "coffee break",
-        "translation_pt": "coffee break",
+        "translation_pt": "pausa para o café",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -3621,7 +4179,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "grocery list",
-        "translation_pt": "grocery list",
+        "translation_pt": "lista de compras",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -3634,7 +4192,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "phone call",
-        "translation_pt": "phone call",
+        "translation_pt": "ligação",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -3647,7 +4205,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "clean kitchen",
-        "translation_pt": "clean kitchen",
+        "translation_pt": "cozinha limpa",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -3660,7 +4218,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "quiet street",
-        "translation_pt": "quiet street",
+        "translation_pt": "rua tranquila",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -3673,7 +4231,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "birthday party",
-        "translation_pt": "birthday party",
+        "translation_pt": "festa de aniversário",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -3686,7 +4244,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "daily schedule",
-        "translation_pt": "daily schedule",
+        "translation_pt": "agenda diária",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -3729,8 +4287,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "The morning routine is important.",
-        "pt": "Frase sobre morning routine.",
-        "ctx": "Contexto Vida cotidiana A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A rotina matinal é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The morning routine is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "A rotina matinal é importante.",
+        "ctx": "Contexto de vida cotidiana (nível A1).",
         "blank": "morning",
         "wrong": "The morning routine is important."
       },
@@ -3768,8 +4337,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We check the family dinner every day.",
-        "pt": "Frase sobre family dinner.",
-        "ctx": "Contexto Vida cotidiana A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o jantar em família todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the family dinner every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "pt": "Nós verificamos o jantar em família todos os dias.",
+        "ctx": "Contexto de vida cotidiana (nível A1).",
         "blank": "check",
         "wrong": "We check the family dinner every day."
       },
@@ -3807,8 +4387,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "When do you need the bus stop?",
-        "pt": "Frase sobre bus stop.",
-        "ctx": "Contexto Vida cotidiana A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do ponto de ônibus?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the bus stop?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "pt": "Quando você precisa do ponto de ônibus?",
+        "ctx": "Contexto de vida cotidiana (nível A1).",
         "blank": "do",
         "wrong": "When you do need the bus stop?"
       },
@@ -3846,8 +4437,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the homework today.",
-        "pt": "Frase sobre homework.",
-        "ctx": "Contexto Vida cotidiana A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a lição de casa hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the homework today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "can_ability"
+        ],
+        "pt": "Eu posso atualizar a lição de casa hoje.",
+        "ctx": "Contexto de vida cotidiana (nível A1).",
         "blank": "can",
         "wrong": "I cans update the homework today."
       },
@@ -3885,8 +4487,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "The neighbor is important.",
-        "pt": "Frase sobre neighbor.",
-        "ctx": "Contexto Vida cotidiana A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O vizinho é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The neighbor is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "pt": "O vizinho é importante.",
+        "ctx": "Contexto de vida cotidiana (nível A1).",
         "blank": "neighbor",
         "wrong": "The neighbor is important."
       },
@@ -3924,8 +4537,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We check the weekend plan every day.",
-        "pt": "Frase sobre weekend plan.",
-        "ctx": "Contexto Vida cotidiana A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o plano de fim de semana todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the weekend plan every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "question_structure"
+        ],
+        "pt": "Nós verificamos o plano de fim de semana todos os dias.",
+        "ctx": "Contexto de vida cotidiana (nível A1).",
         "blank": "check",
         "wrong": "We check the weekend plan every day."
       },
@@ -3963,8 +4587,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "When do you need the appointment?",
-        "pt": "Frase sobre appointment.",
-        "ctx": "Contexto Vida cotidiana A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do compromisso?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the appointment?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Quando você precisa do compromisso?",
+        "ctx": "Contexto de vida cotidiana (nível A1).",
         "blank": "do",
         "wrong": "When you do need the appointment?"
       },
@@ -4002,8 +4637,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the coffee break today.",
-        "pt": "Frase sobre coffee break.",
-        "ctx": "Contexto Vida cotidiana A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a pausa para o café hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the coffee break today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "Eu posso atualizar a pausa para o café hoje.",
+        "ctx": "Contexto de vida cotidiana (nível A1).",
         "blank": "can",
         "wrong": "I cans update the coffee break today."
       }
@@ -4015,7 +4661,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "make a morning routine",
-        "translation_pt": "morning routine",
+        "translation_pt": "rotina matinal",
         "invalid_variants": [
           "do a morning routine"
         ],
@@ -4027,7 +4673,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "check the family dinner",
-        "translation_pt": "family dinner",
+        "translation_pt": "jantar em família",
         "invalid_variants": [
           "do the family dinner"
         ],
@@ -4039,7 +4685,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "make a bus stop",
-        "translation_pt": "bus stop",
+        "translation_pt": "ponto de ônibus",
         "invalid_variants": [
           "do a bus stop"
         ],
@@ -4051,7 +4697,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "check the homework",
-        "translation_pt": "homework",
+        "translation_pt": "lição de casa",
         "invalid_variants": [
           "do the homework"
         ],
@@ -4063,7 +4709,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "make a neighbor",
-        "translation_pt": "neighbor",
+        "translation_pt": "vizinho",
         "invalid_variants": [
           "do a neighbor"
         ],
@@ -4075,7 +4721,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "check the weekend plan",
-        "translation_pt": "weekend plan",
+        "translation_pt": "plano de fim de semana",
         "invalid_variants": [
           "do the weekend plan"
         ],
@@ -4087,7 +4733,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A1",
         "canonical": "make a appointment",
-        "translation_pt": "appointment",
+        "translation_pt": "compromisso",
         "invalid_variants": [
           "do a appointment"
         ],
@@ -4124,7 +4770,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "morning routine",
-        "translation_pt": "morning routine",
+        "translation_pt": "rotina matinal",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -4137,7 +4783,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "family dinner",
-        "translation_pt": "family dinner",
+        "translation_pt": "jantar em família",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -4150,7 +4796,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "bus stop",
-        "translation_pt": "bus stop",
+        "translation_pt": "ponto de ônibus",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -4163,7 +4809,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "homework",
-        "translation_pt": "homework",
+        "translation_pt": "lição de casa",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -4176,7 +4822,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "neighbor",
-        "translation_pt": "neighbor",
+        "translation_pt": "vizinho",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -4189,7 +4835,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "weekend plan",
-        "translation_pt": "weekend plan",
+        "translation_pt": "plano de fim de semana",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -4202,7 +4848,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "appointment",
-        "translation_pt": "appointment",
+        "translation_pt": "compromisso",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -4215,7 +4861,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "coffee break",
-        "translation_pt": "coffee break",
+        "translation_pt": "pausa para o café",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -4228,7 +4874,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "grocery list",
-        "translation_pt": "grocery list",
+        "translation_pt": "lista de compras",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -4241,7 +4887,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "phone call",
-        "translation_pt": "phone call",
+        "translation_pt": "ligação",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -4254,7 +4900,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "clean kitchen",
-        "translation_pt": "clean kitchen",
+        "translation_pt": "cozinha limpa",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -4267,7 +4913,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "quiet street",
-        "translation_pt": "quiet street",
+        "translation_pt": "rua tranquila",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -4280,7 +4926,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "birthday party",
-        "translation_pt": "birthday party",
+        "translation_pt": "festa de aniversário",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -4293,7 +4939,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "daily schedule",
-        "translation_pt": "daily schedule",
+        "translation_pt": "agenda diária",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -4336,8 +4982,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We checked the morning routine yesterday.",
-        "pt": "Frase sobre morning routine.",
-        "ctx": "Contexto Vida cotidiana A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a rotina matinal ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the morning routine yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Nós verificamos a rotina matinal ontem.",
+        "ctx": "Contexto de vida cotidiana (nível A2).",
         "blank": "checked",
         "wrong": "We check the morning routine yesterday."
       },
@@ -4375,8 +5032,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "They are going to review the family dinner tomorrow.",
-        "pt": "Frase sobre family dinner.",
-        "ctx": "Contexto Vida cotidiana A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar o jantar em família amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the family dinner tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the family dinner tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "pt": "Eles vão revisar o jantar em família amanhã.",
+        "ctx": "Contexto de vida cotidiana (nível A2).",
         "blank": "are",
         "wrong": "They go to review the family dinner tomorrow."
       },
@@ -4414,8 +5084,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We check the bus stop every day.",
-        "pt": "Frase sobre bus stop.",
-        "ctx": "Contexto Vida cotidiana A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o ponto de ônibus todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the bus stop every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "future_going_to"
+        ],
+        "pt": "Nós verificamos o ponto de ônibus todos os dias.",
+        "ctx": "Contexto de vida cotidiana (nível A2).",
         "blank": "check",
         "wrong": "We check the bus stop every day."
       },
@@ -4453,8 +5134,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "When do you need the homework?",
-        "pt": "Frase sobre homework.",
-        "ctx": "Contexto Vida cotidiana A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da lição de casa?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the homework?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "pt": "Quando você precisa da lição de casa?",
+        "ctx": "Contexto de vida cotidiana (nível A2).",
         "blank": "do",
         "wrong": "When you do need the homework?"
       },
@@ -4492,8 +5184,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We checked the neighbor yesterday.",
-        "pt": "Frase sobre neighbor.",
-        "ctx": "Contexto Vida cotidiana A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o vizinho ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the neighbor yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós verificamos o vizinho ontem.",
+        "ctx": "Contexto de vida cotidiana (nível A2).",
         "blank": "checked",
         "wrong": "We check the neighbor yesterday."
       },
@@ -4531,8 +5234,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "They are going to review the weekend plan tomorrow.",
-        "pt": "Frase sobre weekend plan.",
-        "ctx": "Contexto Vida cotidiana A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar o plano de fim de semana amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the weekend plan tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the weekend plan tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Eles vão revisar o plano de fim de semana amanhã.",
+        "ctx": "Contexto de vida cotidiana (nível A2).",
         "blank": "are",
         "wrong": "They go to review the weekend plan tomorrow."
       },
@@ -4570,8 +5286,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We check the appointment every day.",
-        "pt": "Frase sobre appointment.",
-        "ctx": "Contexto Vida cotidiana A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o compromisso todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the appointment every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Nós verificamos o compromisso todos os dias.",
+        "ctx": "Contexto de vida cotidiana (nível A2).",
         "blank": "check",
         "wrong": "We check the appointment every day."
       },
@@ -4609,8 +5336,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "When do you need the coffee break?",
-        "pt": "Frase sobre coffee break.",
-        "ctx": "Contexto Vida cotidiana A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da pausa para o café?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the coffee break?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Quando você precisa da pausa para o café?",
+        "ctx": "Contexto de vida cotidiana (nível A2).",
         "blank": "do",
         "wrong": "When you do need the coffee break?"
       }
@@ -4622,7 +5360,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "make a morning routine",
-        "translation_pt": "morning routine",
+        "translation_pt": "rotina matinal",
         "invalid_variants": [
           "do a morning routine"
         ],
@@ -4634,7 +5372,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "check the family dinner",
-        "translation_pt": "family dinner",
+        "translation_pt": "jantar em família",
         "invalid_variants": [
           "do the family dinner"
         ],
@@ -4646,7 +5384,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "make a bus stop",
-        "translation_pt": "bus stop",
+        "translation_pt": "ponto de ônibus",
         "invalid_variants": [
           "do a bus stop"
         ],
@@ -4658,7 +5396,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "check the homework",
-        "translation_pt": "homework",
+        "translation_pt": "lição de casa",
         "invalid_variants": [
           "do the homework"
         ],
@@ -4670,7 +5408,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "make a neighbor",
-        "translation_pt": "neighbor",
+        "translation_pt": "vizinho",
         "invalid_variants": [
           "do a neighbor"
         ],
@@ -4682,7 +5420,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "check the weekend plan",
-        "translation_pt": "weekend plan",
+        "translation_pt": "plano de fim de semana",
         "invalid_variants": [
           "do the weekend plan"
         ],
@@ -4694,7 +5432,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "A2",
         "canonical": "make a appointment",
-        "translation_pt": "appointment",
+        "translation_pt": "compromisso",
         "invalid_variants": [
           "do a appointment"
         ],
@@ -4731,7 +5469,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "morning routine",
-        "translation_pt": "morning routine",
+        "translation_pt": "rotina matinal",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -4744,7 +5482,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "family dinner",
-        "translation_pt": "family dinner",
+        "translation_pt": "jantar em família",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -4757,7 +5495,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "bus stop",
-        "translation_pt": "bus stop",
+        "translation_pt": "ponto de ônibus",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -4770,7 +5508,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "homework",
-        "translation_pt": "homework",
+        "translation_pt": "lição de casa",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -4783,7 +5521,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "neighbor",
-        "translation_pt": "neighbor",
+        "translation_pt": "vizinho",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -4796,7 +5534,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "weekend plan",
-        "translation_pt": "weekend plan",
+        "translation_pt": "plano de fim de semana",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -4809,7 +5547,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "appointment",
-        "translation_pt": "appointment",
+        "translation_pt": "compromisso",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -4822,7 +5560,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "coffee break",
-        "translation_pt": "coffee break",
+        "translation_pt": "pausa para o café",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -4835,7 +5573,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "grocery list",
-        "translation_pt": "grocery list",
+        "translation_pt": "lista de compras",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -4848,7 +5586,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "phone call",
-        "translation_pt": "phone call",
+        "translation_pt": "ligação",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -4861,7 +5599,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "clean kitchen",
-        "translation_pt": "clean kitchen",
+        "translation_pt": "cozinha limpa",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -4874,7 +5612,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "quiet street",
-        "translation_pt": "quiet street",
+        "translation_pt": "rua tranquila",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -4887,7 +5625,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "birthday party",
-        "translation_pt": "birthday party",
+        "translation_pt": "festa de aniversário",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -4900,7 +5638,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "daily schedule",
-        "translation_pt": "daily schedule",
+        "translation_pt": "agenda diária",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -4944,8 +5682,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We have checked the morning routine already.",
-        "pt": "Frase sobre morning routine.",
-        "ctx": "Contexto Vida cotidiana B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos a rotina matinal.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the morning routine already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the morning routine already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós já verificamos a rotina matinal.",
+        "ctx": "Contexto de vida cotidiana (nível B1).",
         "blank": "have",
         "wrong": "We have check the morning routine already."
       },
@@ -4984,8 +5735,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "They have been reviewing the family dinner for two hours.",
-        "pt": "Frase sobre family dinner.",
-        "ctx": "Contexto Vida cotidiana B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando o jantar em família há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the family dinner for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the family dinner for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "present_perfect_continuous"
+        ],
+        "pt": "Eles estão revisando o jantar em família há duas horas.",
+        "ctx": "Contexto de vida cotidiana (nível B1).",
         "blank": "have",
         "wrong": "They have been reviewed the family dinner for two hours."
       },
@@ -5024,8 +5788,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "If we confirm the bus stop, we will start tomorrow.",
-        "pt": "Frase sobre bus stop.",
-        "ctx": "Contexto Vida cotidiana B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos o ponto de ônibus, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the bus stop, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the bus stop, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "gerund_after_been"
+        ],
+        "pt": "Se confirmarmos o ponto de ônibus, vamos começar amanhã.",
+        "ctx": "Contexto de vida cotidiana (nível B1).",
         "blank": "we",
         "wrong": "If we confirm the bus stop, we will start tomorrow."
       },
@@ -5064,8 +5841,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the homework today.",
-        "pt": "Frase sobre homework.",
-        "ctx": "Contexto Vida cotidiana B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a lição de casa hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the homework today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "pt": "Eu posso atualizar a lição de casa hoje.",
+        "ctx": "Contexto de vida cotidiana (nível B1).",
         "blank": "can",
         "wrong": "I cans update the homework today."
       },
@@ -5104,8 +5892,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We have checked the neighbor already.",
-        "pt": "Frase sobre neighbor.",
-        "ctx": "Contexto Vida cotidiana B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos o vizinho.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the neighbor already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the neighbor already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Nós já verificamos o vizinho.",
+        "ctx": "Contexto de vida cotidiana (nível B1).",
         "blank": "have",
         "wrong": "We have check the neighbor already."
       },
@@ -5144,8 +5945,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "They have been reviewing the weekend plan for two hours.",
-        "pt": "Frase sobre weekend plan.",
-        "ctx": "Contexto Vida cotidiana B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando o plano de fim de semana há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the weekend plan for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the weekend plan for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "Eles estão revisando o plano de fim de semana há duas horas.",
+        "ctx": "Contexto de vida cotidiana (nível B1).",
         "blank": "have",
         "wrong": "They have been reviewed the weekend plan for two hours."
       },
@@ -5184,8 +5998,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "If we confirm the appointment, we will start tomorrow.",
-        "pt": "Frase sobre appointment.",
-        "ctx": "Contexto Vida cotidiana B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos o compromisso, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the appointment, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the appointment, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "preposition"
+        ],
+        "pt": "Se confirmarmos o compromisso, vamos começar amanhã.",
+        "ctx": "Contexto de vida cotidiana (nível B1).",
         "blank": "we",
         "wrong": "If we confirm the appointment, we will start tomorrow."
       },
@@ -5224,8 +6051,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the coffee break today.",
-        "pt": "Frase sobre coffee break.",
-        "ctx": "Contexto Vida cotidiana B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a pausa para o café hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the coffee break today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Eu posso atualizar a pausa para o café hoje.",
+        "ctx": "Contexto de vida cotidiana (nível B1).",
         "blank": "can",
         "wrong": "I cans update the coffee break today."
       }
@@ -5237,7 +6075,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "make a morning routine",
-        "translation_pt": "morning routine",
+        "translation_pt": "rotina matinal",
         "invalid_variants": [
           "do a morning routine"
         ],
@@ -5249,7 +6087,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "check the family dinner",
-        "translation_pt": "family dinner",
+        "translation_pt": "jantar em família",
         "invalid_variants": [
           "do the family dinner"
         ],
@@ -5261,7 +6099,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "make a bus stop",
-        "translation_pt": "bus stop",
+        "translation_pt": "ponto de ônibus",
         "invalid_variants": [
           "do a bus stop"
         ],
@@ -5273,7 +6111,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "check the homework",
-        "translation_pt": "homework",
+        "translation_pt": "lição de casa",
         "invalid_variants": [
           "do the homework"
         ],
@@ -5285,7 +6123,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "make a neighbor",
-        "translation_pt": "neighbor",
+        "translation_pt": "vizinho",
         "invalid_variants": [
           "do a neighbor"
         ],
@@ -5297,7 +6135,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "check the weekend plan",
-        "translation_pt": "weekend plan",
+        "translation_pt": "plano de fim de semana",
         "invalid_variants": [
           "do the weekend plan"
         ],
@@ -5309,7 +6147,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B1",
         "canonical": "make a appointment",
-        "translation_pt": "appointment",
+        "translation_pt": "compromisso",
         "invalid_variants": [
           "do a appointment"
         ],
@@ -5346,7 +6184,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "morning routine",
-        "translation_pt": "morning routine",
+        "translation_pt": "rotina matinal",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -5359,7 +6197,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "family dinner",
-        "translation_pt": "family dinner",
+        "translation_pt": "jantar em família",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -5372,7 +6210,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "bus stop",
-        "translation_pt": "bus stop",
+        "translation_pt": "ponto de ônibus",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -5385,7 +6223,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "homework",
-        "translation_pt": "homework",
+        "translation_pt": "lição de casa",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -5398,7 +6236,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "neighbor",
-        "translation_pt": "neighbor",
+        "translation_pt": "vizinho",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -5411,7 +6249,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "weekend plan",
-        "translation_pt": "weekend plan",
+        "translation_pt": "plano de fim de semana",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -5424,7 +6262,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "appointment",
-        "translation_pt": "appointment",
+        "translation_pt": "compromisso",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -5437,7 +6275,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "coffee break",
-        "translation_pt": "coffee break",
+        "translation_pt": "pausa para o café",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -5450,7 +6288,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "grocery list",
-        "translation_pt": "grocery list",
+        "translation_pt": "lista de compras",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -5463,7 +6301,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "phone call",
-        "translation_pt": "phone call",
+        "translation_pt": "ligação",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -5476,7 +6314,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "clean kitchen",
-        "translation_pt": "clean kitchen",
+        "translation_pt": "cozinha limpa",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -5489,7 +6327,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "quiet street",
-        "translation_pt": "quiet street",
+        "translation_pt": "rua tranquila",
         "semantic_type": "action",
         "tags": [
           "daily_life",
@@ -5502,7 +6340,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "birthday party",
-        "translation_pt": "birthday party",
+        "translation_pt": "festa de aniversário",
         "semantic_type": "object",
         "tags": [
           "daily_life",
@@ -5515,7 +6353,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "daily schedule",
-        "translation_pt": "daily schedule",
+        "translation_pt": "agenda diária",
         "semantic_type": "time",
         "tags": [
           "daily_life",
@@ -5560,8 +6398,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "The morning routine was reviewed by the team.",
-        "pt": "Frase sobre morning routine.",
-        "ctx": "Contexto Vida cotidiana B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A rotina matinal foi revisada pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The morning routine was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "A rotina matinal foi revisada pela equipe.",
+        "ctx": "Contexto de vida cotidiana (nível B2).",
         "blank": "morning",
         "wrong": "The morning routine reviewed by the team."
       },
@@ -5601,8 +6450,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "She said that the family dinner was ready.",
-        "pt": "Frase sobre family dinner.",
-        "ctx": "Contexto Vida cotidiana B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que o jantar em família estava pronto.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the family dinner was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "reported_speech"
+        ],
+        "pt": "Ela disse que o jantar em família estava pronto.",
+        "ctx": "Contexto de vida cotidiana (nível B2).",
         "blank": "said",
         "wrong": "She said the family dinner was ready."
       },
@@ -5642,8 +6502,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "If I had more time, I would improve the bus stop.",
-        "pt": "Frase sobre bus stop.",
-        "ctx": "Contexto Vida cotidiana B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o ponto de ônibus.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the bus stop."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the bus stop."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "second_conditional"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria o ponto de ônibus.",
+        "ctx": "Contexto de vida cotidiana (nível B2).",
         "blank": "I",
         "wrong": "If I had more time, I will improve the bus stop."
       },
@@ -5683,8 +6556,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the homework today.",
-        "pt": "Frase sobre homework.",
-        "ctx": "Contexto Vida cotidiana B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a lição de casa hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the homework today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "pt": "Eu posso atualizar a lição de casa hoje.",
+        "ctx": "Contexto de vida cotidiana (nível B2).",
         "blank": "can",
         "wrong": "I cans update the homework today."
       },
@@ -5724,8 +6608,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "The neighbor was reviewed by the team.",
-        "pt": "Frase sobre neighbor.",
-        "ctx": "Contexto Vida cotidiana B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O vizinho foi revisado pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The neighbor was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "O vizinho foi revisado pela equipe.",
+        "ctx": "Contexto de vida cotidiana (nível B2).",
         "blank": "neighbor",
         "wrong": "The neighbor reviewed by the team."
       },
@@ -5765,8 +6660,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "She said that the weekend plan was ready.",
-        "pt": "Frase sobre weekend plan.",
-        "ctx": "Contexto Vida cotidiana B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que o plano de fim de semana estava pronto.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the weekend plan was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "word_order"
+        ],
+        "pt": "Ela disse que o plano de fim de semana estava pronto.",
+        "ctx": "Contexto de vida cotidiana (nível B2).",
         "blank": "said",
         "wrong": "She said the weekend plan was ready."
       },
@@ -5806,8 +6712,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "If I had more time, I would improve the appointment.",
-        "pt": "Frase sobre appointment.",
-        "ctx": "Contexto Vida cotidiana B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o compromisso.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the appointment."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the appointment."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria o compromisso.",
+        "ctx": "Contexto de vida cotidiana (nível B2).",
         "blank": "I",
         "wrong": "If I had more time, I will improve the appointment."
       },
@@ -5847,8 +6766,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the coffee break today.",
-        "pt": "Frase sobre coffee break.",
-        "ctx": "Contexto Vida cotidiana B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a pausa para o café hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the coffee break today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "Eu posso atualizar a pausa para o café hoje.",
+        "ctx": "Contexto de vida cotidiana (nível B2).",
         "blank": "can",
         "wrong": "I cans update the coffee break today."
       }
@@ -5860,7 +6790,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "make a morning routine",
-        "translation_pt": "morning routine",
+        "translation_pt": "rotina matinal",
         "invalid_variants": [
           "do a morning routine"
         ],
@@ -5872,7 +6802,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "check the family dinner",
-        "translation_pt": "family dinner",
+        "translation_pt": "jantar em família",
         "invalid_variants": [
           "do the family dinner"
         ],
@@ -5884,7 +6814,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "make a bus stop",
-        "translation_pt": "bus stop",
+        "translation_pt": "ponto de ônibus",
         "invalid_variants": [
           "do a bus stop"
         ],
@@ -5896,7 +6826,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "check the homework",
-        "translation_pt": "homework",
+        "translation_pt": "lição de casa",
         "invalid_variants": [
           "do the homework"
         ],
@@ -5908,7 +6838,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "make a neighbor",
-        "translation_pt": "neighbor",
+        "translation_pt": "vizinho",
         "invalid_variants": [
           "do a neighbor"
         ],
@@ -5920,7 +6850,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "check the weekend plan",
-        "translation_pt": "weekend plan",
+        "translation_pt": "plano de fim de semana",
         "invalid_variants": [
           "do the weekend plan"
         ],
@@ -5932,9817 +6862,9 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "daily_life",
         "level": "B2",
         "canonical": "make a appointment",
-        "translation_pt": "appointment",
+        "translation_pt": "compromisso",
         "invalid_variants": [
           "do a appointment"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "food_and_restaurants_a1",
-      "title": {
-        "pt": "Comida e restaurantes A1",
-        "en": "Food and restaurants A1"
-      },
-      "theme": "food_and_restaurants",
-      "level": "A1",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_a1"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "food_and_restaurants_a1_menu",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "menu",
-        "translation_pt": "menu",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_table",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "table",
-        "translation_pt": "table",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_starter",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "starter",
-        "translation_pt": "starter",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_main_course",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "main course",
-        "translation_pt": "main course",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_dessert",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "dessert",
-        "translation_pt": "dessert",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_bill",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "bill",
-        "translation_pt": "bill",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_waiter",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "waiter",
-        "translation_pt": "waiter",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_reservation",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "reservation",
-        "translation_pt": "reservation",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_vegetarian_dish",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "vegetarian dish",
-        "translation_pt": "vegetarian dish",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_coffee",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "coffee",
-        "translation_pt": "coffee",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_fresh_salad",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "fresh salad",
-        "translation_pt": "fresh salad",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_spicy_soup",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "spicy soup",
-        "translation_pt": "spicy soup",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_breakfast",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "breakfast",
-        "translation_pt": "breakfast",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a1_restaurant_review",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "restaurant review",
-        "translation_pt": "restaurant review",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "a1"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "food_and_restaurants_a1_subject_be_complement_01",
-        "family_id": "food_and_restaurants_a1_subject_be_complement_0",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_menu"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The menu is important.",
-        "pt": "Frase sobre menu.",
-        "ctx": "Contexto Comida e restaurantes A1.",
-        "blank": "menu",
-        "wrong": "The menu is important."
-      },
-      {
-        "template_id": "food_and_restaurants_a1_subject_simple_present_object_02",
-        "family_id": "food_and_restaurants_a1_subject_simple_present_object_1",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "simple_present",
-        "skill_ids": [
-          "simple_present",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_table"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the table every day.",
-        "pt": "Frase sobre table.",
-        "ctx": "Contexto Comida e restaurantes A1.",
-        "blank": "check",
-        "wrong": "We check the table every day."
-      },
-      {
-        "template_id": "food_and_restaurants_a1_wh_do_subject_base_verb_03",
-        "family_id": "food_and_restaurants_a1_wh_do_subject_base_verb_2",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "there_is_are",
-        "skill_ids": [
-          "there_is_are",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_starter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the starter?",
-        "pt": "Frase sobre starter.",
-        "ctx": "Contexto Comida e restaurantes A1.",
-        "blank": "do",
-        "wrong": "When you do need the starter?"
-      },
-      {
-        "template_id": "food_and_restaurants_a1_subject_modal_base_verb_04",
-        "family_id": "food_and_restaurants_a1_subject_modal_base_verb_3",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "can_ability",
-        "skill_ids": [
-          "can_ability",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_main_course"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the main course today.",
-        "pt": "Frase sobre main course.",
-        "ctx": "Contexto Comida e restaurantes A1.",
-        "blank": "can",
-        "wrong": "I cans update the main course today."
-      },
-      {
-        "template_id": "food_and_restaurants_a1_subject_be_complement_05",
-        "family_id": "food_and_restaurants_a1_subject_be_complement_4",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "can_request",
-        "skill_ids": [
-          "can_request",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_dessert"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The dessert is important.",
-        "pt": "Frase sobre dessert.",
-        "ctx": "Contexto Comida e restaurantes A1.",
-        "blank": "dessert",
-        "wrong": "The dessert is important."
-      },
-      {
-        "template_id": "food_and_restaurants_a1_subject_simple_present_object_06",
-        "family_id": "food_and_restaurants_a1_subject_simple_present_object_5",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "question_structure",
-        "skill_ids": [
-          "question_structure",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_bill"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the bill every day.",
-        "pt": "Frase sobre bill.",
-        "ctx": "Contexto Comida e restaurantes A1.",
-        "blank": "check",
-        "wrong": "We check the bill every day."
-      },
-      {
-        "template_id": "food_and_restaurants_a1_wh_do_subject_base_verb_07",
-        "family_id": "food_and_restaurants_a1_wh_do_subject_base_verb_0",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_waiter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the waiter?",
-        "pt": "Frase sobre waiter.",
-        "ctx": "Contexto Comida e restaurantes A1.",
-        "blank": "do",
-        "wrong": "When you do need the waiter?"
-      },
-      {
-        "template_id": "food_and_restaurants_a1_subject_modal_base_verb_08",
-        "family_id": "food_and_restaurants_a1_subject_modal_base_verb_1",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the reservation today.",
-        "pt": "Frase sobre reservation.",
-        "ctx": "Contexto Comida e restaurantes A1.",
-        "blank": "can",
-        "wrong": "I cans update the reservation today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "food_and_restaurants_a1_menu_chunk",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "make a menu",
-        "translation_pt": "menu",
-        "invalid_variants": [
-          "do a menu"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a1_table_chunk",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "check the table",
-        "translation_pt": "table",
-        "invalid_variants": [
-          "do the table"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a1_starter_chunk",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "make a starter",
-        "translation_pt": "starter",
-        "invalid_variants": [
-          "do a starter"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a1_main_course_chunk",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "check the main course",
-        "translation_pt": "main course",
-        "invalid_variants": [
-          "do the main course"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a1_dessert_chunk",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "make a dessert",
-        "translation_pt": "dessert",
-        "invalid_variants": [
-          "do a dessert"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a1_bill_chunk",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "check the bill",
-        "translation_pt": "bill",
-        "invalid_variants": [
-          "do the bill"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a1_waiter_chunk",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "canonical": "make a waiter",
-        "translation_pt": "waiter",
-        "invalid_variants": [
-          "do a waiter"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "food_and_restaurants_a2",
-      "title": {
-        "pt": "Comida e restaurantes A2",
-        "en": "Food and restaurants A2"
-      },
-      "theme": "food_and_restaurants",
-      "level": "A2",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_a2"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "food_and_restaurants_a2_menu",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "menu",
-        "translation_pt": "menu",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_table",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "table",
-        "translation_pt": "table",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_starter",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "starter",
-        "translation_pt": "starter",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_main_course",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "main course",
-        "translation_pt": "main course",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_dessert",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "dessert",
-        "translation_pt": "dessert",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_bill",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "bill",
-        "translation_pt": "bill",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_waiter",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "waiter",
-        "translation_pt": "waiter",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_reservation",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "reservation",
-        "translation_pt": "reservation",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_vegetarian_dish",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "vegetarian dish",
-        "translation_pt": "vegetarian dish",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_coffee",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "coffee",
-        "translation_pt": "coffee",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_fresh_salad",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "fresh salad",
-        "translation_pt": "fresh salad",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_spicy_soup",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "spicy soup",
-        "translation_pt": "spicy soup",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_breakfast",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "breakfast",
-        "translation_pt": "breakfast",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_a2_restaurant_review",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "restaurant review",
-        "translation_pt": "restaurant review",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "a2"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "food_and_restaurants_a2_subject_past_simple_object_time_01",
-        "family_id": "food_and_restaurants_a2_subject_past_simple_object_time_0",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "past_simple",
-        "skill_ids": [
-          "past_simple",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_menu"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We checked the menu yesterday.",
-        "pt": "Frase sobre menu.",
-        "ctx": "Contexto Comida e restaurantes A2.",
-        "blank": "checked",
-        "wrong": "We check the menu yesterday."
-      },
-      {
-        "template_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_02",
-        "family_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_1",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "present_continuous",
-        "skill_ids": [
-          "present_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_table"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the table tomorrow.",
-        "pt": "Frase sobre table.",
-        "ctx": "Contexto Comida e restaurantes A2.",
-        "blank": "are",
-        "wrong": "They go to review the table tomorrow."
-      },
-      {
-        "template_id": "food_and_restaurants_a2_subject_simple_present_object_03",
-        "family_id": "food_and_restaurants_a2_subject_simple_present_object_2",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "future_going_to",
-        "skill_ids": [
-          "future_going_to",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_starter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the starter every day.",
-        "pt": "Frase sobre starter.",
-        "ctx": "Contexto Comida e restaurantes A2.",
-        "blank": "check",
-        "wrong": "We check the starter every day."
-      },
-      {
-        "template_id": "food_and_restaurants_a2_wh_do_subject_base_verb_04",
-        "family_id": "food_and_restaurants_a2_wh_do_subject_base_verb_3",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "comparatives",
-        "skill_ids": [
-          "comparatives",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_main_course"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the main course?",
-        "pt": "Frase sobre main course.",
-        "ctx": "Contexto Comida e restaurantes A2.",
-        "blank": "do",
-        "wrong": "When you do need the main course?"
-      },
-      {
-        "template_id": "food_and_restaurants_a2_subject_past_simple_object_time_05",
-        "family_id": "food_and_restaurants_a2_subject_past_simple_object_time_4",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_dessert"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We checked the dessert yesterday.",
-        "pt": "Frase sobre dessert.",
-        "ctx": "Contexto Comida e restaurantes A2.",
-        "blank": "checked",
-        "wrong": "We check the dessert yesterday."
-      },
-      {
-        "template_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_06",
-        "family_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_5",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_bill"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the bill tomorrow.",
-        "pt": "Frase sobre bill.",
-        "ctx": "Contexto Comida e restaurantes A2.",
-        "blank": "are",
-        "wrong": "They go to review the bill tomorrow."
-      },
-      {
-        "template_id": "food_and_restaurants_a2_subject_simple_present_object_07",
-        "family_id": "food_and_restaurants_a2_subject_simple_present_object_0",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_waiter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the waiter every day.",
-        "pt": "Frase sobre waiter.",
-        "ctx": "Contexto Comida e restaurantes A2.",
-        "blank": "check",
-        "wrong": "We check the waiter every day."
-      },
-      {
-        "template_id": "food_and_restaurants_a2_wh_do_subject_base_verb_08",
-        "family_id": "food_and_restaurants_a2_wh_do_subject_base_verb_1",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "past_simple",
-        "skill_ids": [
-          "past_simple",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the reservation?",
-        "pt": "Frase sobre reservation.",
-        "ctx": "Contexto Comida e restaurantes A2.",
-        "blank": "do",
-        "wrong": "When you do need the reservation?"
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "food_and_restaurants_a2_menu_chunk",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "make a menu",
-        "translation_pt": "menu",
-        "invalid_variants": [
-          "do a menu"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a2_table_chunk",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "check the table",
-        "translation_pt": "table",
-        "invalid_variants": [
-          "do the table"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a2_starter_chunk",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "make a starter",
-        "translation_pt": "starter",
-        "invalid_variants": [
-          "do a starter"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a2_main_course_chunk",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "check the main course",
-        "translation_pt": "main course",
-        "invalid_variants": [
-          "do the main course"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a2_dessert_chunk",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "make a dessert",
-        "translation_pt": "dessert",
-        "invalid_variants": [
-          "do a dessert"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a2_bill_chunk",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "check the bill",
-        "translation_pt": "bill",
-        "invalid_variants": [
-          "do the bill"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_a2_waiter_chunk",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "canonical": "make a waiter",
-        "translation_pt": "waiter",
-        "invalid_variants": [
-          "do a waiter"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "food_and_restaurants_b1",
-      "title": {
-        "pt": "Comida e restaurantes B1",
-        "en": "Food and restaurants B1"
-      },
-      "theme": "food_and_restaurants",
-      "level": "B1",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_b1"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "food_and_restaurants_b1_menu",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "menu",
-        "translation_pt": "menu",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_table",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "table",
-        "translation_pt": "table",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_starter",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "starter",
-        "translation_pt": "starter",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_main_course",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "main course",
-        "translation_pt": "main course",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_dessert",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "dessert",
-        "translation_pt": "dessert",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_bill",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "bill",
-        "translation_pt": "bill",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_waiter",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "waiter",
-        "translation_pt": "waiter",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_reservation",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "reservation",
-        "translation_pt": "reservation",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_vegetarian_dish",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "vegetarian dish",
-        "translation_pt": "vegetarian dish",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_coffee",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "coffee",
-        "translation_pt": "coffee",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_fresh_salad",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "fresh salad",
-        "translation_pt": "fresh salad",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_spicy_soup",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "spicy soup",
-        "translation_pt": "spicy soup",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_breakfast",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "breakfast",
-        "translation_pt": "breakfast",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b1_restaurant_review",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "restaurant review",
-        "translation_pt": "restaurant review",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "b1"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "food_and_restaurants_b1_subject_have_past_participle_yet_01",
-        "family_id": "food_and_restaurants_b1_subject_have_past_participle_yet_0",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_menu"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the menu already.",
-        "pt": "Frase sobre menu.",
-        "ctx": "Contexto Comida e restaurantes B1.",
-        "blank": "have",
-        "wrong": "We have check the menu already."
-      },
-      {
-        "template_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_02",
-        "family_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_1",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "present_perfect_continuous",
-        "skill_ids": [
-          "present_perfect_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_table"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the table for two hours.",
-        "pt": "Frase sobre table.",
-        "ctx": "Contexto Comida e restaurantes B1.",
-        "blank": "have",
-        "wrong": "They have been reviewed the table for two hours."
-      },
-      {
-        "template_id": "food_and_restaurants_b1_if_present_will_future_03",
-        "family_id": "food_and_restaurants_b1_if_present_will_future_2",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "gerund_after_been",
-        "skill_ids": [
-          "gerund_after_been",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_starter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the starter, we will start tomorrow.",
-        "pt": "Frase sobre starter.",
-        "ctx": "Contexto Comida e restaurantes B1.",
-        "blank": "we",
-        "wrong": "If we confirm the starter, we will start tomorrow."
-      },
-      {
-        "template_id": "food_and_restaurants_b1_subject_modal_base_verb_04",
-        "family_id": "food_and_restaurants_b1_subject_modal_base_verb_3",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "first_conditional",
-        "skill_ids": [
-          "first_conditional",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_main_course"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the main course today.",
-        "pt": "Frase sobre main course.",
-        "ctx": "Contexto Comida e restaurantes B1.",
-        "blank": "can",
-        "wrong": "I cans update the main course today."
-      },
-      {
-        "template_id": "food_and_restaurants_b1_subject_have_past_participle_yet_05",
-        "family_id": "food_and_restaurants_b1_subject_have_past_participle_yet_4",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_dessert"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the dessert already.",
-        "pt": "Frase sobre dessert.",
-        "ctx": "Contexto Comida e restaurantes B1.",
-        "blank": "have",
-        "wrong": "We have check the dessert already."
-      },
-      {
-        "template_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_06",
-        "family_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_5",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_bill"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the bill for two hours.",
-        "pt": "Frase sobre bill.",
-        "ctx": "Contexto Comida e restaurantes B1.",
-        "blank": "have",
-        "wrong": "They have been reviewed the bill for two hours."
-      },
-      {
-        "template_id": "food_and_restaurants_b1_if_present_will_future_07",
-        "family_id": "food_and_restaurants_b1_if_present_will_future_0",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "preposition",
-        "skill_ids": [
-          "preposition",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_waiter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the waiter, we will start tomorrow.",
-        "pt": "Frase sobre waiter.",
-        "ctx": "Contexto Comida e restaurantes B1.",
-        "blank": "we",
-        "wrong": "If we confirm the waiter, we will start tomorrow."
-      },
-      {
-        "template_id": "food_and_restaurants_b1_subject_modal_base_verb_08",
-        "family_id": "food_and_restaurants_b1_subject_modal_base_verb_1",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the reservation today.",
-        "pt": "Frase sobre reservation.",
-        "ctx": "Contexto Comida e restaurantes B1.",
-        "blank": "can",
-        "wrong": "I cans update the reservation today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "food_and_restaurants_b1_menu_chunk",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "make a menu",
-        "translation_pt": "menu",
-        "invalid_variants": [
-          "do a menu"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b1_table_chunk",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "check the table",
-        "translation_pt": "table",
-        "invalid_variants": [
-          "do the table"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b1_starter_chunk",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "make a starter",
-        "translation_pt": "starter",
-        "invalid_variants": [
-          "do a starter"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b1_main_course_chunk",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "check the main course",
-        "translation_pt": "main course",
-        "invalid_variants": [
-          "do the main course"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b1_dessert_chunk",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "make a dessert",
-        "translation_pt": "dessert",
-        "invalid_variants": [
-          "do a dessert"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b1_bill_chunk",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "check the bill",
-        "translation_pt": "bill",
-        "invalid_variants": [
-          "do the bill"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b1_waiter_chunk",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "canonical": "make a waiter",
-        "translation_pt": "waiter",
-        "invalid_variants": [
-          "do a waiter"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "food_and_restaurants_b2",
-      "title": {
-        "pt": "Comida e restaurantes B2",
-        "en": "Food and restaurants B2"
-      },
-      "theme": "food_and_restaurants",
-      "level": "B2",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_b2"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "food_and_restaurants_b2_menu",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "menu",
-        "translation_pt": "menu",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_table",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "table",
-        "translation_pt": "table",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_starter",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "starter",
-        "translation_pt": "starter",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_main_course",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "main course",
-        "translation_pt": "main course",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_dessert",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "dessert",
-        "translation_pt": "dessert",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_bill",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "bill",
-        "translation_pt": "bill",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_waiter",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "waiter",
-        "translation_pt": "waiter",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_reservation",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "reservation",
-        "translation_pt": "reservation",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_vegetarian_dish",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "vegetarian dish",
-        "translation_pt": "vegetarian dish",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_coffee",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "coffee",
-        "translation_pt": "coffee",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_fresh_salad",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "fresh salad",
-        "translation_pt": "fresh salad",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_spicy_soup",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "spicy soup",
-        "translation_pt": "spicy soup",
-        "semantic_type": "action",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_breakfast",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "breakfast",
-        "translation_pt": "breakfast",
-        "semantic_type": "object",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "food_and_restaurants_b2_restaurant_review",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "restaurant review",
-        "translation_pt": "restaurant review",
-        "semantic_type": "time",
-        "tags": [
-          "food_and_restaurants",
-          "b2"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "food_and_restaurants_b2_passive_be_past_participle_01",
-        "family_id": "food_and_restaurants_b2_passive_be_past_participle_0",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_menu"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The menu was reviewed by the team.",
-        "pt": "Frase sobre menu.",
-        "ctx": "Contexto Comida e restaurantes B2.",
-        "blank": "menu",
-        "wrong": "The menu reviewed by the team."
-      },
-      {
-        "template_id": "food_and_restaurants_b2_reported_speech_statement_02",
-        "family_id": "food_and_restaurants_b2_reported_speech_statement_1",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "reported_speech",
-        "skill_ids": [
-          "reported_speech",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_table"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the table was ready.",
-        "pt": "Frase sobre table.",
-        "ctx": "Contexto Comida e restaurantes B2.",
-        "blank": "said",
-        "wrong": "She said the table was ready."
-      },
-      {
-        "template_id": "food_and_restaurants_b2_second_conditional_03",
-        "family_id": "food_and_restaurants_b2_second_conditional_2",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "second_conditional",
-        "skill_ids": [
-          "second_conditional",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_starter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the starter.",
-        "pt": "Frase sobre starter.",
-        "ctx": "Contexto Comida e restaurantes B2.",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the starter."
-      },
-      {
-        "template_id": "food_and_restaurants_b2_subject_modal_base_verb_04",
-        "family_id": "food_and_restaurants_b2_subject_modal_base_verb_3",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "modal_deduction",
-        "skill_ids": [
-          "modal_deduction",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_main_course"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the main course today.",
-        "pt": "Frase sobre main course.",
-        "ctx": "Contexto Comida e restaurantes B2.",
-        "blank": "can",
-        "wrong": "I cans update the main course today."
-      },
-      {
-        "template_id": "food_and_restaurants_b2_passive_be_past_participle_05",
-        "family_id": "food_and_restaurants_b2_passive_be_past_participle_4",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_dessert"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The dessert was reviewed by the team.",
-        "pt": "Frase sobre dessert.",
-        "ctx": "Contexto Comida e restaurantes B2.",
-        "blank": "dessert",
-        "wrong": "The dessert reviewed by the team."
-      },
-      {
-        "template_id": "food_and_restaurants_b2_reported_speech_statement_06",
-        "family_id": "food_and_restaurants_b2_reported_speech_statement_5",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "word_order",
-        "skill_ids": [
-          "word_order",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_bill"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the bill was ready.",
-        "pt": "Frase sobre bill.",
-        "ctx": "Contexto Comida e restaurantes B2.",
-        "blank": "said",
-        "wrong": "She said the bill was ready."
-      },
-      {
-        "template_id": "food_and_restaurants_b2_second_conditional_07",
-        "family_id": "food_and_restaurants_b2_second_conditional_0",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_waiter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the waiter.",
-        "pt": "Frase sobre waiter.",
-        "ctx": "Contexto Comida e restaurantes B2.",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the waiter."
-      },
-      {
-        "template_id": "food_and_restaurants_b2_subject_modal_base_verb_08",
-        "family_id": "food_and_restaurants_b2_subject_modal_base_verb_1",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the reservation today.",
-        "pt": "Frase sobre reservation.",
-        "ctx": "Contexto Comida e restaurantes B2.",
-        "blank": "can",
-        "wrong": "I cans update the reservation today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "food_and_restaurants_b2_menu_chunk",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "make a menu",
-        "translation_pt": "menu",
-        "invalid_variants": [
-          "do a menu"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b2_table_chunk",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "check the table",
-        "translation_pt": "table",
-        "invalid_variants": [
-          "do the table"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b2_starter_chunk",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "make a starter",
-        "translation_pt": "starter",
-        "invalid_variants": [
-          "do a starter"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b2_main_course_chunk",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "check the main course",
-        "translation_pt": "main course",
-        "invalid_variants": [
-          "do the main course"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b2_dessert_chunk",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "make a dessert",
-        "translation_pt": "dessert",
-        "invalid_variants": [
-          "do a dessert"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b2_bill_chunk",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "check the bill",
-        "translation_pt": "bill",
-        "invalid_variants": [
-          "do the bill"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "food_and_restaurants_b2_waiter_chunk",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "canonical": "make a waiter",
-        "translation_pt": "waiter",
-        "invalid_variants": [
-          "do a waiter"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "shopping_and_services_a1",
-      "title": {
-        "pt": "Compras e serviços A1",
-        "en": "Shopping and services A1"
-      },
-      "theme": "shopping_and_services",
-      "level": "A1",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_a1"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "shopping_and_services_a1_receipt",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "receipt",
-        "translation_pt": "receipt",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_discount",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "discount",
-        "translation_pt": "discount",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_cashier",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "cashier",
-        "translation_pt": "cashier",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_return_policy",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "return policy",
-        "translation_pt": "return policy",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_shoe_size",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "shoe size",
-        "translation_pt": "shoe size",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_delivery",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "delivery",
-        "translation_pt": "delivery",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_pharmacy",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "pharmacy",
-        "translation_pt": "pharmacy",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_bank_account",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "bank account",
-        "translation_pt": "bank account",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_haircut",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "haircut",
-        "translation_pt": "haircut",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_repair_shop",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "repair shop",
-        "translation_pt": "repair shop",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_customer_service",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "customer service",
-        "translation_pt": "customer service",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_appointment",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "appointment",
-        "translation_pt": "appointment",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_online_order",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "online order",
-        "translation_pt": "online order",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a1_queue",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "queue",
-        "translation_pt": "queue",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "a1"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "shopping_and_services_a1_subject_be_complement_01",
-        "family_id": "shopping_and_services_a1_subject_be_complement_0",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_receipt"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The receipt is important.",
-        "pt": "Frase sobre receipt.",
-        "ctx": "Contexto Compras e serviços A1.",
-        "blank": "receipt",
-        "wrong": "The receipt is important."
-      },
-      {
-        "template_id": "shopping_and_services_a1_subject_simple_present_object_02",
-        "family_id": "shopping_and_services_a1_subject_simple_present_object_1",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "simple_present",
-        "skill_ids": [
-          "simple_present",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_discount"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the discount every day.",
-        "pt": "Frase sobre discount.",
-        "ctx": "Contexto Compras e serviços A1.",
-        "blank": "check",
-        "wrong": "We check the discount every day."
-      },
-      {
-        "template_id": "shopping_and_services_a1_wh_do_subject_base_verb_03",
-        "family_id": "shopping_and_services_a1_wh_do_subject_base_verb_2",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "there_is_are",
-        "skill_ids": [
-          "there_is_are",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_cashier"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the cashier?",
-        "pt": "Frase sobre cashier.",
-        "ctx": "Contexto Compras e serviços A1.",
-        "blank": "do",
-        "wrong": "When you do need the cashier?"
-      },
-      {
-        "template_id": "shopping_and_services_a1_subject_modal_base_verb_04",
-        "family_id": "shopping_and_services_a1_subject_modal_base_verb_3",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "can_ability",
-        "skill_ids": [
-          "can_ability",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_return_policy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the return policy today.",
-        "pt": "Frase sobre return policy.",
-        "ctx": "Contexto Compras e serviços A1.",
-        "blank": "can",
-        "wrong": "I cans update the return policy today."
-      },
-      {
-        "template_id": "shopping_and_services_a1_subject_be_complement_05",
-        "family_id": "shopping_and_services_a1_subject_be_complement_4",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "can_request",
-        "skill_ids": [
-          "can_request",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_shoe_size"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The shoe size is important.",
-        "pt": "Frase sobre shoe size.",
-        "ctx": "Contexto Compras e serviços A1.",
-        "blank": "shoe",
-        "wrong": "The shoe size is important."
-      },
-      {
-        "template_id": "shopping_and_services_a1_subject_simple_present_object_06",
-        "family_id": "shopping_and_services_a1_subject_simple_present_object_5",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "question_structure",
-        "skill_ids": [
-          "question_structure",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_delivery"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the delivery every day.",
-        "pt": "Frase sobre delivery.",
-        "ctx": "Contexto Compras e serviços A1.",
-        "blank": "check",
-        "wrong": "We check the delivery every day."
-      },
-      {
-        "template_id": "shopping_and_services_a1_wh_do_subject_base_verb_07",
-        "family_id": "shopping_and_services_a1_wh_do_subject_base_verb_0",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_pharmacy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the pharmacy?",
-        "pt": "Frase sobre pharmacy.",
-        "ctx": "Contexto Compras e serviços A1.",
-        "blank": "do",
-        "wrong": "When you do need the pharmacy?"
-      },
-      {
-        "template_id": "shopping_and_services_a1_subject_modal_base_verb_08",
-        "family_id": "shopping_and_services_a1_subject_modal_base_verb_1",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_bank_account"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the bank account today.",
-        "pt": "Frase sobre bank account.",
-        "ctx": "Contexto Compras e serviços A1.",
-        "blank": "can",
-        "wrong": "I cans update the bank account today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "shopping_and_services_a1_receipt_chunk",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "make a receipt",
-        "translation_pt": "receipt",
-        "invalid_variants": [
-          "do a receipt"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a1_discount_chunk",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "check the discount",
-        "translation_pt": "discount",
-        "invalid_variants": [
-          "do the discount"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a1_cashier_chunk",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "make a cashier",
-        "translation_pt": "cashier",
-        "invalid_variants": [
-          "do a cashier"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a1_return_policy_chunk",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "check the return policy",
-        "translation_pt": "return policy",
-        "invalid_variants": [
-          "do the return policy"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a1_shoe_size_chunk",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "make a shoe size",
-        "translation_pt": "shoe size",
-        "invalid_variants": [
-          "do a shoe size"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a1_delivery_chunk",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "check the delivery",
-        "translation_pt": "delivery",
-        "invalid_variants": [
-          "do the delivery"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a1_pharmacy_chunk",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "canonical": "make a pharmacy",
-        "translation_pt": "pharmacy",
-        "invalid_variants": [
-          "do a pharmacy"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "shopping_and_services_a2",
-      "title": {
-        "pt": "Compras e serviços A2",
-        "en": "Shopping and services A2"
-      },
-      "theme": "shopping_and_services",
-      "level": "A2",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_a2"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "shopping_and_services_a2_receipt",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "receipt",
-        "translation_pt": "receipt",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_discount",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "discount",
-        "translation_pt": "discount",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_cashier",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "cashier",
-        "translation_pt": "cashier",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_return_policy",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "return policy",
-        "translation_pt": "return policy",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_shoe_size",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "shoe size",
-        "translation_pt": "shoe size",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_delivery",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "delivery",
-        "translation_pt": "delivery",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_pharmacy",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "pharmacy",
-        "translation_pt": "pharmacy",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_bank_account",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "bank account",
-        "translation_pt": "bank account",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_haircut",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "haircut",
-        "translation_pt": "haircut",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_repair_shop",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "repair shop",
-        "translation_pt": "repair shop",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_customer_service",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "customer service",
-        "translation_pt": "customer service",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_appointment",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "appointment",
-        "translation_pt": "appointment",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_online_order",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "online order",
-        "translation_pt": "online order",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_a2_queue",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "queue",
-        "translation_pt": "queue",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "a2"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "shopping_and_services_a2_subject_past_simple_object_time_01",
-        "family_id": "shopping_and_services_a2_subject_past_simple_object_time_0",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "past_simple",
-        "skill_ids": [
-          "past_simple",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_receipt"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We checked the receipt yesterday.",
-        "pt": "Frase sobre receipt.",
-        "ctx": "Contexto Compras e serviços A2.",
-        "blank": "checked",
-        "wrong": "We check the receipt yesterday."
-      },
-      {
-        "template_id": "shopping_and_services_a2_subject_be_going_to_verb_time_02",
-        "family_id": "shopping_and_services_a2_subject_be_going_to_verb_time_1",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "present_continuous",
-        "skill_ids": [
-          "present_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_discount"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the discount tomorrow.",
-        "pt": "Frase sobre discount.",
-        "ctx": "Contexto Compras e serviços A2.",
-        "blank": "are",
-        "wrong": "They go to review the discount tomorrow."
-      },
-      {
-        "template_id": "shopping_and_services_a2_subject_simple_present_object_03",
-        "family_id": "shopping_and_services_a2_subject_simple_present_object_2",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "future_going_to",
-        "skill_ids": [
-          "future_going_to",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_cashier"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the cashier every day.",
-        "pt": "Frase sobre cashier.",
-        "ctx": "Contexto Compras e serviços A2.",
-        "blank": "check",
-        "wrong": "We check the cashier every day."
-      },
-      {
-        "template_id": "shopping_and_services_a2_wh_do_subject_base_verb_04",
-        "family_id": "shopping_and_services_a2_wh_do_subject_base_verb_3",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "comparatives",
-        "skill_ids": [
-          "comparatives",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_return_policy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the return policy?",
-        "pt": "Frase sobre return policy.",
-        "ctx": "Contexto Compras e serviços A2.",
-        "blank": "do",
-        "wrong": "When you do need the return policy?"
-      },
-      {
-        "template_id": "shopping_and_services_a2_subject_past_simple_object_time_05",
-        "family_id": "shopping_and_services_a2_subject_past_simple_object_time_4",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_shoe_size"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We checked the shoe size yesterday.",
-        "pt": "Frase sobre shoe size.",
-        "ctx": "Contexto Compras e serviços A2.",
-        "blank": "checked",
-        "wrong": "We check the shoe size yesterday."
-      },
-      {
-        "template_id": "shopping_and_services_a2_subject_be_going_to_verb_time_06",
-        "family_id": "shopping_and_services_a2_subject_be_going_to_verb_time_5",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_delivery"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the delivery tomorrow.",
-        "pt": "Frase sobre delivery.",
-        "ctx": "Contexto Compras e serviços A2.",
-        "blank": "are",
-        "wrong": "They go to review the delivery tomorrow."
-      },
-      {
-        "template_id": "shopping_and_services_a2_subject_simple_present_object_07",
-        "family_id": "shopping_and_services_a2_subject_simple_present_object_0",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_pharmacy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the pharmacy every day.",
-        "pt": "Frase sobre pharmacy.",
-        "ctx": "Contexto Compras e serviços A2.",
-        "blank": "check",
-        "wrong": "We check the pharmacy every day."
-      },
-      {
-        "template_id": "shopping_and_services_a2_wh_do_subject_base_verb_08",
-        "family_id": "shopping_and_services_a2_wh_do_subject_base_verb_1",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "past_simple",
-        "skill_ids": [
-          "past_simple",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_bank_account"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the bank account?",
-        "pt": "Frase sobre bank account.",
-        "ctx": "Contexto Compras e serviços A2.",
-        "blank": "do",
-        "wrong": "When you do need the bank account?"
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "shopping_and_services_a2_receipt_chunk",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "make a receipt",
-        "translation_pt": "receipt",
-        "invalid_variants": [
-          "do a receipt"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a2_discount_chunk",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "check the discount",
-        "translation_pt": "discount",
-        "invalid_variants": [
-          "do the discount"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a2_cashier_chunk",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "make a cashier",
-        "translation_pt": "cashier",
-        "invalid_variants": [
-          "do a cashier"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a2_return_policy_chunk",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "check the return policy",
-        "translation_pt": "return policy",
-        "invalid_variants": [
-          "do the return policy"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a2_shoe_size_chunk",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "make a shoe size",
-        "translation_pt": "shoe size",
-        "invalid_variants": [
-          "do a shoe size"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a2_delivery_chunk",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "check the delivery",
-        "translation_pt": "delivery",
-        "invalid_variants": [
-          "do the delivery"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_a2_pharmacy_chunk",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "canonical": "make a pharmacy",
-        "translation_pt": "pharmacy",
-        "invalid_variants": [
-          "do a pharmacy"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "shopping_and_services_b1",
-      "title": {
-        "pt": "Compras e serviços B1",
-        "en": "Shopping and services B1"
-      },
-      "theme": "shopping_and_services",
-      "level": "B1",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_b1"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "shopping_and_services_b1_receipt",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "receipt",
-        "translation_pt": "receipt",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_discount",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "discount",
-        "translation_pt": "discount",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_cashier",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "cashier",
-        "translation_pt": "cashier",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_return_policy",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "return policy",
-        "translation_pt": "return policy",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_shoe_size",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "shoe size",
-        "translation_pt": "shoe size",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_delivery",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "delivery",
-        "translation_pt": "delivery",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_pharmacy",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "pharmacy",
-        "translation_pt": "pharmacy",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_bank_account",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "bank account",
-        "translation_pt": "bank account",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_haircut",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "haircut",
-        "translation_pt": "haircut",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_repair_shop",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "repair shop",
-        "translation_pt": "repair shop",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_customer_service",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "customer service",
-        "translation_pt": "customer service",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_appointment",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "appointment",
-        "translation_pt": "appointment",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_online_order",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "online order",
-        "translation_pt": "online order",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b1_queue",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "queue",
-        "translation_pt": "queue",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "b1"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "shopping_and_services_b1_subject_have_past_participle_yet_01",
-        "family_id": "shopping_and_services_b1_subject_have_past_participle_yet_0",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_receipt"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the receipt already.",
-        "pt": "Frase sobre receipt.",
-        "ctx": "Contexto Compras e serviços B1.",
-        "blank": "have",
-        "wrong": "We have check the receipt already."
-      },
-      {
-        "template_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_02",
-        "family_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_1",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "present_perfect_continuous",
-        "skill_ids": [
-          "present_perfect_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_discount"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the discount for two hours.",
-        "pt": "Frase sobre discount.",
-        "ctx": "Contexto Compras e serviços B1.",
-        "blank": "have",
-        "wrong": "They have been reviewed the discount for two hours."
-      },
-      {
-        "template_id": "shopping_and_services_b1_if_present_will_future_03",
-        "family_id": "shopping_and_services_b1_if_present_will_future_2",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "gerund_after_been",
-        "skill_ids": [
-          "gerund_after_been",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_cashier"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the cashier, we will start tomorrow.",
-        "pt": "Frase sobre cashier.",
-        "ctx": "Contexto Compras e serviços B1.",
-        "blank": "we",
-        "wrong": "If we confirm the cashier, we will start tomorrow."
-      },
-      {
-        "template_id": "shopping_and_services_b1_subject_modal_base_verb_04",
-        "family_id": "shopping_and_services_b1_subject_modal_base_verb_3",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "first_conditional",
-        "skill_ids": [
-          "first_conditional",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_return_policy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the return policy today.",
-        "pt": "Frase sobre return policy.",
-        "ctx": "Contexto Compras e serviços B1.",
-        "blank": "can",
-        "wrong": "I cans update the return policy today."
-      },
-      {
-        "template_id": "shopping_and_services_b1_subject_have_past_participle_yet_05",
-        "family_id": "shopping_and_services_b1_subject_have_past_participle_yet_4",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_shoe_size"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the shoe size already.",
-        "pt": "Frase sobre shoe size.",
-        "ctx": "Contexto Compras e serviços B1.",
-        "blank": "have",
-        "wrong": "We have check the shoe size already."
-      },
-      {
-        "template_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_06",
-        "family_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_5",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_delivery"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the delivery for two hours.",
-        "pt": "Frase sobre delivery.",
-        "ctx": "Contexto Compras e serviços B1.",
-        "blank": "have",
-        "wrong": "They have been reviewed the delivery for two hours."
-      },
-      {
-        "template_id": "shopping_and_services_b1_if_present_will_future_07",
-        "family_id": "shopping_and_services_b1_if_present_will_future_0",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "preposition",
-        "skill_ids": [
-          "preposition",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_pharmacy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the pharmacy, we will start tomorrow.",
-        "pt": "Frase sobre pharmacy.",
-        "ctx": "Contexto Compras e serviços B1.",
-        "blank": "we",
-        "wrong": "If we confirm the pharmacy, we will start tomorrow."
-      },
-      {
-        "template_id": "shopping_and_services_b1_subject_modal_base_verb_08",
-        "family_id": "shopping_and_services_b1_subject_modal_base_verb_1",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_bank_account"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the bank account today.",
-        "pt": "Frase sobre bank account.",
-        "ctx": "Contexto Compras e serviços B1.",
-        "blank": "can",
-        "wrong": "I cans update the bank account today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "shopping_and_services_b1_receipt_chunk",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "make a receipt",
-        "translation_pt": "receipt",
-        "invalid_variants": [
-          "do a receipt"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b1_discount_chunk",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "check the discount",
-        "translation_pt": "discount",
-        "invalid_variants": [
-          "do the discount"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b1_cashier_chunk",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "make a cashier",
-        "translation_pt": "cashier",
-        "invalid_variants": [
-          "do a cashier"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b1_return_policy_chunk",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "check the return policy",
-        "translation_pt": "return policy",
-        "invalid_variants": [
-          "do the return policy"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b1_shoe_size_chunk",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "make a shoe size",
-        "translation_pt": "shoe size",
-        "invalid_variants": [
-          "do a shoe size"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b1_delivery_chunk",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "check the delivery",
-        "translation_pt": "delivery",
-        "invalid_variants": [
-          "do the delivery"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b1_pharmacy_chunk",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "canonical": "make a pharmacy",
-        "translation_pt": "pharmacy",
-        "invalid_variants": [
-          "do a pharmacy"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "shopping_and_services_b2",
-      "title": {
-        "pt": "Compras e serviços B2",
-        "en": "Shopping and services B2"
-      },
-      "theme": "shopping_and_services",
-      "level": "B2",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_b2"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "shopping_and_services_b2_receipt",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "receipt",
-        "translation_pt": "receipt",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_discount",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "discount",
-        "translation_pt": "discount",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_cashier",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "cashier",
-        "translation_pt": "cashier",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_return_policy",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "return policy",
-        "translation_pt": "return policy",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_shoe_size",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "shoe size",
-        "translation_pt": "shoe size",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_delivery",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "delivery",
-        "translation_pt": "delivery",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_pharmacy",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "pharmacy",
-        "translation_pt": "pharmacy",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_bank_account",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "bank account",
-        "translation_pt": "bank account",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_haircut",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "haircut",
-        "translation_pt": "haircut",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_repair_shop",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "repair shop",
-        "translation_pt": "repair shop",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_customer_service",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "customer service",
-        "translation_pt": "customer service",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_appointment",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "appointment",
-        "translation_pt": "appointment",
-        "semantic_type": "action",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_online_order",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "online order",
-        "translation_pt": "online order",
-        "semantic_type": "object",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "shopping_and_services_b2_queue",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "queue",
-        "translation_pt": "queue",
-        "semantic_type": "time",
-        "tags": [
-          "shopping_and_services",
-          "b2"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "shopping_and_services_b2_passive_be_past_participle_01",
-        "family_id": "shopping_and_services_b2_passive_be_past_participle_0",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_receipt"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The receipt was reviewed by the team.",
-        "pt": "Frase sobre receipt.",
-        "ctx": "Contexto Compras e serviços B2.",
-        "blank": "receipt",
-        "wrong": "The receipt reviewed by the team."
-      },
-      {
-        "template_id": "shopping_and_services_b2_reported_speech_statement_02",
-        "family_id": "shopping_and_services_b2_reported_speech_statement_1",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "reported_speech",
-        "skill_ids": [
-          "reported_speech",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_discount"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the discount was ready.",
-        "pt": "Frase sobre discount.",
-        "ctx": "Contexto Compras e serviços B2.",
-        "blank": "said",
-        "wrong": "She said the discount was ready."
-      },
-      {
-        "template_id": "shopping_and_services_b2_second_conditional_03",
-        "family_id": "shopping_and_services_b2_second_conditional_2",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "second_conditional",
-        "skill_ids": [
-          "second_conditional",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_cashier"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the cashier.",
-        "pt": "Frase sobre cashier.",
-        "ctx": "Contexto Compras e serviços B2.",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the cashier."
-      },
-      {
-        "template_id": "shopping_and_services_b2_subject_modal_base_verb_04",
-        "family_id": "shopping_and_services_b2_subject_modal_base_verb_3",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "modal_deduction",
-        "skill_ids": [
-          "modal_deduction",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_return_policy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the return policy today.",
-        "pt": "Frase sobre return policy.",
-        "ctx": "Contexto Compras e serviços B2.",
-        "blank": "can",
-        "wrong": "I cans update the return policy today."
-      },
-      {
-        "template_id": "shopping_and_services_b2_passive_be_past_participle_05",
-        "family_id": "shopping_and_services_b2_passive_be_past_participle_4",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_shoe_size"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The shoe size was reviewed by the team.",
-        "pt": "Frase sobre shoe size.",
-        "ctx": "Contexto Compras e serviços B2.",
-        "blank": "shoe",
-        "wrong": "The shoe size reviewed by the team."
-      },
-      {
-        "template_id": "shopping_and_services_b2_reported_speech_statement_06",
-        "family_id": "shopping_and_services_b2_reported_speech_statement_5",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "word_order",
-        "skill_ids": [
-          "word_order",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_delivery"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the delivery was ready.",
-        "pt": "Frase sobre delivery.",
-        "ctx": "Contexto Compras e serviços B2.",
-        "blank": "said",
-        "wrong": "She said the delivery was ready."
-      },
-      {
-        "template_id": "shopping_and_services_b2_second_conditional_07",
-        "family_id": "shopping_and_services_b2_second_conditional_0",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_pharmacy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the pharmacy.",
-        "pt": "Frase sobre pharmacy.",
-        "ctx": "Contexto Compras e serviços B2.",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the pharmacy."
-      },
-      {
-        "template_id": "shopping_and_services_b2_subject_modal_base_verb_08",
-        "family_id": "shopping_and_services_b2_subject_modal_base_verb_1",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_bank_account"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the bank account today.",
-        "pt": "Frase sobre bank account.",
-        "ctx": "Contexto Compras e serviços B2.",
-        "blank": "can",
-        "wrong": "I cans update the bank account today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "shopping_and_services_b2_receipt_chunk",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "make a receipt",
-        "translation_pt": "receipt",
-        "invalid_variants": [
-          "do a receipt"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b2_discount_chunk",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "check the discount",
-        "translation_pt": "discount",
-        "invalid_variants": [
-          "do the discount"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b2_cashier_chunk",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "make a cashier",
-        "translation_pt": "cashier",
-        "invalid_variants": [
-          "do a cashier"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b2_return_policy_chunk",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "check the return policy",
-        "translation_pt": "return policy",
-        "invalid_variants": [
-          "do the return policy"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b2_shoe_size_chunk",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "make a shoe size",
-        "translation_pt": "shoe size",
-        "invalid_variants": [
-          "do a shoe size"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b2_delivery_chunk",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "check the delivery",
-        "translation_pt": "delivery",
-        "invalid_variants": [
-          "do the delivery"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "shopping_and_services_b2_pharmacy_chunk",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "canonical": "make a pharmacy",
-        "translation_pt": "pharmacy",
-        "invalid_variants": [
-          "do a pharmacy"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "technology_and_communication_a1",
-      "title": {
-        "pt": "Tecnologia e comunicação A1",
-        "en": "Technology and communication A1"
-      },
-      "theme": "technology_and_communication",
-      "level": "A1",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_a1"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "technology_and_communication_a1_password",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "password",
-        "translation_pt": "password",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_message",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "message",
-        "translation_pt": "message",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_video_call",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "video call",
-        "translation_pt": "video call",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_laptop",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "laptop",
-        "translation_pt": "laptop",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_app_update",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "app update",
-        "translation_pt": "app update",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_wifi_network",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "wifi network",
-        "translation_pt": "wifi network",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_email",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "email",
-        "translation_pt": "email",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_cloud_file",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "cloud file",
-        "translation_pt": "cloud file",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_screen",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "screen",
-        "translation_pt": "screen",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_notification",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "notification",
-        "translation_pt": "notification",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_charger",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "charger",
-        "translation_pt": "charger",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_online_meeting",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "online meeting",
-        "translation_pt": "online meeting",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_privacy_setting",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "privacy setting",
-        "translation_pt": "privacy setting",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a1_support_chat",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "support chat",
-        "translation_pt": "support chat",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "a1"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "technology_and_communication_a1_subject_be_complement_01",
-        "family_id": "technology_and_communication_a1_subject_be_complement_0",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_password"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The password is important.",
-        "pt": "Frase sobre password.",
-        "ctx": "Contexto Tecnologia e comunicação A1.",
-        "blank": "password",
-        "wrong": "The password is important."
-      },
-      {
-        "template_id": "technology_and_communication_a1_subject_simple_present_object_02",
-        "family_id": "technology_and_communication_a1_subject_simple_present_object_1",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "simple_present",
-        "skill_ids": [
-          "simple_present",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_message"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the message every day.",
-        "pt": "Frase sobre message.",
-        "ctx": "Contexto Tecnologia e comunicação A1.",
-        "blank": "check",
-        "wrong": "We check the message every day."
-      },
-      {
-        "template_id": "technology_and_communication_a1_wh_do_subject_base_verb_03",
-        "family_id": "technology_and_communication_a1_wh_do_subject_base_verb_2",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "there_is_are",
-        "skill_ids": [
-          "there_is_are",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_video_call"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the video call?",
-        "pt": "Frase sobre video call.",
-        "ctx": "Contexto Tecnologia e comunicação A1.",
-        "blank": "do",
-        "wrong": "When you do need the video call?"
-      },
-      {
-        "template_id": "technology_and_communication_a1_subject_modal_base_verb_04",
-        "family_id": "technology_and_communication_a1_subject_modal_base_verb_3",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "can_ability",
-        "skill_ids": [
-          "can_ability",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_laptop"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the laptop today.",
-        "pt": "Frase sobre laptop.",
-        "ctx": "Contexto Tecnologia e comunicação A1.",
-        "blank": "can",
-        "wrong": "I cans update the laptop today."
-      },
-      {
-        "template_id": "technology_and_communication_a1_subject_be_complement_05",
-        "family_id": "technology_and_communication_a1_subject_be_complement_4",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "can_request",
-        "skill_ids": [
-          "can_request",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_app_update"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The app update is important.",
-        "pt": "Frase sobre app update.",
-        "ctx": "Contexto Tecnologia e comunicação A1.",
-        "blank": "app",
-        "wrong": "The app update is important."
-      },
-      {
-        "template_id": "technology_and_communication_a1_subject_simple_present_object_06",
-        "family_id": "technology_and_communication_a1_subject_simple_present_object_5",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "question_structure",
-        "skill_ids": [
-          "question_structure",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_wifi_network"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the wifi network every day.",
-        "pt": "Frase sobre wifi network.",
-        "ctx": "Contexto Tecnologia e comunicação A1.",
-        "blank": "check",
-        "wrong": "We check the wifi network every day."
-      },
-      {
-        "template_id": "technology_and_communication_a1_wh_do_subject_base_verb_07",
-        "family_id": "technology_and_communication_a1_wh_do_subject_base_verb_0",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_email"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the email?",
-        "pt": "Frase sobre email.",
-        "ctx": "Contexto Tecnologia e comunicação A1.",
-        "blank": "do",
-        "wrong": "When you do need the email?"
-      },
-      {
-        "template_id": "technology_and_communication_a1_subject_modal_base_verb_08",
-        "family_id": "technology_and_communication_a1_subject_modal_base_verb_1",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_cloud_file"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the cloud file today.",
-        "pt": "Frase sobre cloud file.",
-        "ctx": "Contexto Tecnologia e comunicação A1.",
-        "blank": "can",
-        "wrong": "I cans update the cloud file today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "technology_and_communication_a1_password_chunk",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "make a password",
-        "translation_pt": "password",
-        "invalid_variants": [
-          "do a password"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a1_message_chunk",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "check the message",
-        "translation_pt": "message",
-        "invalid_variants": [
-          "do the message"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a1_video_call_chunk",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "make a video call",
-        "translation_pt": "video call",
-        "invalid_variants": [
-          "do a video call"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a1_laptop_chunk",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "check the laptop",
-        "translation_pt": "laptop",
-        "invalid_variants": [
-          "do the laptop"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a1_app_update_chunk",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "make a app update",
-        "translation_pt": "app update",
-        "invalid_variants": [
-          "do a app update"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a1_wifi_network_chunk",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "check the wifi network",
-        "translation_pt": "wifi network",
-        "invalid_variants": [
-          "do the wifi network"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a1_email_chunk",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "canonical": "make a email",
-        "translation_pt": "email",
-        "invalid_variants": [
-          "do a email"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "technology_and_communication_a2",
-      "title": {
-        "pt": "Tecnologia e comunicação A2",
-        "en": "Technology and communication A2"
-      },
-      "theme": "technology_and_communication",
-      "level": "A2",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_a2"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "technology_and_communication_a2_password",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "password",
-        "translation_pt": "password",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_message",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "message",
-        "translation_pt": "message",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_video_call",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "video call",
-        "translation_pt": "video call",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_laptop",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "laptop",
-        "translation_pt": "laptop",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_app_update",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "app update",
-        "translation_pt": "app update",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_wifi_network",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "wifi network",
-        "translation_pt": "wifi network",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_email",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "email",
-        "translation_pt": "email",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_cloud_file",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "cloud file",
-        "translation_pt": "cloud file",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_screen",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "screen",
-        "translation_pt": "screen",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_notification",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "notification",
-        "translation_pt": "notification",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_charger",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "charger",
-        "translation_pt": "charger",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_online_meeting",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "online meeting",
-        "translation_pt": "online meeting",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_privacy_setting",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "privacy setting",
-        "translation_pt": "privacy setting",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_a2_support_chat",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "support chat",
-        "translation_pt": "support chat",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "a2"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "technology_and_communication_a2_subject_past_simple_object_time_01",
-        "family_id": "technology_and_communication_a2_subject_past_simple_object_time_0",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "past_simple",
-        "skill_ids": [
-          "past_simple",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_password"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We checked the password yesterday.",
-        "pt": "Frase sobre password.",
-        "ctx": "Contexto Tecnologia e comunicação A2.",
-        "blank": "checked",
-        "wrong": "We check the password yesterday."
-      },
-      {
-        "template_id": "technology_and_communication_a2_subject_be_going_to_verb_time_02",
-        "family_id": "technology_and_communication_a2_subject_be_going_to_verb_time_1",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "present_continuous",
-        "skill_ids": [
-          "present_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_message"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the message tomorrow.",
-        "pt": "Frase sobre message.",
-        "ctx": "Contexto Tecnologia e comunicação A2.",
-        "blank": "are",
-        "wrong": "They go to review the message tomorrow."
-      },
-      {
-        "template_id": "technology_and_communication_a2_subject_simple_present_object_03",
-        "family_id": "technology_and_communication_a2_subject_simple_present_object_2",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "future_going_to",
-        "skill_ids": [
-          "future_going_to",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_video_call"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the video call every day.",
-        "pt": "Frase sobre video call.",
-        "ctx": "Contexto Tecnologia e comunicação A2.",
-        "blank": "check",
-        "wrong": "We check the video call every day."
-      },
-      {
-        "template_id": "technology_and_communication_a2_wh_do_subject_base_verb_04",
-        "family_id": "technology_and_communication_a2_wh_do_subject_base_verb_3",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "comparatives",
-        "skill_ids": [
-          "comparatives",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_laptop"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the laptop?",
-        "pt": "Frase sobre laptop.",
-        "ctx": "Contexto Tecnologia e comunicação A2.",
-        "blank": "do",
-        "wrong": "When you do need the laptop?"
-      },
-      {
-        "template_id": "technology_and_communication_a2_subject_past_simple_object_time_05",
-        "family_id": "technology_and_communication_a2_subject_past_simple_object_time_4",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_app_update"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We checked the app update yesterday.",
-        "pt": "Frase sobre app update.",
-        "ctx": "Contexto Tecnologia e comunicação A2.",
-        "blank": "checked",
-        "wrong": "We check the app update yesterday."
-      },
-      {
-        "template_id": "technology_and_communication_a2_subject_be_going_to_verb_time_06",
-        "family_id": "technology_and_communication_a2_subject_be_going_to_verb_time_5",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_wifi_network"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the wifi network tomorrow.",
-        "pt": "Frase sobre wifi network.",
-        "ctx": "Contexto Tecnologia e comunicação A2.",
-        "blank": "are",
-        "wrong": "They go to review the wifi network tomorrow."
-      },
-      {
-        "template_id": "technology_and_communication_a2_subject_simple_present_object_07",
-        "family_id": "technology_and_communication_a2_subject_simple_present_object_0",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_email"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the email every day.",
-        "pt": "Frase sobre email.",
-        "ctx": "Contexto Tecnologia e comunicação A2.",
-        "blank": "check",
-        "wrong": "We check the email every day."
-      },
-      {
-        "template_id": "technology_and_communication_a2_wh_do_subject_base_verb_08",
-        "family_id": "technology_and_communication_a2_wh_do_subject_base_verb_1",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "past_simple",
-        "skill_ids": [
-          "past_simple",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_cloud_file"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the cloud file?",
-        "pt": "Frase sobre cloud file.",
-        "ctx": "Contexto Tecnologia e comunicação A2.",
-        "blank": "do",
-        "wrong": "When you do need the cloud file?"
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "technology_and_communication_a2_password_chunk",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "make a password",
-        "translation_pt": "password",
-        "invalid_variants": [
-          "do a password"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a2_message_chunk",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "check the message",
-        "translation_pt": "message",
-        "invalid_variants": [
-          "do the message"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a2_video_call_chunk",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "make a video call",
-        "translation_pt": "video call",
-        "invalid_variants": [
-          "do a video call"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a2_laptop_chunk",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "check the laptop",
-        "translation_pt": "laptop",
-        "invalid_variants": [
-          "do the laptop"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a2_app_update_chunk",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "make a app update",
-        "translation_pt": "app update",
-        "invalid_variants": [
-          "do a app update"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a2_wifi_network_chunk",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "check the wifi network",
-        "translation_pt": "wifi network",
-        "invalid_variants": [
-          "do the wifi network"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_a2_email_chunk",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "canonical": "make a email",
-        "translation_pt": "email",
-        "invalid_variants": [
-          "do a email"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "technology_and_communication_b1",
-      "title": {
-        "pt": "Tecnologia e comunicação B1",
-        "en": "Technology and communication B1"
-      },
-      "theme": "technology_and_communication",
-      "level": "B1",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_b1"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "technology_and_communication_b1_password",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "password",
-        "translation_pt": "password",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_message",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "message",
-        "translation_pt": "message",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_video_call",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "video call",
-        "translation_pt": "video call",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_laptop",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "laptop",
-        "translation_pt": "laptop",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_app_update",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "app update",
-        "translation_pt": "app update",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_wifi_network",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "wifi network",
-        "translation_pt": "wifi network",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_email",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "email",
-        "translation_pt": "email",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_cloud_file",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "cloud file",
-        "translation_pt": "cloud file",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_screen",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "screen",
-        "translation_pt": "screen",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_notification",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "notification",
-        "translation_pt": "notification",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_charger",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "charger",
-        "translation_pt": "charger",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_online_meeting",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "online meeting",
-        "translation_pt": "online meeting",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_privacy_setting",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "privacy setting",
-        "translation_pt": "privacy setting",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b1_support_chat",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "support chat",
-        "translation_pt": "support chat",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "b1"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "technology_and_communication_b1_subject_have_past_participle_yet_01",
-        "family_id": "technology_and_communication_b1_subject_have_past_participle_yet_0",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_password"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the password already.",
-        "pt": "Frase sobre password.",
-        "ctx": "Contexto Tecnologia e comunicação B1.",
-        "blank": "have",
-        "wrong": "We have check the password already."
-      },
-      {
-        "template_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_02",
-        "family_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_1",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "present_perfect_continuous",
-        "skill_ids": [
-          "present_perfect_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_message"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the message for two hours.",
-        "pt": "Frase sobre message.",
-        "ctx": "Contexto Tecnologia e comunicação B1.",
-        "blank": "have",
-        "wrong": "They have been reviewed the message for two hours."
-      },
-      {
-        "template_id": "technology_and_communication_b1_if_present_will_future_03",
-        "family_id": "technology_and_communication_b1_if_present_will_future_2",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "gerund_after_been",
-        "skill_ids": [
-          "gerund_after_been",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_video_call"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the video call, we will start tomorrow.",
-        "pt": "Frase sobre video call.",
-        "ctx": "Contexto Tecnologia e comunicação B1.",
-        "blank": "we",
-        "wrong": "If we confirm the video call, we will start tomorrow."
-      },
-      {
-        "template_id": "technology_and_communication_b1_subject_modal_base_verb_04",
-        "family_id": "technology_and_communication_b1_subject_modal_base_verb_3",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "first_conditional",
-        "skill_ids": [
-          "first_conditional",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_laptop"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the laptop today.",
-        "pt": "Frase sobre laptop.",
-        "ctx": "Contexto Tecnologia e comunicação B1.",
-        "blank": "can",
-        "wrong": "I cans update the laptop today."
-      },
-      {
-        "template_id": "technology_and_communication_b1_subject_have_past_participle_yet_05",
-        "family_id": "technology_and_communication_b1_subject_have_past_participle_yet_4",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_app_update"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the app update already.",
-        "pt": "Frase sobre app update.",
-        "ctx": "Contexto Tecnologia e comunicação B1.",
-        "blank": "have",
-        "wrong": "We have check the app update already."
-      },
-      {
-        "template_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_06",
-        "family_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_5",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_wifi_network"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the wifi network for two hours.",
-        "pt": "Frase sobre wifi network.",
-        "ctx": "Contexto Tecnologia e comunicação B1.",
-        "blank": "have",
-        "wrong": "They have been reviewed the wifi network for two hours."
-      },
-      {
-        "template_id": "technology_and_communication_b1_if_present_will_future_07",
-        "family_id": "technology_and_communication_b1_if_present_will_future_0",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "preposition",
-        "skill_ids": [
-          "preposition",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_email"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the email, we will start tomorrow.",
-        "pt": "Frase sobre email.",
-        "ctx": "Contexto Tecnologia e comunicação B1.",
-        "blank": "we",
-        "wrong": "If we confirm the email, we will start tomorrow."
-      },
-      {
-        "template_id": "technology_and_communication_b1_subject_modal_base_verb_08",
-        "family_id": "technology_and_communication_b1_subject_modal_base_verb_1",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_cloud_file"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the cloud file today.",
-        "pt": "Frase sobre cloud file.",
-        "ctx": "Contexto Tecnologia e comunicação B1.",
-        "blank": "can",
-        "wrong": "I cans update the cloud file today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "technology_and_communication_b1_password_chunk",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "make a password",
-        "translation_pt": "password",
-        "invalid_variants": [
-          "do a password"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b1_message_chunk",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "check the message",
-        "translation_pt": "message",
-        "invalid_variants": [
-          "do the message"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b1_video_call_chunk",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "make a video call",
-        "translation_pt": "video call",
-        "invalid_variants": [
-          "do a video call"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b1_laptop_chunk",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "check the laptop",
-        "translation_pt": "laptop",
-        "invalid_variants": [
-          "do the laptop"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b1_app_update_chunk",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "make a app update",
-        "translation_pt": "app update",
-        "invalid_variants": [
-          "do a app update"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b1_wifi_network_chunk",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "check the wifi network",
-        "translation_pt": "wifi network",
-        "invalid_variants": [
-          "do the wifi network"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b1_email_chunk",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "canonical": "make a email",
-        "translation_pt": "email",
-        "invalid_variants": [
-          "do a email"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "technology_and_communication_b2",
-      "title": {
-        "pt": "Tecnologia e comunicação B2",
-        "en": "Technology and communication B2"
-      },
-      "theme": "technology_and_communication",
-      "level": "B2",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_b2"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "technology_and_communication_b2_password",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "password",
-        "translation_pt": "password",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_message",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "message",
-        "translation_pt": "message",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_video_call",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "video call",
-        "translation_pt": "video call",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_laptop",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "laptop",
-        "translation_pt": "laptop",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_app_update",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "app update",
-        "translation_pt": "app update",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_wifi_network",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "wifi network",
-        "translation_pt": "wifi network",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_email",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "email",
-        "translation_pt": "email",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_cloud_file",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "cloud file",
-        "translation_pt": "cloud file",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_screen",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "screen",
-        "translation_pt": "screen",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_notification",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "notification",
-        "translation_pt": "notification",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_charger",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "charger",
-        "translation_pt": "charger",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_online_meeting",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "online meeting",
-        "translation_pt": "online meeting",
-        "semantic_type": "action",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_privacy_setting",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "privacy setting",
-        "translation_pt": "privacy setting",
-        "semantic_type": "object",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "technology_and_communication_b2_support_chat",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "support chat",
-        "translation_pt": "support chat",
-        "semantic_type": "time",
-        "tags": [
-          "technology_and_communication",
-          "b2"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "technology_and_communication_b2_passive_be_past_participle_01",
-        "family_id": "technology_and_communication_b2_passive_be_past_participle_0",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_password"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The password was reviewed by the team.",
-        "pt": "Frase sobre password.",
-        "ctx": "Contexto Tecnologia e comunicação B2.",
-        "blank": "password",
-        "wrong": "The password reviewed by the team."
-      },
-      {
-        "template_id": "technology_and_communication_b2_reported_speech_statement_02",
-        "family_id": "technology_and_communication_b2_reported_speech_statement_1",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "reported_speech",
-        "skill_ids": [
-          "reported_speech",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_message"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the message was ready.",
-        "pt": "Frase sobre message.",
-        "ctx": "Contexto Tecnologia e comunicação B2.",
-        "blank": "said",
-        "wrong": "She said the message was ready."
-      },
-      {
-        "template_id": "technology_and_communication_b2_second_conditional_03",
-        "family_id": "technology_and_communication_b2_second_conditional_2",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "second_conditional",
-        "skill_ids": [
-          "second_conditional",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_video_call"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the video call.",
-        "pt": "Frase sobre video call.",
-        "ctx": "Contexto Tecnologia e comunicação B2.",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the video call."
-      },
-      {
-        "template_id": "technology_and_communication_b2_subject_modal_base_verb_04",
-        "family_id": "technology_and_communication_b2_subject_modal_base_verb_3",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "modal_deduction",
-        "skill_ids": [
-          "modal_deduction",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_laptop"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the laptop today.",
-        "pt": "Frase sobre laptop.",
-        "ctx": "Contexto Tecnologia e comunicação B2.",
-        "blank": "can",
-        "wrong": "I cans update the laptop today."
-      },
-      {
-        "template_id": "technology_and_communication_b2_passive_be_past_participle_05",
-        "family_id": "technology_and_communication_b2_passive_be_past_participle_4",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_app_update"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The app update was reviewed by the team.",
-        "pt": "Frase sobre app update.",
-        "ctx": "Contexto Tecnologia e comunicação B2.",
-        "blank": "app",
-        "wrong": "The app update reviewed by the team."
-      },
-      {
-        "template_id": "technology_and_communication_b2_reported_speech_statement_06",
-        "family_id": "technology_and_communication_b2_reported_speech_statement_5",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "word_order",
-        "skill_ids": [
-          "word_order",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_wifi_network"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the wifi network was ready.",
-        "pt": "Frase sobre wifi network.",
-        "ctx": "Contexto Tecnologia e comunicação B2.",
-        "blank": "said",
-        "wrong": "She said the wifi network was ready."
-      },
-      {
-        "template_id": "technology_and_communication_b2_second_conditional_07",
-        "family_id": "technology_and_communication_b2_second_conditional_0",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_email"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the email.",
-        "pt": "Frase sobre email.",
-        "ctx": "Contexto Tecnologia e comunicação B2.",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the email."
-      },
-      {
-        "template_id": "technology_and_communication_b2_subject_modal_base_verb_08",
-        "family_id": "technology_and_communication_b2_subject_modal_base_verb_1",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_cloud_file"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the cloud file today.",
-        "pt": "Frase sobre cloud file.",
-        "ctx": "Contexto Tecnologia e comunicação B2.",
-        "blank": "can",
-        "wrong": "I cans update the cloud file today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "technology_and_communication_b2_password_chunk",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "make a password",
-        "translation_pt": "password",
-        "invalid_variants": [
-          "do a password"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b2_message_chunk",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "check the message",
-        "translation_pt": "message",
-        "invalid_variants": [
-          "do the message"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b2_video_call_chunk",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "make a video call",
-        "translation_pt": "video call",
-        "invalid_variants": [
-          "do a video call"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b2_laptop_chunk",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "check the laptop",
-        "translation_pt": "laptop",
-        "invalid_variants": [
-          "do the laptop"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b2_app_update_chunk",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "make a app update",
-        "translation_pt": "app update",
-        "invalid_variants": [
-          "do a app update"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b2_wifi_network_chunk",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "check the wifi network",
-        "translation_pt": "wifi network",
-        "invalid_variants": [
-          "do the wifi network"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "technology_and_communication_b2_email_chunk",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "canonical": "make a email",
-        "translation_pt": "email",
-        "invalid_variants": [
-          "do a email"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "travel_a1",
-      "title": {
-        "pt": "Viagens A1",
-        "en": "Travel A1"
-      },
-      "theme": "travel",
-      "level": "A1",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_a1"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "travel_a1_ticket",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "ticket",
-        "translation_pt": "ticket",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_hotel",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "hotel",
-        "translation_pt": "hotel",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_passport",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "passport",
-        "translation_pt": "passport",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_train_station",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "train station",
-        "translation_pt": "train station",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_boarding_gate",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "boarding gate",
-        "translation_pt": "boarding gate",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_luggage",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "luggage",
-        "translation_pt": "luggage",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_reservation",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "reservation",
-        "translation_pt": "reservation",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_city_map",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "city map",
-        "translation_pt": "city map",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_tour_guide",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "tour guide",
-        "translation_pt": "tour guide",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_beach_trip",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "beach trip",
-        "translation_pt": "beach trip",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_flight_delay",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "flight delay",
-        "translation_pt": "flight delay",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_taxi_ride",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "taxi ride",
-        "translation_pt": "taxi ride",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_museum_pass",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "museum pass",
-        "translation_pt": "museum pass",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      },
-      {
-        "item_id": "travel_a1_travel_insurance",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "travel insurance",
-        "translation_pt": "travel insurance",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "a1"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "travel_a1_subject_be_complement_01",
-        "family_id": "travel_a1_subject_be_complement_0",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_ticket"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The ticket is important.",
-        "pt": "Frase sobre ticket.",
-        "ctx": "Contexto Viagens A1.",
-        "blank": "ticket",
-        "wrong": "The ticket is important."
-      },
-      {
-        "template_id": "travel_a1_subject_simple_present_object_02",
-        "family_id": "travel_a1_subject_simple_present_object_1",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "simple_present",
-        "skill_ids": [
-          "simple_present",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_hotel"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the hotel every day.",
-        "pt": "Frase sobre hotel.",
-        "ctx": "Contexto Viagens A1.",
-        "blank": "check",
-        "wrong": "We check the hotel every day."
-      },
-      {
-        "template_id": "travel_a1_wh_do_subject_base_verb_03",
-        "family_id": "travel_a1_wh_do_subject_base_verb_2",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "there_is_are",
-        "skill_ids": [
-          "there_is_are",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_passport"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the passport?",
-        "pt": "Frase sobre passport.",
-        "ctx": "Contexto Viagens A1.",
-        "blank": "do",
-        "wrong": "When you do need the passport?"
-      },
-      {
-        "template_id": "travel_a1_subject_modal_base_verb_04",
-        "family_id": "travel_a1_subject_modal_base_verb_3",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "can_ability",
-        "skill_ids": [
-          "can_ability",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_train_station"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the train station today.",
-        "pt": "Frase sobre train station.",
-        "ctx": "Contexto Viagens A1.",
-        "blank": "can",
-        "wrong": "I cans update the train station today."
-      },
-      {
-        "template_id": "travel_a1_subject_be_complement_05",
-        "family_id": "travel_a1_subject_be_complement_4",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "can_request",
-        "skill_ids": [
-          "can_request",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_boarding_gate"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The boarding gate is important.",
-        "pt": "Frase sobre boarding gate.",
-        "ctx": "Contexto Viagens A1.",
-        "blank": "boarding",
-        "wrong": "The boarding gate is important."
-      },
-      {
-        "template_id": "travel_a1_subject_simple_present_object_06",
-        "family_id": "travel_a1_subject_simple_present_object_5",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "question_structure",
-        "skill_ids": [
-          "question_structure",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_luggage"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the luggage every day.",
-        "pt": "Frase sobre luggage.",
-        "ctx": "Contexto Viagens A1.",
-        "blank": "check",
-        "wrong": "We check the luggage every day."
-      },
-      {
-        "template_id": "travel_a1_wh_do_subject_base_verb_07",
-        "family_id": "travel_a1_wh_do_subject_base_verb_0",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the reservation?",
-        "pt": "Frase sobre reservation.",
-        "ctx": "Contexto Viagens A1.",
-        "blank": "do",
-        "wrong": "When you do need the reservation?"
-      },
-      {
-        "template_id": "travel_a1_subject_modal_base_verb_08",
-        "family_id": "travel_a1_subject_modal_base_verb_1",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_city_map"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the city map today.",
-        "pt": "Frase sobre city map.",
-        "ctx": "Contexto Viagens A1.",
-        "blank": "can",
-        "wrong": "I cans update the city map today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "travel_a1_ticket_chunk",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "make a ticket",
-        "translation_pt": "ticket",
-        "invalid_variants": [
-          "do a ticket"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a1_hotel_chunk",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "check the hotel",
-        "translation_pt": "hotel",
-        "invalid_variants": [
-          "do the hotel"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a1_passport_chunk",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "make a passport",
-        "translation_pt": "passport",
-        "invalid_variants": [
-          "do a passport"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a1_train_station_chunk",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "check the train station",
-        "translation_pt": "train station",
-        "invalid_variants": [
-          "do the train station"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a1_boarding_gate_chunk",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "make a boarding gate",
-        "translation_pt": "boarding gate",
-        "invalid_variants": [
-          "do a boarding gate"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a1_luggage_chunk",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "check the luggage",
-        "translation_pt": "luggage",
-        "invalid_variants": [
-          "do the luggage"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a1_reservation_chunk",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "canonical": "make a reservation",
-        "translation_pt": "reservation",
-        "invalid_variants": [
-          "do a reservation"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "travel_a2",
-      "title": {
-        "pt": "Viagens A2",
-        "en": "Travel A2"
-      },
-      "theme": "travel",
-      "level": "A2",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_a2"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "travel_a2_ticket",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "ticket",
-        "translation_pt": "ticket",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_hotel",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "hotel",
-        "translation_pt": "hotel",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_passport",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "passport",
-        "translation_pt": "passport",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_train_station",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "train station",
-        "translation_pt": "train station",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_boarding_gate",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "boarding gate",
-        "translation_pt": "boarding gate",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_luggage",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "luggage",
-        "translation_pt": "luggage",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_reservation",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "reservation",
-        "translation_pt": "reservation",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_city_map",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "city map",
-        "translation_pt": "city map",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_tour_guide",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "tour guide",
-        "translation_pt": "tour guide",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_beach_trip",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "beach trip",
-        "translation_pt": "beach trip",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_flight_delay",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "flight delay",
-        "translation_pt": "flight delay",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_taxi_ride",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "taxi ride",
-        "translation_pt": "taxi ride",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_museum_pass",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "museum pass",
-        "translation_pt": "museum pass",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      },
-      {
-        "item_id": "travel_a2_travel_insurance",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "travel insurance",
-        "translation_pt": "travel insurance",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "a2"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "travel_a2_subject_past_simple_object_time_01",
-        "family_id": "travel_a2_subject_past_simple_object_time_0",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "past_simple",
-        "skill_ids": [
-          "past_simple",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_ticket"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We checked the ticket yesterday.",
-        "pt": "Frase sobre ticket.",
-        "ctx": "Contexto Viagens A2.",
-        "blank": "checked",
-        "wrong": "We check the ticket yesterday."
-      },
-      {
-        "template_id": "travel_a2_subject_be_going_to_verb_time_02",
-        "family_id": "travel_a2_subject_be_going_to_verb_time_1",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "present_continuous",
-        "skill_ids": [
-          "present_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_hotel"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the hotel tomorrow.",
-        "pt": "Frase sobre hotel.",
-        "ctx": "Contexto Viagens A2.",
-        "blank": "are",
-        "wrong": "They go to review the hotel tomorrow."
-      },
-      {
-        "template_id": "travel_a2_subject_simple_present_object_03",
-        "family_id": "travel_a2_subject_simple_present_object_2",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "future_going_to",
-        "skill_ids": [
-          "future_going_to",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_passport"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the passport every day.",
-        "pt": "Frase sobre passport.",
-        "ctx": "Contexto Viagens A2.",
-        "blank": "check",
-        "wrong": "We check the passport every day."
-      },
-      {
-        "template_id": "travel_a2_wh_do_subject_base_verb_04",
-        "family_id": "travel_a2_wh_do_subject_base_verb_3",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "comparatives",
-        "skill_ids": [
-          "comparatives",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_train_station"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the train station?",
-        "pt": "Frase sobre train station.",
-        "ctx": "Contexto Viagens A2.",
-        "blank": "do",
-        "wrong": "When you do need the train station?"
-      },
-      {
-        "template_id": "travel_a2_subject_past_simple_object_time_05",
-        "family_id": "travel_a2_subject_past_simple_object_time_4",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_boarding_gate"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We checked the boarding gate yesterday.",
-        "pt": "Frase sobre boarding gate.",
-        "ctx": "Contexto Viagens A2.",
-        "blank": "checked",
-        "wrong": "We check the boarding gate yesterday."
-      },
-      {
-        "template_id": "travel_a2_subject_be_going_to_verb_time_06",
-        "family_id": "travel_a2_subject_be_going_to_verb_time_5",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_luggage"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the luggage tomorrow.",
-        "pt": "Frase sobre luggage.",
-        "ctx": "Contexto Viagens A2.",
-        "blank": "are",
-        "wrong": "They go to review the luggage tomorrow."
-      },
-      {
-        "template_id": "travel_a2_subject_simple_present_object_07",
-        "family_id": "travel_a2_subject_simple_present_object_0",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the reservation every day.",
-        "pt": "Frase sobre reservation.",
-        "ctx": "Contexto Viagens A2.",
-        "blank": "check",
-        "wrong": "We check the reservation every day."
-      },
-      {
-        "template_id": "travel_a2_wh_do_subject_base_verb_08",
-        "family_id": "travel_a2_wh_do_subject_base_verb_1",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "past_simple",
-        "skill_ids": [
-          "past_simple",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_city_map"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the city map?",
-        "pt": "Frase sobre city map.",
-        "ctx": "Contexto Viagens A2.",
-        "blank": "do",
-        "wrong": "When you do need the city map?"
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "travel_a2_ticket_chunk",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "make a ticket",
-        "translation_pt": "ticket",
-        "invalid_variants": [
-          "do a ticket"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a2_hotel_chunk",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "check the hotel",
-        "translation_pt": "hotel",
-        "invalid_variants": [
-          "do the hotel"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a2_passport_chunk",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "make a passport",
-        "translation_pt": "passport",
-        "invalid_variants": [
-          "do a passport"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a2_train_station_chunk",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "check the train station",
-        "translation_pt": "train station",
-        "invalid_variants": [
-          "do the train station"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a2_boarding_gate_chunk",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "make a boarding gate",
-        "translation_pt": "boarding gate",
-        "invalid_variants": [
-          "do a boarding gate"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a2_luggage_chunk",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "check the luggage",
-        "translation_pt": "luggage",
-        "invalid_variants": [
-          "do the luggage"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_a2_reservation_chunk",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "canonical": "make a reservation",
-        "translation_pt": "reservation",
-        "invalid_variants": [
-          "do a reservation"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "travel_b1",
-      "title": {
-        "pt": "Viagens B1",
-        "en": "Travel B1"
-      },
-      "theme": "travel",
-      "level": "B1",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_b1"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "travel_b1_ticket",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "ticket",
-        "translation_pt": "ticket",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_hotel",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "hotel",
-        "translation_pt": "hotel",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_passport",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "passport",
-        "translation_pt": "passport",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_train_station",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "train station",
-        "translation_pt": "train station",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_boarding_gate",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "boarding gate",
-        "translation_pt": "boarding gate",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_luggage",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "luggage",
-        "translation_pt": "luggage",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_reservation",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "reservation",
-        "translation_pt": "reservation",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_city_map",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "city map",
-        "translation_pt": "city map",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_tour_guide",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "tour guide",
-        "translation_pt": "tour guide",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_beach_trip",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "beach trip",
-        "translation_pt": "beach trip",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_flight_delay",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "flight delay",
-        "translation_pt": "flight delay",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_taxi_ride",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "taxi ride",
-        "translation_pt": "taxi ride",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_museum_pass",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "museum pass",
-        "translation_pt": "museum pass",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      },
-      {
-        "item_id": "travel_b1_travel_insurance",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "travel insurance",
-        "translation_pt": "travel insurance",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "b1"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "travel_b1_subject_have_past_participle_yet_01",
-        "family_id": "travel_b1_subject_have_past_participle_yet_0",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_ticket"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the ticket already.",
-        "pt": "Frase sobre ticket.",
-        "ctx": "Contexto Viagens B1.",
-        "blank": "have",
-        "wrong": "We have check the ticket already."
-      },
-      {
-        "template_id": "travel_b1_subject_have_been_ving_object_duration_02",
-        "family_id": "travel_b1_subject_have_been_ving_object_duration_1",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "present_perfect_continuous",
-        "skill_ids": [
-          "present_perfect_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_hotel"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the hotel for two hours.",
-        "pt": "Frase sobre hotel.",
-        "ctx": "Contexto Viagens B1.",
-        "blank": "have",
-        "wrong": "They have been reviewed the hotel for two hours."
-      },
-      {
-        "template_id": "travel_b1_if_present_will_future_03",
-        "family_id": "travel_b1_if_present_will_future_2",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "gerund_after_been",
-        "skill_ids": [
-          "gerund_after_been",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_passport"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the passport, we will start tomorrow.",
-        "pt": "Frase sobre passport.",
-        "ctx": "Contexto Viagens B1.",
-        "blank": "we",
-        "wrong": "If we confirm the passport, we will start tomorrow."
-      },
-      {
-        "template_id": "travel_b1_subject_modal_base_verb_04",
-        "family_id": "travel_b1_subject_modal_base_verb_3",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "first_conditional",
-        "skill_ids": [
-          "first_conditional",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_train_station"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the train station today.",
-        "pt": "Frase sobre train station.",
-        "ctx": "Contexto Viagens B1.",
-        "blank": "can",
-        "wrong": "I cans update the train station today."
-      },
-      {
-        "template_id": "travel_b1_subject_have_past_participle_yet_05",
-        "family_id": "travel_b1_subject_have_past_participle_yet_4",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_boarding_gate"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the boarding gate already.",
-        "pt": "Frase sobre boarding gate.",
-        "ctx": "Contexto Viagens B1.",
-        "blank": "have",
-        "wrong": "We have check the boarding gate already."
-      },
-      {
-        "template_id": "travel_b1_subject_have_been_ving_object_duration_06",
-        "family_id": "travel_b1_subject_have_been_ving_object_duration_5",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_luggage"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the luggage for two hours.",
-        "pt": "Frase sobre luggage.",
-        "ctx": "Contexto Viagens B1.",
-        "blank": "have",
-        "wrong": "They have been reviewed the luggage for two hours."
-      },
-      {
-        "template_id": "travel_b1_if_present_will_future_07",
-        "family_id": "travel_b1_if_present_will_future_0",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "preposition",
-        "skill_ids": [
-          "preposition",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the reservation, we will start tomorrow.",
-        "pt": "Frase sobre reservation.",
-        "ctx": "Contexto Viagens B1.",
-        "blank": "we",
-        "wrong": "If we confirm the reservation, we will start tomorrow."
-      },
-      {
-        "template_id": "travel_b1_subject_modal_base_verb_08",
-        "family_id": "travel_b1_subject_modal_base_verb_1",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_city_map"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the city map today.",
-        "pt": "Frase sobre city map.",
-        "ctx": "Contexto Viagens B1.",
-        "blank": "can",
-        "wrong": "I cans update the city map today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "travel_b1_ticket_chunk",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "make a ticket",
-        "translation_pt": "ticket",
-        "invalid_variants": [
-          "do a ticket"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b1_hotel_chunk",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "check the hotel",
-        "translation_pt": "hotel",
-        "invalid_variants": [
-          "do the hotel"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b1_passport_chunk",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "make a passport",
-        "translation_pt": "passport",
-        "invalid_variants": [
-          "do a passport"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b1_train_station_chunk",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "check the train station",
-        "translation_pt": "train station",
-        "invalid_variants": [
-          "do the train station"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b1_boarding_gate_chunk",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "make a boarding gate",
-        "translation_pt": "boarding gate",
-        "invalid_variants": [
-          "do a boarding gate"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b1_luggage_chunk",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "check the luggage",
-        "translation_pt": "luggage",
-        "invalid_variants": [
-          "do the luggage"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b1_reservation_chunk",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "canonical": "make a reservation",
-        "translation_pt": "reservation",
-        "invalid_variants": [
-          "do a reservation"
-        ],
-        "skill_id": "collocation"
-      }
-    ]
-  },
-  {
-    "manifest": {
-      "schema_version": "1",
-      "pack_id": "travel_b2",
-      "title": {
-        "pt": "Viagens B2",
-        "en": "Travel B2"
-      },
-      "theme": "travel",
-      "level": "B2",
-      "language_pair": "pt-BR/en",
-      "version": 1,
-      "source": "builtin",
-      "enabled_by_default": true,
-      "dependencies": [
-        "core_b2"
-      ],
-      "generator_compatibility": {
-        "min_version": "1",
-        "max_version": "1"
-      }
-    },
-    "lexical_items": [
-      {
-        "item_id": "travel_b2_ticket",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "ticket",
-        "translation_pt": "ticket",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_hotel",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "hotel",
-        "translation_pt": "hotel",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_passport",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "passport",
-        "translation_pt": "passport",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_train_station",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "train station",
-        "translation_pt": "train station",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_boarding_gate",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "boarding gate",
-        "translation_pt": "boarding gate",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_luggage",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "luggage",
-        "translation_pt": "luggage",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_reservation",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "reservation",
-        "translation_pt": "reservation",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_city_map",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "city map",
-        "translation_pt": "city map",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_tour_guide",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "tour guide",
-        "translation_pt": "tour guide",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_beach_trip",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "beach trip",
-        "translation_pt": "beach trip",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_flight_delay",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "flight delay",
-        "translation_pt": "flight delay",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_taxi_ride",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "taxi ride",
-        "translation_pt": "taxi ride",
-        "semantic_type": "action",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_museum_pass",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "museum pass",
-        "translation_pt": "museum pass",
-        "semantic_type": "object",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      },
-      {
-        "item_id": "travel_b2_travel_insurance",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "travel insurance",
-        "translation_pt": "travel insurance",
-        "semantic_type": "time",
-        "tags": [
-          "travel",
-          "b2"
-        ]
-      }
-    ],
-    "template_definitions": [
-      {
-        "template_id": "travel_b2_passive_be_past_participle_01",
-        "family_id": "travel_b2_passive_be_past_participle_0",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_ticket"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The ticket was reviewed by the team.",
-        "pt": "Frase sobre ticket.",
-        "ctx": "Contexto Viagens B2.",
-        "blank": "ticket",
-        "wrong": "The ticket reviewed by the team."
-      },
-      {
-        "template_id": "travel_b2_reported_speech_statement_02",
-        "family_id": "travel_b2_reported_speech_statement_1",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "reported_speech",
-        "skill_ids": [
-          "reported_speech",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_hotel"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the hotel was ready.",
-        "pt": "Frase sobre hotel.",
-        "ctx": "Contexto Viagens B2.",
-        "blank": "said",
-        "wrong": "She said the hotel was ready."
-      },
-      {
-        "template_id": "travel_b2_second_conditional_03",
-        "family_id": "travel_b2_second_conditional_2",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "second_conditional",
-        "skill_ids": [
-          "second_conditional",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_passport"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the passport.",
-        "pt": "Frase sobre passport.",
-        "ctx": "Contexto Viagens B2.",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the passport."
-      },
-      {
-        "template_id": "travel_b2_subject_modal_base_verb_04",
-        "family_id": "travel_b2_subject_modal_base_verb_3",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "modal_deduction",
-        "skill_ids": [
-          "modal_deduction",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_train_station"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the train station today.",
-        "pt": "Frase sobre train station.",
-        "ctx": "Contexto Viagens B2.",
-        "blank": "can",
-        "wrong": "I cans update the train station today."
-      },
-      {
-        "template_id": "travel_b2_passive_be_past_participle_05",
-        "family_id": "travel_b2_passive_be_past_participle_4",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_boarding_gate"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The boarding gate was reviewed by the team.",
-        "pt": "Frase sobre boarding gate.",
-        "ctx": "Contexto Viagens B2.",
-        "blank": "boarding",
-        "wrong": "The boarding gate reviewed by the team."
-      },
-      {
-        "template_id": "travel_b2_reported_speech_statement_06",
-        "family_id": "travel_b2_reported_speech_statement_5",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "word_order",
-        "skill_ids": [
-          "word_order",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_luggage"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the luggage was ready.",
-        "pt": "Frase sobre luggage.",
-        "ctx": "Contexto Viagens B2.",
-        "blank": "said",
-        "wrong": "She said the luggage was ready."
-      },
-      {
-        "template_id": "travel_b2_second_conditional_07",
-        "family_id": "travel_b2_second_conditional_0",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the reservation.",
-        "pt": "Frase sobre reservation.",
-        "ctx": "Contexto Viagens B2.",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the reservation."
-      },
-      {
-        "template_id": "travel_b2_subject_modal_base_verb_08",
-        "family_id": "travel_b2_subject_modal_base_verb_1",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_city_map"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the city map today.",
-        "pt": "Frase sobre city map.",
-        "ctx": "Contexto Viagens B2.",
-        "blank": "can",
-        "wrong": "I cans update the city map today."
-      }
-    ],
-    "collocations": [
-      {
-        "collocation_id": "travel_b2_ticket_chunk",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "make a ticket",
-        "translation_pt": "ticket",
-        "invalid_variants": [
-          "do a ticket"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b2_hotel_chunk",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "check the hotel",
-        "translation_pt": "hotel",
-        "invalid_variants": [
-          "do the hotel"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b2_passport_chunk",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "make a passport",
-        "translation_pt": "passport",
-        "invalid_variants": [
-          "do a passport"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b2_train_station_chunk",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "check the train station",
-        "translation_pt": "train station",
-        "invalid_variants": [
-          "do the train station"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b2_boarding_gate_chunk",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "make a boarding gate",
-        "translation_pt": "boarding gate",
-        "invalid_variants": [
-          "do a boarding gate"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b2_luggage_chunk",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "check the luggage",
-        "translation_pt": "luggage",
-        "invalid_variants": [
-          "do the luggage"
-        ],
-        "skill_id": "collocation"
-      },
-      {
-        "collocation_id": "travel_b2_reservation_chunk",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "canonical": "make a reservation",
-        "translation_pt": "reservation",
-        "invalid_variants": [
-          "do a reservation"
         ],
         "skill_id": "collocation"
       }
@@ -15777,7 +6899,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "company",
-        "translation_pt": "company",
+        "translation_pt": "empresa",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -15790,7 +6912,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "project",
-        "translation_pt": "project",
+        "translation_pt": "projeto",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -15803,7 +6925,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "client",
-        "translation_pt": "client",
+        "translation_pt": "cliente",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -15816,7 +6938,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "support team",
-        "translation_pt": "support team",
+        "translation_pt": "equipe de suporte",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -15829,7 +6951,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "deployment",
-        "translation_pt": "deployment",
+        "translation_pt": "implantação",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -15842,7 +6964,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "report",
-        "translation_pt": "report",
+        "translation_pt": "relatório",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -15855,7 +6977,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "requirements",
-        "translation_pt": "requirements",
+        "translation_pt": "requisitos",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -15868,7 +6990,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "open positions",
-        "translation_pt": "open positions",
+        "translation_pt": "vagas abertas",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -15881,7 +7003,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "salary range",
-        "translation_pt": "salary range",
+        "translation_pt": "faixa salarial",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -15894,7 +7016,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "deadline",
-        "translation_pt": "deadline",
+        "translation_pt": "prazo",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -15907,7 +7029,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "meeting",
-        "translation_pt": "meeting",
+        "translation_pt": "reunião",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -15920,7 +7042,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "feedback",
-        "translation_pt": "feedback",
+        "translation_pt": "retorno",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -15933,7 +7055,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "responsibilities",
-        "translation_pt": "responsibilities",
+        "translation_pt": "responsabilidades",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -15946,7 +7068,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "proposal",
-        "translation_pt": "proposal",
+        "translation_pt": "proposta",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -15989,8 +7111,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "The company is important.",
-        "pt": "Frase sobre company.",
-        "ctx": "Contexto Trabalho A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A empresa é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The company is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "A empresa é importante.",
+        "ctx": "Contexto de trabalho (nível A1).",
         "blank": "company",
         "wrong": "The company is important."
       },
@@ -16028,8 +7161,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We check the project every day.",
-        "pt": "Frase sobre project.",
-        "ctx": "Contexto Trabalho A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o projeto todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the project every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "pt": "Nós verificamos o projeto todos os dias.",
+        "ctx": "Contexto de trabalho (nível A1).",
         "blank": "check",
         "wrong": "We check the project every day."
       },
@@ -16067,8 +7211,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "When do you need the client?",
-        "pt": "Frase sobre client.",
-        "ctx": "Contexto Trabalho A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do cliente?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the client?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "pt": "Quando você precisa do cliente?",
+        "ctx": "Contexto de trabalho (nível A1).",
         "blank": "do",
         "wrong": "When you do need the client?"
       },
@@ -16106,8 +7261,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the support team today.",
-        "pt": "Frase sobre support team.",
-        "ctx": "Contexto Trabalho A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a equipe de suporte hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the support team today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "can_ability"
+        ],
+        "pt": "Eu posso atualizar a equipe de suporte hoje.",
+        "ctx": "Contexto de trabalho (nível A1).",
         "blank": "can",
         "wrong": "I cans update the support team today."
       },
@@ -16145,8 +7311,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "The deployment is important.",
-        "pt": "Frase sobre deployment.",
-        "ctx": "Contexto Trabalho A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A implantação é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The deployment is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "pt": "A implantação é importante.",
+        "ctx": "Contexto de trabalho (nível A1).",
         "blank": "deployment",
         "wrong": "The deployment is important."
       },
@@ -16184,8 +7361,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We check the report every day.",
-        "pt": "Frase sobre report.",
-        "ctx": "Contexto Trabalho A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o relatório todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the report every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "question_structure"
+        ],
+        "pt": "Nós verificamos o relatório todos os dias.",
+        "ctx": "Contexto de trabalho (nível A1).",
         "blank": "check",
         "wrong": "We check the report every day."
       },
@@ -16223,8 +7411,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "When do you need the requirements?",
-        "pt": "Frase sobre requirements.",
-        "ctx": "Contexto Trabalho A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa dos requisitos?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the requirements?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Quando você precisa dos requisitos?",
+        "ctx": "Contexto de trabalho (nível A1).",
         "blank": "do",
         "wrong": "When you do need the requirements?"
       },
@@ -16262,8 +7461,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the open positions today.",
-        "pt": "Frase sobre open positions.",
-        "ctx": "Contexto Trabalho A1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar as vagas abertas hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the open positions today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "Eu posso atualizar as vagas abertas hoje.",
+        "ctx": "Contexto de trabalho (nível A1).",
         "blank": "can",
         "wrong": "I cans update the open positions today."
       }
@@ -16275,7 +7485,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "make a company",
-        "translation_pt": "company",
+        "translation_pt": "empresa",
         "invalid_variants": [
           "do a company"
         ],
@@ -16287,7 +7497,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "check the project",
-        "translation_pt": "project",
+        "translation_pt": "projeto",
         "invalid_variants": [
           "do the project"
         ],
@@ -16299,7 +7509,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "make a client",
-        "translation_pt": "client",
+        "translation_pt": "cliente",
         "invalid_variants": [
           "do a client"
         ],
@@ -16311,7 +7521,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "check the support team",
-        "translation_pt": "support team",
+        "translation_pt": "equipe de suporte",
         "invalid_variants": [
           "do the support team"
         ],
@@ -16323,7 +7533,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "make a deployment",
-        "translation_pt": "deployment",
+        "translation_pt": "implantação",
         "invalid_variants": [
           "do a deployment"
         ],
@@ -16335,7 +7545,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "check the report",
-        "translation_pt": "report",
+        "translation_pt": "relatório",
         "invalid_variants": [
           "do the report"
         ],
@@ -16347,7 +7557,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A1",
         "canonical": "make a requirements",
-        "translation_pt": "requirements",
+        "translation_pt": "requisitos",
         "invalid_variants": [
           "do a requirements"
         ],
@@ -16384,7 +7594,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "company",
-        "translation_pt": "company",
+        "translation_pt": "empresa",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -16397,7 +7607,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "project",
-        "translation_pt": "project",
+        "translation_pt": "projeto",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -16410,7 +7620,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "client",
-        "translation_pt": "client",
+        "translation_pt": "cliente",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -16423,7 +7633,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "support team",
-        "translation_pt": "support team",
+        "translation_pt": "equipe de suporte",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -16436,7 +7646,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "deployment",
-        "translation_pt": "deployment",
+        "translation_pt": "implantação",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -16449,7 +7659,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "report",
-        "translation_pt": "report",
+        "translation_pt": "relatório",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -16462,7 +7672,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "requirements",
-        "translation_pt": "requirements",
+        "translation_pt": "requisitos",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -16475,7 +7685,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "open positions",
-        "translation_pt": "open positions",
+        "translation_pt": "vagas abertas",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -16488,7 +7698,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "salary range",
-        "translation_pt": "salary range",
+        "translation_pt": "faixa salarial",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -16501,7 +7711,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "deadline",
-        "translation_pt": "deadline",
+        "translation_pt": "prazo",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -16514,7 +7724,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "meeting",
-        "translation_pt": "meeting",
+        "translation_pt": "reunião",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -16527,7 +7737,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "feedback",
-        "translation_pt": "feedback",
+        "translation_pt": "retorno",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -16540,7 +7750,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "responsibilities",
-        "translation_pt": "responsibilities",
+        "translation_pt": "responsabilidades",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -16553,7 +7763,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "proposal",
-        "translation_pt": "proposal",
+        "translation_pt": "proposta",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -16596,8 +7806,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We checked the company yesterday.",
-        "pt": "Frase sobre company.",
-        "ctx": "Contexto Trabalho A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a empresa ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the company yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Nós verificamos a empresa ontem.",
+        "ctx": "Contexto de trabalho (nível A2).",
         "blank": "checked",
         "wrong": "We check the company yesterday."
       },
@@ -16635,8 +7856,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "They are going to review the project tomorrow.",
-        "pt": "Frase sobre project.",
-        "ctx": "Contexto Trabalho A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar o projeto amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the project tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the project tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "pt": "Eles vão revisar o projeto amanhã.",
+        "ctx": "Contexto de trabalho (nível A2).",
         "blank": "are",
         "wrong": "They go to review the project tomorrow."
       },
@@ -16674,8 +7908,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We check the client every day.",
-        "pt": "Frase sobre client.",
-        "ctx": "Contexto Trabalho A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o cliente todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the client every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "future_going_to"
+        ],
+        "pt": "Nós verificamos o cliente todos os dias.",
+        "ctx": "Contexto de trabalho (nível A2).",
         "blank": "check",
         "wrong": "We check the client every day."
       },
@@ -16713,8 +7958,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "When do you need the support team?",
-        "pt": "Frase sobre support team.",
-        "ctx": "Contexto Trabalho A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da equipe de suporte?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the support team?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "pt": "Quando você precisa da equipe de suporte?",
+        "ctx": "Contexto de trabalho (nível A2).",
         "blank": "do",
         "wrong": "When you do need the support team?"
       },
@@ -16752,8 +8008,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We checked the deployment yesterday.",
-        "pt": "Frase sobre deployment.",
-        "ctx": "Contexto Trabalho A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a implantação ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the deployment yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós verificamos a implantação ontem.",
+        "ctx": "Contexto de trabalho (nível A2).",
         "blank": "checked",
         "wrong": "We check the deployment yesterday."
       },
@@ -16791,8 +8058,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "They are going to review the report tomorrow.",
-        "pt": "Frase sobre report.",
-        "ctx": "Contexto Trabalho A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar o relatório amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the report tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the report tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Eles vão revisar o relatório amanhã.",
+        "ctx": "Contexto de trabalho (nível A2).",
         "blank": "are",
         "wrong": "They go to review the report tomorrow."
       },
@@ -16830,8 +8110,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We check the requirements every day.",
-        "pt": "Frase sobre requirements.",
-        "ctx": "Contexto Trabalho A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos os requisitos todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the requirements every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Nós verificamos os requisitos todos os dias.",
+        "ctx": "Contexto de trabalho (nível A2).",
         "blank": "check",
         "wrong": "We check the requirements every day."
       },
@@ -16869,8 +8160,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "When do you need the open positions?",
-        "pt": "Frase sobre open positions.",
-        "ctx": "Contexto Trabalho A2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa das vagas abertas?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the open positions?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Quando você precisa das vagas abertas?",
+        "ctx": "Contexto de trabalho (nível A2).",
         "blank": "do",
         "wrong": "When you do need the open positions?"
       }
@@ -16882,7 +8184,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "make a company",
-        "translation_pt": "company",
+        "translation_pt": "empresa",
         "invalid_variants": [
           "do a company"
         ],
@@ -16894,7 +8196,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "check the project",
-        "translation_pt": "project",
+        "translation_pt": "projeto",
         "invalid_variants": [
           "do the project"
         ],
@@ -16906,7 +8208,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "make a client",
-        "translation_pt": "client",
+        "translation_pt": "cliente",
         "invalid_variants": [
           "do a client"
         ],
@@ -16918,7 +8220,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "check the support team",
-        "translation_pt": "support team",
+        "translation_pt": "equipe de suporte",
         "invalid_variants": [
           "do the support team"
         ],
@@ -16930,7 +8232,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "make a deployment",
-        "translation_pt": "deployment",
+        "translation_pt": "implantação",
         "invalid_variants": [
           "do a deployment"
         ],
@@ -16942,7 +8244,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "check the report",
-        "translation_pt": "report",
+        "translation_pt": "relatório",
         "invalid_variants": [
           "do the report"
         ],
@@ -16954,7 +8256,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "A2",
         "canonical": "make a requirements",
-        "translation_pt": "requirements",
+        "translation_pt": "requisitos",
         "invalid_variants": [
           "do a requirements"
         ],
@@ -16991,7 +8293,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "company",
-        "translation_pt": "company",
+        "translation_pt": "empresa",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -17004,7 +8306,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "project",
-        "translation_pt": "project",
+        "translation_pt": "projeto",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -17017,7 +8319,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "client",
-        "translation_pt": "client",
+        "translation_pt": "cliente",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -17030,7 +8332,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "support team",
-        "translation_pt": "support team",
+        "translation_pt": "equipe de suporte",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -17043,7 +8345,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "deployment",
-        "translation_pt": "deployment",
+        "translation_pt": "implantação",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -17056,7 +8358,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "report",
-        "translation_pt": "report",
+        "translation_pt": "relatório",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -17069,7 +8371,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "requirements",
-        "translation_pt": "requirements",
+        "translation_pt": "requisitos",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -17082,7 +8384,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "open positions",
-        "translation_pt": "open positions",
+        "translation_pt": "vagas abertas",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -17095,7 +8397,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "salary range",
-        "translation_pt": "salary range",
+        "translation_pt": "faixa salarial",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -17108,7 +8410,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "deadline",
-        "translation_pt": "deadline",
+        "translation_pt": "prazo",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -17121,7 +8423,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "meeting",
-        "translation_pt": "meeting",
+        "translation_pt": "reunião",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -17134,7 +8436,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "feedback",
-        "translation_pt": "feedback",
+        "translation_pt": "retorno",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -17147,7 +8449,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "responsibilities",
-        "translation_pt": "responsibilities",
+        "translation_pt": "responsabilidades",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -17160,7 +8462,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "proposal",
-        "translation_pt": "proposal",
+        "translation_pt": "proposta",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -17204,8 +8506,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We have checked the company already.",
-        "pt": "Frase sobre company.",
-        "ctx": "Contexto Trabalho B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos a empresa.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the company already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the company already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós já verificamos a empresa.",
+        "ctx": "Contexto de trabalho (nível B1).",
         "blank": "have",
         "wrong": "We have check the company already."
       },
@@ -17244,8 +8559,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "They have been reviewing the project for two hours.",
-        "pt": "Frase sobre project.",
-        "ctx": "Contexto Trabalho B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando o projeto há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the project for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the project for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "present_perfect_continuous"
+        ],
+        "pt": "Eles estão revisando o projeto há duas horas.",
+        "ctx": "Contexto de trabalho (nível B1).",
         "blank": "have",
         "wrong": "They have been reviewed the project for two hours."
       },
@@ -17284,8 +8612,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "If we confirm the client, we will start tomorrow.",
-        "pt": "Frase sobre client.",
-        "ctx": "Contexto Trabalho B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos o cliente, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the client, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the client, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "gerund_after_been"
+        ],
+        "pt": "Se confirmarmos o cliente, vamos começar amanhã.",
+        "ctx": "Contexto de trabalho (nível B1).",
         "blank": "we",
         "wrong": "If we confirm the client, we will start tomorrow."
       },
@@ -17324,8 +8665,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the support team today.",
-        "pt": "Frase sobre support team.",
-        "ctx": "Contexto Trabalho B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a equipe de suporte hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the support team today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "pt": "Eu posso atualizar a equipe de suporte hoje.",
+        "ctx": "Contexto de trabalho (nível B1).",
         "blank": "can",
         "wrong": "I cans update the support team today."
       },
@@ -17364,8 +8716,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "We have checked the deployment already.",
-        "pt": "Frase sobre deployment.",
-        "ctx": "Contexto Trabalho B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos a implantação.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the deployment already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the deployment already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Nós já verificamos a implantação.",
+        "ctx": "Contexto de trabalho (nível B1).",
         "blank": "have",
         "wrong": "We have check the deployment already."
       },
@@ -17404,8 +8769,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "They have been reviewing the report for two hours.",
-        "pt": "Frase sobre report.",
-        "ctx": "Contexto Trabalho B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando o relatório há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the report for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the report for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "Eles estão revisando o relatório há duas horas.",
+        "ctx": "Contexto de trabalho (nível B1).",
         "blank": "have",
         "wrong": "They have been reviewed the report for two hours."
       },
@@ -17444,8 +8822,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "If we confirm the requirements, we will start tomorrow.",
-        "pt": "Frase sobre requirements.",
-        "ctx": "Contexto Trabalho B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos os requisitos, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the requirements, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the requirements, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "preposition"
+        ],
+        "pt": "Se confirmarmos os requisitos, vamos começar amanhã.",
+        "ctx": "Contexto de trabalho (nível B1).",
         "blank": "we",
         "wrong": "If we confirm the requirements, we will start tomorrow."
       },
@@ -17484,8 +8875,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the open positions today.",
-        "pt": "Frase sobre open positions.",
-        "ctx": "Contexto Trabalho B1.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar as vagas abertas hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the open positions today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Eu posso atualizar as vagas abertas hoje.",
+        "ctx": "Contexto de trabalho (nível B1).",
         "blank": "can",
         "wrong": "I cans update the open positions today."
       }
@@ -17497,7 +8899,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "make a company",
-        "translation_pt": "company",
+        "translation_pt": "empresa",
         "invalid_variants": [
           "do a company"
         ],
@@ -17509,7 +8911,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "check the project",
-        "translation_pt": "project",
+        "translation_pt": "projeto",
         "invalid_variants": [
           "do the project"
         ],
@@ -17521,7 +8923,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "make a client",
-        "translation_pt": "client",
+        "translation_pt": "cliente",
         "invalid_variants": [
           "do a client"
         ],
@@ -17533,7 +8935,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "check the support team",
-        "translation_pt": "support team",
+        "translation_pt": "equipe de suporte",
         "invalid_variants": [
           "do the support team"
         ],
@@ -17545,7 +8947,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "make a deployment",
-        "translation_pt": "deployment",
+        "translation_pt": "implantação",
         "invalid_variants": [
           "do a deployment"
         ],
@@ -17557,7 +8959,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "check the report",
-        "translation_pt": "report",
+        "translation_pt": "relatório",
         "invalid_variants": [
           "do the report"
         ],
@@ -17569,7 +8971,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B1",
         "canonical": "make a requirements",
-        "translation_pt": "requirements",
+        "translation_pt": "requisitos",
         "invalid_variants": [
           "do a requirements"
         ],
@@ -17606,7 +9008,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "company",
-        "translation_pt": "company",
+        "translation_pt": "empresa",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -17619,7 +9021,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "project",
-        "translation_pt": "project",
+        "translation_pt": "projeto",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -17632,7 +9034,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "client",
-        "translation_pt": "client",
+        "translation_pt": "cliente",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -17645,7 +9047,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "support team",
-        "translation_pt": "support team",
+        "translation_pt": "equipe de suporte",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -17658,7 +9060,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "deployment",
-        "translation_pt": "deployment",
+        "translation_pt": "implantação",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -17671,7 +9073,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "report",
-        "translation_pt": "report",
+        "translation_pt": "relatório",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -17684,7 +9086,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "requirements",
-        "translation_pt": "requirements",
+        "translation_pt": "requisitos",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -17697,7 +9099,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "open positions",
-        "translation_pt": "open positions",
+        "translation_pt": "vagas abertas",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -17710,7 +9112,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "salary range",
-        "translation_pt": "salary range",
+        "translation_pt": "faixa salarial",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -17723,7 +9125,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "deadline",
-        "translation_pt": "deadline",
+        "translation_pt": "prazo",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -17736,7 +9138,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "meeting",
-        "translation_pt": "meeting",
+        "translation_pt": "reunião",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -17749,7 +9151,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "feedback",
-        "translation_pt": "feedback",
+        "translation_pt": "retorno",
         "semantic_type": "action",
         "tags": [
           "workplace",
@@ -17762,7 +9164,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "responsibilities",
-        "translation_pt": "responsibilities",
+        "translation_pt": "responsabilidades",
         "semantic_type": "object",
         "tags": [
           "workplace",
@@ -17775,7 +9177,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "proposal",
-        "translation_pt": "proposal",
+        "translation_pt": "proposta",
         "semantic_type": "time",
         "tags": [
           "workplace",
@@ -17820,8 +9222,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "The company was reviewed by the team.",
-        "pt": "Frase sobre company.",
-        "ctx": "Contexto Trabalho B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A empresa foi revisada pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The company was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "A empresa foi revisada pela equipe.",
+        "ctx": "Contexto de trabalho (nível B2).",
         "blank": "company",
         "wrong": "The company reviewed by the team."
       },
@@ -17861,8 +9274,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "She said that the project was ready.",
-        "pt": "Frase sobre project.",
-        "ctx": "Contexto Trabalho B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que o projeto estava pronto.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the project was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "reported_speech"
+        ],
+        "pt": "Ela disse que o projeto estava pronto.",
+        "ctx": "Contexto de trabalho (nível B2).",
         "blank": "said",
         "wrong": "She said the project was ready."
       },
@@ -17902,8 +9326,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "If I had more time, I would improve the client.",
-        "pt": "Frase sobre client.",
-        "ctx": "Contexto Trabalho B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o cliente.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the client."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the client."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "second_conditional"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria o cliente.",
+        "ctx": "Contexto de trabalho (nível B2).",
         "blank": "I",
         "wrong": "If I had more time, I will improve the client."
       },
@@ -17943,8 +9380,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the support team today.",
-        "pt": "Frase sobre support team.",
-        "ctx": "Contexto Trabalho B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a equipe de suporte hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the support team today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "pt": "Eu posso atualizar a equipe de suporte hoje.",
+        "ctx": "Contexto de trabalho (nível B2).",
         "blank": "can",
         "wrong": "I cans update the support team today."
       },
@@ -17984,8 +9432,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "The deployment was reviewed by the team.",
-        "pt": "Frase sobre deployment.",
-        "ctx": "Contexto Trabalho B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A implantação foi revisada pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The deployment was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "A implantação foi revisada pela equipe.",
+        "ctx": "Contexto de trabalho (nível B2).",
         "blank": "deployment",
         "wrong": "The deployment reviewed by the team."
       },
@@ -18025,8 +9484,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "She said that the report was ready.",
-        "pt": "Frase sobre report.",
-        "ctx": "Contexto Trabalho B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que o relatório estava pronto.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the report was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "word_order"
+        ],
+        "pt": "Ela disse que o relatório estava pronto.",
+        "ctx": "Contexto de trabalho (nível B2).",
         "blank": "said",
         "wrong": "She said the report was ready."
       },
@@ -18066,8 +9536,21 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "If I had more time, I would improve the requirements.",
-        "pt": "Frase sobre requirements.",
-        "ctx": "Contexto Trabalho B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria os requisitos.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the requirements."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the requirements."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria os requisitos.",
+        "ctx": "Contexto de trabalho (nível B2).",
         "blank": "I",
         "wrong": "If I had more time, I will improve the requirements."
       },
@@ -18107,8 +9590,19 @@ export const GENERATED_CONTENT_PACKS = [
           "wrong_collocation"
         ],
         "sentence": "I can update the open positions today.",
-        "pt": "Frase sobre open positions.",
-        "ctx": "Contexto Trabalho B2.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar as vagas abertas hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the open positions today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "Eu posso atualizar as vagas abertas hoje.",
+        "ctx": "Contexto de trabalho (nível B2).",
         "blank": "can",
         "wrong": "I cans update the open positions today."
       }
@@ -18120,7 +9614,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "make a company",
-        "translation_pt": "company",
+        "translation_pt": "empresa",
         "invalid_variants": [
           "do a company"
         ],
@@ -18132,7 +9626,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "check the project",
-        "translation_pt": "project",
+        "translation_pt": "projeto",
         "invalid_variants": [
           "do the project"
         ],
@@ -18144,7 +9638,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "make a client",
-        "translation_pt": "client",
+        "translation_pt": "cliente",
         "invalid_variants": [
           "do a client"
         ],
@@ -18156,7 +9650,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "check the support team",
-        "translation_pt": "support team",
+        "translation_pt": "equipe de suporte",
         "invalid_variants": [
           "do the support team"
         ],
@@ -18168,7 +9662,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "make a deployment",
-        "translation_pt": "deployment",
+        "translation_pt": "implantação",
         "invalid_variants": [
           "do a deployment"
         ],
@@ -18180,7 +9674,7 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "check the report",
-        "translation_pt": "report",
+        "translation_pt": "relatório",
         "invalid_variants": [
           "do the report"
         ],
@@ -18192,9 +9686,11305 @@ export const GENERATED_CONTENT_PACKS = [
         "theme": "workplace",
         "level": "B2",
         "canonical": "make a requirements",
-        "translation_pt": "requirements",
+        "translation_pt": "requisitos",
         "invalid_variants": [
           "do a requirements"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "travel_a1",
+      "title": {
+        "pt": "Viagens A1",
+        "en": "Travel A1"
+      },
+      "theme": "travel",
+      "level": "A1",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_a1"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "travel_a1_ticket",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "ticket",
+        "translation_pt": "passagem",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_hotel",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "hotel",
+        "translation_pt": "hotel",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_passport",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "passport",
+        "translation_pt": "passaporte",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_train_station",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "train station",
+        "translation_pt": "estação de trem",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_boarding_gate",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "boarding gate",
+        "translation_pt": "portão de embarque",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_luggage",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "luggage",
+        "translation_pt": "bagagem",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_reservation",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "reservation",
+        "translation_pt": "reserva",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_city_map",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "city map",
+        "translation_pt": "mapa da cidade",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_tour_guide",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "tour guide",
+        "translation_pt": "guia turístico",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_beach_trip",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "beach trip",
+        "translation_pt": "viagem à praia",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_flight_delay",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "flight delay",
+        "translation_pt": "atraso do voo",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_taxi_ride",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "taxi ride",
+        "translation_pt": "corrida de táxi",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_museum_pass",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "museum pass",
+        "translation_pt": "ingresso do museu",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "travel_a1_travel_insurance",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "travel insurance",
+        "translation_pt": "seguro viagem",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "a1"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "travel_a1_subject_be_complement_01",
+        "family_id": "travel_a1_subject_be_complement_0",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "verb_to_be",
+        "skill_ids": [
+          "verb_to_be",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a1_ticket"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The ticket is important.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A passagem é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The ticket is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "A passagem é importante.",
+        "ctx": "Contexto de viagens (nível A1).",
+        "blank": "ticket",
+        "wrong": "The ticket is important."
+      },
+      {
+        "template_id": "travel_a1_subject_simple_present_object_02",
+        "family_id": "travel_a1_subject_simple_present_object_1",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a1_hotel"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the hotel every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o hotel todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the hotel every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "pt": "Nós verificamos o hotel todos os dias.",
+        "ctx": "Contexto de viagens (nível A1).",
+        "blank": "check",
+        "wrong": "We check the hotel every day."
+      },
+      {
+        "template_id": "travel_a1_wh_do_subject_base_verb_03",
+        "family_id": "travel_a1_wh_do_subject_base_verb_2",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "there_is_are",
+        "skill_ids": [
+          "there_is_are",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a1_passport"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the passport?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do passaporte?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the passport?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "pt": "Quando você precisa do passaporte?",
+        "ctx": "Contexto de viagens (nível A1).",
+        "blank": "do",
+        "wrong": "When you do need the passport?"
+      },
+      {
+        "template_id": "travel_a1_subject_modal_base_verb_04",
+        "family_id": "travel_a1_subject_modal_base_verb_3",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "can_ability",
+        "skill_ids": [
+          "can_ability",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a1_train_station"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the train station today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a estação de trem hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the train station today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "can_ability"
+        ],
+        "pt": "Eu posso atualizar a estação de trem hoje.",
+        "ctx": "Contexto de viagens (nível A1).",
+        "blank": "can",
+        "wrong": "I cans update the train station today."
+      },
+      {
+        "template_id": "travel_a1_subject_be_complement_05",
+        "family_id": "travel_a1_subject_be_complement_4",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a1_boarding_gate"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The boarding gate is important.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O portão de embarque é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The boarding gate is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "pt": "O portão de embarque é importante.",
+        "ctx": "Contexto de viagens (nível A1).",
+        "blank": "boarding",
+        "wrong": "The boarding gate is important."
+      },
+      {
+        "template_id": "travel_a1_subject_simple_present_object_06",
+        "family_id": "travel_a1_subject_simple_present_object_5",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "question_structure",
+        "skill_ids": [
+          "question_structure",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a1_luggage"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the luggage every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a bagagem todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the luggage every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "question_structure"
+        ],
+        "pt": "Nós verificamos a bagagem todos os dias.",
+        "ctx": "Contexto de viagens (nível A1).",
+        "blank": "check",
+        "wrong": "We check the luggage every day."
+      },
+      {
+        "template_id": "travel_a1_wh_do_subject_base_verb_07",
+        "family_id": "travel_a1_wh_do_subject_base_verb_0",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a1_reservation"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the reservation?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da reserva?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the reservation?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Quando você precisa da reserva?",
+        "ctx": "Contexto de viagens (nível A1).",
+        "blank": "do",
+        "wrong": "When you do need the reservation?"
+      },
+      {
+        "template_id": "travel_a1_subject_modal_base_verb_08",
+        "family_id": "travel_a1_subject_modal_base_verb_1",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "verb_to_be",
+        "skill_ids": [
+          "verb_to_be",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a1_city_map"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the city map today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o mapa da cidade hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the city map today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "Eu posso atualizar o mapa da cidade hoje.",
+        "ctx": "Contexto de viagens (nível A1).",
+        "blank": "can",
+        "wrong": "I cans update the city map today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "travel_a1_ticket_chunk",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "make a ticket",
+        "translation_pt": "passagem",
+        "invalid_variants": [
+          "do a ticket"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a1_hotel_chunk",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "check the hotel",
+        "translation_pt": "hotel",
+        "invalid_variants": [
+          "do the hotel"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a1_passport_chunk",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "make a passport",
+        "translation_pt": "passaporte",
+        "invalid_variants": [
+          "do a passport"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a1_train_station_chunk",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "check the train station",
+        "translation_pt": "estação de trem",
+        "invalid_variants": [
+          "do the train station"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a1_boarding_gate_chunk",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "make a boarding gate",
+        "translation_pt": "portão de embarque",
+        "invalid_variants": [
+          "do a boarding gate"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a1_luggage_chunk",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "check the luggage",
+        "translation_pt": "bagagem",
+        "invalid_variants": [
+          "do the luggage"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a1_reservation_chunk",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "canonical": "make a reservation",
+        "translation_pt": "reserva",
+        "invalid_variants": [
+          "do a reservation"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "travel_a2",
+      "title": {
+        "pt": "Viagens A2",
+        "en": "Travel A2"
+      },
+      "theme": "travel",
+      "level": "A2",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_a2"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "travel_a2_ticket",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "ticket",
+        "translation_pt": "passagem",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_hotel",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "hotel",
+        "translation_pt": "hotel",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_passport",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "passport",
+        "translation_pt": "passaporte",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_train_station",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "train station",
+        "translation_pt": "estação de trem",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_boarding_gate",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "boarding gate",
+        "translation_pt": "portão de embarque",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_luggage",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "luggage",
+        "translation_pt": "bagagem",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_reservation",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "reservation",
+        "translation_pt": "reserva",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_city_map",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "city map",
+        "translation_pt": "mapa da cidade",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_tour_guide",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "tour guide",
+        "translation_pt": "guia turístico",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_beach_trip",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "beach trip",
+        "translation_pt": "viagem à praia",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_flight_delay",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "flight delay",
+        "translation_pt": "atraso do voo",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_taxi_ride",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "taxi ride",
+        "translation_pt": "corrida de táxi",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_museum_pass",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "museum pass",
+        "translation_pt": "ingresso do museu",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "travel_a2_travel_insurance",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "travel insurance",
+        "translation_pt": "seguro viagem",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "a2"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "travel_a2_subject_past_simple_object_time_01",
+        "family_id": "travel_a2_subject_past_simple_object_time_0",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "pattern_id": "subject_past_simple_object_time",
+        "primary_skill_id": "past_simple",
+        "skill_ids": [
+          "past_simple",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a2_ticket"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We checked the ticket yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a passagem ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the ticket yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Nós verificamos a passagem ontem.",
+        "ctx": "Contexto de viagens (nível A2).",
+        "blank": "checked",
+        "wrong": "We check the ticket yesterday."
+      },
+      {
+        "template_id": "travel_a2_subject_be_going_to_verb_time_02",
+        "family_id": "travel_a2_subject_be_going_to_verb_time_1",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "present_continuous",
+        "skill_ids": [
+          "present_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a2_hotel"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They are going to review the hotel tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar o hotel amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the hotel tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the hotel tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "pt": "Eles vão revisar o hotel amanhã.",
+        "ctx": "Contexto de viagens (nível A2).",
+        "blank": "are",
+        "wrong": "They go to review the hotel tomorrow."
+      },
+      {
+        "template_id": "travel_a2_subject_simple_present_object_03",
+        "family_id": "travel_a2_subject_simple_present_object_2",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "future_going_to",
+        "skill_ids": [
+          "future_going_to",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a2_passport"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the passport every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o passaporte todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the passport every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "future_going_to"
+        ],
+        "pt": "Nós verificamos o passaporte todos os dias.",
+        "ctx": "Contexto de viagens (nível A2).",
+        "blank": "check",
+        "wrong": "We check the passport every day."
+      },
+      {
+        "template_id": "travel_a2_wh_do_subject_base_verb_04",
+        "family_id": "travel_a2_wh_do_subject_base_verb_3",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "comparatives",
+        "skill_ids": [
+          "comparatives",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a2_train_station"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the train station?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da estação de trem?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the train station?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "pt": "Quando você precisa da estação de trem?",
+        "ctx": "Contexto de viagens (nível A2).",
+        "blank": "do",
+        "wrong": "When you do need the train station?"
+      },
+      {
+        "template_id": "travel_a2_subject_past_simple_object_time_05",
+        "family_id": "travel_a2_subject_past_simple_object_time_4",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "pattern_id": "subject_past_simple_object_time",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a2_boarding_gate"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We checked the boarding gate yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o portão de embarque ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the boarding gate yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós verificamos o portão de embarque ontem.",
+        "ctx": "Contexto de viagens (nível A2).",
+        "blank": "checked",
+        "wrong": "We check the boarding gate yesterday."
+      },
+      {
+        "template_id": "travel_a2_subject_be_going_to_verb_time_06",
+        "family_id": "travel_a2_subject_be_going_to_verb_time_5",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a2_luggage"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They are going to review the luggage tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar a bagagem amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the luggage tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the luggage tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Eles vão revisar a bagagem amanhã.",
+        "ctx": "Contexto de viagens (nível A2).",
+        "blank": "are",
+        "wrong": "They go to review the luggage tomorrow."
+      },
+      {
+        "template_id": "travel_a2_subject_simple_present_object_07",
+        "family_id": "travel_a2_subject_simple_present_object_0",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a2_reservation"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the reservation every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a reserva todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the reservation every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Nós verificamos a reserva todos os dias.",
+        "ctx": "Contexto de viagens (nível A2).",
+        "blank": "check",
+        "wrong": "We check the reservation every day."
+      },
+      {
+        "template_id": "travel_a2_wh_do_subject_base_verb_08",
+        "family_id": "travel_a2_wh_do_subject_base_verb_1",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "past_simple",
+        "skill_ids": [
+          "past_simple",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_a2_city_map"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the city map?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do mapa da cidade?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the city map?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Quando você precisa do mapa da cidade?",
+        "ctx": "Contexto de viagens (nível A2).",
+        "blank": "do",
+        "wrong": "When you do need the city map?"
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "travel_a2_ticket_chunk",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "make a ticket",
+        "translation_pt": "passagem",
+        "invalid_variants": [
+          "do a ticket"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a2_hotel_chunk",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "check the hotel",
+        "translation_pt": "hotel",
+        "invalid_variants": [
+          "do the hotel"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a2_passport_chunk",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "make a passport",
+        "translation_pt": "passaporte",
+        "invalid_variants": [
+          "do a passport"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a2_train_station_chunk",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "check the train station",
+        "translation_pt": "estação de trem",
+        "invalid_variants": [
+          "do the train station"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a2_boarding_gate_chunk",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "make a boarding gate",
+        "translation_pt": "portão de embarque",
+        "invalid_variants": [
+          "do a boarding gate"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a2_luggage_chunk",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "check the luggage",
+        "translation_pt": "bagagem",
+        "invalid_variants": [
+          "do the luggage"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_a2_reservation_chunk",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "canonical": "make a reservation",
+        "translation_pt": "reserva",
+        "invalid_variants": [
+          "do a reservation"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "travel_b1",
+      "title": {
+        "pt": "Viagens B1",
+        "en": "Travel B1"
+      },
+      "theme": "travel",
+      "level": "B1",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_b1"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "travel_b1_ticket",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "ticket",
+        "translation_pt": "passagem",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_hotel",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "hotel",
+        "translation_pt": "hotel",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_passport",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "passport",
+        "translation_pt": "passaporte",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_train_station",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "train station",
+        "translation_pt": "estação de trem",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_boarding_gate",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "boarding gate",
+        "translation_pt": "portão de embarque",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_luggage",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "luggage",
+        "translation_pt": "bagagem",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_reservation",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "reservation",
+        "translation_pt": "reserva",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_city_map",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "city map",
+        "translation_pt": "mapa da cidade",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_tour_guide",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "tour guide",
+        "translation_pt": "guia turístico",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_beach_trip",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "beach trip",
+        "translation_pt": "viagem à praia",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_flight_delay",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "flight delay",
+        "translation_pt": "atraso do voo",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_taxi_ride",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "taxi ride",
+        "translation_pt": "corrida de táxi",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_museum_pass",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "museum pass",
+        "translation_pt": "ingresso do museu",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "travel_b1_travel_insurance",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "travel insurance",
+        "translation_pt": "seguro viagem",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "b1"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "travel_b1_subject_have_past_participle_yet_01",
+        "family_id": "travel_b1_subject_have_past_participle_yet_0",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b1_ticket"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have checked the ticket already.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos a passagem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the ticket already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the ticket already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós já verificamos a passagem.",
+        "ctx": "Contexto de viagens (nível B1).",
+        "blank": "have",
+        "wrong": "We have check the ticket already."
+      },
+      {
+        "template_id": "travel_b1_subject_have_been_ving_object_duration_02",
+        "family_id": "travel_b1_subject_have_been_ving_object_duration_1",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "subject_have_been_ving_object_duration",
+        "primary_skill_id": "present_perfect_continuous",
+        "skill_ids": [
+          "present_perfect_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b1_hotel"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They have been reviewing the hotel for two hours.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando o hotel há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the hotel for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the hotel for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "present_perfect_continuous"
+        ],
+        "pt": "Eles estão revisando o hotel há duas horas.",
+        "ctx": "Contexto de viagens (nível B1).",
+        "blank": "have",
+        "wrong": "They have been reviewed the hotel for two hours."
+      },
+      {
+        "template_id": "travel_b1_if_present_will_future_03",
+        "family_id": "travel_b1_if_present_will_future_2",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "gerund_after_been",
+        "skill_ids": [
+          "gerund_after_been",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b1_passport"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If we confirm the passport, we will start tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos o passaporte, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the passport, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the passport, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "gerund_after_been"
+        ],
+        "pt": "Se confirmarmos o passaporte, vamos começar amanhã.",
+        "ctx": "Contexto de viagens (nível B1).",
+        "blank": "we",
+        "wrong": "If we confirm the passport, we will start tomorrow."
+      },
+      {
+        "template_id": "travel_b1_subject_modal_base_verb_04",
+        "family_id": "travel_b1_subject_modal_base_verb_3",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "first_conditional",
+        "skill_ids": [
+          "first_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b1_train_station"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the train station today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a estação de trem hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the train station today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "pt": "Eu posso atualizar a estação de trem hoje.",
+        "ctx": "Contexto de viagens (nível B1).",
+        "blank": "can",
+        "wrong": "I cans update the train station today."
+      },
+      {
+        "template_id": "travel_b1_subject_have_past_participle_yet_05",
+        "family_id": "travel_b1_subject_have_past_participle_yet_4",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b1_boarding_gate"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have checked the boarding gate already.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos o portão de embarque.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the boarding gate already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the boarding gate already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Nós já verificamos o portão de embarque.",
+        "ctx": "Contexto de viagens (nível B1).",
+        "blank": "have",
+        "wrong": "We have check the boarding gate already."
+      },
+      {
+        "template_id": "travel_b1_subject_have_been_ving_object_duration_06",
+        "family_id": "travel_b1_subject_have_been_ving_object_duration_5",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "subject_have_been_ving_object_duration",
+        "primary_skill_id": "collocation",
+        "skill_ids": [
+          "collocation",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b1_luggage"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They have been reviewing the luggage for two hours.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando a bagagem há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the luggage for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the luggage for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "Eles estão revisando a bagagem há duas horas.",
+        "ctx": "Contexto de viagens (nível B1).",
+        "blank": "have",
+        "wrong": "They have been reviewed the luggage for two hours."
+      },
+      {
+        "template_id": "travel_b1_if_present_will_future_07",
+        "family_id": "travel_b1_if_present_will_future_0",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "preposition",
+        "skill_ids": [
+          "preposition",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b1_reservation"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If we confirm the reservation, we will start tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos a reserva, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the reservation, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the reservation, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "preposition"
+        ],
+        "pt": "Se confirmarmos a reserva, vamos começar amanhã.",
+        "ctx": "Contexto de viagens (nível B1).",
+        "blank": "we",
+        "wrong": "If we confirm the reservation, we will start tomorrow."
+      },
+      {
+        "template_id": "travel_b1_subject_modal_base_verb_08",
+        "family_id": "travel_b1_subject_modal_base_verb_1",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b1_city_map"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the city map today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o mapa da cidade hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the city map today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Eu posso atualizar o mapa da cidade hoje.",
+        "ctx": "Contexto de viagens (nível B1).",
+        "blank": "can",
+        "wrong": "I cans update the city map today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "travel_b1_ticket_chunk",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "make a ticket",
+        "translation_pt": "passagem",
+        "invalid_variants": [
+          "do a ticket"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b1_hotel_chunk",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "check the hotel",
+        "translation_pt": "hotel",
+        "invalid_variants": [
+          "do the hotel"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b1_passport_chunk",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "make a passport",
+        "translation_pt": "passaporte",
+        "invalid_variants": [
+          "do a passport"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b1_train_station_chunk",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "check the train station",
+        "translation_pt": "estação de trem",
+        "invalid_variants": [
+          "do the train station"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b1_boarding_gate_chunk",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "make a boarding gate",
+        "translation_pt": "portão de embarque",
+        "invalid_variants": [
+          "do a boarding gate"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b1_luggage_chunk",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "check the luggage",
+        "translation_pt": "bagagem",
+        "invalid_variants": [
+          "do the luggage"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b1_reservation_chunk",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "canonical": "make a reservation",
+        "translation_pt": "reserva",
+        "invalid_variants": [
+          "do a reservation"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "travel_b2",
+      "title": {
+        "pt": "Viagens B2",
+        "en": "Travel B2"
+      },
+      "theme": "travel",
+      "level": "B2",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_b2"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "travel_b2_ticket",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "ticket",
+        "translation_pt": "passagem",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_hotel",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "hotel",
+        "translation_pt": "hotel",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_passport",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "passport",
+        "translation_pt": "passaporte",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_train_station",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "train station",
+        "translation_pt": "estação de trem",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_boarding_gate",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "boarding gate",
+        "translation_pt": "portão de embarque",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_luggage",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "luggage",
+        "translation_pt": "bagagem",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_reservation",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "reservation",
+        "translation_pt": "reserva",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_city_map",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "city map",
+        "translation_pt": "mapa da cidade",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_tour_guide",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "tour guide",
+        "translation_pt": "guia turístico",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_beach_trip",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "beach trip",
+        "translation_pt": "viagem à praia",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_flight_delay",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "flight delay",
+        "translation_pt": "atraso do voo",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_taxi_ride",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "taxi ride",
+        "translation_pt": "corrida de táxi",
+        "semantic_type": "action",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_museum_pass",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "museum pass",
+        "translation_pt": "ingresso do museu",
+        "semantic_type": "object",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "travel_b2_travel_insurance",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "travel insurance",
+        "translation_pt": "seguro viagem",
+        "semantic_type": "time",
+        "tags": [
+          "travel",
+          "b2"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "travel_b2_passive_be_past_participle_01",
+        "family_id": "travel_b2_passive_be_past_participle_0",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b2_ticket"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The ticket was reviewed by the team.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A passagem foi revisada pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The ticket was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "A passagem foi revisada pela equipe.",
+        "ctx": "Contexto de viagens (nível B2).",
+        "blank": "ticket",
+        "wrong": "The ticket reviewed by the team."
+      },
+      {
+        "template_id": "travel_b2_reported_speech_statement_02",
+        "family_id": "travel_b2_reported_speech_statement_1",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "pattern_id": "reported_speech_statement",
+        "primary_skill_id": "reported_speech",
+        "skill_ids": [
+          "reported_speech",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b2_hotel"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "She said that the hotel was ready.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que o hotel estava pronto.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the hotel was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "reported_speech"
+        ],
+        "pt": "Ela disse que o hotel estava pronto.",
+        "ctx": "Contexto de viagens (nível B2).",
+        "blank": "said",
+        "wrong": "She said the hotel was ready."
+      },
+      {
+        "template_id": "travel_b2_second_conditional_03",
+        "family_id": "travel_b2_second_conditional_2",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "pattern_id": "second_conditional",
+        "primary_skill_id": "second_conditional",
+        "skill_ids": [
+          "second_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b2_passport"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If I had more time, I would improve the passport.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o passaporte.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the passport."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the passport."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "second_conditional"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria o passaporte.",
+        "ctx": "Contexto de viagens (nível B2).",
+        "blank": "I",
+        "wrong": "If I had more time, I will improve the passport."
+      },
+      {
+        "template_id": "travel_b2_subject_modal_base_verb_04",
+        "family_id": "travel_b2_subject_modal_base_verb_3",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "modal_deduction",
+        "skill_ids": [
+          "modal_deduction",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b2_train_station"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the train station today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a estação de trem hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the train station today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "pt": "Eu posso atualizar a estação de trem hoje.",
+        "ctx": "Contexto de viagens (nível B2).",
+        "blank": "can",
+        "wrong": "I cans update the train station today."
+      },
+      {
+        "template_id": "travel_b2_passive_be_past_participle_05",
+        "family_id": "travel_b2_passive_be_past_participle_4",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "collocation",
+        "skill_ids": [
+          "collocation",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b2_boarding_gate"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The boarding gate was reviewed by the team.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O portão de embarque foi revisado pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The boarding gate was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "O portão de embarque foi revisado pela equipe.",
+        "ctx": "Contexto de viagens (nível B2).",
+        "blank": "boarding",
+        "wrong": "The boarding gate reviewed by the team."
+      },
+      {
+        "template_id": "travel_b2_reported_speech_statement_06",
+        "family_id": "travel_b2_reported_speech_statement_5",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "pattern_id": "reported_speech_statement",
+        "primary_skill_id": "word_order",
+        "skill_ids": [
+          "word_order",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b2_luggage"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "She said that the luggage was ready.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que a bagagem estava pronta.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the luggage was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "word_order"
+        ],
+        "pt": "Ela disse que a bagagem estava pronta.",
+        "ctx": "Contexto de viagens (nível B2).",
+        "blank": "said",
+        "wrong": "She said the luggage was ready."
+      },
+      {
+        "template_id": "travel_b2_second_conditional_07",
+        "family_id": "travel_b2_second_conditional_0",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "pattern_id": "second_conditional",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b2_reservation"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If I had more time, I would improve the reservation.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a reserva.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the reservation."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the reservation."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria a reserva.",
+        "ctx": "Contexto de viagens (nível B2).",
+        "blank": "I",
+        "wrong": "If I had more time, I will improve the reservation."
+      },
+      {
+        "template_id": "travel_b2_subject_modal_base_verb_08",
+        "family_id": "travel_b2_subject_modal_base_verb_1",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "travel_b2_city_map"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the city map today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o mapa da cidade hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the city map today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "Eu posso atualizar o mapa da cidade hoje.",
+        "ctx": "Contexto de viagens (nível B2).",
+        "blank": "can",
+        "wrong": "I cans update the city map today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "travel_b2_ticket_chunk",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "make a ticket",
+        "translation_pt": "passagem",
+        "invalid_variants": [
+          "do a ticket"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b2_hotel_chunk",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "check the hotel",
+        "translation_pt": "hotel",
+        "invalid_variants": [
+          "do the hotel"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b2_passport_chunk",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "make a passport",
+        "translation_pt": "passaporte",
+        "invalid_variants": [
+          "do a passport"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b2_train_station_chunk",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "check the train station",
+        "translation_pt": "estação de trem",
+        "invalid_variants": [
+          "do the train station"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b2_boarding_gate_chunk",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "make a boarding gate",
+        "translation_pt": "portão de embarque",
+        "invalid_variants": [
+          "do a boarding gate"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b2_luggage_chunk",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "check the luggage",
+        "translation_pt": "bagagem",
+        "invalid_variants": [
+          "do the luggage"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "travel_b2_reservation_chunk",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "canonical": "make a reservation",
+        "translation_pt": "reserva",
+        "invalid_variants": [
+          "do a reservation"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "food_and_restaurants_a1",
+      "title": {
+        "pt": "Comida e restaurantes A1",
+        "en": "Food and restaurants A1"
+      },
+      "theme": "food_and_restaurants",
+      "level": "A1",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_a1"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "food_and_restaurants_a1_menu",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "menu",
+        "translation_pt": "cardápio",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_table",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "table",
+        "translation_pt": "mesa",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_starter",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "starter",
+        "translation_pt": "entrada",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_main_course",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "main course",
+        "translation_pt": "prato principal",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_dessert",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "dessert",
+        "translation_pt": "sobremesa",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_bill",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "bill",
+        "translation_pt": "conta",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_waiter",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "waiter",
+        "translation_pt": "garçom",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_reservation",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "reservation",
+        "translation_pt": "reserva",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_vegetarian_dish",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "vegetarian dish",
+        "translation_pt": "prato vegetariano",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_coffee",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "coffee",
+        "translation_pt": "café",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_fresh_salad",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "fresh salad",
+        "translation_pt": "salada fresca",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_spicy_soup",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "spicy soup",
+        "translation_pt": "sopa apimentada",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_breakfast",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "breakfast",
+        "translation_pt": "café da manhã",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a1_restaurant_review",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "restaurant review",
+        "translation_pt": "avaliação do restaurante",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "a1"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "food_and_restaurants_a1_subject_be_complement_01",
+        "family_id": "food_and_restaurants_a1_subject_be_complement_0",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "verb_to_be",
+        "skill_ids": [
+          "verb_to_be",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a1_menu"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The menu is important.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O cardápio é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The menu is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "O cardápio é importante.",
+        "ctx": "Contexto de comida e restaurantes (nível A1).",
+        "blank": "menu",
+        "wrong": "The menu is important."
+      },
+      {
+        "template_id": "food_and_restaurants_a1_subject_simple_present_object_02",
+        "family_id": "food_and_restaurants_a1_subject_simple_present_object_1",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a1_table"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the table every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a mesa todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the table every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "pt": "Nós verificamos a mesa todos os dias.",
+        "ctx": "Contexto de comida e restaurantes (nível A1).",
+        "blank": "check",
+        "wrong": "We check the table every day."
+      },
+      {
+        "template_id": "food_and_restaurants_a1_wh_do_subject_base_verb_03",
+        "family_id": "food_and_restaurants_a1_wh_do_subject_base_verb_2",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "there_is_are",
+        "skill_ids": [
+          "there_is_are",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a1_starter"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the starter?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da entrada?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the starter?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "pt": "Quando você precisa da entrada?",
+        "ctx": "Contexto de comida e restaurantes (nível A1).",
+        "blank": "do",
+        "wrong": "When you do need the starter?"
+      },
+      {
+        "template_id": "food_and_restaurants_a1_subject_modal_base_verb_04",
+        "family_id": "food_and_restaurants_a1_subject_modal_base_verb_3",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "can_ability",
+        "skill_ids": [
+          "can_ability",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a1_main_course"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the main course today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o prato principal hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the main course today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "can_ability"
+        ],
+        "pt": "Eu posso atualizar o prato principal hoje.",
+        "ctx": "Contexto de comida e restaurantes (nível A1).",
+        "blank": "can",
+        "wrong": "I cans update the main course today."
+      },
+      {
+        "template_id": "food_and_restaurants_a1_subject_be_complement_05",
+        "family_id": "food_and_restaurants_a1_subject_be_complement_4",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a1_dessert"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The dessert is important.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A sobremesa é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The dessert is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "pt": "A sobremesa é importante.",
+        "ctx": "Contexto de comida e restaurantes (nível A1).",
+        "blank": "dessert",
+        "wrong": "The dessert is important."
+      },
+      {
+        "template_id": "food_and_restaurants_a1_subject_simple_present_object_06",
+        "family_id": "food_and_restaurants_a1_subject_simple_present_object_5",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "question_structure",
+        "skill_ids": [
+          "question_structure",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a1_bill"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the bill every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a conta todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the bill every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "question_structure"
+        ],
+        "pt": "Nós verificamos a conta todos os dias.",
+        "ctx": "Contexto de comida e restaurantes (nível A1).",
+        "blank": "check",
+        "wrong": "We check the bill every day."
+      },
+      {
+        "template_id": "food_and_restaurants_a1_wh_do_subject_base_verb_07",
+        "family_id": "food_and_restaurants_a1_wh_do_subject_base_verb_0",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a1_waiter"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the waiter?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do garçom?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the waiter?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Quando você precisa do garçom?",
+        "ctx": "Contexto de comida e restaurantes (nível A1).",
+        "blank": "do",
+        "wrong": "When you do need the waiter?"
+      },
+      {
+        "template_id": "food_and_restaurants_a1_subject_modal_base_verb_08",
+        "family_id": "food_and_restaurants_a1_subject_modal_base_verb_1",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "verb_to_be",
+        "skill_ids": [
+          "verb_to_be",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a1_reservation"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the reservation today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a reserva hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the reservation today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "Eu posso atualizar a reserva hoje.",
+        "ctx": "Contexto de comida e restaurantes (nível A1).",
+        "blank": "can",
+        "wrong": "I cans update the reservation today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "food_and_restaurants_a1_menu_chunk",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "make a menu",
+        "translation_pt": "cardápio",
+        "invalid_variants": [
+          "do a menu"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a1_table_chunk",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "check the table",
+        "translation_pt": "mesa",
+        "invalid_variants": [
+          "do the table"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a1_starter_chunk",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "make a starter",
+        "translation_pt": "entrada",
+        "invalid_variants": [
+          "do a starter"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a1_main_course_chunk",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "check the main course",
+        "translation_pt": "prato principal",
+        "invalid_variants": [
+          "do the main course"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a1_dessert_chunk",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "make a dessert",
+        "translation_pt": "sobremesa",
+        "invalid_variants": [
+          "do a dessert"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a1_bill_chunk",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "check the bill",
+        "translation_pt": "conta",
+        "invalid_variants": [
+          "do the bill"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a1_waiter_chunk",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "canonical": "make a waiter",
+        "translation_pt": "garçom",
+        "invalid_variants": [
+          "do a waiter"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "food_and_restaurants_a2",
+      "title": {
+        "pt": "Comida e restaurantes A2",
+        "en": "Food and restaurants A2"
+      },
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_a2"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "food_and_restaurants_a2_menu",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "menu",
+        "translation_pt": "cardápio",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_table",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "table",
+        "translation_pt": "mesa",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_starter",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "starter",
+        "translation_pt": "entrada",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_main_course",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "main course",
+        "translation_pt": "prato principal",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_dessert",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "dessert",
+        "translation_pt": "sobremesa",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_bill",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "bill",
+        "translation_pt": "conta",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_waiter",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "waiter",
+        "translation_pt": "garçom",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_reservation",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "reservation",
+        "translation_pt": "reserva",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_vegetarian_dish",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "vegetarian dish",
+        "translation_pt": "prato vegetariano",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_coffee",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "coffee",
+        "translation_pt": "café",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_fresh_salad",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "fresh salad",
+        "translation_pt": "salada fresca",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_spicy_soup",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "spicy soup",
+        "translation_pt": "sopa apimentada",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_breakfast",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "breakfast",
+        "translation_pt": "café da manhã",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_a2_restaurant_review",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "restaurant review",
+        "translation_pt": "avaliação do restaurante",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "a2"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "food_and_restaurants_a2_subject_past_simple_object_time_01",
+        "family_id": "food_and_restaurants_a2_subject_past_simple_object_time_0",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "pattern_id": "subject_past_simple_object_time",
+        "primary_skill_id": "past_simple",
+        "skill_ids": [
+          "past_simple",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a2_menu"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We checked the menu yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o cardápio ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the menu yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Nós verificamos o cardápio ontem.",
+        "ctx": "Contexto de comida e restaurantes (nível A2).",
+        "blank": "checked",
+        "wrong": "We check the menu yesterday."
+      },
+      {
+        "template_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_02",
+        "family_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_1",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "present_continuous",
+        "skill_ids": [
+          "present_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a2_table"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They are going to review the table tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar a mesa amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the table tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the table tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "pt": "Eles vão revisar a mesa amanhã.",
+        "ctx": "Contexto de comida e restaurantes (nível A2).",
+        "blank": "are",
+        "wrong": "They go to review the table tomorrow."
+      },
+      {
+        "template_id": "food_and_restaurants_a2_subject_simple_present_object_03",
+        "family_id": "food_and_restaurants_a2_subject_simple_present_object_2",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "future_going_to",
+        "skill_ids": [
+          "future_going_to",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a2_starter"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the starter every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a entrada todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the starter every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "future_going_to"
+        ],
+        "pt": "Nós verificamos a entrada todos os dias.",
+        "ctx": "Contexto de comida e restaurantes (nível A2).",
+        "blank": "check",
+        "wrong": "We check the starter every day."
+      },
+      {
+        "template_id": "food_and_restaurants_a2_wh_do_subject_base_verb_04",
+        "family_id": "food_and_restaurants_a2_wh_do_subject_base_verb_3",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "comparatives",
+        "skill_ids": [
+          "comparatives",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a2_main_course"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the main course?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do prato principal?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the main course?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "pt": "Quando você precisa do prato principal?",
+        "ctx": "Contexto de comida e restaurantes (nível A2).",
+        "blank": "do",
+        "wrong": "When you do need the main course?"
+      },
+      {
+        "template_id": "food_and_restaurants_a2_subject_past_simple_object_time_05",
+        "family_id": "food_and_restaurants_a2_subject_past_simple_object_time_4",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "pattern_id": "subject_past_simple_object_time",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a2_dessert"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We checked the dessert yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a sobremesa ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the dessert yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós verificamos a sobremesa ontem.",
+        "ctx": "Contexto de comida e restaurantes (nível A2).",
+        "blank": "checked",
+        "wrong": "We check the dessert yesterday."
+      },
+      {
+        "template_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_06",
+        "family_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_5",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a2_bill"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They are going to review the bill tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar a conta amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the bill tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the bill tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Eles vão revisar a conta amanhã.",
+        "ctx": "Contexto de comida e restaurantes (nível A2).",
+        "blank": "are",
+        "wrong": "They go to review the bill tomorrow."
+      },
+      {
+        "template_id": "food_and_restaurants_a2_subject_simple_present_object_07",
+        "family_id": "food_and_restaurants_a2_subject_simple_present_object_0",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a2_waiter"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the waiter every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o garçom todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the waiter every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Nós verificamos o garçom todos os dias.",
+        "ctx": "Contexto de comida e restaurantes (nível A2).",
+        "blank": "check",
+        "wrong": "We check the waiter every day."
+      },
+      {
+        "template_id": "food_and_restaurants_a2_wh_do_subject_base_verb_08",
+        "family_id": "food_and_restaurants_a2_wh_do_subject_base_verb_1",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "past_simple",
+        "skill_ids": [
+          "past_simple",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_a2_reservation"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the reservation?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da reserva?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the reservation?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Quando você precisa da reserva?",
+        "ctx": "Contexto de comida e restaurantes (nível A2).",
+        "blank": "do",
+        "wrong": "When you do need the reservation?"
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "food_and_restaurants_a2_menu_chunk",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "make a menu",
+        "translation_pt": "cardápio",
+        "invalid_variants": [
+          "do a menu"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a2_table_chunk",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "check the table",
+        "translation_pt": "mesa",
+        "invalid_variants": [
+          "do the table"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a2_starter_chunk",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "make a starter",
+        "translation_pt": "entrada",
+        "invalid_variants": [
+          "do a starter"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a2_main_course_chunk",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "check the main course",
+        "translation_pt": "prato principal",
+        "invalid_variants": [
+          "do the main course"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a2_dessert_chunk",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "make a dessert",
+        "translation_pt": "sobremesa",
+        "invalid_variants": [
+          "do a dessert"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a2_bill_chunk",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "check the bill",
+        "translation_pt": "conta",
+        "invalid_variants": [
+          "do the bill"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_a2_waiter_chunk",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "canonical": "make a waiter",
+        "translation_pt": "garçom",
+        "invalid_variants": [
+          "do a waiter"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "food_and_restaurants_b1",
+      "title": {
+        "pt": "Comida e restaurantes B1",
+        "en": "Food and restaurants B1"
+      },
+      "theme": "food_and_restaurants",
+      "level": "B1",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_b1"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "food_and_restaurants_b1_menu",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "menu",
+        "translation_pt": "cardápio",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_table",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "table",
+        "translation_pt": "mesa",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_starter",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "starter",
+        "translation_pt": "entrada",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_main_course",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "main course",
+        "translation_pt": "prato principal",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_dessert",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "dessert",
+        "translation_pt": "sobremesa",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_bill",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "bill",
+        "translation_pt": "conta",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_waiter",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "waiter",
+        "translation_pt": "garçom",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_reservation",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "reservation",
+        "translation_pt": "reserva",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_vegetarian_dish",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "vegetarian dish",
+        "translation_pt": "prato vegetariano",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_coffee",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "coffee",
+        "translation_pt": "café",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_fresh_salad",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "fresh salad",
+        "translation_pt": "salada fresca",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_spicy_soup",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "spicy soup",
+        "translation_pt": "sopa apimentada",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_breakfast",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "breakfast",
+        "translation_pt": "café da manhã",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b1_restaurant_review",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "restaurant review",
+        "translation_pt": "avaliação do restaurante",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "b1"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "food_and_restaurants_b1_subject_have_past_participle_yet_01",
+        "family_id": "food_and_restaurants_b1_subject_have_past_participle_yet_0",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b1_menu"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have checked the menu already.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos o cardápio.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the menu already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the menu already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós já verificamos o cardápio.",
+        "ctx": "Contexto de comida e restaurantes (nível B1).",
+        "blank": "have",
+        "wrong": "We have check the menu already."
+      },
+      {
+        "template_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_02",
+        "family_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_1",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "subject_have_been_ving_object_duration",
+        "primary_skill_id": "present_perfect_continuous",
+        "skill_ids": [
+          "present_perfect_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b1_table"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They have been reviewing the table for two hours.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando a mesa há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the table for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the table for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "present_perfect_continuous"
+        ],
+        "pt": "Eles estão revisando a mesa há duas horas.",
+        "ctx": "Contexto de comida e restaurantes (nível B1).",
+        "blank": "have",
+        "wrong": "They have been reviewed the table for two hours."
+      },
+      {
+        "template_id": "food_and_restaurants_b1_if_present_will_future_03",
+        "family_id": "food_and_restaurants_b1_if_present_will_future_2",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "gerund_after_been",
+        "skill_ids": [
+          "gerund_after_been",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b1_starter"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If we confirm the starter, we will start tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos a entrada, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the starter, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the starter, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "gerund_after_been"
+        ],
+        "pt": "Se confirmarmos a entrada, vamos começar amanhã.",
+        "ctx": "Contexto de comida e restaurantes (nível B1).",
+        "blank": "we",
+        "wrong": "If we confirm the starter, we will start tomorrow."
+      },
+      {
+        "template_id": "food_and_restaurants_b1_subject_modal_base_verb_04",
+        "family_id": "food_and_restaurants_b1_subject_modal_base_verb_3",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "first_conditional",
+        "skill_ids": [
+          "first_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b1_main_course"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the main course today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o prato principal hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the main course today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "pt": "Eu posso atualizar o prato principal hoje.",
+        "ctx": "Contexto de comida e restaurantes (nível B1).",
+        "blank": "can",
+        "wrong": "I cans update the main course today."
+      },
+      {
+        "template_id": "food_and_restaurants_b1_subject_have_past_participle_yet_05",
+        "family_id": "food_and_restaurants_b1_subject_have_past_participle_yet_4",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b1_dessert"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have checked the dessert already.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos a sobremesa.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the dessert already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the dessert already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Nós já verificamos a sobremesa.",
+        "ctx": "Contexto de comida e restaurantes (nível B1).",
+        "blank": "have",
+        "wrong": "We have check the dessert already."
+      },
+      {
+        "template_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_06",
+        "family_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_5",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "subject_have_been_ving_object_duration",
+        "primary_skill_id": "collocation",
+        "skill_ids": [
+          "collocation",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b1_bill"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They have been reviewing the bill for two hours.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando a conta há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the bill for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the bill for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "Eles estão revisando a conta há duas horas.",
+        "ctx": "Contexto de comida e restaurantes (nível B1).",
+        "blank": "have",
+        "wrong": "They have been reviewed the bill for two hours."
+      },
+      {
+        "template_id": "food_and_restaurants_b1_if_present_will_future_07",
+        "family_id": "food_and_restaurants_b1_if_present_will_future_0",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "preposition",
+        "skill_ids": [
+          "preposition",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b1_waiter"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If we confirm the waiter, we will start tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos o garçom, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the waiter, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the waiter, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "preposition"
+        ],
+        "pt": "Se confirmarmos o garçom, vamos começar amanhã.",
+        "ctx": "Contexto de comida e restaurantes (nível B1).",
+        "blank": "we",
+        "wrong": "If we confirm the waiter, we will start tomorrow."
+      },
+      {
+        "template_id": "food_and_restaurants_b1_subject_modal_base_verb_08",
+        "family_id": "food_and_restaurants_b1_subject_modal_base_verb_1",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b1_reservation"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the reservation today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a reserva hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the reservation today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Eu posso atualizar a reserva hoje.",
+        "ctx": "Contexto de comida e restaurantes (nível B1).",
+        "blank": "can",
+        "wrong": "I cans update the reservation today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "food_and_restaurants_b1_menu_chunk",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "make a menu",
+        "translation_pt": "cardápio",
+        "invalid_variants": [
+          "do a menu"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b1_table_chunk",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "check the table",
+        "translation_pt": "mesa",
+        "invalid_variants": [
+          "do the table"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b1_starter_chunk",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "make a starter",
+        "translation_pt": "entrada",
+        "invalid_variants": [
+          "do a starter"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b1_main_course_chunk",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "check the main course",
+        "translation_pt": "prato principal",
+        "invalid_variants": [
+          "do the main course"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b1_dessert_chunk",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "make a dessert",
+        "translation_pt": "sobremesa",
+        "invalid_variants": [
+          "do a dessert"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b1_bill_chunk",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "check the bill",
+        "translation_pt": "conta",
+        "invalid_variants": [
+          "do the bill"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b1_waiter_chunk",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "canonical": "make a waiter",
+        "translation_pt": "garçom",
+        "invalid_variants": [
+          "do a waiter"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "food_and_restaurants_b2",
+      "title": {
+        "pt": "Comida e restaurantes B2",
+        "en": "Food and restaurants B2"
+      },
+      "theme": "food_and_restaurants",
+      "level": "B2",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_b2"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "food_and_restaurants_b2_menu",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "menu",
+        "translation_pt": "cardápio",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_table",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "table",
+        "translation_pt": "mesa",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_starter",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "starter",
+        "translation_pt": "entrada",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_main_course",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "main course",
+        "translation_pt": "prato principal",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_dessert",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "dessert",
+        "translation_pt": "sobremesa",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_bill",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "bill",
+        "translation_pt": "conta",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_waiter",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "waiter",
+        "translation_pt": "garçom",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_reservation",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "reservation",
+        "translation_pt": "reserva",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_vegetarian_dish",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "vegetarian dish",
+        "translation_pt": "prato vegetariano",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_coffee",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "coffee",
+        "translation_pt": "café",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_fresh_salad",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "fresh salad",
+        "translation_pt": "salada fresca",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_spicy_soup",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "spicy soup",
+        "translation_pt": "sopa apimentada",
+        "semantic_type": "action",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_breakfast",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "breakfast",
+        "translation_pt": "café da manhã",
+        "semantic_type": "object",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "food_and_restaurants_b2_restaurant_review",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "restaurant review",
+        "translation_pt": "avaliação do restaurante",
+        "semantic_type": "time",
+        "tags": [
+          "food_and_restaurants",
+          "b2"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "food_and_restaurants_b2_passive_be_past_participle_01",
+        "family_id": "food_and_restaurants_b2_passive_be_past_participle_0",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b2_menu"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The menu was reviewed by the team.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O cardápio foi revisado pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The menu was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "O cardápio foi revisado pela equipe.",
+        "ctx": "Contexto de comida e restaurantes (nível B2).",
+        "blank": "menu",
+        "wrong": "The menu reviewed by the team."
+      },
+      {
+        "template_id": "food_and_restaurants_b2_reported_speech_statement_02",
+        "family_id": "food_and_restaurants_b2_reported_speech_statement_1",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "pattern_id": "reported_speech_statement",
+        "primary_skill_id": "reported_speech",
+        "skill_ids": [
+          "reported_speech",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b2_table"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "She said that the table was ready.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que a mesa estava pronta.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the table was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "reported_speech"
+        ],
+        "pt": "Ela disse que a mesa estava pronta.",
+        "ctx": "Contexto de comida e restaurantes (nível B2).",
+        "blank": "said",
+        "wrong": "She said the table was ready."
+      },
+      {
+        "template_id": "food_and_restaurants_b2_second_conditional_03",
+        "family_id": "food_and_restaurants_b2_second_conditional_2",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "pattern_id": "second_conditional",
+        "primary_skill_id": "second_conditional",
+        "skill_ids": [
+          "second_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b2_starter"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If I had more time, I would improve the starter.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a entrada.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the starter."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the starter."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "second_conditional"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria a entrada.",
+        "ctx": "Contexto de comida e restaurantes (nível B2).",
+        "blank": "I",
+        "wrong": "If I had more time, I will improve the starter."
+      },
+      {
+        "template_id": "food_and_restaurants_b2_subject_modal_base_verb_04",
+        "family_id": "food_and_restaurants_b2_subject_modal_base_verb_3",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "modal_deduction",
+        "skill_ids": [
+          "modal_deduction",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b2_main_course"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the main course today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o prato principal hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the main course today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "pt": "Eu posso atualizar o prato principal hoje.",
+        "ctx": "Contexto de comida e restaurantes (nível B2).",
+        "blank": "can",
+        "wrong": "I cans update the main course today."
+      },
+      {
+        "template_id": "food_and_restaurants_b2_passive_be_past_participle_05",
+        "family_id": "food_and_restaurants_b2_passive_be_past_participle_4",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "collocation",
+        "skill_ids": [
+          "collocation",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b2_dessert"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The dessert was reviewed by the team.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A sobremesa foi revisada pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The dessert was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "A sobremesa foi revisada pela equipe.",
+        "ctx": "Contexto de comida e restaurantes (nível B2).",
+        "blank": "dessert",
+        "wrong": "The dessert reviewed by the team."
+      },
+      {
+        "template_id": "food_and_restaurants_b2_reported_speech_statement_06",
+        "family_id": "food_and_restaurants_b2_reported_speech_statement_5",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "pattern_id": "reported_speech_statement",
+        "primary_skill_id": "word_order",
+        "skill_ids": [
+          "word_order",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b2_bill"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "She said that the bill was ready.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que a conta estava pronta.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the bill was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "word_order"
+        ],
+        "pt": "Ela disse que a conta estava pronta.",
+        "ctx": "Contexto de comida e restaurantes (nível B2).",
+        "blank": "said",
+        "wrong": "She said the bill was ready."
+      },
+      {
+        "template_id": "food_and_restaurants_b2_second_conditional_07",
+        "family_id": "food_and_restaurants_b2_second_conditional_0",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "pattern_id": "second_conditional",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b2_waiter"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If I had more time, I would improve the waiter.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o garçom.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the waiter."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the waiter."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria o garçom.",
+        "ctx": "Contexto de comida e restaurantes (nível B2).",
+        "blank": "I",
+        "wrong": "If I had more time, I will improve the waiter."
+      },
+      {
+        "template_id": "food_and_restaurants_b2_subject_modal_base_verb_08",
+        "family_id": "food_and_restaurants_b2_subject_modal_base_verb_1",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "food_and_restaurants_b2_reservation"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the reservation today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a reserva hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the reservation today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "Eu posso atualizar a reserva hoje.",
+        "ctx": "Contexto de comida e restaurantes (nível B2).",
+        "blank": "can",
+        "wrong": "I cans update the reservation today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "food_and_restaurants_b2_menu_chunk",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "make a menu",
+        "translation_pt": "cardápio",
+        "invalid_variants": [
+          "do a menu"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b2_table_chunk",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "check the table",
+        "translation_pt": "mesa",
+        "invalid_variants": [
+          "do the table"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b2_starter_chunk",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "make a starter",
+        "translation_pt": "entrada",
+        "invalid_variants": [
+          "do a starter"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b2_main_course_chunk",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "check the main course",
+        "translation_pt": "prato principal",
+        "invalid_variants": [
+          "do the main course"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b2_dessert_chunk",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "make a dessert",
+        "translation_pt": "sobremesa",
+        "invalid_variants": [
+          "do a dessert"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b2_bill_chunk",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "check the bill",
+        "translation_pt": "conta",
+        "invalid_variants": [
+          "do the bill"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "food_and_restaurants_b2_waiter_chunk",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "canonical": "make a waiter",
+        "translation_pt": "garçom",
+        "invalid_variants": [
+          "do a waiter"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "shopping_and_services_a1",
+      "title": {
+        "pt": "Compras e serviços A1",
+        "en": "Shopping and services A1"
+      },
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_a1"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "shopping_and_services_a1_receipt",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "receipt",
+        "translation_pt": "recibo",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_discount",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "discount",
+        "translation_pt": "desconto",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_cashier",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "cashier",
+        "translation_pt": "caixa",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_return_policy",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "return policy",
+        "translation_pt": "política de troca",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_shoe_size",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "shoe size",
+        "translation_pt": "número do sapato",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_delivery",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "delivery",
+        "translation_pt": "entrega",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_pharmacy",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "pharmacy",
+        "translation_pt": "farmácia",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_bank_account",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "bank account",
+        "translation_pt": "conta bancária",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_haircut",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "haircut",
+        "translation_pt": "corte de cabelo",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_repair_shop",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "repair shop",
+        "translation_pt": "oficina de reparos",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_customer_service",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "customer service",
+        "translation_pt": "atendimento ao cliente",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_appointment",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "appointment",
+        "translation_pt": "agendamento",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_online_order",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "online order",
+        "translation_pt": "pedido online",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a1_queue",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "queue",
+        "translation_pt": "fila",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "a1"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "shopping_and_services_a1_subject_be_complement_01",
+        "family_id": "shopping_and_services_a1_subject_be_complement_0",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "verb_to_be",
+        "skill_ids": [
+          "verb_to_be",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a1_receipt"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The receipt is important.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O recibo é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The receipt is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "O recibo é importante.",
+        "ctx": "Contexto de compras e serviços (nível A1).",
+        "blank": "receipt",
+        "wrong": "The receipt is important."
+      },
+      {
+        "template_id": "shopping_and_services_a1_subject_simple_present_object_02",
+        "family_id": "shopping_and_services_a1_subject_simple_present_object_1",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a1_discount"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the discount every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o desconto todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the discount every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "pt": "Nós verificamos o desconto todos os dias.",
+        "ctx": "Contexto de compras e serviços (nível A1).",
+        "blank": "check",
+        "wrong": "We check the discount every day."
+      },
+      {
+        "template_id": "shopping_and_services_a1_wh_do_subject_base_verb_03",
+        "family_id": "shopping_and_services_a1_wh_do_subject_base_verb_2",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "there_is_are",
+        "skill_ids": [
+          "there_is_are",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a1_cashier"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the cashier?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do caixa?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the cashier?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "pt": "Quando você precisa do caixa?",
+        "ctx": "Contexto de compras e serviços (nível A1).",
+        "blank": "do",
+        "wrong": "When you do need the cashier?"
+      },
+      {
+        "template_id": "shopping_and_services_a1_subject_modal_base_verb_04",
+        "family_id": "shopping_and_services_a1_subject_modal_base_verb_3",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "can_ability",
+        "skill_ids": [
+          "can_ability",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a1_return_policy"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the return policy today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a política de troca hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the return policy today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "can_ability"
+        ],
+        "pt": "Eu posso atualizar a política de troca hoje.",
+        "ctx": "Contexto de compras e serviços (nível A1).",
+        "blank": "can",
+        "wrong": "I cans update the return policy today."
+      },
+      {
+        "template_id": "shopping_and_services_a1_subject_be_complement_05",
+        "family_id": "shopping_and_services_a1_subject_be_complement_4",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a1_shoe_size"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The shoe size is important.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O número do sapato é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The shoe size is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "pt": "O número do sapato é importante.",
+        "ctx": "Contexto de compras e serviços (nível A1).",
+        "blank": "shoe",
+        "wrong": "The shoe size is important."
+      },
+      {
+        "template_id": "shopping_and_services_a1_subject_simple_present_object_06",
+        "family_id": "shopping_and_services_a1_subject_simple_present_object_5",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "question_structure",
+        "skill_ids": [
+          "question_structure",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a1_delivery"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the delivery every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a entrega todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the delivery every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "question_structure"
+        ],
+        "pt": "Nós verificamos a entrega todos os dias.",
+        "ctx": "Contexto de compras e serviços (nível A1).",
+        "blank": "check",
+        "wrong": "We check the delivery every day."
+      },
+      {
+        "template_id": "shopping_and_services_a1_wh_do_subject_base_verb_07",
+        "family_id": "shopping_and_services_a1_wh_do_subject_base_verb_0",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a1_pharmacy"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the pharmacy?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da farmácia?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the pharmacy?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Quando você precisa da farmácia?",
+        "ctx": "Contexto de compras e serviços (nível A1).",
+        "blank": "do",
+        "wrong": "When you do need the pharmacy?"
+      },
+      {
+        "template_id": "shopping_and_services_a1_subject_modal_base_verb_08",
+        "family_id": "shopping_and_services_a1_subject_modal_base_verb_1",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "verb_to_be",
+        "skill_ids": [
+          "verb_to_be",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a1_bank_account"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the bank account today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a conta bancária hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the bank account today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "Eu posso atualizar a conta bancária hoje.",
+        "ctx": "Contexto de compras e serviços (nível A1).",
+        "blank": "can",
+        "wrong": "I cans update the bank account today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "shopping_and_services_a1_receipt_chunk",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "make a receipt",
+        "translation_pt": "recibo",
+        "invalid_variants": [
+          "do a receipt"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a1_discount_chunk",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "check the discount",
+        "translation_pt": "desconto",
+        "invalid_variants": [
+          "do the discount"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a1_cashier_chunk",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "make a cashier",
+        "translation_pt": "caixa",
+        "invalid_variants": [
+          "do a cashier"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a1_return_policy_chunk",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "check the return policy",
+        "translation_pt": "política de troca",
+        "invalid_variants": [
+          "do the return policy"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a1_shoe_size_chunk",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "make a shoe size",
+        "translation_pt": "número do sapato",
+        "invalid_variants": [
+          "do a shoe size"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a1_delivery_chunk",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "check the delivery",
+        "translation_pt": "entrega",
+        "invalid_variants": [
+          "do the delivery"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a1_pharmacy_chunk",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "canonical": "make a pharmacy",
+        "translation_pt": "farmácia",
+        "invalid_variants": [
+          "do a pharmacy"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "shopping_and_services_a2",
+      "title": {
+        "pt": "Compras e serviços A2",
+        "en": "Shopping and services A2"
+      },
+      "theme": "shopping_and_services",
+      "level": "A2",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_a2"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "shopping_and_services_a2_receipt",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "receipt",
+        "translation_pt": "recibo",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_discount",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "discount",
+        "translation_pt": "desconto",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_cashier",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "cashier",
+        "translation_pt": "caixa",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_return_policy",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "return policy",
+        "translation_pt": "política de troca",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_shoe_size",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "shoe size",
+        "translation_pt": "número do sapato",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_delivery",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "delivery",
+        "translation_pt": "entrega",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_pharmacy",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "pharmacy",
+        "translation_pt": "farmácia",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_bank_account",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "bank account",
+        "translation_pt": "conta bancária",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_haircut",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "haircut",
+        "translation_pt": "corte de cabelo",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_repair_shop",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "repair shop",
+        "translation_pt": "oficina de reparos",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_customer_service",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "customer service",
+        "translation_pt": "atendimento ao cliente",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_appointment",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "appointment",
+        "translation_pt": "agendamento",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_online_order",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "online order",
+        "translation_pt": "pedido online",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_a2_queue",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "queue",
+        "translation_pt": "fila",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "a2"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "shopping_and_services_a2_subject_past_simple_object_time_01",
+        "family_id": "shopping_and_services_a2_subject_past_simple_object_time_0",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "pattern_id": "subject_past_simple_object_time",
+        "primary_skill_id": "past_simple",
+        "skill_ids": [
+          "past_simple",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a2_receipt"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We checked the receipt yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o recibo ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the receipt yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Nós verificamos o recibo ontem.",
+        "ctx": "Contexto de compras e serviços (nível A2).",
+        "blank": "checked",
+        "wrong": "We check the receipt yesterday."
+      },
+      {
+        "template_id": "shopping_and_services_a2_subject_be_going_to_verb_time_02",
+        "family_id": "shopping_and_services_a2_subject_be_going_to_verb_time_1",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "present_continuous",
+        "skill_ids": [
+          "present_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a2_discount"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They are going to review the discount tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar o desconto amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the discount tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the discount tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "pt": "Eles vão revisar o desconto amanhã.",
+        "ctx": "Contexto de compras e serviços (nível A2).",
+        "blank": "are",
+        "wrong": "They go to review the discount tomorrow."
+      },
+      {
+        "template_id": "shopping_and_services_a2_subject_simple_present_object_03",
+        "family_id": "shopping_and_services_a2_subject_simple_present_object_2",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "future_going_to",
+        "skill_ids": [
+          "future_going_to",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a2_cashier"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the cashier every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o caixa todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the cashier every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "future_going_to"
+        ],
+        "pt": "Nós verificamos o caixa todos os dias.",
+        "ctx": "Contexto de compras e serviços (nível A2).",
+        "blank": "check",
+        "wrong": "We check the cashier every day."
+      },
+      {
+        "template_id": "shopping_and_services_a2_wh_do_subject_base_verb_04",
+        "family_id": "shopping_and_services_a2_wh_do_subject_base_verb_3",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "comparatives",
+        "skill_ids": [
+          "comparatives",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a2_return_policy"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the return policy?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da política de troca?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the return policy?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "pt": "Quando você precisa da política de troca?",
+        "ctx": "Contexto de compras e serviços (nível A2).",
+        "blank": "do",
+        "wrong": "When you do need the return policy?"
+      },
+      {
+        "template_id": "shopping_and_services_a2_subject_past_simple_object_time_05",
+        "family_id": "shopping_and_services_a2_subject_past_simple_object_time_4",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "pattern_id": "subject_past_simple_object_time",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a2_shoe_size"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We checked the shoe size yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o número do sapato ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the shoe size yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós verificamos o número do sapato ontem.",
+        "ctx": "Contexto de compras e serviços (nível A2).",
+        "blank": "checked",
+        "wrong": "We check the shoe size yesterday."
+      },
+      {
+        "template_id": "shopping_and_services_a2_subject_be_going_to_verb_time_06",
+        "family_id": "shopping_and_services_a2_subject_be_going_to_verb_time_5",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a2_delivery"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They are going to review the delivery tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar a entrega amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the delivery tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the delivery tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Eles vão revisar a entrega amanhã.",
+        "ctx": "Contexto de compras e serviços (nível A2).",
+        "blank": "are",
+        "wrong": "They go to review the delivery tomorrow."
+      },
+      {
+        "template_id": "shopping_and_services_a2_subject_simple_present_object_07",
+        "family_id": "shopping_and_services_a2_subject_simple_present_object_0",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a2_pharmacy"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the pharmacy every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a farmácia todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the pharmacy every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Nós verificamos a farmácia todos os dias.",
+        "ctx": "Contexto de compras e serviços (nível A2).",
+        "blank": "check",
+        "wrong": "We check the pharmacy every day."
+      },
+      {
+        "template_id": "shopping_and_services_a2_wh_do_subject_base_verb_08",
+        "family_id": "shopping_and_services_a2_wh_do_subject_base_verb_1",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "past_simple",
+        "skill_ids": [
+          "past_simple",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_a2_bank_account"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the bank account?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da conta bancária?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the bank account?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Quando você precisa da conta bancária?",
+        "ctx": "Contexto de compras e serviços (nível A2).",
+        "blank": "do",
+        "wrong": "When you do need the bank account?"
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "shopping_and_services_a2_receipt_chunk",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "make a receipt",
+        "translation_pt": "recibo",
+        "invalid_variants": [
+          "do a receipt"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a2_discount_chunk",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "check the discount",
+        "translation_pt": "desconto",
+        "invalid_variants": [
+          "do the discount"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a2_cashier_chunk",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "make a cashier",
+        "translation_pt": "caixa",
+        "invalid_variants": [
+          "do a cashier"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a2_return_policy_chunk",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "check the return policy",
+        "translation_pt": "política de troca",
+        "invalid_variants": [
+          "do the return policy"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a2_shoe_size_chunk",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "make a shoe size",
+        "translation_pt": "número do sapato",
+        "invalid_variants": [
+          "do a shoe size"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a2_delivery_chunk",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "check the delivery",
+        "translation_pt": "entrega",
+        "invalid_variants": [
+          "do the delivery"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_a2_pharmacy_chunk",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "canonical": "make a pharmacy",
+        "translation_pt": "farmácia",
+        "invalid_variants": [
+          "do a pharmacy"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "shopping_and_services_b1",
+      "title": {
+        "pt": "Compras e serviços B1",
+        "en": "Shopping and services B1"
+      },
+      "theme": "shopping_and_services",
+      "level": "B1",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_b1"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "shopping_and_services_b1_receipt",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "receipt",
+        "translation_pt": "recibo",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_discount",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "discount",
+        "translation_pt": "desconto",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_cashier",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "cashier",
+        "translation_pt": "caixa",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_return_policy",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "return policy",
+        "translation_pt": "política de troca",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_shoe_size",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "shoe size",
+        "translation_pt": "número do sapato",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_delivery",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "delivery",
+        "translation_pt": "entrega",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_pharmacy",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "pharmacy",
+        "translation_pt": "farmácia",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_bank_account",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "bank account",
+        "translation_pt": "conta bancária",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_haircut",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "haircut",
+        "translation_pt": "corte de cabelo",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_repair_shop",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "repair shop",
+        "translation_pt": "oficina de reparos",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_customer_service",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "customer service",
+        "translation_pt": "atendimento ao cliente",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_appointment",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "appointment",
+        "translation_pt": "agendamento",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_online_order",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "online order",
+        "translation_pt": "pedido online",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b1_queue",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "queue",
+        "translation_pt": "fila",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "b1"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "shopping_and_services_b1_subject_have_past_participle_yet_01",
+        "family_id": "shopping_and_services_b1_subject_have_past_participle_yet_0",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b1_receipt"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have checked the receipt already.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos o recibo.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the receipt already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the receipt already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós já verificamos o recibo.",
+        "ctx": "Contexto de compras e serviços (nível B1).",
+        "blank": "have",
+        "wrong": "We have check the receipt already."
+      },
+      {
+        "template_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_02",
+        "family_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_1",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "subject_have_been_ving_object_duration",
+        "primary_skill_id": "present_perfect_continuous",
+        "skill_ids": [
+          "present_perfect_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b1_discount"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They have been reviewing the discount for two hours.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando o desconto há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the discount for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the discount for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "present_perfect_continuous"
+        ],
+        "pt": "Eles estão revisando o desconto há duas horas.",
+        "ctx": "Contexto de compras e serviços (nível B1).",
+        "blank": "have",
+        "wrong": "They have been reviewed the discount for two hours."
+      },
+      {
+        "template_id": "shopping_and_services_b1_if_present_will_future_03",
+        "family_id": "shopping_and_services_b1_if_present_will_future_2",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "gerund_after_been",
+        "skill_ids": [
+          "gerund_after_been",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b1_cashier"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If we confirm the cashier, we will start tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos o caixa, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the cashier, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the cashier, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "gerund_after_been"
+        ],
+        "pt": "Se confirmarmos o caixa, vamos começar amanhã.",
+        "ctx": "Contexto de compras e serviços (nível B1).",
+        "blank": "we",
+        "wrong": "If we confirm the cashier, we will start tomorrow."
+      },
+      {
+        "template_id": "shopping_and_services_b1_subject_modal_base_verb_04",
+        "family_id": "shopping_and_services_b1_subject_modal_base_verb_3",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "first_conditional",
+        "skill_ids": [
+          "first_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b1_return_policy"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the return policy today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a política de troca hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the return policy today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "pt": "Eu posso atualizar a política de troca hoje.",
+        "ctx": "Contexto de compras e serviços (nível B1).",
+        "blank": "can",
+        "wrong": "I cans update the return policy today."
+      },
+      {
+        "template_id": "shopping_and_services_b1_subject_have_past_participle_yet_05",
+        "family_id": "shopping_and_services_b1_subject_have_past_participle_yet_4",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b1_shoe_size"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have checked the shoe size already.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos o número do sapato.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the shoe size already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the shoe size already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Nós já verificamos o número do sapato.",
+        "ctx": "Contexto de compras e serviços (nível B1).",
+        "blank": "have",
+        "wrong": "We have check the shoe size already."
+      },
+      {
+        "template_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_06",
+        "family_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_5",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "subject_have_been_ving_object_duration",
+        "primary_skill_id": "collocation",
+        "skill_ids": [
+          "collocation",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b1_delivery"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They have been reviewing the delivery for two hours.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando a entrega há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the delivery for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the delivery for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "Eles estão revisando a entrega há duas horas.",
+        "ctx": "Contexto de compras e serviços (nível B1).",
+        "blank": "have",
+        "wrong": "They have been reviewed the delivery for two hours."
+      },
+      {
+        "template_id": "shopping_and_services_b1_if_present_will_future_07",
+        "family_id": "shopping_and_services_b1_if_present_will_future_0",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "preposition",
+        "skill_ids": [
+          "preposition",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b1_pharmacy"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If we confirm the pharmacy, we will start tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos a farmácia, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the pharmacy, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the pharmacy, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "preposition"
+        ],
+        "pt": "Se confirmarmos a farmácia, vamos começar amanhã.",
+        "ctx": "Contexto de compras e serviços (nível B1).",
+        "blank": "we",
+        "wrong": "If we confirm the pharmacy, we will start tomorrow."
+      },
+      {
+        "template_id": "shopping_and_services_b1_subject_modal_base_verb_08",
+        "family_id": "shopping_and_services_b1_subject_modal_base_verb_1",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b1_bank_account"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the bank account today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a conta bancária hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the bank account today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Eu posso atualizar a conta bancária hoje.",
+        "ctx": "Contexto de compras e serviços (nível B1).",
+        "blank": "can",
+        "wrong": "I cans update the bank account today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "shopping_and_services_b1_receipt_chunk",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "make a receipt",
+        "translation_pt": "recibo",
+        "invalid_variants": [
+          "do a receipt"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b1_discount_chunk",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "check the discount",
+        "translation_pt": "desconto",
+        "invalid_variants": [
+          "do the discount"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b1_cashier_chunk",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "make a cashier",
+        "translation_pt": "caixa",
+        "invalid_variants": [
+          "do a cashier"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b1_return_policy_chunk",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "check the return policy",
+        "translation_pt": "política de troca",
+        "invalid_variants": [
+          "do the return policy"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b1_shoe_size_chunk",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "make a shoe size",
+        "translation_pt": "número do sapato",
+        "invalid_variants": [
+          "do a shoe size"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b1_delivery_chunk",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "check the delivery",
+        "translation_pt": "entrega",
+        "invalid_variants": [
+          "do the delivery"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b1_pharmacy_chunk",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "canonical": "make a pharmacy",
+        "translation_pt": "farmácia",
+        "invalid_variants": [
+          "do a pharmacy"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "shopping_and_services_b2",
+      "title": {
+        "pt": "Compras e serviços B2",
+        "en": "Shopping and services B2"
+      },
+      "theme": "shopping_and_services",
+      "level": "B2",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_b2"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "shopping_and_services_b2_receipt",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "receipt",
+        "translation_pt": "recibo",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_discount",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "discount",
+        "translation_pt": "desconto",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_cashier",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "cashier",
+        "translation_pt": "caixa",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_return_policy",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "return policy",
+        "translation_pt": "política de troca",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_shoe_size",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "shoe size",
+        "translation_pt": "número do sapato",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_delivery",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "delivery",
+        "translation_pt": "entrega",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_pharmacy",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "pharmacy",
+        "translation_pt": "farmácia",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_bank_account",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "bank account",
+        "translation_pt": "conta bancária",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_haircut",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "haircut",
+        "translation_pt": "corte de cabelo",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_repair_shop",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "repair shop",
+        "translation_pt": "oficina de reparos",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_customer_service",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "customer service",
+        "translation_pt": "atendimento ao cliente",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_appointment",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "appointment",
+        "translation_pt": "agendamento",
+        "semantic_type": "action",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_online_order",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "online order",
+        "translation_pt": "pedido online",
+        "semantic_type": "object",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "shopping_and_services_b2_queue",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "queue",
+        "translation_pt": "fila",
+        "semantic_type": "time",
+        "tags": [
+          "shopping_and_services",
+          "b2"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "shopping_and_services_b2_passive_be_past_participle_01",
+        "family_id": "shopping_and_services_b2_passive_be_past_participle_0",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b2_receipt"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The receipt was reviewed by the team.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O recibo foi revisado pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The receipt was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "O recibo foi revisado pela equipe.",
+        "ctx": "Contexto de compras e serviços (nível B2).",
+        "blank": "receipt",
+        "wrong": "The receipt reviewed by the team."
+      },
+      {
+        "template_id": "shopping_and_services_b2_reported_speech_statement_02",
+        "family_id": "shopping_and_services_b2_reported_speech_statement_1",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "pattern_id": "reported_speech_statement",
+        "primary_skill_id": "reported_speech",
+        "skill_ids": [
+          "reported_speech",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b2_discount"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "She said that the discount was ready.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que o desconto estava pronto.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the discount was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "reported_speech"
+        ],
+        "pt": "Ela disse que o desconto estava pronto.",
+        "ctx": "Contexto de compras e serviços (nível B2).",
+        "blank": "said",
+        "wrong": "She said the discount was ready."
+      },
+      {
+        "template_id": "shopping_and_services_b2_second_conditional_03",
+        "family_id": "shopping_and_services_b2_second_conditional_2",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "pattern_id": "second_conditional",
+        "primary_skill_id": "second_conditional",
+        "skill_ids": [
+          "second_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b2_cashier"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If I had more time, I would improve the cashier.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o caixa.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the cashier."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the cashier."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "second_conditional"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria o caixa.",
+        "ctx": "Contexto de compras e serviços (nível B2).",
+        "blank": "I",
+        "wrong": "If I had more time, I will improve the cashier."
+      },
+      {
+        "template_id": "shopping_and_services_b2_subject_modal_base_verb_04",
+        "family_id": "shopping_and_services_b2_subject_modal_base_verb_3",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "modal_deduction",
+        "skill_ids": [
+          "modal_deduction",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b2_return_policy"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the return policy today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a política de troca hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the return policy today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "pt": "Eu posso atualizar a política de troca hoje.",
+        "ctx": "Contexto de compras e serviços (nível B2).",
+        "blank": "can",
+        "wrong": "I cans update the return policy today."
+      },
+      {
+        "template_id": "shopping_and_services_b2_passive_be_past_participle_05",
+        "family_id": "shopping_and_services_b2_passive_be_past_participle_4",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "collocation",
+        "skill_ids": [
+          "collocation",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b2_shoe_size"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The shoe size was reviewed by the team.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O número do sapato foi revisado pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The shoe size was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "O número do sapato foi revisado pela equipe.",
+        "ctx": "Contexto de compras e serviços (nível B2).",
+        "blank": "shoe",
+        "wrong": "The shoe size reviewed by the team."
+      },
+      {
+        "template_id": "shopping_and_services_b2_reported_speech_statement_06",
+        "family_id": "shopping_and_services_b2_reported_speech_statement_5",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "pattern_id": "reported_speech_statement",
+        "primary_skill_id": "word_order",
+        "skill_ids": [
+          "word_order",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b2_delivery"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "She said that the delivery was ready.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que a entrega estava pronta.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the delivery was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "word_order"
+        ],
+        "pt": "Ela disse que a entrega estava pronta.",
+        "ctx": "Contexto de compras e serviços (nível B2).",
+        "blank": "said",
+        "wrong": "She said the delivery was ready."
+      },
+      {
+        "template_id": "shopping_and_services_b2_second_conditional_07",
+        "family_id": "shopping_and_services_b2_second_conditional_0",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "pattern_id": "second_conditional",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b2_pharmacy"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If I had more time, I would improve the pharmacy.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a farmácia.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the pharmacy."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the pharmacy."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria a farmácia.",
+        "ctx": "Contexto de compras e serviços (nível B2).",
+        "blank": "I",
+        "wrong": "If I had more time, I will improve the pharmacy."
+      },
+      {
+        "template_id": "shopping_and_services_b2_subject_modal_base_verb_08",
+        "family_id": "shopping_and_services_b2_subject_modal_base_verb_1",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "shopping_and_services_b2_bank_account"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the bank account today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar a conta bancária hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the bank account today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "Eu posso atualizar a conta bancária hoje.",
+        "ctx": "Contexto de compras e serviços (nível B2).",
+        "blank": "can",
+        "wrong": "I cans update the bank account today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "shopping_and_services_b2_receipt_chunk",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "make a receipt",
+        "translation_pt": "recibo",
+        "invalid_variants": [
+          "do a receipt"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b2_discount_chunk",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "check the discount",
+        "translation_pt": "desconto",
+        "invalid_variants": [
+          "do the discount"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b2_cashier_chunk",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "make a cashier",
+        "translation_pt": "caixa",
+        "invalid_variants": [
+          "do a cashier"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b2_return_policy_chunk",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "check the return policy",
+        "translation_pt": "política de troca",
+        "invalid_variants": [
+          "do the return policy"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b2_shoe_size_chunk",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "make a shoe size",
+        "translation_pt": "número do sapato",
+        "invalid_variants": [
+          "do a shoe size"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b2_delivery_chunk",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "check the delivery",
+        "translation_pt": "entrega",
+        "invalid_variants": [
+          "do the delivery"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "shopping_and_services_b2_pharmacy_chunk",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "canonical": "make a pharmacy",
+        "translation_pt": "farmácia",
+        "invalid_variants": [
+          "do a pharmacy"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "technology_and_communication_a1",
+      "title": {
+        "pt": "Tecnologia e comunicação A1",
+        "en": "Technology and communication A1"
+      },
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_a1"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "technology_and_communication_a1_password",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "password",
+        "translation_pt": "senha",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_message",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "message",
+        "translation_pt": "mensagem",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_video_call",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "video call",
+        "translation_pt": "chamada de vídeo",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_laptop",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "laptop",
+        "translation_pt": "notebook",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_app_update",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "app update",
+        "translation_pt": "atualização do aplicativo",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_wifi_network",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "wifi network",
+        "translation_pt": "rede wi-fi",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_email",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "email",
+        "translation_pt": "e-mail",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_cloud_file",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "cloud file",
+        "translation_pt": "arquivo na nuvem",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_screen",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "screen",
+        "translation_pt": "tela",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_notification",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "notification",
+        "translation_pt": "notificação",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_charger",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "charger",
+        "translation_pt": "carregador",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_online_meeting",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "online meeting",
+        "translation_pt": "reunião online",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_privacy_setting",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "privacy setting",
+        "translation_pt": "configuração de privacidade",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a1_support_chat",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "support chat",
+        "translation_pt": "chat de suporte",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "a1"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "technology_and_communication_a1_subject_be_complement_01",
+        "family_id": "technology_and_communication_a1_subject_be_complement_0",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "verb_to_be",
+        "skill_ids": [
+          "verb_to_be",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a1_password"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The password is important.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A senha é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The password is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "A senha é importante.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
+        "blank": "password",
+        "wrong": "The password is important."
+      },
+      {
+        "template_id": "technology_and_communication_a1_subject_simple_present_object_02",
+        "family_id": "technology_and_communication_a1_subject_simple_present_object_1",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a1_message"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the message every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a mensagem todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the message every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "pt": "Nós verificamos a mensagem todos os dias.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
+        "blank": "check",
+        "wrong": "We check the message every day."
+      },
+      {
+        "template_id": "technology_and_communication_a1_wh_do_subject_base_verb_03",
+        "family_id": "technology_and_communication_a1_wh_do_subject_base_verb_2",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "there_is_are",
+        "skill_ids": [
+          "there_is_are",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a1_video_call"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the video call?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa da chamada de vídeo?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the video call?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "pt": "Quando você precisa da chamada de vídeo?",
+        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
+        "blank": "do",
+        "wrong": "When you do need the video call?"
+      },
+      {
+        "template_id": "technology_and_communication_a1_subject_modal_base_verb_04",
+        "family_id": "technology_and_communication_a1_subject_modal_base_verb_3",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "can_ability",
+        "skill_ids": [
+          "can_ability",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a1_laptop"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the laptop today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o notebook hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the laptop today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "can_ability"
+        ],
+        "pt": "Eu posso atualizar o notebook hoje.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
+        "blank": "can",
+        "wrong": "I cans update the laptop today."
+      },
+      {
+        "template_id": "technology_and_communication_a1_subject_be_complement_05",
+        "family_id": "technology_and_communication_a1_subject_be_complement_4",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a1_app_update"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The app update is important.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A atualização do aplicativo é importante.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The app update is important."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "pt": "A atualização do aplicativo é importante.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
+        "blank": "app",
+        "wrong": "The app update is important."
+      },
+      {
+        "template_id": "technology_and_communication_a1_subject_simple_present_object_06",
+        "family_id": "technology_and_communication_a1_subject_simple_present_object_5",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "question_structure",
+        "skill_ids": [
+          "question_structure",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a1_wifi_network"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the wifi network every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a rede wi-fi todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the wifi network every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "question_structure"
+        ],
+        "pt": "Nós verificamos a rede wi-fi todos os dias.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
+        "blank": "check",
+        "wrong": "We check the wifi network every day."
+      },
+      {
+        "template_id": "technology_and_communication_a1_wh_do_subject_base_verb_07",
+        "family_id": "technology_and_communication_a1_wh_do_subject_base_verb_0",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a1_email"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the email?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do e-mail?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the email?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Quando você precisa do e-mail?",
+        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
+        "blank": "do",
+        "wrong": "When you do need the email?"
+      },
+      {
+        "template_id": "technology_and_communication_a1_subject_modal_base_verb_08",
+        "family_id": "technology_and_communication_a1_subject_modal_base_verb_1",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "verb_to_be",
+        "skill_ids": [
+          "verb_to_be",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a1_cloud_file"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the cloud file today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o arquivo na nuvem hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the cloud file today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "verb_to_be"
+        ],
+        "pt": "Eu posso atualizar o arquivo na nuvem hoje.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
+        "blank": "can",
+        "wrong": "I cans update the cloud file today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "technology_and_communication_a1_password_chunk",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "make a password",
+        "translation_pt": "senha",
+        "invalid_variants": [
+          "do a password"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a1_message_chunk",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "check the message",
+        "translation_pt": "mensagem",
+        "invalid_variants": [
+          "do the message"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a1_video_call_chunk",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "make a video call",
+        "translation_pt": "chamada de vídeo",
+        "invalid_variants": [
+          "do a video call"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a1_laptop_chunk",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "check the laptop",
+        "translation_pt": "notebook",
+        "invalid_variants": [
+          "do the laptop"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a1_app_update_chunk",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "make a app update",
+        "translation_pt": "atualização do aplicativo",
+        "invalid_variants": [
+          "do a app update"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a1_wifi_network_chunk",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "check the wifi network",
+        "translation_pt": "rede wi-fi",
+        "invalid_variants": [
+          "do the wifi network"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a1_email_chunk",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "canonical": "make a email",
+        "translation_pt": "e-mail",
+        "invalid_variants": [
+          "do a email"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "technology_and_communication_a2",
+      "title": {
+        "pt": "Tecnologia e comunicação A2",
+        "en": "Technology and communication A2"
+      },
+      "theme": "technology_and_communication",
+      "level": "A2",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_a2"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "technology_and_communication_a2_password",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "password",
+        "translation_pt": "senha",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_message",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "message",
+        "translation_pt": "mensagem",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_video_call",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "video call",
+        "translation_pt": "chamada de vídeo",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_laptop",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "laptop",
+        "translation_pt": "notebook",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_app_update",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "app update",
+        "translation_pt": "atualização do aplicativo",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_wifi_network",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "wifi network",
+        "translation_pt": "rede wi-fi",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_email",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "email",
+        "translation_pt": "e-mail",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_cloud_file",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "cloud file",
+        "translation_pt": "arquivo na nuvem",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_screen",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "screen",
+        "translation_pt": "tela",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_notification",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "notification",
+        "translation_pt": "notificação",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_charger",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "charger",
+        "translation_pt": "carregador",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_online_meeting",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "online meeting",
+        "translation_pt": "reunião online",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_privacy_setting",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "privacy setting",
+        "translation_pt": "configuração de privacidade",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_a2_support_chat",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "support chat",
+        "translation_pt": "chat de suporte",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "a2"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "technology_and_communication_a2_subject_past_simple_object_time_01",
+        "family_id": "technology_and_communication_a2_subject_past_simple_object_time_0",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "pattern_id": "subject_past_simple_object_time",
+        "primary_skill_id": "past_simple",
+        "skill_ids": [
+          "past_simple",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a2_password"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We checked the password yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a senha ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the password yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Nós verificamos a senha ontem.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
+        "blank": "checked",
+        "wrong": "We check the password yesterday."
+      },
+      {
+        "template_id": "technology_and_communication_a2_subject_be_going_to_verb_time_02",
+        "family_id": "technology_and_communication_a2_subject_be_going_to_verb_time_1",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "present_continuous",
+        "skill_ids": [
+          "present_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a2_message"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They are going to review the message tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar a mensagem amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the message tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the message tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "pt": "Eles vão revisar a mensagem amanhã.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
+        "blank": "are",
+        "wrong": "They go to review the message tomorrow."
+      },
+      {
+        "template_id": "technology_and_communication_a2_subject_simple_present_object_03",
+        "family_id": "technology_and_communication_a2_subject_simple_present_object_2",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "future_going_to",
+        "skill_ids": [
+          "future_going_to",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a2_video_call"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the video call every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a chamada de vídeo todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the video call every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "future_going_to"
+        ],
+        "pt": "Nós verificamos a chamada de vídeo todos os dias.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
+        "blank": "check",
+        "wrong": "We check the video call every day."
+      },
+      {
+        "template_id": "technology_and_communication_a2_wh_do_subject_base_verb_04",
+        "family_id": "technology_and_communication_a2_wh_do_subject_base_verb_3",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "comparatives",
+        "skill_ids": [
+          "comparatives",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a2_laptop"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the laptop?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do notebook?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the laptop?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "pt": "Quando você precisa do notebook?",
+        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
+        "blank": "do",
+        "wrong": "When you do need the laptop?"
+      },
+      {
+        "template_id": "technology_and_communication_a2_subject_past_simple_object_time_05",
+        "family_id": "technology_and_communication_a2_subject_past_simple_object_time_4",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "pattern_id": "subject_past_simple_object_time",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a2_app_update"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We checked the app update yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos a atualização do aplicativo ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We checked the app update yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós verificamos a atualização do aplicativo ontem.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
+        "blank": "checked",
+        "wrong": "We check the app update yesterday."
+      },
+      {
+        "template_id": "technology_and_communication_a2_subject_be_going_to_verb_time_06",
+        "family_id": "technology_and_communication_a2_subject_be_going_to_verb_time_5",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a2_wifi_network"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They are going to review the wifi network tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles vão revisar a rede wi-fi amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They are going to review the wifi network tomorrow."
+        ],
+        "accepted_variants_en": [
+          "They're going to review the wifi network tomorrow."
+        ],
+        "explanation_pt": "Futuro com be going to para planos.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Eles vão revisar a rede wi-fi amanhã.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
+        "blank": "are",
+        "wrong": "They go to review the wifi network tomorrow."
+      },
+      {
+        "template_id": "technology_and_communication_a2_subject_simple_present_object_07",
+        "family_id": "technology_and_communication_a2_subject_simple_present_object_0",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a2_email"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We check the email every day.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós verificamos o e-mail todos os dias.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We check the email every day."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Nós verificamos o e-mail todos os dias.",
+        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
+        "blank": "check",
+        "wrong": "We check the email every day."
+      },
+      {
+        "template_id": "technology_and_communication_a2_wh_do_subject_base_verb_08",
+        "family_id": "technology_and_communication_a2_wh_do_subject_base_verb_1",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "past_simple",
+        "skill_ids": [
+          "past_simple",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_a2_cloud_file"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "When do you need the cloud file?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quando você precisa do arquivo na nuvem?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "When do you need the cloud file?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "skill_targets": [
+          "past_simple"
+        ],
+        "pt": "Quando você precisa do arquivo na nuvem?",
+        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
+        "blank": "do",
+        "wrong": "When you do need the cloud file?"
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "technology_and_communication_a2_password_chunk",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "make a password",
+        "translation_pt": "senha",
+        "invalid_variants": [
+          "do a password"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a2_message_chunk",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "check the message",
+        "translation_pt": "mensagem",
+        "invalid_variants": [
+          "do the message"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a2_video_call_chunk",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "make a video call",
+        "translation_pt": "chamada de vídeo",
+        "invalid_variants": [
+          "do a video call"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a2_laptop_chunk",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "check the laptop",
+        "translation_pt": "notebook",
+        "invalid_variants": [
+          "do the laptop"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a2_app_update_chunk",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "make a app update",
+        "translation_pt": "atualização do aplicativo",
+        "invalid_variants": [
+          "do a app update"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a2_wifi_network_chunk",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "check the wifi network",
+        "translation_pt": "rede wi-fi",
+        "invalid_variants": [
+          "do the wifi network"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_a2_email_chunk",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "canonical": "make a email",
+        "translation_pt": "e-mail",
+        "invalid_variants": [
+          "do a email"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "technology_and_communication_b1",
+      "title": {
+        "pt": "Tecnologia e comunicação B1",
+        "en": "Technology and communication B1"
+      },
+      "theme": "technology_and_communication",
+      "level": "B1",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_b1"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "technology_and_communication_b1_password",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "password",
+        "translation_pt": "senha",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_message",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "message",
+        "translation_pt": "mensagem",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_video_call",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "video call",
+        "translation_pt": "chamada de vídeo",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_laptop",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "laptop",
+        "translation_pt": "notebook",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_app_update",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "app update",
+        "translation_pt": "atualização do aplicativo",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_wifi_network",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "wifi network",
+        "translation_pt": "rede wi-fi",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_email",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "email",
+        "translation_pt": "e-mail",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_cloud_file",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "cloud file",
+        "translation_pt": "arquivo na nuvem",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_screen",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "screen",
+        "translation_pt": "tela",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_notification",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "notification",
+        "translation_pt": "notificação",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_charger",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "charger",
+        "translation_pt": "carregador",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_online_meeting",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "online meeting",
+        "translation_pt": "reunião online",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_privacy_setting",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "privacy setting",
+        "translation_pt": "configuração de privacidade",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b1_support_chat",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "support chat",
+        "translation_pt": "chat de suporte",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "b1"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "technology_and_communication_b1_subject_have_past_participle_yet_01",
+        "family_id": "technology_and_communication_b1_subject_have_past_participle_yet_0",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b1_password"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have checked the password already.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos a senha.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the password already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the password already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Nós já verificamos a senha.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
+        "blank": "have",
+        "wrong": "We have check the password already."
+      },
+      {
+        "template_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_02",
+        "family_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_1",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "subject_have_been_ving_object_duration",
+        "primary_skill_id": "present_perfect_continuous",
+        "skill_ids": [
+          "present_perfect_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b1_message"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They have been reviewing the message for two hours.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando a mensagem há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the message for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the message for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "present_perfect_continuous"
+        ],
+        "pt": "Eles estão revisando a mensagem há duas horas.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
+        "blank": "have",
+        "wrong": "They have been reviewed the message for two hours."
+      },
+      {
+        "template_id": "technology_and_communication_b1_if_present_will_future_03",
+        "family_id": "technology_and_communication_b1_if_present_will_future_2",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "gerund_after_been",
+        "skill_ids": [
+          "gerund_after_been",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b1_video_call"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If we confirm the video call, we will start tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos a chamada de vídeo, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the video call, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the video call, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "gerund_after_been"
+        ],
+        "pt": "Se confirmarmos a chamada de vídeo, vamos começar amanhã.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
+        "blank": "we",
+        "wrong": "If we confirm the video call, we will start tomorrow."
+      },
+      {
+        "template_id": "technology_and_communication_b1_subject_modal_base_verb_04",
+        "family_id": "technology_and_communication_b1_subject_modal_base_verb_3",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "first_conditional",
+        "skill_ids": [
+          "first_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b1_laptop"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the laptop today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o notebook hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the laptop today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "pt": "Eu posso atualizar o notebook hoje.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
+        "blank": "can",
+        "wrong": "I cans update the laptop today."
+      },
+      {
+        "template_id": "technology_and_communication_b1_subject_have_past_participle_yet_05",
+        "family_id": "technology_and_communication_b1_subject_have_past_participle_yet_4",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b1_app_update"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have checked the app update already.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nós já verificamos a atualização do aplicativo.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have checked the app update already."
+        ],
+        "accepted_variants_en": [
+          "We've checked the app update already."
+        ],
+        "explanation_pt": "Present perfect com already.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "pt": "Nós já verificamos a atualização do aplicativo.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
+        "blank": "have",
+        "wrong": "We have check the app update already."
+      },
+      {
+        "template_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_06",
+        "family_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_5",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "subject_have_been_ving_object_duration",
+        "primary_skill_id": "collocation",
+        "skill_ids": [
+          "collocation",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b1_wifi_network"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "They have been reviewing the wifi network for two hours.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eles estão revisando a rede wi-fi há duas horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "They have been reviewing the wifi network for two hours."
+        ],
+        "accepted_variants_en": [
+          "They've been reviewing the wifi network for two hours."
+        ],
+        "explanation_pt": "Present perfect continuous com duração (for).",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "Eles estão revisando a rede wi-fi há duas horas.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
+        "blank": "have",
+        "wrong": "They have been reviewed the wifi network for two hours."
+      },
+      {
+        "template_id": "technology_and_communication_b1_if_present_will_future_07",
+        "family_id": "technology_and_communication_b1_if_present_will_future_0",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "preposition",
+        "skill_ids": [
+          "preposition",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b1_email"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If we confirm the email, we will start tomorrow.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se confirmarmos o e-mail, vamos começar amanhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we confirm the email, we will start tomorrow."
+        ],
+        "accepted_variants_en": [
+          "If we confirm the email, we'll start tomorrow."
+        ],
+        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "skill_targets": [
+          "preposition"
+        ],
+        "pt": "Se confirmarmos o e-mail, vamos começar amanhã.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
+        "blank": "we",
+        "wrong": "If we confirm the email, we will start tomorrow."
+      },
+      {
+        "template_id": "technology_and_communication_b1_subject_modal_base_verb_08",
+        "family_id": "technology_and_communication_b1_subject_modal_base_verb_1",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b1_cloud_file"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_present_perfect_continuous"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the cloud file today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o arquivo na nuvem hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the cloud file today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "pt": "Eu posso atualizar o arquivo na nuvem hoje.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
+        "blank": "can",
+        "wrong": "I cans update the cloud file today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "technology_and_communication_b1_password_chunk",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "make a password",
+        "translation_pt": "senha",
+        "invalid_variants": [
+          "do a password"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b1_message_chunk",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "check the message",
+        "translation_pt": "mensagem",
+        "invalid_variants": [
+          "do the message"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b1_video_call_chunk",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "make a video call",
+        "translation_pt": "chamada de vídeo",
+        "invalid_variants": [
+          "do a video call"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b1_laptop_chunk",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "check the laptop",
+        "translation_pt": "notebook",
+        "invalid_variants": [
+          "do the laptop"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b1_app_update_chunk",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "make a app update",
+        "translation_pt": "atualização do aplicativo",
+        "invalid_variants": [
+          "do a app update"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b1_wifi_network_chunk",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "check the wifi network",
+        "translation_pt": "rede wi-fi",
+        "invalid_variants": [
+          "do the wifi network"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b1_email_chunk",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "canonical": "make a email",
+        "translation_pt": "e-mail",
+        "invalid_variants": [
+          "do a email"
+        ],
+        "skill_id": "collocation"
+      }
+    ]
+  },
+  {
+    "manifest": {
+      "schema_version": "1",
+      "pack_id": "technology_and_communication_b2",
+      "title": {
+        "pt": "Tecnologia e comunicação B2",
+        "en": "Technology and communication B2"
+      },
+      "theme": "technology_and_communication",
+      "level": "B2",
+      "language_pair": "pt-BR/en",
+      "version": 1,
+      "source": "builtin",
+      "enabled_by_default": true,
+      "dependencies": [
+        "core_b2"
+      ],
+      "generator_compatibility": {
+        "min_version": "1",
+        "max_version": "1"
+      }
+    },
+    "lexical_items": [
+      {
+        "item_id": "technology_and_communication_b2_password",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "password",
+        "translation_pt": "senha",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_message",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "message",
+        "translation_pt": "mensagem",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_video_call",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "video call",
+        "translation_pt": "chamada de vídeo",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_laptop",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "laptop",
+        "translation_pt": "notebook",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_app_update",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "app update",
+        "translation_pt": "atualização do aplicativo",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_wifi_network",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "wifi network",
+        "translation_pt": "rede wi-fi",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_email",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "email",
+        "translation_pt": "e-mail",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_cloud_file",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "cloud file",
+        "translation_pt": "arquivo na nuvem",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_screen",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "screen",
+        "translation_pt": "tela",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_notification",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "notification",
+        "translation_pt": "notificação",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_charger",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "charger",
+        "translation_pt": "carregador",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_online_meeting",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "online meeting",
+        "translation_pt": "reunião online",
+        "semantic_type": "action",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_privacy_setting",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "privacy setting",
+        "translation_pt": "configuração de privacidade",
+        "semantic_type": "object",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      },
+      {
+        "item_id": "technology_and_communication_b2_support_chat",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "support chat",
+        "translation_pt": "chat de suporte",
+        "semantic_type": "time",
+        "tags": [
+          "technology_and_communication",
+          "b2"
+        ]
+      }
+    ],
+    "template_definitions": [
+      {
+        "template_id": "technology_and_communication_b2_passive_be_past_participle_01",
+        "family_id": "technology_and_communication_b2_passive_be_past_participle_0",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b2_password"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The password was reviewed by the team.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A senha foi revisada pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The password was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "A senha foi revisada pela equipe.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
+        "blank": "password",
+        "wrong": "The password reviewed by the team."
+      },
+      {
+        "template_id": "technology_and_communication_b2_reported_speech_statement_02",
+        "family_id": "technology_and_communication_b2_reported_speech_statement_1",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "pattern_id": "reported_speech_statement",
+        "primary_skill_id": "reported_speech",
+        "skill_ids": [
+          "reported_speech",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b2_message"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "She said that the message was ready.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que a mensagem estava pronta.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the message was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "reported_speech"
+        ],
+        "pt": "Ela disse que a mensagem estava pronta.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
+        "blank": "said",
+        "wrong": "She said the message was ready."
+      },
+      {
+        "template_id": "technology_and_communication_b2_second_conditional_03",
+        "family_id": "technology_and_communication_b2_second_conditional_2",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "pattern_id": "second_conditional",
+        "primary_skill_id": "second_conditional",
+        "skill_ids": [
+          "second_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b2_video_call"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If I had more time, I would improve the video call.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a chamada de vídeo.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the video call."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the video call."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "second_conditional"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria a chamada de vídeo.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
+        "blank": "I",
+        "wrong": "If I had more time, I will improve the video call."
+      },
+      {
+        "template_id": "technology_and_communication_b2_subject_modal_base_verb_04",
+        "family_id": "technology_and_communication_b2_subject_modal_base_verb_3",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "modal_deduction",
+        "skill_ids": [
+          "modal_deduction",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b2_laptop"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the laptop today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o notebook hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the laptop today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "pt": "Eu posso atualizar o notebook hoje.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
+        "blank": "can",
+        "wrong": "I cans update the laptop today."
+      },
+      {
+        "template_id": "technology_and_communication_b2_passive_be_past_participle_05",
+        "family_id": "technology_and_communication_b2_passive_be_past_participle_4",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "collocation",
+        "skill_ids": [
+          "collocation",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b2_app_update"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The app update was reviewed by the team.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A atualização do aplicativo foi revisada pela equipe.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The app update was reviewed by the team."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "skill_targets": [
+          "collocation"
+        ],
+        "pt": "A atualização do aplicativo foi revisada pela equipe.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
+        "blank": "app",
+        "wrong": "The app update reviewed by the team."
+      },
+      {
+        "template_id": "technology_and_communication_b2_reported_speech_statement_06",
+        "family_id": "technology_and_communication_b2_reported_speech_statement_5",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "pattern_id": "reported_speech_statement",
+        "primary_skill_id": "word_order",
+        "skill_ids": [
+          "word_order",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b2_wifi_network"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "She said that the wifi network was ready.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Ela disse que a rede wi-fi estava pronta.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "She said that the wifi network was ready."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Discurso indireto com said that.",
+        "skill_targets": [
+          "word_order"
+        ],
+        "pt": "Ela disse que a rede wi-fi estava pronta.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
+        "blank": "said",
+        "wrong": "She said the wifi network was ready."
+      },
+      {
+        "template_id": "technology_and_communication_b2_second_conditional_07",
+        "family_id": "technology_and_communication_b2_second_conditional_0",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "pattern_id": "second_conditional",
+        "primary_skill_id": "vocabulary",
+        "skill_ids": [
+          "vocabulary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b2_email"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If I had more time, I would improve the email.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o e-mail.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I had more time, I would improve the email."
+        ],
+        "accepted_variants_en": [
+          "If I had more time, I'd improve the email."
+        ],
+        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "skill_targets": [
+          "vocabulary"
+        ],
+        "pt": "Se eu tivesse mais tempo, eu melhoraria o e-mail.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
+        "blank": "I",
+        "wrong": "If I had more time, I will improve the email."
+      },
+      {
+        "template_id": "technology_and_communication_b2_subject_modal_base_verb_08",
+        "family_id": "technology_and_communication_b2_subject_modal_base_verb_1",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {
+          "subject": "we",
+          "object": "technology_and_communication_b2_cloud_file"
+        },
+        "constraints": [
+          "subject_auxiliary_agreement",
+          "level_allows_passive",
+          "level_allows_reported_speech"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I can update the cloud file today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Eu posso atualizar o arquivo na nuvem hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I can update the cloud file today."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Modal can + verbo na forma base.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "pt": "Eu posso atualizar o arquivo na nuvem hoje.",
+        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
+        "blank": "can",
+        "wrong": "I cans update the cloud file today."
+      }
+    ],
+    "collocations": [
+      {
+        "collocation_id": "technology_and_communication_b2_password_chunk",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "make a password",
+        "translation_pt": "senha",
+        "invalid_variants": [
+          "do a password"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b2_message_chunk",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "check the message",
+        "translation_pt": "mensagem",
+        "invalid_variants": [
+          "do the message"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b2_video_call_chunk",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "make a video call",
+        "translation_pt": "chamada de vídeo",
+        "invalid_variants": [
+          "do a video call"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b2_laptop_chunk",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "check the laptop",
+        "translation_pt": "notebook",
+        "invalid_variants": [
+          "do the laptop"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b2_app_update_chunk",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "make a app update",
+        "translation_pt": "atualização do aplicativo",
+        "invalid_variants": [
+          "do a app update"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b2_wifi_network_chunk",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "check the wifi network",
+        "translation_pt": "rede wi-fi",
+        "invalid_variants": [
+          "do the wifi network"
+        ],
+        "skill_id": "collocation"
+      },
+      {
+        "collocation_id": "technology_and_communication_b2_email_chunk",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "canonical": "make a email",
+        "translation_pt": "e-mail",
+        "invalid_variants": [
+          "do a email"
         ],
         "skill_id": "collocation"
       }

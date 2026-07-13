@@ -27,7 +27,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "receipt",
-      "translation_pt": "receipt",
+      "translation_pt": "recibo",
       "semantic_type": "object",
       "tags": [
         "shopping_and_services",
@@ -40,7 +40,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "discount",
-      "translation_pt": "discount",
+      "translation_pt": "desconto",
       "semantic_type": "time",
       "tags": [
         "shopping_and_services",
@@ -53,7 +53,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "cashier",
-      "translation_pt": "cashier",
+      "translation_pt": "caixa",
       "semantic_type": "action",
       "tags": [
         "shopping_and_services",
@@ -66,7 +66,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "return policy",
-      "translation_pt": "return policy",
+      "translation_pt": "política de troca",
       "semantic_type": "object",
       "tags": [
         "shopping_and_services",
@@ -79,7 +79,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "shoe size",
-      "translation_pt": "shoe size",
+      "translation_pt": "número do sapato",
       "semantic_type": "time",
       "tags": [
         "shopping_and_services",
@@ -92,7 +92,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "delivery",
-      "translation_pt": "delivery",
+      "translation_pt": "entrega",
       "semantic_type": "action",
       "tags": [
         "shopping_and_services",
@@ -105,7 +105,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "pharmacy",
-      "translation_pt": "pharmacy",
+      "translation_pt": "farmácia",
       "semantic_type": "object",
       "tags": [
         "shopping_and_services",
@@ -118,7 +118,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "bank account",
-      "translation_pt": "bank account",
+      "translation_pt": "conta bancária",
       "semantic_type": "time",
       "tags": [
         "shopping_and_services",
@@ -131,7 +131,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "haircut",
-      "translation_pt": "haircut",
+      "translation_pt": "corte de cabelo",
       "semantic_type": "action",
       "tags": [
         "shopping_and_services",
@@ -144,7 +144,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "repair shop",
-      "translation_pt": "repair shop",
+      "translation_pt": "oficina de reparos",
       "semantic_type": "object",
       "tags": [
         "shopping_and_services",
@@ -157,7 +157,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "customer service",
-      "translation_pt": "customer service",
+      "translation_pt": "atendimento ao cliente",
       "semantic_type": "time",
       "tags": [
         "shopping_and_services",
@@ -170,7 +170,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "appointment",
-      "translation_pt": "appointment",
+      "translation_pt": "agendamento",
       "semantic_type": "action",
       "tags": [
         "shopping_and_services",
@@ -183,7 +183,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "online order",
-      "translation_pt": "online order",
+      "translation_pt": "pedido online",
       "semantic_type": "object",
       "tags": [
         "shopping_and_services",
@@ -196,7 +196,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "queue",
-      "translation_pt": "queue",
+      "translation_pt": "fila",
       "semantic_type": "time",
       "tags": [
         "shopping_and_services",
@@ -240,8 +240,21 @@
         "wrong_collocation"
       ],
       "sentence": "We have checked the receipt already.",
-      "pt": "Frase sobre receipt.",
-      "ctx": "Contexto Compras e serviços B1.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós já verificamos o recibo.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We have checked the receipt already."
+      ],
+      "accepted_variants_en": [
+        "We've checked the receipt already."
+      ],
+      "explanation_pt": "Present perfect com already.",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "pt": "Nós já verificamos o recibo.",
+      "ctx": "Contexto de compras e serviços (nível B1).",
       "blank": "have",
       "wrong": "We have check the receipt already."
     },
@@ -280,8 +293,21 @@
         "wrong_collocation"
       ],
       "sentence": "They have been reviewing the discount for two hours.",
-      "pt": "Frase sobre discount.",
-      "ctx": "Contexto Compras e serviços B1.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eles estão revisando o desconto há duas horas.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "They have been reviewing the discount for two hours."
+      ],
+      "accepted_variants_en": [
+        "They've been reviewing the discount for two hours."
+      ],
+      "explanation_pt": "Present perfect continuous com duração (for).",
+      "skill_targets": [
+        "present_perfect_continuous"
+      ],
+      "pt": "Eles estão revisando o desconto há duas horas.",
+      "ctx": "Contexto de compras e serviços (nível B1).",
       "blank": "have",
       "wrong": "They have been reviewed the discount for two hours."
     },
@@ -320,8 +346,21 @@
         "wrong_collocation"
       ],
       "sentence": "If we confirm the cashier, we will start tomorrow.",
-      "pt": "Frase sobre cashier.",
-      "ctx": "Contexto Compras e serviços B1.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se confirmarmos o caixa, vamos começar amanhã.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If we confirm the cashier, we will start tomorrow."
+      ],
+      "accepted_variants_en": [
+        "If we confirm the cashier, we'll start tomorrow."
+      ],
+      "explanation_pt": "Primeira condicional: if + presente, will + base.",
+      "skill_targets": [
+        "gerund_after_been"
+      ],
+      "pt": "Se confirmarmos o caixa, vamos começar amanhã.",
+      "ctx": "Contexto de compras e serviços (nível B1).",
       "blank": "we",
       "wrong": "If we confirm the cashier, we will start tomorrow."
     },
@@ -360,8 +399,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the return policy today.",
-      "pt": "Frase sobre return policy.",
-      "ctx": "Contexto Compras e serviços B1.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar a política de troca hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the return policy today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "first_conditional"
+      ],
+      "pt": "Eu posso atualizar a política de troca hoje.",
+      "ctx": "Contexto de compras e serviços (nível B1).",
       "blank": "can",
       "wrong": "I cans update the return policy today."
     },
@@ -400,8 +450,21 @@
         "wrong_collocation"
       ],
       "sentence": "We have checked the shoe size already.",
-      "pt": "Frase sobre shoe size.",
-      "ctx": "Contexto Compras e serviços B1.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Nós já verificamos o número do sapato.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We have checked the shoe size already."
+      ],
+      "accepted_variants_en": [
+        "We've checked the shoe size already."
+      ],
+      "explanation_pt": "Present perfect com already.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "pt": "Nós já verificamos o número do sapato.",
+      "ctx": "Contexto de compras e serviços (nível B1).",
       "blank": "have",
       "wrong": "We have check the shoe size already."
     },
@@ -440,8 +503,21 @@
         "wrong_collocation"
       ],
       "sentence": "They have been reviewing the delivery for two hours.",
-      "pt": "Frase sobre delivery.",
-      "ctx": "Contexto Compras e serviços B1.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eles estão revisando a entrega há duas horas.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "They have been reviewing the delivery for two hours."
+      ],
+      "accepted_variants_en": [
+        "They've been reviewing the delivery for two hours."
+      ],
+      "explanation_pt": "Present perfect continuous com duração (for).",
+      "skill_targets": [
+        "collocation"
+      ],
+      "pt": "Eles estão revisando a entrega há duas horas.",
+      "ctx": "Contexto de compras e serviços (nível B1).",
       "blank": "have",
       "wrong": "They have been reviewed the delivery for two hours."
     },
@@ -480,8 +556,21 @@
         "wrong_collocation"
       ],
       "sentence": "If we confirm the pharmacy, we will start tomorrow.",
-      "pt": "Frase sobre pharmacy.",
-      "ctx": "Contexto Compras e serviços B1.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se confirmarmos a farmácia, vamos começar amanhã.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If we confirm the pharmacy, we will start tomorrow."
+      ],
+      "accepted_variants_en": [
+        "If we confirm the pharmacy, we'll start tomorrow."
+      ],
+      "explanation_pt": "Primeira condicional: if + presente, will + base.",
+      "skill_targets": [
+        "preposition"
+      ],
+      "pt": "Se confirmarmos a farmácia, vamos começar amanhã.",
+      "ctx": "Contexto de compras e serviços (nível B1).",
       "blank": "we",
       "wrong": "If we confirm the pharmacy, we will start tomorrow."
     },
@@ -520,8 +609,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the bank account today.",
-      "pt": "Frase sobre bank account.",
-      "ctx": "Contexto Compras e serviços B1.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar a conta bancária hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the bank account today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "pt": "Eu posso atualizar a conta bancária hoje.",
+      "ctx": "Contexto de compras e serviços (nível B1).",
       "blank": "can",
       "wrong": "I cans update the bank account today."
     }
@@ -533,7 +633,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "make a receipt",
-      "translation_pt": "receipt",
+      "translation_pt": "recibo",
       "invalid_variants": [
         "do a receipt"
       ],
@@ -545,7 +645,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "check the discount",
-      "translation_pt": "discount",
+      "translation_pt": "desconto",
       "invalid_variants": [
         "do the discount"
       ],
@@ -557,7 +657,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "make a cashier",
-      "translation_pt": "cashier",
+      "translation_pt": "caixa",
       "invalid_variants": [
         "do a cashier"
       ],
@@ -569,7 +669,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "check the return policy",
-      "translation_pt": "return policy",
+      "translation_pt": "política de troca",
       "invalid_variants": [
         "do the return policy"
       ],
@@ -581,7 +681,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "make a shoe size",
-      "translation_pt": "shoe size",
+      "translation_pt": "número do sapato",
       "invalid_variants": [
         "do a shoe size"
       ],
@@ -593,7 +693,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "check the delivery",
-      "translation_pt": "delivery",
+      "translation_pt": "entrega",
       "invalid_variants": [
         "do the delivery"
       ],
@@ -605,7 +705,7 @@
       "theme": "shopping_and_services",
       "level": "B1",
       "canonical": "make a pharmacy",
-      "translation_pt": "pharmacy",
+      "translation_pt": "farmácia",
       "invalid_variants": [
         "do a pharmacy"
       ],

@@ -81,10 +81,12 @@ export function questionLanguageIssues(q = {}) {
   if (!c.instruction_pt) issues.push('MISSING_INSTRUCTION')
   // The exact answer must never appear inside a visible prompt field for a
   // hide-answer type — as a whole field OR embedded as a substring (e.g. a
-  // translation prompt that quotes the English sentence). fill_blank/choose_best
-  // legitimately show an English sentence with the slot removed, so the full
-  // answer only counts when it appears intact.
-  const answerLeaks = (a) => a && (visibleFields.includes(a) || (a.length >= 6 && visibleText.includes(a)))
+  // translation prompt that quotes the English sentence). The substring check
+  // only applies to types whose answer is a full sentence; fill_blank/choose_best
+  // answers are single words/options that can coincide with a Portuguese cognate
+  // (e.g. "problema" ⊃ "problem"), so they use whole-field equality only.
+  const answerIsSentence = !['fill_blank', 'choose_best'].includes(c.type)
+  const answerLeaks = (a) => a && (visibleFields.includes(a) || (answerIsSentence && a.length >= 6 && visibleText.includes(a)))
   if (c.hide_answer && answerCanon.some(answerLeaks)) issues.push('PROMPT_LEAKS_ANSWER')
   // PT→EN translation must present a Portuguese source.
   if (c.type === 'translate_natural' && c.source_locale !== 'pt-BR') issues.push('TRANSLATION_SOURCE_NOT_PT')

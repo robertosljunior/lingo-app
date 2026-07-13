@@ -18,7 +18,11 @@ async function openHub(page) {
   await expect(page.getByRole('heading', { name: 'Escolha o que treinar' })).toBeVisible()
 }
 
-async function latestGeneratedQuestions(page) {
+async function playedLessonQuestions(page) {
+  // Read the exact lesson being played (exposed by the app), not "latest by
+  // created_at" which can tie when several generated lessons exist.
+  const activeId = await page.evaluate(() => window.__e2e?.activeLessonId)
+  if (activeId) return readLessonWithQuestions(page, activeId)
   const lessons = (await readStore(page, 'lessons')).filter((l) => l.generated)
   lessons.sort((a, b) => (b.created_at || 0) - (a.created_at || 0))
   return readLessonWithQuestions(page, lessons[0].lesson_id)
@@ -41,7 +45,7 @@ for (const theme of THEMES) {
       // The lesson opened (no fatal screen, no empty lesson).
       await expect(page.getByTestId('question-type')).toBeVisible({ timeout: 30_000 })
 
-      const { lesson, questions } = await latestGeneratedQuestions(page)
+      const { lesson, questions } = await playedLessonQuestions(page)
       expect(questions.length).toBeGreaterThan(0)
       expect(lesson.generation_metadata?.pedagogical_justification, 'justification persisted').toBeTruthy()
 

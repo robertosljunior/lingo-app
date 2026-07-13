@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;font-family:'Nunito',sans-serif;background:#DDEBF3;-webkit-font-smoothing:antialiased}
+  a{color:#1789CE}a:hover{color:#0F6EA8}
+  button{font-family:'Nunito',sans-serif}
+  @keyframes bobfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(71,184,242,.45)}100%{box-shadow:0 0 0 16px rgba(71,184,242,0)}}
+  @keyframes eq{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+  @keyframes drift{0%{transform:translateX(0)}50%{transform:translateX(14px)}100%{transform:translateX(0)}}
+  @keyframes pop{0%{transform:translateY(24px);opacity:0}100%{transform:translateY(0);opacity:1}}
+  @keyframes dots{0%,60%,100%{opacity:.25}30%{opacity:1}}
+</style>
+</helmet>
+<div style="min-height:100dvh;background:#DDEBF3;display:flex;justify-content:center">
+<div style="position:relative;width:100%;max-width:430px;height:100dvh;background:#FFFFFF;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 0 40px rgba(30,60,80,.18);--accent:{{accent}}">
+<div style="flex:1;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;position:relative">
+
+<!-- ============ LOGIN ============ -->
+<sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Login" style="flex:1;display:flex;flex-direction:column;background:linear-gradient(180deg,#C3E7F9 0%,#EAF7FE 46%,#FFFFFF 78%)">
+  <div style="position:relative;height:120px;overflow:hidden">
+    <svg viewBox="0 0 120 40" width="130" style="position:absolute;left:18px;top:26px;opacity:.9;animation:drift 9s ease-in-out infinite"><ellipse cx="34" cy="26" rx="26" ry="13" fill="#fff"></ellipse><ellipse cx="62" cy="18" rx="22" ry="13" fill="#fff"></ellipse><ellipse cx="88" cy="27" rx="24" ry="12" fill="#fff"></ellipse></svg>
+    <svg viewBox="0 0 120 40" width="90" style="position:absolute;right:14px;top:52px;opacity:.7;animation:drift 12s ease-in-out infinite"><ellipse cx="34" cy="26" rx="26" ry="13" fill="#fff"></ellipse><ellipse cx="62" cy="18" rx="22" ry="13" fill="#fff"></ellipse><ellipse cx="88" cy="27" rx="24" ry="12" fill="#fff"></ellipse></svg>
+  </div>
+  <div style="padding:0 24px 28px;display:flex;flex-direction:column;gap:14px">
+    <div style="text-align:center;margin-bottom:8px">
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:30px;color:#22333E">Bem-vindo de volta</div>
+      <div style="font-size:14.5px;font-weight:600;color:#64798A;margin-top:2px">Entre com a sua conta para continuar aprendendo</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--accent,#47B8F2);border-radius:16px;padding:0 14px;height:54px;box-shadow:0 2px 0 rgba(31,122,175,.12)">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#47B8F2" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M3 7l9 6 9-6"></path></svg>
+      <input value="jennyfrost@gmail.com" readOnly style="flex:1;border:none;outline:none;background:transparent;font:700 14.5px 'Nunito',sans-serif;color:#22333E">
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #E3EDF3;border-radius:16px;padding:0 14px;height:54px">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#93A9B7" stroke-width="2"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
+      <input type="password" placeholder="Senha" style="flex:1;border:none;outline:none;background:transparent;font:700 14.5px 'Nunito',sans-serif;color:#22333E">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#93A9B7" stroke-width="2"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"></path><circle cx="12" cy="12" r="2.5"></circle></svg>
+    </div>
+    <div style="display:flex;justify-content:flex-end"><a href="#" style="font:700 13.5px 'Nunito',sans-serif;color:#22333E;text-decoration:underline">Esqueceu a senha?</a></div>
+    <button onClick="{{ goProfile }}" style="height:54px;border:none;border-radius:16px;cursor:pointer;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:17px;color:#fff;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.35) 10%,rgba(255,255,255,.35) 16%,transparent 16%,transparent 21%,rgba(255,255,255,.35) 21%,rgba(255,255,255,.35) 24%,transparent 24%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16);margin-top:8px" style-active="transform:translateY(2px)">Entrar</button>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:10px">
+      <div style="flex:1;height:1.5px;background:#E3EDF3"></div>
+      <div style="font:700 13px 'Nunito',sans-serif;color:#64798A">Ou continue com</div>
+      <div style="flex:1;height:1.5px;background:#E3EDF3"></div>
+    </div>
+    <div style="display:flex;gap:12px">
+      <button onClick="{{ goProfile }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;background:#fff;border:1.5px solid #E3EDF3;border-radius:14px;cursor:pointer;font:700 14px 'Nunito',sans-serif;color:#41586B" style-hover="border-color:#C9DCE7">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#4285F4" d="M23 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.2a5.3 5.3 0 0 1-2.3 3.5v2.9h3.7C21.8 18.8 23 15.9 23 12.3Z"></path><path fill="#34A853" d="M12 24c3.1 0 5.7-1 7.6-2.8l-3.7-2.9c-1 .7-2.4 1.1-3.9 1.1-3 0-5.5-2-6.4-4.7H1.8v3A11.5 11.5 0 0 0 12 24Z"></path><path fill="#FBBC05" d="M5.6 14.7a6.9 6.9 0 0 1 0-4.4v-3H1.8a11.5 11.5 0 0 0 0 10.4l3.8-3Z"></path><path fill="#EA4335" d="M12 4.6c1.7 0 3.2.6 4.4 1.7l3.3-3.3A11.5 11.5 0 0 0 1.8 7.3l3.8 3c.9-2.7 3.4-4.7 6.4-4.7Z"></path></svg>Google
+      </button>
+      <button onClick="{{ goProfile }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;background:#fff;border:1.5px solid #E3EDF3;border-radius:14px;cursor:pointer;font:700 14px 'Nunito',sans-serif;color:#41586B" style-hover="border-color:#C9DCE7">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="#22333E"><path d="M16.7 12.9c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.9-1.6 0-3.2 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3.1 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-1-2.7-3.8ZM14.4 5.6c.7-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.2 1.9-1 3 1 .1 2.1-.6 2.8-1.4Z"></path></svg>Apple
+      </button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ CREATE PROFILE ============ -->
+<sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Criar perfil" style="flex:1;display:flex;flex-direction:column;background:linear-gradient(180deg,#C3E7F9 0%,#EAF7FE 42%,#FFFFFF 75%)">
+  <div style="position:relative;padding:18px 20px 0;height:96px">
+    <button onClick="{{ goLogin }}" style="width:44px;height:44px;background:#fff;border:1.5px solid #E3EDF3;border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#22333E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg></button>
+    <svg viewBox="0 0 120 40" width="100" style="position:absolute;right:20px;top:22px;opacity:.85;animation:drift 10s ease-in-out infinite"><ellipse cx="34" cy="26" rx="26" ry="13" fill="#fff"></ellipse><ellipse cx="62" cy="18" rx="22" ry="13" fill="#fff"></ellipse><ellipse cx="88" cy="27" rx="24" ry="12" fill="#fff"></ellipse></svg>
+  </div>
+  <div style="padding:8px 24px 28px;display:flex;flex-direction:column;gap:14px">
+    <div style="text-align:center;margin-bottom:6px">
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:28px;color:#22333E">Criar perfil</div>
+      <div style="font-size:14.5px;font-weight:600;color:#64798A;margin-top:2px">Conte um pouco sobre você para personalizarmos seu curso</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #E3EDF3;border-radius:16px;padding:0 14px;height:54px">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#93A9B7" stroke-width="2"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg>
+      <input value="{{ name }}" onChange="{{ onName }}" placeholder="Seu nome" style="flex:1;border:none;outline:none;background:transparent;font:700 14.5px 'Nunito',sans-serif;color:#22333E">
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--accent,#47B8F2);border-radius:16px;padding:0 14px;height:54px;box-shadow:0 2px 0 rgba(31,122,175,.12)">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#47B8F2" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M3 7l9 6 9-6"></path></svg>
+      <input value="jennyfrost@gmail.com" readOnly style="flex:1;border:none;outline:none;background:transparent;font:700 14.5px 'Nunito',sans-serif;color:#22333E">
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="font:700 14px 'Nunito',sans-serif;color:#41586B">Gênero</div>
+      <div style="flex:1;display:flex;align-items:center;justify-content:space-between;background:#fff;border:1.5px solid #E3EDF3;border-radius:14px;padding:0 14px;height:50px;font:700 14px 'Nunito',sans-serif;color:#22333E">Feminino<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#93A9B7" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg></div>
+      <div style="font:700 14px 'Nunito',sans-serif;color:#41586B">Idade</div>
+      <input value="8" style="width:56px;text-align:center;background:#fff;border:1.5px solid #E3EDF3;border-radius:14px;height:46px;font:700 15px 'Nunito',sans-serif;color:#22333E;outline:none">
+    </div>
+    <button onClick="{{ goOb1 }}" style="height:54px;border:none;border-radius:16px;cursor:pointer;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:17px;color:#fff;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.35) 10%,rgba(255,255,255,.35) 16%,transparent 16%,transparent 21%,rgba(255,255,255,.35) 21%,rgba(255,255,255,.35) 24%,transparent 24%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16);margin-top:10px" style-active="transform:translateY(2px)">Enviar</button>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ ONBOARDING 1 ============ -->
+<sc-if value="{{ isOb1 }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Onboarding — nível" style="flex:1;display:flex;flex-direction:column;background:linear-gradient(180deg,#C3E7F9 0%,#EAF7FE 40%,#FFFFFF 72%)">
+  <div style="display:flex;align-items:center;gap:12px;padding:18px 20px 4px">
+    <button onClick="{{ goProfile }}" style="width:42px;height:42px;background:#fff;border:1.5px solid #E3EDF3;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#22333E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg></button>
+    <div style="flex:1;height:16px;background:#fff;border-radius:999px;border:1.5px solid #E3EDF3;overflow:hidden"><div style="width:33%;height:100%;border-radius:999px;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.4) 20%,rgba(255,255,255,.4) 34%,transparent 34%)"></div></div>
+  </div>
+  <div style="display:flex;align-items:flex-start;gap:10px;padding:18px 24px 6px">
+    <svg viewBox="0 0 200 190" width="104" height="99" style="flex:none;display:block;animation:bobfloat 4s ease-in-out infinite"><circle cx="52" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="148" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="52" cy="40" r="8" fill="#2E86BC"></circle><circle cx="148" cy="40" r="8" fill="#2E86BC"></circle><ellipse cx="100" cy="106" rx="74" ry="78" fill="#57B9EE"></ellipse><ellipse cx="100" cy="142" rx="44" ry="36" fill="#EAF7FF"></ellipse><circle cx="76" cy="88" r="9" fill="#1E2B33"></circle><circle cx="124" cy="88" r="9" fill="#1E2B33"></circle><circle cx="79" cy="85" r="3" fill="#fff"></circle><circle cx="127" cy="85" r="3" fill="#fff"></circle><ellipse cx="58" cy="108" rx="9" ry="6" fill="#FF9DA6" opacity="0.75"></ellipse><ellipse cx="142" cy="108" rx="9" ry="6" fill="#FF9DA6" opacity="0.75"></ellipse><path d="M90 106 Q100 116 110 106" stroke="#1E2B33" stroke-width="5" fill="none" stroke-linecap="round"></path></svg>
+    <div style="position:relative;background:#fff;border:1.5px solid #E3EDF3;border-radius:16px;padding:12px 14px;margin-top:14px;font:700 14px/1.45 'Nunito',sans-serif;color:#22333E;box-shadow:0 3px 0 rgba(34,51,62,.05)">
+      <div style="position:absolute;left:-7px;top:22px;width:12px;height:12px;background:#fff;border-left:1.5px solid #E3EDF3;border-bottom:1.5px solid #E3EDF3;transform:rotate(45deg)"></div>
+      Quanto você já sabe de <a href="#" style="font-weight:800">Inglês (UK)</a>?
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px;padding:14px 24px">
+    <sc-for list="{{ obLevelOpts }}" as="o" hint-placeholder-count="4">
+      <button onClick="{{ o.onTap }}" style="display:flex;align-items:center;gap:12px;background:{{ o.bg }};border:2px solid {{ o.bc }};border-radius:16px;padding:0 16px;height:56px;cursor:pointer;text-align:left;box-shadow:0 2px 0 rgba(34,51,62,.04)">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="{{ o.icon }}" stroke-width="2.2" stroke-linecap="round"><path d="M12 18h.01"></path><path d="M8.5 14.5a5 5 0 0 1 7 0"></path><path d="M5.5 11a9.5 9.5 0 0 1 13 0"></path><path d="M2.5 7.5a14 14 0 0 1 19 0"></path></svg>
+        <div style="flex:1;font:700 14.5px 'Nunito',sans-serif;color:{{ o.fg }}">{{ o.label }}</div>
+        <div style="width:20px;height:20px;border-radius:50%;border:2px solid {{ o.bc }};background:{{ o.dot }};flex:none"></div>
+      </button>
+    </sc-for>
+  </div>
+  <div style="margin-top:auto;padding:16px 24px 24px">
+    <button onClick="{{ goOb2 }}" style="width:100%;height:54px;border:none;border-radius:16px;cursor:pointer;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:17px;color:#fff;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.35) 10%,rgba(255,255,255,.35) 16%,transparent 16%,transparent 21%,rgba(255,255,255,.35) 21%,rgba(255,255,255,.35) 24%,transparent 24%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16)" style-active="transform:translateY(2px)">Próximo</button>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ ONBOARDING 2 ============ -->
+<sc-if value="{{ isOb2 }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Onboarding — meta diária" style="flex:1;display:flex;flex-direction:column;background:linear-gradient(180deg,#C3E7F9 0%,#EAF7FE 40%,#FFFFFF 72%)">
+  <div style="display:flex;align-items:center;gap:12px;padding:18px 20px 4px">
+    <button onClick="{{ goOb1 }}" style="width:42px;height:42px;background:#fff;border:1.5px solid #E3EDF3;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#22333E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg></button>
+    <div style="flex:1;height:16px;background:#fff;border-radius:999px;border:1.5px solid #E3EDF3;overflow:hidden"><div style="width:66%;height:100%;border-radius:999px;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.4) 20%,rgba(255,255,255,.4) 34%,transparent 34%)"></div></div>
+  </div>
+  <div style="display:flex;align-items:flex-start;gap:10px;padding:18px 24px 6px">
+    <svg viewBox="0 0 200 190" width="104" height="99" style="flex:none;display:block;animation:bobfloat 4s ease-in-out infinite"><circle cx="52" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="148" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="52" cy="40" r="8" fill="#2E86BC"></circle><circle cx="148" cy="40" r="8" fill="#2E86BC"></circle><ellipse cx="100" cy="106" rx="74" ry="78" fill="#57B9EE"></ellipse><ellipse cx="100" cy="142" rx="44" ry="36" fill="#EAF7FF"></ellipse><circle cx="76" cy="88" r="9" fill="#1E2B33"></circle><circle cx="124" cy="88" r="9" fill="#1E2B33"></circle><circle cx="79" cy="85" r="3" fill="#fff"></circle><circle cx="127" cy="85" r="3" fill="#fff"></circle><ellipse cx="58" cy="108" rx="9" ry="6" fill="#FF9DA6" opacity="0.75"></ellipse><ellipse cx="142" cy="108" rx="9" ry="6" fill="#FF9DA6" opacity="0.75"></ellipse><path d="M90 106 Q100 116 110 106" stroke="#1E2B33" stroke-width="5" fill="none" stroke-linecap="round"></path></svg>
+    <div style="position:relative;background:#fff;border:1.5px solid #E3EDF3;border-radius:16px;padding:12px 14px;margin-top:14px;font:700 14px/1.45 'Nunito',sans-serif;color:#22333E;box-shadow:0 3px 0 rgba(34,51,62,.05)">
+      <div style="position:absolute;left:-7px;top:22px;width:12px;height:12px;background:#fff;border-left:1.5px solid #E3EDF3;border-bottom:1.5px solid #E3EDF3;transform:rotate(45deg)"></div>
+      Qual é a sua meta diária de estudo?
+    </div>
+  </div>
+  <div style="padding:22px 24px 0">
+    <div style="background:#fff;border:1.5px solid #E3EDF3;border-radius:20px;padding:22px 14px 16px;box-shadow:0 4px 0 rgba(34,51,62,.04)">
+      <div style="display:flex;gap:8px;justify-content:space-between">
+        <sc-for list="{{ obMinOpts }}" as="m" hint-placeholder-count="5">
+          <button onClick="{{ m.onTap }}" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0;border-radius:14px;border:2px solid {{ m.bc }};background:{{ m.bg }};cursor:pointer">
+            <sc-if value="{{ m.tag }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background-color:var(--accent,#47B8F2);color:#fff;font:700 10px 'Baloo 2',sans-serif;padding:2px 8px;border-radius:999px;white-space:nowrap">Boa! 👍</div></sc-if>
+            <div style="font:800 18px 'Baloo 2',sans-serif;color:{{ m.fg }}">{{ m.label }}</div>
+            <div style="font:700 10px 'Nunito',sans-serif;color:#93A9B7;text-transform:uppercase;letter-spacing:.4px">min</div>
+          </button>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:16px">
+        <sc-for list="{{ obPeriodOpts }}" as="p" hint-placeholder-count="3">
+          <button onClick="{{ p.onTap }}" style="flex:1;height:38px;border-radius:999px;border:none;cursor:pointer;font:700 13.5px 'Baloo 2',sans-serif;background:{{ p.bg }};color:{{ p.fg }}">{{ p.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:auto;padding:16px 24px 24px">
+    <button onClick="{{ goLoading }}" style="width:100%;height:54px;border:none;border-radius:16px;cursor:pointer;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:17px;color:#fff;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.35) 10%,rgba(255,255,255,.35) 16%,transparent 16%,transparent 21%,rgba(255,255,255,.35) 21%,rgba(255,255,255,.35) 24%,transparent 24%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16)" style-active="transform:translateY(2px)">Próximo</button>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ LOADING ============ -->
+<sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Carregando curso" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:linear-gradient(180deg,#C3E7F9 0%,#F3FAFE 60%,#FFFFFF 100%)">
+  <svg viewBox="0 0 200 190" width="170" height="162" style="display:block;animation:bobfloat 2.6s ease-in-out infinite"><circle cx="52" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="148" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="52" cy="40" r="8" fill="#2E86BC"></circle><circle cx="148" cy="40" r="8" fill="#2E86BC"></circle><ellipse cx="100" cy="106" rx="74" ry="78" fill="#57B9EE"></ellipse><ellipse cx="100" cy="142" rx="44" ry="36" fill="#EAF7FF"></ellipse><circle cx="76" cy="88" r="9" fill="#1E2B33"></circle><circle cx="124" cy="88" r="9" fill="#1E2B33"></circle><circle cx="79" cy="85" r="3" fill="#fff"></circle><circle cx="127" cy="85" r="3" fill="#fff"></circle><ellipse cx="58" cy="108" rx="9" ry="6" fill="#FF9DA6" opacity="0.75"></ellipse><ellipse cx="142" cy="108" rx="9" ry="6" fill="#FF9DA6" opacity="0.75"></ellipse><ellipse cx="100" cy="110" rx="8" ry="6" fill="#1E2B33"></ellipse></svg>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+    <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:19px;color:#22333E">Preparando seu curso</div>
+    <div style="display:flex;gap:6px">
+      <div style="width:9px;height:9px;border-radius:50%;background-color:var(--accent,#47B8F2);animation:dots 1.2s infinite"></div>
+      <div style="width:9px;height:9px;border-radius:50%;background-color:var(--accent,#47B8F2);animation:dots 1.2s infinite;animation-delay:.2s"></div>
+      <div style="width:9px;height:9px;border-radius:50%;background-color:var(--accent,#47B8F2);animation:dots 1.2s infinite;animation-delay:.4s"></div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ HOME ============ -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Início — mapa" style="flex:1;display:flex;flex-direction:column">
+  <div style="background:linear-gradient(180deg,#C9E9FA 0%,#EAF7FE 100%);padding:18px 20px 12px">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;color:#22333E">{{ greeting }}</div>
+        <button onClick="{{ goAccount }}" style="display:flex;align-items:center;gap:6px;background:none;border:none;padding:0;cursor:pointer;font:700 12.5px 'Nunito',sans-serif;color:#64798A"><span style="display:inline-flex;width:18px;height:18px;border-radius:50%;background:#2A4E8F;color:#fff;font:800 8px/18px 'Nunito',sans-serif;justify-content:center">EN</span>Inglês<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#64798A" stroke-width="2.6" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg></button>
+      </div>
+      <div style="display:flex;gap:8px">
+        <div style="display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid #E3EDF3;border-radius:999px;padding:6px 12px;font:800 14px 'Baloo 2',sans-serif;color:#22333E"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="#47B8F2" d="M12 2 4 9l8 13 8-13-8-7Z"></path><path fill="#8AD4F8" d="M12 2 4 9h16l-8-7Z"></path></svg>{{ gems }}</div>
+        <button onClick="{{ openHearts }}" style="display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid #E3EDF3;border-radius:999px;padding:6px 12px;font:800 14px 'Baloo 2',sans-serif;color:#22333E;cursor:pointer"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="#F0445C" d="M12 21S4 15 4 9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 3.5C20 15 12 21 12 21Z"></path></svg>{{ hearts }}</button>
+      </div>
+    </div>
+    <button onClick="{{ goLevels }}" style="width:100%;display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid #E3EDF3;border-radius:16px;padding:10px 14px;margin-top:12px;cursor:pointer;text-align:left;box-shadow:0 3px 0 rgba(34,51,62,.05)">
+      <div style="width:38px;height:38px;border-radius:50%;background:#22333E;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><circle cx="8" cy="8" r="2"></circle><circle cx="16" cy="8" r="2"></circle><circle cx="5.5" cy="12" r="1.6"></circle><circle cx="18.5" cy="12" r="1.6"></circle><path d="M12 11c-2.8 0-5 2.2-5 4.2 0 1.6 1.2 2.3 2.6 2.3 1 0 1.6-.4 2.4-.4s1.4.4 2.4.4c1.4 0 2.6-.7 2.6-2.3 0-2-2.2-4.2-5-4.2Z"></path></svg></div>
+      <div style="flex:1">
+        <div style="font:700 11.5px 'Nunito',sans-serif;color:#1789CE">Nível 5, Unidade 2</div>
+        <div style="font:800 15px 'Baloo 2',sans-serif;color:#22333E">O Parque Imprevisível</div>
+      </div>
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#47B8F2" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M7 12h10M10 17h4"></path></svg>
+    </button>
+  </div>
+  <div style="position:relative;flex:1;min-height:470px;background:linear-gradient(180deg,#A8DB8F 0%,#8FCF74 45%,#7FC463 100%);overflow:hidden">
+    <div style="position:absolute;left:-40px;top:30px;width:150px;height:70px;border-radius:50%;background:rgba(255,255,255,.16)"></div>
+    <div style="position:absolute;right:-30px;top:120px;width:120px;height:60px;border-radius:50%;background:rgba(255,255,255,.12)"></div>
+    <div style="position:absolute;left:20px;bottom:60px;width:90px;height:44px;border-radius:50%;background:rgba(60,110,50,.18)"></div>
+    <div style="position:absolute;right:36px;bottom:150px;width:70px;height:36px;border-radius:50%;background:rgba(60,110,50,.15)"></div>
+    <svg viewBox="0 0 430 480" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+      <path d="M215,40 C120,80 90,110 120,140 C160,195 260,200 300,240 C345,285 220,300 160,340 C95,382 180,420 215,445" fill="none" stroke="rgba(120,84,50,.38)" stroke-width="30" stroke-linecap="round"></path>
+      <path d="M215,40 C120,80 90,110 120,140 C160,195 260,200 300,240 C345,285 220,300 160,340 C95,382 180,420 215,445" fill="none" stroke="rgba(255,248,230,.85)" stroke-width="5" stroke-dasharray="2 16" stroke-linecap="round"></path>
+    </svg>
+    <sc-for list="{{ mapNodes }}" as="n" hint-placeholder-count="5">
+      <button onClick="{{ n.onTap }}" style="position:absolute;left:{{ n.x }};top:{{ n.y }};transform:translate(-50%,-50%);width:{{ n.size }};height:{{ n.size }};border-radius:50%;border:4px solid #fff;background:{{ n.bg }};cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 rgba(40,70,35,.25);animation:{{ n.anim }}">
+        <sc-if value="{{ n.isFlag }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#22333E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4"></path><path d="M6 4h11l-2.5 3.5L17 11H6"></path></svg></sc-if>
+        <sc-if value="{{ n.isCheck }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"></path></svg></sc-if>
+        <sc-if value="{{ n.isStar }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M12 2.5l2.8 5.9 6.2.8-4.6 4.4 1.2 6.2L12 16.8l-5.6 3-1.2-6.2L.6 9.2l6.2-.8L12 2.5Z" transform="translate(1.4 1)"></path></svg></sc-if>
+        <sc-if value="{{ n.isLock }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#93A9B7" stroke-width="2.4"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></sc-if>
+      </button>
+    </sc-for>
+    <svg viewBox="0 0 200 190" width="96" height="92" style="position:absolute;left:6%;top:34%;animation:bobfloat 4.5s ease-in-out infinite"><circle cx="52" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="148" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="52" cy="40" r="8" fill="#2E86BC"></circle><circle cx="148" cy="40" r="8" fill="#2E86BC"></circle><ellipse cx="100" cy="106" rx="74" ry="78" fill="#57B9EE"></ellipse><ellipse cx="100" cy="142" rx="44" ry="36" fill="#EAF7FF"></ellipse><circle cx="76" cy="88" r="9" fill="#1E2B33"></circle><circle cx="124" cy="88" r="9" fill="#1E2B33"></circle><circle cx="79" cy="85" r="3" fill="#fff"></circle><circle cx="127" cy="85" r="3" fill="#fff"></circle><ellipse cx="58" cy="108" rx="9" ry="6" fill="#FF9DA6" opacity="0.75"></ellipse><ellipse cx="142" cy="108" rx="9" ry="6" fill="#FF9DA6" opacity="0.75"></ellipse><path d="M90 106 Q100 116 110 106" stroke="#1E2B33" stroke-width="5" fill="none" stroke-linecap="round"></path></svg>
+    <sc-if value="{{ nodeTip }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:50%;top:{{ tipTop }};transform:translateX(-50%);width:250px;background:#fff;border-radius:18px;padding:14px;box-shadow:0 10px 26px rgba(30,60,40,.28);animation:pop .25s ease-out">
+        <div style="position:absolute;left:50%;bottom:-7px;width:14px;height:14px;background:#fff;transform:translateX(-50%) rotate(45deg)"></div>
+        <div style="font:800 15px 'Baloo 2',sans-serif;color:#22333E">{{ tipTitle }}</div>
+        <div style="font:700 12px 'Nunito',sans-serif;color:#1789CE;margin:2px 0 10px">{{ tipSub }}</div>
+        <button onClick="{{ startFromTip }}" style="width:100%;height:42px;border:none;border-radius:13px;cursor:pointer;font:700 14.5px 'Baloo 2',sans-serif;color:#fff;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.35) 10%,rgba(255,255,255,.35) 17%,transparent 17%);box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)">Começar +25 XP</button>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ EXPLORE LEVELS ============ -->
+<sc-if value="{{ isLevels }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Explorar níveis" style="flex:1;display:flex;flex-direction:column;background:#fff">
+  <div style="display:flex;align-items:center;gap:12px;padding:18px 20px 10px;position:sticky;top:0;background:#fff;z-index:2">
+    <button onClick="{{ goHome }}" style="width:42px;height:42px;background:#fff;border:1.5px solid #E3EDF3;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#22333E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg></button>
+    <div style="flex:1;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;color:#22333E">Explorar níveis</div>
+    <div style="display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid #E3EDF3;border-radius:999px;padding:6px 12px;font:800 14px 'Baloo 2',sans-serif;color:#22333E"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="#47B8F2" d="M12 2 4 9l8 13 8-13-8-7Z"></path><path fill="#8AD4F8" d="M12 2 4 9h16l-8-7Z"></path></svg>{{ gems }}</div>
+  </div>
+  <div style="position:relative;padding:8px 20px 28px;display:flex;flex-direction:column;gap:18px">
+    <div style="position:absolute;left:31px;top:20px;bottom:30px;width:8px;border-radius:99px;background:#E3EDF3"></div>
+    <sc-for list="{{ levels }}" as="lv" hint-placeholder-count="3">
+      <div style="position:relative;padding-left:32px">
+        <div style="position:absolute;left:7px;top:22px;width:14px;height:14px;border-radius:50%;background:{{ lv.dot }};border:3px solid #fff;box-shadow:0 0 0 2px {{ lv.dot }}"></div>
+        <button onClick="{{ lv.onOpen }}" style="width:100%;display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid #E3EDF3;border-radius:16px;padding:10px 14px;cursor:pointer;text-align:left">
+          <div style="width:40px;height:40px;border-radius:50%;background:{{ lv.iconBg }};display:flex;align-items:center;justify-content:center;flex:none;color:{{ lv.iconFg }};font:800 15px 'Baloo 2',sans-serif">{{ lv.num }}</div>
+          <div style="flex:1">
+            <div style="font:800 15px 'Baloo 2',sans-serif;color:#22333E">{{ lv.name }}</div>
+            <div style="font:700 12px 'Nunito',sans-serif;color:#1789CE">{{ lv.sub }}</div>
+          </div>
+          <sc-if value="{{ lv.locked }}" hint-placeholder-val="{{ false }}"><div style="width:34px;height:34px;border-radius:50%;background:#F4F9FC;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#93A9B7" stroke-width="2.4"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></div></sc-if>
+          <sc-if value="{{ lv.open }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#47B8F2" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></sc-if>
+        </button>
+        <button onClick="{{ lv.onOpen }}" style="width:100%;border:none;padding:0;margin-top:10px;border-radius:18px;overflow:hidden;cursor:pointer;display:block;position:relative;height:150px;background:{{ lv.sceneBg }}">
+          <div style="position:absolute;left:14%;bottom:-30px;width:130px;height:130px;border-radius:50%;background:{{ lv.blob1 }}"></div>
+          <div style="position:absolute;right:8%;bottom:-46px;width:180px;height:150px;border-radius:50%;background:{{ lv.blob2 }}"></div>
+          <div style="position:absolute;right:22%;top:16px;width:52px;height:52px;border-radius:50%;background:{{ lv.sun }}"></div>
+          <svg viewBox="0 0 200 190" width="86" height="82" style="position:absolute;left:50%;bottom:6px;transform:translateX(-50%)"><circle cx="52" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="148" cy="38" r="17" fill="#4FAEE3"></circle><ellipse cx="100" cy="106" rx="74" ry="78" fill="#57B9EE"></ellipse><ellipse cx="100" cy="142" rx="44" ry="36" fill="#EAF7FF"></ellipse><circle cx="76" cy="88" r="9" fill="#1E2B33"></circle><circle cx="124" cy="88" r="9" fill="#1E2B33"></circle><circle cx="79" cy="85" r="3" fill="#fff"></circle><circle cx="127" cy="85" r="3" fill="#fff"></circle><path d="M90 106 Q100 116 110 106" stroke="#1E2B33" stroke-width="5" fill="none" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ LEVEL DETAIL ============ -->
+<sc-if value="{{ isLevelDetail }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Detalhe do nível" style="flex:1;display:flex;flex-direction:column;background:#fff">
+  <div style="position:relative;height:210px;background:{{ dSceneBg }};overflow:hidden">
+    <div style="position:absolute;left:10%;bottom:-40px;width:170px;height:160px;border-radius:50%;background:{{ dBlob1 }}"></div>
+    <div style="position:absolute;right:4%;bottom:-60px;width:220px;height:180px;border-radius:50%;background:{{ dBlob2 }}"></div>
+    <div style="position:absolute;right:18%;top:22px;width:60px;height:60px;border-radius:50%;background:{{ dSun }}"></div>
+    <button onClick="{{ goLevels }}" style="position:absolute;left:16px;top:16px;width:42px;height:42px;background:#fff;border:none;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(20,40,50,.18)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#22333E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg></button>
+    <div style="position:absolute;right:16px;top:16px;display:flex;align-items:center;gap:6px;background:#fff;border-radius:999px;padding:7px 13px;font:800 14px 'Baloo 2',sans-serif;color:#22333E;box-shadow:0 2px 8px rgba(20,40,50,.18)"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="#47B8F2" d="M12 2 4 9l8 13 8-13-8-7Z"></path><path fill="#8AD4F8" d="M12 2 4 9h16l-8-7Z"></path></svg>{{ gems }}</div>
+    <svg viewBox="0 0 200 190" width="110" height="105" style="position:absolute;left:50%;bottom:-8px;transform:translateX(-50%)"><circle cx="52" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="148" cy="38" r="17" fill="#4FAEE3"></circle><ellipse cx="100" cy="106" rx="74" ry="78" fill="#57B9EE"></ellipse><ellipse cx="100" cy="142" rx="44" ry="36" fill="#EAF7FF"></ellipse><circle cx="76" cy="88" r="9" fill="#1E2B33"></circle><circle cx="124" cy="88" r="9" fill="#1E2B33"></circle><circle cx="79" cy="85" r="3" fill="#fff"></circle><circle cx="127" cy="85" r="3" fill="#fff"></circle><path d="M90 106 Q100 116 110 106" stroke="#1E2B33" stroke-width="5" fill="none" stroke-linecap="round"></path></svg>
+  </div>
+  <div style="padding:0 20px 28px;margin-top:-26px;display:flex;flex-direction:column;gap:18px;position:relative;z-index:1">
+    <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid #E3EDF3;border-radius:16px;padding:12px 14px;box-shadow:0 6px 18px rgba(30,60,80,.08)">
+      <div style="width:40px;height:40px;border-radius:50%;background:#22333E;color:#fff;display:flex;align-items:center;justify-content:center;font:800 15px 'Baloo 2',sans-serif">{{ dNum }}</div>
+      <div style="flex:1">
+        <div style="font:800 16px 'Baloo 2',sans-serif;color:#22333E">{{ dName }}</div>
+        <div style="font:700 12px 'Nunito',sans-serif;color:#1789CE">{{ dSub }}</div>
+      </div>
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#93A9B7" stroke-width="2"><circle cx="6" cy="12" r="2.5"></circle><circle cx="17" cy="6" r="2.5"></circle><circle cx="17" cy="18" r="2.5"></circle><path d="M8.2 10.8 15 7.2M8.2 13.2 15 16.8"></path></svg>
+    </div>
+    <sc-if value="{{ dShowStats }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="font:800 18px 'Baloo 2',sans-serif;color:#22333E;margin-bottom:10px">Desempenho</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+          <div style="border:2px solid #F6A81C;border-radius:16px;padding:12px 8px;text-align:center">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="#F6A81C" style="margin-bottom:4px"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"></path></svg>
+            <div style="font:800 18px 'Baloo 2',sans-serif;color:#22333E">234</div>
+            <div style="font:700 11px 'Nunito',sans-serif;color:#93A9B7">XP total</div>
+          </div>
+          <div style="border:2px solid #47B8F2;border-radius:16px;padding:12px 8px;text-align:center">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#47B8F2" stroke-width="2.4" style="margin-bottom:4px"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle></svg>
+            <div style="font:800 18px 'Baloo 2',sans-serif;color:#22333E">64%</div>
+            <div style="font:700 11px 'Nunito',sans-serif;color:#93A9B7">acertos</div>
+          </div>
+          <div style="border:2px solid #3EBE6F;border-radius:16px;padding:12px 8px;text-align:center">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#3EBE6F" stroke-width="2.4" style="margin-bottom:4px"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>
+            <div style="font:800 18px 'Baloo 2',sans-serif;color:#22333E">34</div>
+            <div style="font:700 11px 'Nunito',sans-serif;color:#93A9B7">dias</div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <div>
+      <div style="font:800 18px 'Baloo 2',sans-serif;color:#22333E;margin-bottom:8px">Sobre este nível</div>
+      <div style="font:600 13.5px/1.6 'Nunito',sans-serif;color:#64798A">{{ dAbout }}</div>
+    </div>
+    <sc-if value="{{ dLocked }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ dUnlock }}" style="height:54px;border:2px solid #22333E;border-radius:16px;cursor:pointer;font:700 16px 'Baloo 2',sans-serif;color:#22333E;background:#fff;box-shadow:inset 0 -4px 0 rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;gap:8px">Desbloquear com <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#47B8F2" d="M12 2 4 9l8 13 8-13-8-7Z"></path><path fill="#8AD4F8" d="M12 2 4 9h16l-8-7Z"></path></svg> 350</button>
+    </sc-if>
+    <sc-if value="{{ dPlayable }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ dStart }}" style="height:54px;border:none;border-radius:16px;cursor:pointer;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:17px;color:#fff;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.35) 10%,rgba(255,255,255,.35) 16%,transparent 16%,transparent 21%,rgba(255,255,255,.35) 21%,rgba(255,255,255,.35) 24%,transparent 24%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16)" style-active="transform:translateY(2px)">{{ dCta }}</button>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ LESSON ============ -->
+<sc-if value="{{ isLesson }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Lição — exercício" style="flex:1;display:flex;flex-direction:column;background:linear-gradient(180deg,#DDF1FC 0%,#FFFFFF 30%)">
+  <div style="display:flex;align-items:center;gap:12px;padding:16px 20px 6px">
+    <button onClick="{{ exitLesson }}" style="width:40px;height:40px;background:#fff;border:1.5px solid #E3EDF3;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#22333E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg></button>
+    <div style="flex:1;height:15px;background:#fff;border-radius:999px;border:1.5px solid #E3EDF3;overflow:hidden"><div style="width:{{ lessonPct }};height:100%;border-radius:999px;background-color:var(--accent,#47B8F2);transition:width .4s ease;background-image:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.4) 20%,rgba(255,255,255,.4) 34%,transparent 34%)"></div></div>
+    <div style="display:flex;align-items:center;gap:5px;background:#fff;border:1.5px solid #E3EDF3;border-radius:999px;padding:5px 11px;font:800 13.5px 'Baloo 2',sans-serif;color:#22333E"><svg viewBox="0 0 24 24" width="15" height="15"><path fill="#F0445C" d="M12 21S4 15 4 9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 3.5C20 15 12 21 12 21Z"></path></svg>{{ hearts }}</div>
+  </div>
+  <div style="padding:10px 20px 0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:19px;color:#22333E">{{ exTitle }}</div>
+
+  <sc-if value="{{ exIsChoice }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:12px 20px 0;display:flex;flex-direction:column;gap:14px">
+      <div style="background:#fff;border:1.5px solid #E3EDF3;border-radius:20px;overflow:hidden;box-shadow:0 4px 0 rgba(34,51,62,.04)">
+        <div style="position:relative;height:140px;background:{{ exSceneBg }};overflow:hidden">
+          <div style="position:absolute;left:12%;bottom:-36px;width:120px;height:120px;border-radius:50%;background:{{ exBlob1 }}"></div>
+          <div style="position:absolute;right:10%;bottom:-50px;width:170px;height:140px;border-radius:50%;background:{{ exBlob2 }}"></div>
+          <div style="position:absolute;right:24%;top:14px;width:44px;height:44px;border-radius:50%;background:{{ exSun }}"></div>
+          <div style="position:absolute;left:22%;bottom:18px;width:10px;height:34px;border-radius:4px;background:rgba(90,60,30,.45)"></div>
+          <div style="position:absolute;left:16.5%;bottom:44px;width:58px;height:52px;border-radius:50%;background:rgba(46,124,60,.65)"></div>
+        </div>
+        <div style="padding:14px 16px 16px">
+          <div style="font:700 15px/1.6 'Nunito',sans-serif;color:#64798A">{{ exPre }} <span style="display:inline-block;min-width:74px;border-bottom:2.5px solid #C9DCE7;font-weight:800;color:{{ exBlankColor }};text-align:center;padding:0 6px">{{ exBlank }}</span> {{ exPost }}</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:10px;margin-top:-28px">
+        <button onClick="{{ exSpeak }}" style="width:46px;height:44px;border:none;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;background-color:var(--accent,#47B8F2);box-shadow:0 3px 0 rgba(23,110,160,.5)"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M4 9v6h4l5 4V5L8 9H4Z"></path><path d="M16 9a4 4 0 0 1 0 6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"></path></svg></button>
+        <button onClick="{{ exHint }}" style="width:46px;height:44px;border:none;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;background-color:var(--accent,#47B8F2);box-shadow:0 3px 0 rgba(23,110,160,.5)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M9 18h6M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.7 10.7c.7.6 1.2 1.4 1.4 2.3h4.6c.2-.9.7-1.7 1.4-2.3A6 6 0 0 0 12 3Z"></path></svg></button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <sc-for list="{{ choiceOpts }}" as="o" hint-placeholder-count="4">
+          <button onClick="{{ o.onTap }}" style="height:52px;border-radius:15px;cursor:pointer;background:{{ o.bg }};border:2px {{ o.bs }} {{ o.bc }};font:700 14.5px 'Nunito',sans-serif;color:{{ o.fg }};box-shadow:0 2px 0 rgba(34,51,62,.05)">{{ o.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ exIsBlocks }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:12px 20px 0;display:flex;flex-direction:column;gap:14px">
+      <div style="font:700 14px 'Nunito',sans-serif;color:#64798A">Traduza: <span style="color:#22333E;font-weight:800">“{{ exTrans }}”</span></div>
+      <div style="background:#fff;border:1.5px solid #E3EDF3;border-radius:20px;padding:16px;min-height:110px;box-shadow:0 4px 0 rgba(34,51,62,.04)">
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ chosenChips }}" as="c" hint-placeholder-count="2">
+            <button onClick="{{ c.onTap }}" style="padding:9px 14px;border-radius:11px;border:1.5px solid {{ c.bc }};background:{{ c.bg }};font:700 14px 'Nunito',sans-serif;color:{{ c.fg }};cursor:pointer;box-shadow:0 2px 0 rgba(34,51,62,.06)">{{ c.w }}</button>
+          </sc-for>
+          <sc-if value="{{ chosenEmpty }}" hint-placeholder-val="{{ false }}"><div style="font:600 13px 'Nunito',sans-serif;color:#B9CBD6;padding:9px 2px">Toque nas palavras abaixo…</div></sc-if>
+        </div>
+        <div style="height:2px;background:#EDF4F8;margin-top:14px"></div>
+        <div style="height:2px;background:#EDF4F8;margin-top:22px"></div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:10px;margin-top:-30px">
+        <button onClick="{{ exSpeak }}" style="width:46px;height:44px;border:none;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;background-color:var(--accent,#47B8F2);box-shadow:0 3px 0 rgba(23,110,160,.5)"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M4 9v6h4l5 4V5L8 9H4Z"></path><path d="M16 9a4 4 0 0 1 0 6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"></path></svg></button>
+        <button onClick="{{ exHint }}" style="width:46px;height:44px;border:none;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;background-color:var(--accent,#47B8F2);box-shadow:0 3px 0 rgba(23,110,160,.5)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M9 18h6M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.7 10.7c.7.6 1.2 1.4 1.4 2.3h4.6c.2-.9.7-1.7 1.4-2.3A6 6 0 0 0 12 3Z"></path></svg></button>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding-top:6px">
+        <sc-for list="{{ poolChips }}" as="p" hint-placeholder-count="4">
+          <button onClick="{{ p.onTap }}" style="padding:10px 16px;border-radius:11px;border:1.5px solid {{ p.bc }};background:{{ p.bg }};font:700 14px 'Nunito',sans-serif;color:{{ p.fg }};cursor:pointer;box-shadow:0 2px 0 rgba(34,51,62,.06)">{{ p.w }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="margin-top:auto;padding:16px 20px 22px">
+    <button onClick="{{ check }}" disabled="{{ checkDisabled }}" style="width:100%;height:54px;border:none;border-radius:16px;cursor:pointer;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:17px;color:{{ checkFg }};background-color:{{ checkBg }};background-image:{{ checkStripes }};box-shadow:inset 0 -4px 0 rgba(0,0,0,.12)">Verificar</button>
+  </div>
+
+  <sc-if value="{{ sheetCorrect }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:0;right:0;bottom:0;animation:pop .3s ease-out">
+      <svg viewBox="0 0 432 24" preserveAspectRatio="none" style="display:block;width:100%;height:24px"><path d="M0 24 L0 14 Q 27 0 54 14 T 108 14 T 162 14 T 216 14 T 270 14 T 324 14 T 378 14 T 432 14 L 432 24 Z" fill="#E7F8EC"></path></svg>
+      <div style="background:#E7F8EC;padding:8px 20px 22px;text-align:center">
+        <div style="font-size:26px">🎉</div>
+        <div style="font:800 19px 'Baloo 2',sans-serif;color:#2E9E58">Boa!</div>
+        <div style="font:700 13px 'Nunito',sans-serif;color:#57A876;margin:2px 0 14px">{{ sheetSub }}</div>
+        <button onClick="{{ nextEx }}" style="width:100%;height:52px;border:none;border-radius:16px;cursor:pointer;font:700 16.5px 'Baloo 2',sans-serif;color:#fff;background-color:#3EBE6F;background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.3) 10%,rgba(255,255,255,.3) 16%,transparent 16%,transparent 21%,rgba(255,255,255,.3) 21%,rgba(255,255,255,.3) 24%,transparent 24%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16)">Continuar</button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ sheetWrong }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:0;right:0;bottom:0;animation:pop .3s ease-out">
+      <svg viewBox="0 0 432 24" preserveAspectRatio="none" style="display:block;width:100%;height:24px"><path d="M0 24 L0 14 Q 27 0 54 14 T 108 14 T 162 14 T 216 14 T 270 14 T 324 14 T 378 14 T 432 14 L 432 24 Z" fill="#FDECEA"></path></svg>
+      <div style="background:#FDECEA;padding:8px 20px 22px;text-align:center">
+        <div style="font-size:26px">💔</div>
+        <div style="font:800 19px 'Baloo 2',sans-serif;color:#D14B42">Opa! Sem problemas</div>
+        <div style="font:700 13px 'Nunito',sans-serif;color:#C97A72;margin:2px 0 14px">{{ sheetSub }}</div>
+        <button onClick="{{ nextEx }}" style="width:100%;height:52px;border:none;border-radius:16px;cursor:pointer;font:700 16.5px 'Baloo 2',sans-serif;color:#fff;background-color:#E4574F;background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.3) 10%,rgba(255,255,255,.3) 16%,transparent 16%,transparent 21%,rgba(255,255,255,.3) 21%,rgba(255,255,255,.3) 24%,transparent 24%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16)">Continuar</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<!-- ============ LESSON DONE ============ -->
+<sc-if value="{{ isLessonDone }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Lição concluída" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(180deg,#C3E7F9 0%,#F3FAFE 55%,#FFFFFF 100%);padding:24px">
+  <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:40px;color:#1789CE">Boa!</div>
+  <div style="font:800 17px 'Nunito',sans-serif;color:#22333E;margin-top:-6px">Você está pegando fogo 🔥</div>
+  <svg viewBox="0 0 200 190" width="180" height="171" style="display:block;margin:10px 0;animation:bobfloat 2.8s ease-in-out infinite"><circle cx="52" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="148" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="52" cy="40" r="8" fill="#2E86BC"></circle><circle cx="148" cy="40" r="8" fill="#2E86BC"></circle><ellipse cx="100" cy="106" rx="74" ry="78" fill="#57B9EE"></ellipse><ellipse cx="100" cy="142" rx="44" ry="36" fill="#EAF7FF"></ellipse><path d="M30 62 Q100 38 170 62 L170 50 Q100 26 30 50 Z" fill="#E4574F"></path><circle cx="76" cy="88" r="9" fill="#1E2B33"></circle><circle cx="124" cy="88" r="9" fill="#1E2B33"></circle><circle cx="79" cy="85" r="3" fill="#fff"></circle><circle cx="127" cy="85" r="3" fill="#fff"></circle><ellipse cx="58" cy="108" rx="9" ry="6" fill="#FF9DA6" opacity="0.75"></ellipse><ellipse cx="142" cy="108" rx="9" ry="6" fill="#FF9DA6" opacity="0.75"></ellipse><ellipse cx="100" cy="110" rx="9" ry="7" fill="#1E2B33"></ellipse></svg>
+  <div style="display:flex;gap:10px">
+    <div style="display:flex;align-items:center;gap:6px;background:#fff;border:2px solid #F6A81C;border-radius:14px;padding:8px 16px;font:800 15px 'Baloo 2',sans-serif;color:#22333E"><svg viewBox="0 0 24 24" width="17" height="17" fill="#F6A81C"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"></path></svg>+25 XP</div>
+    <div style="display:flex;align-items:center;gap:6px;background:#fff;border:2px solid #3EBE6F;border-radius:14px;padding:8px 16px;font:800 15px 'Baloo 2',sans-serif;color:#22333E"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#3EBE6F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"></path></svg>Lição 2 concluída</div>
+  </div>
+  <div style="width:100%;max-width:340px;margin-top:18px">
+    <button onClick="{{ goHome }}" style="width:100%;height:54px;border:none;border-radius:16px;cursor:pointer;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:17px;color:#fff;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.35) 10%,rgba(255,255,255,.35) 16%,transparent 16%,transparent 21%,rgba(255,255,255,.35) 21%,rgba(255,255,255,.35) 24%,transparent 24%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16)" style-active="transform:translateY(2px)">Continuar</button>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ TALK WITH BOB ============ -->
+<sc-if value="{{ isTalk }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Fale com o Bob" style="flex:1;display:flex;flex-direction:column;background:linear-gradient(180deg,#DDF1FC 0%,#FFFFFF 26%)">
+  <div style="display:flex;align-items:center;gap:12px;padding:16px 20px 6px">
+    <button onClick="{{ goHome }}" style="width:40px;height:40px;background:#fff;border:1.5px solid #E3EDF3;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#22333E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg></button>
+    <div style="flex:1;height:15px;background:#fff;border-radius:999px;border:1.5px solid #E3EDF3;overflow:hidden"><div style="width:{{ talkPct }};height:100%;border-radius:999px;background-color:var(--accent,#47B8F2);transition:width .4s ease;background-image:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.4) 20%,rgba(255,255,255,.4) 34%,transparent 34%)"></div></div>
+    <div style="display:flex;align-items:center;gap:5px;background:#fff;border:1.5px solid #E3EDF3;border-radius:999px;padding:5px 11px;font:800 13.5px 'Baloo 2',sans-serif;color:#22333E"><svg viewBox="0 0 24 24" width="15" height="15"><path fill="#F0445C" d="M12 21S4 15 4 9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 3.5C20 15 12 21 12 21Z"></path></svg>{{ hearts }}</div>
+  </div>
+  <div style="text-align:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:19px;color:#22333E;padding:6px 20px">Fale com o {{ mascotName }}</div>
+  <div style="margin:6px 20px 0;position:relative;height:250px;border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#A8E0F5 0%,#8FD3A8 62%,#5FBF7A 100%)">
+    <div style="position:absolute;left:-34px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(30,100,60,.5)"></div>
+    <div style="position:absolute;right:-40px;top:-44px;width:160px;height:150px;border-radius:50%;background:rgba(30,100,60,.42)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:64px;background:linear-gradient(180deg,#9A6B3F,#7C5230)"></div>
+    <div style="position:absolute;left:50%;bottom:52px;transform:translateX(-50%);width:190px;height:16px;border-radius:8px;background:#8A5D36"></div>
+    <svg viewBox="0 0 200 190" width="130" height="124" style="position:absolute;left:50%;bottom:44px;transform:translateX(-58%)"><circle cx="52" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="148" cy="38" r="17" fill="#4FAEE3"></circle><circle cx="52" cy="40" r="8" fill="#2E86BC"></circle><circle cx="148" cy="40" r="8" fill="#2E86BC"></circle><ellipse cx="100" cy="106" rx="74" ry="78" fill="#57B9EE"></ellipse><ellipse cx="100" cy="142" rx="44" ry="36" fill="#EAF7FF"></ellipse><ellipse cx="76" cy="88" rx="12" ry="12" fill="#fff"></ellipse><ellipse cx="124" cy="88" rx="12" ry="12" fill="#fff"></ellipse><circle cx="76" cy="88" r="6" fill="#1E2B33"></circle><circle cx="124" cy="88" r="6" fill="#1E2B33"></circle><path d="M60 88 H92 M108 88 H140" stroke="#E8A13D" stroke-width="3"></path><path d="{{ talkMouth }}" stroke="#1E2B33" stroke-width="5" fill="none" stroke-linecap="round"></path></svg>
+    <div style="position:absolute;right:16%;bottom:60px;width:12px;height:52px;border-radius:6px;background:#4A5560"></div>
+    <div style="position:absolute;right:14.2%;bottom:104px;width:26px;height:34px;border-radius:12px;background:#2E3841"></div>
+    <div style="position:absolute;left:14%;top:26px;max-width:210px;background:#fff;border-radius:14px;padding:10px 13px;font:700 12.5px/1.45 'Nunito',sans-serif;color:#22333E;box-shadow:0 4px 12px rgba(20,60,40,.25)">
+      {{ talkBubble }}
+      <div style="position:absolute;left:34px;bottom:-6px;width:12px;height:12px;background:#fff;transform:rotate(45deg)"></div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:center;gap:10px;margin-top:-22px;position:relative">
+    <button style="width:46px;height:44px;border:none;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;background-color:var(--accent,#47B8F2);box-shadow:0 3px 0 rgba(23,110,160,.5)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 4v5h5"></path></svg></button>
+    <button style="width:46px;height:44px;border:none;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;background-color:var(--accent,#47B8F2);box-shadow:0 3px 0 rgba(23,110,160,.5)"><svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="1.5"></rect><rect x="14" y="5" width="4" height="14" rx="1.5"></rect></svg></button>
+    <button style="width:46px;height:44px;border:none;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;background-color:var(--accent,#47B8F2);box-shadow:0 3px 0 rgba(23,110,160,.5)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M9 18h6M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.7 10.7c.7.6 1.2 1.4 1.4 2.3h4.6c.2-.9.7-1.7 1.4-2.3A6 6 0 0 0 12 3Z"></path></svg></button>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:12px;background:{{ talkZoneBg }};margin-top:16px;padding:22px 20px 24px;border-radius:28px 28px 0 0;transition:background .3s ease">
+    <div style="font:700 13px 'Nunito',sans-serif;color:#64798A">Sua vez — diga:</div>
+    <div style="position:relative;background:#fff;border:1.5px solid {{ talkCardBc }};border-radius:14px;padding:9px 16px;font:800 15px 'Baloo 2',sans-serif;color:{{ talkCardFg }}">{{ talkSaid }}</div>
+    <div style="display:flex;align-items:center;gap:3px;height:34px">
+      <sc-for list="{{ talkBars }}" as="b" hint-placeholder-count="15">
+        <div style="width:3.5px;height:{{ b.h }}px;border-radius:2px;background:{{ talkBarColor }};animation:{{ b.anim }};transform-origin:center"></div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ talkShowMic }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ mic }}" style="width:74px;height:56px;border:none;border-radius:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;background-color:{{ micBg }};background-image:linear-gradient(105deg,transparent 12%,rgba(255,255,255,.3) 12%,rgba(255,255,255,.3) 20%,transparent 20%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16);animation:{{ micAnim }}"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></button>
+    </sc-if>
+    <sc-if value="{{ talkShowNext }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ talkNext }}" style="width:100%;max-width:320px;height:52px;border:none;border-radius:16px;cursor:pointer;font:700 16px 'Baloo 2',sans-serif;color:#fff;background-color:#3EBE6F;background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.3) 10%,rgba(255,255,255,.3) 17%,transparent 17%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16)">{{ talkNextLabel }}</button>
+    </sc-if>
+    <sc-if value="{{ talkShowRetry }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ talkRetry }}" style="width:100%;max-width:320px;height:52px;border:none;border-radius:16px;cursor:pointer;font:700 16px 'Baloo 2',sans-serif;color:#fff;background-color:#E4574F;background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.3) 10%,rgba(255,255,255,.3) 17%,transparent 17%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16)">Tentar novamente</button>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ STORIES ============ -->
+<sc-if value="{{ isStories }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Histórias" style="flex:1;display:flex;flex-direction:column;background:#fff">
+  <div style="display:flex;align-items:center;gap:12px;padding:18px 20px 10px">
+    <button onClick="{{ goHome }}" style="width:42px;height:42px;background:#fff;border:1.5px solid #E3EDF3;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#22333E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg></button>
+    <div style="flex:1;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;color:#22333E">Histórias</div>
+    <div style="display:flex;align-items:center;gap:6px;border:1.5px solid #E3EDF3;border-radius:12px;padding:8px 12px;font:700 13px 'Nunito',sans-serif;color:#22333E">Assinar <span style="background:#F6A81C;color:#fff;font:800 10px 'Baloo 2',sans-serif;padding:2px 7px;border-radius:7px">PRO</span></div>
+  </div>
+  <div style="padding:8px 20px 28px;display:flex;flex-direction:column;gap:16px">
+    <div style="border:1.5px solid #E3EDF3;border-radius:20px;overflow:hidden;box-shadow:0 4px 0 rgba(34,51,62,.04)">
+      <div style="position:relative;height:150px;background:linear-gradient(180deg,#BDE9F7 0%,#9BDB8B 60%,#7CC96B 100%);overflow:hidden">
+        <div style="position:absolute;left:-24px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(40,100,45,.5)"></div>
+        <div style="position:absolute;left:30px;bottom:-14px;width:80px;height:60px;border-radius:50%;background:rgba(40,100,45,.35)"></div>
+        <svg viewBox="0 0 90 100" width="66" style="position:absolute;right:24%;bottom:8px"><ellipse cx="45" cy="66" rx="26" ry="30" fill="#B9BFC7"></ellipse><ellipse cx="45" cy="76" rx="14" ry="16" fill="#EDF0F3"></ellipse><ellipse cx="34" cy="26" rx="8" ry="20" fill="#B9BFC7"></ellipse><ellipse cx="56" cy="26" rx="8" ry="20" fill="#B9BFC7"></ellipse><ellipse cx="34" cy="28" rx="4" ry="13" fill="#F3B8C0"></ellipse><ellipse cx="56" cy="28" rx="4" ry="13" fill="#F3B8C0"></ellipse><circle cx="38" cy="52" r="3.5" fill="#22333E"></circle><circle cx="52" cy="52" r="3.5" fill="#22333E"></circle><path d="M41 60 Q45 64 49 60" stroke="#22333E" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+      <div style="display:flex;align-items:center;padding:12px 16px;gap:10px">
+        <div style="flex:1">
+          <div style="font:800 16px 'Baloo 2',sans-serif;color:#22333E">O Coelho Valente</div>
+          <div style="display:flex;align-items:center;gap:5px;font:700 12px 'Nunito',sans-serif;color:#93A9B7;margin-top:2px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#93A9B7" stroke-width="2.2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>12 min</div>
+        </div>
+        <button onClick="{{ openStory }}" style="display:flex;align-items:center;gap:7px;height:42px;padding:0 18px;border:none;border-radius:13px;cursor:pointer;font:700 14px 'Baloo 2',sans-serif;color:#fff;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.3) 10%,rgba(255,255,255,.3) 18%,transparent 18%);box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)"><svg viewBox="0 0 24 24" width="17" height="17" fill="#fff"><path d="M4 9v6h4l5 4V5L8 9H4Z"></path></svg>Ouvir</button>
+      </div>
+    </div>
+    <div style="border:1.5px solid #E3EDF3;border-radius:20px;overflow:hidden;opacity:.92">
+      <div style="position:relative;height:150px;background:linear-gradient(180deg,#FFE3B3 0%,#F2A65A 70%,#DE8B3F 100%);overflow:hidden">
+        <div style="position:absolute;left:-30px;bottom:-50px;width:190px;height:120px;border-radius:50%;background:rgba(190,110,40,.45)"></div>
+        <div style="position:absolute;right:-20px;bottom:-40px;width:160px;height:100px;border-radius:50%;background:rgba(190,110,40,.35)"></div>
+        <div style="position:absolute;right:20%;top:16px;width:46px;height:46px;border-radius:50%;background:#FFF3D6"></div>
+        <svg viewBox="0 0 90 100" width="60" style="position:absolute;left:24%;bottom:6px"><ellipse cx="45" cy="64" rx="26" ry="30" fill="#E8A13D"></ellipse><ellipse cx="45" cy="74" rx="14" ry="16" fill="#FFDFA8"></ellipse><circle cx="30" cy="34" r="9" fill="#E8A13D"></circle><circle cx="60" cy="34" r="9" fill="#E8A13D"></circle><circle cx="38" cy="52" r="3.5" fill="#22333E"></circle><circle cx="52" cy="52" r="3.5" fill="#22333E"></circle><path d="M41 60 Q45 64 49 60" stroke="#22333E" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+      <div style="display:flex;align-items:center;padding:12px 16px;gap:10px">
+        <div style="flex:1">
+          <div style="font:800 16px 'Baloo 2',sans-serif;color:#22333E">Filhotes de Leão em Casa</div>
+          <div style="display:flex;align-items:center;gap:5px;font:700 12px 'Nunito',sans-serif;color:#93A9B7;margin-top:2px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#93A9B7" stroke-width="2.2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>8 min</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:7px;height:42px;padding:0 18px;border-radius:13px;font:700 14px 'Baloo 2',sans-serif;color:#fff;background:#22333E;box-shadow:inset 0 -3px 0 rgba(0,0,0,.3)"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>Desbloquear</div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ STORY PLAYER ============ -->
+<sc-if value="{{ isStory }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="História — player" style="flex:1;display:flex;flex-direction:column;position:relative;background:linear-gradient(180deg,#BDE9F7 0%,#CFF0E2 40%,#9BDB8B 72%,#7CC96B 100%)">
+  <div style="display:flex;align-items:center;gap:12px;padding:16px 20px 6px;position:relative;z-index:3">
+    <button onClick="{{ goStories }}" style="width:40px;height:40px;background:#fff;border:1.5px solid #E3EDF3;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#22333E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg></button>
+    <div style="flex:1;height:15px;background:#fff;border-radius:999px;border:1.5px solid #E3EDF3;overflow:hidden"><div style="width:{{ storyPct }};height:100%;border-radius:999px;background-color:var(--accent,#47B8F2);transition:width .4s ease;background-image:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.4) 20%,rgba(255,255,255,.4) 34%,transparent 34%)"></div></div>
+    <div style="display:flex;align-items:center;gap:5px;background:#fff;border:1.5px solid #E3EDF3;border-radius:999px;padding:5px 11px;font:800 13.5px 'Baloo 2',sans-serif;color:#22333E"><svg viewBox="0 0 24 24" width="15" height="15"><path fill="#F0445C" d="M12 21S4 15 4 9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 3.5C20 15 12 21 12 21Z"></path></svg>{{ hearts }}</div>
+  </div>
+  <div onClick="{{ storyTap }}" style="flex:1;position:relative;cursor:pointer">
+    <div style="position:absolute;left:-30px;bottom:24%;width:180px;height:180px;border-radius:50%;background:rgba(40,110,50,.45)"></div>
+    <div style="position:absolute;left:30px;bottom:20%;width:16px;height:70px;background:rgba(90,60,30,.5);border-radius:6px"></div>
+    <div style="position:absolute;right:-20px;bottom:26%;width:120px;height:120px;border-radius:50%;background:rgba(40,110,50,.35)"></div>
+    <svg viewBox="0 0 90 100" width="90" style="position:absolute;left:26%;bottom:14%"><ellipse cx="45" cy="66" rx="26" ry="30" fill="#B9BFC7"></ellipse><ellipse cx="45" cy="76" rx="14" ry="16" fill="#EDF0F3"></ellipse><ellipse cx="34" cy="26" rx="8" ry="20" fill="#B9BFC7"></ellipse><ellipse cx="56" cy="26" rx="8" ry="20" fill="#B9BFC7"></ellipse><ellipse cx="34" cy="28" rx="4" ry="13" fill="#F3B8C0"></ellipse><ellipse cx="56" cy="28" rx="4" ry="13" fill="#F3B8C0"></ellipse><circle cx="38" cy="52" r="3.5" fill="#22333E"></circle><circle cx="52" cy="52" r="3.5" fill="#22333E"></circle><path d="M41 60 Q45 64 49 60" stroke="#22333E" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+    <svg viewBox="0 0 90 100" width="64" style="position:absolute;right:24%;bottom:15%"><ellipse cx="45" cy="66" rx="24" ry="26" fill="#F2CD5C"></ellipse><ellipse cx="45" cy="74" rx="12" ry="13" fill="#FBEBB8"></ellipse><circle cx="38" cy="54" r="3" fill="#22333E"></circle><circle cx="52" cy="54" r="3" fill="#22333E"></circle><path d="M42 61 Q45 64 48 61" stroke="#22333E" stroke-width="2.2" fill="none" stroke-linecap="round"></path><path d="M45 40 l-4 -8 8 0 Z" fill="#E8862E"></path></svg>
+    <sc-if value="{{ storyBubbleShow }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:50%;bottom:42%;transform:translateX(-50%);max-width:250px;background:#fff;border-radius:15px;padding:11px 15px;font:700 13.5px/1.45 'Nunito',sans-serif;color:#22333E;box-shadow:0 6px 16px rgba(20,60,40,.25);animation:pop .3s ease-out">
+        <span style="color:#1789CE;font-weight:800">{{ storyWho }}:</span> {{ storyText }}
+        <div style="position:absolute;left:40px;bottom:-6px;width:12px;height:12px;background:#fff;transform:rotate(45deg)"></div>
+      </div>
+      <div style="position:absolute;left:50%;bottom:6%;transform:translateX(-50%);background:rgba(255,255,255,.85);border-radius:999px;padding:7px 16px;font:700 12px 'Nunito',sans-serif;color:#41586B">Toque para continuar ▸</div>
+    </sc-if>
+  </div>
+  <sc-if value="{{ storyQShow }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:26px 26px 0 0;padding:20px;box-shadow:0 -10px 30px rgba(20,60,40,.2);animation:pop .35s ease-out;z-index:4">
+      <div style="font:800 17px 'Baloo 2',sans-serif;color:#22333E;margin-bottom:12px">Escolha a opção correta</div>
+      <div style="background:#F7FBFD;border:1.5px solid #E3EDF3;border-radius:16px;padding:14px 16px;font:700 14.5px/1.6 'Nunito',sans-serif;color:#64798A;margin-bottom:14px">
+        Nataly is playing <span style="display:inline-block;min-width:70px;border-bottom:2.5px solid #C9DCE7;font-weight:800;color:{{ storyBlankColor }};text-align:center">{{ storyBlank }}</span> in front of Buny
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
+        <sc-for list="{{ storyOpts }}" as="o" hint-placeholder-count="4">
+          <button onClick="{{ o.onTap }}" style="height:50px;border-radius:14px;cursor:pointer;background:{{ o.bg }};border:2px solid {{ o.bc }};font:700 14px 'Nunito',sans-serif;color:{{ o.fg }}">{{ o.label }}</button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ storyCheckShow }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ storyCheck }}" disabled="{{ storyCheckDisabled }}" style="width:100%;height:52px;margin-top:14px;border:none;border-radius:16px;cursor:pointer;font:700 16px 'Baloo 2',sans-serif;color:{{ storyCheckFg }};background-color:{{ storyCheckBg }};background-image:{{ storyCheckStripes }};box-shadow:inset 0 -4px 0 rgba(0,0,0,.12)">Verificar</button>
+      </sc-if>
+      <sc-if value="{{ storyDoneShow }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;font:800 15px 'Baloo 2',sans-serif;color:#2E9E58;margin-top:12px">🎉 Muito bem!</div>
+        <button onClick="{{ storyFinish }}" style="width:100%;height:52px;margin-top:10px;border:none;border-radius:16px;cursor:pointer;font:700 16px 'Baloo 2',sans-serif;color:#fff;background-color:#3EBE6F;background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.3) 10%,rgba(255,255,255,.3) 17%,transparent 17%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16)">Concluir +15 XP</button>
+      </sc-if>
+      <sc-if value="{{ storyWrongShow }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;font:800 14px 'Baloo 2',sans-serif;color:#D14B42;margin-top:12px">Quase! Tente de novo 💪</div>
+      </sc-if>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<!-- ============ REVIEW ============ -->
+<sc-if value="{{ isReview }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Revisar erros" style="flex:1;display:flex;flex-direction:column;background:#F7FAFC">
+  <div style="display:flex;align-items:center;gap:12px;padding:18px 20px 10px;background:#fff">
+    <button onClick="{{ goHome }}" style="width:42px;height:42px;background:#fff;border:1.5px solid #E3EDF3;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#22333E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg></button>
+    <div style="flex:1;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;color:#22333E">Revisar erros</div>
+    <div style="display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid #E3EDF3;border-radius:999px;padding:6px 12px;font:800 14px 'Baloo 2',sans-serif;color:#22333E"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="#47B8F2" d="M12 2 4 9l8 13 8-13-8-7Z"></path><path fill="#8AD4F8" d="M12 2 4 9h16l-8-7Z"></path></svg>{{ gems }}</div>
+  </div>
+  <div style="padding:14px 20px;display:flex;flex-direction:column;gap:12px">
+    <sc-for list="{{ reviewItems }}" as="r" hint-placeholder-count="4">
+      <button onClick="{{ r.onTap }}" style="display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid {{ r.bc }};border-radius:16px;padding:12px 14px;cursor:pointer;text-align:left;box-shadow:0 2px 0 rgba(34,51,62,.04)">
+        <div style="display:flex;flex-direction:column;align-items:center;flex:none;width:30px">
+          <sc-if value="{{ r.done }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#3EBE6F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"></path></svg></sc-if>
+          <sc-if value="{{ r.notDone }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="#F0445C" d="M12 21S4 15 4 9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 3.5C20 15 12 21 12 21Z"></path></svg><div style="font:800 11px 'Baloo 2',sans-serif;color:#F0445C">{{ r.h }}</div></sc-if>
+        </div>
+        <div style="flex:1">
+          <div style="font:800 14.5px 'Baloo 2',sans-serif;color:#22333E">{{ r.title }}</div>
+          <div style="font:700 11.5px 'Nunito',sans-serif;color:#1789CE">{{ r.sub }}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:4px;font:800 13px 'Baloo 2',sans-serif;color:#22333E"><svg viewBox="0 0 24 24" width="15" height="15" fill="#F6A81C"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"></path></svg>+{{ r.xp }} XP</div>
+      </button>
+    </sc-for>
+  </div>
+  <div style="margin-top:auto;padding:14px 20px 22px">
+    <button onClick="{{ reviewAll }}" style="width:100%;height:54px;border:2px solid #22333E;border-radius:16px;cursor:pointer;font:700 16px 'Baloo 2',sans-serif;color:#22333E;background:#fff;box-shadow:inset 0 -4px 0 rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;gap:8px">Revisar tudo <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#47B8F2" d="M12 2 4 9l8 13 8-13-8-7Z"></path><path fill="#8AD4F8" d="M12 2 4 9h16l-8-7Z"></path></svg> 200</button>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ ACCOUNT / LANGUAGES ============ -->
+<sc-if value="{{ isAccount }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Perfil e idiomas" style="flex:1;display:flex;flex-direction:column;background:#fff">
+  <div style="background:linear-gradient(180deg,#C9E9FA 0%,#EAF7FE 100%);padding:18px 20px 14px">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;color:#22333E">{{ greeting }}</div>
+        <div style="font:700 12.5px 'Nunito',sans-serif;color:#64798A">Seus idiomas e progresso</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <div style="display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid #E3EDF3;border-radius:999px;padding:6px 12px;font:800 14px 'Baloo 2',sans-serif;color:#22333E"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="#47B8F2" d="M12 2 4 9l8 13 8-13-8-7Z"></path><path fill="#8AD4F8" d="M12 2 4 9h16l-8-7Z"></path></svg>{{ gems }}</div>
+        <button onClick="{{ openHearts }}" style="display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid #E3EDF3;border-radius:999px;padding:6px 12px;font:800 14px 'Baloo 2',sans-serif;color:#22333E;cursor:pointer"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="#F0445C" d="M12 21S4 15 4 9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 3.5C20 15 12 21 12 21Z"></path></svg>{{ hearts }}</button>
+      </div>
+    </div>
+  </div>
+  <div style="padding:16px 20px 28px;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:center;gap:10px;background:#FFF7E8;border:1.5px solid #F6D48C;border-radius:16px;padding:12px 14px">
+      <div style="font-size:22px">🔥</div>
+      <div style="flex:1;font:800 14.5px 'Baloo 2',sans-serif;color:#22333E">Sequência de {{ streak }} dias</div>
+      <div style="font:700 12px 'Nunito',sans-serif;color:#B98A2E">Continue assim!</div>
+    </div>
+    <sc-for list="{{ langs }}" as="lg" hint-placeholder-count="3">
+      <div style="display:flex;align-items:center;gap:12px;background:#fff;border:2px solid {{ lg.bc }};border-radius:16px;padding:12px 14px;box-shadow:0 2px 0 rgba(34,51,62,.04)">
+        <div style="width:36px;height:36px;border-radius:50%;background:{{ lg.flagBg }};color:#fff;display:flex;align-items:center;justify-content:center;font:800 12px 'Baloo 2',sans-serif;flex:none">{{ lg.code }}</div>
+        <div style="flex:1">
+          <div style="font:800 14.5px 'Baloo 2',sans-serif;color:#22333E">{{ lg.name }}</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+            <div style="font:800 11px 'Baloo 2',sans-serif;color:#64798A">{{ lg.pct }}</div>
+            <div style="flex:1;height:11px;background:#EDF4F8;border-radius:999px;overflow:hidden"><div style="width:{{ lg.w }};height:100%;border-radius:999px;background-color:var(--accent,#47B8F2)"></div></div>
+            <div style="font:800 11px 'Baloo 2',sans-serif;color:#93A9B7">100</div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+    <button style="height:52px;border:none;border-radius:16px;cursor:pointer;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:16px;color:#fff;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.35) 10%,rgba(255,255,255,.35) 16%,transparent 16%,transparent 21%,rgba(255,255,255,.35) 21%,rgba(255,255,255,.35) 24%,transparent 24%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16);margin-top:4px">Adicionar novo idioma</button>
+  </div>
+</div>
+</sc-if>
+
+</div>
+
+<!-- ============ BOTTOM NAV ============ -->
+<sc-if value="{{ showNav }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:space-around;align-items:center;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1.5px solid #EDF4F8">
+  <sc-for list="{{ navItems }}" as="nv" hint-placeholder-count="5">
+    <button onClick="{{ nv.onTap }}" style="width:52px;height:44px;border:none;border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:{{ nv.bg }};color:{{ nv.fg }}">
+      <sc-if value="{{ nv.isHome }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9h-5v-5h-6v5H4v-9Z"></path></svg></sc-if>
+      <sc-if value="{{ nv.isLevels }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"></path><path d="M3 13l9 5 9-5"></path></svg></sc-if>
+      <sc-if value="{{ nv.isTalk }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></sc-if>
+      <sc-if value="{{ nv.isStories }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.6-3.8-2-6-2v14c2.2 0 4.5.4 6 2 1.5-1.6 3.8-2 6-2V4c-2.2 0-4.5.4-6 2Z"></path><path d="M12 6v14"></path></svg></sc-if>
+      <sc-if value="{{ nv.isReview }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 4v5h5"></path></svg></sc-if>
+      <sc-if value="{{ nv.isAccount }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg></sc-if>
+    </button>
+  </sc-for>
+</div>
+</sc-if>
+
+<!-- ============ HEARTS MODAL ============ -->
+<sc-if value="{{ heartsModal }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeHearts }}" style="position:absolute;inset:0;background:rgba(20,40,55,.45);display:flex;align-items:center;justify-content:center;padding:24px;z-index:20">
+  <div onClick="{{ stopProp }}" style="width:100%;max-width:330px;background:#fff;border-radius:22px;padding:20px;animation:pop .3s ease-out">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div style="font:800 17px 'Baloo 2',sans-serif;color:#22333E">Seus corações</div>
+      <button onClick="{{ closeHearts }}" style="width:32px;height:32px;border:none;border-radius:10px;background:#F4F9FC;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#64798A" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+    </div>
+    <div style="display:flex;justify-content:center;gap:8px;margin-bottom:16px">
+      <sc-for list="{{ heartIcons }}" as="h" hint-placeholder-count="5">
+        <svg viewBox="0 0 24 24" width="34" height="34"><path fill="{{ h.fill }}" d="M12 21S4 15 4 9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 3.5C20 15 12 21 12 21Z"></path></svg>
+      </sc-for>
+    </div>
+    <button onClick="{{ watchAd }}" style="width:100%;height:50px;border:none;border-radius:15px;cursor:pointer;font:700 15px 'Baloo 2',sans-serif;color:#fff;background-color:var(--accent,#47B8F2);background-image:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.35) 10%,rgba(255,255,255,.35) 17%,transparent 17%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.16)">Assistir anúncio e ganhar 1 ❤️</button>
+    <button onClick="{{ useGems }}" style="width:100%;height:50px;margin-top:10px;border:2px solid #22333E;border-radius:15px;cursor:pointer;font:700 15px 'Baloo 2',sans-serif;color:#22333E;background:#fff;box-shadow:inset 0 -4px 0 rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;gap:7px">Ou encher com <svg viewBox="0 0 24 24" width="17" height="17"><path fill="#47B8F2" d="M12 2 4 9l8 13 8-13-8-7Z"></path><path fill="#8AD4F8" d="M12 2 4 9h16l-8-7Z"></path></svg> 350</button>
+  </div>
+</div>
+</sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#47B8F2&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#47B8F2&quot;,&quot;#34C77B&quot;,&quot;#FF9838&quot;,&quot;#8B7BF5&quot;],&quot;section&quot;:&quot;Tema&quot;},&quot;mascotName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Bob&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tema&quot;},&quot;hardMode&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Jogo&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 'login', name: 'Jenny Frost',
+    xp: 120, gems: 245, hearts: 5, streak: 4,
+    obLevel: 1, obMin: 15, obPeriod: 'Manhã',
+    lessonMode: 'lesson', reviewIdx: null,
+    exIndex: 0, exStatus: 'idle', exSel: null, exChosen: [], hintUsed: false,
+    nodeTip: false, levelId: null,
+    talkStep: 0, talkStatus: 'idle', talkTries: 0,
+    storyStep: 0, storySel: null, storyStatus: 'idle',
+    heartsModal: false, lessonDoneOnce: false, reviewed: [], desertUnlocked: false,
+  };
+
+  EX = [
+    { type: 'choice', pre: 'The park was full of', post: '', options: ['Cars', 'People', 'Toys', 'Clouds'], correct: 'People', scene: 'park' },
+    { type: 'choice', pre: 'She drinks', post: 'every morning', options: ['coffee', 'shoes', 'rain', 'music'], correct: 'coffee', scene: 'morning' },
+    { type: 'blocks', target: ['I', 'am', 'learning', 'English'], pool: ['learning', 'English', 'I', 'am'], trans: 'Eu estou aprendendo inglês' },
+    { type: 'blocks', target: ['We', 'play', 'in', 'the', 'park'], pool: ['the', 'We', 'park', 'play', 'in'], trans: 'Nós brincamos no parque' },
+  ];
+
+  TALK = [
+    { bob: 'Olá! Eu sou o Bob. Vamos treinar sua fala? Diga em inglês:', phrase: 'Hello, Bob!', trap: null },
+    { bob: 'Que cor é a floresta? Responda em inglês:', phrase: "It's green", trap: "It's greend" },
+  ];
+
+  STORY_SCENES = [
+    { who: 'Buny', text: "Hello! I'm Buny. Welcome to my garden!" },
+    { who: 'Buny', text: 'Nataly is playing guitar for me. Listen!' },
+  ];
+  STORY_OPTS = ['Drums', 'Guitar', 'Piano', 'Flutes'];
+  STORY_CORRECT = 'Guitar';
+
+  REVIEW = [
+    { id: 1, title: 'O Leão e o Lago', sub: 'Nível 2 • Unidade 4', h: 5, xp: 2, ex: 0 },
+    { id: 2, title: 'A Árvore Incrível', sub: 'Nível 2 • Unidade 7', h: 7, xp: 5, ex: 1 },
+    { id: 3, title: 'Flores Coloridas', sub: 'Nível 2 • Unidade 12', h: 6, xp: 5, ex: 2 },
+    { id: 4, title: 'Minha Casa na Árvore', sub: 'Nível 3 • Unidade 2', h: 6, xp: 5, ex: 3 },
+  ];
+
+  SCENES = {
+    park: { bg: 'linear-gradient(180deg,#CDEBFA 0%,#D9F2D0 55%,#9FD98B 100%)', blob1: 'rgba(46,124,60,.55)', blob2: 'rgba(46,124,60,.4)', sun: '#FFE28A' },
+    morning: { bg: 'linear-gradient(180deg,#FFE9C9 0%,#FFD9A0 60%,#F2B96B 100%)', blob1: 'rgba(200,120,50,.4)', blob2: 'rgba(200,120,50,.3)', sun: '#FFF3D6' },
+    cave: { bg: 'linear-gradient(180deg,#535A78 0%,#6B4A5E 70%,#4A3A4E 100%)', blob1: 'rgba(30,25,40,.55)', blob2: 'rgba(240,120,60,.5)', sun: 'rgba(255,180,120,.7)' },
+    desert: { bg: 'linear-gradient(180deg,#FFE3B3 0%,#F2A65A 65%,#DE8B3F 100%)', blob1: 'rgba(190,110,40,.5)', blob2: 'rgba(190,110,40,.38)', sun: '#FFF3D6' },
+  };
+
+  LEVELS = [
+    { id: 'cave', num: '4', name: 'Caverna Incrível', sub: 'Nível 4 • 12 unidades', scene: 'cave', state: 'done', about: 'Nível concluído! Aqui você aprendeu vocabulário de exploração, passado simples e frases de direção. Revise sempre que quiser manter o conteúdo fresco.' },
+    { id: 'park', num: '5', name: 'O Parque Imprevisível', sub: 'Nível 5 • 12 unidades', scene: 'park', state: 'current', about: 'Este é o seu nível atual. Vocabulário de lugares e pessoas, presente contínuo e frases do dia a dia em parques e cidades.' },
+    { id: 'desert', num: '6', name: 'Deserto em Chamas', sub: 'Nível 6 • 8 unidades', scene: 'desert', state: 'locked', about: 'Para aventureiros! Clima, sobrevivência e narrativas no passado. Desbloqueie ao terminar o nível anterior ou usando diamantes.' },
+  ];
+
+  go(s) {
+    this.setState({ screen: s, nodeTip: false });
+    if (s === 'loading') setTimeout(() => this.setState({ screen: 'home' }), 2400);
+  }
+
+  loseHeart() {
+    this.setState((st) => {
+      const h = Math.max(0, st.hearts - 1);
+      return { hearts: h, heartsModal: h === 0 };
+    });
+  }
+
+  startLesson(mode, idx, reviewIdx) {
+    this.setState({ screen: 'lesson', lessonMode: mode, reviewIdx: reviewIdx == null ? null : reviewIdx, exIndex: idx, exStatus: 'idle', exSel: null, exChosen: [], hintUsed: false, nodeTip: false });
+  }
+
+  check() {
+    const ex = this.EX[this.state.exIndex];
+    const ok = ex.type === 'choice'
+      ? this.state.exSel === ex.correct
+      : this.state.exChosen.join(' ') === ex.target.join(' ');
+    if (!ok && (this.props.hardMode ?? true)) this.loseHeart();
+    this.setState({ exStatus: ok ? 'correct' : 'wrong' });
+  }
+
+  nextEx() {
+    const st = this.state;
+    if (st.lessonMode === 'review') {
+      const ok = st.exStatus === 'correct';
+      this.setState((s) => ({ screen: 'review', reviewed: s.reviewed.indexOf(s.reviewIdx) < 0 ? s.reviewed.concat([s.reviewIdx]) : s.reviewed, xp: s.xp + (ok ? 5 : 0) }));
+      return;
+    }
+    const nx = st.exIndex + 1;
+    if (nx >= this.EX.length) this.setState((s) => ({ screen: 'lessonDone', xp: s.xp + 25, lessonDoneOnce: true }));
+    else this.setState({ exIndex: nx, exStatus: 'idle', exSel: null, exChosen: [], hintUsed: false });
+  }
+
+  mic() {
+    if (this.state.talkStatus === 'listening') return;
+    this.setState({ talkStatus: 'listening' });
+    setTimeout(() => {
+      const t = this.TALK[this.state.talkStep];
+      if (this.state.screen !== 'talk') return;
+      if (t.trap && this.state.talkTries === 0) {
+        this.setState({ talkStatus: 'wrong', talkTries: 1 });
+        if (this.props.hardMode ?? true) this.loseHeart();
+      } else {
+        this.setState({ talkStatus: 'correct' });
+      }
+    }, 1700);
+  }
+
+  talkNext() {
+    const nx = this.state.talkStep + 1;
+    if (nx >= this.TALK.length) this.setState((s) => ({ screen: 'home', xp: s.xp + 20, talkStep: 0, talkStatus: 'idle', talkTries: 0 }));
+    else this.setState({ talkStep: nx, talkStatus: 'idle', talkTries: 0 });
+  }
+
+  renderVals() {
+    const st = this.state;
+    const A = this.props.accent ?? '#47B8F2';
+    const mascotName = this.props.mascotName ?? 'Bob';
+    const scr = st.screen;
+    const hour = new Date().getHours();
+    const greeting = hour < 12 ? 'Bom dia' : hour < 18 ? 'Boa tarde' : 'Boa noite';
+
+    // ---- onboarding ----
+    const obLevels = ['Não sei nada', 'Sei algumas palavras básicas', 'Converso, mas não falo bem', 'Converso verbalmente sem problemas'];
+    const obLevelOpts = obLevels.map((label, i) => {
+      const sel = st.obLevel === i;
+      return {
+        label,
+        bg: sel ? '#EAF7FF' : '#fff', bc: sel ? A : '#E3EDF3',
+        fg: sel ? '#1789CE' : '#41586B', icon: sel ? A : '#93A9B7',
+        dot: sel ? A : '#fff',
+        onTap: () => this.setState({ obLevel: i }),
+      };
+    });
+    const obMinOpts = [5, 10, 15, 30, 45].map((m) => {
+      const sel = st.obMin === m;
+      return {
+        label: String(m).padStart(2, '0'), tag: sel,
+        bg: sel ? '#EAF7FF' : '#fff', bc: sel ? A : 'transparent', fg: sel ? '#1789CE' : '#22333E',
+        onTap: () => this.setState({ obMin: m }),
+      };
+    });
+    const obPeriodOpts = ['Manhã', 'Tarde', 'Noite'].map((p) => {
+      const sel = st.obPeriod === p;
+      return { label: p, bg: sel ? A : 'transparent', fg: sel ? '#fff' : '#64798A', onTap: () => this.setState({ obPeriod: p }) };
+    });
+
+    // ---- home map ----
+    const doneCount = st.lessonDoneOnce ? 3 : 2;
+    const positions = [
+      { x: '50%', y: '9%' }, { x: '28%', y: '29%' }, { x: '70%', y: '50%' }, { x: '37%', y: '71%' }, { x: '50%', y: '92%' },
+    ];
+    const mapNodes = positions.map((p, i) => {
+      const isFlagN = i === 0;
+      const done = !isFlagN && i < doneCount;
+      const current = i === doneCount;
+      const locked = i > doneCount;
+      return {
+        x: p.x, y: p.y,
+        size: current ? '64px' : '52px',
+        bg: isFlagN ? '#fff' : done ? '#3EBE6F' : current ? A : '#E9F1F6',
+        anim: current ? 'pulse 1.8s ease-out infinite' : 'none',
+        isFlag: isFlagN, isCheck: done, isStar: current, isLock: locked,
+        onTap: current ? () => this.setState((s) => ({ nodeTip: !s.nodeTip })) : () => {},
+      };
+    });
+    const tipTops = ['0%', '11%', '32%', '53%', '74%'];
+    const tipTop = tipTops[Math.min(doneCount, 4)];
+
+    // ---- lesson ----
+    const ex = this.EX[st.exIndex];
+    const answered = st.exStatus !== 'idle';
+    const scene = this.SCENES[ex.scene || 'park'];
+    const choiceOpts = (ex.options || []).map((o) => {
+      const sel = st.exSel === o;
+      let bg = '#fff', bc = '#E3EDF3', fg = '#41586B', bs = 'solid';
+      if (!answered) {
+        if (sel) { bg = '#EAF7FF'; bc = A; fg = '#1789CE'; }
+        else if (st.hintUsed && o === ex.correct) { bc = A; bs = 'dashed'; }
+      } else {
+        if (o === ex.correct) { bg = '#E7F8EC'; bc = '#3EBE6F'; fg = '#2E9E58'; }
+        else if (sel) { bg = '#FDECEA'; bc = '#E4574F'; fg = '#D14B42'; }
+      }
+      return { label: o, bg, bc, fg, bs, onTap: answered ? () => {} : () => this.setState({ exSel: o }) };
+    });
+    const chosenChips = st.exChosen.map((w, i) => {
+      let bg = '#fff', bc = '#C9DCE7', fg = '#22333E';
+      if (answered) {
+        const ok = st.exStatus === 'correct';
+        const wordOk = ex.target && ex.target[i] === w;
+        bg = ok || wordOk ? '#E7F8EC' : '#FDECEA';
+        bc = ok || wordOk ? '#3EBE6F' : '#E4574F';
+        fg = ok || wordOk ? '#2E9E58' : '#D14B42';
+      }
+      return { w, bg, bc, fg, onTap: answered ? () => {} : () => this.setState((s) => ({ exChosen: s.exChosen.filter((_, j) => j !== i) })) };
+    });
+    const poolChips = (ex.pool || []).map((w) => {
+      const used = st.exChosen.indexOf(w) >= 0;
+      return {
+        w,
+        bg: used ? '#F0F5F8' : '#fff', bc: used ? '#F0F5F8' : '#E3EDF3', fg: used ? '#F0F5F8' : '#41586B',
+        onTap: used || answered ? () => {} : () => this.setState((s) => ({ exChosen: s.exChosen.concat([w]) })),
+      };
+    });
+    const canCheck = ex.type === 'choice' ? !!st.exSel : st.exChosen.length > 0;
+    const totalEx = st.lessonMode === 'review' ? 1 : this.EX.length;
+    const idxEx = st.lessonMode === 'review' ? 0 : st.exIndex;
+    const lessonPct = Math.round(((idxEx + (answered ? 1 : 0)) / totalEx) * 100) + '%';
+
+    // ---- levels ----
+    const levels = this.LEVELS.map((lv) => {
+      const locked = lv.state === 'locked' && !st.desertUnlocked;
+      const done = lv.state === 'done';
+      const sc = this.SCENES[lv.scene];
+      return {
+        num: lv.num, name: lv.name, sub: lv.sub,
+        dot: done ? '#3EBE6F' : lv.state === 'current' ? A : '#C9DCE7',
+        iconBg: locked ? '#F4F9FC' : '#22333E', iconFg: locked ? '#93A9B7' : '#fff',
+        locked, open: !locked,
+        sceneBg: sc.bg, blob1: sc.blob1, blob2: sc.blob2, sun: sc.sun,
+        onOpen: () => this.setState({ screen: 'levelDetail', levelId: lv.id }),
+      };
+    });
+    const dl = this.LEVELS.filter((l) => l.id === st.levelId)[0] || this.LEVELS[1];
+    const dScene = this.SCENES[dl.scene];
+    const dLocked = dl.state === 'locked' && !st.desertUnlocked;
+
+    // ---- talk ----
+    const t = this.TALK[st.talkStep];
+    const ts = st.talkStatus;
+    const talkBubble = ts === 'correct' ? 'Isso mesmo! Pronúncia perfeita 🎉'
+      : ts === 'wrong' ? 'Opa! Você disse "' + t.trap + '". Isso não soou certo!'
+      : t.bob + ' "' + t.phrase + '"';
+    const talkSaid = ts === 'idle' ? '“' + t.phrase + '”' : ts === 'listening' ? 'Ouvindo…' : ts === 'wrong' ? '“' + t.trap + '”' : '“' + t.phrase + '”';
+    const heights = [8, 16, 10, 22, 14, 26, 12, 20, 9, 18, 11, 24, 10, 16, 8];
+    const talkBars = heights.map((h, i) => ({ h, anim: ts === 'listening' ? 'eq .8s ease-in-out ' + (i * 0.07) + 's infinite' : 'none' }));
+
+    // ---- story ----
+    const qMode = st.storyStep >= this.STORY_SCENES.length;
+    const sScene = this.STORY_SCENES[Math.min(st.storyStep, this.STORY_SCENES.length - 1)];
+    const sAnswered = st.storyStatus === 'correct';
+    const storyOpts = this.STORY_OPTS.map((o) => {
+      const sel = st.storySel === o;
+      let bg = '#fff', bc = '#E3EDF3', fg = '#41586B';
+      if (sAnswered && o === this.STORY_CORRECT) { bg = '#E7F8EC'; bc = '#3EBE6F'; fg = '#2E9E58'; }
+      else if (sel && st.storyStatus === 'wrongTry') { bg = '#FDECEA'; bc = '#E4574F'; fg = '#D14B42'; }
+      else if (sel) { bg = '#EAF7FF'; bc = A; fg = '#1789CE'; }
+      return { label: o, bg, bc, fg, onTap: sAnswered ? () => {} : () => this.setState({ storySel: o, storyStatus: 'idle' }) };
+    });
+
+    // ---- review ----
+    const reviewItems = this.REVIEW.map((r, i) => {
+      const done = st.reviewed.indexOf(i) >= 0;
+      return {
+        title: r.title, sub: r.sub, h: r.h, xp: r.xp,
+        done, notDone: !done, bc: done ? '#BFE8CD' : '#E3EDF3',
+        onTap: done ? () => {} : () => this.startLesson('review', r.ex, i),
+      };
+    });
+
+    // ---- account ----
+    const langs = [
+      { code: 'EN', name: 'Inglês - UK', pct: 68, flagBg: '#2A4E8F', active: true },
+      { code: 'ES', name: 'Espanhol', pct: 12, flagBg: '#C8412E', active: false },
+      { code: 'FR', name: 'Francês', pct: 3, flagBg: '#3557A8', active: false },
+    ].map((l) => ({ ...l, w: l.pct + '%', bc: l.active ? A : '#E3EDF3' }));
+
+    // ---- nav ----
+    const tabs = [
+      { k: 'home', isHome: true }, { k: 'levels', isLevels: true }, { k: 'talk', isTalk: true },
+      { k: 'stories', isStories: true }, { k: 'account', isAccount: true },
+    ];
+    const navItems = tabs.map((tb) => ({
+      ...tb,
+      bg: scr === tb.k ? '#EAF7FF' : 'transparent',
+      fg: scr === tb.k ? '#1789CE' : '#64798A',
+      onTap: () => this.go(tb.k),
+    }));
+
+    const heartIcons = [1, 2, 3, 4, 5].map((i) => ({ fill: i <= st.hearts ? '#F0445C' : '#D8E2E9' }));
+
+    return {
+      accent: A, mascotName, greeting,
+      name: st.name, onName: (e) => this.setState({ name: e.target.value }),
+      xp: st.xp, gems: st.gems, hearts: st.hearts, streak: st.streak,
+
+      isLogin: scr === 'login', isProfile: scr === 'profile', isOb1: scr === 'ob1', isOb2: scr === 'ob2',
+      isLoading: scr === 'loading', isHome: scr === 'home', isLevels: scr === 'levels', isLevelDetail: scr === 'levelDetail',
+      isLesson: scr === 'lesson', isLessonDone: scr === 'lessonDone', isTalk: scr === 'talk',
+      isStories: scr === 'stories', isStory: scr === 'story', isReview: scr === 'review', isAccount: scr === 'account',
+      showNav: ['home', 'levels', 'talk', 'stories', 'account'].indexOf(scr) >= 0,
+
+      goLogin: () => this.go('login'), goProfile: () => this.go('profile'),
+      goOb1: () => this.go('ob1'), goOb2: () => this.go('ob2'), goLoading: () => this.go('loading'),
+      goHome: () => this.go('home'), goLevels: () => this.go('levels'), goAccount: () => this.go('account'),
+      goStories: () => this.go('stories'),
+
+      obLevelOpts, obMinOpts, obPeriodOpts,
+
+      mapNodes, nodeTip: st.nodeTip, tipTop,
+      tipTitle: 'Pendurado no Jardim', tipSub: st.lessonDoneOnce ? 'Lição 3 de 6' : 'Lição 2 de 6',
+      startFromTip: () => this.startLesson('lesson', 0, null),
+
+      levels,
+      dNum: dl.num, dName: dl.name, dSub: dl.sub, dAbout: dl.about,
+      dSceneBg: dScene.bg, dBlob1: dScene.blob1, dBlob2: dScene.blob2, dSun: dScene.sun,
+      dLocked, dShowStats: !dLocked, dPlayable: !dLocked,
+      dCta: dl.state === 'done' ? 'Reiniciar − 30 XP' : 'Continuar nível',
+      dStart: () => this.startLesson('lesson', 0, null),
+      dUnlock: () => this.setState((s) => (s.gems >= 350 ? { gems: s.gems - 350, desertUnlocked: true } : { heartsModal: false })),
+
+      exTitle: ex.type === 'choice' ? 'Escolha a opção correta' : 'Monte a frase com os blocos',
+      exIsChoice: ex.type === 'choice', exIsBlocks: ex.type === 'blocks',
+      exPre: ex.pre || '', exPost: ex.post || '', exTrans: ex.trans || '',
+      exBlank: answered ? ex.correct : (st.exSel || '____'),
+      exBlankColor: answered ? '#2E9E58' : st.exSel ? '#1789CE' : '#C9DCE7',
+      exSceneBg: scene.bg, exBlob1: scene.blob1, exBlob2: scene.blob2, exSun: scene.sun,
+      exSpeak: () => {}, exHint: () => this.setState({ hintUsed: true }),
+      choiceOpts, chosenChips, poolChips, chosenEmpty: st.exChosen.length === 0,
+      lessonPct,
+      check: () => canCheck && !answered && this.check(),
+      checkDisabled: !canCheck || answered,
+      checkBg: canCheck && !answered ? A : '#DCE8EF',
+      checkFg: canCheck && !answered ? '#fff' : '#93A9B7',
+      checkStripes: canCheck && !answered ? 'linear-gradient(105deg,transparent 10%,rgba(255,255,255,.35) 10%,rgba(255,255,255,.35) 16%,transparent 16%,transparent 21%,rgba(255,255,255,.35) 21%,rgba(255,255,255,.35) 24%,transparent 24%)' : 'none',
+      sheetCorrect: st.exStatus === 'correct', sheetWrong: st.exStatus === 'wrong',
+      sheetSub: st.exStatus === 'wrong' ? 'Resposta certa: ' + (ex.type === 'choice' ? ex.correct : ex.target.join(' ')) : 'Você acertou!',
+      nextEx: () => this.nextEx(),
+      exitLesson: () => this.go(st.lessonMode === 'review' ? 'review' : 'home'),
+
+      talkPct: Math.round(((st.talkStep + (ts === 'correct' ? 1 : 0)) / this.TALK.length) * 100) + '%',
+      talkBubble, talkSaid, talkBars,
+      talkMouth: ts === 'wrong' ? 'M90 114 Q100 104 110 114' : 'M90 106 Q100 116 110 106',
+      talkZoneBg: ts === 'correct' ? '#E7F8EC' : ts === 'wrong' ? '#FDECEA' : '#EAF6FD',
+      talkCardBc: ts === 'correct' ? '#3EBE6F' : ts === 'wrong' ? '#E4574F' : '#E3EDF3',
+      talkCardFg: ts === 'correct' ? '#2E9E58' : ts === 'wrong' ? '#D14B42' : '#22333E',
+      talkBarColor: ts === 'correct' ? '#3EBE6F' : ts === 'wrong' ? '#E4574F' : A,
+      talkShowMic: ts === 'idle' || ts === 'listening',
+      micBg: ts === 'listening' ? '#2E9BD6' : A,
+      micAnim: ts === 'listening' ? 'pulse 1.4s ease-out infinite' : 'none',
+      talkShowNext: ts === 'correct',
+      talkNextLabel: st.talkStep + 1 >= this.TALK.length ? 'Concluir +20 XP' : 'Continuar',
+      talkNext: () => this.talkNext(),
+      talkShowRetry: ts === 'wrong',
+      talkRetry: () => this.setState({ talkStatus: 'idle' }),
+      mic: () => this.mic(),
+
+      openStory: () => this.setState({ screen: 'story', storyStep: 0, storySel: null, storyStatus: 'idle' }),
+      storyPct: Math.round((Math.min(st.storyStep, 3) / 3) * 100) + '%',
+      storyTap: qMode ? () => {} : () => this.setState((s) => ({ storyStep: s.storyStep + 1 })),
+      storyBubbleShow: !qMode, storyWho: sScene.who, storyText: sScene.text,
+      storyQShow: qMode,
+      storyBlank: sAnswered ? this.STORY_CORRECT : (st.storySel || '____'),
+      storyBlankColor: sAnswered ? '#2E9E58' : st.storySel ? '#1789CE' : '#C9DCE7',
+      storyOpts,
+      storyCheckShow: !sAnswered && st.storyStatus !== 'correct',
+      storyCheckDisabled: !st.storySel,
+      storyCheckBg: st.storySel ? A : '#DCE8EF',
+      storyCheckFg: st.storySel ? '#fff' : '#93A9B7',
+      storyCheckStripes: st.storySel ? 'linear-gradient(105deg,transparent 10%,rgba(255,255,255,.35) 10%,rgba(255,255,255,.35) 17%,transparent 17%)' : 'none',
+      storyCheck: () => {
+        if (!st.storySel) return;
+        if (st.storySel === this.STORY_CORRECT) this.setState({ storyStatus: 'correct' });
+        else { this.setState({ storyStatus: 'wrongTry' }); if (this.props.hardMode ?? true) this.loseHeart(); }
+      },
+      storyDoneShow: sAnswered,
+      storyWrongShow: st.storyStatus === 'wrongTry',
+      storyFinish: () => this.setState((s) => ({ screen: 'stories', xp: s.xp + 15 })),
+
+      reviewItems,
+      reviewAll: () => this.setState((s) => (s.gems >= 200 ? { gems: s.gems - 200, reviewed: [0, 1, 2, 3], xp: s.xp + 17 } : {})),
+
+      langs,
+
+      heartsModal: st.heartsModal, heartIcons,
+      openHearts: () => this.setState({ heartsModal: true }),
+      closeHearts: () => this.setState({ heartsModal: false }),
+      stopProp: (e) => e.stopPropagation(),
+      watchAd: () => this.setState((s) => ({ hearts: Math.min(5, s.hearts + 1), heartsModal: false })),
+      useGems: () => this.setState((s) => (s.gems >= 350 ? { gems: s.gems - 350, hearts: 5, heartsModal: false } : {})),
+
+      navItems,
+    };
+  }
+}
+</script>
+</body>
+</html>

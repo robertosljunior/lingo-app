@@ -27,7 +27,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "password",
-      "translation_pt": "password",
+      "translation_pt": "senha",
       "semantic_type": "object",
       "tags": [
         "technology_and_communication",
@@ -40,7 +40,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "message",
-      "translation_pt": "message",
+      "translation_pt": "mensagem",
       "semantic_type": "time",
       "tags": [
         "technology_and_communication",
@@ -53,7 +53,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "video call",
-      "translation_pt": "video call",
+      "translation_pt": "chamada de vídeo",
       "semantic_type": "action",
       "tags": [
         "technology_and_communication",
@@ -66,7 +66,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "laptop",
-      "translation_pt": "laptop",
+      "translation_pt": "notebook",
       "semantic_type": "object",
       "tags": [
         "technology_and_communication",
@@ -79,7 +79,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "app update",
-      "translation_pt": "app update",
+      "translation_pt": "atualização do aplicativo",
       "semantic_type": "time",
       "tags": [
         "technology_and_communication",
@@ -92,7 +92,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "wifi network",
-      "translation_pt": "wifi network",
+      "translation_pt": "rede wi-fi",
       "semantic_type": "action",
       "tags": [
         "technology_and_communication",
@@ -105,7 +105,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "email",
-      "translation_pt": "email",
+      "translation_pt": "e-mail",
       "semantic_type": "object",
       "tags": [
         "technology_and_communication",
@@ -118,7 +118,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "cloud file",
-      "translation_pt": "cloud file",
+      "translation_pt": "arquivo na nuvem",
       "semantic_type": "time",
       "tags": [
         "technology_and_communication",
@@ -131,7 +131,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "screen",
-      "translation_pt": "screen",
+      "translation_pt": "tela",
       "semantic_type": "action",
       "tags": [
         "technology_and_communication",
@@ -144,7 +144,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "notification",
-      "translation_pt": "notification",
+      "translation_pt": "notificação",
       "semantic_type": "object",
       "tags": [
         "technology_and_communication",
@@ -157,7 +157,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "charger",
-      "translation_pt": "charger",
+      "translation_pt": "carregador",
       "semantic_type": "time",
       "tags": [
         "technology_and_communication",
@@ -170,7 +170,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "online meeting",
-      "translation_pt": "online meeting",
+      "translation_pt": "reunião online",
       "semantic_type": "action",
       "tags": [
         "technology_and_communication",
@@ -183,7 +183,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "privacy setting",
-      "translation_pt": "privacy setting",
+      "translation_pt": "configuração de privacidade",
       "semantic_type": "object",
       "tags": [
         "technology_and_communication",
@@ -196,7 +196,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "support chat",
-      "translation_pt": "support chat",
+      "translation_pt": "chat de suporte",
       "semantic_type": "time",
       "tags": [
         "technology_and_communication",
@@ -241,8 +241,19 @@
         "wrong_collocation"
       ],
       "sentence": "The password was reviewed by the team.",
-      "pt": "Frase sobre password.",
-      "ctx": "Contexto Tecnologia e comunicação B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "A senha foi revisada pela equipe.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The password was reviewed by the team."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "pt": "A senha foi revisada pela equipe.",
+      "ctx": "Contexto de tecnologia e comunicação (nível B2).",
       "blank": "password",
       "wrong": "The password reviewed by the team."
     },
@@ -282,8 +293,19 @@
         "wrong_collocation"
       ],
       "sentence": "She said that the message was ready.",
-      "pt": "Frase sobre message.",
-      "ctx": "Contexto Tecnologia e comunicação B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Ela disse que a mensagem estava pronta.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "She said that the message was ready."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Discurso indireto com said that.",
+      "skill_targets": [
+        "reported_speech"
+      ],
+      "pt": "Ela disse que a mensagem estava pronta.",
+      "ctx": "Contexto de tecnologia e comunicação (nível B2).",
       "blank": "said",
       "wrong": "She said the message was ready."
     },
@@ -323,8 +345,21 @@
         "wrong_collocation"
       ],
       "sentence": "If I had more time, I would improve the video call.",
-      "pt": "Frase sobre video call.",
-      "ctx": "Contexto Tecnologia e comunicação B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a chamada de vídeo.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If I had more time, I would improve the video call."
+      ],
+      "accepted_variants_en": [
+        "If I had more time, I'd improve the video call."
+      ],
+      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "skill_targets": [
+        "second_conditional"
+      ],
+      "pt": "Se eu tivesse mais tempo, eu melhoraria a chamada de vídeo.",
+      "ctx": "Contexto de tecnologia e comunicação (nível B2).",
       "blank": "I",
       "wrong": "If I had more time, I will improve the video call."
     },
@@ -364,8 +399,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the laptop today.",
-      "pt": "Frase sobre laptop.",
-      "ctx": "Contexto Tecnologia e comunicação B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar o notebook hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the laptop today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "modal_deduction"
+      ],
+      "pt": "Eu posso atualizar o notebook hoje.",
+      "ctx": "Contexto de tecnologia e comunicação (nível B2).",
       "blank": "can",
       "wrong": "I cans update the laptop today."
     },
@@ -405,8 +451,19 @@
         "wrong_collocation"
       ],
       "sentence": "The app update was reviewed by the team.",
-      "pt": "Frase sobre app update.",
-      "ctx": "Contexto Tecnologia e comunicação B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "A atualização do aplicativo foi revisada pela equipe.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The app update was reviewed by the team."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "skill_targets": [
+        "collocation"
+      ],
+      "pt": "A atualização do aplicativo foi revisada pela equipe.",
+      "ctx": "Contexto de tecnologia e comunicação (nível B2).",
       "blank": "app",
       "wrong": "The app update reviewed by the team."
     },
@@ -446,8 +503,19 @@
         "wrong_collocation"
       ],
       "sentence": "She said that the wifi network was ready.",
-      "pt": "Frase sobre wifi network.",
-      "ctx": "Contexto Tecnologia e comunicação B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Ela disse que a rede wi-fi estava pronta.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "She said that the wifi network was ready."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Discurso indireto com said that.",
+      "skill_targets": [
+        "word_order"
+      ],
+      "pt": "Ela disse que a rede wi-fi estava pronta.",
+      "ctx": "Contexto de tecnologia e comunicação (nível B2).",
       "blank": "said",
       "wrong": "She said the wifi network was ready."
     },
@@ -487,8 +555,21 @@
         "wrong_collocation"
       ],
       "sentence": "If I had more time, I would improve the email.",
-      "pt": "Frase sobre email.",
-      "ctx": "Contexto Tecnologia e comunicação B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o e-mail.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If I had more time, I would improve the email."
+      ],
+      "accepted_variants_en": [
+        "If I had more time, I'd improve the email."
+      ],
+      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "skill_targets": [
+        "vocabulary"
+      ],
+      "pt": "Se eu tivesse mais tempo, eu melhoraria o e-mail.",
+      "ctx": "Contexto de tecnologia e comunicação (nível B2).",
       "blank": "I",
       "wrong": "If I had more time, I will improve the email."
     },
@@ -528,8 +609,19 @@
         "wrong_collocation"
       ],
       "sentence": "I can update the cloud file today.",
-      "pt": "Frase sobre cloud file.",
-      "ctx": "Contexto Tecnologia e comunicação B2.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Eu posso atualizar o arquivo na nuvem hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I can update the cloud file today."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Modal can + verbo na forma base.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "pt": "Eu posso atualizar o arquivo na nuvem hoje.",
+      "ctx": "Contexto de tecnologia e comunicação (nível B2).",
       "blank": "can",
       "wrong": "I cans update the cloud file today."
     }
@@ -541,7 +633,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "make a password",
-      "translation_pt": "password",
+      "translation_pt": "senha",
       "invalid_variants": [
         "do a password"
       ],
@@ -553,7 +645,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "check the message",
-      "translation_pt": "message",
+      "translation_pt": "mensagem",
       "invalid_variants": [
         "do the message"
       ],
@@ -565,7 +657,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "make a video call",
-      "translation_pt": "video call",
+      "translation_pt": "chamada de vídeo",
       "invalid_variants": [
         "do a video call"
       ],
@@ -577,7 +669,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "check the laptop",
-      "translation_pt": "laptop",
+      "translation_pt": "notebook",
       "invalid_variants": [
         "do the laptop"
       ],
@@ -589,7 +681,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "make a app update",
-      "translation_pt": "app update",
+      "translation_pt": "atualização do aplicativo",
       "invalid_variants": [
         "do a app update"
       ],
@@ -601,7 +693,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "check the wifi network",
-      "translation_pt": "wifi network",
+      "translation_pt": "rede wi-fi",
       "invalid_variants": [
         "do the wifi network"
       ],
@@ -613,7 +705,7 @@
       "theme": "technology_and_communication",
       "level": "B2",
       "canonical": "make a email",
-      "translation_pt": "email",
+      "translation_pt": "e-mail",
       "invalid_variants": [
         "do a email"
       ],
