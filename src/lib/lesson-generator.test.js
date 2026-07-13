@@ -57,7 +57,10 @@ describe('deterministic generated lesson slice', () => {
     expect(validation.errors).toEqual([]); expect(validation.valid).toBe(true)
     const typeCounts = countBy(a.questions, q => q.type)
     expect(Object.keys(typeCounts).sort()).toEqual(SUPPORTED_GENERATED_TYPES.slice().sort())
-    expect(typeCounts).toMatchObject({ translate_natural: 6, fill_blank: 5, build_sentence: 5, choose_best: 4, rewrite_natural: 4, listen_type: 3, speak_sentence: 3 })
+    // Slice 7.4 family balancing: at least 6 distinct types and no single type
+    // above 35% of a 30-question lesson.
+    expect(Object.keys(typeCounts).length).toBeGreaterThanOrEqual(6)
+    expect(Math.max(...Object.values(typeCounts))).toBeLessThanOrEqual(Math.floor(30 * 0.35))
     const familyCounts = countBy(a.questions, q => q.metadata.family_id)
     expect(Math.max(...Object.values(familyCounts))).toBeLessThanOrEqual(3)
     expect(a.questions.some(q => normalize(q.expected_answer) === normalize(requiredContext.recent_sentences[0]))).toBe(false)

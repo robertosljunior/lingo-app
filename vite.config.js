@@ -34,7 +34,14 @@ export default defineConfig({
         // `semantic-runtime-*.js` chunk (see build.rollupOptions), excluded from
         // the precache here, and runtime-cached below on first use (which happens
         // while the user is online downloading the model).
-        globIgnores: ['**/semantic-runtime-*.js'],
+        // The whole opt-in TensorFlow.js + USE runtime must stay OUT of the base
+        // precache. It now lives in the semantic WORKER graph, which Rollup emits
+        // as several chunks (`semantic-runtime-*`, plus tfjs-converter's
+        // `model-*` / `graph_model-*`). All are runtime-cached below on first use
+        // (which happens online, right after the user downloads the model). The
+        // tiny worker entry itself (`semantic-worker-*`) IS precached so it is
+        // available offline. Users who never download the model pay for none of it.
+        globIgnores: ['**/semantic-runtime-*.js', '**/model-*.js', '**/graph_model-*.js'],
         // The NLP worker + Compromise bundle can exceed the default 2 MiB cap.
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         // Piper (neural TTS) runtimes come from CDNs; cache them so the
@@ -54,7 +61,7 @@ export default defineConfig({
             // The opt-in semantic runtime (TensorFlow.js + USE) chunk: cache on
             // first use so USE keeps working offline afterwards. Excluded from the
             // precache above so users who never download the model never pay for it.
-            urlPattern: ({ url }) => url.origin === self.location.origin && /semantic-runtime-.*\.js$/.test(url.pathname),
+            urlPattern: ({ url }) => url.origin === self.location.origin && /(semantic-runtime|model|graph_model)-.*\.js$/.test(url.pathname),
             handler: 'CacheFirst',
             options: {
               cacheName: 'semantic-runtime-v1',

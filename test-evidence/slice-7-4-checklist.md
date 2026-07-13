@@ -1,0 +1,82 @@
+# SLICE 7.4 — Core Learning Flow Stabilization — Checklist
+
+Branch: `claude/local-semantic-tutor-rcd80y` (base `main`). Stacks on the merged 7.2 + unmerged 7.3 work.
+
+Objective: fix four real failures of the core flow — (1) Training Hub lessons breaking on open, (2) Portuguese explanations spoken with an English voice, (3) writing exercises showing content/answer in the wrong language, (4) planner distribution over-concentrated in a single exercise type. No new engines, models, semantic packs, or infrastructure.
+
+Self-imposed rule (per spec): do not reduce scope; a genuinely-blocked item is marked blocked in isolation; final classification chosen only after the whole checklist is walked.
+
+Status legend: pending / in_progress / completed / blocked / failed
+
+| ID | Description | Status | Cause | Files | Validation | Evidence | Commit |
+|----|-------------|--------|-------|-------|------------|----------|--------|
+| T01 | Preflight (baseline suite green) | completed | — | — | `npm test`, build | 150→ green baseline | pending |
+| T02 | Reproduce Hub crash | completed | Generator is robust across all 24 combos in isolation (no hard crash); real gaps are open-path safe-failure + disabled-pack handling + stale theme key | `lesson-generator.js`, `TrainingHub.jsx` | node 24-combo sweep | all 24 gen full lessons, 0 warnings | pending |
+| T03 | Map the 24 theme/level combos | completed | — | packs | node sweep | 6 themes × 4 levels all present + generate | pending |
+| T04 | Fix lesson generation & open | completed | No safe-failure message; stale VISUAL key `everyday_life` | `TrainingHub.jsx` | unit + manual | safe-failure copy shown when <1 q; theme key fixed | pending |
+| T05 | Validate disabled/dependency packs | completed | Open path ignored IndexedDB pack enabled state | `TrainingHub.jsx`, `store.jsx` | unit | disabled pack blocks with explanation | pending |
+| T06 | Audit Portuguese voice routing | completed | System voice enumeration filtered to English only | `tts.js` | unit | pt-BR request resolved to English voice (bug) | pending |
+| T07 | Fix voice fallback | completed | `pickVoice` never considered pt-BR / device pt voice | `tts.js`, `speech-router.js` | unit | pt fallback chain; never English for pt | pending |
+| T08 | Fix voice cache / active model | completed | Piper cache key already scoped (voice+lang+rate+model+text); system path recorded EN for PT | `tts.js` | unit | PT and EN never share audio/voice | pending |
+| T09 | Audit question language contracts | completed | No explicit locale fields on questions | `generated-lesson-contracts.js` | unit | contract normalizer added | pending |
+| T10 | Fix writing/translation prompts | completed | Locale inferred by type only | `generated-lesson-contracts.js`, `lesson-generator.js` | unit | explicit instruction/source/answer locales | pending |
+| T11 | Prevent answer leakage | completed | listen_type no-audio fallback revealed transcript | `Exercise.jsx`, contracts validator | unit | validator rejects leaks; no-audio no reveal | pending |
+| T12 | Audit type distribution | completed | No family policy / metadata | `lesson-generator.js` | node sweep | documented weights/plan | pending |
+| T13 | Implement minimum balancing | completed | Flat per-type targets, no family minimums/adaptivity | `lesson-generator.js` | unit | family-aware plan w/ minimums + caps | pending |
+| T14 | Add pedagogical justification | completed | None surfaced | `lesson-generator.js`, `Result.jsx` | unit | planner_reason + friendly justification | pending |
+| T15 | Unit tests | completed | — | `*.test.js` | `npm test` | new suites green | pending |
+| T16 | E2E Hub | completed | — | `e2e/training-hub-lessons.spec.js` | playwright | 24-combo open+answer+advance | pending |
+| T17 | E2E voice | completed | — | `e2e/portuguese-voice.spec.js` | playwright | pt uses pt-BR; en uses en | pending |
+| T18 | E2E language | completed | — | `e2e/question-language-contract.spec.js` | playwright | no answer/transcript leak | pending |
+| T19 | E2E balancing | completed | — | `e2e/exercise-balance.spec.js` / unit | playwright/unit | variety minimums per profile | pending |
+| T20 | Offline / mobile | completed | — | existing specs | playwright | mobile-smoke + offline unaffected | pending |
+| T21 | Build & validations | completed | — | — | build + validators + benchmarks | all green | pending |
+| T22 | Report | completed | — | this file | — | classification below | pending |
+
+## Part 1 — Hub crash reproduction (T02) — ROOT CAUSE FOUND
+Node sweep of `generateLessonFromContext` over all 6 themes × 4 levels × {10,30} questions produced a full lesson every time, so generation itself was sound. Driving the **real Hub UI** in Playwright reproduced the actual crash: **clicking any theme card crashed the whole screen into the global error boundary** ("Algo quebrou", Minified React error #130 — element type is invalid/undefined).
+
+Captured on crash: theme=`daily_life`, level screen never rendered, React error #130, error boundary shown (no per-lesson recovery). Root cause: `TrainingHub`'s `ThemeScreen` back button renders `<I.chevL/>`, but the icon set only defined `chevR` — `I.chevL` was `undefined`, which React renders as an invalid element type, taking down the entire Training Hub for **every** theme/level. This is why "Hub lessons break on open": you could never reach the level screen to start one.
+
+Fixes: (a) add the missing `chevL` icon (root-cause crash fix); (b) safe-failure message on the open path if a pack ever yields <1 question; (c) disabled-pack enforcement on the direct action (already gated, hardened); (d) stale `VISUAL` key `everyday_life`→`daily_life` so the daily-life tile shows its real icon/description.
+
+## Part 2 — Portuguese voice (T06–T08)
+Root cause: `tts.js#refreshVoices` filtered the device voice list to `lang.startsWith('en')`, and `pickVoice` selected only from that English-only cache. A request with `role: explanation_pt` / `language: pt-BR` therefore resolved to an English voice. Fix: enumerate all voices, resolve the system voice by requested language (pt vs en), and — for Portuguese with no pt voice on device and no Piper Fabiola — report audio unavailable instead of speaking English. The E2E hook records `{role, language, requested_voice_id, effective_voice_id, effective_language, fallback_used, fallback_reason}` at the final layer; a test fails if `role===explanation_pt && effective_language===en`.
+
+## Part 3 — Question language contract (T09–T11)
+Added `questionLanguageContract(q)` (explicit `instruction_locale/instruction_pt/source_locale/source_text/answer_locale/expected_answers/model_answers`) and `questionLanguageIssues(q)` which rejects: prompt containing the exact answer, source equal to expected in hide-types, PT→EN translation with English source, free/guided exposing the model answer, listen exposing transcript, missing instruction. `Exercise.jsx` no longer reveals the dictation sentence pre-submit when audio is unavailable.
+
+## Part 4 — Balancing (T12–T14)
+Added family grouping (production/listening/ordering/recognition) and a size-aware policy (10/20/30) with per-family minimums, a per-type adaptive cap, and adaptivity (boost production when writing mastery is weak without eliminating other families). The lesson records `planner_reason`, `target_distribution`, `actual_distribution`, and `constraints`; a friendly pedagogical justification is surfaced (no scores/mastery/weights/skill IDs).
+
+## Test evidence summary
+- **Unit:** `npm test` → **167 passed** (adds `tts.test.js`, `language-contract.test.js`, `exercise-balance.test.js`; updates `lesson-generator.test.js`).
+- **Build / validators / benchmarks:** `npm run build` clean (precache 4.39 MB, unchanged); `validate:content-packs`, `validate:knowledge-packs`, `quality:content-packs`, `benchmark:structural-nlp`, `benchmark:semantic`, `benchmark:indexeddb` all green.
+- **E2E (new):** `training-hub-lessons.spec.js` — **all 24 theme/level combos** open through the real Hub UI, run to Result (24 passed); `portuguese-voice.spec.js` — pt-BR routing + no-English fallback (2 passed); `question-language-contract.spec.js` — no answer/transcript leak across all 7 types (passed).
+- **E2E (regression):** full suite 57/58 green; `generated-lesson-exercises`, `-skill` (updated for balanced ordering), `-offline`, `mobile-smoke` all pass.
+- **Distribution (Part 9):** covered deterministically by `exercise-balance.test.js` — neutral / writing-weak / listening-weak / insufficient-templates profiles, seed-determinism, and the friendly-justification content rules.
+
+### Environment caveat
+The two Slice 7.3 `semantic-worker-ux` specs (real 25 MB USE download + in-worker load) are timing-sensitive under full parallel CPU contention — a different one flakes per full run, and each passes in isolation. They are outside the Slice 7.4 acceptance criteria (voice/language/balance/hub) and untouched by this slice's changes.
+
+## FINAL CLASSIFICATION — PASS_SLICE_7_4_CORE_LEARNING_FLOW
+
+| Acceptance criterion | Status | Evidence |
+|----------------------|--------|----------|
+| 24 combos open | ✅ | `training-hub-lessons.spec.js` (24 passed) |
+| No Hub lesson breaks | ✅ | root-cause `chevL` crash fixed + safe-failure guard |
+| Portuguese voice uses pt-BR | ✅ | `tts.js` language-aware resolver; `portuguese-voice.spec.js` |
+| Portuguese fallback never English | ✅ | reports unavailable (NO_VOICE_FOR_LANGUAGE), never substitutes en |
+| English keeps English voice | ✅ | English path unchanged; e2e asserts en |
+| Translation hides the answer | ✅ | guided PT instruction, no English echo; `question-language-contract.spec.js` |
+| Guided hides model answer | ✅ | contract `hide_answer`; validator |
+| Free hides model answer | ✅ | contract; validator |
+| Listen hides transcript | ✅ | `hide_source`; dictation no-audio no reveal |
+| Planner minimum variety | ✅ | family policy; `exercise-balance.test.js` |
+| Weak writing keeps listening/ordering | ✅ | adaptivity test (production≤4, others ≥1) |
+| Pedagogical justification shown | ✅ | `Result` `lesson-justification`; hub e2e asserts visible |
+| Distribution persisted | ✅ | `generation_metadata.{planner_reason,target_distribution,actual_distribution,constraints}` |
+| Unit pass | ✅ | 167 passed |
+| E2E pass | ✅ | new suites green; 57/58 full (7.3 USE-load flake noted) |
+| Build pass | ✅ | clean |
+| No LLM / no remote API | ✅ | no new engines/models/infra; deterministic + structural only |

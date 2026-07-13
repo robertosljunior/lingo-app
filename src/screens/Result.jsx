@@ -53,6 +53,13 @@ export default function Result() {
           </h1>
         </div>
 
+        {activeLesson.generation_metadata?.pedagogical_justification && (
+          <div className="card" data-testid="lesson-justification" style={{ padding: 14, background: 'var(--bg-alt)', borderColor: 'transparent' }}>
+            <div className="label-eyebrow" style={{ marginBottom: 4 }}>sobre esta prática</div>
+            <div style={{ fontSize: 13, color: 'var(--ink-2)', lineHeight: 1.5 }}>{activeLesson.generation_metadata.pedagogical_justification}</div>
+          </div>
+        )}
+
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
           <Stat n={correct} label="acertos" color="var(--success)" />
           <Stat n={partial} label="parciais" color="var(--warn)" />

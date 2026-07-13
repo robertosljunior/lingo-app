@@ -38,20 +38,30 @@ test('generates a lesson targeted at gerund_after_been and updates only the prac
   for (const [skill, n] of others) expect(targetFamily, `${skill} (${n}) outweighs target family (${targetFamily})`).toBeGreaterThanOrEqual(n)
   expect(targetFamily).toBeGreaterThanOrEqual(6)
 
-  // Answer the first question incorrectly through the UI.
-  const q1 = questions[0]
-  const wrongText = await answerCurrentQuestion(page, q1, { wrong: true })
+  // Answer the first deterministically-graded question incorrectly through the
+  // UI (free-production/translation types are graded leniently by design and
+  // are not asserted to fail on a wrong answer). Earlier questions are answered
+  // correctly so the wrong one is isolated.
+  // Types the helper can answer definitively wrong (build_sentence always places
+  // words in order, so it is excluded).
+  const DETERMINISTIC = new Set(['fill_blank', 'choose_best', 'listen_type'])
+  const GERUND_FAMILY = new Set(['gerund_after_been', 'present_perfect_continuous'])
+  const wrongIdx = questions.findIndex((q) => DETERMINISTIC.has(q.type) && GERUND_FAMILY.has(q.skill_target))
+  expect(wrongIdx, 'a deterministically-graded gerund-family question exists').toBeGreaterThanOrEqual(0)
+  for (let i = 0; i < wrongIdx; i++) { await answerCurrentQuestion(page, questions[i]); await goNext(page) }
+  const wrongText = await answerCurrentQuestion(page, questions[wrongIdx], { wrong: true })
   await expect(page.getByTestId('feedback-sheet')).not.toHaveAttribute('data-verdict', 'correct')
   await testInfo.attach('skill-lesson-wrong-answer', { body: await page.screenshot(), contentType: 'image/png' })
   await goNext(page)
-  await expect(page.getByText('2/30')).toBeVisible()
+  await expect(page.getByText(`${wrongIdx + 2}/30`)).toBeVisible()
 
-  // Persisted attempt + skill events: gerund_after_been updated, missing_auxiliary untouched.
+  // Persisted attempts: the wrong one is recorded not-correct for this profile.
   const answers = (await readStore(page, 'answers')).filter((a) => a.lesson_id === lesson.lesson_id)
-  expect(answers).toHaveLength(1)
-  expect(answers[0].user_answer).toBe(wrongText)
-  expect(answers[0].profile_id).toBe(PROFILE_A)
-  expect(answers[0].verdict).not.toBe('correct')
+  expect(answers).toHaveLength(wrongIdx + 1)
+  const wrongAnswer = answers.find((a) => a.user_answer === wrongText)
+  expect(wrongAnswer).toBeTruthy()
+  expect(wrongAnswer.profile_id).toBe(PROFILE_A)
+  expect(wrongAnswer.verdict).not.toBe('correct')
 
   const events = (await readStore(page, 'skill_events')).filter((e) => e.profile_id === PROFILE_A)
   expect(events.some((e) => e.skill_id === 'gerund_after_been')).toBe(true)

@@ -157,10 +157,17 @@ export class UseSemanticEncoderAdapter {
  * engine; `effectiveKind()` and `lastFallback` reflect reality. Never pretends
  * hashing is USE.
  */
+const KNOWN_FALLBACK_CODES = new Set([
+  'MODEL_NOT_INSTALLED', 'MODEL_CORRUPTED', 'MODEL_INCOMPATIBLE', 'TFJS_BACKEND_UNAVAILABLE',
+  'MODEL_LOAD_FAILED', 'WORKER_CRASHED', 'WORKER_ERROR', 'WORKER_POST_FAILED', 'TIMEOUT',
+])
+
 export class ResilientSemanticEncoder {
-  constructor({ useLoader } = {}) {
-    this.requested = useLoader ? 'use' : 'hashing'
-    this._use = useLoader ? new UseSemanticEncoderAdapter({ loadModel: useLoader }) : null
+  // `useAdapter` (e.g. a WorkerSemanticEncoder) is preferred; `useLoader` builds a
+  // main-thread UseSemanticEncoderAdapter for tests / non-worker callers.
+  constructor({ useLoader, useAdapter } = {}) {
+    this._use = useAdapter || (useLoader ? new UseSemanticEncoderAdapter({ loadModel: useLoader }) : null)
+    this.requested = this._use ? 'use' : 'hashing'
     this._hashing = new HashingSemanticEncoder()
     this._effective = this._use ? null : 'hashing'
     this.lastFallback = null
@@ -168,6 +175,16 @@ export class ResilientSemanticEncoder {
   }
 
   effectiveKind() { return this._effective || this.requested }
+
+  _fallToHashing(e) {
+    // A CANCELLED call is an intentional abort, not an engine failure — never
+    // downgrade the effective engine or record it as a fallback reason.
+    if (e?.message === 'CANCELLED') throw e
+    this._effective = 'hashing'
+    this.lastFallback = KNOWN_FALLBACK_CODES.has(e?.message) ? e.message : 'MODEL_LOAD_FAILED'
+    this.model_version = this._hashing.model_version
+    return this._hashing
+  }
 
   async _active() {
     if (!this._use) return this._hashing
@@ -180,18 +197,29 @@ export class ResilientSemanticEncoder {
       this.backend = this._use.backend
       return this._use
     } catch (e) {
-      this._effective = 'hashing'
-      // Preserve the structured loader code so the UI can explain honestly.
-      const KNOWN = new Set(['MODEL_NOT_INSTALLED', 'MODEL_CORRUPTED', 'MODEL_INCOMPATIBLE', 'TFJS_BACKEND_UNAVAILABLE', 'MODEL_LOAD_FAILED'])
-      this.lastFallback = KNOWN.has(e?.message) ? e.message : 'MODEL_LOAD_FAILED'
-      this.model_version = this._hashing.model_version
-      return this._hashing
+      return this._fallToHashing(e)
     }
   }
 
-  async embed(texts) { return (await this._active()).embed(texts) }
-  async rank(query, candidates) { return (await this._active()).rank(query, candidates) }
-  async classifyIntent(text, exemplars) { return (await this._active()).classifyIntent(text, exemplars) }
+  // Run an encoder method, degrading to hashing at RUNTIME if a worker call fails
+  // after the model was already loaded (crash / timeout / lost backend).
+  async _call(method, args) {
+    const active = await this._active()
+    if (active === this._hashing) return this._hashing[method](...args)
+    try {
+      return await active[method](...args)
+    } catch (e) {
+      return this._fallToHashing(e)[method](...args)
+    }
+  }
+
+  async embed(texts) { return this._call('embed', [texts]) }
+  async rank(query, candidates) { return this._call('rank', [query, candidates]) }
+  async classifyIntent(text, exemplars) { return this._call('classifyIntent', [text, exemplars]) }
+
+  /** Cancel any in-flight worker analysis (question change / Next / exit). */
+  cancelInFlight() { this._use?.cancelInFlight?.() }
+  async dispose() { await this._use?.dispose?.() }
 
   report() {
     return {
@@ -203,69 +231,9 @@ export class ResilientSemanticEncoder {
   }
 }
 
-/**
- * Production USE loader: real TensorFlow.js Universal Sentence Encoder assembled
- * from LOCALLY PERSISTED, checksum-verified bytes (no CDN, no service worker).
- * The model is handed to USE via `tf.io.fromMemory` and the vocabulary via a
- * `blob:` URL, so loading is fully offline once the model is installed.
- *
- * tfjs + USE are imported dynamically so Vite code-splits them into a lazy chunk
- * kept OUT of the base bundle — the app runs on the hashing fallback until the
- * user opts into the download. `loadArtifacts` is injected (defaults to the model
- * store) so this stays unit-testable without a real IndexedDB or 27 MB of weights.
- *
- * On success returns the USE model (with `.embed`) tagged with `__lingo`
- * telemetry. Throws a structured Error(code) on failure; ResilientSemanticEncoder
- * maps it to a fallback reason and never lets it reach React.
- */
-export function createProductionUseLoader({
-  loadArtifacts,
-  importTf = () => import('@tensorflow/tfjs'),
-  importUse = () => import('@tensorflow-models/universal-sentence-encoder'),
-  modelId = 'use-en-v1',
-} = {}) {
-  return async () => {
-    const load = loadArtifacts || (async () => {
-      const { readModelArtifacts } = await import('./semantic-model-store.js')
-      return readModelArtifacts(modelId)
-    })
-    const art = await load()
-    if (!art?.ok) throw new Error(art?.code || 'MODEL_NOT_INSTALLED')
-
-    const t0 = (globalThis.performance?.now?.() ?? Date.now())
-    let tf, use
-    try {
-      tf = await importTf()
-      use = await importUse()
-    } catch { throw new Error('MODEL_LOAD_FAILED') }
-    tf = tf.default || tf
-    use = use.default || use
-
-    // Prefer WebGL (real devices); fall back to CPU (headless / no GPU). The WASM
-    // backend is intentionally unused — it lacks the SparseToDense kernel USE needs.
-    let backend = 'cpu'
-    try { await tf.setBackend('webgl'); await tf.ready(); backend = tf.getBackend() } catch { /* try cpu */ }
-    if (tf.getBackend() !== 'webgl') { try { await tf.setBackend('cpu'); await tf.ready(); backend = tf.getBackend() } catch { throw new Error('TFJS_BACKEND_UNAVAILABLE') } }
-
-    let vocabUrl
-    try {
-      const blob = new Blob([JSON.stringify(art.vocab)], { type: 'application/json' })
-      vocabUrl = URL.createObjectURL(blob)
-    } catch { throw new Error('MODEL_LOAD_FAILED') }
-
-    let model
-    try {
-      model = await use.load({ modelUrl: tf.io.fromMemory(art.modelArtifacts), vocabUrl })
-    } catch { throw new Error('MODEL_LOAD_FAILED') }
-    finally { try { URL.revokeObjectURL(vocabUrl) } catch { /* noop */ } }
-
-    model.__lingo = {
-      model_version: art.model_version, dim: art.dim, backend,
-      load_ms: Math.round((globalThis.performance?.now?.() ?? Date.now()) - t0),
-    }
-    return model
-  }
-}
+// The real TensorFlow.js USE loader lives in ./use-model-loader.js and is
+// imported ONLY by the semantic worker, so the main-thread module graph carries
+// no TensorFlow at all (the heavy chunks stay in the worker graph).
 
 export function createSemanticEncoder({ useLoader = null } = {}) {
   if (useLoader) return new UseSemanticEncoderAdapter({ loadModel: useLoader })
