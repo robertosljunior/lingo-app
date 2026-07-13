@@ -256,6 +256,9 @@ export function AppProvider({ children }) {
     if (full.owner_profile_id && full.owner_profile_id !== activeProfile) { showToast('Esta aula pertence a outro perfil.'); return }
     setActiveLesson(full)
     setSession({ id: newSessionId(full.lesson_id), qIdx: 0, answers: [] })
+    // E2E: expose exactly which lesson is being played so specs read the right
+    // questions even if several generated lessons exist for this profile.
+    try { if (window.__e2e) window.__e2e.activeLessonId = full.lesson_id } catch { /* noop */ }
     navigate(SCREENS.EXERCISE, {})
   }, [navigate, activeProfile, showToast])
 
