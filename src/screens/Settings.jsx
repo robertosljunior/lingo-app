@@ -8,6 +8,7 @@ import { PIPER_VOICES, piperSupported, storedVoices, downloadVoice, removeVoice 
 import { PORTUGUESE_VOICES, speakSegment } from '../lib/speech-router.js'
 import { getInstallEligibility, requestInstall } from '../lib/pwa-install-controller.js'
 import { getKnowledgeOverview, removeInstalledPack, fetchCatalog, installFromCatalogEntry, deriveCatalogState, DEFAULT_CATALOG_URL } from '../lib/language-analysis/knowledge-catalog-service.js'
+import { getDefaultModelEntry, getInstalledModel, installModel, removeModel } from '../lib/language-analysis/semantic-model-catalog-service.js'
 
 export default function Settings() {
   const { settings, updateSetting, setTab, showToast, db, refreshLibrary } = useApp()
@@ -117,6 +118,8 @@ export default function Settings() {
             </div>
           </Row>
         </div>
+
+        <SemanticModelSection Row={Row} SectionHead={SectionHead} showToast={showToast} />
 
         <KnowledgeSection Row={Row} SectionHead={SectionHead} showToast={showToast} />
 
@@ -243,6 +246,101 @@ function formatBytes(n) {
 const CATALOG_URL = () => {
   try { return (typeof window !== 'undefined' && window.__LINGO_E2E__ && window.__LINGO_E2E__.knowledgeCatalogUrl) || DEFAULT_CATALOG_URL }
   catch { return DEFAULT_CATALOG_URL }
+}
+
+// "Análise semântica" — the optional, opt-in offline model that lets the app
+// understand intent, meaning and natural alternatives. The app works fully
+// without it (grammar + rules + packs); when absent the tutor runs in "modo
+// básico". No technical terms (USE / TensorFlow / embedding) in the main UI.
+const MODEL_STATE_LABEL = {
+  not_installed: 'Não instalado',
+  downloading: 'Baixando…',
+  verifying: 'Verificando…',
+  installing: 'Instalando…',
+  ready: 'Pronto para uso offline',
+  failed: 'Falha',
+}
+function SemanticModelSection({ Row, SectionHead, showToast }) {
+  const entry = getDefaultModelEntry()
+  const [installed, setInstalled] = useState(null)   // metadata row or null
+  const [phase, setPhase] = useState('idle')          // idle|downloading|verifying|installing
+  const [progress, setProgress] = useState(0)         // 0..1
+  const [failed, setFailed] = useState(null)
+  const [busy, setBusy] = useState(false)
+  const [ctrl, setCtrl] = useState(null)
+
+  async function refresh() { try { setInstalled(await getInstalledModel()) } catch { setInstalled(null) } }
+  useEffect(() => { refresh() }, [])
+
+  async function onDownload() {
+    setFailed(null); setBusy(true); setProgress(0); setPhase('downloading')
+    const controller = new AbortController(); setCtrl(controller)
+    const res = await installModel(entry, {
+      signal: controller.signal,
+      onProgress: (p) => {
+        setPhase(p.phase)
+        if (p.totalBytes) setProgress(Math.min(1, (p.bytes || 0) / p.totalBytes))
+      },
+    })
+    setBusy(false); setCtrl(null); setPhase('idle')
+    if (res.ok) { setProgress(1); showToast('Análise semântica pronta — disponível offline.'); await refresh() }
+    else if (res.code === 'CANCELLED') { showToast('Download cancelado.') }
+    else { setFailed(res.code || 'FALHA'); showToast('Não foi possível instalar a análise semântica.') }
+  }
+  function onCancel() { if (ctrl) ctrl.abort() }
+  async function onRemove() {
+    setBusy(true)
+    try { await removeModel(entry.model_id); showToast('Análise semântica removida. Modo básico ativo.'); await refresh() }
+    catch { showToast('Não foi possível remover.') }
+    finally { setBusy(false) }
+  }
+
+  const state = installed ? 'ready' : (phase !== 'idle' ? phase : (failed ? 'failed' : 'not_installed'))
+  const pct = Math.round(progress * 100)
+
+  return (
+    <div className="card" style={{ padding: 0, overflow: 'hidden' }} data-testid="semantic-model-settings">
+      <SectionHead>análise semântica</SectionHead>
+      <Row last>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'flex-start' }}>
+          <div>
+            <div style={{ fontWeight: 800, fontSize: 15 }}>{entry.title_pt}</div>
+            <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>{entry.description_pt}</div>
+          </div>
+          <span className="chip" data-testid="semantic-model-status" style={{ fontSize: 11, whiteSpace: 'nowrap' }}>{MODEL_STATE_LABEL[state] || state}</span>
+        </div>
+        <div className="muted" style={{ fontSize: 11, marginTop: 6 }}>Tamanho: {formatBytes(entry.size_bytes)} · download único, funciona offline depois.</div>
+
+        {!installed && phase === 'idle' && (
+          <div style={{ marginTop: 10 }}>
+            <div className="muted" data-testid="semantic-model-mode" style={{ fontSize: 12, marginBottom: 8 }}>
+              Modo básico ativo. A correção gramatical continua disponível; a análise avançada de significado ainda não está instalada.
+            </div>
+            <button className="btn btn-primary btn-sm" data-testid="semantic-model-download" disabled={busy} onClick={onDownload}>Baixar</button>
+            {failed && <button className="btn btn-secondary btn-sm" data-testid="semantic-model-retry" style={{ marginLeft: 8 }} onClick={onDownload}>Tentar novamente</button>}
+          </div>
+        )}
+
+        {phase !== 'idle' && (
+          <div style={{ marginTop: 10 }} data-testid="semantic-model-progress">
+            <div role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label="Progresso do download"
+              style={{ height: 8, borderRadius: 6, background: 'var(--border)', overflow: 'hidden' }}>
+              <div style={{ width: `${pct}%`, height: '100%', background: 'var(--primary, #4F46E5)', transition: 'width .2s' }} />
+            </div>
+            <div className="muted" style={{ fontSize: 11, marginTop: 6 }}>{MODEL_STATE_LABEL[phase] || phase} {pct}%</div>
+            <button className="btn btn-ghost btn-sm" data-testid="semantic-model-cancel" style={{ marginTop: 6 }} onClick={onCancel}>Cancelar</button>
+          </div>
+        )}
+
+        {installed && (
+          <div style={{ marginTop: 10 }}>
+            <div className="muted" data-testid="semantic-model-ready" style={{ fontSize: 12, marginBottom: 8 }}>Pronto para uso offline. O app entende melhor intenção e significado.</div>
+            <button className="btn btn-ghost btn-sm" data-testid="semantic-model-remove" disabled={busy} onClick={onRemove}>{busy ? 'Removendo…' : 'Remover'}</button>
+          </div>
+        )}
+      </Row>
+    </div>
+  )
 }
 
 function KnowledgeSection({ Row, SectionHead, showToast }) {

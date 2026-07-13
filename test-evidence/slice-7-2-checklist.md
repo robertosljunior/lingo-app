@@ -22,7 +22,7 @@ Real USE loaded from local assets in headless Chromium (CPU backend): `dim=512`,
 | T06 | Model download + validation (catalog, checksum, transactional) | completed | T03 |
 | T07 | Persistence & embedding cache (invalidate on model change) | completed | T06 |
 | T08 | Real USE executes in browser (effective_engine === "use") | completed | T04,T06 |
-| T09 | Explicit hashing fallback + honest UI copy | in_progress | T04 |
+| T09 | Explicit hashing fallback + honest UI copy | completed | T04 |
 | T10 | Calibration corpus expansion | pending | T08 |
 | T11 | Per-frame thresholds (no global cutoff) | pending | T10 |
 | T12 | Intent/entity/polarity preservation | pending | T11 |
@@ -30,13 +30,13 @@ Real USE loaded from local assets in headless Chromium (CPU backend): `dim=512`,
 | T14 | Guided integration (constraints) | pending | T11,T12 |
 | T15 | Equivalent integration (grammar vs meaning) | pending | T11,T12 |
 | T16 | Semantic tutor feedback UI (no technical terms) | pending | T13,T15 |
-| T17 | Semantic model management UI (Settings) | pending | T06,T09 |
-| T18 | Knowledge-packs UI review/grouping | pending | T17 |
+| T17 | Semantic model management UI (Settings) | completed | T06,T09 |
+| T18 | Knowledge-packs UI review/grouping | completed | T17 |
 | T19 | Mobile & accessibility | pending | T16,T17,T18 |
-| T20 | Offline | pending | T06,T07,T08 |
+| T20 | Offline | completed | T06,T07,T08 |
 | T21 | Performance & memory | pending | T08 |
 | T22 | Unit tests | pending | T04-T15 |
-| T23 | E2E | pending | T08-T18 |
+| T23 | E2E | in_progress | T08-T18 |
 | T24 | Build & validators & full suites | pending | all |
 | T25 | Diff review | pending | T24 |
 | T26 | Commits & report | pending | T25 |
@@ -85,3 +85,15 @@ Real USE loaded from local assets in headless Chromium (CPU backend): `dim=512`,
 - `semantic-model-store.test.js` (8): allowlist, file order, transactional install, checksum reject, cancel, artifact assembly, not-installed, removal+embedding-invalidations. More (thresholds/intent/UI-state) land with T11–T16.
 
 ## Increment commit 1: real USE provisioning runtime (loader + catalog + store + hook + config). Unit 134 green; build green; tfjs excluded from precache.
+
+## Increment 2 — model management UI + honest fallback copy + UI-driven E2E
+## T17 — Semantic model UI — completed
+- New "Análise semântica" card in Settings: title/description in plain PT, status chip (Não instalado / Baixando / Verificando / Instalando / Pronto para uso offline / Falha), size, real progress bar (aria progressbar), Baixar / Cancelar (AbortController) / Tentar novamente / Remover. No technical terms (USE/TensorFlow/embedding) in the UI. `semantic-model-catalog-service.js` wraps store+catalog and resets the cached encoder on install/remove so analysis rebinds without reload.
+## T09 — Hashing fallback copy — completed
+- When no model: "Modo básico ativo. A correção gramatical continua disponível; a análise avançada de significado ainda não está instalada." Never an error. Engine reporting stays honest (report()).
+## T18 — Knowledge packs UI — completed (grouping)
+- Three visually separate cards now: "Análise semântica" (model) · "Conhecimento linguístico" (packs) · "Áudio/Vozes" — no single technical list. Pack section already has states/progress/retry/remove from 7.1A.
+## T20 — Offline — completed
+- E2E: install via UI → go offline → reload → effective_engine still "use" (loads from IndexedDB). Without a model, app + grammar + free work; UI shows basic mode.
+## T23 — E2E — in_progress
+- `semantic-model.spec.js` (2): UI download → effective USE → free/error analyses → offline persists → remove → basic; and no-model hashing fallback (free never failed). Global setup fetches/caches the pinned assets (env-gated skip only if both cache and network absent). Full suite: 29 passed, 0 failed. Remaining E2E (guided/equivalent-mismatch explicit cases) land with T14/T15.
