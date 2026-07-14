@@ -1,5 +1,49 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { framesFor, isCompatible, structuralSignature, NOUN_CLASSES } from './semantic-frames.mjs'
+
+// Portuguese explanation per grammar focus (frame-based content).
+function explainFrame(grammar){ return ({
+  wh_question_be:'Pergunta com Where + verbo to be.',
+  want_to_infinitive:'Estrutura want + to + verbo (querer fazer algo).',
+  wh_question_do:'Pergunta no presente com o auxiliar do/does.',
+  modal_request:'Pedido educado com can/could.',
+  be_complement:'Verbo to be para descrever algo.',
+  have_possession:'Verbo have para posse.',
+  present_continuous:'Presente contínuo (am/is/are + -ing).',
+  imperative_request:'Pedido no imperativo com please.',
+}[grammar] || 'Estrutura comunicativa.') }
+
+// Build-time gate: verb–argument compatibility + T20 diversity minimums. Throws
+// so an artificial regression can never be compiled into a pack.
+function validateFrames(frames, theme, level){
+  const errs=[]
+  for(const f of frames){ const c=isCompatible(f.verb, f.noun); if(!c.ok) errs.push(`${f.frame_id}: ${c.reason}`) }
+  const sigs=new Set(frames.map(f=>structuralSignature(f.en)))
+  const verbs=new Set(frames.map(f=>f.verb).filter(v=>v!=='be'))
+  const intents=new Set(frames.map(f=>f.intent))
+  if(frames.length<8) errs.push(`only ${frames.length} pairs (<8)`)
+  if(sigs.size<6) errs.push(`only ${sigs.size} structures (<6)`)
+  if(verbs.size<5) errs.push(`only ${verbs.size} lexical verbs (<5)`)
+  if(intents.size<4) errs.push(`only ${intents.size} intents (<4)`)
+  // no near-duplicate: same signature AND same verb (noun-swap)
+  const seen=new Map()
+  for(const f of frames){ const k=structuralSignature(f.en)+'|'+f.verb; if(seen.has(k)) errs.push(`noun-swap: ${f.frame_id} ~ ${seen.get(k)}`); else seen.set(k,f.frame_id) }
+  if(errs.length) throw new Error(`FRAME VALIDATION FAILED for ${theme} ${level}:\n  `+errs.join('\n  '))
+}
+
+function frameTemplates(frames, pack_id, key, level){
+  validateFrames(frames, theme_of(key), level)
+  return frames.map((f,i)=>{
+    const en=f.en, blank=pickBlank(en,f)
+    return {template_id:`${pack_id}_${f.frame_id}`,family_id:`${pack_id}_${f.intent}`,pack_id,theme:key,level,pattern_id:f.pattern_id,primary_skill_id:f.skill,skill_ids:[f.skill,'vocabulary'],exercise_types:['translate_natural','fill_blank','build_sentence','choose_best','rewrite_natural','listen_type','speak_sentence'],slots:{},constraints:['curated_sentence'],distractor_strategies:['wrong_word_order','wrong_tense','wrong_collocation'],sentence:en,
+      source_locale:'pt-BR',source_text_pt:f.pt,target_locale:'en',expected_answers_en:[en],accepted_variants_en:f.alt||[],explanation_pt:explainFrame(f.grammar),skill_targets:[f.skill],
+      communicative_intent:f.intent,grammar_focus:f.grammar,pattern_signature:structuralSignature(en),lexical_verbs:[f.verb].filter(v=>v!=='be'),
+      pt:f.pt,ctx:`Situação: ${f.intent.replace(/_/g,' ')}.`,blank,wrong:f.wrong}
+  })
+}
+function theme_of(key){ return key }
+function pickBlank(en,f){ const noun=NOUN_CLASSES[f.noun]; const head=(noun?.en||'').split(' ').pop(); const words=en.replace(/[?.!,]/g,'').split(' '); return words.includes(head)?head:(words[1]||'the') }
 const levels=['A1','A2','B1','B2']
 const themes=[['daily_life','daily-life','Vida cotidiana','Daily life'],['workplace','workplace','Trabalho','Workplace'],['travel','travel','Viagens','Travel'],['food_and_restaurants','food-and-restaurants','Comida e restaurantes','Food and restaurants'],['shopping_and_services','shopping-and-services','Compras e serviços','Shopping and services'],['technology_and_communication','technology-and-communication','Tecnologia e comunicação','Technology and communication']]
 const levelPatterns={A1:['subject_be_complement','subject_simple_present_object','wh_do_subject_base_verb','subject_modal_base_verb'],A2:['subject_past_simple_object_time','subject_be_going_to_verb_time','subject_simple_present_object','wh_do_subject_base_verb'],B1:['subject_have_past_participle_yet','subject_have_been_ving_object_duration','if_present_will_future','subject_modal_base_verb'],B2:['passive_be_past_participle','reported_speech_statement','second_conditional','subject_modal_base_verb']}
@@ -67,6 +111,15 @@ function enVariants(s){ const v=new Set(); const add=x=>{ if(x&&x!==s) v.add(x) 
 
 function makePack(theme, slug, ptTitle, en, level, core=false){ const pack_id=core?`core_${level.toLowerCase()}`:`${theme}_${level.toLowerCase()}`; const key=core?'core':theme; const words=nouns[key]; const minLex=core?20:14, minTpl=core?12:8, minCol=core?9:7
   const lex=words.slice(0,minLex).map((w,i)=>({item_id:`${pack_id}_${id(w)}`,pack_id,theme:key,level,canonical:w,translation_pt:ptOf(key,w).pt,semantic_type:i%3===0?'object':i%3===1?'time':'action',tags:[key,level.toLowerCase()]}))
+  // Slice 7.5A-R T20: prefer authored semantic-frame content when available for
+  // this theme×level; otherwise fall back to the deterministic generator (so all
+  // 28 packs still exist while the frame rewrite rolls out theme by theme).
+  const frames = core ? null : framesFor(key, level)
+  if (frames) {
+    const tpl = frameTemplates(frames, pack_id, key, level)
+    const col=words.slice(0,minCol).map((w,i)=>({collocation_id:`${pack_id}_${id(w)}_chunk`,pack_id,theme:key,level,canonical:i%2?`check the ${w}`:`make a ${w}`,translation_pt:ptOf(key,w).pt,invalid_variants:[i%2?`do the ${w}`:`do a ${w}`],skill_id:'collocation'}))
+    return {manifest:{schema_version:'1',pack_id,title:{pt:`${ptTitle} ${level}`,en:`${en} ${level}`},theme:key,level,language_pair:'pt-BR/en',version:1,source:'builtin',enabled_by_default:true,dependencies:[`core_${level.toLowerCase()}`],generator_compatibility:{min_version:'1',max_version:'1'}},lexical_items:lex,template_definitions:tpl,collocations:col}
+  }
   const pats=levelPatterns[level]; const tpl=[]
   for(let i=0;i<minTpl;i++){ const p=pats[i%pats.length], w=words[i%words.length], skill=skills[level][i%skills[level].length], sent=sentence(p,w), n=ptOf(key,w), srcPt=sentencePt(p,n), variants=enVariants(sent)
     tpl.push({template_id:`${pack_id}_${p}_${String(i+1).padStart(2,'0')}`,family_id:`${pack_id}_${p}_${i%6}`,pack_id,theme:key,level,pattern_id:p,primary_skill_id:skill,skill_ids:[skill,'vocabulary'],exercise_types:['translate_natural','fill_blank','build_sentence','choose_best','rewrite_natural','listen_type','speak_sentence'],slots:{subject:'we',object:`${pack_id}_${id(w)}`},constraints:['subject_auxiliary_agreement',...(level==='B1'?['level_allows_present_perfect_continuous']:[]),...(level==='B2'?['level_allows_passive','level_allows_reported_speech']:[])],distractor_strategies:['wrong_word_order','wrong_tense','wrong_collocation'],sentence:sent,

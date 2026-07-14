@@ -7078,262 +7078,12 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "workplace_a1_subject_be_complement_01",
-        "family_id": "workplace_a1_subject_be_complement_0",
+        "template_id": "workplace_a1_wp_ask_room",
+        "family_id": "workplace_a1_ask_location",
         "pack_id": "workplace_a1",
         "theme": "workplace",
         "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a1_company"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The company is important.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "A empresa é importante.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The company is important."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-        "skill_targets": [
-          "verb_to_be"
-        ],
-        "pt": "A empresa é importante.",
-        "ctx": "Contexto de trabalho (nível A1).",
-        "blank": "company",
-        "wrong": "The company is important."
-      },
-      {
-        "template_id": "workplace_a1_subject_simple_present_object_02",
-        "family_id": "workplace_a1_subject_simple_present_object_1",
-        "pack_id": "workplace_a1",
-        "theme": "workplace",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "simple_present",
-        "skill_ids": [
-          "simple_present",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a1_project"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the project every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o projeto todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the project every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "simple_present"
-        ],
-        "pt": "Nós verificamos o projeto todos os dias.",
-        "ctx": "Contexto de trabalho (nível A1).",
-        "blank": "check",
-        "wrong": "We check the project every day."
-      },
-      {
-        "template_id": "workplace_a1_wh_do_subject_base_verb_03",
-        "family_id": "workplace_a1_wh_do_subject_base_verb_2",
-        "pack_id": "workplace_a1",
-        "theme": "workplace",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "there_is_are",
-        "skill_ids": [
-          "there_is_are",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a1_client"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the client?",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa do cliente?",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "When do you need the client?"
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
-        "skill_targets": [
-          "there_is_are"
-        ],
-        "pt": "Quando você precisa do cliente?",
-        "ctx": "Contexto de trabalho (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the client?"
-      },
-      {
-        "template_id": "workplace_a1_subject_modal_base_verb_04",
-        "family_id": "workplace_a1_subject_modal_base_verb_3",
-        "pack_id": "workplace_a1",
-        "theme": "workplace",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "can_ability",
-        "skill_ids": [
-          "can_ability",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a1_support_team"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the support team today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a equipe de suporte hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the support team today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "can_ability"
-        ],
-        "pt": "Eu posso atualizar a equipe de suporte hoje.",
-        "ctx": "Contexto de trabalho (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the support team today."
-      },
-      {
-        "template_id": "workplace_a1_subject_be_complement_05",
-        "family_id": "workplace_a1_subject_be_complement_4",
-        "pack_id": "workplace_a1",
-        "theme": "workplace",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "can_request",
-        "skill_ids": [
-          "can_request",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a1_deployment"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The deployment is important.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "A implantação é importante.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The deployment is important."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-        "skill_targets": [
-          "can_request"
-        ],
-        "pt": "A implantação é importante.",
-        "ctx": "Contexto de trabalho (nível A1).",
-        "blank": "deployment",
-        "wrong": "The deployment is important."
-      },
-      {
-        "template_id": "workplace_a1_subject_simple_present_object_06",
-        "family_id": "workplace_a1_subject_simple_present_object_5",
-        "pack_id": "workplace_a1",
-        "theme": "workplace",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
+        "pattern_id": "wh_be_question",
         "primary_skill_id": "question_structure",
         "skill_ids": [
           "question_structure",
@@ -7348,45 +7098,46 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a1_report"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the report every day.",
+        "sentence": "Where is the meeting room?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o relatório todos os dias.",
+        "source_text_pt": "Onde fica a sala de reunião?",
         "target_locale": "en",
         "expected_answers_en": [
-          "We check the report every day."
+          "Where is the meeting room?"
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "explanation_pt": "Pergunta com Where + verbo to be.",
         "skill_targets": [
           "question_structure"
         ],
-        "pt": "Nós verificamos o relatório todos os dias.",
-        "ctx": "Contexto de trabalho (nível A1).",
-        "blank": "check",
-        "wrong": "We check the report every day."
+        "communicative_intent": "ask_location",
+        "grammar_focus": "wh_question_be",
+        "pattern_signature": "wh_question|be|none|aff",
+        "lexical_verbs": [],
+        "pt": "Onde fica a sala de reunião?",
+        "ctx": "Situação: ask location.",
+        "blank": "room",
+        "wrong": "Where the meeting room is?"
       },
       {
-        "template_id": "workplace_a1_wh_do_subject_base_verb_07",
-        "family_id": "workplace_a1_wh_do_subject_base_verb_0",
+        "template_id": "workplace_a1_wp_state_task",
+        "family_id": "workplace_a1_state_task",
         "pack_id": "workplace_a1",
         "theme": "workplace",
         "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "vocabulary",
+        "pattern_id": "subject_have_object",
+        "primary_skill_id": "simple_present",
         "skill_ids": [
-          "vocabulary",
+          "simple_present",
           "vocabulary"
         ],
         "exercise_types": [
@@ -7398,42 +7149,153 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a1_requirements"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the requirements?",
+        "sentence": "I have a report to finish today.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa dos requisitos?",
+        "source_text_pt": "Tenho um relatório para terminar hoje.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the requirements?"
+          "I have a report to finish today."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Verbo have para posse.",
         "skill_targets": [
-          "vocabulary"
+          "simple_present"
         ],
-        "pt": "Quando você precisa dos requisitos?",
-        "ctx": "Contexto de trabalho (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the requirements?"
+        "communicative_intent": "state_task",
+        "grammar_focus": "have_possession",
+        "pattern_signature": "statement|present_simple|none|aff",
+        "lexical_verbs": [
+          "have"
+        ],
+        "pt": "Tenho um relatório para terminar hoje.",
+        "ctx": "Situação: state task.",
+        "blank": "report",
+        "wrong": "I has a report to finish today."
       },
       {
-        "template_id": "workplace_a1_subject_modal_base_verb_08",
-        "family_id": "workplace_a1_subject_modal_base_verb_1",
+        "template_id": "workplace_a1_wp_ask_meeting_time",
+        "family_id": "workplace_a1_ask_time",
         "pack_id": "workplace_a1",
         "theme": "workplace",
         "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "What time does the meeting start?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Que horas começa a reunião?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "What time does the meeting start?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do/does.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "ask_time",
+        "grammar_focus": "wh_question_do",
+        "pattern_signature": "wh_question|present_simple|none|aff",
+        "lexical_verbs": [
+          "start"
+        ],
+        "pt": "Que horas começa a reunião?",
+        "ctx": "Situação: ask time.",
+        "blank": "meeting",
+        "wrong": "What time the meeting start?"
+      },
+      {
+        "template_id": "workplace_a1_wp_request_help",
+        "family_id": "workplace_a1_request_help",
+        "pack_id": "workplace_a1",
+        "theme": "workplace",
+        "level": "A1",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Can you help me with this task?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você pode me ajudar com esta tarefa?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Can you help me with this task?"
+        ],
+        "accepted_variants_en": [
+          "Could you help me with this task?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "request_help",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|can|aff",
+        "lexical_verbs": [
+          "help"
+        ],
+        "pt": "Você pode me ajudar com esta tarefa?",
+        "ctx": "Situação: request help.",
+        "blank": "task",
+        "wrong": "You can help me with this task?"
+      },
+      {
+        "template_id": "workplace_a1_wp_describe_doc",
+        "family_id": "workplace_a1_describe_status",
+        "pack_id": "workplace_a1",
+        "theme": "workplace",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
         "primary_skill_id": "verb_to_be",
         "skill_ids": [
           "verb_to_be",
@@ -7448,34 +7310,196 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a1_open_positions"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the open positions today.",
+        "sentence": "The report is ready now.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar as vagas abertas hoje.",
+        "source_text_pt": "O relatório está pronto agora.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the open positions today."
+          "The report is ready now."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "explanation_pt": "Verbo to be para descrever algo.",
         "skill_targets": [
           "verb_to_be"
         ],
-        "pt": "Eu posso atualizar as vagas abertas hoje.",
-        "ctx": "Contexto de trabalho (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the open positions today."
+        "communicative_intent": "describe_status",
+        "grammar_focus": "be_complement",
+        "pattern_signature": "statement|be|none|aff",
+        "lexical_verbs": [],
+        "pt": "O relatório está pronto agora.",
+        "ctx": "Situação: describe status.",
+        "blank": "report",
+        "wrong": "The report ready now."
+      },
+      {
+        "template_id": "workplace_a1_wp_send_email",
+        "family_id": "workplace_a1_state_intention",
+        "pack_id": "workplace_a1",
+        "theme": "workplace",
+        "level": "A1",
+        "pattern_id": "subject_want_to_verb",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I want to send the email now.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quero enviar o e-mail agora.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I want to send the email now."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "state_intention",
+        "grammar_focus": "want_to_infinitive",
+        "pattern_signature": "statement|present_simple|want_to|aff",
+        "lexical_verbs": [
+          "send"
+        ],
+        "pt": "Quero enviar o e-mail agora.",
+        "ctx": "Situação: state intention.",
+        "blank": "email",
+        "wrong": "I want send the email now."
+      },
+      {
+        "template_id": "workplace_a1_wp_working_now",
+        "family_id": "workplace_a1_describe_activity",
+        "pack_id": "workplace_a1",
+        "theme": "workplace",
+        "level": "A1",
+        "pattern_id": "subject_present_continuous",
+        "primary_skill_id": "present_continuous",
+        "skill_ids": [
+          "present_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I am working on the project now.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Estou trabalhando no projeto agora.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I am working on the project now."
+        ],
+        "accepted_variants_en": [
+          "I'm working on the project now."
+        ],
+        "explanation_pt": "Presente contínuo (am/is/are + -ing).",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "communicative_intent": "describe_activity",
+        "grammar_focus": "present_continuous",
+        "pattern_signature": "statement|present_continuous|none|aff",
+        "lexical_verbs": [
+          "work"
+        ],
+        "pt": "Estou trabalhando no projeto agora.",
+        "ctx": "Situação: describe activity.",
+        "blank": "project",
+        "wrong": "I working on the project now."
+      },
+      {
+        "template_id": "workplace_a1_wp_ask_call",
+        "family_id": "workplace_a1_ask_action",
+        "pack_id": "workplace_a1",
+        "theme": "workplace",
+        "level": "A1",
+        "pattern_id": "imperative_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Please call the manager after the meeting.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Por favor, ligue para o gerente depois da reunião.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Please call the manager after the meeting."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pedido no imperativo com please.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "ask_action",
+        "grammar_focus": "imperative_request",
+        "pattern_signature": "imperative|present_simple|none|aff",
+        "lexical_verbs": [
+          "call"
+        ],
+        "pt": "Por favor, ligue para o gerente depois da reunião.",
+        "ctx": "Situação: ask action.",
+        "blank": "manager",
+        "wrong": "Please calls the manager after the meeting."
       }
     ],
     "collocations": [
@@ -9902,262 +9926,12 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "travel_a1_subject_be_complement_01",
-        "family_id": "travel_a1_subject_be_complement_0",
+        "template_id": "travel_a1_travel_ask_location",
+        "family_id": "travel_a1_ask_location",
         "pack_id": "travel_a1",
         "theme": "travel",
         "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_ticket"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The ticket is important.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "A passagem é importante.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The ticket is important."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-        "skill_targets": [
-          "verb_to_be"
-        ],
-        "pt": "A passagem é importante.",
-        "ctx": "Contexto de viagens (nível A1).",
-        "blank": "ticket",
-        "wrong": "The ticket is important."
-      },
-      {
-        "template_id": "travel_a1_subject_simple_present_object_02",
-        "family_id": "travel_a1_subject_simple_present_object_1",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "simple_present",
-        "skill_ids": [
-          "simple_present",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_hotel"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the hotel every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o hotel todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the hotel every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "simple_present"
-        ],
-        "pt": "Nós verificamos o hotel todos os dias.",
-        "ctx": "Contexto de viagens (nível A1).",
-        "blank": "check",
-        "wrong": "We check the hotel every day."
-      },
-      {
-        "template_id": "travel_a1_wh_do_subject_base_verb_03",
-        "family_id": "travel_a1_wh_do_subject_base_verb_2",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "there_is_are",
-        "skill_ids": [
-          "there_is_are",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_passport"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the passport?",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa do passaporte?",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "When do you need the passport?"
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
-        "skill_targets": [
-          "there_is_are"
-        ],
-        "pt": "Quando você precisa do passaporte?",
-        "ctx": "Contexto de viagens (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the passport?"
-      },
-      {
-        "template_id": "travel_a1_subject_modal_base_verb_04",
-        "family_id": "travel_a1_subject_modal_base_verb_3",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "can_ability",
-        "skill_ids": [
-          "can_ability",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_train_station"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the train station today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a estação de trem hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the train station today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "can_ability"
-        ],
-        "pt": "Eu posso atualizar a estação de trem hoje.",
-        "ctx": "Contexto de viagens (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the train station today."
-      },
-      {
-        "template_id": "travel_a1_subject_be_complement_05",
-        "family_id": "travel_a1_subject_be_complement_4",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "can_request",
-        "skill_ids": [
-          "can_request",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_boarding_gate"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The boarding gate is important.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "O portão de embarque é importante.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The boarding gate is important."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-        "skill_targets": [
-          "can_request"
-        ],
-        "pt": "O portão de embarque é importante.",
-        "ctx": "Contexto de viagens (nível A1).",
-        "blank": "boarding",
-        "wrong": "The boarding gate is important."
-      },
-      {
-        "template_id": "travel_a1_subject_simple_present_object_06",
-        "family_id": "travel_a1_subject_simple_present_object_5",
-        "pack_id": "travel_a1",
-        "theme": "travel",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
+        "pattern_id": "wh_be_question",
         "primary_skill_id": "question_structure",
         "skill_ids": [
           "question_structure",
@@ -10172,45 +9946,48 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_luggage"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the luggage every day.",
+        "sentence": "Where is the train station?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a bagagem todos os dias.",
+        "source_text_pt": "Onde fica a estação de trem?",
         "target_locale": "en",
         "expected_answers_en": [
-          "We check the luggage every day."
+          "Where is the train station?"
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "accepted_variants_en": [
+          "Where is the train station, please?"
+        ],
+        "explanation_pt": "Pergunta com Where + verbo to be.",
         "skill_targets": [
           "question_structure"
         ],
-        "pt": "Nós verificamos a bagagem todos os dias.",
-        "ctx": "Contexto de viagens (nível A1).",
-        "blank": "check",
-        "wrong": "We check the luggage every day."
+        "communicative_intent": "ask_location",
+        "grammar_focus": "wh_question_be",
+        "pattern_signature": "wh_question|be|none|aff",
+        "lexical_verbs": [],
+        "pt": "Onde fica a estação de trem?",
+        "ctx": "Situação: ask location.",
+        "blank": "station",
+        "wrong": "Where the train station is?"
       },
       {
-        "template_id": "travel_a1_wh_do_subject_base_verb_07",
-        "family_id": "travel_a1_wh_do_subject_base_verb_0",
+        "template_id": "travel_a1_travel_buy_ticket",
+        "family_id": "travel_a1_buy_ticket",
         "pack_id": "travel_a1",
         "theme": "travel",
         "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "vocabulary",
+        "pattern_id": "subject_want_to_verb",
+        "primary_skill_id": "simple_present",
         "skill_ids": [
-          "vocabulary",
+          "simple_present",
           "vocabulary"
         ],
         "exercise_types": [
@@ -10222,42 +9999,153 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_reservation"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the reservation?",
+        "sentence": "I want to buy a ticket to the city.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa da reserva?",
+        "source_text_pt": "Quero comprar uma passagem para a cidade.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the reservation?"
+          "I want to buy a ticket to the city."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
         "skill_targets": [
-          "vocabulary"
+          "simple_present"
         ],
-        "pt": "Quando você precisa da reserva?",
-        "ctx": "Contexto de viagens (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the reservation?"
+        "communicative_intent": "buy_ticket",
+        "grammar_focus": "want_to_infinitive",
+        "pattern_signature": "statement|present_simple|want_to|aff",
+        "lexical_verbs": [
+          "buy"
+        ],
+        "pt": "Quero comprar uma passagem para a cidade.",
+        "ctx": "Situação: buy ticket.",
+        "blank": "ticket",
+        "wrong": "I want buy a ticket to the city."
       },
       {
-        "template_id": "travel_a1_subject_modal_base_verb_08",
-        "family_id": "travel_a1_subject_modal_base_verb_1",
+        "template_id": "travel_a1_travel_ask_time",
+        "family_id": "travel_a1_ask_time",
         "pack_id": "travel_a1",
         "theme": "travel",
         "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "What time does the bus leave?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Que horas o ônibus sai?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "What time does the bus leave?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do/does.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "ask_time",
+        "grammar_focus": "wh_question_do",
+        "pattern_signature": "wh_question|present_simple|none|aff",
+        "lexical_verbs": [
+          "leave"
+        ],
+        "pt": "Que horas o ônibus sai?",
+        "ctx": "Situação: ask time.",
+        "blank": "bus",
+        "wrong": "What time the bus leave?"
+      },
+      {
+        "template_id": "travel_a1_travel_find_platform",
+        "family_id": "travel_a1_find_platform",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Can you show me the platform?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você pode me mostrar a plataforma?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Can you show me the platform?"
+        ],
+        "accepted_variants_en": [
+          "Could you show me the platform?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "find_platform",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|can|aff",
+        "lexical_verbs": [
+          "show"
+        ],
+        "pt": "Você pode me mostrar a plataforma?",
+        "ctx": "Situação: find platform.",
+        "blank": "platform",
+        "wrong": "You can show me the platform?"
+      },
+      {
+        "template_id": "travel_a1_travel_talk_luggage",
+        "family_id": "travel_a1_describe_luggage",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
         "primary_skill_id": "verb_to_be",
         "skill_ids": [
           "verb_to_be",
@@ -10272,34 +10160,198 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a1_city_map"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the city map today.",
+        "sentence": "My luggage is very heavy.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o mapa da cidade hoje.",
+        "source_text_pt": "Minha bagagem está muito pesada.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the city map today."
+          "My luggage is very heavy."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "explanation_pt": "Verbo to be para descrever algo.",
         "skill_targets": [
           "verb_to_be"
         ],
-        "pt": "Eu posso atualizar o mapa da cidade hoje.",
-        "ctx": "Contexto de viagens (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the city map today."
+        "communicative_intent": "describe_luggage",
+        "grammar_focus": "be_complement",
+        "pattern_signature": "statement|be|none|aff",
+        "lexical_verbs": [],
+        "pt": "Minha bagagem está muito pesada.",
+        "ctx": "Situação: describe luggage.",
+        "blank": "luggage",
+        "wrong": "My luggage very heavy."
+      },
+      {
+        "template_id": "travel_a1_travel_confirm_reservation",
+        "family_id": "travel_a1_confirm_reservation",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "subject_have_object",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I have a reservation for tonight.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Tenho uma reserva para hoje à noite.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I have a reservation for tonight."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Verbo have para posse.",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "confirm_reservation",
+        "grammar_focus": "have_possession",
+        "pattern_signature": "statement|present_simple|none|aff",
+        "lexical_verbs": [
+          "have"
+        ],
+        "pt": "Tenho uma reserva para hoje à noite.",
+        "ctx": "Situação: confirm reservation.",
+        "blank": "reservation",
+        "wrong": "I has a reservation for tonight."
+      },
+      {
+        "template_id": "travel_a1_travel_state_destination",
+        "family_id": "travel_a1_state_destination",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "subject_present_continuous",
+        "primary_skill_id": "present_continuous",
+        "skill_ids": [
+          "present_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I am going to the airport now.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Estou indo para o aeroporto agora.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I am going to the airport now."
+        ],
+        "accepted_variants_en": [
+          "I'm going to the airport now."
+        ],
+        "explanation_pt": "Presente contínuo (am/is/are + -ing).",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "communicative_intent": "state_destination",
+        "grammar_focus": "present_continuous",
+        "pattern_signature": "statement|going_to|none|aff",
+        "lexical_verbs": [
+          "go"
+        ],
+        "pt": "Estou indo para o aeroporto agora.",
+        "ctx": "Situação: state destination.",
+        "blank": "airport",
+        "wrong": "I going to the airport now."
+      },
+      {
+        "template_id": "travel_a1_travel_ask_help",
+        "family_id": "travel_a1_ask_help",
+        "pack_id": "travel_a1",
+        "theme": "travel",
+        "level": "A1",
+        "pattern_id": "imperative_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Please help me with my bags.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Por favor, me ajude com as malas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Please help me with my bags."
+        ],
+        "accepted_variants_en": [
+          "Can you help me with my bags?"
+        ],
+        "explanation_pt": "Pedido no imperativo com please.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "ask_help",
+        "grammar_focus": "imperative_request",
+        "pattern_signature": "imperative|present_simple|none|aff",
+        "lexical_verbs": [
+          "help"
+        ],
+        "pt": "Por favor, me ajude com as malas.",
+        "ctx": "Situação: ask help.",
+        "blank": "bags",
+        "wrong": "Please helps me with my bags."
       }
     ],
     "collocations": [
@@ -12726,212 +12778,12 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "food_and_restaurants_a1_subject_be_complement_01",
-        "family_id": "food_and_restaurants_a1_subject_be_complement_0",
+        "template_id": "food_and_restaurants_a1_food_order_dish",
+        "family_id": "food_and_restaurants_a1_order_food",
         "pack_id": "food_and_restaurants_a1",
         "theme": "food_and_restaurants",
         "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_menu"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The menu is important.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "O cardápio é importante.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The menu is important."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-        "skill_targets": [
-          "verb_to_be"
-        ],
-        "pt": "O cardápio é importante.",
-        "ctx": "Contexto de comida e restaurantes (nível A1).",
-        "blank": "menu",
-        "wrong": "The menu is important."
-      },
-      {
-        "template_id": "food_and_restaurants_a1_subject_simple_present_object_02",
-        "family_id": "food_and_restaurants_a1_subject_simple_present_object_1",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "simple_present",
-        "skill_ids": [
-          "simple_present",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_table"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the table every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a mesa todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the table every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "simple_present"
-        ],
-        "pt": "Nós verificamos a mesa todos os dias.",
-        "ctx": "Contexto de comida e restaurantes (nível A1).",
-        "blank": "check",
-        "wrong": "We check the table every day."
-      },
-      {
-        "template_id": "food_and_restaurants_a1_wh_do_subject_base_verb_03",
-        "family_id": "food_and_restaurants_a1_wh_do_subject_base_verb_2",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "there_is_are",
-        "skill_ids": [
-          "there_is_are",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_starter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the starter?",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa da entrada?",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "When do you need the starter?"
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
-        "skill_targets": [
-          "there_is_are"
-        ],
-        "pt": "Quando você precisa da entrada?",
-        "ctx": "Contexto de comida e restaurantes (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the starter?"
-      },
-      {
-        "template_id": "food_and_restaurants_a1_subject_modal_base_verb_04",
-        "family_id": "food_and_restaurants_a1_subject_modal_base_verb_3",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "can_ability",
-        "skill_ids": [
-          "can_ability",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_main_course"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the main course today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o prato principal hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the main course today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "can_ability"
-        ],
-        "pt": "Eu posso atualizar o prato principal hoje.",
-        "ctx": "Contexto de comida e restaurantes (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the main course today."
-      },
-      {
-        "template_id": "food_and_restaurants_a1_subject_be_complement_05",
-        "family_id": "food_and_restaurants_a1_subject_be_complement_4",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
+        "pattern_id": "can_could_request",
         "primary_skill_id": "can_request",
         "skill_ids": [
           "can_request",
@@ -12946,45 +12798,48 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_dessert"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The dessert is important.",
+        "sentence": "Can I have the grilled chicken, please?",
         "source_locale": "pt-BR",
-        "source_text_pt": "A sobremesa é importante.",
+        "source_text_pt": "Posso comer o frango grelhado, por favor?",
         "target_locale": "en",
         "expected_answers_en": [
-          "The dessert is important."
+          "Can I have the grilled chicken, please?"
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+        "explanation_pt": "Pedido educado com can/could.",
         "skill_targets": [
           "can_request"
         ],
-        "pt": "A sobremesa é importante.",
-        "ctx": "Contexto de comida e restaurantes (nível A1).",
-        "blank": "dessert",
-        "wrong": "The dessert is important."
+        "communicative_intent": "order_food",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|can|aff",
+        "lexical_verbs": [
+          "have"
+        ],
+        "pt": "Posso comer o frango grelhado, por favor?",
+        "ctx": "Situação: order food.",
+        "blank": "chicken",
+        "wrong": "I can have the grilled chicken, please?"
       },
       {
-        "template_id": "food_and_restaurants_a1_subject_simple_present_object_06",
-        "family_id": "food_and_restaurants_a1_subject_simple_present_object_5",
+        "template_id": "food_and_restaurants_a1_food_ask_ingredient",
+        "family_id": "food_and_restaurants_a1_ask_ingredient",
         "pack_id": "food_and_restaurants_a1",
         "theme": "food_and_restaurants",
         "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "question_structure",
+        "pattern_id": "yes_no_do_question",
+        "primary_skill_id": "question_auxiliary",
         "skill_ids": [
-          "question_structure",
+          "question_auxiliary",
           "vocabulary"
         ],
         "exercise_types": [
@@ -12996,92 +12851,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_bill"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the bill every day.",
+        "sentence": "Does this soup have milk?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a conta todos os dias.",
+        "source_text_pt": "Esta sopa tem leite?",
         "target_locale": "en",
         "expected_answers_en": [
-          "We check the bill every day."
+          "Does this soup have milk?"
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "question_structure"
+          "question_auxiliary"
         ],
-        "pt": "Nós verificamos a conta todos os dias.",
-        "ctx": "Contexto de comida e restaurantes (nível A1).",
-        "blank": "check",
-        "wrong": "We check the bill every day."
+        "communicative_intent": "ask_ingredient",
+        "grammar_focus": "yes_no_question",
+        "pattern_signature": "yesno_question|present_simple|none|aff",
+        "lexical_verbs": [
+          "have"
+        ],
+        "pt": "Esta sopa tem leite?",
+        "ctx": "Situação: ask ingredient.",
+        "blank": "soup",
+        "wrong": "This soup have milk?"
       },
       {
-        "template_id": "food_and_restaurants_a1_wh_do_subject_base_verb_07",
-        "family_id": "food_and_restaurants_a1_wh_do_subject_base_verb_0",
+        "template_id": "food_and_restaurants_a1_food_inform_restriction",
+        "family_id": "food_and_restaurants_a1_inform_restriction",
         "pack_id": "food_and_restaurants_a1",
         "theme": "food_and_restaurants",
         "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_waiter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the waiter?",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa do garçom?",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "When do you need the waiter?"
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Quando você precisa do garçom?",
-        "ctx": "Contexto de comida e restaurantes (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the waiter?"
-      },
-      {
-        "template_id": "food_and_restaurants_a1_subject_modal_base_verb_08",
-        "family_id": "food_and_restaurants_a1_subject_modal_base_verb_1",
-        "pack_id": "food_and_restaurants_a1",
-        "theme": "food_and_restaurants",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
+        "pattern_id": "subject_be_complement",
         "primary_skill_id": "verb_to_be",
         "skill_ids": [
           "verb_to_be",
@@ -13096,34 +12904,304 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a1_reservation"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the reservation today.",
+        "sentence": "I am allergic to peanuts.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a reserva hoje.",
+        "source_text_pt": "Sou alérgico a amendoim.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the reservation today."
+          "I am allergic to peanuts."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "accepted_variants_en": [
+          "I'm allergic to peanuts."
+        ],
+        "explanation_pt": "Verbo to be para descrever algo.",
         "skill_targets": [
           "verb_to_be"
         ],
-        "pt": "Eu posso atualizar a reserva hoje.",
-        "ctx": "Contexto de comida e restaurantes (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the reservation today."
+        "communicative_intent": "inform_restriction",
+        "grammar_focus": "be_complement",
+        "pattern_signature": "statement|be|none|aff",
+        "lexical_verbs": [],
+        "pt": "Sou alérgico a amendoim.",
+        "ctx": "Situação: inform restriction.",
+        "blank": "peanuts",
+        "wrong": "I allergic to peanuts."
+      },
+      {
+        "template_id": "food_and_restaurants_a1_food_ask_menu",
+        "family_id": "food_and_restaurants_a1_ask_menu",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Could you bring the menu?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você poderia trazer o cardápio?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Could you bring the menu?"
+        ],
+        "accepted_variants_en": [
+          "Can you bring the menu?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "ask_menu",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|could|aff",
+        "lexical_verbs": [
+          "bring"
+        ],
+        "pt": "Você poderia trazer o cardápio?",
+        "ctx": "Situação: ask menu.",
+        "blank": "menu",
+        "wrong": "You could bring the menu?"
+      },
+      {
+        "template_id": "food_and_restaurants_a1_food_reserve_table",
+        "family_id": "food_and_restaurants_a1_reserve_table",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "subject_want_to_verb",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I want to book a table for two.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quero reservar uma mesa para dois.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I want to book a table for two."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "reserve_table",
+        "grammar_focus": "want_to_infinitive",
+        "pattern_signature": "statement|present_simple|want_to|aff",
+        "lexical_verbs": [
+          "book"
+        ],
+        "pt": "Quero reservar uma mesa para dois.",
+        "ctx": "Situação: reserve table.",
+        "blank": "table",
+        "wrong": "I want book a table for two."
+      },
+      {
+        "template_id": "food_and_restaurants_a1_food_ask_location",
+        "family_id": "food_and_restaurants_a1_ask_location",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "wh_be_question",
+        "primary_skill_id": "question_structure",
+        "skill_ids": [
+          "question_structure",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Where is the restaurant?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Onde fica o restaurante?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Where is the restaurant?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta com Where + verbo to be.",
+        "skill_targets": [
+          "question_structure"
+        ],
+        "communicative_intent": "ask_location",
+        "grammar_focus": "wh_question_be",
+        "pattern_signature": "wh_question|be|none|aff",
+        "lexical_verbs": [],
+        "pt": "Onde fica o restaurante?",
+        "ctx": "Situação: ask location.",
+        "blank": "restaurant",
+        "wrong": "Where the restaurant is?"
+      },
+      {
+        "template_id": "food_and_restaurants_a1_food_waiting",
+        "family_id": "food_and_restaurants_a1_describe_activity",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "subject_present_continuous",
+        "primary_skill_id": "present_continuous",
+        "skill_ids": [
+          "present_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I am waiting for my order.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Estou esperando meu pedido.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I am waiting for my order."
+        ],
+        "accepted_variants_en": [
+          "I'm waiting for my order."
+        ],
+        "explanation_pt": "Presente contínuo (am/is/are + -ing).",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "communicative_intent": "describe_activity",
+        "grammar_focus": "present_continuous",
+        "pattern_signature": "statement|present_continuous|none|aff",
+        "lexical_verbs": [
+          "wait"
+        ],
+        "pt": "Estou esperando meu pedido.",
+        "ctx": "Situação: describe activity.",
+        "blank": "order",
+        "wrong": "I waiting for my order."
+      },
+      {
+        "template_id": "food_and_restaurants_a1_food_ask_hours",
+        "family_id": "food_and_restaurants_a1_ask_time",
+        "pack_id": "food_and_restaurants_a1",
+        "theme": "food_and_restaurants",
+        "level": "A1",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "What time does the restaurant open?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Que horas o restaurante abre?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "What time does the restaurant open?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do/does.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "ask_time",
+        "grammar_focus": "wh_question_do",
+        "pattern_signature": "wh_question|present_simple|none|aff",
+        "lexical_verbs": [
+          "open"
+        ],
+        "pt": "Que horas o restaurante abre?",
+        "ctx": "Situação: ask time.",
+        "blank": "restaurant",
+        "wrong": "What time the restaurant open?"
       }
     ],
     "collocations": [
