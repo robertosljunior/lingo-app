@@ -1,9 +1,11 @@
 import { useApp } from '../store.jsx'
 import { I } from '../components/icons.jsx'
 import { getSkill } from '../lib/skill-registry.js'
+import BobMascot from '../components/BobMascot.jsx'
 
 export default function Result() {
-  const { activeLesson, session, navigate, setTab, SCREENS } = useApp()
+  const { activeLesson, session, settings, navigate, setTab, SCREENS } = useApp()
+  const mode = settings?.profile_mode === 'kids' ? 'kids' : 'adult'
   const answers = session.answers
   const total = activeLesson.questions.length
   const correct = answers.filter((a) => a.verdict === 'correct').length
@@ -35,6 +37,9 @@ export default function Result() {
 
       <div className="screen-body" style={{ paddingBottom: 20 }}>
         <div style={{ textAlign: 'center', paddingTop: 8 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
+            <BobMascot size={84} mode={mode} float={score >= 60} />
+          </div>
           <div className="label-eyebrow" style={{ fontFamily: 'var(--font-mono)' }}>{activeLesson.focus} · {activeLesson.level}</div>
           <div style={{ position: 'relative', width: 180, height: 180, margin: '20px auto 0' }}>
             <svg width="180" height="180" viewBox="0 0 180 180">

@@ -128,13 +128,22 @@ export async function seedFixtures(page, { active = PROFILE_A } = {}) {
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
 }
 
-// Switches profile through the real UI (Settings → profile chips).
+// Switches the active profile. Profile switching is no longer a user-facing
+// feature (the app is single-user after the Bob redesign), so this drives the
+// active profile through the real storage layer + reload — which is exactly how
+// the app selects a profile at boot. The data-isolation property still holds.
 export async function switchProfileViaUi(page, name) {
-  await page.getByRole('button', { name: 'Ajustes' }).click()
-  await page.getByRole('button', { name, exact: true }).click()
-  // The active chip re-renders; give the library refresh a beat.
-  await page.getByRole('button', { name: 'Início' }).click()
-  await expect(page.getByText('Bem-vindo', { exact: false }).first()).toBeVisible()
+  const idByName = { 'Perfil A': PROFILE_A, 'Perfil B': PROFILE_B }
+  const profileId = idByName[name] || name
+  await page.evaluate((pid) => window.__e2e.db.setSetting('active_profile', pid), profileId)
+  await page.reload()
+  await expect(page.locator('.app-shell')).toBeVisible()
+  await page.waitForFunction(() => window.__e2e && window.__e2e.db)
+  // Boot may restore a persisted adaptive session and open the exercise; leave it
+  // so the caller lands on Home.
+  const exitBtn = page.getByRole('button', { name: 'Sair da aula' })
+  if (await exitBtn.count()) await exitBtn.click()
+  await expect(page.getByTestId('open-training-hub')).toBeVisible()
 }
 
 // ---------- raw IndexedDB access (browser side) ----------

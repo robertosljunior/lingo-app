@@ -35,7 +35,7 @@ test('profile B cannot list, open, export, delete or restore profile A private l
   await page.reload()
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
   await expect(page.getByTestId('question-type')).toHaveCount(0)
-  await expect(page.getByText('Bem-vindo', { exact: false }).first()).toBeVisible()
+  await expect(page.getByTestId('open-training-hub')).toBeVisible()
   const sessionB = await page.evaluate(() => window.__e2e.db.getPersistedAdaptiveSession('profile-b'))
   expect(sessionB).toBeNull()
 
