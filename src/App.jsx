@@ -10,6 +10,8 @@ import History from './screens/History.jsx'
 import Mistakes from './screens/Mistakes.jsx'
 import Settings from './screens/Settings.jsx'
 import TrainingHub from './screens/TrainingHub.jsx'
+import Stories from './screens/Stories.jsx'
+import Talk from './screens/Talk.jsx'
 import Onboarding from './screens/Onboarding.jsx'
 import PwaInstallController from './components/PwaInstallController.jsx'
 
@@ -24,6 +26,8 @@ const SCREEN_COMPONENTS = {
   [SCREENS.MISTAKES]: Mistakes,
   [SCREENS.SETTINGS]: Settings,
   [SCREENS.TRAINING]: TrainingHub,
+  [SCREENS.STORIES]: Stories,
+  [SCREENS.TALK]: Talk,
 }
 
 // Screens that require an active lesson/session; if reached without one, fall

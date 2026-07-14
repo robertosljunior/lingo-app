@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useApp } from '../store.jsx'
 import { BottomNav, Logo } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
+import BobMascot from '../components/BobMascot.jsx'
 import { prettyFocus } from '../lib/lesson-parser.js'
 import { buildGeneratedLessonYaml } from '../lib/lesson-generator.js'
 import { downloadText } from '../lib/export-engine.js'
@@ -38,7 +39,10 @@ function StreakStrip({ sessions }) {
 }
 
 export default function Home() {
-  const { lessons, sessions, mistakes, dueCount, profiles, activeProfile, skillProfiles = [], startLesson, startReviewSession, startPracticeSession, generateAdaptiveLesson, navigate, setTab, SCREENS, showToast } = useApp()
+  const { lessons, sessions, mistakes, dueCount, profiles, activeProfile, settings, skillProfiles = [], startLesson, startReviewSession, startPracticeSession, generateAdaptiveLesson, navigate, setTab, SCREENS, showToast } = useApp()
+  const mode = settings?.profile_mode === 'kids' ? 'kids' : 'adult'
+  const hour = new Date().getHours()
+  const greetWord = hour < 12 ? 'Bom dia' : hour < 18 ? 'Boa tarde' : 'Boa noite'
   const latest = lessons[0] || null
   const avgScore = sessions.length
     ? Math.round(sessions.reduce((a, s) => a + s.score, 0) / sessions.length)
@@ -64,13 +68,6 @@ export default function Home() {
       <div style={{ padding: '8px 20px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
         <Logo />
         <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-          {profile && (
-            <button className="chip" onClick={() => setTab(SCREENS.SETTINGS)}
-              style={{ border: '1px solid var(--border)', background: 'var(--surface)', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 5, font: 'inherit', fontSize: 12, fontWeight: 700 }}
-              aria-label="Trocar perfil">
-              <I.user s={12} /> {profile.name}
-            </button>
-          )}
           {avgScore != null && (
             <div className="chip chip-indigo" style={{ fontWeight: 800 }}>{latest?.level || 'B1'}</div>
           )}
@@ -78,10 +75,14 @@ export default function Home() {
       </div>
 
       <div className="screen-body" style={{ paddingBottom: 100 }}>
-        <div>
-          <div className="label-eyebrow">bem-vindo</div>
-          <h1 className="h1" style={{ marginTop: 4 }}>{profile && profile.name !== 'Você' ? `Bem-vindo, ${profile.name}.` : 'Bem-vindo de volta.'}</h1>
-          <p className="muted-2" style={{ margin: '6px 0 0', fontSize: 14 }}>Pronto pra travar menos hoje?</p>
+        {/* Bob hero — greeting by name + floating mascot */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{ flex: 1 }}>
+            <div className="label-eyebrow">{greetWord.toLowerCase()}</div>
+            <h1 className="h1" style={{ marginTop: 4 }}>{profile && profile.name !== 'Você' ? `${greetWord}, ${profile.name}!` : `${greetWord}!`}</h1>
+            <p className="muted-2" style={{ margin: '6px 0 0', fontSize: 14 }}>Bora soltar o inglês hoje 💪</p>
+          </div>
+          <BobMascot size={76} mode={mode} />
         </div>
 
 

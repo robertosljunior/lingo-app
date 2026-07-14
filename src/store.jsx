@@ -18,9 +18,10 @@ export const SCREENS = {
   HOME: 'home', IMPORT: 'import', EXERCISE: 'exercise', RESULT: 'result',
   REVIEW: 'review', EXPORT: 'export', HISTORY: 'history',
   MISTAKES: 'mistakes', SETTINGS: 'settings', TRAINING: 'training',
+  STORIES: 'stories', TALK: 'talk',
 }
 
-const TABS = new Set([SCREENS.HOME, SCREENS.HISTORY, SCREENS.MISTAKES, SCREENS.SETTINGS])
+const TABS = new Set([SCREENS.HOME, SCREENS.HISTORY, SCREENS.MISTAKES, SCREENS.SETTINGS, SCREENS.STORIES, SCREENS.TALK])
 
 function newSessionId(lessonId) {
   return `${lessonId}-${Date.now().toString(36)}`
@@ -370,6 +371,13 @@ export function AppProvider({ children }) {
     await db.setSetting(key, value)
   }, [])
 
+  const renameActiveProfile = useCallback(async (name) => {
+    const clean = String(name || '').trim()
+    if (!clean) return
+    await db.saveProfile({ profile_id: activeProfile, name: clean })
+    setProfiles(await db.getProfiles())
+  }, [activeProfile])
+
   // Finish the first-run onboarding: name the active profile, store the mode
   // (kids/adult) and starting level, and mark onboarding done.
   const completeOnboarding = useCallback(async ({ name, mode = 'adult', level = 'A1' } = {}) => {
@@ -385,7 +393,7 @@ export function AppProvider({ children }) {
 
   const value = {
     ready, screen, params, settings,
-    needsOnboarding, completeOnboarding,
+    needsOnboarding, completeOnboarding, renameActiveProfile,
     lessons, sessions, mistakes, skillProfiles, dueCount,
     profiles, activeProfile, switchProfile, addProfile, removeProfile,
     startReviewSession, startPracticeSession, generateAdaptiveLesson,

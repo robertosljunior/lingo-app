@@ -8,6 +8,7 @@ import { buildIncorrectChoiceEvaluation } from '../lib/correction-engine.js'
 import { speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
 import { SpeakButton, SpeakableText } from '../components/speak-button.jsx'
+import BobMascot from '../components/BobMascot.jsx'
 import { MicButton } from '../components/mic-button.jsx'
 import { MarkedText, TypoNote } from '../components/answer-diff.jsx'
 import { buildFeedbackPresentation } from '../lib/feedback-presentation.js'
@@ -244,6 +245,26 @@ export default function Exercise() {
           onRate={(confidence) => rateAnswer(feedback.answerKey, confidence)}
         />
       )}
+    </div>
+  )
+}
+
+// A small Bob reaction at the top of the feedback sheet — celebratory on a
+// correct answer, warmly reassuring otherwise. Purely cosmetic: the real
+// feedback (status, explanation, comparison, testids) follows unchanged.
+function BobReaction({ verdict, tone, mode = 'adult' }) {
+  const ok = verdict === 'correct'
+  const almost = tone === 'warn'
+  const bg = ok ? 'var(--success-bg)' : almost ? 'var(--warn-bg)' : 'var(--error-bg)'
+  const ink = ok ? 'var(--success-ink)' : almost ? 'var(--warn-ink)' : 'var(--error-ink)'
+  const line = ok ? 'Boa! Você mandou bem 🔥' : almost ? 'Quase! Faltou um detalhe.' : 'Sem problema — todo mundo erra 💙'
+  return (
+    <div aria-hidden="true" style={{
+      display: 'flex', alignItems: 'center', gap: 12, padding: '10px 14px', marginBottom: 10,
+      background: bg, borderRadius: 18, animation: 'bob-pop .28s ease both',
+    }}>
+      <BobMascot size={52} mode={mode} float={ok} />
+      <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 17, color: ink, lineHeight: 1.15 }}>{line}</div>
     </div>
   )
 }
@@ -646,6 +667,7 @@ function FeedbackSheet({ result, q, onNext, onRetry, onRate }) {
     <div className={`sheet feedback-sheet sheet-anim`} data-testid="feedback-sheet" data-verdict={result.verdict} aria-live="polite">
       <div className="feedback-scroll" ref={scrollRef} data-testid="feedback-scroll">
         <div className="feedback-content">
+          <BobReaction verdict={result.verdict} tone={tone} mode={settings?.profile_mode} />
           <div className="feedback-status" data-testid="feedback-title">
             <div className={`feedback-status-icon ${tone}`} aria-hidden="true">
               {result.verdict === 'correct' ? <I.check s={22} /> : result.verdict === 'partial' ? '~' : <I.x s={18} />}

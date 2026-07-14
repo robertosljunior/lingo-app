@@ -1,6 +1,7 @@
 // Shared UI primitives: header, bottom nav, progress, logo, toast.
 
 import { I } from './icons.jsx'
+import { useApp } from '../store.jsx'
 
 export function AppHeader({ title, onBack, right = null }) {
   return (
@@ -15,12 +16,24 @@ export function AppHeader({ title, onBack, right = null }) {
 }
 
 export function BottomNav({ active, onNavigate }) {
-  const items = [
-    { k: 'home', label: 'Início', icon: I.home },
-    { k: 'history', label: 'Histórico', icon: I.history },
-    { k: 'mistakes', label: 'Erros', icon: I.mistakes },
-    { k: 'settings', label: 'Ajustes', icon: I.settings },
-  ]
+  const { settings } = useApp()
+  const kids = settings?.profile_mode === 'kids'
+  // Kids get a Stories tab (in place of History); everyone gets Talk-with-Bob.
+  const items = kids
+    ? [
+        { k: 'home', label: 'Início', icon: I.home },
+        { k: 'stories', label: 'Histórias', icon: I.spark },
+        { k: 'talk', label: 'Fale', icon: I.mic },
+        { k: 'mistakes', label: 'Erros', icon: I.mistakes },
+        { k: 'settings', label: 'Ajustes', icon: I.settings },
+      ]
+    : [
+        { k: 'home', label: 'Início', icon: I.home },
+        { k: 'talk', label: 'Fale', icon: I.mic },
+        { k: 'history', label: 'Histórico', icon: I.history },
+        { k: 'mistakes', label: 'Erros', icon: I.mistakes },
+        { k: 'settings', label: 'Ajustes', icon: I.settings },
+      ]
   const Item = (it) => (
     <button key={it.k} className={`nav-item ${active === it.k ? 'active' : ''}`}
       onClick={() => onNavigate(it.k)} aria-current={active === it.k ? 'page' : undefined}>
