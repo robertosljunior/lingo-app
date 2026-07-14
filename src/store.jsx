@@ -18,9 +18,10 @@ export const SCREENS = {
   HOME: 'home', IMPORT: 'import', EXERCISE: 'exercise', RESULT: 'result',
   REVIEW: 'review', EXPORT: 'export', HISTORY: 'history',
   MISTAKES: 'mistakes', SETTINGS: 'settings', TRAINING: 'training',
+  STORIES: 'stories', TALK: 'talk',
 }
 
-const TABS = new Set([SCREENS.HOME, SCREENS.HISTORY, SCREENS.MISTAKES, SCREENS.SETTINGS])
+const TABS = new Set([SCREENS.HOME, SCREENS.HISTORY, SCREENS.MISTAKES, SCREENS.SETTINGS, SCREENS.STORIES, SCREENS.TALK])
 
 function newSessionId(lessonId) {
   return `${lessonId}-${Date.now().toString(36)}`
