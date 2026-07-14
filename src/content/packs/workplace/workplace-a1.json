@@ -206,262 +206,12 @@
   ],
   "template_definitions": [
     {
-      "template_id": "workplace_a1_subject_be_complement_01",
-      "family_id": "workplace_a1_subject_be_complement_0",
+      "template_id": "workplace_a1_wp_ask_room",
+      "family_id": "workplace_a1_ask_location",
       "pack_id": "workplace_a1",
       "theme": "workplace",
       "level": "A1",
-      "pattern_id": "subject_be_complement",
-      "primary_skill_id": "verb_to_be",
-      "skill_ids": [
-        "verb_to_be",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a1_company"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "The company is important.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "A empresa é importante.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "The company is important."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-      "skill_targets": [
-        "verb_to_be"
-      ],
-      "pt": "A empresa é importante.",
-      "ctx": "Contexto de trabalho (nível A1).",
-      "blank": "company",
-      "wrong": "The company is important."
-    },
-    {
-      "template_id": "workplace_a1_subject_simple_present_object_02",
-      "family_id": "workplace_a1_subject_simple_present_object_1",
-      "pack_id": "workplace_a1",
-      "theme": "workplace",
-      "level": "A1",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "simple_present",
-      "skill_ids": [
-        "simple_present",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a1_project"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the project every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o projeto todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the project every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "simple_present"
-      ],
-      "pt": "Nós verificamos o projeto todos os dias.",
-      "ctx": "Contexto de trabalho (nível A1).",
-      "blank": "check",
-      "wrong": "We check the project every day."
-    },
-    {
-      "template_id": "workplace_a1_wh_do_subject_base_verb_03",
-      "family_id": "workplace_a1_wh_do_subject_base_verb_2",
-      "pack_id": "workplace_a1",
-      "theme": "workplace",
-      "level": "A1",
-      "pattern_id": "wh_do_subject_base_verb",
-      "primary_skill_id": "there_is_are",
-      "skill_ids": [
-        "there_is_are",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a1_client"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "When do you need the client?",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa do cliente?",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "When do you need the client?"
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
-      "skill_targets": [
-        "there_is_are"
-      ],
-      "pt": "Quando você precisa do cliente?",
-      "ctx": "Contexto de trabalho (nível A1).",
-      "blank": "do",
-      "wrong": "When you do need the client?"
-    },
-    {
-      "template_id": "workplace_a1_subject_modal_base_verb_04",
-      "family_id": "workplace_a1_subject_modal_base_verb_3",
-      "pack_id": "workplace_a1",
-      "theme": "workplace",
-      "level": "A1",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "can_ability",
-      "skill_ids": [
-        "can_ability",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a1_support_team"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the support team today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a equipe de suporte hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the support team today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "can_ability"
-      ],
-      "pt": "Eu posso atualizar a equipe de suporte hoje.",
-      "ctx": "Contexto de trabalho (nível A1).",
-      "blank": "can",
-      "wrong": "I cans update the support team today."
-    },
-    {
-      "template_id": "workplace_a1_subject_be_complement_05",
-      "family_id": "workplace_a1_subject_be_complement_4",
-      "pack_id": "workplace_a1",
-      "theme": "workplace",
-      "level": "A1",
-      "pattern_id": "subject_be_complement",
-      "primary_skill_id": "can_request",
-      "skill_ids": [
-        "can_request",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a1_deployment"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "The deployment is important.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "A implantação é importante.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "The deployment is important."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-      "skill_targets": [
-        "can_request"
-      ],
-      "pt": "A implantação é importante.",
-      "ctx": "Contexto de trabalho (nível A1).",
-      "blank": "deployment",
-      "wrong": "The deployment is important."
-    },
-    {
-      "template_id": "workplace_a1_subject_simple_present_object_06",
-      "family_id": "workplace_a1_subject_simple_present_object_5",
-      "pack_id": "workplace_a1",
-      "theme": "workplace",
-      "level": "A1",
-      "pattern_id": "subject_simple_present_object",
+      "pattern_id": "wh_be_question",
       "primary_skill_id": "question_structure",
       "skill_ids": [
         "question_structure",
@@ -476,45 +226,46 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a1_report"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We check the report every day.",
+      "sentence": "Where is the meeting room?",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o relatório todos os dias.",
+      "source_text_pt": "Onde fica a sala de reunião?",
       "target_locale": "en",
       "expected_answers_en": [
-        "We check the report every day."
+        "Where is the meeting room?"
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "explanation_pt": "Pergunta com Where + verbo to be.",
       "skill_targets": [
         "question_structure"
       ],
-      "pt": "Nós verificamos o relatório todos os dias.",
-      "ctx": "Contexto de trabalho (nível A1).",
-      "blank": "check",
-      "wrong": "We check the report every day."
+      "communicative_intent": "ask_location",
+      "grammar_focus": "wh_question_be",
+      "pattern_signature": "wh_question|be|none|aff",
+      "lexical_verbs": [],
+      "pt": "Onde fica a sala de reunião?",
+      "ctx": "Situação: ask location.",
+      "blank": "room",
+      "wrong": "Where the meeting room is?"
     },
     {
-      "template_id": "workplace_a1_wh_do_subject_base_verb_07",
-      "family_id": "workplace_a1_wh_do_subject_base_verb_0",
+      "template_id": "workplace_a1_wp_state_task",
+      "family_id": "workplace_a1_state_task",
       "pack_id": "workplace_a1",
       "theme": "workplace",
       "level": "A1",
-      "pattern_id": "wh_do_subject_base_verb",
-      "primary_skill_id": "vocabulary",
+      "pattern_id": "subject_have_object",
+      "primary_skill_id": "simple_present",
       "skill_ids": [
-        "vocabulary",
+        "simple_present",
         "vocabulary"
       ],
       "exercise_types": [
@@ -526,42 +277,153 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a1_requirements"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the requirements?",
+      "sentence": "I have a report to finish today.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa dos requisitos?",
+      "source_text_pt": "Tenho um relatório para terminar hoje.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the requirements?"
+        "I have a report to finish today."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Verbo have para posse.",
       "skill_targets": [
-        "vocabulary"
+        "simple_present"
       ],
-      "pt": "Quando você precisa dos requisitos?",
-      "ctx": "Contexto de trabalho (nível A1).",
-      "blank": "do",
-      "wrong": "When you do need the requirements?"
+      "communicative_intent": "state_task",
+      "grammar_focus": "have_possession",
+      "pattern_signature": "statement|present_simple|none|aff",
+      "lexical_verbs": [
+        "have"
+      ],
+      "pt": "Tenho um relatório para terminar hoje.",
+      "ctx": "Situação: state task.",
+      "blank": "report",
+      "wrong": "I has a report to finish today."
     },
     {
-      "template_id": "workplace_a1_subject_modal_base_verb_08",
-      "family_id": "workplace_a1_subject_modal_base_verb_1",
+      "template_id": "workplace_a1_wp_ask_meeting_time",
+      "family_id": "workplace_a1_ask_time",
       "pack_id": "workplace_a1",
       "theme": "workplace",
       "level": "A1",
-      "pattern_id": "subject_modal_base_verb",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "What time does the meeting start?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Que horas começa a reunião?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "What time does the meeting start?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do/does.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "communicative_intent": "ask_time",
+      "grammar_focus": "wh_question_do",
+      "pattern_signature": "wh_question|present_simple|none|aff",
+      "lexical_verbs": [
+        "start"
+      ],
+      "pt": "Que horas começa a reunião?",
+      "ctx": "Situação: ask time.",
+      "blank": "meeting",
+      "wrong": "What time the meeting start?"
+    },
+    {
+      "template_id": "workplace_a1_wp_request_help",
+      "family_id": "workplace_a1_request_help",
+      "pack_id": "workplace_a1",
+      "theme": "workplace",
+      "level": "A1",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Can you help me with this task?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você pode me ajudar com esta tarefa?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Can you help me with this task?"
+      ],
+      "accepted_variants_en": [
+        "Could you help me with this task?"
+      ],
+      "explanation_pt": "Pedido educado com can/could.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "request_help",
+      "grammar_focus": "modal_request",
+      "pattern_signature": "yesno_question|present_simple|can|aff",
+      "lexical_verbs": [
+        "help"
+      ],
+      "pt": "Você pode me ajudar com esta tarefa?",
+      "ctx": "Situação: request help.",
+      "blank": "task",
+      "wrong": "You can help me with this task?"
+    },
+    {
+      "template_id": "workplace_a1_wp_describe_doc",
+      "family_id": "workplace_a1_describe_status",
+      "pack_id": "workplace_a1",
+      "theme": "workplace",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
       "primary_skill_id": "verb_to_be",
       "skill_ids": [
         "verb_to_be",
@@ -576,34 +438,196 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a1_open_positions"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the open positions today.",
+      "sentence": "The report is ready now.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar as vagas abertas hoje.",
+      "source_text_pt": "O relatório está pronto agora.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the open positions today."
+        "The report is ready now."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "explanation_pt": "Verbo to be para descrever algo.",
       "skill_targets": [
         "verb_to_be"
       ],
-      "pt": "Eu posso atualizar as vagas abertas hoje.",
-      "ctx": "Contexto de trabalho (nível A1).",
-      "blank": "can",
-      "wrong": "I cans update the open positions today."
+      "communicative_intent": "describe_status",
+      "grammar_focus": "be_complement",
+      "pattern_signature": "statement|be|none|aff",
+      "lexical_verbs": [],
+      "pt": "O relatório está pronto agora.",
+      "ctx": "Situação: describe status.",
+      "blank": "report",
+      "wrong": "The report ready now."
+    },
+    {
+      "template_id": "workplace_a1_wp_send_email",
+      "family_id": "workplace_a1_state_intention",
+      "pack_id": "workplace_a1",
+      "theme": "workplace",
+      "level": "A1",
+      "pattern_id": "subject_want_to_verb",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I want to send the email now.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quero enviar o e-mail agora.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I want to send the email now."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
+      "skill_targets": [
+        "simple_present"
+      ],
+      "communicative_intent": "state_intention",
+      "grammar_focus": "want_to_infinitive",
+      "pattern_signature": "statement|present_simple|want_to|aff",
+      "lexical_verbs": [
+        "send"
+      ],
+      "pt": "Quero enviar o e-mail agora.",
+      "ctx": "Situação: state intention.",
+      "blank": "email",
+      "wrong": "I want send the email now."
+    },
+    {
+      "template_id": "workplace_a1_wp_working_now",
+      "family_id": "workplace_a1_describe_activity",
+      "pack_id": "workplace_a1",
+      "theme": "workplace",
+      "level": "A1",
+      "pattern_id": "subject_present_continuous",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I am working on the project now.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Estou trabalhando no projeto agora.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I am working on the project now."
+      ],
+      "accepted_variants_en": [
+        "I'm working on the project now."
+      ],
+      "explanation_pt": "Presente contínuo (am/is/are + -ing).",
+      "skill_targets": [
+        "present_continuous"
+      ],
+      "communicative_intent": "describe_activity",
+      "grammar_focus": "present_continuous",
+      "pattern_signature": "statement|present_continuous|none|aff",
+      "lexical_verbs": [
+        "work"
+      ],
+      "pt": "Estou trabalhando no projeto agora.",
+      "ctx": "Situação: describe activity.",
+      "blank": "project",
+      "wrong": "I working on the project now."
+    },
+    {
+      "template_id": "workplace_a1_wp_ask_call",
+      "family_id": "workplace_a1_ask_action",
+      "pack_id": "workplace_a1",
+      "theme": "workplace",
+      "level": "A1",
+      "pattern_id": "imperative_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Please call the manager after the meeting.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Por favor, ligue para o gerente depois da reunião.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Please call the manager after the meeting."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pedido no imperativo com please.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "ask_action",
+      "grammar_focus": "imperative_request",
+      "pattern_signature": "imperative|present_simple|none|aff",
+      "lexical_verbs": [
+        "call"
+      ],
+      "pt": "Por favor, ligue para o gerente depois da reunião.",
+      "ctx": "Situação: ask action.",
+      "blank": "manager",
+      "wrong": "Please calls the manager after the meeting."
     }
   ],
   "collocations": [

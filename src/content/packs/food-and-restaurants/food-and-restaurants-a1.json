@@ -206,212 +206,12 @@
   ],
   "template_definitions": [
     {
-      "template_id": "food_and_restaurants_a1_subject_be_complement_01",
-      "family_id": "food_and_restaurants_a1_subject_be_complement_0",
+      "template_id": "food_and_restaurants_a1_food_order_dish",
+      "family_id": "food_and_restaurants_a1_order_food",
       "pack_id": "food_and_restaurants_a1",
       "theme": "food_and_restaurants",
       "level": "A1",
-      "pattern_id": "subject_be_complement",
-      "primary_skill_id": "verb_to_be",
-      "skill_ids": [
-        "verb_to_be",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a1_menu"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "The menu is important.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "O cardápio é importante.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "The menu is important."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-      "skill_targets": [
-        "verb_to_be"
-      ],
-      "pt": "O cardápio é importante.",
-      "ctx": "Contexto de comida e restaurantes (nível A1).",
-      "blank": "menu",
-      "wrong": "The menu is important."
-    },
-    {
-      "template_id": "food_and_restaurants_a1_subject_simple_present_object_02",
-      "family_id": "food_and_restaurants_a1_subject_simple_present_object_1",
-      "pack_id": "food_and_restaurants_a1",
-      "theme": "food_and_restaurants",
-      "level": "A1",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "simple_present",
-      "skill_ids": [
-        "simple_present",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a1_table"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the table every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a mesa todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the table every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "simple_present"
-      ],
-      "pt": "Nós verificamos a mesa todos os dias.",
-      "ctx": "Contexto de comida e restaurantes (nível A1).",
-      "blank": "check",
-      "wrong": "We check the table every day."
-    },
-    {
-      "template_id": "food_and_restaurants_a1_wh_do_subject_base_verb_03",
-      "family_id": "food_and_restaurants_a1_wh_do_subject_base_verb_2",
-      "pack_id": "food_and_restaurants_a1",
-      "theme": "food_and_restaurants",
-      "level": "A1",
-      "pattern_id": "wh_do_subject_base_verb",
-      "primary_skill_id": "there_is_are",
-      "skill_ids": [
-        "there_is_are",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a1_starter"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "When do you need the starter?",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa da entrada?",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "When do you need the starter?"
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
-      "skill_targets": [
-        "there_is_are"
-      ],
-      "pt": "Quando você precisa da entrada?",
-      "ctx": "Contexto de comida e restaurantes (nível A1).",
-      "blank": "do",
-      "wrong": "When you do need the starter?"
-    },
-    {
-      "template_id": "food_and_restaurants_a1_subject_modal_base_verb_04",
-      "family_id": "food_and_restaurants_a1_subject_modal_base_verb_3",
-      "pack_id": "food_and_restaurants_a1",
-      "theme": "food_and_restaurants",
-      "level": "A1",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "can_ability",
-      "skill_ids": [
-        "can_ability",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a1_main_course"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the main course today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar o prato principal hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the main course today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "can_ability"
-      ],
-      "pt": "Eu posso atualizar o prato principal hoje.",
-      "ctx": "Contexto de comida e restaurantes (nível A1).",
-      "blank": "can",
-      "wrong": "I cans update the main course today."
-    },
-    {
-      "template_id": "food_and_restaurants_a1_subject_be_complement_05",
-      "family_id": "food_and_restaurants_a1_subject_be_complement_4",
-      "pack_id": "food_and_restaurants_a1",
-      "theme": "food_and_restaurants",
-      "level": "A1",
-      "pattern_id": "subject_be_complement",
+      "pattern_id": "can_could_request",
       "primary_skill_id": "can_request",
       "skill_ids": [
         "can_request",
@@ -426,45 +226,48 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a1_dessert"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "The dessert is important.",
+      "sentence": "Can I have the grilled chicken, please?",
       "source_locale": "pt-BR",
-      "source_text_pt": "A sobremesa é importante.",
+      "source_text_pt": "Posso comer o frango grelhado, por favor?",
       "target_locale": "en",
       "expected_answers_en": [
-        "The dessert is important."
+        "Can I have the grilled chicken, please?"
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Use o verbo to be (is) para descrever algo.",
+      "explanation_pt": "Pedido educado com can/could.",
       "skill_targets": [
         "can_request"
       ],
-      "pt": "A sobremesa é importante.",
-      "ctx": "Contexto de comida e restaurantes (nível A1).",
-      "blank": "dessert",
-      "wrong": "The dessert is important."
+      "communicative_intent": "order_food",
+      "grammar_focus": "modal_request",
+      "pattern_signature": "yesno_question|present_simple|can|aff",
+      "lexical_verbs": [
+        "have"
+      ],
+      "pt": "Posso comer o frango grelhado, por favor?",
+      "ctx": "Situação: order food.",
+      "blank": "chicken",
+      "wrong": "I can have the grilled chicken, please?"
     },
     {
-      "template_id": "food_and_restaurants_a1_subject_simple_present_object_06",
-      "family_id": "food_and_restaurants_a1_subject_simple_present_object_5",
+      "template_id": "food_and_restaurants_a1_food_ask_ingredient",
+      "family_id": "food_and_restaurants_a1_ask_ingredient",
       "pack_id": "food_and_restaurants_a1",
       "theme": "food_and_restaurants",
       "level": "A1",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "question_structure",
+      "pattern_id": "yes_no_do_question",
+      "primary_skill_id": "question_auxiliary",
       "skill_ids": [
-        "question_structure",
+        "question_auxiliary",
         "vocabulary"
       ],
       "exercise_types": [
@@ -476,92 +279,45 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a1_bill"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We check the bill every day.",
+      "sentence": "Does this soup have milk?",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a conta todos os dias.",
+      "source_text_pt": "Esta sopa tem leite?",
       "target_locale": "en",
       "expected_answers_en": [
-        "We check the bill every day."
+        "Does this soup have milk?"
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "question_structure"
+        "question_auxiliary"
       ],
-      "pt": "Nós verificamos a conta todos os dias.",
-      "ctx": "Contexto de comida e restaurantes (nível A1).",
-      "blank": "check",
-      "wrong": "We check the bill every day."
+      "communicative_intent": "ask_ingredient",
+      "grammar_focus": "yes_no_question",
+      "pattern_signature": "yesno_question|present_simple|none|aff",
+      "lexical_verbs": [
+        "have"
+      ],
+      "pt": "Esta sopa tem leite?",
+      "ctx": "Situação: ask ingredient.",
+      "blank": "soup",
+      "wrong": "This soup have milk?"
     },
     {
-      "template_id": "food_and_restaurants_a1_wh_do_subject_base_verb_07",
-      "family_id": "food_and_restaurants_a1_wh_do_subject_base_verb_0",
+      "template_id": "food_and_restaurants_a1_food_inform_restriction",
+      "family_id": "food_and_restaurants_a1_inform_restriction",
       "pack_id": "food_and_restaurants_a1",
       "theme": "food_and_restaurants",
       "level": "A1",
-      "pattern_id": "wh_do_subject_base_verb",
-      "primary_skill_id": "vocabulary",
-      "skill_ids": [
-        "vocabulary",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a1_waiter"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "When do you need the waiter?",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa do garçom?",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "When do you need the waiter?"
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
-      "skill_targets": [
-        "vocabulary"
-      ],
-      "pt": "Quando você precisa do garçom?",
-      "ctx": "Contexto de comida e restaurantes (nível A1).",
-      "blank": "do",
-      "wrong": "When you do need the waiter?"
-    },
-    {
-      "template_id": "food_and_restaurants_a1_subject_modal_base_verb_08",
-      "family_id": "food_and_restaurants_a1_subject_modal_base_verb_1",
-      "pack_id": "food_and_restaurants_a1",
-      "theme": "food_and_restaurants",
-      "level": "A1",
-      "pattern_id": "subject_modal_base_verb",
+      "pattern_id": "subject_be_complement",
       "primary_skill_id": "verb_to_be",
       "skill_ids": [
         "verb_to_be",
@@ -576,34 +332,304 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a1_reservation"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the reservation today.",
+      "sentence": "I am allergic to peanuts.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a reserva hoje.",
+      "source_text_pt": "Sou alérgico a amendoim.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the reservation today."
+        "I am allergic to peanuts."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "accepted_variants_en": [
+        "I'm allergic to peanuts."
+      ],
+      "explanation_pt": "Verbo to be para descrever algo.",
       "skill_targets": [
         "verb_to_be"
       ],
-      "pt": "Eu posso atualizar a reserva hoje.",
-      "ctx": "Contexto de comida e restaurantes (nível A1).",
-      "blank": "can",
-      "wrong": "I cans update the reservation today."
+      "communicative_intent": "inform_restriction",
+      "grammar_focus": "be_complement",
+      "pattern_signature": "statement|be|none|aff",
+      "lexical_verbs": [],
+      "pt": "Sou alérgico a amendoim.",
+      "ctx": "Situação: inform restriction.",
+      "blank": "peanuts",
+      "wrong": "I allergic to peanuts."
+    },
+    {
+      "template_id": "food_and_restaurants_a1_food_ask_menu",
+      "family_id": "food_and_restaurants_a1_ask_menu",
+      "pack_id": "food_and_restaurants_a1",
+      "theme": "food_and_restaurants",
+      "level": "A1",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Could you bring the menu?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você poderia trazer o cardápio?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Could you bring the menu?"
+      ],
+      "accepted_variants_en": [
+        "Can you bring the menu?"
+      ],
+      "explanation_pt": "Pedido educado com can/could.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "ask_menu",
+      "grammar_focus": "modal_request",
+      "pattern_signature": "yesno_question|present_simple|could|aff",
+      "lexical_verbs": [
+        "bring"
+      ],
+      "pt": "Você poderia trazer o cardápio?",
+      "ctx": "Situação: ask menu.",
+      "blank": "menu",
+      "wrong": "You could bring the menu?"
+    },
+    {
+      "template_id": "food_and_restaurants_a1_food_reserve_table",
+      "family_id": "food_and_restaurants_a1_reserve_table",
+      "pack_id": "food_and_restaurants_a1",
+      "theme": "food_and_restaurants",
+      "level": "A1",
+      "pattern_id": "subject_want_to_verb",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I want to book a table for two.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quero reservar uma mesa para dois.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I want to book a table for two."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
+      "skill_targets": [
+        "simple_present"
+      ],
+      "communicative_intent": "reserve_table",
+      "grammar_focus": "want_to_infinitive",
+      "pattern_signature": "statement|present_simple|want_to|aff",
+      "lexical_verbs": [
+        "book"
+      ],
+      "pt": "Quero reservar uma mesa para dois.",
+      "ctx": "Situação: reserve table.",
+      "blank": "table",
+      "wrong": "I want book a table for two."
+    },
+    {
+      "template_id": "food_and_restaurants_a1_food_ask_location",
+      "family_id": "food_and_restaurants_a1_ask_location",
+      "pack_id": "food_and_restaurants_a1",
+      "theme": "food_and_restaurants",
+      "level": "A1",
+      "pattern_id": "wh_be_question",
+      "primary_skill_id": "question_structure",
+      "skill_ids": [
+        "question_structure",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Where is the restaurant?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Onde fica o restaurante?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Where is the restaurant?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta com Where + verbo to be.",
+      "skill_targets": [
+        "question_structure"
+      ],
+      "communicative_intent": "ask_location",
+      "grammar_focus": "wh_question_be",
+      "pattern_signature": "wh_question|be|none|aff",
+      "lexical_verbs": [],
+      "pt": "Onde fica o restaurante?",
+      "ctx": "Situação: ask location.",
+      "blank": "restaurant",
+      "wrong": "Where the restaurant is?"
+    },
+    {
+      "template_id": "food_and_restaurants_a1_food_waiting",
+      "family_id": "food_and_restaurants_a1_describe_activity",
+      "pack_id": "food_and_restaurants_a1",
+      "theme": "food_and_restaurants",
+      "level": "A1",
+      "pattern_id": "subject_present_continuous",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I am waiting for my order.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Estou esperando meu pedido.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I am waiting for my order."
+      ],
+      "accepted_variants_en": [
+        "I'm waiting for my order."
+      ],
+      "explanation_pt": "Presente contínuo (am/is/are + -ing).",
+      "skill_targets": [
+        "present_continuous"
+      ],
+      "communicative_intent": "describe_activity",
+      "grammar_focus": "present_continuous",
+      "pattern_signature": "statement|present_continuous|none|aff",
+      "lexical_verbs": [
+        "wait"
+      ],
+      "pt": "Estou esperando meu pedido.",
+      "ctx": "Situação: describe activity.",
+      "blank": "order",
+      "wrong": "I waiting for my order."
+    },
+    {
+      "template_id": "food_and_restaurants_a1_food_ask_hours",
+      "family_id": "food_and_restaurants_a1_ask_time",
+      "pack_id": "food_and_restaurants_a1",
+      "theme": "food_and_restaurants",
+      "level": "A1",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "What time does the restaurant open?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Que horas o restaurante abre?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "What time does the restaurant open?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do/does.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "communicative_intent": "ask_time",
+      "grammar_focus": "wh_question_do",
+      "pattern_signature": "wh_question|present_simple|none|aff",
+      "lexical_verbs": [
+        "open"
+      ],
+      "pt": "Que horas o restaurante abre?",
+      "ctx": "Situação: ask time.",
+      "blank": "restaurant",
+      "wrong": "What time the restaurant open?"
     }
   ],
   "collocations": [
