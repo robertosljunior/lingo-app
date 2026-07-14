@@ -32,13 +32,27 @@ export default defineConfig({
     {
       name: 'chromium-desktop',
       use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 800 }, launchOptions: { executablePath } },
-      testIgnore: /mobile-smoke/,
+      // The real-model spec runs in its own serial project (see below); the
+      // mobile smoke runs in the mobile project.
+      testIgnore: [/mobile-smoke/, /real-model/],
     },
     {
       // Essential smoke on a mobile viewport; the full flows run on desktop.
       name: 'chromium-mobile',
       use: { ...devices['Pixel 7'], launchOptions: { executablePath } },
       testMatch: /mobile-smoke/,
+    },
+    {
+      // Real Universal Sentence Encoder / structural-NLP specs. One file → one
+      // worker → strictly serial (test.describe.configure serial), and it
+      // `dependencies` on the parallel projects so it only starts once they are
+      // done — no CPU/memory contention from concurrent 25 MB model loads. Part
+      // of the normal `playwright test` command; real model, never skipped/mocked.
+      name: 'use-model',
+      testMatch: /real-model/,
+      fullyParallel: false,
+      dependencies: ['chromium-desktop', 'chromium-mobile'],
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 800 }, launchOptions: { executablePath } },
     },
   ],
   webServer: {
