@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useApp } from '../store.jsx'
 import { BottomNav } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
+import BobMascot from '../components/BobMascot.jsx'
 import { getErrorLog, clearErrorLog, formatErrorLog } from '../lib/error-log.js'
 import { ACCENTS, listVoices, onVoicesChanged, speak, speechSupported } from '../lib/audio/tts.js'
 import { PIPER_VOICES, piperSupported, storedVoices, downloadVoice, removeVoice } from '../lib/audio/tts-piper.js'
@@ -463,51 +464,30 @@ function KnowledgeSection({ Row, SectionHead, showToast }) {
   )
 }
 
+// Single-user: just the learner's name (editable) with a Bob avatar. No profile
+// switching/adding/removing — that is no longer a user-facing feature.
 function ProfilesRow() {
-  const { profiles, activeProfile, switchProfile, addProfile, removeProfile, showToast } = useApp()
-  const handleAdd = async () => {
-    const name = prompt('Nome do novo perfil (ex.: Ana):')?.trim()
-    if (!name) return
-    await addProfile(name)
-    showToast(`Perfil "${name}" criado`)
-  }
-  const handleRemove = async (p) => {
-    if (!confirm(`Remover o perfil "${p.name}"? O histórico dele fica guardado, mas some da lista.`)) return
-    await removeProfile(p.profile_id)
-    showToast('Perfil removido')
-  }
+  const { profiles, activeProfile, settings, renameActiveProfile } = useApp()
+  const current = profiles.find((p) => p.profile_id === activeProfile)
+  const [name, setName] = useState(current?.name && current.name !== 'Você' ? current.name : '')
+  const mode = settings?.profile_mode === 'kids' ? 'kids' : 'adult'
   return (
     <>
-      <div style={{ fontWeight: 700, fontSize: 15 }}>Quem está estudando</div>
+      <div style={{ fontWeight: 700, fontSize: 15 }}>Seu nome</div>
       <div className="muted" style={{ fontSize: 12, margin: '2px 0 10px' }}>
-        Cada perfil tem seu próprio histórico, erros e revisões
+        Como o Bob vai te chamar durante as lições
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-        {profiles.map((p) => {
-          const active = p.profile_id === activeProfile
-          return (
-            <span key={p.profile_id} style={{ display: 'inline-flex', alignItems: 'center' }}>
-              <button className="btn btn-sm btn-secondary"
-                onClick={() => switchProfile(p.profile_id)}
-                style={{
-                  minHeight: 38, padding: '6px 12px',
-                  ...(active ? { borderColor: 'var(--indigo-600)', color: 'var(--indigo-700)', background: 'var(--indigo-50)', fontWeight: 800 } : {}),
-                }}>
-                <I.user s={14} /> {p.name}
-              </button>
-              {active && profiles.length > 1 && (
-                <button className="btn btn-sm btn-ghost" aria-label={`Remover perfil ${p.name}`}
-                  onClick={() => handleRemove(p)}
-                  style={{ padding: '4px 6px', minHeight: 0, color: 'var(--error)' }}>
-                  <I.x s={12} />
-                </button>
-              )}
-            </span>
-          )
-        })}
-        <button className="btn btn-sm btn-secondary" onClick={handleAdd} style={{ minHeight: 38, padding: '6px 12px' }}>
-          <I.plus s={14} /> Novo
-        </button>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <BobMascot size={44} mode={mode} float={false} />
+        <input
+          data-testid="settings-name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          onBlur={() => renameActiveProfile(name)}
+          placeholder="Seu nome ou apelido"
+          maxLength={24}
+          style={{ flex: 1, height: 46, borderRadius: 14, border: '1.5px solid var(--border-strong)', background: 'var(--surface)', padding: '0 14px', font: '700 15px var(--font-sans)', color: 'var(--ink)', outline: 'none' }}
+        />
       </div>
     </>
   )

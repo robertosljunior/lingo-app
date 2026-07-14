@@ -3,6 +3,7 @@ import { useApp, SCREENS } from '../store.jsx'
 import { BottomNav } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { getSkill, listSkills } from '../lib/skill-registry.js'
+import BobMascot from '../components/BobMascot.jsx'
 
 const VISUAL = {
   daily_life: { icon:'🏠', color:'#2563EB', desc:'Rotina, casa, amigos e situações do dia a dia.' },
@@ -25,7 +26,7 @@ const GROUPS = [
 ]
 
 export default function TrainingHub() {
-  const { db, activeProfile, latest, lessons, sessions, skillProfiles, startLesson, startPracticeSession, generateAdaptiveLesson, showToast, setTab } = useApp()
+  const { db, activeProfile, settings, latest, lessons, sessions, skillProfiles, startLesson, startPracticeSession, generateAdaptiveLesson, showToast, setTab } = useApp()
   const [summary, setSummary] = useState(null)
   const [theme, setTheme] = useState(null)
   const [progress, setProgress] = useState({})
@@ -61,7 +62,10 @@ export default function TrainingHub() {
   if (theme) return <ThemeScreen theme={theme} progress={progress} onBack={() => setTheme(null)} onStart={startGenerated} busy={busy} />
   return (
     <div className="phone">
-      <div style={{ padding:'10px 20px 8px', flexShrink:0 }}><div className="label-eyebrow">treinamento</div><h1 className="h1" style={{marginTop:4}}>Escolha o que treinar</h1></div>
+      <div style={{ padding:'10px 20px 8px', flexShrink:0, display:'flex', alignItems:'center', gap:12 }}>
+        <div style={{ flex:1 }}><div className="label-eyebrow">treinamento</div><h1 className="h1" style={{marginTop:4}}>Escolha o que treinar</h1></div>
+        <BobMascot size={56} mode={settings?.profile_mode === 'kids' ? 'kids' : 'adult'} />
+      </div>
       <div className="screen-body" style={{ paddingBottom:100 }}>
         <section className="card" style={{ padding:16, background:'linear-gradient(135deg,#EEF2FF,#FFFFFF)' }}>
           <div style={{fontWeight:900,fontSize:18}}>Continuar aprendendo</div>
