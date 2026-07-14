@@ -13,6 +13,19 @@ export const PATTERN_REGISTRY={
  passive_be_past_participle:pattern('passive_be_past_participle',['subject','be','past_participle'],['B2']),
  reported_speech_statement:pattern('reported_speech_statement',['reporting_clause','that_clause'],['B2']),
  second_conditional:pattern('second_conditional',['if_past','would_clause'],['B2']),
+ // Slice 7.5A-R T20 — additional communicative structures (content rules only)
+ // so every theme×level can reach ≥6 distinct structures with natural, situated
+ // sentences (e.g. wh-be questions, requests, possession, existence).
+ wh_be_question:pattern('wh_be_question',['wh','be','subject'],['A1','A2','B1','B2'],['question']),
+ yes_no_do_question:pattern('yes_no_do_question',['auxiliary','subject','verb'],['A1','A2','B1','B2'],['question']),
+ subject_have_object:pattern('subject_have_object',['subject','have','object'],['A1','A2','B1','B2']),
+ subject_want_to_verb:pattern('subject_want_to_verb',['subject','want','to','verb'],['A1','A2','B1','B2']),
+ there_is_are:pattern('there_is_are',['there','be','object'],['A1','A2','B1','B2']),
+ imperative_request:pattern('imperative_request',['please','verb','object'],['A1','A2','B1','B2']),
+ subject_present_continuous:pattern('subject_present_continuous',['subject','be','verb_ing','object'],['A1','A2','B1','B2']),
+ subject_would_like:pattern('subject_would_like',['subject','would_like','object'],['A2','B1','B2']),
+ can_could_request:pattern('can_could_request',['modal','subject','verb'],['A1','A2','B1','B2'],['question']),
+ comparative_than:pattern('comparative_than',['subject','be','comparative','than','object'],['A2','B1','B2']),
 }
 export const CONSTRAINT_REGISTRY=Object.fromEntries(['subject_auxiliary_agreement','verb_requires_ving','verb_requires_base_form','verb_requires_past_participle','duration_compatible_with_present_perfect','workplace_requires_at','countable_article_required','plural_subject_requires_have','third_person_requires_has','question_requires_do','question_requires_does','level_allows_present_perfect','level_allows_present_perfect_continuous','level_allows_passive','level_allows_reported_speech','curated_sentence'].map(id=>[id,{id}]))
 export const DISTRACTOR_STRATEGY_REGISTRY=Object.fromEntries(['verb_form_after_have_been','wrong_question_auxiliary','wrong_preposition','wrong_article','wrong_collocation','wrong_word_order','wrong_tense','wrong_modal_form','wrong_plural','wrong_participle'].map(id=>[id,{id}]))
