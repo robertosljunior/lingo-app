@@ -41,5 +41,24 @@ Three specs (`semantic-model.spec.js` USE-download, `semantic-worker-ux.spec.js`
 ## T17 hypothesis (diversity)
 `build-content-packs.mjs` generates every sentence from 12 fixed patterns with only the theme noun swapped (e.g. "The {noun} is important.", "We check the {noun} every day."). Across a theme×level only ~4 patterns are used (one per template index). This likely fails: ≥6 structures per theme×level, ≥5 verbs per theme×level, and the "sentences that only swap a noun" criterion. Fix: enrich the deterministic authoring with theme-specific, verb-diverse sentence sets — without broad pack expansion or new engines.
 
-## FINAL CLASSIFICATION
-(pending)
+## Progress this round
+
+**Completed**
+- **T01/T02 Baseline:** branch has the full redesign (phases 1–6); 177 unit tests, build (precache 4.27 MB), `validate:content-packs` (+ bilingual gate), `validate:knowledge-packs`, `quality:content-packs`, all benchmarks green; full Playwright 64/64 after the stability fix below.
+- **T13 Metrics + T14–T19 audit:** `test-evidence/slice-7-5a-r/bilingual-metrics.md` — explains the 96/8/core-combination numbers and **confirms + quantifies** the content-quality defect (only 4 structures & 4 verbs per theme×level; sentences are theme-generic noun-swaps).
+- **T21/T22 USE stability — FIXED:** the three real-model specs are consolidated into `e2e/real-model.spec.js` and run in a new **serial `use-model` Playwright project** (`fullyParallel:false`, `dependencies` on the parallel projects) — real model, part of the normal command, never skipped/mocked. The true root-cause of the shared flake (free-answer textarea fill racing the exercise entrance animation) is fixed with a value-retry (`toPass`). Full suite 64/64.
+
+**Remaining (content authoring — T20, and the audits/E2E that gate on it: T03–T12, T23–T25 re-run)**
+- T20 content fix to reach ≥6 structures and ≥5 verbs per theme×level and genuine theme-situated, CEFR-appropriate sentences (the audit in T13/T17 specifies exactly what to author). This is a focused, deterministic authoring task on `build-content-packs.mjs` — no new engine or broad expansion.
+- Onboarding Kids/Adult reload + legacy-migration E2E (T03–T06) and the by-mode/story/talk/voice/a11y E2E audits (T07–T12) — several are already covered by existing specs (`onboarding.spec.js`, `stories-talk.spec.js`, `portuguese-voice.spec.js`, `generated-lesson-exercises.spec.js`); the remaining explicit cases (empty name, back-step, reload-mid-onboarding, storage-unavailable, legacy-multi-profile) are to be added.
+
+## FINAL CLASSIFICATION — PARTIAL_PASS_SLICE_7_5A_R_CONTENT_REMAINING
+
+Justification: the **runtime-stability half is complete** — the USE specs are no
+longer flaky (dedicated serial real-model project + root-cause fill fix; full
+suite green), and the metrics are fully explained. The **content-quality half is
+audited and quantified but not yet corrected**: the packs still fall short of the
+T17 diversity bar (≥6 structures, ≥5 verbs per theme×level) and T19 theme
+adequacy. Per the spec these must be fixed by authoring better content (not by
+relaxing the validator), which is the remaining focused work. Not a FAIL — no
+regression, USE stability delivered, defect precisely localized with a fix plan.
