@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "daily_life_b2_passive_be_past_participle_01",
-      "family_id": "daily_life_b2_passive_be_past_participle_0",
+      "template_id": "daily_life_b2_dl4_passive",
+      "family_id": "daily_life_b2_report_status",
       "pack_id": "daily_life_b2",
       "theme": "daily_life",
       "level": "B2",
@@ -226,40 +226,41 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b2_morning_routine"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "The morning routine was reviewed by the team.",
+      "sentence": "The kitchen was cleaned this morning.",
       "source_locale": "pt-BR",
-      "source_text_pt": "A rotina matinal foi revisada pela equipe.",
+      "source_text_pt": "A cozinha foi limpa esta manhã.",
       "target_locale": "en",
       "expected_answers_en": [
-        "The morning routine was reviewed by the team."
+        "The kitchen was cleaned this morning."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "passive_voice"
       ],
-      "pt": "A rotina matinal foi revisada pela equipe.",
-      "ctx": "Contexto de vida cotidiana (nível B2).",
-      "blank": "morning",
-      "wrong": "The morning routine reviewed by the team."
+      "communicative_intent": "report_status",
+      "grammar_focus": "passive",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [
+        "clean"
+      ],
+      "pt": "A cozinha foi limpa esta manhã.",
+      "ctx": "Situação: report status.",
+      "blank": "kitchen",
+      "wrong": "The kitchen was clean this morning."
     },
     {
-      "template_id": "daily_life_b2_reported_speech_statement_02",
-      "family_id": "daily_life_b2_reported_speech_statement_1",
+      "template_id": "daily_life_b2_dl4_reported",
+      "family_id": "daily_life_b2_report_information",
       "pack_id": "daily_life_b2",
       "theme": "daily_life",
       "level": "B2",
@@ -278,40 +279,41 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b2_family_dinner"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "She said that the family dinner was ready.",
+      "sentence": "My neighbor said that he found his keys.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Ela disse que o jantar em família estava pronto.",
+      "source_text_pt": "Meu vizinho disse que encontrou suas chaves.",
       "target_locale": "en",
       "expected_answers_en": [
-        "She said that the family dinner was ready."
+        "My neighbor said that he found his keys."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Discurso indireto com said that.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "reported_speech"
       ],
-      "pt": "Ela disse que o jantar em família estava pronto.",
-      "ctx": "Contexto de vida cotidiana (nível B2).",
-      "blank": "said",
-      "wrong": "She said the family dinner was ready."
+      "communicative_intent": "report_information",
+      "grammar_focus": "reported_speech",
+      "pattern_signature": "statement|present_simple|none|aff|reported",
+      "lexical_verbs": [
+        "say"
+      ],
+      "pt": "Meu vizinho disse que encontrou suas chaves.",
+      "ctx": "Situação: report information.",
+      "blank": "keys",
+      "wrong": "My neighbor said that he find his keys."
     },
     {
-      "template_id": "daily_life_b2_second_conditional_03",
-      "family_id": "daily_life_b2_second_conditional_2",
+      "template_id": "daily_life_b2_dl4_second_cond",
+      "family_id": "daily_life_b2_hypothesize",
       "pack_id": "daily_life_b2",
       "theme": "daily_life",
       "level": "B2",
@@ -330,42 +332,202 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b2_bus_stop"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "If I had more time, I would improve the bus stop.",
+      "sentence": "If I had more space, I would buy a bigger house.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o ponto de ônibus.",
+      "source_text_pt": "Se eu tivesse mais espaço, compraria uma casa maior.",
       "target_locale": "en",
       "expected_answers_en": [
-        "If I had more time, I would improve the bus stop."
+        "If I had more space, I would buy a bigger house."
       ],
-      "accepted_variants_en": [
-        "If I had more time, I'd improve the bus stop."
-      ],
-      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "second_conditional"
       ],
-      "pt": "Se eu tivesse mais tempo, eu melhoraria o ponto de ônibus.",
-      "ctx": "Contexto de vida cotidiana (nível B2).",
-      "blank": "I",
-      "wrong": "If I had more time, I will improve the bus stop."
+      "communicative_intent": "hypothesize",
+      "grammar_focus": "second_conditional",
+      "pattern_signature": "conditional|present_simple|would|aff|second_conditional",
+      "lexical_verbs": [
+        "buy"
+      ],
+      "pt": "Se eu tivesse mais espaço, compraria uma casa maior.",
+      "ctx": "Situação: hypothesize.",
+      "blank": "house",
+      "wrong": "If I had more space, I will buy a bigger house."
     },
     {
-      "template_id": "daily_life_b2_subject_modal_base_verb_04",
-      "family_id": "daily_life_b2_subject_modal_base_verb_3",
+      "template_id": "daily_life_b2_dl4_diplomatic",
+      "family_id": "daily_life_b2_request_politely",
+      "pack_id": "daily_life_b2",
+      "theme": "daily_life",
+      "level": "B2",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Would you mind fixing the door again?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você se importaria de consertar a porta de novo?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Would you mind fixing the door again?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "modal_deduction"
+      ],
+      "communicative_intent": "request_politely",
+      "grammar_focus": "diplomatic_request",
+      "pattern_signature": "yesno_question|present_simple|would|aff|plain",
+      "lexical_verbs": [
+        "fix"
+      ],
+      "pt": "Você se importaria de consertar a porta de novo?",
+      "ctx": "Situação: request politely.",
+      "blank": "door",
+      "wrong": "Would you mind fix the door again?"
+    },
+    {
+      "template_id": "daily_life_b2_dl4_pp_just",
+      "family_id": "daily_life_b2_report_status_finished",
+      "pack_id": "daily_life_b2",
+      "theme": "daily_life",
+      "level": "B2",
+      "pattern_id": "subject_have_past_participle_yet",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We have just finished the laundry.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Acabamos de terminar a roupa lavada.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We have just finished the laundry."
+      ],
+      "accepted_variants_en": [
+        "We've just finished the laundry."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "communicative_intent": "report_status_finished",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "statement|present_perfect|none|aff|plain",
+      "lexical_verbs": [
+        "finish"
+      ],
+      "pt": "Acabamos de terminar a roupa lavada.",
+      "ctx": "Situação: report status finished.",
+      "blank": "laundry",
+      "wrong": "We have just finish the laundry."
+    },
+    {
+      "template_id": "daily_life_b2_dl4_passive2",
+      "family_id": "daily_life_b2_report_found",
+      "pack_id": "daily_life_b2",
+      "theme": "daily_life",
+      "level": "B2",
+      "pattern_id": "passive_be_past_participle",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The keys were found under the sofa.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "As chaves foram encontradas embaixo do sofá.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The keys were found under the sofa."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "communicative_intent": "report_found",
+      "grammar_focus": "passive",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [
+        "find"
+      ],
+      "pt": "As chaves foram encontradas embaixo do sofá.",
+      "ctx": "Situação: report found.",
+      "blank": "keys",
+      "wrong": "The keys were find under the sofa."
+    },
+    {
+      "template_id": "daily_life_b2_dl4_deduction",
+      "family_id": "daily_life_b2_make_deduction",
       "pack_id": "daily_life_b2",
       "theme": "daily_life",
       "level": "B2",
@@ -384,47 +546,48 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b2_homework"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the homework today.",
+      "sentence": "My neighbor must have forgotten the keys.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a lição de casa hoje.",
+      "source_text_pt": "Meu vizinho deve ter esquecido as chaves.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the homework today."
+        "My neighbor must have forgotten the keys."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "modal_deduction"
       ],
-      "pt": "Eu posso atualizar a lição de casa hoje.",
-      "ctx": "Contexto de vida cotidiana (nível B2).",
-      "blank": "can",
-      "wrong": "I cans update the homework today."
+      "communicative_intent": "make_deduction",
+      "grammar_focus": "modal_deduction",
+      "pattern_signature": "statement|present_perfect|must|aff|plain",
+      "lexical_verbs": [
+        "forget"
+      ],
+      "pt": "Meu vizinho deve ter esquecido as chaves.",
+      "ctx": "Situação: make deduction.",
+      "blank": "keys",
+      "wrong": "My neighbor must has forgotten the keys."
     },
     {
-      "template_id": "daily_life_b2_passive_be_past_participle_05",
-      "family_id": "daily_life_b2_passive_be_past_participle_4",
+      "template_id": "daily_life_b2_dl4_contrast",
+      "family_id": "daily_life_b2_describe_experience",
       "pack_id": "daily_life_b2",
       "theme": "daily_life",
       "level": "B2",
-      "pattern_id": "passive_be_past_participle",
-      "primary_skill_id": "collocation",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "verb_to_be",
       "skill_ids": [
-        "collocation",
+        "verb_to_be",
         "vocabulary"
       ],
       "exercise_types": [
@@ -436,194 +599,35 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b2_neighbor"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "The neighbor was reviewed by the team.",
+      "sentence": "The house was small, but it was very cozy.",
       "source_locale": "pt-BR",
-      "source_text_pt": "O vizinho foi revisado pela equipe.",
+      "source_text_pt": "A casa era pequena, mas era muito aconchegante.",
       "target_locale": "en",
       "expected_answers_en": [
-        "The neighbor was reviewed by the team."
+        "The house was small, but it was very cozy."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "collocation"
+        "verb_to_be"
       ],
-      "pt": "O vizinho foi revisado pela equipe.",
-      "ctx": "Contexto de vida cotidiana (nível B2).",
-      "blank": "neighbor",
-      "wrong": "The neighbor reviewed by the team."
-    },
-    {
-      "template_id": "daily_life_b2_reported_speech_statement_06",
-      "family_id": "daily_life_b2_reported_speech_statement_5",
-      "pack_id": "daily_life_b2",
-      "theme": "daily_life",
-      "level": "B2",
-      "pattern_id": "reported_speech_statement",
-      "primary_skill_id": "word_order",
-      "skill_ids": [
-        "word_order",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b2_weekend_plan"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "She said that the weekend plan was ready.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Ela disse que o plano de fim de semana estava pronto.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "She said that the weekend plan was ready."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Discurso indireto com said that.",
-      "skill_targets": [
-        "word_order"
-      ],
-      "pt": "Ela disse que o plano de fim de semana estava pronto.",
-      "ctx": "Contexto de vida cotidiana (nível B2).",
-      "blank": "said",
-      "wrong": "She said the weekend plan was ready."
-    },
-    {
-      "template_id": "daily_life_b2_second_conditional_07",
-      "family_id": "daily_life_b2_second_conditional_0",
-      "pack_id": "daily_life_b2",
-      "theme": "daily_life",
-      "level": "B2",
-      "pattern_id": "second_conditional",
-      "primary_skill_id": "vocabulary",
-      "skill_ids": [
-        "vocabulary",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b2_appointment"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "If I had more time, I would improve the appointment.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o compromisso.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "If I had more time, I would improve the appointment."
-      ],
-      "accepted_variants_en": [
-        "If I had more time, I'd improve the appointment."
-      ],
-      "explanation_pt": "Segunda condicional: if + passado, would + base.",
-      "skill_targets": [
-        "vocabulary"
-      ],
-      "pt": "Se eu tivesse mais tempo, eu melhoraria o compromisso.",
-      "ctx": "Contexto de vida cotidiana (nível B2).",
-      "blank": "I",
-      "wrong": "If I had more time, I will improve the appointment."
-    },
-    {
-      "template_id": "daily_life_b2_subject_modal_base_verb_08",
-      "family_id": "daily_life_b2_subject_modal_base_verb_1",
-      "pack_id": "daily_life_b2",
-      "theme": "daily_life",
-      "level": "B2",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "passive_voice",
-      "skill_ids": [
-        "passive_voice",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b2_coffee_break"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the coffee break today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a pausa para o café hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the coffee break today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "passive_voice"
-      ],
-      "pt": "Eu posso atualizar a pausa para o café hoje.",
-      "ctx": "Contexto de vida cotidiana (nível B2).",
-      "blank": "can",
-      "wrong": "I cans update the coffee break today."
+      "communicative_intent": "describe_experience",
+      "grammar_focus": "past_contrast",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [],
+      "pt": "A casa era pequena, mas era muito aconchegante.",
+      "ctx": "Situação: describe experience.",
+      "blank": "house",
+      "wrong": "The house small, but it was very cozy."
     }
   ],
   "collocations": [

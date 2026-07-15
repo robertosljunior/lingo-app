@@ -4254,262 +4254,12 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "daily_life_a1_subject_be_complement_01",
-        "family_id": "daily_life_a1_subject_be_complement_0",
+        "template_id": "daily_life_a1_dl1_ask_keys",
+        "family_id": "daily_life_a1_ask_location",
         "pack_id": "daily_life_a1",
         "theme": "daily_life",
         "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a1_morning_routine"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The morning routine is important.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "A rotina matinal é importante.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The morning routine is important."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-        "skill_targets": [
-          "verb_to_be"
-        ],
-        "pt": "A rotina matinal é importante.",
-        "ctx": "Contexto de vida cotidiana (nível A1).",
-        "blank": "morning",
-        "wrong": "The morning routine is important."
-      },
-      {
-        "template_id": "daily_life_a1_subject_simple_present_object_02",
-        "family_id": "daily_life_a1_subject_simple_present_object_1",
-        "pack_id": "daily_life_a1",
-        "theme": "daily_life",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "simple_present",
-        "skill_ids": [
-          "simple_present",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a1_family_dinner"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the family dinner every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o jantar em família todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the family dinner every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "simple_present"
-        ],
-        "pt": "Nós verificamos o jantar em família todos os dias.",
-        "ctx": "Contexto de vida cotidiana (nível A1).",
-        "blank": "check",
-        "wrong": "We check the family dinner every day."
-      },
-      {
-        "template_id": "daily_life_a1_wh_do_subject_base_verb_03",
-        "family_id": "daily_life_a1_wh_do_subject_base_verb_2",
-        "pack_id": "daily_life_a1",
-        "theme": "daily_life",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "there_is_are",
-        "skill_ids": [
-          "there_is_are",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a1_bus_stop"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the bus stop?",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa do ponto de ônibus?",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "When do you need the bus stop?"
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
-        "skill_targets": [
-          "there_is_are"
-        ],
-        "pt": "Quando você precisa do ponto de ônibus?",
-        "ctx": "Contexto de vida cotidiana (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the bus stop?"
-      },
-      {
-        "template_id": "daily_life_a1_subject_modal_base_verb_04",
-        "family_id": "daily_life_a1_subject_modal_base_verb_3",
-        "pack_id": "daily_life_a1",
-        "theme": "daily_life",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "can_ability",
-        "skill_ids": [
-          "can_ability",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a1_homework"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the homework today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a lição de casa hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the homework today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "can_ability"
-        ],
-        "pt": "Eu posso atualizar a lição de casa hoje.",
-        "ctx": "Contexto de vida cotidiana (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the homework today."
-      },
-      {
-        "template_id": "daily_life_a1_subject_be_complement_05",
-        "family_id": "daily_life_a1_subject_be_complement_4",
-        "pack_id": "daily_life_a1",
-        "theme": "daily_life",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "can_request",
-        "skill_ids": [
-          "can_request",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a1_neighbor"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The neighbor is important.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "O vizinho é importante.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The neighbor is important."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-        "skill_targets": [
-          "can_request"
-        ],
-        "pt": "O vizinho é importante.",
-        "ctx": "Contexto de vida cotidiana (nível A1).",
-        "blank": "neighbor",
-        "wrong": "The neighbor is important."
-      },
-      {
-        "template_id": "daily_life_a1_subject_simple_present_object_06",
-        "family_id": "daily_life_a1_subject_simple_present_object_5",
-        "pack_id": "daily_life_a1",
-        "theme": "daily_life",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
+        "pattern_id": "wh_be_question",
         "primary_skill_id": "question_structure",
         "skill_ids": [
           "question_structure",
@@ -4524,45 +4274,46 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a1_weekend_plan"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the weekend plan every day.",
+        "sentence": "Where are my keys?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o plano de fim de semana todos os dias.",
+        "source_text_pt": "Onde estão minhas chaves?",
         "target_locale": "en",
         "expected_answers_en": [
-          "We check the weekend plan every day."
+          "Where are my keys?"
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "explanation_pt": "Pergunta com Where + verbo to be.",
         "skill_targets": [
           "question_structure"
         ],
-        "pt": "Nós verificamos o plano de fim de semana todos os dias.",
-        "ctx": "Contexto de vida cotidiana (nível A1).",
-        "blank": "check",
-        "wrong": "We check the weekend plan every day."
+        "communicative_intent": "ask_location",
+        "grammar_focus": "wh_question_be",
+        "pattern_signature": "wh_question|be|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "Onde estão minhas chaves?",
+        "ctx": "Situação: ask location.",
+        "blank": "keys",
+        "wrong": "Where my keys are?"
       },
       {
-        "template_id": "daily_life_a1_wh_do_subject_base_verb_07",
-        "family_id": "daily_life_a1_wh_do_subject_base_verb_0",
+        "template_id": "daily_life_a1_dl1_clean_kitchen",
+        "family_id": "daily_life_a1_state_task",
         "pack_id": "daily_life_a1",
         "theme": "daily_life",
         "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "vocabulary",
+        "pattern_id": "subject_want_to_verb",
+        "primary_skill_id": "simple_present",
         "skill_ids": [
-          "vocabulary",
+          "simple_present",
           "vocabulary"
         ],
         "exercise_types": [
@@ -4574,42 +4325,153 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a1_appointment"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the appointment?",
+        "sentence": "I have to clean the kitchen.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa do compromisso?",
+        "source_text_pt": "Eu tenho que limpar a cozinha.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the appointment?"
+          "I have to clean the kitchen."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "vocabulary"
+          "simple_present"
         ],
-        "pt": "Quando você precisa do compromisso?",
-        "ctx": "Contexto de vida cotidiana (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the appointment?"
+        "communicative_intent": "state_task",
+        "grammar_focus": "have_to_infinitive",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "clean"
+        ],
+        "pt": "Eu tenho que limpar a cozinha.",
+        "ctx": "Situação: state task.",
+        "blank": "kitchen",
+        "wrong": "I have to cleans the kitchen."
       },
       {
-        "template_id": "daily_life_a1_subject_modal_base_verb_08",
-        "family_id": "daily_life_a1_subject_modal_base_verb_1",
+        "template_id": "daily_life_a1_dl1_ask_breakfast_time",
+        "family_id": "daily_life_a1_ask_time",
         "pack_id": "daily_life_a1",
         "theme": "daily_life",
         "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "What time do you have dinner?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Que horas você janta?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "What time do you have dinner?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do/does.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "ask_time",
+        "grammar_focus": "wh_question_do",
+        "pattern_signature": "wh_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "have"
+        ],
+        "pt": "Que horas você janta?",
+        "ctx": "Situação: ask time.",
+        "blank": "dinner",
+        "wrong": "What time you have dinner?"
+      },
+      {
+        "template_id": "daily_life_a1_dl1_request_groceries",
+        "family_id": "daily_life_a1_request_help",
+        "pack_id": "daily_life_a1",
+        "theme": "daily_life",
+        "level": "A1",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Can you help me with the groceries?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você pode me ajudar com as compras?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Can you help me with the groceries?"
+        ],
+        "accepted_variants_en": [
+          "Could you help me with the groceries?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "request_help",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|can|aff|plain",
+        "lexical_verbs": [
+          "help"
+        ],
+        "pt": "Você pode me ajudar com as compras?",
+        "ctx": "Situação: request help.",
+        "blank": "groceries",
+        "wrong": "You can help me with the groceries?"
+      },
+      {
+        "template_id": "daily_life_a1_dl1_describe_house",
+        "family_id": "daily_life_a1_describe_state",
+        "pack_id": "daily_life_a1",
+        "theme": "daily_life",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
         "primary_skill_id": "verb_to_be",
         "skill_ids": [
           "verb_to_be",
@@ -4624,34 +4486,198 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a1_coffee_break"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the coffee break today.",
+        "sentence": "The house is very clean.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a pausa para o café hoje.",
+        "source_text_pt": "A casa está muito limpa.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the coffee break today."
+          "The house is very clean."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "explanation_pt": "Verbo to be para descrever algo.",
         "skill_targets": [
           "verb_to_be"
         ],
-        "pt": "Eu posso atualizar a pausa para o café hoje.",
-        "ctx": "Contexto de vida cotidiana (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the coffee break today."
+        "communicative_intent": "describe_state",
+        "grammar_focus": "be_complement",
+        "pattern_signature": "statement|be|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "A casa está muito limpa.",
+        "ctx": "Situação: describe state.",
+        "blank": "house",
+        "wrong": "The house very clean."
+      },
+      {
+        "template_id": "daily_life_a1_dl1_cook_dinner",
+        "family_id": "daily_life_a1_state_intention",
+        "pack_id": "daily_life_a1",
+        "theme": "daily_life",
+        "level": "A1",
+        "pattern_id": "subject_want_to_verb",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I want to cook dinner tonight.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quero cozinhar o jantar hoje à noite.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I want to cook dinner tonight."
+        ],
+        "accepted_variants_en": [
+          "I'd like to cook dinner tonight."
+        ],
+        "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "state_intention",
+        "grammar_focus": "want_to_infinitive",
+        "pattern_signature": "statement|present_simple|want_to|aff|plain",
+        "lexical_verbs": [
+          "cook"
+        ],
+        "pt": "Quero cozinhar o jantar hoje à noite.",
+        "ctx": "Situação: state intention.",
+        "blank": "dinner",
+        "wrong": "I want cook dinner tonight."
+      },
+      {
+        "template_id": "daily_life_a1_dl1_doing_laundry",
+        "family_id": "daily_life_a1_describe_activity",
+        "pack_id": "daily_life_a1",
+        "theme": "daily_life",
+        "level": "A1",
+        "pattern_id": "subject_present_continuous",
+        "primary_skill_id": "present_continuous",
+        "skill_ids": [
+          "present_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I am doing the laundry now.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Estou lavando roupa agora.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I am doing the laundry now."
+        ],
+        "accepted_variants_en": [
+          "I'm doing the laundry now."
+        ],
+        "explanation_pt": "Presente contínuo (am/is/are + -ing).",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "communicative_intent": "describe_activity",
+        "grammar_focus": "present_continuous",
+        "pattern_signature": "statement|present_continuous|none|aff|plain",
+        "lexical_verbs": [
+          "do"
+        ],
+        "pt": "Estou lavando roupa agora.",
+        "ctx": "Situação: describe activity.",
+        "blank": "laundry",
+        "wrong": "I doing the laundry now."
+      },
+      {
+        "template_id": "daily_life_a1_dl1_lock_door",
+        "family_id": "daily_life_a1_ask_action",
+        "pack_id": "daily_life_a1",
+        "theme": "daily_life",
+        "level": "A1",
+        "pattern_id": "imperative_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Please lock the door.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Por favor, tranque a porta.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Please lock the door."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pedido no imperativo com please.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "ask_action",
+        "grammar_focus": "imperative_request",
+        "pattern_signature": "imperative|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "lock"
+        ],
+        "pt": "Por favor, tranque a porta.",
+        "ctx": "Situação: ask action.",
+        "blank": "door",
+        "wrong": "Please locks the door."
       }
     ],
     "collocations": [
@@ -4949,8 +4975,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "daily_life_a2_subject_past_simple_object_time_01",
-        "family_id": "daily_life_a2_subject_past_simple_object_time_0",
+        "template_id": "daily_life_a2_dl2_forgot_keys",
+        "family_id": "daily_life_a2_report_problem",
         "pack_id": "daily_life_a2",
         "theme": "daily_life",
         "level": "A2",
@@ -4969,144 +4995,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a2_morning_routine"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the morning routine yesterday.",
+        "sentence": "I forgot my keys this morning.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a rotina matinal ontem.",
+        "source_text_pt": "Esqueci minhas chaves esta manhã.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the morning routine yesterday."
+          "I forgot my keys this morning."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Nós verificamos a rotina matinal ontem.",
-        "ctx": "Contexto de vida cotidiana (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the morning routine yesterday."
+        "communicative_intent": "report_problem",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "forget"
+        ],
+        "pt": "Esqueci minhas chaves esta manhã.",
+        "ctx": "Situação: report problem.",
+        "blank": "keys",
+        "wrong": "I forget my keys this morning."
       },
       {
-        "template_id": "daily_life_a2_subject_be_going_to_verb_time_02",
-        "family_id": "daily_life_a2_subject_be_going_to_verb_time_1",
+        "template_id": "daily_life_a2_dl2_compare_house",
+        "family_id": "daily_life_a2_compare_options",
         "pack_id": "daily_life_a2",
         "theme": "daily_life",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "present_continuous",
-        "skill_ids": [
-          "present_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a2_family_dinner"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the family dinner tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar o jantar em família amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They are going to review the family dinner tomorrow."
-        ],
-        "accepted_variants_en": [
-          "They're going to review the family dinner tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
-        "skill_targets": [
-          "present_continuous"
-        ],
-        "pt": "Eles vão revisar o jantar em família amanhã.",
-        "ctx": "Contexto de vida cotidiana (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the family dinner tomorrow."
-      },
-      {
-        "template_id": "daily_life_a2_subject_simple_present_object_03",
-        "family_id": "daily_life_a2_subject_simple_present_object_2",
-        "pack_id": "daily_life_a2",
-        "theme": "daily_life",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "future_going_to",
-        "skill_ids": [
-          "future_going_to",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a2_bus_stop"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the bus stop every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o ponto de ônibus todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the bus stop every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "future_going_to"
-        ],
-        "pt": "Nós verificamos o ponto de ônibus todos os dias.",
-        "ctx": "Contexto de vida cotidiana (nível A2).",
-        "blank": "check",
-        "wrong": "We check the bus stop every day."
-      },
-      {
-        "template_id": "daily_life_a2_wh_do_subject_base_verb_04",
-        "family_id": "daily_life_a2_wh_do_subject_base_verb_3",
-        "pack_id": "daily_life_a2",
-        "theme": "daily_life",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "comparative_than",
         "primary_skill_id": "comparatives",
         "skill_ids": [
           "comparatives",
@@ -5121,45 +5048,46 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a2_homework"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the homework?",
+        "sentence": "My new house is bigger than the old one.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa da lição de casa?",
+        "source_text_pt": "Minha casa nova é maior que a antiga.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the homework?"
+          "My new house is bigger than the old one."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "comparatives"
         ],
-        "pt": "Quando você precisa da lição de casa?",
-        "ctx": "Contexto de vida cotidiana (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the homework?"
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "Minha casa nova é maior que a antiga.",
+        "ctx": "Situação: compare options.",
+        "blank": "house",
+        "wrong": "My new house is more big than the old one."
       },
       {
-        "template_id": "daily_life_a2_subject_past_simple_object_time_05",
-        "family_id": "daily_life_a2_subject_past_simple_object_time_4",
+        "template_id": "daily_life_a2_dl2_plan_clean",
+        "family_id": "daily_life_a2_state_plan",
         "pack_id": "daily_life_a2",
         "theme": "daily_life",
         "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "present_perfect",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "present_perfect",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -5171,42 +5099,47 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a2_neighbor"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the neighbor yesterday.",
+        "sentence": "I am going to clean the kitchen tomorrow.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o vizinho ontem.",
+        "source_text_pt": "Vou limpar a cozinha amanhã.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the neighbor yesterday."
+          "I am going to clean the kitchen tomorrow."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "accepted_variants_en": [
+          "I'm going to clean the kitchen tomorrow."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "present_perfect"
+          "future_going_to"
         ],
-        "pt": "Nós verificamos o vizinho ontem.",
-        "ctx": "Contexto de vida cotidiana (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the neighbor yesterday."
+        "communicative_intent": "state_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "clean"
+        ],
+        "pt": "Vou limpar a cozinha amanhã.",
+        "ctx": "Situação: state plan.",
+        "blank": "kitchen",
+        "wrong": "I am going to cleaned the kitchen tomorrow."
       },
       {
-        "template_id": "daily_life_a2_subject_be_going_to_verb_time_06",
-        "family_id": "daily_life_a2_subject_be_going_to_verb_time_5",
+        "template_id": "daily_life_a2_dl2_ask_dog",
+        "family_id": "daily_life_a2_ask_detail",
         "pack_id": "daily_life_a2",
         "theme": "daily_life",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
+        "pattern_id": "yes_no_do_question",
         "primary_skill_id": "question_auxiliary",
         "skill_ids": [
           "question_auxiliary",
@@ -5221,94 +5154,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a2_weekend_plan"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They are going to review the weekend plan tomorrow.",
+        "sentence": "Does your neighbor have a dog?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar o plano de fim de semana amanhã.",
+        "source_text_pt": "Seu vizinho tem um cachorro?",
         "target_locale": "en",
         "expected_answers_en": [
-          "They are going to review the weekend plan tomorrow."
+          "Does your neighbor have a dog?"
         ],
-        "accepted_variants_en": [
-          "They're going to review the weekend plan tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "question_auxiliary"
         ],
-        "pt": "Eles vão revisar o plano de fim de semana amanhã.",
-        "ctx": "Contexto de vida cotidiana (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the weekend plan tomorrow."
+        "communicative_intent": "ask_detail",
+        "grammar_focus": "yes_no_question",
+        "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "have"
+        ],
+        "pt": "Seu vizinho tem um cachorro?",
+        "ctx": "Situação: ask detail.",
+        "blank": "dog",
+        "wrong": "Your neighbor have a dog?"
       },
       {
-        "template_id": "daily_life_a2_subject_simple_present_object_07",
-        "family_id": "daily_life_a2_subject_simple_present_object_0",
+        "template_id": "daily_life_a2_dl2_lost_keys",
+        "family_id": "daily_life_a2_report_problem_lost",
         "pack_id": "daily_life_a2",
         "theme": "daily_life",
         "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a2_appointment"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the appointment every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o compromisso todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the appointment every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Nós verificamos o compromisso todos os dias.",
-        "ctx": "Contexto de vida cotidiana (nível A2).",
-        "blank": "check",
-        "wrong": "We check the appointment every day."
-      },
-      {
-        "template_id": "daily_life_a2_wh_do_subject_base_verb_08",
-        "family_id": "daily_life_a2_wh_do_subject_base_verb_1",
-        "pack_id": "daily_life_a2",
-        "theme": "daily_life",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "subject_past_simple_object_time",
         "primary_skill_id": "past_simple",
         "skill_ids": [
           "past_simple",
@@ -5323,34 +5207,198 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_a2_coffee_break"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the coffee break?",
+        "sentence": "I lost my keys yesterday.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa da pausa para o café?",
+        "source_text_pt": "Perdi minhas chaves ontem.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the coffee break?"
+          "I lost my keys yesterday."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Quando você precisa da pausa para o café?",
-        "ctx": "Contexto de vida cotidiana (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the coffee break?"
+        "communicative_intent": "report_problem_lost",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "lose"
+        ],
+        "pt": "Perdi minhas chaves ontem.",
+        "ctx": "Situação: report problem lost.",
+        "blank": "keys",
+        "wrong": "I lose my keys yesterday."
+      },
+      {
+        "template_id": "daily_life_a2_dl2_request_laundry",
+        "family_id": "daily_life_a2_request_service",
+        "pack_id": "daily_life_a2",
+        "theme": "daily_life",
+        "level": "A2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Could you help me with the laundry?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você poderia me ajudar com a roupa lavada?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Could you help me with the laundry?"
+        ],
+        "accepted_variants_en": [
+          "Can you help me with the laundry?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "request_service",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|could|aff|plain",
+        "lexical_verbs": [
+          "help"
+        ],
+        "pt": "Você poderia me ajudar com a roupa lavada?",
+        "ctx": "Situação: request service.",
+        "blank": "laundry",
+        "wrong": "You could help me with the laundry?"
+      },
+      {
+        "template_id": "daily_life_a2_dl2_habit_cook",
+        "family_id": "daily_life_a2_talk_habit",
+        "pack_id": "daily_life_a2",
+        "theme": "daily_life",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I usually cook dinner on Sundays.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Costumo cozinhar o jantar aos domingos.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I usually cook dinner on Sundays."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "talk_habit",
+        "grammar_focus": "frequency_adverb",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "cook"
+        ],
+        "pt": "Costumo cozinhar o jantar aos domingos.",
+        "ctx": "Situação: talk habit.",
+        "blank": "dinner",
+        "wrong": "I usually cooks dinner on Sundays."
+      },
+      {
+        "template_id": "daily_life_a2_dl2_there_package",
+        "family_id": "daily_life_a2_point_out",
+        "pack_id": "daily_life_a2",
+        "theme": "daily_life",
+        "level": "A2",
+        "pattern_id": "there_is_are",
+        "primary_skill_id": "there_is_are",
+        "skill_ids": [
+          "there_is_are",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "There is a package at the door.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Tem um pacote na porta.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "There is a package at the door."
+        ],
+        "accepted_variants_en": [
+          "There's a package at the door."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "communicative_intent": "point_out",
+        "grammar_focus": "existential",
+        "pattern_signature": "statement|be|none|aff|existential",
+        "lexical_verbs": [],
+        "pt": "Tem um pacote na porta.",
+        "ctx": "Situação: point out.",
+        "blank": "package",
+        "wrong": "There a package at the door."
       }
     ],
     "collocations": [
@@ -5648,8 +5696,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "daily_life_b1_subject_have_past_participle_yet_01",
-        "family_id": "daily_life_b1_subject_have_past_participle_yet_0",
+        "template_id": "daily_life_b1_dl3_pp_cleaned",
+        "family_id": "daily_life_b1_confirm_plan",
         "pack_id": "daily_life_b1",
         "theme": "daily_life",
         "level": "B1",
@@ -5668,41 +5716,96 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b1_morning_routine"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We have checked the morning routine already.",
+        "sentence": "I have already cleaned the kitchen.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos a rotina matinal.",
+        "source_text_pt": "Já limpei a cozinha.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We have checked the morning routine already."
+          "I have already cleaned the kitchen."
         ],
         "accepted_variants_en": [
-          "We've checked the morning routine already."
+          "I've already cleaned the kitchen."
         ],
-        "explanation_pt": "Present perfect com already.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect"
         ],
-        "pt": "Nós já verificamos a rotina matinal.",
-        "ctx": "Contexto de vida cotidiana (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the morning routine already."
+        "communicative_intent": "confirm_plan",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "clean"
+        ],
+        "pt": "Já limpei a cozinha.",
+        "ctx": "Situação: confirm plan.",
+        "blank": "kitchen",
+        "wrong": "I have already clean the kitchen."
       },
       {
-        "template_id": "daily_life_b1_subject_have_been_ving_object_duration_02",
-        "family_id": "daily_life_b1_subject_have_been_ving_object_duration_1",
+        "template_id": "daily_life_b1_dl3_first_cond",
+        "family_id": "daily_life_b1_plan_contingency",
+        "pack_id": "daily_life_b1",
+        "theme": "daily_life",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "first_conditional",
+        "skill_ids": [
+          "first_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If I finish the laundry early, I will go for a walk.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se eu terminar a roupa lavada cedo, vou dar uma caminhada.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If I finish the laundry early, I will go for a walk."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "communicative_intent": "plan_contingency",
+        "grammar_focus": "first_conditional",
+        "pattern_signature": "conditional|will_future|none|aff|first_conditional",
+        "lexical_verbs": [
+          "finish"
+        ],
+        "pt": "Se eu terminar a roupa lavada cedo, vou dar uma caminhada.",
+        "ctx": "Situação: plan contingency.",
+        "blank": "laundry",
+        "wrong": "If I will finish the laundry early, I go for a walk."
+      },
+      {
+        "template_id": "daily_life_b1_dl3_ppc_cooking",
+        "family_id": "daily_life_b1_report_status",
         "pack_id": "daily_life_b1",
         "theme": "daily_life",
         "level": "B1",
@@ -5721,48 +5824,50 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b1_family_dinner"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They have been reviewing the family dinner for two hours.",
+        "sentence": "I have been cooking dinner for an hour.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando o jantar em família há duas horas.",
+        "source_text_pt": "Estou cozinhando o jantar há uma hora.",
         "target_locale": "en",
         "expected_answers_en": [
-          "They have been reviewing the family dinner for two hours."
+          "I have been cooking dinner for an hour."
         ],
         "accepted_variants_en": [
-          "They've been reviewing the family dinner for two hours."
+          "I've been cooking dinner for an hour."
         ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect_continuous"
         ],
-        "pt": "Eles estão revisando o jantar em família há duas horas.",
-        "ctx": "Contexto de vida cotidiana (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the family dinner for two hours."
+        "communicative_intent": "report_status",
+        "grammar_focus": "present_perfect_continuous",
+        "pattern_signature": "statement|present_perfect_continuous|none|aff|plain",
+        "lexical_verbs": [
+          "cook"
+        ],
+        "pt": "Estou cozinhando o jantar há uma hora.",
+        "ctx": "Situação: report status.",
+        "blank": "dinner",
+        "wrong": "I have been cook dinner for an hour."
       },
       {
-        "template_id": "daily_life_b1_if_present_will_future_03",
-        "family_id": "daily_life_b1_if_present_will_future_2",
+        "template_id": "daily_life_b1_dl3_plan_fix",
+        "family_id": "daily_life_b1_describe_plan",
         "pack_id": "daily_life_b1",
         "theme": "daily_life",
         "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "gerund_after_been",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "gerund_after_been",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -5774,41 +5879,200 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b1_bus_stop"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If we confirm the bus stop, we will start tomorrow.",
+        "sentence": "I am going to fix the door tomorrow.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos o ponto de ônibus, vamos começar amanhã.",
+        "source_text_pt": "Vou consertar a porta amanhã.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If we confirm the bus stop, we will start tomorrow."
+          "I am going to fix the door tomorrow."
         ],
         "accepted_variants_en": [
-          "If we confirm the bus stop, we'll start tomorrow."
+          "I'm going to fix the door tomorrow."
         ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "gerund_after_been"
+          "future_going_to"
         ],
-        "pt": "Se confirmarmos o ponto de ônibus, vamos começar amanhã.",
-        "ctx": "Contexto de vida cotidiana (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the bus stop, we will start tomorrow."
+        "communicative_intent": "describe_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "fix"
+        ],
+        "pt": "Vou consertar a porta amanhã.",
+        "ctx": "Situação: describe plan.",
+        "blank": "door",
+        "wrong": "I am going to fixed the door tomorrow."
       },
       {
-        "template_id": "daily_life_b1_subject_modal_base_verb_04",
-        "family_id": "daily_life_b1_subject_modal_base_verb_3",
+        "template_id": "daily_life_b1_dl3_pp_question",
+        "family_id": "daily_life_b1_ask_experience",
+        "pack_id": "daily_life_b1",
+        "theme": "daily_life",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Have you ever lost your keys?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você já perdeu suas chaves?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Have you ever lost your keys?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "ask_experience",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "lose"
+        ],
+        "pt": "Você já perdeu suas chaves?",
+        "ctx": "Situação: ask experience.",
+        "blank": "keys",
+        "wrong": "Have you ever lose your keys?"
+      },
+      {
+        "template_id": "daily_life_b1_dl3_advice",
+        "family_id": "daily_life_b1_give_advice",
+        "pack_id": "daily_life_b1",
+        "theme": "daily_life",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "You should talk to your neighbor about the noise.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você deveria falar com seu vizinho sobre o barulho.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "You should talk to your neighbor about the noise."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "give_advice",
+        "grammar_focus": "modal_advice",
+        "pattern_signature": "statement|present_simple|should|aff|plain",
+        "lexical_verbs": [
+          "talk"
+        ],
+        "pt": "Você deveria falar com seu vizinho sobre o barulho.",
+        "ctx": "Situação: give advice.",
+        "blank": "neighbor",
+        "wrong": "You should talks to your neighbor about the noise."
+      },
+      {
+        "template_id": "daily_life_b1_dl3_compare_neighborhood",
+        "family_id": "daily_life_b1_compare_options",
+        "pack_id": "daily_life_b1",
+        "theme": "daily_life",
+        "level": "B1",
+        "pattern_id": "comparative_than",
+        "primary_skill_id": "comparatives",
+        "skill_ids": [
+          "comparatives",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "This neighborhood is quieter than the last one.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Este bairro é mais tranquilo que o anterior.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "This neighborhood is quieter than the last one."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "Este bairro é mais tranquilo que o anterior.",
+        "ctx": "Situação: compare options.",
+        "blank": "neighborhood",
+        "wrong": "This neighborhood is more quiet than the last one."
+      },
+      {
+        "template_id": "daily_life_b1_dl3_preference",
+        "family_id": "daily_life_b1_state_preference",
         "pack_id": "daily_life_b1",
         "theme": "daily_life",
         "level": "B1",
@@ -5827,245 +6091,39 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b1_homework"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the homework today.",
+        "sentence": "I would rather clean the house today.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a lição de casa hoje.",
+        "source_text_pt": "Eu preferiria limpar a casa hoje.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the homework today."
+          "I would rather clean the house today."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "accepted_variants_en": [
+          "I'd rather clean the house today."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "first_conditional"
         ],
-        "pt": "Eu posso atualizar a lição de casa hoje.",
-        "ctx": "Contexto de vida cotidiana (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the homework today."
-      },
-      {
-        "template_id": "daily_life_b1_subject_have_past_participle_yet_05",
-        "family_id": "daily_life_b1_subject_have_past_participle_yet_4",
-        "pack_id": "daily_life_b1",
-        "theme": "daily_life",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
+        "communicative_intent": "state_preference",
+        "grammar_focus": "would_preference",
+        "pattern_signature": "statement|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "clean"
         ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b1_neighbor"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the neighbor already.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos o vizinho.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We have checked the neighbor already."
-        ],
-        "accepted_variants_en": [
-          "We've checked the neighbor already."
-        ],
-        "explanation_pt": "Present perfect com already.",
-        "skill_targets": [
-          "question_auxiliary"
-        ],
-        "pt": "Nós já verificamos o vizinho.",
-        "ctx": "Contexto de vida cotidiana (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the neighbor already."
-      },
-      {
-        "template_id": "daily_life_b1_subject_have_been_ving_object_duration_06",
-        "family_id": "daily_life_b1_subject_have_been_ving_object_duration_5",
-        "pack_id": "daily_life_b1",
-        "theme": "daily_life",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b1_weekend_plan"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the weekend plan for two hours.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando o plano de fim de semana há duas horas.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They have been reviewing the weekend plan for two hours."
-        ],
-        "accepted_variants_en": [
-          "They've been reviewing the weekend plan for two hours."
-        ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
-        "skill_targets": [
-          "collocation"
-        ],
-        "pt": "Eles estão revisando o plano de fim de semana há duas horas.",
-        "ctx": "Contexto de vida cotidiana (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the weekend plan for two hours."
-      },
-      {
-        "template_id": "daily_life_b1_if_present_will_future_07",
-        "family_id": "daily_life_b1_if_present_will_future_0",
-        "pack_id": "daily_life_b1",
-        "theme": "daily_life",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "preposition",
-        "skill_ids": [
-          "preposition",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b1_appointment"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the appointment, we will start tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos o compromisso, vamos começar amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If we confirm the appointment, we will start tomorrow."
-        ],
-        "accepted_variants_en": [
-          "If we confirm the appointment, we'll start tomorrow."
-        ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
-        "skill_targets": [
-          "preposition"
-        ],
-        "pt": "Se confirmarmos o compromisso, vamos começar amanhã.",
-        "ctx": "Contexto de vida cotidiana (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the appointment, we will start tomorrow."
-      },
-      {
-        "template_id": "daily_life_b1_subject_modal_base_verb_08",
-        "family_id": "daily_life_b1_subject_modal_base_verb_1",
-        "pack_id": "daily_life_b1",
-        "theme": "daily_life",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b1_coffee_break"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the coffee break today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a pausa para o café hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the coffee break today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "present_perfect"
-        ],
-        "pt": "Eu posso atualizar a pausa para o café hoje.",
-        "ctx": "Contexto de vida cotidiana (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the coffee break today."
+        "pt": "Eu preferiria limpar a casa hoje.",
+        "ctx": "Situação: state preference.",
+        "blank": "house",
+        "wrong": "I would rather cleaned the house today."
       }
     ],
     "collocations": [
@@ -6363,8 +6421,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "daily_life_b2_passive_be_past_participle_01",
-        "family_id": "daily_life_b2_passive_be_past_participle_0",
+        "template_id": "daily_life_b2_dl4_passive",
+        "family_id": "daily_life_b2_report_status",
         "pack_id": "daily_life_b2",
         "theme": "daily_life",
         "level": "B2",
@@ -6383,40 +6441,41 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b2_morning_routine"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The morning routine was reviewed by the team.",
+        "sentence": "The kitchen was cleaned this morning.",
         "source_locale": "pt-BR",
-        "source_text_pt": "A rotina matinal foi revisada pela equipe.",
+        "source_text_pt": "A cozinha foi limpa esta manhã.",
         "target_locale": "en",
         "expected_answers_en": [
-          "The morning routine was reviewed by the team."
+          "The kitchen was cleaned this morning."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "passive_voice"
         ],
-        "pt": "A rotina matinal foi revisada pela equipe.",
-        "ctx": "Contexto de vida cotidiana (nível B2).",
-        "blank": "morning",
-        "wrong": "The morning routine reviewed by the team."
+        "communicative_intent": "report_status",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "clean"
+        ],
+        "pt": "A cozinha foi limpa esta manhã.",
+        "ctx": "Situação: report status.",
+        "blank": "kitchen",
+        "wrong": "The kitchen was clean this morning."
       },
       {
-        "template_id": "daily_life_b2_reported_speech_statement_02",
-        "family_id": "daily_life_b2_reported_speech_statement_1",
+        "template_id": "daily_life_b2_dl4_reported",
+        "family_id": "daily_life_b2_report_information",
         "pack_id": "daily_life_b2",
         "theme": "daily_life",
         "level": "B2",
@@ -6435,40 +6494,41 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b2_family_dinner"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "She said that the family dinner was ready.",
+        "sentence": "My neighbor said that he found his keys.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que o jantar em família estava pronto.",
+        "source_text_pt": "Meu vizinho disse que encontrou suas chaves.",
         "target_locale": "en",
         "expected_answers_en": [
-          "She said that the family dinner was ready."
+          "My neighbor said that he found his keys."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "reported_speech"
         ],
-        "pt": "Ela disse que o jantar em família estava pronto.",
-        "ctx": "Contexto de vida cotidiana (nível B2).",
-        "blank": "said",
-        "wrong": "She said the family dinner was ready."
+        "communicative_intent": "report_information",
+        "grammar_focus": "reported_speech",
+        "pattern_signature": "statement|present_simple|none|aff|reported",
+        "lexical_verbs": [
+          "say"
+        ],
+        "pt": "Meu vizinho disse que encontrou suas chaves.",
+        "ctx": "Situação: report information.",
+        "blank": "keys",
+        "wrong": "My neighbor said that he find his keys."
       },
       {
-        "template_id": "daily_life_b2_second_conditional_03",
-        "family_id": "daily_life_b2_second_conditional_2",
+        "template_id": "daily_life_b2_dl4_second_cond",
+        "family_id": "daily_life_b2_hypothesize",
         "pack_id": "daily_life_b2",
         "theme": "daily_life",
         "level": "B2",
@@ -6487,42 +6547,202 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b2_bus_stop"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If I had more time, I would improve the bus stop.",
+        "sentence": "If I had more space, I would buy a bigger house.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o ponto de ônibus.",
+        "source_text_pt": "Se eu tivesse mais espaço, compraria uma casa maior.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If I had more time, I would improve the bus stop."
+          "If I had more space, I would buy a bigger house."
         ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the bus stop."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "second_conditional"
         ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria o ponto de ônibus.",
-        "ctx": "Contexto de vida cotidiana (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the bus stop."
+        "communicative_intent": "hypothesize",
+        "grammar_focus": "second_conditional",
+        "pattern_signature": "conditional|present_simple|would|aff|second_conditional",
+        "lexical_verbs": [
+          "buy"
+        ],
+        "pt": "Se eu tivesse mais espaço, compraria uma casa maior.",
+        "ctx": "Situação: hypothesize.",
+        "blank": "house",
+        "wrong": "If I had more space, I will buy a bigger house."
       },
       {
-        "template_id": "daily_life_b2_subject_modal_base_verb_04",
-        "family_id": "daily_life_b2_subject_modal_base_verb_3",
+        "template_id": "daily_life_b2_dl4_diplomatic",
+        "family_id": "daily_life_b2_request_politely",
+        "pack_id": "daily_life_b2",
+        "theme": "daily_life",
+        "level": "B2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "modal_deduction",
+        "skill_ids": [
+          "modal_deduction",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Would you mind fixing the door again?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você se importaria de consertar a porta de novo?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Would you mind fixing the door again?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "communicative_intent": "request_politely",
+        "grammar_focus": "diplomatic_request",
+        "pattern_signature": "yesno_question|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "fix"
+        ],
+        "pt": "Você se importaria de consertar a porta de novo?",
+        "ctx": "Situação: request politely.",
+        "blank": "door",
+        "wrong": "Would you mind fix the door again?"
+      },
+      {
+        "template_id": "daily_life_b2_dl4_pp_just",
+        "family_id": "daily_life_b2_report_status_finished",
+        "pack_id": "daily_life_b2",
+        "theme": "daily_life",
+        "level": "B2",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have just finished the laundry.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Acabamos de terminar a roupa lavada.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have just finished the laundry."
+        ],
+        "accepted_variants_en": [
+          "We've just finished the laundry."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "report_status_finished",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_perfect|none|aff|plain",
+        "lexical_verbs": [
+          "finish"
+        ],
+        "pt": "Acabamos de terminar a roupa lavada.",
+        "ctx": "Situação: report status finished.",
+        "blank": "laundry",
+        "wrong": "We have just finish the laundry."
+      },
+      {
+        "template_id": "daily_life_b2_dl4_passive2",
+        "family_id": "daily_life_b2_report_found",
+        "pack_id": "daily_life_b2",
+        "theme": "daily_life",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The keys were found under the sofa.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "As chaves foram encontradas embaixo do sofá.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The keys were found under the sofa."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "communicative_intent": "report_found",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "find"
+        ],
+        "pt": "As chaves foram encontradas embaixo do sofá.",
+        "ctx": "Situação: report found.",
+        "blank": "keys",
+        "wrong": "The keys were find under the sofa."
+      },
+      {
+        "template_id": "daily_life_b2_dl4_deduction",
+        "family_id": "daily_life_b2_make_deduction",
         "pack_id": "daily_life_b2",
         "theme": "daily_life",
         "level": "B2",
@@ -6541,47 +6761,48 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b2_homework"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the homework today.",
+        "sentence": "My neighbor must have forgotten the keys.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a lição de casa hoje.",
+        "source_text_pt": "Meu vizinho deve ter esquecido as chaves.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the homework today."
+          "My neighbor must have forgotten the keys."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "modal_deduction"
         ],
-        "pt": "Eu posso atualizar a lição de casa hoje.",
-        "ctx": "Contexto de vida cotidiana (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the homework today."
+        "communicative_intent": "make_deduction",
+        "grammar_focus": "modal_deduction",
+        "pattern_signature": "statement|present_perfect|must|aff|plain",
+        "lexical_verbs": [
+          "forget"
+        ],
+        "pt": "Meu vizinho deve ter esquecido as chaves.",
+        "ctx": "Situação: make deduction.",
+        "blank": "keys",
+        "wrong": "My neighbor must has forgotten the keys."
       },
       {
-        "template_id": "daily_life_b2_passive_be_past_participle_05",
-        "family_id": "daily_life_b2_passive_be_past_participle_4",
+        "template_id": "daily_life_b2_dl4_contrast",
+        "family_id": "daily_life_b2_describe_experience",
         "pack_id": "daily_life_b2",
         "theme": "daily_life",
         "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "collocation",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "verb_to_be",
         "skill_ids": [
-          "collocation",
+          "verb_to_be",
           "vocabulary"
         ],
         "exercise_types": [
@@ -6593,194 +6814,35 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b2_neighbor"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The neighbor was reviewed by the team.",
+        "sentence": "The house was small, but it was very cozy.",
         "source_locale": "pt-BR",
-        "source_text_pt": "O vizinho foi revisado pela equipe.",
+        "source_text_pt": "A casa era pequena, mas era muito aconchegante.",
         "target_locale": "en",
         "expected_answers_en": [
-          "The neighbor was reviewed by the team."
+          "The house was small, but it was very cozy."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "collocation"
+          "verb_to_be"
         ],
-        "pt": "O vizinho foi revisado pela equipe.",
-        "ctx": "Contexto de vida cotidiana (nível B2).",
-        "blank": "neighbor",
-        "wrong": "The neighbor reviewed by the team."
-      },
-      {
-        "template_id": "daily_life_b2_reported_speech_statement_06",
-        "family_id": "daily_life_b2_reported_speech_statement_5",
-        "pack_id": "daily_life_b2",
-        "theme": "daily_life",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "word_order",
-        "skill_ids": [
-          "word_order",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b2_weekend_plan"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the weekend plan was ready.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que o plano de fim de semana estava pronto.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "She said that the weekend plan was ready."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
-        "skill_targets": [
-          "word_order"
-        ],
-        "pt": "Ela disse que o plano de fim de semana estava pronto.",
-        "ctx": "Contexto de vida cotidiana (nível B2).",
-        "blank": "said",
-        "wrong": "She said the weekend plan was ready."
-      },
-      {
-        "template_id": "daily_life_b2_second_conditional_07",
-        "family_id": "daily_life_b2_second_conditional_0",
-        "pack_id": "daily_life_b2",
-        "theme": "daily_life",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b2_appointment"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the appointment.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o compromisso.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If I had more time, I would improve the appointment."
-        ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the appointment."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria o compromisso.",
-        "ctx": "Contexto de vida cotidiana (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the appointment."
-      },
-      {
-        "template_id": "daily_life_b2_subject_modal_base_verb_08",
-        "family_id": "daily_life_b2_subject_modal_base_verb_1",
-        "pack_id": "daily_life_b2",
-        "theme": "daily_life",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "daily_life_b2_coffee_break"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the coffee break today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a pausa para o café hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the coffee break today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "passive_voice"
-        ],
-        "pt": "Eu posso atualizar a pausa para o café hoje.",
-        "ctx": "Contexto de vida cotidiana (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the coffee break today."
+        "communicative_intent": "describe_experience",
+        "grammar_focus": "past_contrast",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "A casa era pequena, mas era muito aconchegante.",
+        "ctx": "Situação: describe experience.",
+        "blank": "house",
+        "wrong": "The house small, but it was very cozy."
       }
     ],
     "collocations": [
@@ -15760,262 +15822,12 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "shopping_and_services_a1_subject_be_complement_01",
-        "family_id": "shopping_and_services_a1_subject_be_complement_0",
+        "template_id": "shopping_and_services_a1_sh1_ask_store",
+        "family_id": "shopping_and_services_a1_ask_location",
         "pack_id": "shopping_and_services_a1",
         "theme": "shopping_and_services",
         "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_receipt"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The receipt is important.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "O recibo é importante.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The receipt is important."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-        "skill_targets": [
-          "verb_to_be"
-        ],
-        "pt": "O recibo é importante.",
-        "ctx": "Contexto de compras e serviços (nível A1).",
-        "blank": "receipt",
-        "wrong": "The receipt is important."
-      },
-      {
-        "template_id": "shopping_and_services_a1_subject_simple_present_object_02",
-        "family_id": "shopping_and_services_a1_subject_simple_present_object_1",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "simple_present",
-        "skill_ids": [
-          "simple_present",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_discount"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the discount every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o desconto todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the discount every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "simple_present"
-        ],
-        "pt": "Nós verificamos o desconto todos os dias.",
-        "ctx": "Contexto de compras e serviços (nível A1).",
-        "blank": "check",
-        "wrong": "We check the discount every day."
-      },
-      {
-        "template_id": "shopping_and_services_a1_wh_do_subject_base_verb_03",
-        "family_id": "shopping_and_services_a1_wh_do_subject_base_verb_2",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "there_is_are",
-        "skill_ids": [
-          "there_is_are",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_cashier"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the cashier?",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa do caixa?",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "When do you need the cashier?"
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
-        "skill_targets": [
-          "there_is_are"
-        ],
-        "pt": "Quando você precisa do caixa?",
-        "ctx": "Contexto de compras e serviços (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the cashier?"
-      },
-      {
-        "template_id": "shopping_and_services_a1_subject_modal_base_verb_04",
-        "family_id": "shopping_and_services_a1_subject_modal_base_verb_3",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "can_ability",
-        "skill_ids": [
-          "can_ability",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_return_policy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the return policy today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a política de troca hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the return policy today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "can_ability"
-        ],
-        "pt": "Eu posso atualizar a política de troca hoje.",
-        "ctx": "Contexto de compras e serviços (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the return policy today."
-      },
-      {
-        "template_id": "shopping_and_services_a1_subject_be_complement_05",
-        "family_id": "shopping_and_services_a1_subject_be_complement_4",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "can_request",
-        "skill_ids": [
-          "can_request",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_shoe_size"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The shoe size is important.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "O número do sapato é importante.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The shoe size is important."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-        "skill_targets": [
-          "can_request"
-        ],
-        "pt": "O número do sapato é importante.",
-        "ctx": "Contexto de compras e serviços (nível A1).",
-        "blank": "shoe",
-        "wrong": "The shoe size is important."
-      },
-      {
-        "template_id": "shopping_and_services_a1_subject_simple_present_object_06",
-        "family_id": "shopping_and_services_a1_subject_simple_present_object_5",
-        "pack_id": "shopping_and_services_a1",
-        "theme": "shopping_and_services",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
+        "pattern_id": "wh_be_question",
         "primary_skill_id": "question_structure",
         "skill_ids": [
           "question_structure",
@@ -16030,45 +15842,46 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_delivery"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the delivery every day.",
+        "sentence": "Where is the nearest store?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a entrega todos os dias.",
+        "source_text_pt": "Onde fica a loja mais próxima?",
         "target_locale": "en",
         "expected_answers_en": [
-          "We check the delivery every day."
+          "Where is the nearest store?"
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "explanation_pt": "Pergunta com Where + verbo to be.",
         "skill_targets": [
           "question_structure"
         ],
-        "pt": "Nós verificamos a entrega todos os dias.",
-        "ctx": "Contexto de compras e serviços (nível A1).",
-        "blank": "check",
-        "wrong": "We check the delivery every day."
+        "communicative_intent": "ask_location",
+        "grammar_focus": "wh_question_be",
+        "pattern_signature": "wh_question|be|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "Onde fica a loja mais próxima?",
+        "ctx": "Situação: ask location.",
+        "blank": "store",
+        "wrong": "Where the nearest store is?"
       },
       {
-        "template_id": "shopping_and_services_a1_wh_do_subject_base_verb_07",
-        "family_id": "shopping_and_services_a1_wh_do_subject_base_verb_0",
+        "template_id": "shopping_and_services_a1_sh1_buy_shirt",
+        "family_id": "shopping_and_services_a1_state_intention",
         "pack_id": "shopping_and_services_a1",
         "theme": "shopping_and_services",
         "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "vocabulary",
+        "pattern_id": "subject_want_to_verb",
+        "primary_skill_id": "simple_present",
         "skill_ids": [
-          "vocabulary",
+          "simple_present",
           "vocabulary"
         ],
         "exercise_types": [
@@ -16080,42 +15893,155 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_pharmacy"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the pharmacy?",
+        "sentence": "I want to buy a new shirt.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa da farmácia?",
+        "source_text_pt": "Quero comprar uma camisa nova.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the pharmacy?"
+          "I want to buy a new shirt."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "accepted_variants_en": [
+          "I'd like to buy a new shirt."
+        ],
+        "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
         "skill_targets": [
-          "vocabulary"
+          "simple_present"
         ],
-        "pt": "Quando você precisa da farmácia?",
-        "ctx": "Contexto de compras e serviços (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the pharmacy?"
+        "communicative_intent": "state_intention",
+        "grammar_focus": "want_to_infinitive",
+        "pattern_signature": "statement|present_simple|want_to|aff|plain",
+        "lexical_verbs": [
+          "buy"
+        ],
+        "pt": "Quero comprar uma camisa nova.",
+        "ctx": "Situação: state intention.",
+        "blank": "shirt",
+        "wrong": "I want buy a new shirt."
       },
       {
-        "template_id": "shopping_and_services_a1_subject_modal_base_verb_08",
-        "family_id": "shopping_and_services_a1_subject_modal_base_verb_1",
+        "template_id": "shopping_and_services_a1_sh1_ask_close_time",
+        "family_id": "shopping_and_services_a1_ask_time",
         "pack_id": "shopping_and_services_a1",
         "theme": "shopping_and_services",
         "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "What time does the store close?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Que horas a loja fecha?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "What time does the store close?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do/does.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "ask_time",
+        "grammar_focus": "wh_question_do",
+        "pattern_signature": "wh_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "close"
+        ],
+        "pt": "Que horas a loja fecha?",
+        "ctx": "Situação: ask time.",
+        "blank": "store",
+        "wrong": "What time the store close?"
+      },
+      {
+        "template_id": "shopping_and_services_a1_sh1_request_size",
+        "family_id": "shopping_and_services_a1_request_help",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Can you help me find my size?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você pode me ajudar a achar meu tamanho?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Can you help me find my size?"
+        ],
+        "accepted_variants_en": [
+          "Could you help me find my size?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "request_help",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|can|aff|plain",
+        "lexical_verbs": [
+          "help"
+        ],
+        "pt": "Você pode me ajudar a achar meu tamanho?",
+        "ctx": "Situação: request help.",
+        "blank": "size",
+        "wrong": "You can help me find my size?"
+      },
+      {
+        "template_id": "shopping_and_services_a1_sh1_describe_price",
+        "family_id": "shopping_and_services_a1_describe_state",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
         "primary_skill_id": "verb_to_be",
         "skill_ids": [
           "verb_to_be",
@@ -16130,34 +16056,198 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a1_bank_account"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the bank account today.",
+        "sentence": "This price is very high.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a conta bancária hoje.",
+        "source_text_pt": "Este preço está muito alto.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the bank account today."
+          "This price is very high."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "explanation_pt": "Verbo to be para descrever algo.",
         "skill_targets": [
           "verb_to_be"
         ],
-        "pt": "Eu posso atualizar a conta bancária hoje.",
-        "ctx": "Contexto de compras e serviços (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the bank account today."
+        "communicative_intent": "describe_state",
+        "grammar_focus": "be_complement",
+        "pattern_signature": "statement|be|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "Este preço está muito alto.",
+        "ctx": "Situação: describe state.",
+        "blank": "price",
+        "wrong": "This price very high."
+      },
+      {
+        "template_id": "shopping_and_services_a1_sh1_pay_card",
+        "family_id": "shopping_and_services_a1_state_payment",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "subject_want_to_verb",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I want to pay with my card.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quero pagar com meu cartão.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I want to pay with my card."
+        ],
+        "accepted_variants_en": [
+          "I'd like to pay with my card."
+        ],
+        "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "state_payment",
+        "grammar_focus": "want_to_infinitive",
+        "pattern_signature": "statement|present_simple|want_to|aff|plain",
+        "lexical_verbs": [
+          "pay"
+        ],
+        "pt": "Quero pagar com meu cartão.",
+        "ctx": "Situação: state payment.",
+        "blank": "card",
+        "wrong": "I want pay with my card."
+      },
+      {
+        "template_id": "shopping_and_services_a1_sh1_waiting_line",
+        "family_id": "shopping_and_services_a1_describe_activity",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "subject_present_continuous",
+        "primary_skill_id": "present_continuous",
+        "skill_ids": [
+          "present_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I am waiting in line now.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Estou esperando na fila agora.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I am waiting in line now."
+        ],
+        "accepted_variants_en": [
+          "I'm waiting in line now."
+        ],
+        "explanation_pt": "Presente contínuo (am/is/are + -ing).",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "communicative_intent": "describe_activity",
+        "grammar_focus": "present_continuous",
+        "pattern_signature": "statement|present_continuous|none|aff|plain",
+        "lexical_verbs": [
+          "wait"
+        ],
+        "pt": "Estou esperando na fila agora.",
+        "ctx": "Situação: describe activity.",
+        "blank": "line",
+        "wrong": "I waiting in line now."
+      },
+      {
+        "template_id": "shopping_and_services_a1_sh1_show_receipt",
+        "family_id": "shopping_and_services_a1_ask_action",
+        "pack_id": "shopping_and_services_a1",
+        "theme": "shopping_and_services",
+        "level": "A1",
+        "pattern_id": "imperative_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Please show me the receipt.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Por favor, me mostre o recibo.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Please show me the receipt."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pedido no imperativo com please.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "ask_action",
+        "grammar_focus": "imperative_request",
+        "pattern_signature": "imperative|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "show"
+        ],
+        "pt": "Por favor, me mostre o recibo.",
+        "ctx": "Situação: ask action.",
+        "blank": "receipt",
+        "wrong": "Please shows me the receipt."
       }
     ],
     "collocations": [
@@ -16455,8 +16545,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "shopping_and_services_a2_subject_past_simple_object_time_01",
-        "family_id": "shopping_and_services_a2_subject_past_simple_object_time_0",
+        "template_id": "shopping_and_services_a2_sh2_delivery_late",
+        "family_id": "shopping_and_services_a2_report_delay",
         "pack_id": "shopping_and_services_a2",
         "theme": "shopping_and_services",
         "level": "A2",
@@ -16475,144 +16565,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_receipt"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the receipt yesterday.",
+        "sentence": "The delivery arrived late yesterday.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o recibo ontem.",
+        "source_text_pt": "A entrega chegou atrasada ontem.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the receipt yesterday."
+          "The delivery arrived late yesterday."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Nós verificamos o recibo ontem.",
-        "ctx": "Contexto de compras e serviços (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the receipt yesterday."
+        "communicative_intent": "report_delay",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "arrive"
+        ],
+        "pt": "A entrega chegou atrasada ontem.",
+        "ctx": "Situação: report delay.",
+        "blank": "delivery",
+        "wrong": "The delivery arrive late yesterday."
       },
       {
-        "template_id": "shopping_and_services_a2_subject_be_going_to_verb_time_02",
-        "family_id": "shopping_and_services_a2_subject_be_going_to_verb_time_1",
+        "template_id": "shopping_and_services_a2_sh2_compare_store",
+        "family_id": "shopping_and_services_a2_compare_options",
         "pack_id": "shopping_and_services_a2",
         "theme": "shopping_and_services",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "present_continuous",
-        "skill_ids": [
-          "present_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_discount"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the discount tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar o desconto amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They are going to review the discount tomorrow."
-        ],
-        "accepted_variants_en": [
-          "They're going to review the discount tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
-        "skill_targets": [
-          "present_continuous"
-        ],
-        "pt": "Eles vão revisar o desconto amanhã.",
-        "ctx": "Contexto de compras e serviços (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the discount tomorrow."
-      },
-      {
-        "template_id": "shopping_and_services_a2_subject_simple_present_object_03",
-        "family_id": "shopping_and_services_a2_subject_simple_present_object_2",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "future_going_to",
-        "skill_ids": [
-          "future_going_to",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_cashier"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the cashier every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o caixa todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the cashier every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "future_going_to"
-        ],
-        "pt": "Nós verificamos o caixa todos os dias.",
-        "ctx": "Contexto de compras e serviços (nível A2).",
-        "blank": "check",
-        "wrong": "We check the cashier every day."
-      },
-      {
-        "template_id": "shopping_and_services_a2_wh_do_subject_base_verb_04",
-        "family_id": "shopping_and_services_a2_wh_do_subject_base_verb_3",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "comparative_than",
         "primary_skill_id": "comparatives",
         "skill_ids": [
           "comparatives",
@@ -16627,45 +16618,46 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_return_policy"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the return policy?",
+        "sentence": "This store is cheaper than the other one.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa da política de troca?",
+        "source_text_pt": "Esta loja é mais barata que a outra.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the return policy?"
+          "This store is cheaper than the other one."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "comparatives"
         ],
-        "pt": "Quando você precisa da política de troca?",
-        "ctx": "Contexto de compras e serviços (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the return policy?"
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "Esta loja é mais barata que a outra.",
+        "ctx": "Situação: compare options.",
+        "blank": "store",
+        "wrong": "This store is more cheap than the other one."
       },
       {
-        "template_id": "shopping_and_services_a2_subject_past_simple_object_time_05",
-        "family_id": "shopping_and_services_a2_subject_past_simple_object_time_4",
+        "template_id": "shopping_and_services_a2_sh2_plan_return",
+        "family_id": "shopping_and_services_a2_state_plan",
         "pack_id": "shopping_and_services_a2",
         "theme": "shopping_and_services",
         "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "present_perfect",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "present_perfect",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -16677,42 +16669,47 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_shoe_size"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the shoe size yesterday.",
+        "sentence": "I am going to return this item tomorrow.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o número do sapato ontem.",
+        "source_text_pt": "Vou devolver este item amanhã.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the shoe size yesterday."
+          "I am going to return this item tomorrow."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "accepted_variants_en": [
+          "I'm going to return this item tomorrow."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "present_perfect"
+          "future_going_to"
         ],
-        "pt": "Nós verificamos o número do sapato ontem.",
-        "ctx": "Contexto de compras e serviços (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the shoe size yesterday."
+        "communicative_intent": "state_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "return"
+        ],
+        "pt": "Vou devolver este item amanhã.",
+        "ctx": "Situação: state plan.",
+        "blank": "item",
+        "wrong": "I am going to returned this item tomorrow."
       },
       {
-        "template_id": "shopping_and_services_a2_subject_be_going_to_verb_time_06",
-        "family_id": "shopping_and_services_a2_subject_be_going_to_verb_time_5",
+        "template_id": "shopping_and_services_a2_sh2_ask_discount",
+        "family_id": "shopping_and_services_a2_ask_detail",
         "pack_id": "shopping_and_services_a2",
         "theme": "shopping_and_services",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
+        "pattern_id": "yes_no_do_question",
         "primary_skill_id": "question_auxiliary",
         "skill_ids": [
           "question_auxiliary",
@@ -16727,94 +16724,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_delivery"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They are going to review the delivery tomorrow.",
+        "sentence": "Does this store have a discount today?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar a entrega amanhã.",
+        "source_text_pt": "Esta loja tem desconto hoje?",
         "target_locale": "en",
         "expected_answers_en": [
-          "They are going to review the delivery tomorrow."
+          "Does this store have a discount today?"
         ],
-        "accepted_variants_en": [
-          "They're going to review the delivery tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "question_auxiliary"
         ],
-        "pt": "Eles vão revisar a entrega amanhã.",
-        "ctx": "Contexto de compras e serviços (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the delivery tomorrow."
+        "communicative_intent": "ask_detail",
+        "grammar_focus": "yes_no_question",
+        "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "have"
+        ],
+        "pt": "Esta loja tem desconto hoje?",
+        "ctx": "Situação: ask detail.",
+        "blank": "discount",
+        "wrong": "This store have a discount today?"
       },
       {
-        "template_id": "shopping_and_services_a2_subject_simple_present_object_07",
-        "family_id": "shopping_and_services_a2_subject_simple_present_object_0",
+        "template_id": "shopping_and_services_a2_sh2_lost_receipt",
+        "family_id": "shopping_and_services_a2_report_problem",
         "pack_id": "shopping_and_services_a2",
         "theme": "shopping_and_services",
         "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_pharmacy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the pharmacy every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a farmácia todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the pharmacy every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Nós verificamos a farmácia todos os dias.",
-        "ctx": "Contexto de compras e serviços (nível A2).",
-        "blank": "check",
-        "wrong": "We check the pharmacy every day."
-      },
-      {
-        "template_id": "shopping_and_services_a2_wh_do_subject_base_verb_08",
-        "family_id": "shopping_and_services_a2_wh_do_subject_base_verb_1",
-        "pack_id": "shopping_and_services_a2",
-        "theme": "shopping_and_services",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "subject_past_simple_object_time",
         "primary_skill_id": "past_simple",
         "skill_ids": [
           "past_simple",
@@ -16829,34 +16777,198 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_a2_bank_account"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the bank account?",
+        "sentence": "I lost my receipt yesterday.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa da conta bancária?",
+        "source_text_pt": "Perdi meu recibo ontem.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the bank account?"
+          "I lost my receipt yesterday."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Quando você precisa da conta bancária?",
-        "ctx": "Contexto de compras e serviços (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the bank account?"
+        "communicative_intent": "report_problem",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "lose"
+        ],
+        "pt": "Perdi meu recibo ontem.",
+        "ctx": "Situação: report problem.",
+        "blank": "receipt",
+        "wrong": "I lose my receipt yesterday."
+      },
+      {
+        "template_id": "shopping_and_services_a2_sh2_request_price",
+        "family_id": "shopping_and_services_a2_request_service",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Could you check the price for me?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você poderia checar o preço para mim?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Could you check the price for me?"
+        ],
+        "accepted_variants_en": [
+          "Can you check the price for me?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "request_service",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|could|aff|plain",
+        "lexical_verbs": [
+          "check"
+        ],
+        "pt": "Você poderia checar o preço para mim?",
+        "ctx": "Situação: request service.",
+        "blank": "price",
+        "wrong": "You could check the price for me?"
+      },
+      {
+        "template_id": "shopping_and_services_a2_sh2_habit_pay",
+        "family_id": "shopping_and_services_a2_talk_habit",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I usually pay with a card.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Costumo pagar com cartão.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I usually pay with a card."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "talk_habit",
+        "grammar_focus": "frequency_adverb",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "pay"
+        ],
+        "pt": "Costumo pagar com cartão.",
+        "ctx": "Situação: talk habit.",
+        "blank": "card",
+        "wrong": "I usually pays with a card."
+      },
+      {
+        "template_id": "shopping_and_services_a2_sh2_there_line",
+        "family_id": "shopping_and_services_a2_point_out",
+        "pack_id": "shopping_and_services_a2",
+        "theme": "shopping_and_services",
+        "level": "A2",
+        "pattern_id": "there_is_are",
+        "primary_skill_id": "there_is_are",
+        "skill_ids": [
+          "there_is_are",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "There is a long line at the store.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Tem uma fila longa na loja.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "There is a long line at the store."
+        ],
+        "accepted_variants_en": [
+          "There's a long line at the store."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "communicative_intent": "point_out",
+        "grammar_focus": "existential",
+        "pattern_signature": "statement|be|none|aff|existential",
+        "lexical_verbs": [],
+        "pt": "Tem uma fila longa na loja.",
+        "ctx": "Situação: point out.",
+        "blank": "line",
+        "wrong": "There a long line at the store."
       }
     ],
     "collocations": [
@@ -17154,8 +17266,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "shopping_and_services_b1_subject_have_past_participle_yet_01",
-        "family_id": "shopping_and_services_b1_subject_have_past_participle_yet_0",
+        "template_id": "shopping_and_services_b1_sh3_pp_paid",
+        "family_id": "shopping_and_services_b1_confirm_plan",
         "pack_id": "shopping_and_services_b1",
         "theme": "shopping_and_services",
         "level": "B1",
@@ -17174,41 +17286,96 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_receipt"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We have checked the receipt already.",
+        "sentence": "I have already paid for the item.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos o recibo.",
+        "source_text_pt": "Já paguei pelo item.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We have checked the receipt already."
+          "I have already paid for the item."
         ],
         "accepted_variants_en": [
-          "We've checked the receipt already."
+          "I've already paid for the item."
         ],
-        "explanation_pt": "Present perfect com already.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect"
         ],
-        "pt": "Nós já verificamos o recibo.",
-        "ctx": "Contexto de compras e serviços (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the receipt already."
+        "communicative_intent": "confirm_plan",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "pay"
+        ],
+        "pt": "Já paguei pelo item.",
+        "ctx": "Situação: confirm plan.",
+        "blank": "item",
+        "wrong": "I have already pay for the item."
       },
       {
-        "template_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_02",
-        "family_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_1",
+        "template_id": "shopping_and_services_b1_sh3_first_cond",
+        "family_id": "shopping_and_services_b1_plan_contingency",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "first_conditional",
+        "skill_ids": [
+          "first_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If the price is too high, I will ask for a discount.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se o preço estiver muito alto, vou pedir um desconto.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If the price is too high, I will ask for a discount."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "communicative_intent": "plan_contingency",
+        "grammar_focus": "first_conditional",
+        "pattern_signature": "conditional|will_future|none|aff|first_conditional",
+        "lexical_verbs": [
+          "ask"
+        ],
+        "pt": "Se o preço estiver muito alto, vou pedir um desconto.",
+        "ctx": "Situação: plan contingency.",
+        "blank": "discount",
+        "wrong": "If the price is too high, I ask for a discount."
+      },
+      {
+        "template_id": "shopping_and_services_b1_sh3_ppc_waiting",
+        "family_id": "shopping_and_services_b1_report_status",
         "pack_id": "shopping_and_services_b1",
         "theme": "shopping_and_services",
         "level": "B1",
@@ -17227,48 +17394,50 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_discount"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They have been reviewing the discount for two hours.",
+        "sentence": "I have been waiting in line for twenty minutes.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando o desconto há duas horas.",
+        "source_text_pt": "Estou esperando na fila há vinte minutos.",
         "target_locale": "en",
         "expected_answers_en": [
-          "They have been reviewing the discount for two hours."
+          "I have been waiting in line for twenty minutes."
         ],
         "accepted_variants_en": [
-          "They've been reviewing the discount for two hours."
+          "I've been waiting in line for twenty minutes."
         ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect_continuous"
         ],
-        "pt": "Eles estão revisando o desconto há duas horas.",
-        "ctx": "Contexto de compras e serviços (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the discount for two hours."
+        "communicative_intent": "report_status",
+        "grammar_focus": "present_perfect_continuous",
+        "pattern_signature": "statement|present_perfect_continuous|none|aff|plain",
+        "lexical_verbs": [
+          "wait"
+        ],
+        "pt": "Estou esperando na fila há vinte minutos.",
+        "ctx": "Situação: report status.",
+        "blank": "line",
+        "wrong": "I have been wait in line for twenty minutes."
       },
       {
-        "template_id": "shopping_and_services_b1_if_present_will_future_03",
-        "family_id": "shopping_and_services_b1_if_present_will_future_2",
+        "template_id": "shopping_and_services_b1_sh3_plan_exchange",
+        "family_id": "shopping_and_services_b1_describe_plan",
         "pack_id": "shopping_and_services_b1",
         "theme": "shopping_and_services",
         "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "gerund_after_been",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "gerund_after_been",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -17280,41 +17449,200 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_cashier"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If we confirm the cashier, we will start tomorrow.",
+        "sentence": "I am going to exchange this shirt tomorrow.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos o caixa, vamos começar amanhã.",
+        "source_text_pt": "Vou trocar esta camisa amanhã.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If we confirm the cashier, we will start tomorrow."
+          "I am going to exchange this shirt tomorrow."
         ],
         "accepted_variants_en": [
-          "If we confirm the cashier, we'll start tomorrow."
+          "I'm going to exchange this shirt tomorrow."
         ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "gerund_after_been"
+          "future_going_to"
         ],
-        "pt": "Se confirmarmos o caixa, vamos começar amanhã.",
-        "ctx": "Contexto de compras e serviços (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the cashier, we will start tomorrow."
+        "communicative_intent": "describe_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "exchange"
+        ],
+        "pt": "Vou trocar esta camisa amanhã.",
+        "ctx": "Situação: describe plan.",
+        "blank": "shirt",
+        "wrong": "I am going to exchanged this shirt tomorrow."
       },
       {
-        "template_id": "shopping_and_services_b1_subject_modal_base_verb_04",
-        "family_id": "shopping_and_services_b1_subject_modal_base_verb_3",
+        "template_id": "shopping_and_services_b1_sh3_pp_question",
+        "family_id": "shopping_and_services_b1_ask_experience",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Have you ever asked for a refund?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você já pediu um reembolso?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Have you ever asked for a refund?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "ask_experience",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "yesno_question|present_simple|none|aff|reported",
+        "lexical_verbs": [
+          "ask"
+        ],
+        "pt": "Você já pediu um reembolso?",
+        "ctx": "Situação: ask experience.",
+        "blank": "refund",
+        "wrong": "Have you ever ask for a refund?"
+      },
+      {
+        "template_id": "shopping_and_services_b1_sh3_advice",
+        "family_id": "shopping_and_services_b1_give_advice",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "You should keep the receipt.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você deveria guardar o recibo.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "You should keep the receipt."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "give_advice",
+        "grammar_focus": "modal_advice",
+        "pattern_signature": "statement|present_simple|should|aff|plain",
+        "lexical_verbs": [
+          "keep"
+        ],
+        "pt": "Você deveria guardar o recibo.",
+        "ctx": "Situação: give advice.",
+        "blank": "receipt",
+        "wrong": "You should keeps the receipt."
+      },
+      {
+        "template_id": "shopping_and_services_b1_sh3_compare_size",
+        "family_id": "shopping_and_services_b1_compare_options",
+        "pack_id": "shopping_and_services_b1",
+        "theme": "shopping_and_services",
+        "level": "B1",
+        "pattern_id": "comparative_than",
+        "primary_skill_id": "comparatives",
+        "skill_ids": [
+          "comparatives",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "This size is better than the other one.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Este tamanho é melhor que o outro.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "This size is better than the other one."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "Este tamanho é melhor que o outro.",
+        "ctx": "Situação: compare options.",
+        "blank": "size",
+        "wrong": "This size is more good than the other one."
+      },
+      {
+        "template_id": "shopping_and_services_b1_sh3_preference",
+        "family_id": "shopping_and_services_b1_state_preference",
         "pack_id": "shopping_and_services_b1",
         "theme": "shopping_and_services",
         "level": "B1",
@@ -17333,245 +17661,39 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_return_policy"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the return policy today.",
+        "sentence": "I would rather pay with cash.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a política de troca hoje.",
+        "source_text_pt": "Eu preferiria pagar em dinheiro.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the return policy today."
+          "I would rather pay with cash."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "accepted_variants_en": [
+          "I'd rather pay with cash."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "first_conditional"
         ],
-        "pt": "Eu posso atualizar a política de troca hoje.",
-        "ctx": "Contexto de compras e serviços (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the return policy today."
-      },
-      {
-        "template_id": "shopping_and_services_b1_subject_have_past_participle_yet_05",
-        "family_id": "shopping_and_services_b1_subject_have_past_participle_yet_4",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
+        "communicative_intent": "state_preference",
+        "grammar_focus": "would_preference",
+        "pattern_signature": "statement|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "pay"
         ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_shoe_size"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the shoe size already.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos o número do sapato.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We have checked the shoe size already."
-        ],
-        "accepted_variants_en": [
-          "We've checked the shoe size already."
-        ],
-        "explanation_pt": "Present perfect com already.",
-        "skill_targets": [
-          "question_auxiliary"
-        ],
-        "pt": "Nós já verificamos o número do sapato.",
-        "ctx": "Contexto de compras e serviços (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the shoe size already."
-      },
-      {
-        "template_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_06",
-        "family_id": "shopping_and_services_b1_subject_have_been_ving_object_duration_5",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_delivery"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the delivery for two hours.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando a entrega há duas horas.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They have been reviewing the delivery for two hours."
-        ],
-        "accepted_variants_en": [
-          "They've been reviewing the delivery for two hours."
-        ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
-        "skill_targets": [
-          "collocation"
-        ],
-        "pt": "Eles estão revisando a entrega há duas horas.",
-        "ctx": "Contexto de compras e serviços (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the delivery for two hours."
-      },
-      {
-        "template_id": "shopping_and_services_b1_if_present_will_future_07",
-        "family_id": "shopping_and_services_b1_if_present_will_future_0",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "preposition",
-        "skill_ids": [
-          "preposition",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_pharmacy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the pharmacy, we will start tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos a farmácia, vamos começar amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If we confirm the pharmacy, we will start tomorrow."
-        ],
-        "accepted_variants_en": [
-          "If we confirm the pharmacy, we'll start tomorrow."
-        ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
-        "skill_targets": [
-          "preposition"
-        ],
-        "pt": "Se confirmarmos a farmácia, vamos começar amanhã.",
-        "ctx": "Contexto de compras e serviços (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the pharmacy, we will start tomorrow."
-      },
-      {
-        "template_id": "shopping_and_services_b1_subject_modal_base_verb_08",
-        "family_id": "shopping_and_services_b1_subject_modal_base_verb_1",
-        "pack_id": "shopping_and_services_b1",
-        "theme": "shopping_and_services",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b1_bank_account"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the bank account today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a conta bancária hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the bank account today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "present_perfect"
-        ],
-        "pt": "Eu posso atualizar a conta bancária hoje.",
-        "ctx": "Contexto de compras e serviços (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the bank account today."
+        "pt": "Eu preferiria pagar em dinheiro.",
+        "ctx": "Situação: state preference.",
+        "blank": "cash",
+        "wrong": "I would rather paid with cash."
       }
     ],
     "collocations": [
@@ -17869,8 +17991,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "shopping_and_services_b2_passive_be_past_participle_01",
-        "family_id": "shopping_and_services_b2_passive_be_past_participle_0",
+        "template_id": "shopping_and_services_b2_sh4_passive",
+        "family_id": "shopping_and_services_b2_report_status",
         "pack_id": "shopping_and_services_b2",
         "theme": "shopping_and_services",
         "level": "B2",
@@ -17889,40 +18011,41 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_receipt"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The receipt was reviewed by the team.",
+        "sentence": "The item was returned yesterday.",
         "source_locale": "pt-BR",
-        "source_text_pt": "O recibo foi revisado pela equipe.",
+        "source_text_pt": "O item foi devolvido ontem.",
         "target_locale": "en",
         "expected_answers_en": [
-          "The receipt was reviewed by the team."
+          "The item was returned yesterday."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "passive_voice"
         ],
-        "pt": "O recibo foi revisado pela equipe.",
-        "ctx": "Contexto de compras e serviços (nível B2).",
-        "blank": "receipt",
-        "wrong": "The receipt reviewed by the team."
+        "communicative_intent": "report_status",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "return"
+        ],
+        "pt": "O item foi devolvido ontem.",
+        "ctx": "Situação: report status.",
+        "blank": "item",
+        "wrong": "The item was return yesterday."
       },
       {
-        "template_id": "shopping_and_services_b2_reported_speech_statement_02",
-        "family_id": "shopping_and_services_b2_reported_speech_statement_1",
+        "template_id": "shopping_and_services_b2_sh4_reported",
+        "family_id": "shopping_and_services_b2_report_information",
         "pack_id": "shopping_and_services_b2",
         "theme": "shopping_and_services",
         "level": "B2",
@@ -17941,40 +18064,41 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_discount"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "She said that the discount was ready.",
+        "sentence": "The cashier said that the discount had ended.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que o desconto estava pronto.",
+        "source_text_pt": "O caixa disse que o desconto tinha acabado.",
         "target_locale": "en",
         "expected_answers_en": [
-          "She said that the discount was ready."
+          "The cashier said that the discount had ended."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "reported_speech"
         ],
-        "pt": "Ela disse que o desconto estava pronto.",
-        "ctx": "Contexto de compras e serviços (nível B2).",
-        "blank": "said",
-        "wrong": "She said the discount was ready."
+        "communicative_intent": "report_information",
+        "grammar_focus": "reported_speech",
+        "pattern_signature": "statement|past_simple|none|aff|reported",
+        "lexical_verbs": [
+          "say"
+        ],
+        "pt": "O caixa disse que o desconto tinha acabado.",
+        "ctx": "Situação: report information.",
+        "blank": "discount",
+        "wrong": "The cashier said that the discount ended."
       },
       {
-        "template_id": "shopping_and_services_b2_second_conditional_03",
-        "family_id": "shopping_and_services_b2_second_conditional_2",
+        "template_id": "shopping_and_services_b2_sh4_second_cond",
+        "family_id": "shopping_and_services_b2_hypothesize",
         "pack_id": "shopping_and_services_b2",
         "theme": "shopping_and_services",
         "level": "B2",
@@ -17993,42 +18117,202 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_cashier"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If I had more time, I would improve the cashier.",
+        "sentence": "If the store had my size, I would buy the shoes.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o caixa.",
+        "source_text_pt": "Se a loja tivesse meu tamanho, eu compraria os sapatos.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If I had more time, I would improve the cashier."
+          "If the store had my size, I would buy the shoes."
         ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the cashier."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "second_conditional"
         ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria o caixa.",
-        "ctx": "Contexto de compras e serviços (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the cashier."
+        "communicative_intent": "hypothesize",
+        "grammar_focus": "second_conditional",
+        "pattern_signature": "conditional|present_simple|would|aff|second_conditional",
+        "lexical_verbs": [
+          "buy"
+        ],
+        "pt": "Se a loja tivesse meu tamanho, eu compraria os sapatos.",
+        "ctx": "Situação: hypothesize.",
+        "blank": "shoes",
+        "wrong": "If the store had my size, I will buy the shoes."
       },
       {
-        "template_id": "shopping_and_services_b2_subject_modal_base_verb_04",
-        "family_id": "shopping_and_services_b2_subject_modal_base_verb_3",
+        "template_id": "shopping_and_services_b2_sh4_diplomatic",
+        "family_id": "shopping_and_services_b2_request_politely",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "modal_deduction",
+        "skill_ids": [
+          "modal_deduction",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Would you mind checking the price again?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você se importaria de checar o preço de novo?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Would you mind checking the price again?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "communicative_intent": "request_politely",
+        "grammar_focus": "diplomatic_request",
+        "pattern_signature": "yesno_question|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "check"
+        ],
+        "pt": "Você se importaria de checar o preço de novo?",
+        "ctx": "Situação: request politely.",
+        "blank": "price",
+        "wrong": "Would you mind check the price again?"
+      },
+      {
+        "template_id": "shopping_and_services_b2_sh4_pp_just",
+        "family_id": "shopping_and_services_b2_report_status_paid",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have just paid for the delivery.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Acabamos de pagar pela entrega.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have just paid for the delivery."
+        ],
+        "accepted_variants_en": [
+          "We've just paid for the delivery."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "report_status_paid",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_perfect|none|aff|plain",
+        "lexical_verbs": [
+          "pay"
+        ],
+        "pt": "Acabamos de pagar pela entrega.",
+        "ctx": "Situação: report status paid.",
+        "blank": "delivery",
+        "wrong": "We have just pay for the delivery."
+      },
+      {
+        "template_id": "shopping_and_services_b2_sh4_passive2",
+        "family_id": "shopping_and_services_b2_report_lost",
+        "pack_id": "shopping_and_services_b2",
+        "theme": "shopping_and_services",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The receipt was lost during the delivery.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O recibo foi perdido durante a entrega.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The receipt was lost during the delivery."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "communicative_intent": "report_lost",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "lose"
+        ],
+        "pt": "O recibo foi perdido durante a entrega.",
+        "ctx": "Situação: report lost.",
+        "blank": "receipt",
+        "wrong": "The receipt was lose during the delivery."
+      },
+      {
+        "template_id": "shopping_and_services_b2_sh4_deduction",
+        "family_id": "shopping_and_services_b2_make_deduction",
         "pack_id": "shopping_and_services_b2",
         "theme": "shopping_and_services",
         "level": "B2",
@@ -18047,47 +18331,48 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_return_policy"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the return policy today.",
+        "sentence": "The cashier must have forgotten the discount.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a política de troca hoje.",
+        "source_text_pt": "O caixa deve ter esquecido o desconto.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the return policy today."
+          "The cashier must have forgotten the discount."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "modal_deduction"
         ],
-        "pt": "Eu posso atualizar a política de troca hoje.",
-        "ctx": "Contexto de compras e serviços (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the return policy today."
+        "communicative_intent": "make_deduction",
+        "grammar_focus": "modal_deduction",
+        "pattern_signature": "statement|present_perfect|must|aff|plain",
+        "lexical_verbs": [
+          "forget"
+        ],
+        "pt": "O caixa deve ter esquecido o desconto.",
+        "ctx": "Situação: make deduction.",
+        "blank": "discount",
+        "wrong": "The cashier must has forgotten the discount."
       },
       {
-        "template_id": "shopping_and_services_b2_passive_be_past_participle_05",
-        "family_id": "shopping_and_services_b2_passive_be_past_participle_4",
+        "template_id": "shopping_and_services_b2_sh4_contrast",
+        "family_id": "shopping_and_services_b2_describe_experience",
         "pack_id": "shopping_and_services_b2",
         "theme": "shopping_and_services",
         "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "collocation",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "verb_to_be",
         "skill_ids": [
-          "collocation",
+          "verb_to_be",
           "vocabulary"
         ],
         "exercise_types": [
@@ -18099,194 +18384,35 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_shoe_size"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The shoe size was reviewed by the team.",
+        "sentence": "The store was crowded, but the service was fast.",
         "source_locale": "pt-BR",
-        "source_text_pt": "O número do sapato foi revisado pela equipe.",
+        "source_text_pt": "A loja estava lotada, mas o atendimento foi rápido.",
         "target_locale": "en",
         "expected_answers_en": [
-          "The shoe size was reviewed by the team."
+          "The store was crowded, but the service was fast."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "collocation"
+          "verb_to_be"
         ],
-        "pt": "O número do sapato foi revisado pela equipe.",
-        "ctx": "Contexto de compras e serviços (nível B2).",
-        "blank": "shoe",
-        "wrong": "The shoe size reviewed by the team."
-      },
-      {
-        "template_id": "shopping_and_services_b2_reported_speech_statement_06",
-        "family_id": "shopping_and_services_b2_reported_speech_statement_5",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "word_order",
-        "skill_ids": [
-          "word_order",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_delivery"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the delivery was ready.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que a entrega estava pronta.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "She said that the delivery was ready."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
-        "skill_targets": [
-          "word_order"
-        ],
-        "pt": "Ela disse que a entrega estava pronta.",
-        "ctx": "Contexto de compras e serviços (nível B2).",
-        "blank": "said",
-        "wrong": "She said the delivery was ready."
-      },
-      {
-        "template_id": "shopping_and_services_b2_second_conditional_07",
-        "family_id": "shopping_and_services_b2_second_conditional_0",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_pharmacy"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the pharmacy.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a farmácia.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If I had more time, I would improve the pharmacy."
-        ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the pharmacy."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria a farmácia.",
-        "ctx": "Contexto de compras e serviços (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the pharmacy."
-      },
-      {
-        "template_id": "shopping_and_services_b2_subject_modal_base_verb_08",
-        "family_id": "shopping_and_services_b2_subject_modal_base_verb_1",
-        "pack_id": "shopping_and_services_b2",
-        "theme": "shopping_and_services",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "shopping_and_services_b2_bank_account"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the bank account today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a conta bancária hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the bank account today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "passive_voice"
-        ],
-        "pt": "Eu posso atualizar a conta bancária hoje.",
-        "ctx": "Contexto de compras e serviços (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the bank account today."
+        "communicative_intent": "describe_experience",
+        "grammar_focus": "past_contrast",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "A loja estava lotada, mas o atendimento foi rápido.",
+        "ctx": "Situação: describe experience.",
+        "blank": "store",
+        "wrong": "The store crowded, but the service was fast."
       }
     ],
     "collocations": [
@@ -18584,262 +18710,12 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "technology_and_communication_a1_subject_be_complement_01",
-        "family_id": "technology_and_communication_a1_subject_be_complement_0",
+        "template_id": "technology_and_communication_a1_tc1_ask_phone",
+        "family_id": "technology_and_communication_a1_ask_location",
         "pack_id": "technology_and_communication_a1",
         "theme": "technology_and_communication",
         "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "verb_to_be",
-        "skill_ids": [
-          "verb_to_be",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_password"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The password is important.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "A senha é importante.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The password is important."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-        "skill_targets": [
-          "verb_to_be"
-        ],
-        "pt": "A senha é importante.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-        "blank": "password",
-        "wrong": "The password is important."
-      },
-      {
-        "template_id": "technology_and_communication_a1_subject_simple_present_object_02",
-        "family_id": "technology_and_communication_a1_subject_simple_present_object_1",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "simple_present",
-        "skill_ids": [
-          "simple_present",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_message"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the message every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a mensagem todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the message every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "simple_present"
-        ],
-        "pt": "Nós verificamos a mensagem todos os dias.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-        "blank": "check",
-        "wrong": "We check the message every day."
-      },
-      {
-        "template_id": "technology_and_communication_a1_wh_do_subject_base_verb_03",
-        "family_id": "technology_and_communication_a1_wh_do_subject_base_verb_2",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "there_is_are",
-        "skill_ids": [
-          "there_is_are",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_video_call"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "When do you need the video call?",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa da chamada de vídeo?",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "When do you need the video call?"
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
-        "skill_targets": [
-          "there_is_are"
-        ],
-        "pt": "Quando você precisa da chamada de vídeo?",
-        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the video call?"
-      },
-      {
-        "template_id": "technology_and_communication_a1_subject_modal_base_verb_04",
-        "family_id": "technology_and_communication_a1_subject_modal_base_verb_3",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "can_ability",
-        "skill_ids": [
-          "can_ability",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_laptop"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the laptop today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o notebook hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the laptop today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "can_ability"
-        ],
-        "pt": "Eu posso atualizar o notebook hoje.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the laptop today."
-      },
-      {
-        "template_id": "technology_and_communication_a1_subject_be_complement_05",
-        "family_id": "technology_and_communication_a1_subject_be_complement_4",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "subject_be_complement",
-        "primary_skill_id": "can_request",
-        "skill_ids": [
-          "can_request",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_app_update"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The app update is important.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "A atualização do aplicativo é importante.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The app update is important."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-        "skill_targets": [
-          "can_request"
-        ],
-        "pt": "A atualização do aplicativo é importante.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-        "blank": "app",
-        "wrong": "The app update is important."
-      },
-      {
-        "template_id": "technology_and_communication_a1_subject_simple_present_object_06",
-        "family_id": "technology_and_communication_a1_subject_simple_present_object_5",
-        "pack_id": "technology_and_communication_a1",
-        "theme": "technology_and_communication",
-        "level": "A1",
-        "pattern_id": "subject_simple_present_object",
+        "pattern_id": "wh_be_question",
         "primary_skill_id": "question_structure",
         "skill_ids": [
           "question_structure",
@@ -18854,45 +18730,46 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_wifi_network"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We check the wifi network every day.",
+        "sentence": "Where is my phone?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a rede wi-fi todos os dias.",
+        "source_text_pt": "Onde está meu celular?",
         "target_locale": "en",
         "expected_answers_en": [
-          "We check the wifi network every day."
+          "Where is my phone?"
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
+        "explanation_pt": "Pergunta com Where + verbo to be.",
         "skill_targets": [
           "question_structure"
         ],
-        "pt": "Nós verificamos a rede wi-fi todos os dias.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-        "blank": "check",
-        "wrong": "We check the wifi network every day."
+        "communicative_intent": "ask_location",
+        "grammar_focus": "wh_question_be",
+        "pattern_signature": "wh_question|be|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "Onde está meu celular?",
+        "ctx": "Situação: ask location.",
+        "blank": "phone",
+        "wrong": "Where my phone is?"
       },
       {
-        "template_id": "technology_and_communication_a1_wh_do_subject_base_verb_07",
-        "family_id": "technology_and_communication_a1_wh_do_subject_base_verb_0",
+        "template_id": "technology_and_communication_a1_tc1_update_app",
+        "family_id": "technology_and_communication_a1_state_intention",
         "pack_id": "technology_and_communication_a1",
         "theme": "technology_and_communication",
         "level": "A1",
-        "pattern_id": "wh_do_subject_base_verb",
-        "primary_skill_id": "vocabulary",
+        "pattern_id": "subject_want_to_verb",
+        "primary_skill_id": "simple_present",
         "skill_ids": [
-          "vocabulary",
+          "simple_present",
           "vocabulary"
         ],
         "exercise_types": [
@@ -18904,42 +18781,155 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_email"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the email?",
+        "sentence": "I want to update the app.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa do e-mail?",
+        "source_text_pt": "Quero atualizar o aplicativo.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the email?"
+          "I want to update the app."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "accepted_variants_en": [
+          "I'd like to update the app."
+        ],
+        "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
         "skill_targets": [
-          "vocabulary"
+          "simple_present"
         ],
-        "pt": "Quando você precisa do e-mail?",
-        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-        "blank": "do",
-        "wrong": "When you do need the email?"
+        "communicative_intent": "state_intention",
+        "grammar_focus": "want_to_infinitive",
+        "pattern_signature": "statement|present_simple|want_to|aff|plain",
+        "lexical_verbs": [
+          "update"
+        ],
+        "pt": "Quero atualizar o aplicativo.",
+        "ctx": "Situação: state intention.",
+        "blank": "app",
+        "wrong": "I want update the app."
       },
       {
-        "template_id": "technology_and_communication_a1_subject_modal_base_verb_08",
-        "family_id": "technology_and_communication_a1_subject_modal_base_verb_1",
+        "template_id": "technology_and_communication_a1_tc1_ask_call_time",
+        "family_id": "technology_and_communication_a1_ask_time",
         "pack_id": "technology_and_communication_a1",
         "theme": "technology_and_communication",
         "level": "A1",
-        "pattern_id": "subject_modal_base_verb",
+        "pattern_id": "wh_do_subject_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "What time does the video call start?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Que horas a videochamada começa?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "What time does the video call start?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pergunta no presente com o auxiliar do/does.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "ask_time",
+        "grammar_focus": "wh_question_do",
+        "pattern_signature": "wh_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "start"
+        ],
+        "pt": "Que horas a videochamada começa?",
+        "ctx": "Situação: ask time.",
+        "blank": "call",
+        "wrong": "What time the video call start?"
+      },
+      {
+        "template_id": "technology_and_communication_a1_tc1_request_password",
+        "family_id": "technology_and_communication_a1_request_help",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Can you help me with the password?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você pode me ajudar com a senha?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Can you help me with the password?"
+        ],
+        "accepted_variants_en": [
+          "Could you help me with the password?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "request_help",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|can|aff|plain",
+        "lexical_verbs": [
+          "help"
+        ],
+        "pt": "Você pode me ajudar com a senha?",
+        "ctx": "Situação: request help.",
+        "blank": "password",
+        "wrong": "You can help me with the password?"
+      },
+      {
+        "template_id": "technology_and_communication_a1_tc1_describe_battery",
+        "family_id": "technology_and_communication_a1_describe_state",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "subject_be_complement",
         "primary_skill_id": "verb_to_be",
         "skill_ids": [
           "verb_to_be",
@@ -18954,34 +18944,198 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a1_cloud_file"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the cloud file today.",
+        "sentence": "My phone battery is very low.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o arquivo na nuvem hoje.",
+        "source_text_pt": "A bateria do meu celular está muito baixa.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the cloud file today."
+          "My phone battery is very low."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "explanation_pt": "Verbo to be para descrever algo.",
         "skill_targets": [
           "verb_to_be"
         ],
-        "pt": "Eu posso atualizar o arquivo na nuvem hoje.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-        "blank": "can",
-        "wrong": "I cans update the cloud file today."
+        "communicative_intent": "describe_state",
+        "grammar_focus": "be_complement",
+        "pattern_signature": "statement|be|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "A bateria do meu celular está muito baixa.",
+        "ctx": "Situação: describe state.",
+        "blank": "battery",
+        "wrong": "My phone battery very low."
+      },
+      {
+        "template_id": "technology_and_communication_a1_tc1_send_message",
+        "family_id": "technology_and_communication_a1_state_intention_message",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "subject_want_to_verb",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I want to send an email now.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Quero enviar um e-mail agora.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I want to send an email now."
+        ],
+        "accepted_variants_en": [
+          "I'd like to send an email now."
+        ],
+        "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "state_intention_message",
+        "grammar_focus": "want_to_infinitive",
+        "pattern_signature": "statement|present_simple|want_to|aff|plain",
+        "lexical_verbs": [
+          "send"
+        ],
+        "pt": "Quero enviar um e-mail agora.",
+        "ctx": "Situação: state intention message.",
+        "blank": "email",
+        "wrong": "I want send an email now."
+      },
+      {
+        "template_id": "technology_and_communication_a1_tc1_charging",
+        "family_id": "technology_and_communication_a1_describe_activity",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "subject_present_continuous",
+        "primary_skill_id": "present_continuous",
+        "skill_ids": [
+          "present_continuous",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I am charging my phone now.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Estou carregando meu celular agora.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I am charging my phone now."
+        ],
+        "accepted_variants_en": [
+          "I'm charging my phone now."
+        ],
+        "explanation_pt": "Presente contínuo (am/is/are + -ing).",
+        "skill_targets": [
+          "present_continuous"
+        ],
+        "communicative_intent": "describe_activity",
+        "grammar_focus": "present_continuous",
+        "pattern_signature": "statement|present_continuous|none|aff|plain",
+        "lexical_verbs": [
+          "charge"
+        ],
+        "pt": "Estou carregando meu celular agora.",
+        "ctx": "Situação: describe activity.",
+        "blank": "phone",
+        "wrong": "I charging my phone now."
+      },
+      {
+        "template_id": "technology_and_communication_a1_tc1_check_signal",
+        "family_id": "technology_and_communication_a1_ask_action",
+        "pack_id": "technology_and_communication_a1",
+        "theme": "technology_and_communication",
+        "level": "A1",
+        "pattern_id": "imperative_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Please check the wifi signal.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Por favor, verifique o sinal do wifi.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Please check the wifi signal."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Pedido no imperativo com please.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "ask_action",
+        "grammar_focus": "imperative_request",
+        "pattern_signature": "imperative|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "check"
+        ],
+        "pt": "Por favor, verifique o sinal do wifi.",
+        "ctx": "Situação: ask action.",
+        "blank": "signal",
+        "wrong": "Please checks the wifi signal."
       }
     ],
     "collocations": [
@@ -19279,8 +19433,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "technology_and_communication_a2_subject_past_simple_object_time_01",
-        "family_id": "technology_and_communication_a2_subject_past_simple_object_time_0",
+        "template_id": "technology_and_communication_a2_tc2_call_late",
+        "family_id": "technology_and_communication_a2_report_delay",
         "pack_id": "technology_and_communication_a2",
         "theme": "technology_and_communication",
         "level": "A2",
@@ -19299,144 +19453,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_password"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the password yesterday.",
+        "sentence": "The video call started late today.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a senha ontem.",
+        "source_text_pt": "A videochamada começou atrasada hoje.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the password yesterday."
+          "The video call started late today."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Nós verificamos a senha ontem.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the password yesterday."
+        "communicative_intent": "report_delay",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "start"
+        ],
+        "pt": "A videochamada começou atrasada hoje.",
+        "ctx": "Situação: report delay.",
+        "blank": "call",
+        "wrong": "The video call start late today."
       },
       {
-        "template_id": "technology_and_communication_a2_subject_be_going_to_verb_time_02",
-        "family_id": "technology_and_communication_a2_subject_be_going_to_verb_time_1",
+        "template_id": "technology_and_communication_a2_tc2_compare_phone",
+        "family_id": "technology_and_communication_a2_compare_options",
         "pack_id": "technology_and_communication_a2",
         "theme": "technology_and_communication",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "present_continuous",
-        "skill_ids": [
-          "present_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_message"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the message tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar a mensagem amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They are going to review the message tomorrow."
-        ],
-        "accepted_variants_en": [
-          "They're going to review the message tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
-        "skill_targets": [
-          "present_continuous"
-        ],
-        "pt": "Eles vão revisar a mensagem amanhã.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the message tomorrow."
-      },
-      {
-        "template_id": "technology_and_communication_a2_subject_simple_present_object_03",
-        "family_id": "technology_and_communication_a2_subject_simple_present_object_2",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "future_going_to",
-        "skill_ids": [
-          "future_going_to",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_video_call"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the video call every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a chamada de vídeo todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the video call every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "future_going_to"
-        ],
-        "pt": "Nós verificamos a chamada de vídeo todos os dias.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-        "blank": "check",
-        "wrong": "We check the video call every day."
-      },
-      {
-        "template_id": "technology_and_communication_a2_wh_do_subject_base_verb_04",
-        "family_id": "technology_and_communication_a2_wh_do_subject_base_verb_3",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "comparative_than",
         "primary_skill_id": "comparatives",
         "skill_ids": [
           "comparatives",
@@ -19451,45 +19506,46 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_laptop"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the laptop?",
+        "sentence": "This phone is faster than my old one.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa do notebook?",
+        "source_text_pt": "Este celular é mais rápido que o antigo.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the laptop?"
+          "This phone is faster than my old one."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "comparatives"
         ],
-        "pt": "Quando você precisa do notebook?",
-        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the laptop?"
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "Este celular é mais rápido que o antigo.",
+        "ctx": "Situação: compare options.",
+        "blank": "phone",
+        "wrong": "This phone is more fast than my old one."
       },
       {
-        "template_id": "technology_and_communication_a2_subject_past_simple_object_time_05",
-        "family_id": "technology_and_communication_a2_subject_past_simple_object_time_4",
+        "template_id": "technology_and_communication_a2_tc2_plan_update",
+        "family_id": "technology_and_communication_a2_state_plan",
         "pack_id": "technology_and_communication_a2",
         "theme": "technology_and_communication",
         "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "present_perfect",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "present_perfect",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -19501,42 +19557,47 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_app_update"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the app update yesterday.",
+        "sentence": "I am going to update the app tomorrow.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a atualização do aplicativo ontem.",
+        "source_text_pt": "Vou atualizar o aplicativo amanhã.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the app update yesterday."
+          "I am going to update the app tomorrow."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "accepted_variants_en": [
+          "I'm going to update the app tomorrow."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "present_perfect"
+          "future_going_to"
         ],
-        "pt": "Nós verificamos a atualização do aplicativo ontem.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the app update yesterday."
+        "communicative_intent": "state_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "update"
+        ],
+        "pt": "Vou atualizar o aplicativo amanhã.",
+        "ctx": "Situação: state plan.",
+        "blank": "app",
+        "wrong": "I am going to updated the app tomorrow."
       },
       {
-        "template_id": "technology_and_communication_a2_subject_be_going_to_verb_time_06",
-        "family_id": "technology_and_communication_a2_subject_be_going_to_verb_time_5",
+        "template_id": "technology_and_communication_a2_tc2_ask_battery",
+        "family_id": "technology_and_communication_a2_ask_detail",
         "pack_id": "technology_and_communication_a2",
         "theme": "technology_and_communication",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
+        "pattern_id": "yes_no_do_question",
         "primary_skill_id": "question_auxiliary",
         "skill_ids": [
           "question_auxiliary",
@@ -19551,94 +19612,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_wifi_network"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They are going to review the wifi network tomorrow.",
+        "sentence": "Does this laptop have a good battery?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar a rede wi-fi amanhã.",
+        "source_text_pt": "Este notebook tem uma boa bateria?",
         "target_locale": "en",
         "expected_answers_en": [
-          "They are going to review the wifi network tomorrow."
+          "Does this laptop have a good battery?"
         ],
-        "accepted_variants_en": [
-          "They're going to review the wifi network tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "question_auxiliary"
         ],
-        "pt": "Eles vão revisar a rede wi-fi amanhã.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the wifi network tomorrow."
+        "communicative_intent": "ask_detail",
+        "grammar_focus": "yes_no_question",
+        "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "have"
+        ],
+        "pt": "Este notebook tem uma boa bateria?",
+        "ctx": "Situação: ask detail.",
+        "blank": "battery",
+        "wrong": "This laptop have a good battery?"
       },
       {
-        "template_id": "technology_and_communication_a2_subject_simple_present_object_07",
-        "family_id": "technology_and_communication_a2_subject_simple_present_object_0",
+        "template_id": "technology_and_communication_a2_tc2_forgot_password",
+        "family_id": "technology_and_communication_a2_report_problem",
         "pack_id": "technology_and_communication_a2",
         "theme": "technology_and_communication",
         "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_email"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the email every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o e-mail todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the email every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Nós verificamos o e-mail todos os dias.",
-        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-        "blank": "check",
-        "wrong": "We check the email every day."
-      },
-      {
-        "template_id": "technology_and_communication_a2_wh_do_subject_base_verb_08",
-        "family_id": "technology_and_communication_a2_wh_do_subject_base_verb_1",
-        "pack_id": "technology_and_communication_a2",
-        "theme": "technology_and_communication",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "subject_past_simple_object_time",
         "primary_skill_id": "past_simple",
         "skill_ids": [
           "past_simple",
@@ -19653,34 +19665,198 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_a2_cloud_file"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the cloud file?",
+        "sentence": "I forgot my password yesterday.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa do arquivo na nuvem?",
+        "source_text_pt": "Esqueci minha senha ontem.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the cloud file?"
+          "I forgot my password yesterday."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Quando você precisa do arquivo na nuvem?",
-        "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the cloud file?"
+        "communicative_intent": "report_problem",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "forget"
+        ],
+        "pt": "Esqueci minha senha ontem.",
+        "ctx": "Situação: report problem.",
+        "blank": "password",
+        "wrong": "I forget my password yesterday."
+      },
+      {
+        "template_id": "technology_and_communication_a2_tc2_request_signal",
+        "family_id": "technology_and_communication_a2_request_service",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Could you check the signal for me?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você poderia verificar o sinal para mim?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Could you check the signal for me?"
+        ],
+        "accepted_variants_en": [
+          "Can you check the signal for me?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "request_service",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|could|aff|plain",
+        "lexical_verbs": [
+          "check"
+        ],
+        "pt": "Você poderia verificar o sinal para mim?",
+        "ctx": "Situação: request service.",
+        "blank": "signal",
+        "wrong": "You could check the signal for me?"
+      },
+      {
+        "template_id": "technology_and_communication_a2_tc2_habit_charge",
+        "family_id": "technology_and_communication_a2_talk_habit",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I usually charge my phone at night.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Costumo carregar meu celular à noite.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I usually charge my phone at night."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "talk_habit",
+        "grammar_focus": "frequency_adverb",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "charge"
+        ],
+        "pt": "Costumo carregar meu celular à noite.",
+        "ctx": "Situação: talk habit.",
+        "blank": "phone",
+        "wrong": "I usually charges my phone at night."
+      },
+      {
+        "template_id": "technology_and_communication_a2_tc2_there_signal",
+        "family_id": "technology_and_communication_a2_point_out",
+        "pack_id": "technology_and_communication_a2",
+        "theme": "technology_and_communication",
+        "level": "A2",
+        "pattern_id": "there_is_are",
+        "primary_skill_id": "there_is_are",
+        "skill_ids": [
+          "there_is_are",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "There is a signal problem today.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Tem um problema de sinal hoje.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "There is a signal problem today."
+        ],
+        "accepted_variants_en": [
+          "There's a signal problem today."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "communicative_intent": "point_out",
+        "grammar_focus": "existential",
+        "pattern_signature": "statement|be|none|aff|existential",
+        "lexical_verbs": [],
+        "pt": "Tem um problema de sinal hoje.",
+        "ctx": "Situação: point out.",
+        "blank": "signal",
+        "wrong": "There a signal problem today."
       }
     ],
     "collocations": [
@@ -19978,8 +20154,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "technology_and_communication_b1_subject_have_past_participle_yet_01",
-        "family_id": "technology_and_communication_b1_subject_have_past_participle_yet_0",
+        "template_id": "technology_and_communication_b1_tc3_pp_updated",
+        "family_id": "technology_and_communication_b1_confirm_plan",
         "pack_id": "technology_and_communication_b1",
         "theme": "technology_and_communication",
         "level": "B1",
@@ -19998,41 +20174,96 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_password"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We have checked the password already.",
+        "sentence": "I have already updated the app.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos a senha.",
+        "source_text_pt": "Já atualizei o aplicativo.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We have checked the password already."
+          "I have already updated the app."
         ],
         "accepted_variants_en": [
-          "We've checked the password already."
+          "I've already updated the app."
         ],
-        "explanation_pt": "Present perfect com already.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect"
         ],
-        "pt": "Nós já verificamos a senha.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the password already."
+        "communicative_intent": "confirm_plan",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "update"
+        ],
+        "pt": "Já atualizei o aplicativo.",
+        "ctx": "Situação: confirm plan.",
+        "blank": "app",
+        "wrong": "I have already update the app."
       },
       {
-        "template_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_02",
-        "family_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_1",
+        "template_id": "technology_and_communication_b1_tc3_first_cond",
+        "family_id": "technology_and_communication_b1_plan_contingency",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "first_conditional",
+        "skill_ids": [
+          "first_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If the battery dies, I will charge my phone.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se a bateria acabar, vou carregar meu celular.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If the battery dies, I will charge my phone."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "communicative_intent": "plan_contingency",
+        "grammar_focus": "first_conditional",
+        "pattern_signature": "conditional|will_future|none|aff|first_conditional",
+        "lexical_verbs": [
+          "charge"
+        ],
+        "pt": "Se a bateria acabar, vou carregar meu celular.",
+        "ctx": "Situação: plan contingency.",
+        "blank": "phone",
+        "wrong": "If the battery dies, I charge my phone."
+      },
+      {
+        "template_id": "technology_and_communication_b1_tc3_ppc_fixing",
+        "family_id": "technology_and_communication_b1_report_status",
         "pack_id": "technology_and_communication_b1",
         "theme": "technology_and_communication",
         "level": "B1",
@@ -20051,48 +20282,50 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_message"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They have been reviewing the message for two hours.",
+        "sentence": "I have been trying to fix the signal for an hour.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando a mensagem há duas horas.",
+        "source_text_pt": "Estou tentando consertar o sinal há uma hora.",
         "target_locale": "en",
         "expected_answers_en": [
-          "They have been reviewing the message for two hours."
+          "I have been trying to fix the signal for an hour."
         ],
         "accepted_variants_en": [
-          "They've been reviewing the message for two hours."
+          "I've been trying to fix the signal for an hour."
         ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect_continuous"
         ],
-        "pt": "Eles estão revisando a mensagem há duas horas.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the message for two hours."
+        "communicative_intent": "report_status",
+        "grammar_focus": "present_perfect_continuous",
+        "pattern_signature": "statement|present_perfect_continuous|none|aff|plain",
+        "lexical_verbs": [
+          "fix"
+        ],
+        "pt": "Estou tentando consertar o sinal há uma hora.",
+        "ctx": "Situação: report status.",
+        "blank": "signal",
+        "wrong": "I have been try to fix the signal for an hour."
       },
       {
-        "template_id": "technology_and_communication_b1_if_present_will_future_03",
-        "family_id": "technology_and_communication_b1_if_present_will_future_2",
+        "template_id": "technology_and_communication_b1_tc3_plan_change",
+        "family_id": "technology_and_communication_b1_describe_plan",
         "pack_id": "technology_and_communication_b1",
         "theme": "technology_and_communication",
         "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "gerund_after_been",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "gerund_after_been",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -20104,41 +20337,200 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_video_call"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If we confirm the video call, we will start tomorrow.",
+        "sentence": "I am going to change my password tomorrow.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos a chamada de vídeo, vamos começar amanhã.",
+        "source_text_pt": "Vou mudar minha senha amanhã.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If we confirm the video call, we will start tomorrow."
+          "I am going to change my password tomorrow."
         ],
         "accepted_variants_en": [
-          "If we confirm the video call, we'll start tomorrow."
+          "I'm going to change my password tomorrow."
         ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "gerund_after_been"
+          "future_going_to"
         ],
-        "pt": "Se confirmarmos a chamada de vídeo, vamos começar amanhã.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the video call, we will start tomorrow."
+        "communicative_intent": "describe_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "change"
+        ],
+        "pt": "Vou mudar minha senha amanhã.",
+        "ctx": "Situação: describe plan.",
+        "blank": "password",
+        "wrong": "I am going to changed my password tomorrow."
       },
       {
-        "template_id": "technology_and_communication_b1_subject_modal_base_verb_04",
-        "family_id": "technology_and_communication_b1_subject_modal_base_verb_3",
+        "template_id": "technology_and_communication_b1_tc3_pp_question",
+        "family_id": "technology_and_communication_b1_ask_experience",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Have you ever lost your phone?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você já perdeu seu celular?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Have you ever lost your phone?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "ask_experience",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "lose"
+        ],
+        "pt": "Você já perdeu seu celular?",
+        "ctx": "Situação: ask experience.",
+        "blank": "phone",
+        "wrong": "Have you ever lose your phone?"
+      },
+      {
+        "template_id": "technology_and_communication_b1_tc3_advice",
+        "family_id": "technology_and_communication_b1_give_advice",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "You should save your files.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você deveria salvar seus arquivos.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "You should save your files."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "give_advice",
+        "grammar_focus": "modal_advice",
+        "pattern_signature": "statement|present_simple|should|aff|plain",
+        "lexical_verbs": [
+          "save"
+        ],
+        "pt": "Você deveria salvar seus arquivos.",
+        "ctx": "Situação: give advice.",
+        "blank": "files",
+        "wrong": "You should saves your files."
+      },
+      {
+        "template_id": "technology_and_communication_b1_tc3_compare_laptop",
+        "family_id": "technology_and_communication_b1_compare_options",
+        "pack_id": "technology_and_communication_b1",
+        "theme": "technology_and_communication",
+        "level": "B1",
+        "pattern_id": "comparative_than",
+        "primary_skill_id": "comparatives",
+        "skill_ids": [
+          "comparatives",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "This laptop is lighter than my old one.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Este notebook é mais leve que o antigo.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "This laptop is lighter than my old one."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "Este notebook é mais leve que o antigo.",
+        "ctx": "Situação: compare options.",
+        "blank": "laptop",
+        "wrong": "This laptop is more light than my old one."
+      },
+      {
+        "template_id": "technology_and_communication_b1_tc3_preference",
+        "family_id": "technology_and_communication_b1_state_preference",
         "pack_id": "technology_and_communication_b1",
         "theme": "technology_and_communication",
         "level": "B1",
@@ -20157,245 +20549,39 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_laptop"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the laptop today.",
+        "sentence": "I would rather use the laptop today.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o notebook hoje.",
+        "source_text_pt": "Eu preferiria usar o notebook hoje.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the laptop today."
+          "I would rather use the laptop today."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "accepted_variants_en": [
+          "I'd rather use the laptop today."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "first_conditional"
         ],
-        "pt": "Eu posso atualizar o notebook hoje.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the laptop today."
-      },
-      {
-        "template_id": "technology_and_communication_b1_subject_have_past_participle_yet_05",
-        "family_id": "technology_and_communication_b1_subject_have_past_participle_yet_4",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
+        "communicative_intent": "state_preference",
+        "grammar_focus": "would_preference",
+        "pattern_signature": "statement|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "use"
         ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_app_update"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the app update already.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos a atualização do aplicativo.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We have checked the app update already."
-        ],
-        "accepted_variants_en": [
-          "We've checked the app update already."
-        ],
-        "explanation_pt": "Present perfect com already.",
-        "skill_targets": [
-          "question_auxiliary"
-        ],
-        "pt": "Nós já verificamos a atualização do aplicativo.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the app update already."
-      },
-      {
-        "template_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_06",
-        "family_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_5",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_wifi_network"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the wifi network for two hours.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando a rede wi-fi há duas horas.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They have been reviewing the wifi network for two hours."
-        ],
-        "accepted_variants_en": [
-          "They've been reviewing the wifi network for two hours."
-        ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
-        "skill_targets": [
-          "collocation"
-        ],
-        "pt": "Eles estão revisando a rede wi-fi há duas horas.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the wifi network for two hours."
-      },
-      {
-        "template_id": "technology_and_communication_b1_if_present_will_future_07",
-        "family_id": "technology_and_communication_b1_if_present_will_future_0",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "preposition",
-        "skill_ids": [
-          "preposition",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_email"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the email, we will start tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos o e-mail, vamos começar amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If we confirm the email, we will start tomorrow."
-        ],
-        "accepted_variants_en": [
-          "If we confirm the email, we'll start tomorrow."
-        ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
-        "skill_targets": [
-          "preposition"
-        ],
-        "pt": "Se confirmarmos o e-mail, vamos começar amanhã.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the email, we will start tomorrow."
-      },
-      {
-        "template_id": "technology_and_communication_b1_subject_modal_base_verb_08",
-        "family_id": "technology_and_communication_b1_subject_modal_base_verb_1",
-        "pack_id": "technology_and_communication_b1",
-        "theme": "technology_and_communication",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b1_cloud_file"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the cloud file today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o arquivo na nuvem hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the cloud file today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "present_perfect"
-        ],
-        "pt": "Eu posso atualizar o arquivo na nuvem hoje.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the cloud file today."
+        "pt": "Eu preferiria usar o notebook hoje.",
+        "ctx": "Situação: state preference.",
+        "blank": "laptop",
+        "wrong": "I would rather used the laptop today."
       }
     ],
     "collocations": [
@@ -20693,8 +20879,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "technology_and_communication_b2_passive_be_past_participle_01",
-        "family_id": "technology_and_communication_b2_passive_be_past_participle_0",
+        "template_id": "technology_and_communication_b2_tc4_passive",
+        "family_id": "technology_and_communication_b2_report_status",
         "pack_id": "technology_and_communication_b2",
         "theme": "technology_and_communication",
         "level": "B2",
@@ -20713,40 +20899,41 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_password"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The password was reviewed by the team.",
+        "sentence": "The app was updated last night.",
         "source_locale": "pt-BR",
-        "source_text_pt": "A senha foi revisada pela equipe.",
+        "source_text_pt": "O aplicativo foi atualizado ontem à noite.",
         "target_locale": "en",
         "expected_answers_en": [
-          "The password was reviewed by the team."
+          "The app was updated last night."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "passive_voice"
         ],
-        "pt": "A senha foi revisada pela equipe.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
-        "blank": "password",
-        "wrong": "The password reviewed by the team."
+        "communicative_intent": "report_status",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "update"
+        ],
+        "pt": "O aplicativo foi atualizado ontem à noite.",
+        "ctx": "Situação: report status.",
+        "blank": "app",
+        "wrong": "The app was update last night."
       },
       {
-        "template_id": "technology_and_communication_b2_reported_speech_statement_02",
-        "family_id": "technology_and_communication_b2_reported_speech_statement_1",
+        "template_id": "technology_and_communication_b2_tc4_reported",
+        "family_id": "technology_and_communication_b2_report_information",
         "pack_id": "technology_and_communication_b2",
         "theme": "technology_and_communication",
         "level": "B2",
@@ -20765,40 +20952,41 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_message"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "She said that the message was ready.",
+        "sentence": "The technician said that the battery was damaged.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que a mensagem estava pronta.",
+        "source_text_pt": "O técnico disse que a bateria estava danificada.",
         "target_locale": "en",
         "expected_answers_en": [
-          "She said that the message was ready."
+          "The technician said that the battery was damaged."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "reported_speech"
         ],
-        "pt": "Ela disse que a mensagem estava pronta.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
-        "blank": "said",
-        "wrong": "She said the message was ready."
+        "communicative_intent": "report_information",
+        "grammar_focus": "reported_speech",
+        "pattern_signature": "statement|past_simple|none|aff|reported",
+        "lexical_verbs": [
+          "say"
+        ],
+        "pt": "O técnico disse que a bateria estava danificada.",
+        "ctx": "Situação: report information.",
+        "blank": "battery",
+        "wrong": "The technician said that the battery damaged."
       },
       {
-        "template_id": "technology_and_communication_b2_second_conditional_03",
-        "family_id": "technology_and_communication_b2_second_conditional_2",
+        "template_id": "technology_and_communication_b2_tc4_second_cond",
+        "family_id": "technology_and_communication_b2_hypothesize",
         "pack_id": "technology_and_communication_b2",
         "theme": "technology_and_communication",
         "level": "B2",
@@ -20817,42 +21005,202 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_video_call"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If I had more time, I would improve the video call.",
+        "sentence": "If I had a new phone, I would take better photos.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a chamada de vídeo.",
+        "source_text_pt": "Se eu tivesse um celular novo, tiraria fotos melhores.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If I had more time, I would improve the video call."
+          "If I had a new phone, I would take better photos."
         ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the video call."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "second_conditional"
         ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria a chamada de vídeo.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the video call."
+        "communicative_intent": "hypothesize",
+        "grammar_focus": "second_conditional",
+        "pattern_signature": "conditional|present_simple|would|aff|second_conditional",
+        "lexical_verbs": [
+          "take"
+        ],
+        "pt": "Se eu tivesse um celular novo, tiraria fotos melhores.",
+        "ctx": "Situação: hypothesize.",
+        "blank": "photos",
+        "wrong": "If I had a new phone, I will take better photos."
       },
       {
-        "template_id": "technology_and_communication_b2_subject_modal_base_verb_04",
-        "family_id": "technology_and_communication_b2_subject_modal_base_verb_3",
+        "template_id": "technology_and_communication_b2_tc4_diplomatic",
+        "family_id": "technology_and_communication_b2_request_politely",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "modal_deduction",
+        "skill_ids": [
+          "modal_deduction",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Would you mind checking the signal again?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você se importaria de verificar o sinal de novo?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Would you mind checking the signal again?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "communicative_intent": "request_politely",
+        "grammar_focus": "diplomatic_request",
+        "pattern_signature": "yesno_question|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "check"
+        ],
+        "pt": "Você se importaria de verificar o sinal de novo?",
+        "ctx": "Situação: request politely.",
+        "blank": "signal",
+        "wrong": "Would you mind check the signal again?"
+      },
+      {
+        "template_id": "technology_and_communication_b2_tc4_pp_just",
+        "family_id": "technology_and_communication_b2_report_status_finished",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have just finished the video call.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Acabamos de terminar a videochamada.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have just finished the video call."
+        ],
+        "accepted_variants_en": [
+          "We've just finished the video call."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "report_status_finished",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_perfect|none|aff|plain",
+        "lexical_verbs": [
+          "finish"
+        ],
+        "pt": "Acabamos de terminar a videochamada.",
+        "ctx": "Situação: report status finished.",
+        "blank": "call",
+        "wrong": "We have just finish the video call."
+      },
+      {
+        "template_id": "technology_and_communication_b2_tc4_passive2",
+        "family_id": "technology_and_communication_b2_report_changed",
+        "pack_id": "technology_and_communication_b2",
+        "theme": "technology_and_communication",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The password was changed yesterday.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A senha foi mudada ontem.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The password was changed yesterday."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "communicative_intent": "report_changed",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "change"
+        ],
+        "pt": "A senha foi mudada ontem.",
+        "ctx": "Situação: report changed.",
+        "blank": "password",
+        "wrong": "The password was change yesterday."
+      },
+      {
+        "template_id": "technology_and_communication_b2_tc4_deduction",
+        "family_id": "technology_and_communication_b2_make_deduction",
         "pack_id": "technology_and_communication_b2",
         "theme": "technology_and_communication",
         "level": "B2",
@@ -20871,99 +21219,48 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_laptop"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the laptop today.",
+        "sentence": "The app must have crashed during the update.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o notebook hoje.",
+        "source_text_pt": "O aplicativo deve ter travado durante a atualização.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the laptop today."
+          "The app must have crashed during the update."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "modal_deduction"
         ],
-        "pt": "Eu posso atualizar o notebook hoje.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the laptop today."
-      },
-      {
-        "template_id": "technology_and_communication_b2_passive_be_past_participle_05",
-        "family_id": "technology_and_communication_b2_passive_be_past_participle_4",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
+        "communicative_intent": "make_deduction",
+        "grammar_focus": "modal_deduction",
+        "pattern_signature": "statement|present_perfect|must|aff|plain",
+        "lexical_verbs": [
+          "crash"
         ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_app_update"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "The app update was reviewed by the team.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "A atualização do aplicativo foi revisada pela equipe.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "The app update was reviewed by the team."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
-        "skill_targets": [
-          "collocation"
-        ],
-        "pt": "A atualização do aplicativo foi revisada pela equipe.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
+        "pt": "O aplicativo deve ter travado durante a atualização.",
+        "ctx": "Situação: make deduction.",
         "blank": "app",
-        "wrong": "The app update reviewed by the team."
+        "wrong": "The app must has crashed during the update."
       },
       {
-        "template_id": "technology_and_communication_b2_reported_speech_statement_06",
-        "family_id": "technology_and_communication_b2_reported_speech_statement_5",
+        "template_id": "technology_and_communication_b2_tc4_contrast",
+        "family_id": "technology_and_communication_b2_describe_experience",
         "pack_id": "technology_and_communication_b2",
         "theme": "technology_and_communication",
         "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "word_order",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "verb_to_be",
         "skill_ids": [
-          "word_order",
+          "verb_to_be",
           "vocabulary"
         ],
         "exercise_types": [
@@ -20975,142 +21272,35 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_wifi_network"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "She said that the wifi network was ready.",
+        "sentence": "The laptop was expensive, but it was very reliable.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que a rede wi-fi estava pronta.",
+        "source_text_pt": "O notebook era caro, mas era muito confiável.",
         "target_locale": "en",
         "expected_answers_en": [
-          "She said that the wifi network was ready."
+          "The laptop was expensive, but it was very reliable."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "word_order"
+          "verb_to_be"
         ],
-        "pt": "Ela disse que a rede wi-fi estava pronta.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
-        "blank": "said",
-        "wrong": "She said the wifi network was ready."
-      },
-      {
-        "template_id": "technology_and_communication_b2_second_conditional_07",
-        "family_id": "technology_and_communication_b2_second_conditional_0",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_email"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the email.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o e-mail.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If I had more time, I would improve the email."
-        ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the email."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria o e-mail.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the email."
-      },
-      {
-        "template_id": "technology_and_communication_b2_subject_modal_base_verb_08",
-        "family_id": "technology_and_communication_b2_subject_modal_base_verb_1",
-        "pack_id": "technology_and_communication_b2",
-        "theme": "technology_and_communication",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "technology_and_communication_b2_cloud_file"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the cloud file today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o arquivo na nuvem hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the cloud file today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "passive_voice"
-        ],
-        "pt": "Eu posso atualizar o arquivo na nuvem hoje.",
-        "ctx": "Contexto de tecnologia e comunicação (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the cloud file today."
+        "communicative_intent": "describe_experience",
+        "grammar_focus": "past_contrast",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "O notebook era caro, mas era muito confiável.",
+        "ctx": "Situação: describe experience.",
+        "blank": "laptop",
+        "wrong": "The laptop expensive, but it was very reliable."
       }
     ],
     "collocations": [

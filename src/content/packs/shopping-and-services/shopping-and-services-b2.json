@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "shopping_and_services_b2_passive_be_past_participle_01",
-      "family_id": "shopping_and_services_b2_passive_be_past_participle_0",
+      "template_id": "shopping_and_services_b2_sh4_passive",
+      "family_id": "shopping_and_services_b2_report_status",
       "pack_id": "shopping_and_services_b2",
       "theme": "shopping_and_services",
       "level": "B2",
@@ -226,40 +226,41 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_b2_receipt"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "The receipt was reviewed by the team.",
+      "sentence": "The item was returned yesterday.",
       "source_locale": "pt-BR",
-      "source_text_pt": "O recibo foi revisado pela equipe.",
+      "source_text_pt": "O item foi devolvido ontem.",
       "target_locale": "en",
       "expected_answers_en": [
-        "The receipt was reviewed by the team."
+        "The item was returned yesterday."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "passive_voice"
       ],
-      "pt": "O recibo foi revisado pela equipe.",
-      "ctx": "Contexto de compras e serviços (nível B2).",
-      "blank": "receipt",
-      "wrong": "The receipt reviewed by the team."
+      "communicative_intent": "report_status",
+      "grammar_focus": "passive",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [
+        "return"
+      ],
+      "pt": "O item foi devolvido ontem.",
+      "ctx": "Situação: report status.",
+      "blank": "item",
+      "wrong": "The item was return yesterday."
     },
     {
-      "template_id": "shopping_and_services_b2_reported_speech_statement_02",
-      "family_id": "shopping_and_services_b2_reported_speech_statement_1",
+      "template_id": "shopping_and_services_b2_sh4_reported",
+      "family_id": "shopping_and_services_b2_report_information",
       "pack_id": "shopping_and_services_b2",
       "theme": "shopping_and_services",
       "level": "B2",
@@ -278,40 +279,41 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_b2_discount"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "She said that the discount was ready.",
+      "sentence": "The cashier said that the discount had ended.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Ela disse que o desconto estava pronto.",
+      "source_text_pt": "O caixa disse que o desconto tinha acabado.",
       "target_locale": "en",
       "expected_answers_en": [
-        "She said that the discount was ready."
+        "The cashier said that the discount had ended."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Discurso indireto com said that.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "reported_speech"
       ],
-      "pt": "Ela disse que o desconto estava pronto.",
-      "ctx": "Contexto de compras e serviços (nível B2).",
-      "blank": "said",
-      "wrong": "She said the discount was ready."
+      "communicative_intent": "report_information",
+      "grammar_focus": "reported_speech",
+      "pattern_signature": "statement|past_simple|none|aff|reported",
+      "lexical_verbs": [
+        "say"
+      ],
+      "pt": "O caixa disse que o desconto tinha acabado.",
+      "ctx": "Situação: report information.",
+      "blank": "discount",
+      "wrong": "The cashier said that the discount ended."
     },
     {
-      "template_id": "shopping_and_services_b2_second_conditional_03",
-      "family_id": "shopping_and_services_b2_second_conditional_2",
+      "template_id": "shopping_and_services_b2_sh4_second_cond",
+      "family_id": "shopping_and_services_b2_hypothesize",
       "pack_id": "shopping_and_services_b2",
       "theme": "shopping_and_services",
       "level": "B2",
@@ -330,42 +332,202 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_b2_cashier"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "If I had more time, I would improve the cashier.",
+      "sentence": "If the store had my size, I would buy the shoes.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o caixa.",
+      "source_text_pt": "Se a loja tivesse meu tamanho, eu compraria os sapatos.",
       "target_locale": "en",
       "expected_answers_en": [
-        "If I had more time, I would improve the cashier."
+        "If the store had my size, I would buy the shoes."
       ],
-      "accepted_variants_en": [
-        "If I had more time, I'd improve the cashier."
-      ],
-      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "second_conditional"
       ],
-      "pt": "Se eu tivesse mais tempo, eu melhoraria o caixa.",
-      "ctx": "Contexto de compras e serviços (nível B2).",
-      "blank": "I",
-      "wrong": "If I had more time, I will improve the cashier."
+      "communicative_intent": "hypothesize",
+      "grammar_focus": "second_conditional",
+      "pattern_signature": "conditional|present_simple|would|aff|second_conditional",
+      "lexical_verbs": [
+        "buy"
+      ],
+      "pt": "Se a loja tivesse meu tamanho, eu compraria os sapatos.",
+      "ctx": "Situação: hypothesize.",
+      "blank": "shoes",
+      "wrong": "If the store had my size, I will buy the shoes."
     },
     {
-      "template_id": "shopping_and_services_b2_subject_modal_base_verb_04",
-      "family_id": "shopping_and_services_b2_subject_modal_base_verb_3",
+      "template_id": "shopping_and_services_b2_sh4_diplomatic",
+      "family_id": "shopping_and_services_b2_request_politely",
+      "pack_id": "shopping_and_services_b2",
+      "theme": "shopping_and_services",
+      "level": "B2",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Would you mind checking the price again?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você se importaria de checar o preço de novo?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Would you mind checking the price again?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "modal_deduction"
+      ],
+      "communicative_intent": "request_politely",
+      "grammar_focus": "diplomatic_request",
+      "pattern_signature": "yesno_question|present_simple|would|aff|plain",
+      "lexical_verbs": [
+        "check"
+      ],
+      "pt": "Você se importaria de checar o preço de novo?",
+      "ctx": "Situação: request politely.",
+      "blank": "price",
+      "wrong": "Would you mind check the price again?"
+    },
+    {
+      "template_id": "shopping_and_services_b2_sh4_pp_just",
+      "family_id": "shopping_and_services_b2_report_status_paid",
+      "pack_id": "shopping_and_services_b2",
+      "theme": "shopping_and_services",
+      "level": "B2",
+      "pattern_id": "subject_have_past_participle_yet",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We have just paid for the delivery.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Acabamos de pagar pela entrega.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We have just paid for the delivery."
+      ],
+      "accepted_variants_en": [
+        "We've just paid for the delivery."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "communicative_intent": "report_status_paid",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "statement|present_perfect|none|aff|plain",
+      "lexical_verbs": [
+        "pay"
+      ],
+      "pt": "Acabamos de pagar pela entrega.",
+      "ctx": "Situação: report status paid.",
+      "blank": "delivery",
+      "wrong": "We have just pay for the delivery."
+    },
+    {
+      "template_id": "shopping_and_services_b2_sh4_passive2",
+      "family_id": "shopping_and_services_b2_report_lost",
+      "pack_id": "shopping_and_services_b2",
+      "theme": "shopping_and_services",
+      "level": "B2",
+      "pattern_id": "passive_be_past_participle",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The receipt was lost during the delivery.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "O recibo foi perdido durante a entrega.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The receipt was lost during the delivery."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "communicative_intent": "report_lost",
+      "grammar_focus": "passive",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [
+        "lose"
+      ],
+      "pt": "O recibo foi perdido durante a entrega.",
+      "ctx": "Situação: report lost.",
+      "blank": "receipt",
+      "wrong": "The receipt was lose during the delivery."
+    },
+    {
+      "template_id": "shopping_and_services_b2_sh4_deduction",
+      "family_id": "shopping_and_services_b2_make_deduction",
       "pack_id": "shopping_and_services_b2",
       "theme": "shopping_and_services",
       "level": "B2",
@@ -384,47 +546,48 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_b2_return_policy"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the return policy today.",
+      "sentence": "The cashier must have forgotten the discount.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a política de troca hoje.",
+      "source_text_pt": "O caixa deve ter esquecido o desconto.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the return policy today."
+        "The cashier must have forgotten the discount."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "modal_deduction"
       ],
-      "pt": "Eu posso atualizar a política de troca hoje.",
-      "ctx": "Contexto de compras e serviços (nível B2).",
-      "blank": "can",
-      "wrong": "I cans update the return policy today."
+      "communicative_intent": "make_deduction",
+      "grammar_focus": "modal_deduction",
+      "pattern_signature": "statement|present_perfect|must|aff|plain",
+      "lexical_verbs": [
+        "forget"
+      ],
+      "pt": "O caixa deve ter esquecido o desconto.",
+      "ctx": "Situação: make deduction.",
+      "blank": "discount",
+      "wrong": "The cashier must has forgotten the discount."
     },
     {
-      "template_id": "shopping_and_services_b2_passive_be_past_participle_05",
-      "family_id": "shopping_and_services_b2_passive_be_past_participle_4",
+      "template_id": "shopping_and_services_b2_sh4_contrast",
+      "family_id": "shopping_and_services_b2_describe_experience",
       "pack_id": "shopping_and_services_b2",
       "theme": "shopping_and_services",
       "level": "B2",
-      "pattern_id": "passive_be_past_participle",
-      "primary_skill_id": "collocation",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "verb_to_be",
       "skill_ids": [
-        "collocation",
+        "verb_to_be",
         "vocabulary"
       ],
       "exercise_types": [
@@ -436,194 +599,35 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_b2_shoe_size"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "The shoe size was reviewed by the team.",
+      "sentence": "The store was crowded, but the service was fast.",
       "source_locale": "pt-BR",
-      "source_text_pt": "O número do sapato foi revisado pela equipe.",
+      "source_text_pt": "A loja estava lotada, mas o atendimento foi rápido.",
       "target_locale": "en",
       "expected_answers_en": [
-        "The shoe size was reviewed by the team."
+        "The store was crowded, but the service was fast."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "collocation"
+        "verb_to_be"
       ],
-      "pt": "O número do sapato foi revisado pela equipe.",
-      "ctx": "Contexto de compras e serviços (nível B2).",
-      "blank": "shoe",
-      "wrong": "The shoe size reviewed by the team."
-    },
-    {
-      "template_id": "shopping_and_services_b2_reported_speech_statement_06",
-      "family_id": "shopping_and_services_b2_reported_speech_statement_5",
-      "pack_id": "shopping_and_services_b2",
-      "theme": "shopping_and_services",
-      "level": "B2",
-      "pattern_id": "reported_speech_statement",
-      "primary_skill_id": "word_order",
-      "skill_ids": [
-        "word_order",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_b2_delivery"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "She said that the delivery was ready.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Ela disse que a entrega estava pronta.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "She said that the delivery was ready."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Discurso indireto com said that.",
-      "skill_targets": [
-        "word_order"
-      ],
-      "pt": "Ela disse que a entrega estava pronta.",
-      "ctx": "Contexto de compras e serviços (nível B2).",
-      "blank": "said",
-      "wrong": "She said the delivery was ready."
-    },
-    {
-      "template_id": "shopping_and_services_b2_second_conditional_07",
-      "family_id": "shopping_and_services_b2_second_conditional_0",
-      "pack_id": "shopping_and_services_b2",
-      "theme": "shopping_and_services",
-      "level": "B2",
-      "pattern_id": "second_conditional",
-      "primary_skill_id": "vocabulary",
-      "skill_ids": [
-        "vocabulary",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_b2_pharmacy"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "If I had more time, I would improve the pharmacy.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a farmácia.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "If I had more time, I would improve the pharmacy."
-      ],
-      "accepted_variants_en": [
-        "If I had more time, I'd improve the pharmacy."
-      ],
-      "explanation_pt": "Segunda condicional: if + passado, would + base.",
-      "skill_targets": [
-        "vocabulary"
-      ],
-      "pt": "Se eu tivesse mais tempo, eu melhoraria a farmácia.",
-      "ctx": "Contexto de compras e serviços (nível B2).",
-      "blank": "I",
-      "wrong": "If I had more time, I will improve the pharmacy."
-    },
-    {
-      "template_id": "shopping_and_services_b2_subject_modal_base_verb_08",
-      "family_id": "shopping_and_services_b2_subject_modal_base_verb_1",
-      "pack_id": "shopping_and_services_b2",
-      "theme": "shopping_and_services",
-      "level": "B2",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "passive_voice",
-      "skill_ids": [
-        "passive_voice",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_b2_bank_account"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the bank account today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a conta bancária hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the bank account today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "passive_voice"
-      ],
-      "pt": "Eu posso atualizar a conta bancária hoje.",
-      "ctx": "Contexto de compras e serviços (nível B2).",
-      "blank": "can",
-      "wrong": "I cans update the bank account today."
+      "communicative_intent": "describe_experience",
+      "grammar_focus": "past_contrast",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [],
+      "pt": "A loja estava lotada, mas o atendimento foi rápido.",
+      "ctx": "Situação: describe experience.",
+      "blank": "store",
+      "wrong": "The store crowded, but the service was fast."
     }
   ],
   "collocations": [

@@ -206,262 +206,12 @@
   ],
   "template_definitions": [
     {
-      "template_id": "technology_and_communication_a1_subject_be_complement_01",
-      "family_id": "technology_and_communication_a1_subject_be_complement_0",
+      "template_id": "technology_and_communication_a1_tc1_ask_phone",
+      "family_id": "technology_and_communication_a1_ask_location",
       "pack_id": "technology_and_communication_a1",
       "theme": "technology_and_communication",
       "level": "A1",
-      "pattern_id": "subject_be_complement",
-      "primary_skill_id": "verb_to_be",
-      "skill_ids": [
-        "verb_to_be",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a1_password"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "The password is important.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "A senha é importante.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "The password is important."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-      "skill_targets": [
-        "verb_to_be"
-      ],
-      "pt": "A senha é importante.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-      "blank": "password",
-      "wrong": "The password is important."
-    },
-    {
-      "template_id": "technology_and_communication_a1_subject_simple_present_object_02",
-      "family_id": "technology_and_communication_a1_subject_simple_present_object_1",
-      "pack_id": "technology_and_communication_a1",
-      "theme": "technology_and_communication",
-      "level": "A1",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "simple_present",
-      "skill_ids": [
-        "simple_present",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a1_message"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the message every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a mensagem todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the message every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "simple_present"
-      ],
-      "pt": "Nós verificamos a mensagem todos os dias.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-      "blank": "check",
-      "wrong": "We check the message every day."
-    },
-    {
-      "template_id": "technology_and_communication_a1_wh_do_subject_base_verb_03",
-      "family_id": "technology_and_communication_a1_wh_do_subject_base_verb_2",
-      "pack_id": "technology_and_communication_a1",
-      "theme": "technology_and_communication",
-      "level": "A1",
-      "pattern_id": "wh_do_subject_base_verb",
-      "primary_skill_id": "there_is_are",
-      "skill_ids": [
-        "there_is_are",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a1_video_call"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "When do you need the video call?",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa da chamada de vídeo?",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "When do you need the video call?"
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
-      "skill_targets": [
-        "there_is_are"
-      ],
-      "pt": "Quando você precisa da chamada de vídeo?",
-      "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-      "blank": "do",
-      "wrong": "When you do need the video call?"
-    },
-    {
-      "template_id": "technology_and_communication_a1_subject_modal_base_verb_04",
-      "family_id": "technology_and_communication_a1_subject_modal_base_verb_3",
-      "pack_id": "technology_and_communication_a1",
-      "theme": "technology_and_communication",
-      "level": "A1",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "can_ability",
-      "skill_ids": [
-        "can_ability",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a1_laptop"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the laptop today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar o notebook hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the laptop today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "can_ability"
-      ],
-      "pt": "Eu posso atualizar o notebook hoje.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-      "blank": "can",
-      "wrong": "I cans update the laptop today."
-    },
-    {
-      "template_id": "technology_and_communication_a1_subject_be_complement_05",
-      "family_id": "technology_and_communication_a1_subject_be_complement_4",
-      "pack_id": "technology_and_communication_a1",
-      "theme": "technology_and_communication",
-      "level": "A1",
-      "pattern_id": "subject_be_complement",
-      "primary_skill_id": "can_request",
-      "skill_ids": [
-        "can_request",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a1_app_update"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "The app update is important.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "A atualização do aplicativo é importante.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "The app update is important."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-      "skill_targets": [
-        "can_request"
-      ],
-      "pt": "A atualização do aplicativo é importante.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-      "blank": "app",
-      "wrong": "The app update is important."
-    },
-    {
-      "template_id": "technology_and_communication_a1_subject_simple_present_object_06",
-      "family_id": "technology_and_communication_a1_subject_simple_present_object_5",
-      "pack_id": "technology_and_communication_a1",
-      "theme": "technology_and_communication",
-      "level": "A1",
-      "pattern_id": "subject_simple_present_object",
+      "pattern_id": "wh_be_question",
       "primary_skill_id": "question_structure",
       "skill_ids": [
         "question_structure",
@@ -476,45 +226,46 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a1_wifi_network"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We check the wifi network every day.",
+      "sentence": "Where is my phone?",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a rede wi-fi todos os dias.",
+      "source_text_pt": "Onde está meu celular?",
       "target_locale": "en",
       "expected_answers_en": [
-        "We check the wifi network every day."
+        "Where is my phone?"
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "explanation_pt": "Pergunta com Where + verbo to be.",
       "skill_targets": [
         "question_structure"
       ],
-      "pt": "Nós verificamos a rede wi-fi todos os dias.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-      "blank": "check",
-      "wrong": "We check the wifi network every day."
+      "communicative_intent": "ask_location",
+      "grammar_focus": "wh_question_be",
+      "pattern_signature": "wh_question|be|none|aff|plain",
+      "lexical_verbs": [],
+      "pt": "Onde está meu celular?",
+      "ctx": "Situação: ask location.",
+      "blank": "phone",
+      "wrong": "Where my phone is?"
     },
     {
-      "template_id": "technology_and_communication_a1_wh_do_subject_base_verb_07",
-      "family_id": "technology_and_communication_a1_wh_do_subject_base_verb_0",
+      "template_id": "technology_and_communication_a1_tc1_update_app",
+      "family_id": "technology_and_communication_a1_state_intention",
       "pack_id": "technology_and_communication_a1",
       "theme": "technology_and_communication",
       "level": "A1",
-      "pattern_id": "wh_do_subject_base_verb",
-      "primary_skill_id": "vocabulary",
+      "pattern_id": "subject_want_to_verb",
+      "primary_skill_id": "simple_present",
       "skill_ids": [
-        "vocabulary",
+        "simple_present",
         "vocabulary"
       ],
       "exercise_types": [
@@ -526,42 +277,155 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a1_email"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the email?",
+      "sentence": "I want to update the app.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa do e-mail?",
+      "source_text_pt": "Quero atualizar o aplicativo.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the email?"
+        "I want to update the app."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "accepted_variants_en": [
+        "I'd like to update the app."
+      ],
+      "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
       "skill_targets": [
-        "vocabulary"
+        "simple_present"
       ],
-      "pt": "Quando você precisa do e-mail?",
-      "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-      "blank": "do",
-      "wrong": "When you do need the email?"
+      "communicative_intent": "state_intention",
+      "grammar_focus": "want_to_infinitive",
+      "pattern_signature": "statement|present_simple|want_to|aff|plain",
+      "lexical_verbs": [
+        "update"
+      ],
+      "pt": "Quero atualizar o aplicativo.",
+      "ctx": "Situação: state intention.",
+      "blank": "app",
+      "wrong": "I want update the app."
     },
     {
-      "template_id": "technology_and_communication_a1_subject_modal_base_verb_08",
-      "family_id": "technology_and_communication_a1_subject_modal_base_verb_1",
+      "template_id": "technology_and_communication_a1_tc1_ask_call_time",
+      "family_id": "technology_and_communication_a1_ask_time",
       "pack_id": "technology_and_communication_a1",
       "theme": "technology_and_communication",
       "level": "A1",
-      "pattern_id": "subject_modal_base_verb",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "What time does the video call start?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Que horas a videochamada começa?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "What time does the video call start?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do/does.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "communicative_intent": "ask_time",
+      "grammar_focus": "wh_question_do",
+      "pattern_signature": "wh_question|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "start"
+      ],
+      "pt": "Que horas a videochamada começa?",
+      "ctx": "Situação: ask time.",
+      "blank": "call",
+      "wrong": "What time the video call start?"
+    },
+    {
+      "template_id": "technology_and_communication_a1_tc1_request_password",
+      "family_id": "technology_and_communication_a1_request_help",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Can you help me with the password?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você pode me ajudar com a senha?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Can you help me with the password?"
+      ],
+      "accepted_variants_en": [
+        "Could you help me with the password?"
+      ],
+      "explanation_pt": "Pedido educado com can/could.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "request_help",
+      "grammar_focus": "modal_request",
+      "pattern_signature": "yesno_question|present_simple|can|aff|plain",
+      "lexical_verbs": [
+        "help"
+      ],
+      "pt": "Você pode me ajudar com a senha?",
+      "ctx": "Situação: request help.",
+      "blank": "password",
+      "wrong": "You can help me with the password?"
+    },
+    {
+      "template_id": "technology_and_communication_a1_tc1_describe_battery",
+      "family_id": "technology_and_communication_a1_describe_state",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
       "primary_skill_id": "verb_to_be",
       "skill_ids": [
         "verb_to_be",
@@ -576,34 +440,198 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a1_cloud_file"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the cloud file today.",
+      "sentence": "My phone battery is very low.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar o arquivo na nuvem hoje.",
+      "source_text_pt": "A bateria do meu celular está muito baixa.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the cloud file today."
+        "My phone battery is very low."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "explanation_pt": "Verbo to be para descrever algo.",
       "skill_targets": [
         "verb_to_be"
       ],
-      "pt": "Eu posso atualizar o arquivo na nuvem hoje.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A1).",
-      "blank": "can",
-      "wrong": "I cans update the cloud file today."
+      "communicative_intent": "describe_state",
+      "grammar_focus": "be_complement",
+      "pattern_signature": "statement|be|none|aff|plain",
+      "lexical_verbs": [],
+      "pt": "A bateria do meu celular está muito baixa.",
+      "ctx": "Situação: describe state.",
+      "blank": "battery",
+      "wrong": "My phone battery very low."
+    },
+    {
+      "template_id": "technology_and_communication_a1_tc1_send_message",
+      "family_id": "technology_and_communication_a1_state_intention_message",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "subject_want_to_verb",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I want to send an email now.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quero enviar um e-mail agora.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I want to send an email now."
+      ],
+      "accepted_variants_en": [
+        "I'd like to send an email now."
+      ],
+      "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
+      "skill_targets": [
+        "simple_present"
+      ],
+      "communicative_intent": "state_intention_message",
+      "grammar_focus": "want_to_infinitive",
+      "pattern_signature": "statement|present_simple|want_to|aff|plain",
+      "lexical_verbs": [
+        "send"
+      ],
+      "pt": "Quero enviar um e-mail agora.",
+      "ctx": "Situação: state intention message.",
+      "blank": "email",
+      "wrong": "I want send an email now."
+    },
+    {
+      "template_id": "technology_and_communication_a1_tc1_charging",
+      "family_id": "technology_and_communication_a1_describe_activity",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "subject_present_continuous",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I am charging my phone now.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Estou carregando meu celular agora.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I am charging my phone now."
+      ],
+      "accepted_variants_en": [
+        "I'm charging my phone now."
+      ],
+      "explanation_pt": "Presente contínuo (am/is/are + -ing).",
+      "skill_targets": [
+        "present_continuous"
+      ],
+      "communicative_intent": "describe_activity",
+      "grammar_focus": "present_continuous",
+      "pattern_signature": "statement|present_continuous|none|aff|plain",
+      "lexical_verbs": [
+        "charge"
+      ],
+      "pt": "Estou carregando meu celular agora.",
+      "ctx": "Situação: describe activity.",
+      "blank": "phone",
+      "wrong": "I charging my phone now."
+    },
+    {
+      "template_id": "technology_and_communication_a1_tc1_check_signal",
+      "family_id": "technology_and_communication_a1_ask_action",
+      "pack_id": "technology_and_communication_a1",
+      "theme": "technology_and_communication",
+      "level": "A1",
+      "pattern_id": "imperative_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Please check the wifi signal.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Por favor, verifique o sinal do wifi.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Please check the wifi signal."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pedido no imperativo com please.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "ask_action",
+      "grammar_focus": "imperative_request",
+      "pattern_signature": "imperative|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "check"
+      ],
+      "pt": "Por favor, verifique o sinal do wifi.",
+      "ctx": "Situação: ask action.",
+      "blank": "signal",
+      "wrong": "Please checks the wifi signal."
     }
   ],
   "collocations": [
