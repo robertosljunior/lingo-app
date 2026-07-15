@@ -7121,7 +7121,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "ask_location",
         "grammar_focus": "wh_question_be",
-        "pattern_signature": "wh_question|be|none|aff",
+        "pattern_signature": "wh_question|be|none|aff|plain",
         "lexical_verbs": [],
         "pt": "Onde fica a sala de reunião?",
         "ctx": "Situação: ask location.",
@@ -7172,7 +7172,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "state_task",
         "grammar_focus": "have_possession",
-        "pattern_signature": "statement|present_simple|none|aff",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
         "lexical_verbs": [
           "have"
         ],
@@ -7225,7 +7225,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "ask_time",
         "grammar_focus": "wh_question_do",
-        "pattern_signature": "wh_question|present_simple|none|aff",
+        "pattern_signature": "wh_question|present_simple|none|aff|plain",
         "lexical_verbs": [
           "start"
         ],
@@ -7280,7 +7280,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "request_help",
         "grammar_focus": "modal_request",
-        "pattern_signature": "yesno_question|present_simple|can|aff",
+        "pattern_signature": "yesno_question|present_simple|can|aff|plain",
         "lexical_verbs": [
           "help"
         ],
@@ -7326,14 +7326,18 @@ export const GENERATED_CONTENT_PACKS = [
         "expected_answers_en": [
           "The report is ready now."
         ],
-        "accepted_variants_en": [],
+        "accepted_variants_en": [
+          "The report is finished now.",
+          "The report is done now.",
+          "The report is ready."
+        ],
         "explanation_pt": "Verbo to be para descrever algo.",
         "skill_targets": [
           "verb_to_be"
         ],
         "communicative_intent": "describe_status",
         "grammar_focus": "be_complement",
-        "pattern_signature": "statement|be|none|aff",
+        "pattern_signature": "statement|be|none|aff|plain",
         "lexical_verbs": [],
         "pt": "O relatório está pronto agora.",
         "ctx": "Situação: describe status.",
@@ -7377,14 +7381,16 @@ export const GENERATED_CONTENT_PACKS = [
         "expected_answers_en": [
           "I want to send the email now."
         ],
-        "accepted_variants_en": [],
+        "accepted_variants_en": [
+          "I'd like to send the email now."
+        ],
         "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
         "skill_targets": [
           "simple_present"
         ],
         "communicative_intent": "state_intention",
         "grammar_focus": "want_to_infinitive",
-        "pattern_signature": "statement|present_simple|want_to|aff",
+        "pattern_signature": "statement|present_simple|want_to|aff|plain",
         "lexical_verbs": [
           "send"
         ],
@@ -7439,7 +7445,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "describe_activity",
         "grammar_focus": "present_continuous",
-        "pattern_signature": "statement|present_continuous|none|aff",
+        "pattern_signature": "statement|present_continuous|none|aff|plain",
         "lexical_verbs": [
           "work"
         ],
@@ -7492,7 +7498,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "ask_action",
         "grammar_focus": "imperative_request",
-        "pattern_signature": "imperative|present_simple|none|aff",
+        "pattern_signature": "imperative|present_simple|none|aff|plain",
         "lexical_verbs": [
           "call"
         ],
@@ -9971,7 +9977,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "ask_location",
         "grammar_focus": "wh_question_be",
-        "pattern_signature": "wh_question|be|none|aff",
+        "pattern_signature": "wh_question|be|none|aff|plain",
         "lexical_verbs": [],
         "pt": "Onde fica a estação de trem?",
         "ctx": "Situação: ask location.",
@@ -10015,14 +10021,17 @@ export const GENERATED_CONTENT_PACKS = [
         "expected_answers_en": [
           "I want to buy a ticket to the city."
         ],
-        "accepted_variants_en": [],
+        "accepted_variants_en": [
+          "I'd like to buy a ticket to the city.",
+          "I would like to buy a ticket to the city."
+        ],
         "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
         "skill_targets": [
           "simple_present"
         ],
         "communicative_intent": "buy_ticket",
         "grammar_focus": "want_to_infinitive",
-        "pattern_signature": "statement|present_simple|want_to|aff",
+        "pattern_signature": "statement|present_simple|want_to|aff|plain",
         "lexical_verbs": [
           "buy"
         ],
@@ -10075,7 +10084,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "ask_time",
         "grammar_focus": "wh_question_do",
-        "pattern_signature": "wh_question|present_simple|none|aff",
+        "pattern_signature": "wh_question|present_simple|none|aff|plain",
         "lexical_verbs": [
           "leave"
         ],
@@ -10130,7 +10139,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "find_platform",
         "grammar_focus": "modal_request",
-        "pattern_signature": "yesno_question|present_simple|can|aff",
+        "pattern_signature": "yesno_question|present_simple|can|aff|plain",
         "lexical_verbs": [
           "show"
         ],
@@ -10183,7 +10192,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "describe_luggage",
         "grammar_focus": "be_complement",
-        "pattern_signature": "statement|be|none|aff",
+        "pattern_signature": "statement|be|none|aff|plain",
         "lexical_verbs": [],
         "pt": "Minha bagagem está muito pesada.",
         "ctx": "Situação: describe luggage.",
@@ -10227,14 +10236,16 @@ export const GENERATED_CONTENT_PACKS = [
         "expected_answers_en": [
           "I have a reservation for tonight."
         ],
-        "accepted_variants_en": [],
+        "accepted_variants_en": [
+          "I've got a reservation for tonight."
+        ],
         "explanation_pt": "Verbo have para posse.",
         "skill_targets": [
           "simple_present"
         ],
         "communicative_intent": "confirm_reservation",
         "grammar_focus": "have_possession",
-        "pattern_signature": "statement|present_simple|none|aff",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
         "lexical_verbs": [
           "have"
         ],
@@ -10289,7 +10300,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "state_destination",
         "grammar_focus": "present_continuous",
-        "pattern_signature": "statement|going_to|none|aff",
+        "pattern_signature": "statement|going_to|none|aff|plain",
         "lexical_verbs": [
           "go"
         ],
@@ -10344,7 +10355,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "ask_help",
         "grammar_focus": "imperative_request",
-        "pattern_signature": "imperative|present_simple|none|aff",
+        "pattern_signature": "imperative|present_simple|none|aff|plain",
         "lexical_verbs": [
           "help"
         ],
@@ -10649,8 +10660,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "travel_a2_subject_past_simple_object_time_01",
-        "family_id": "travel_a2_subject_past_simple_object_time_0",
+        "template_id": "travel_a2_tv2_arrive_late",
+        "family_id": "travel_a2_report_delay",
         "pack_id": "travel_a2",
         "theme": "travel",
         "level": "A2",
@@ -10669,144 +10680,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_ticket"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the ticket yesterday.",
+        "sentence": "Our flight arrived late yesterday.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a passagem ontem.",
+        "source_text_pt": "Nosso voo chegou atrasado ontem.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the ticket yesterday."
+          "Our flight arrived late yesterday."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Nós verificamos a passagem ontem.",
-        "ctx": "Contexto de viagens (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the ticket yesterday."
+        "communicative_intent": "report_delay",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "arrive"
+        ],
+        "pt": "Nosso voo chegou atrasado ontem.",
+        "ctx": "Situação: report delay.",
+        "blank": "flight",
+        "wrong": "Our flight arrive late yesterday."
       },
       {
-        "template_id": "travel_a2_subject_be_going_to_verb_time_02",
-        "family_id": "travel_a2_subject_be_going_to_verb_time_1",
+        "template_id": "travel_a2_tv2_compare",
+        "family_id": "travel_a2_compare_options",
         "pack_id": "travel_a2",
         "theme": "travel",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "present_continuous",
-        "skill_ids": [
-          "present_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_hotel"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the hotel tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar o hotel amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They are going to review the hotel tomorrow."
-        ],
-        "accepted_variants_en": [
-          "They're going to review the hotel tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
-        "skill_targets": [
-          "present_continuous"
-        ],
-        "pt": "Eles vão revisar o hotel amanhã.",
-        "ctx": "Contexto de viagens (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the hotel tomorrow."
-      },
-      {
-        "template_id": "travel_a2_subject_simple_present_object_03",
-        "family_id": "travel_a2_subject_simple_present_object_2",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "future_going_to",
-        "skill_ids": [
-          "future_going_to",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_passport"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the passport every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o passaporte todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the passport every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "future_going_to"
-        ],
-        "pt": "Nós verificamos o passaporte todos os dias.",
-        "ctx": "Contexto de viagens (nível A2).",
-        "blank": "check",
-        "wrong": "We check the passport every day."
-      },
-      {
-        "template_id": "travel_a2_wh_do_subject_base_verb_04",
-        "family_id": "travel_a2_wh_do_subject_base_verb_3",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "comparative_than",
         "primary_skill_id": "comparatives",
         "skill_ids": [
           "comparatives",
@@ -10821,45 +10733,46 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_train_station"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the train station?",
+        "sentence": "The bus is cheaper than the taxi.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa da estação de trem?",
+        "source_text_pt": "O ônibus é mais barato que o táxi.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the train station?"
+          "The bus is cheaper than the taxi."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "comparatives"
         ],
-        "pt": "Quando você precisa da estação de trem?",
-        "ctx": "Contexto de viagens (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the train station?"
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "O ônibus é mais barato que o táxi.",
+        "ctx": "Situação: compare options.",
+        "blank": "bus",
+        "wrong": "The bus is more cheap than the taxi."
       },
       {
-        "template_id": "travel_a2_subject_past_simple_object_time_05",
-        "family_id": "travel_a2_subject_past_simple_object_time_4",
+        "template_id": "travel_a2_tv2_plan_visit",
+        "family_id": "travel_a2_state_plan",
         "pack_id": "travel_a2",
         "theme": "travel",
         "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "present_perfect",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "present_perfect",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -10871,42 +10784,47 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_boarding_gate"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the boarding gate yesterday.",
+        "sentence": "I am going to visit the museum tomorrow.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o portão de embarque ontem.",
+        "source_text_pt": "Vou visitar o museu amanhã.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the boarding gate yesterday."
+          "I am going to visit the museum tomorrow."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "accepted_variants_en": [
+          "I'm going to visit the museum tomorrow."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "present_perfect"
+          "future_going_to"
         ],
-        "pt": "Nós verificamos o portão de embarque ontem.",
-        "ctx": "Contexto de viagens (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the boarding gate yesterday."
+        "communicative_intent": "state_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "visit"
+        ],
+        "pt": "Vou visitar o museu amanhã.",
+        "ctx": "Situação: state plan.",
+        "blank": "museum",
+        "wrong": "I am going to visited the museum tomorrow."
       },
       {
-        "template_id": "travel_a2_subject_be_going_to_verb_time_06",
-        "family_id": "travel_a2_subject_be_going_to_verb_time_5",
+        "template_id": "travel_a2_tv2_ask_breakfast",
+        "family_id": "travel_a2_ask_amenity",
         "pack_id": "travel_a2",
         "theme": "travel",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
+        "pattern_id": "yes_no_do_question",
         "primary_skill_id": "question_auxiliary",
         "skill_ids": [
           "question_auxiliary",
@@ -10921,94 +10839,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_luggage"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They are going to review the luggage tomorrow.",
+        "sentence": "Does the hotel have breakfast?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar a bagagem amanhã.",
+        "source_text_pt": "O hotel tem café da manhã?",
         "target_locale": "en",
         "expected_answers_en": [
-          "They are going to review the luggage tomorrow."
+          "Does the hotel have breakfast?"
         ],
-        "accepted_variants_en": [
-          "They're going to review the luggage tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "question_auxiliary"
         ],
-        "pt": "Eles vão revisar a bagagem amanhã.",
-        "ctx": "Contexto de viagens (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the luggage tomorrow."
+        "communicative_intent": "ask_amenity",
+        "grammar_focus": "yes_no_question",
+        "pattern_signature": "yesno_question|present_perfect|none|aff|plain",
+        "lexical_verbs": [
+          "have"
+        ],
+        "pt": "O hotel tem café da manhã?",
+        "ctx": "Situação: ask amenity.",
+        "blank": "hotel",
+        "wrong": "The hotel have breakfast?"
       },
       {
-        "template_id": "travel_a2_subject_simple_present_object_07",
-        "family_id": "travel_a2_subject_simple_present_object_0",
+        "template_id": "travel_a2_tv2_lost_passport",
+        "family_id": "travel_a2_report_problem",
         "pack_id": "travel_a2",
         "theme": "travel",
         "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the reservation every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a reserva todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the reservation every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Nós verificamos a reserva todos os dias.",
-        "ctx": "Contexto de viagens (nível A2).",
-        "blank": "check",
-        "wrong": "We check the reservation every day."
-      },
-      {
-        "template_id": "travel_a2_wh_do_subject_base_verb_08",
-        "family_id": "travel_a2_wh_do_subject_base_verb_1",
-        "pack_id": "travel_a2",
-        "theme": "travel",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "subject_past_simple_object_time",
         "primary_skill_id": "past_simple",
         "skill_ids": [
           "past_simple",
@@ -11023,34 +10892,198 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_a2_city_map"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the city map?",
+        "sentence": "I lost my passport at the airport.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa do mapa da cidade?",
+        "source_text_pt": "Perdi meu passaporte no aeroporto.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the city map?"
+          "I lost my passport at the airport."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Quando você precisa do mapa da cidade?",
-        "ctx": "Contexto de viagens (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the city map?"
+        "communicative_intent": "report_problem",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "lose"
+        ],
+        "pt": "Perdi meu passaporte no aeroporto.",
+        "ctx": "Situação: report problem.",
+        "blank": "passport",
+        "wrong": "I lose my passport at the airport."
+      },
+      {
+        "template_id": "travel_a2_tv2_request_taxi",
+        "family_id": "travel_a2_request_service",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Could you call a taxi for me?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você poderia chamar um táxi para mim?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Could you call a taxi for me?"
+        ],
+        "accepted_variants_en": [
+          "Can you call a taxi for me?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "request_service",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|could|aff|plain",
+        "lexical_verbs": [
+          "call"
+        ],
+        "pt": "Você poderia chamar um táxi para mim?",
+        "ctx": "Situação: request service.",
+        "blank": "taxi",
+        "wrong": "You could call a taxi for me?"
+      },
+      {
+        "template_id": "travel_a2_tv2_frequency",
+        "family_id": "travel_a2_talk_habit",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I usually travel by bus.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Costumo viajar de ônibus.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I usually travel by bus."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "talk_habit",
+        "grammar_focus": "frequency_adverb",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "travel"
+        ],
+        "pt": "Costumo viajar de ônibus.",
+        "ctx": "Situação: talk habit.",
+        "blank": "bus",
+        "wrong": "I usually travels by bus."
+      },
+      {
+        "template_id": "travel_a2_tv2_there_taxi",
+        "family_id": "travel_a2_point_out",
+        "pack_id": "travel_a2",
+        "theme": "travel",
+        "level": "A2",
+        "pattern_id": "there_is_are",
+        "primary_skill_id": "there_is_are",
+        "skill_ids": [
+          "there_is_are",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "There is a taxi outside the hotel.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Tem um táxi na frente do hotel.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "There is a taxi outside the hotel."
+        ],
+        "accepted_variants_en": [
+          "There's a taxi outside the hotel."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "communicative_intent": "point_out",
+        "grammar_focus": "existential",
+        "pattern_signature": "statement|be|none|aff|existential",
+        "lexical_verbs": [],
+        "pt": "Tem um táxi na frente do hotel.",
+        "ctx": "Situação: point out.",
+        "blank": "taxi",
+        "wrong": "There a taxi outside the hotel."
       }
     ],
     "collocations": [
@@ -11348,8 +11381,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "travel_b1_subject_have_past_participle_yet_01",
-        "family_id": "travel_b1_subject_have_past_participle_yet_0",
+        "template_id": "travel_b1_tv3_pp_booked",
+        "family_id": "travel_b1_confirm_plan",
         "pack_id": "travel_b1",
         "theme": "travel",
         "level": "B1",
@@ -11368,41 +11401,98 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_ticket"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We have checked the ticket already.",
+        "sentence": "I have already booked the hotel.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos a passagem.",
+        "source_text_pt": "Já reservei o hotel.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We have checked the ticket already."
+          "I have already booked the hotel."
         ],
         "accepted_variants_en": [
-          "We've checked the ticket already."
+          "I've already booked the hotel."
         ],
-        "explanation_pt": "Present perfect com already.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect"
         ],
-        "pt": "Nós já verificamos a passagem.",
-        "ctx": "Contexto de viagens (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the ticket already."
+        "communicative_intent": "confirm_plan",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "book"
+        ],
+        "pt": "Já reservei o hotel.",
+        "ctx": "Situação: confirm plan.",
+        "blank": "hotel",
+        "wrong": "I have already book the hotel."
       },
       {
-        "template_id": "travel_b1_subject_have_been_ving_object_duration_02",
-        "family_id": "travel_b1_subject_have_been_ving_object_duration_1",
+        "template_id": "travel_b1_tv3_first_cond",
+        "family_id": "travel_b1_plan_contingency",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "first_conditional",
+        "skill_ids": [
+          "first_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If we miss the bus, we will take a taxi.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se perdermos o ônibus, vamos pegar um táxi.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we miss the bus, we will take a taxi."
+        ],
+        "accepted_variants_en": [
+          "If we miss the bus, we'll take a taxi."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "communicative_intent": "plan_contingency",
+        "grammar_focus": "first_conditional",
+        "pattern_signature": "conditional|will_future|none|aff|first_conditional",
+        "lexical_verbs": [
+          "miss"
+        ],
+        "pt": "Se perdermos o ônibus, vamos pegar um táxi.",
+        "ctx": "Situação: plan contingency.",
+        "blank": "bus",
+        "wrong": "If we will miss the bus, we take a taxi."
+      },
+      {
+        "template_id": "travel_b1_tv3_ppc_waiting",
+        "family_id": "travel_b1_report_problem",
         "pack_id": "travel_b1",
         "theme": "travel",
         "level": "B1",
@@ -11421,48 +11511,50 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_hotel"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They have been reviewing the hotel for two hours.",
+        "sentence": "I have been waiting for the bus for an hour.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando o hotel há duas horas.",
+        "source_text_pt": "Estou esperando o ônibus há uma hora.",
         "target_locale": "en",
         "expected_answers_en": [
-          "They have been reviewing the hotel for two hours."
+          "I have been waiting for the bus for an hour."
         ],
         "accepted_variants_en": [
-          "They've been reviewing the hotel for two hours."
+          "I've been waiting for the bus for an hour."
         ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect_continuous"
         ],
-        "pt": "Eles estão revisando o hotel há duas horas.",
-        "ctx": "Contexto de viagens (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the hotel for two hours."
+        "communicative_intent": "report_problem",
+        "grammar_focus": "present_perfect_continuous",
+        "pattern_signature": "statement|present_perfect_continuous|none|aff|plain",
+        "lexical_verbs": [
+          "wait"
+        ],
+        "pt": "Estou esperando o ônibus há uma hora.",
+        "ctx": "Situação: report problem.",
+        "blank": "bus",
+        "wrong": "I have been wait for the bus for an hour."
       },
       {
-        "template_id": "travel_b1_if_present_will_future_03",
-        "family_id": "travel_b1_if_present_will_future_2",
+        "template_id": "travel_b1_tv3_plan_spend",
+        "family_id": "travel_b1_describe_plan",
         "pack_id": "travel_b1",
         "theme": "travel",
         "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "gerund_after_been",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "gerund_after_been",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -11474,41 +11566,200 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_passport"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If we confirm the passport, we will start tomorrow.",
+        "sentence": "I am going to spend three days in the city.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos o passaporte, vamos começar amanhã.",
+        "source_text_pt": "Vou passar três dias na cidade.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If we confirm the passport, we will start tomorrow."
+          "I am going to spend three days in the city."
         ],
         "accepted_variants_en": [
-          "If we confirm the passport, we'll start tomorrow."
+          "I'm going to spend three days in the city."
         ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "gerund_after_been"
+          "future_going_to"
         ],
-        "pt": "Se confirmarmos o passaporte, vamos começar amanhã.",
-        "ctx": "Contexto de viagens (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the passport, we will start tomorrow."
+        "communicative_intent": "describe_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "spend"
+        ],
+        "pt": "Vou passar três dias na cidade.",
+        "ctx": "Situação: describe plan.",
+        "blank": "city",
+        "wrong": "I am going to spent three days in the city."
       },
       {
-        "template_id": "travel_b1_subject_modal_base_verb_04",
-        "family_id": "travel_b1_subject_modal_base_verb_3",
+        "template_id": "travel_b1_tv3_pp_question",
+        "family_id": "travel_b1_ask_experience",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Have you ever visited this city?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você já visitou esta cidade?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Have you ever visited this city?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "ask_experience",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "visit"
+        ],
+        "pt": "Você já visitou esta cidade?",
+        "ctx": "Situação: ask experience.",
+        "blank": "city",
+        "wrong": "Have you ever visit this city?"
+      },
+      {
+        "template_id": "travel_b1_tv3_advice",
+        "family_id": "travel_b1_give_advice",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "You should confirm your reservation online.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você deveria confirmar sua reserva online.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "You should confirm your reservation online."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "give_advice",
+        "grammar_focus": "modal_advice",
+        "pattern_signature": "statement|present_simple|should|aff|plain",
+        "lexical_verbs": [
+          "confirm"
+        ],
+        "pt": "Você deveria confirmar sua reserva online.",
+        "ctx": "Situação: give advice.",
+        "blank": "reservation",
+        "wrong": "You should confirms your reservation online."
+      },
+      {
+        "template_id": "travel_b1_tv3_compare_exp",
+        "family_id": "travel_b1_compare_options",
+        "pack_id": "travel_b1",
+        "theme": "travel",
+        "level": "B1",
+        "pattern_id": "comparative_than",
+        "primary_skill_id": "comparatives",
+        "skill_ids": [
+          "comparatives",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "This hotel is better than the last one.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Este hotel é melhor que o anterior.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "This hotel is better than the last one."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "Este hotel é melhor que o anterior.",
+        "ctx": "Situação: compare options.",
+        "blank": "hotel",
+        "wrong": "This hotel is more better than the last one."
+      },
+      {
+        "template_id": "travel_b1_tv3_preference",
+        "family_id": "travel_b1_state_preference",
         "pack_id": "travel_b1",
         "theme": "travel",
         "level": "B1",
@@ -11527,245 +11778,39 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_train_station"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the train station today.",
+        "sentence": "I would rather stay at a small hotel.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a estação de trem hoje.",
+        "source_text_pt": "Eu preferiria ficar em um hotel pequeno.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the train station today."
+          "I would rather stay at a small hotel."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "accepted_variants_en": [
+          "I'd rather stay at a small hotel."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "first_conditional"
         ],
-        "pt": "Eu posso atualizar a estação de trem hoje.",
-        "ctx": "Contexto de viagens (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the train station today."
-      },
-      {
-        "template_id": "travel_b1_subject_have_past_participle_yet_05",
-        "family_id": "travel_b1_subject_have_past_participle_yet_4",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
+        "communicative_intent": "state_preference",
+        "grammar_focus": "would_preference",
+        "pattern_signature": "statement|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "stay"
         ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_boarding_gate"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the boarding gate already.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos o portão de embarque.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We have checked the boarding gate already."
-        ],
-        "accepted_variants_en": [
-          "We've checked the boarding gate already."
-        ],
-        "explanation_pt": "Present perfect com already.",
-        "skill_targets": [
-          "question_auxiliary"
-        ],
-        "pt": "Nós já verificamos o portão de embarque.",
-        "ctx": "Contexto de viagens (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the boarding gate already."
-      },
-      {
-        "template_id": "travel_b1_subject_have_been_ving_object_duration_06",
-        "family_id": "travel_b1_subject_have_been_ving_object_duration_5",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_luggage"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the luggage for two hours.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando a bagagem há duas horas.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They have been reviewing the luggage for two hours."
-        ],
-        "accepted_variants_en": [
-          "They've been reviewing the luggage for two hours."
-        ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
-        "skill_targets": [
-          "collocation"
-        ],
-        "pt": "Eles estão revisando a bagagem há duas horas.",
-        "ctx": "Contexto de viagens (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the luggage for two hours."
-      },
-      {
-        "template_id": "travel_b1_if_present_will_future_07",
-        "family_id": "travel_b1_if_present_will_future_0",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "preposition",
-        "skill_ids": [
-          "preposition",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the reservation, we will start tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos a reserva, vamos começar amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If we confirm the reservation, we will start tomorrow."
-        ],
-        "accepted_variants_en": [
-          "If we confirm the reservation, we'll start tomorrow."
-        ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
-        "skill_targets": [
-          "preposition"
-        ],
-        "pt": "Se confirmarmos a reserva, vamos começar amanhã.",
-        "ctx": "Contexto de viagens (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the reservation, we will start tomorrow."
-      },
-      {
-        "template_id": "travel_b1_subject_modal_base_verb_08",
-        "family_id": "travel_b1_subject_modal_base_verb_1",
-        "pack_id": "travel_b1",
-        "theme": "travel",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b1_city_map"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the city map today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o mapa da cidade hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the city map today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "present_perfect"
-        ],
-        "pt": "Eu posso atualizar o mapa da cidade hoje.",
-        "ctx": "Contexto de viagens (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the city map today."
+        "pt": "Eu preferiria ficar em um hotel pequeno.",
+        "ctx": "Situação: state preference.",
+        "blank": "hotel",
+        "wrong": "I would rather stayed at a small hotel."
       }
     ],
     "collocations": [
@@ -12063,8 +12108,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "travel_b2_passive_be_past_participle_01",
-        "family_id": "travel_b2_passive_be_past_participle_0",
+        "template_id": "travel_b2_tv4_passive",
+        "family_id": "travel_b2_report_problem",
         "pack_id": "travel_b2",
         "theme": "travel",
         "level": "B2",
@@ -12083,40 +12128,43 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_ticket"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The ticket was reviewed by the team.",
+        "sentence": "The flight was cancelled because of the storm.",
         "source_locale": "pt-BR",
-        "source_text_pt": "A passagem foi revisada pela equipe.",
+        "source_text_pt": "O voo foi cancelado por causa da tempestade.",
         "target_locale": "en",
         "expected_answers_en": [
-          "The ticket was reviewed by the team."
+          "The flight was cancelled because of the storm."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "accepted_variants_en": [
+          "The flight was canceled because of the storm."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "passive_voice"
         ],
-        "pt": "A passagem foi revisada pela equipe.",
-        "ctx": "Contexto de viagens (nível B2).",
-        "blank": "ticket",
-        "wrong": "The ticket reviewed by the team."
+        "communicative_intent": "report_problem",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "cancel"
+        ],
+        "pt": "O voo foi cancelado por causa da tempestade.",
+        "ctx": "Situação: report problem.",
+        "blank": "flight",
+        "wrong": "The flight was cancel because of the storm."
       },
       {
-        "template_id": "travel_b2_reported_speech_statement_02",
-        "family_id": "travel_b2_reported_speech_statement_1",
+        "template_id": "travel_b2_tv4_reported",
+        "family_id": "travel_b2_report_information",
         "pack_id": "travel_b2",
         "theme": "travel",
         "level": "B2",
@@ -12135,40 +12183,41 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_hotel"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "She said that the hotel was ready.",
+        "sentence": "The agent said that the flight was delayed.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que o hotel estava pronto.",
+        "source_text_pt": "O atendente disse que o voo estava atrasado.",
         "target_locale": "en",
         "expected_answers_en": [
-          "She said that the hotel was ready."
+          "The agent said that the flight was delayed."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "reported_speech"
         ],
-        "pt": "Ela disse que o hotel estava pronto.",
-        "ctx": "Contexto de viagens (nível B2).",
-        "blank": "said",
-        "wrong": "She said the hotel was ready."
+        "communicative_intent": "report_information",
+        "grammar_focus": "reported_speech",
+        "pattern_signature": "statement|past_simple|none|aff|reported",
+        "lexical_verbs": [
+          "say"
+        ],
+        "pt": "O atendente disse que o voo estava atrasado.",
+        "ctx": "Situação: report information.",
+        "blank": "flight",
+        "wrong": "The agent said that the flight delayed."
       },
       {
-        "template_id": "travel_b2_second_conditional_03",
-        "family_id": "travel_b2_second_conditional_2",
+        "template_id": "travel_b2_tv4_second_cond",
+        "family_id": "travel_b2_hypothesize",
         "pack_id": "travel_b2",
         "theme": "travel",
         "level": "B2",
@@ -12187,42 +12236,202 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_passport"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If I had more time, I would improve the passport.",
+        "sentence": "If I had more time, I would visit the coast.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o passaporte.",
+        "source_text_pt": "Se eu tivesse mais tempo, visitaria o litoral.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If I had more time, I would improve the passport."
+          "If I had more time, I would visit the coast."
         ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the passport."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "second_conditional"
         ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria o passaporte.",
-        "ctx": "Contexto de viagens (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the passport."
+        "communicative_intent": "hypothesize",
+        "grammar_focus": "second_conditional",
+        "pattern_signature": "conditional|present_simple|would|aff|second_conditional",
+        "lexical_verbs": [
+          "visit"
+        ],
+        "pt": "Se eu tivesse mais tempo, visitaria o litoral.",
+        "ctx": "Situação: hypothesize.",
+        "blank": "coast",
+        "wrong": "If I had more time, I will visit the coast."
       },
       {
-        "template_id": "travel_b2_subject_modal_base_verb_04",
-        "family_id": "travel_b2_subject_modal_base_verb_3",
+        "template_id": "travel_b2_tv4_diplomatic",
+        "family_id": "travel_b2_request_politely",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "modal_deduction",
+        "skill_ids": [
+          "modal_deduction",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Would you mind checking the reservation again?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você se importaria de verificar a reserva de novo?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Would you mind checking the reservation again?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "communicative_intent": "request_politely",
+        "grammar_focus": "diplomatic_request",
+        "pattern_signature": "yesno_question|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "check"
+        ],
+        "pt": "Você se importaria de verificar a reserva de novo?",
+        "ctx": "Situação: request politely.",
+        "blank": "reservation",
+        "wrong": "Would you mind check the reservation again?"
+      },
+      {
+        "template_id": "travel_b2_tv4_pp_just",
+        "family_id": "travel_b2_report_status",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have just arrived at the airport.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Acabamos de chegar ao aeroporto.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have just arrived at the airport."
+        ],
+        "accepted_variants_en": [
+          "We've just arrived at the airport."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "report_status",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_perfect|none|aff|plain",
+        "lexical_verbs": [
+          "arrive"
+        ],
+        "pt": "Acabamos de chegar ao aeroporto.",
+        "ctx": "Situação: report status.",
+        "blank": "airport",
+        "wrong": "We have just arrive at the airport."
+      },
+      {
+        "template_id": "travel_b2_tv4_passive2",
+        "family_id": "travel_b2_report_problem_lost",
+        "pack_id": "travel_b2",
+        "theme": "travel",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Our bags were lost during the transfer.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Nossas malas foram perdidas durante o traslado.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Our bags were lost during the transfer."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "communicative_intent": "report_problem_lost",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "lose"
+        ],
+        "pt": "Nossas malas foram perdidas durante o traslado.",
+        "ctx": "Situação: report problem lost.",
+        "blank": "bags",
+        "wrong": "Our bags were lose during the transfer."
+      },
+      {
+        "template_id": "travel_b2_tv4_deduction",
+        "family_id": "travel_b2_make_deduction",
         "pack_id": "travel_b2",
         "theme": "travel",
         "level": "B2",
@@ -12241,47 +12450,48 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_train_station"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the train station today.",
+        "sentence": "The bus must have left already.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a estação de trem hoje.",
+        "source_text_pt": "O ônibus já deve ter saído.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the train station today."
+          "The bus must have left already."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "modal_deduction"
         ],
-        "pt": "Eu posso atualizar a estação de trem hoje.",
-        "ctx": "Contexto de viagens (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the train station today."
+        "communicative_intent": "make_deduction",
+        "grammar_focus": "modal_deduction",
+        "pattern_signature": "statement|present_perfect|must|aff|plain",
+        "lexical_verbs": [
+          "leave"
+        ],
+        "pt": "O ônibus já deve ter saído.",
+        "ctx": "Situação: make deduction.",
+        "blank": "bus",
+        "wrong": "The bus must has left already."
       },
       {
-        "template_id": "travel_b2_passive_be_past_participle_05",
-        "family_id": "travel_b2_passive_be_past_participle_4",
+        "template_id": "travel_b2_tv4_contrast",
+        "family_id": "travel_b2_describe_experience",
         "pack_id": "travel_b2",
         "theme": "travel",
         "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "collocation",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "verb_to_be",
         "skill_ids": [
-          "collocation",
+          "verb_to_be",
           "vocabulary"
         ],
         "exercise_types": [
@@ -12293,194 +12503,35 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_boarding_gate"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The boarding gate was reviewed by the team.",
+        "sentence": "The hotel was comfortable, but it was quite expensive.",
         "source_locale": "pt-BR",
-        "source_text_pt": "O portão de embarque foi revisado pela equipe.",
+        "source_text_pt": "O hotel era confortável, mas era bem caro.",
         "target_locale": "en",
         "expected_answers_en": [
-          "The boarding gate was reviewed by the team."
+          "The hotel was comfortable, but it was quite expensive."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "collocation"
+          "verb_to_be"
         ],
-        "pt": "O portão de embarque foi revisado pela equipe.",
-        "ctx": "Contexto de viagens (nível B2).",
-        "blank": "boarding",
-        "wrong": "The boarding gate reviewed by the team."
-      },
-      {
-        "template_id": "travel_b2_reported_speech_statement_06",
-        "family_id": "travel_b2_reported_speech_statement_5",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "word_order",
-        "skill_ids": [
-          "word_order",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_luggage"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the luggage was ready.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que a bagagem estava pronta.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "She said that the luggage was ready."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
-        "skill_targets": [
-          "word_order"
-        ],
-        "pt": "Ela disse que a bagagem estava pronta.",
-        "ctx": "Contexto de viagens (nível B2).",
-        "blank": "said",
-        "wrong": "She said the luggage was ready."
-      },
-      {
-        "template_id": "travel_b2_second_conditional_07",
-        "family_id": "travel_b2_second_conditional_0",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the reservation.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a reserva.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If I had more time, I would improve the reservation."
-        ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the reservation."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria a reserva.",
-        "ctx": "Contexto de viagens (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the reservation."
-      },
-      {
-        "template_id": "travel_b2_subject_modal_base_verb_08",
-        "family_id": "travel_b2_subject_modal_base_verb_1",
-        "pack_id": "travel_b2",
-        "theme": "travel",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "travel_b2_city_map"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the city map today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o mapa da cidade hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the city map today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "passive_voice"
-        ],
-        "pt": "Eu posso atualizar o mapa da cidade hoje.",
-        "ctx": "Contexto de viagens (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the city map today."
+        "communicative_intent": "describe_experience",
+        "grammar_focus": "past_contrast",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "O hotel era confortável, mas era bem caro.",
+        "ctx": "Situação: describe experience.",
+        "blank": "hotel",
+        "wrong": "The hotel comfortable, but it was quite expensive."
       }
     ],
     "collocations": [
@@ -12814,14 +12865,16 @@ export const GENERATED_CONTENT_PACKS = [
         "expected_answers_en": [
           "Can I have the grilled chicken, please?"
         ],
-        "accepted_variants_en": [],
+        "accepted_variants_en": [
+          "Could I have the grilled chicken, please?"
+        ],
         "explanation_pt": "Pedido educado com can/could.",
         "skill_targets": [
           "can_request"
         ],
         "communicative_intent": "order_food",
         "grammar_focus": "modal_request",
-        "pattern_signature": "yesno_question|present_simple|can|aff",
+        "pattern_signature": "yesno_question|present_simple|can|aff|plain",
         "lexical_verbs": [
           "have"
         ],
@@ -12874,7 +12927,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "ask_ingredient",
         "grammar_focus": "yes_no_question",
-        "pattern_signature": "yesno_question|present_simple|none|aff",
+        "pattern_signature": "yesno_question|present_simple|none|aff|plain",
         "lexical_verbs": [
           "have"
         ],
@@ -12929,7 +12982,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "inform_restriction",
         "grammar_focus": "be_complement",
-        "pattern_signature": "statement|be|none|aff",
+        "pattern_signature": "statement|be|none|aff|plain",
         "lexical_verbs": [],
         "pt": "Sou alérgico a amendoim.",
         "ctx": "Situação: inform restriction.",
@@ -12982,7 +13035,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "ask_menu",
         "grammar_focus": "modal_request",
-        "pattern_signature": "yesno_question|present_simple|could|aff",
+        "pattern_signature": "yesno_question|present_simple|could|aff|plain",
         "lexical_verbs": [
           "bring"
         ],
@@ -13028,14 +13081,17 @@ export const GENERATED_CONTENT_PACKS = [
         "expected_answers_en": [
           "I want to book a table for two."
         ],
-        "accepted_variants_en": [],
+        "accepted_variants_en": [
+          "I'd like to book a table for two.",
+          "I would like to book a table for two."
+        ],
         "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
         "skill_targets": [
           "simple_present"
         ],
         "communicative_intent": "reserve_table",
         "grammar_focus": "want_to_infinitive",
-        "pattern_signature": "statement|present_simple|want_to|aff",
+        "pattern_signature": "statement|present_simple|want_to|aff|plain",
         "lexical_verbs": [
           "book"
         ],
@@ -13088,7 +13144,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "ask_location",
         "grammar_focus": "wh_question_be",
-        "pattern_signature": "wh_question|be|none|aff",
+        "pattern_signature": "wh_question|be|none|aff|plain",
         "lexical_verbs": [],
         "pt": "Onde fica o restaurante?",
         "ctx": "Situação: ask location.",
@@ -13141,7 +13197,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "describe_activity",
         "grammar_focus": "present_continuous",
-        "pattern_signature": "statement|present_continuous|none|aff",
+        "pattern_signature": "statement|present_continuous|none|aff|plain",
         "lexical_verbs": [
           "wait"
         ],
@@ -13194,7 +13250,7 @@ export const GENERATED_CONTENT_PACKS = [
         ],
         "communicative_intent": "ask_time",
         "grammar_focus": "wh_question_do",
-        "pattern_signature": "wh_question|present_simple|none|aff",
+        "pattern_signature": "wh_question|present_simple|none|aff|plain",
         "lexical_verbs": [
           "open"
         ],

@@ -242,14 +242,16 @@
       "expected_answers_en": [
         "Can I have the grilled chicken, please?"
       ],
-      "accepted_variants_en": [],
+      "accepted_variants_en": [
+        "Could I have the grilled chicken, please?"
+      ],
       "explanation_pt": "Pedido educado com can/could.",
       "skill_targets": [
         "can_request"
       ],
       "communicative_intent": "order_food",
       "grammar_focus": "modal_request",
-      "pattern_signature": "yesno_question|present_simple|can|aff",
+      "pattern_signature": "yesno_question|present_simple|can|aff|plain",
       "lexical_verbs": [
         "have"
       ],
@@ -302,7 +304,7 @@
       ],
       "communicative_intent": "ask_ingredient",
       "grammar_focus": "yes_no_question",
-      "pattern_signature": "yesno_question|present_simple|none|aff",
+      "pattern_signature": "yesno_question|present_simple|none|aff|plain",
       "lexical_verbs": [
         "have"
       ],
@@ -357,7 +359,7 @@
       ],
       "communicative_intent": "inform_restriction",
       "grammar_focus": "be_complement",
-      "pattern_signature": "statement|be|none|aff",
+      "pattern_signature": "statement|be|none|aff|plain",
       "lexical_verbs": [],
       "pt": "Sou alérgico a amendoim.",
       "ctx": "Situação: inform restriction.",
@@ -410,7 +412,7 @@
       ],
       "communicative_intent": "ask_menu",
       "grammar_focus": "modal_request",
-      "pattern_signature": "yesno_question|present_simple|could|aff",
+      "pattern_signature": "yesno_question|present_simple|could|aff|plain",
       "lexical_verbs": [
         "bring"
       ],
@@ -456,14 +458,17 @@
       "expected_answers_en": [
         "I want to book a table for two."
       ],
-      "accepted_variants_en": [],
+      "accepted_variants_en": [
+        "I'd like to book a table for two.",
+        "I would like to book a table for two."
+      ],
       "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
       "skill_targets": [
         "simple_present"
       ],
       "communicative_intent": "reserve_table",
       "grammar_focus": "want_to_infinitive",
-      "pattern_signature": "statement|present_simple|want_to|aff",
+      "pattern_signature": "statement|present_simple|want_to|aff|plain",
       "lexical_verbs": [
         "book"
       ],
@@ -516,7 +521,7 @@
       ],
       "communicative_intent": "ask_location",
       "grammar_focus": "wh_question_be",
-      "pattern_signature": "wh_question|be|none|aff",
+      "pattern_signature": "wh_question|be|none|aff|plain",
       "lexical_verbs": [],
       "pt": "Onde fica o restaurante?",
       "ctx": "Situação: ask location.",
@@ -569,7 +574,7 @@
       ],
       "communicative_intent": "describe_activity",
       "grammar_focus": "present_continuous",
-      "pattern_signature": "statement|present_continuous|none|aff",
+      "pattern_signature": "statement|present_continuous|none|aff|plain",
       "lexical_verbs": [
         "wait"
       ],
@@ -622,7 +627,7 @@
       ],
       "communicative_intent": "ask_time",
       "grammar_focus": "wh_question_do",
-      "pattern_signature": "wh_question|present_simple|none|aff",
+      "pattern_signature": "wh_question|present_simple|none|aff|plain",
       "lexical_verbs": [
         "open"
       ],
