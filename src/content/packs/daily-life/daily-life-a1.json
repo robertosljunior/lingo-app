@@ -206,262 +206,12 @@
   ],
   "template_definitions": [
     {
-      "template_id": "daily_life_a1_subject_be_complement_01",
-      "family_id": "daily_life_a1_subject_be_complement_0",
+      "template_id": "daily_life_a1_dl1_ask_keys",
+      "family_id": "daily_life_a1_ask_location",
       "pack_id": "daily_life_a1",
       "theme": "daily_life",
       "level": "A1",
-      "pattern_id": "subject_be_complement",
-      "primary_skill_id": "verb_to_be",
-      "skill_ids": [
-        "verb_to_be",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a1_morning_routine"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "The morning routine is important.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "A rotina matinal é importante.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "The morning routine is important."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-      "skill_targets": [
-        "verb_to_be"
-      ],
-      "pt": "A rotina matinal é importante.",
-      "ctx": "Contexto de vida cotidiana (nível A1).",
-      "blank": "morning",
-      "wrong": "The morning routine is important."
-    },
-    {
-      "template_id": "daily_life_a1_subject_simple_present_object_02",
-      "family_id": "daily_life_a1_subject_simple_present_object_1",
-      "pack_id": "daily_life_a1",
-      "theme": "daily_life",
-      "level": "A1",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "simple_present",
-      "skill_ids": [
-        "simple_present",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a1_family_dinner"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the family dinner every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o jantar em família todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the family dinner every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "simple_present"
-      ],
-      "pt": "Nós verificamos o jantar em família todos os dias.",
-      "ctx": "Contexto de vida cotidiana (nível A1).",
-      "blank": "check",
-      "wrong": "We check the family dinner every day."
-    },
-    {
-      "template_id": "daily_life_a1_wh_do_subject_base_verb_03",
-      "family_id": "daily_life_a1_wh_do_subject_base_verb_2",
-      "pack_id": "daily_life_a1",
-      "theme": "daily_life",
-      "level": "A1",
-      "pattern_id": "wh_do_subject_base_verb",
-      "primary_skill_id": "there_is_are",
-      "skill_ids": [
-        "there_is_are",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a1_bus_stop"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "When do you need the bus stop?",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa do ponto de ônibus?",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "When do you need the bus stop?"
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
-      "skill_targets": [
-        "there_is_are"
-      ],
-      "pt": "Quando você precisa do ponto de ônibus?",
-      "ctx": "Contexto de vida cotidiana (nível A1).",
-      "blank": "do",
-      "wrong": "When you do need the bus stop?"
-    },
-    {
-      "template_id": "daily_life_a1_subject_modal_base_verb_04",
-      "family_id": "daily_life_a1_subject_modal_base_verb_3",
-      "pack_id": "daily_life_a1",
-      "theme": "daily_life",
-      "level": "A1",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "can_ability",
-      "skill_ids": [
-        "can_ability",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a1_homework"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the homework today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a lição de casa hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the homework today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "can_ability"
-      ],
-      "pt": "Eu posso atualizar a lição de casa hoje.",
-      "ctx": "Contexto de vida cotidiana (nível A1).",
-      "blank": "can",
-      "wrong": "I cans update the homework today."
-    },
-    {
-      "template_id": "daily_life_a1_subject_be_complement_05",
-      "family_id": "daily_life_a1_subject_be_complement_4",
-      "pack_id": "daily_life_a1",
-      "theme": "daily_life",
-      "level": "A1",
-      "pattern_id": "subject_be_complement",
-      "primary_skill_id": "can_request",
-      "skill_ids": [
-        "can_request",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a1_neighbor"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "The neighbor is important.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "O vizinho é importante.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "The neighbor is important."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-      "skill_targets": [
-        "can_request"
-      ],
-      "pt": "O vizinho é importante.",
-      "ctx": "Contexto de vida cotidiana (nível A1).",
-      "blank": "neighbor",
-      "wrong": "The neighbor is important."
-    },
-    {
-      "template_id": "daily_life_a1_subject_simple_present_object_06",
-      "family_id": "daily_life_a1_subject_simple_present_object_5",
-      "pack_id": "daily_life_a1",
-      "theme": "daily_life",
-      "level": "A1",
-      "pattern_id": "subject_simple_present_object",
+      "pattern_id": "wh_be_question",
       "primary_skill_id": "question_structure",
       "skill_ids": [
         "question_structure",
@@ -476,45 +226,46 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a1_weekend_plan"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We check the weekend plan every day.",
+      "sentence": "Where are my keys?",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o plano de fim de semana todos os dias.",
+      "source_text_pt": "Onde estão minhas chaves?",
       "target_locale": "en",
       "expected_answers_en": [
-        "We check the weekend plan every day."
+        "Where are my keys?"
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "explanation_pt": "Pergunta com Where + verbo to be.",
       "skill_targets": [
         "question_structure"
       ],
-      "pt": "Nós verificamos o plano de fim de semana todos os dias.",
-      "ctx": "Contexto de vida cotidiana (nível A1).",
-      "blank": "check",
-      "wrong": "We check the weekend plan every day."
+      "communicative_intent": "ask_location",
+      "grammar_focus": "wh_question_be",
+      "pattern_signature": "wh_question|be|none|aff|plain",
+      "lexical_verbs": [],
+      "pt": "Onde estão minhas chaves?",
+      "ctx": "Situação: ask location.",
+      "blank": "keys",
+      "wrong": "Where my keys are?"
     },
     {
-      "template_id": "daily_life_a1_wh_do_subject_base_verb_07",
-      "family_id": "daily_life_a1_wh_do_subject_base_verb_0",
+      "template_id": "daily_life_a1_dl1_clean_kitchen",
+      "family_id": "daily_life_a1_state_task",
       "pack_id": "daily_life_a1",
       "theme": "daily_life",
       "level": "A1",
-      "pattern_id": "wh_do_subject_base_verb",
-      "primary_skill_id": "vocabulary",
+      "pattern_id": "subject_want_to_verb",
+      "primary_skill_id": "simple_present",
       "skill_ids": [
-        "vocabulary",
+        "simple_present",
         "vocabulary"
       ],
       "exercise_types": [
@@ -526,42 +277,153 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a1_appointment"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the appointment?",
+      "sentence": "I have to clean the kitchen.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa do compromisso?",
+      "source_text_pt": "Eu tenho que limpar a cozinha.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the appointment?"
+        "I have to clean the kitchen."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "vocabulary"
+        "simple_present"
       ],
-      "pt": "Quando você precisa do compromisso?",
-      "ctx": "Contexto de vida cotidiana (nível A1).",
-      "blank": "do",
-      "wrong": "When you do need the appointment?"
+      "communicative_intent": "state_task",
+      "grammar_focus": "have_to_infinitive",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "clean"
+      ],
+      "pt": "Eu tenho que limpar a cozinha.",
+      "ctx": "Situação: state task.",
+      "blank": "kitchen",
+      "wrong": "I have to cleans the kitchen."
     },
     {
-      "template_id": "daily_life_a1_subject_modal_base_verb_08",
-      "family_id": "daily_life_a1_subject_modal_base_verb_1",
+      "template_id": "daily_life_a1_dl1_ask_breakfast_time",
+      "family_id": "daily_life_a1_ask_time",
       "pack_id": "daily_life_a1",
       "theme": "daily_life",
       "level": "A1",
-      "pattern_id": "subject_modal_base_verb",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "What time do you have dinner?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Que horas você janta?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "What time do you have dinner?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do/does.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "communicative_intent": "ask_time",
+      "grammar_focus": "wh_question_do",
+      "pattern_signature": "wh_question|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "have"
+      ],
+      "pt": "Que horas você janta?",
+      "ctx": "Situação: ask time.",
+      "blank": "dinner",
+      "wrong": "What time you have dinner?"
+    },
+    {
+      "template_id": "daily_life_a1_dl1_request_groceries",
+      "family_id": "daily_life_a1_request_help",
+      "pack_id": "daily_life_a1",
+      "theme": "daily_life",
+      "level": "A1",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Can you help me with the groceries?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você pode me ajudar com as compras?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Can you help me with the groceries?"
+      ],
+      "accepted_variants_en": [
+        "Could you help me with the groceries?"
+      ],
+      "explanation_pt": "Pedido educado com can/could.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "request_help",
+      "grammar_focus": "modal_request",
+      "pattern_signature": "yesno_question|present_simple|can|aff|plain",
+      "lexical_verbs": [
+        "help"
+      ],
+      "pt": "Você pode me ajudar com as compras?",
+      "ctx": "Situação: request help.",
+      "blank": "groceries",
+      "wrong": "You can help me with the groceries?"
+    },
+    {
+      "template_id": "daily_life_a1_dl1_describe_house",
+      "family_id": "daily_life_a1_describe_state",
+      "pack_id": "daily_life_a1",
+      "theme": "daily_life",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
       "primary_skill_id": "verb_to_be",
       "skill_ids": [
         "verb_to_be",
@@ -576,34 +438,198 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a1_coffee_break"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the coffee break today.",
+      "sentence": "The house is very clean.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a pausa para o café hoje.",
+      "source_text_pt": "A casa está muito limpa.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the coffee break today."
+        "The house is very clean."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "explanation_pt": "Verbo to be para descrever algo.",
       "skill_targets": [
         "verb_to_be"
       ],
-      "pt": "Eu posso atualizar a pausa para o café hoje.",
-      "ctx": "Contexto de vida cotidiana (nível A1).",
-      "blank": "can",
-      "wrong": "I cans update the coffee break today."
+      "communicative_intent": "describe_state",
+      "grammar_focus": "be_complement",
+      "pattern_signature": "statement|be|none|aff|plain",
+      "lexical_verbs": [],
+      "pt": "A casa está muito limpa.",
+      "ctx": "Situação: describe state.",
+      "blank": "house",
+      "wrong": "The house very clean."
+    },
+    {
+      "template_id": "daily_life_a1_dl1_cook_dinner",
+      "family_id": "daily_life_a1_state_intention",
+      "pack_id": "daily_life_a1",
+      "theme": "daily_life",
+      "level": "A1",
+      "pattern_id": "subject_want_to_verb",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I want to cook dinner tonight.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quero cozinhar o jantar hoje à noite.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I want to cook dinner tonight."
+      ],
+      "accepted_variants_en": [
+        "I'd like to cook dinner tonight."
+      ],
+      "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
+      "skill_targets": [
+        "simple_present"
+      ],
+      "communicative_intent": "state_intention",
+      "grammar_focus": "want_to_infinitive",
+      "pattern_signature": "statement|present_simple|want_to|aff|plain",
+      "lexical_verbs": [
+        "cook"
+      ],
+      "pt": "Quero cozinhar o jantar hoje à noite.",
+      "ctx": "Situação: state intention.",
+      "blank": "dinner",
+      "wrong": "I want cook dinner tonight."
+    },
+    {
+      "template_id": "daily_life_a1_dl1_doing_laundry",
+      "family_id": "daily_life_a1_describe_activity",
+      "pack_id": "daily_life_a1",
+      "theme": "daily_life",
+      "level": "A1",
+      "pattern_id": "subject_present_continuous",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I am doing the laundry now.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Estou lavando roupa agora.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I am doing the laundry now."
+      ],
+      "accepted_variants_en": [
+        "I'm doing the laundry now."
+      ],
+      "explanation_pt": "Presente contínuo (am/is/are + -ing).",
+      "skill_targets": [
+        "present_continuous"
+      ],
+      "communicative_intent": "describe_activity",
+      "grammar_focus": "present_continuous",
+      "pattern_signature": "statement|present_continuous|none|aff|plain",
+      "lexical_verbs": [
+        "do"
+      ],
+      "pt": "Estou lavando roupa agora.",
+      "ctx": "Situação: describe activity.",
+      "blank": "laundry",
+      "wrong": "I doing the laundry now."
+    },
+    {
+      "template_id": "daily_life_a1_dl1_lock_door",
+      "family_id": "daily_life_a1_ask_action",
+      "pack_id": "daily_life_a1",
+      "theme": "daily_life",
+      "level": "A1",
+      "pattern_id": "imperative_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Please lock the door.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Por favor, tranque a porta.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Please lock the door."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pedido no imperativo com please.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "ask_action",
+      "grammar_focus": "imperative_request",
+      "pattern_signature": "imperative|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "lock"
+      ],
+      "pt": "Por favor, tranque a porta.",
+      "ctx": "Situação: ask action.",
+      "blank": "door",
+      "wrong": "Please locks the door."
     }
   ],
   "collocations": [

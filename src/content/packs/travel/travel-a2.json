@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "travel_a2_subject_past_simple_object_time_01",
-      "family_id": "travel_a2_subject_past_simple_object_time_0",
+      "template_id": "travel_a2_tv2_arrive_late",
+      "family_id": "travel_a2_report_delay",
       "pack_id": "travel_a2",
       "theme": "travel",
       "level": "A2",
@@ -226,144 +226,45 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "travel_a2_ticket"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the ticket yesterday.",
+      "sentence": "Our flight arrived late yesterday.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a passagem ontem.",
+      "source_text_pt": "Nosso voo chegou atrasado ontem.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We checked the ticket yesterday."
+        "Our flight arrived late yesterday."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "past_simple"
       ],
-      "pt": "Nós verificamos a passagem ontem.",
-      "ctx": "Contexto de viagens (nível A2).",
-      "blank": "checked",
-      "wrong": "We check the ticket yesterday."
+      "communicative_intent": "report_delay",
+      "grammar_focus": "past_simple",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [
+        "arrive"
+      ],
+      "pt": "Nosso voo chegou atrasado ontem.",
+      "ctx": "Situação: report delay.",
+      "blank": "flight",
+      "wrong": "Our flight arrive late yesterday."
     },
     {
-      "template_id": "travel_a2_subject_be_going_to_verb_time_02",
-      "family_id": "travel_a2_subject_be_going_to_verb_time_1",
+      "template_id": "travel_a2_tv2_compare",
+      "family_id": "travel_a2_compare_options",
       "pack_id": "travel_a2",
       "theme": "travel",
       "level": "A2",
-      "pattern_id": "subject_be_going_to_verb_time",
-      "primary_skill_id": "present_continuous",
-      "skill_ids": [
-        "present_continuous",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "travel_a2_hotel"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "They are going to review the hotel tomorrow.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eles vão revisar o hotel amanhã.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "They are going to review the hotel tomorrow."
-      ],
-      "accepted_variants_en": [
-        "They're going to review the hotel tomorrow."
-      ],
-      "explanation_pt": "Futuro com be going to para planos.",
-      "skill_targets": [
-        "present_continuous"
-      ],
-      "pt": "Eles vão revisar o hotel amanhã.",
-      "ctx": "Contexto de viagens (nível A2).",
-      "blank": "are",
-      "wrong": "They go to review the hotel tomorrow."
-    },
-    {
-      "template_id": "travel_a2_subject_simple_present_object_03",
-      "family_id": "travel_a2_subject_simple_present_object_2",
-      "pack_id": "travel_a2",
-      "theme": "travel",
-      "level": "A2",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "future_going_to",
-      "skill_ids": [
-        "future_going_to",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "travel_a2_passport"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the passport every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o passaporte todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the passport every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "future_going_to"
-      ],
-      "pt": "Nós verificamos o passaporte todos os dias.",
-      "ctx": "Contexto de viagens (nível A2).",
-      "blank": "check",
-      "wrong": "We check the passport every day."
-    },
-    {
-      "template_id": "travel_a2_wh_do_subject_base_verb_04",
-      "family_id": "travel_a2_wh_do_subject_base_verb_3",
-      "pack_id": "travel_a2",
-      "theme": "travel",
-      "level": "A2",
-      "pattern_id": "wh_do_subject_base_verb",
+      "pattern_id": "comparative_than",
       "primary_skill_id": "comparatives",
       "skill_ids": [
         "comparatives",
@@ -378,45 +279,46 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "travel_a2_train_station"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the train station?",
+      "sentence": "The bus is cheaper than the taxi.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa da estação de trem?",
+      "source_text_pt": "O ônibus é mais barato que o táxi.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the train station?"
+        "The bus is cheaper than the taxi."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "comparatives"
       ],
-      "pt": "Quando você precisa da estação de trem?",
-      "ctx": "Contexto de viagens (nível A2).",
-      "blank": "do",
-      "wrong": "When you do need the train station?"
+      "communicative_intent": "compare_options",
+      "grammar_focus": "comparative",
+      "pattern_signature": "statement|be|none|aff|comparative",
+      "lexical_verbs": [],
+      "pt": "O ônibus é mais barato que o táxi.",
+      "ctx": "Situação: compare options.",
+      "blank": "bus",
+      "wrong": "The bus is more cheap than the taxi."
     },
     {
-      "template_id": "travel_a2_subject_past_simple_object_time_05",
-      "family_id": "travel_a2_subject_past_simple_object_time_4",
+      "template_id": "travel_a2_tv2_plan_visit",
+      "family_id": "travel_a2_state_plan",
       "pack_id": "travel_a2",
       "theme": "travel",
       "level": "A2",
-      "pattern_id": "subject_past_simple_object_time",
-      "primary_skill_id": "present_perfect",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "future_going_to",
       "skill_ids": [
-        "present_perfect",
+        "future_going_to",
         "vocabulary"
       ],
       "exercise_types": [
@@ -428,42 +330,47 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "travel_a2_boarding_gate"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the boarding gate yesterday.",
+      "sentence": "I am going to visit the museum tomorrow.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o portão de embarque ontem.",
+      "source_text_pt": "Vou visitar o museu amanhã.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We checked the boarding gate yesterday."
+        "I am going to visit the museum tomorrow."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "accepted_variants_en": [
+        "I'm going to visit the museum tomorrow."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "present_perfect"
+        "future_going_to"
       ],
-      "pt": "Nós verificamos o portão de embarque ontem.",
-      "ctx": "Contexto de viagens (nível A2).",
-      "blank": "checked",
-      "wrong": "We check the boarding gate yesterday."
+      "communicative_intent": "state_plan",
+      "grammar_focus": "going_to",
+      "pattern_signature": "statement|going_to|none|aff|plain",
+      "lexical_verbs": [
+        "visit"
+      ],
+      "pt": "Vou visitar o museu amanhã.",
+      "ctx": "Situação: state plan.",
+      "blank": "museum",
+      "wrong": "I am going to visited the museum tomorrow."
     },
     {
-      "template_id": "travel_a2_subject_be_going_to_verb_time_06",
-      "family_id": "travel_a2_subject_be_going_to_verb_time_5",
+      "template_id": "travel_a2_tv2_ask_breakfast",
+      "family_id": "travel_a2_ask_amenity",
       "pack_id": "travel_a2",
       "theme": "travel",
       "level": "A2",
-      "pattern_id": "subject_be_going_to_verb_time",
+      "pattern_id": "yes_no_do_question",
       "primary_skill_id": "question_auxiliary",
       "skill_ids": [
         "question_auxiliary",
@@ -478,94 +385,45 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "travel_a2_luggage"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They are going to review the luggage tomorrow.",
+      "sentence": "Does the hotel have breakfast?",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eles vão revisar a bagagem amanhã.",
+      "source_text_pt": "O hotel tem café da manhã?",
       "target_locale": "en",
       "expected_answers_en": [
-        "They are going to review the luggage tomorrow."
+        "Does the hotel have breakfast?"
       ],
-      "accepted_variants_en": [
-        "They're going to review the luggage tomorrow."
-      ],
-      "explanation_pt": "Futuro com be going to para planos.",
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "question_auxiliary"
       ],
-      "pt": "Eles vão revisar a bagagem amanhã.",
-      "ctx": "Contexto de viagens (nível A2).",
-      "blank": "are",
-      "wrong": "They go to review the luggage tomorrow."
+      "communicative_intent": "ask_amenity",
+      "grammar_focus": "yes_no_question",
+      "pattern_signature": "yesno_question|present_perfect|none|aff|plain",
+      "lexical_verbs": [
+        "have"
+      ],
+      "pt": "O hotel tem café da manhã?",
+      "ctx": "Situação: ask amenity.",
+      "blank": "hotel",
+      "wrong": "The hotel have breakfast?"
     },
     {
-      "template_id": "travel_a2_subject_simple_present_object_07",
-      "family_id": "travel_a2_subject_simple_present_object_0",
+      "template_id": "travel_a2_tv2_lost_passport",
+      "family_id": "travel_a2_report_problem",
       "pack_id": "travel_a2",
       "theme": "travel",
       "level": "A2",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "vocabulary",
-      "skill_ids": [
-        "vocabulary",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "travel_a2_reservation"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the reservation every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a reserva todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the reservation every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "vocabulary"
-      ],
-      "pt": "Nós verificamos a reserva todos os dias.",
-      "ctx": "Contexto de viagens (nível A2).",
-      "blank": "check",
-      "wrong": "We check the reservation every day."
-    },
-    {
-      "template_id": "travel_a2_wh_do_subject_base_verb_08",
-      "family_id": "travel_a2_wh_do_subject_base_verb_1",
-      "pack_id": "travel_a2",
-      "theme": "travel",
-      "level": "A2",
-      "pattern_id": "wh_do_subject_base_verb",
+      "pattern_id": "subject_past_simple_object_time",
       "primary_skill_id": "past_simple",
       "skill_ids": [
         "past_simple",
@@ -580,34 +438,198 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "travel_a2_city_map"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the city map?",
+      "sentence": "I lost my passport at the airport.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa do mapa da cidade?",
+      "source_text_pt": "Perdi meu passaporte no aeroporto.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the city map?"
+        "I lost my passport at the airport."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "past_simple"
       ],
-      "pt": "Quando você precisa do mapa da cidade?",
-      "ctx": "Contexto de viagens (nível A2).",
-      "blank": "do",
-      "wrong": "When you do need the city map?"
+      "communicative_intent": "report_problem",
+      "grammar_focus": "past_simple",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "lose"
+      ],
+      "pt": "Perdi meu passaporte no aeroporto.",
+      "ctx": "Situação: report problem.",
+      "blank": "passport",
+      "wrong": "I lose my passport at the airport."
+    },
+    {
+      "template_id": "travel_a2_tv2_request_taxi",
+      "family_id": "travel_a2_request_service",
+      "pack_id": "travel_a2",
+      "theme": "travel",
+      "level": "A2",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Could you call a taxi for me?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você poderia chamar um táxi para mim?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Could you call a taxi for me?"
+      ],
+      "accepted_variants_en": [
+        "Can you call a taxi for me?"
+      ],
+      "explanation_pt": "Pedido educado com can/could.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "request_service",
+      "grammar_focus": "modal_request",
+      "pattern_signature": "yesno_question|present_simple|could|aff|plain",
+      "lexical_verbs": [
+        "call"
+      ],
+      "pt": "Você poderia chamar um táxi para mim?",
+      "ctx": "Situação: request service.",
+      "blank": "taxi",
+      "wrong": "You could call a taxi for me?"
+    },
+    {
+      "template_id": "travel_a2_tv2_frequency",
+      "family_id": "travel_a2_talk_habit",
+      "pack_id": "travel_a2",
+      "theme": "travel",
+      "level": "A2",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I usually travel by bus.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Costumo viajar de ônibus.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I usually travel by bus."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "simple_present"
+      ],
+      "communicative_intent": "talk_habit",
+      "grammar_focus": "frequency_adverb",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "travel"
+      ],
+      "pt": "Costumo viajar de ônibus.",
+      "ctx": "Situação: talk habit.",
+      "blank": "bus",
+      "wrong": "I usually travels by bus."
+    },
+    {
+      "template_id": "travel_a2_tv2_there_taxi",
+      "family_id": "travel_a2_point_out",
+      "pack_id": "travel_a2",
+      "theme": "travel",
+      "level": "A2",
+      "pattern_id": "there_is_are",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "There is a taxi outside the hotel.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Tem um táxi na frente do hotel.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "There is a taxi outside the hotel."
+      ],
+      "accepted_variants_en": [
+        "There's a taxi outside the hotel."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "there_is_are"
+      ],
+      "communicative_intent": "point_out",
+      "grammar_focus": "existential",
+      "pattern_signature": "statement|be|none|aff|existential",
+      "lexical_verbs": [],
+      "pt": "Tem um táxi na frente do hotel.",
+      "ctx": "Situação: point out.",
+      "blank": "taxi",
+      "wrong": "There a taxi outside the hotel."
     }
   ],
   "collocations": [

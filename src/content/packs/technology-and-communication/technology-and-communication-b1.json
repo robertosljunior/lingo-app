@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "technology_and_communication_b1_subject_have_past_participle_yet_01",
-      "family_id": "technology_and_communication_b1_subject_have_past_participle_yet_0",
+      "template_id": "technology_and_communication_b1_tc3_pp_updated",
+      "family_id": "technology_and_communication_b1_confirm_plan",
       "pack_id": "technology_and_communication_b1",
       "theme": "technology_and_communication",
       "level": "B1",
@@ -226,41 +226,96 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_b1_password"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We have checked the password already.",
+      "sentence": "I have already updated the app.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós já verificamos a senha.",
+      "source_text_pt": "Já atualizei o aplicativo.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We have checked the password already."
+        "I have already updated the app."
       ],
       "accepted_variants_en": [
-        "We've checked the password already."
+        "I've already updated the app."
       ],
-      "explanation_pt": "Present perfect com already.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "present_perfect"
       ],
-      "pt": "Nós já verificamos a senha.",
-      "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-      "blank": "have",
-      "wrong": "We have check the password already."
+      "communicative_intent": "confirm_plan",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "update"
+      ],
+      "pt": "Já atualizei o aplicativo.",
+      "ctx": "Situação: confirm plan.",
+      "blank": "app",
+      "wrong": "I have already update the app."
     },
     {
-      "template_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_02",
-      "family_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_1",
+      "template_id": "technology_and_communication_b1_tc3_first_cond",
+      "family_id": "technology_and_communication_b1_plan_contingency",
+      "pack_id": "technology_and_communication_b1",
+      "theme": "technology_and_communication",
+      "level": "B1",
+      "pattern_id": "if_present_will_future",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "If the battery dies, I will charge my phone.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se a bateria acabar, vou carregar meu celular.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If the battery dies, I will charge my phone."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "first_conditional"
+      ],
+      "communicative_intent": "plan_contingency",
+      "grammar_focus": "first_conditional",
+      "pattern_signature": "conditional|will_future|none|aff|first_conditional",
+      "lexical_verbs": [
+        "charge"
+      ],
+      "pt": "Se a bateria acabar, vou carregar meu celular.",
+      "ctx": "Situação: plan contingency.",
+      "blank": "phone",
+      "wrong": "If the battery dies, I charge my phone."
+    },
+    {
+      "template_id": "technology_and_communication_b1_tc3_ppc_fixing",
+      "family_id": "technology_and_communication_b1_report_status",
       "pack_id": "technology_and_communication_b1",
       "theme": "technology_and_communication",
       "level": "B1",
@@ -279,48 +334,50 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_b1_message"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They have been reviewing the message for two hours.",
+      "sentence": "I have been trying to fix the signal for an hour.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eles estão revisando a mensagem há duas horas.",
+      "source_text_pt": "Estou tentando consertar o sinal há uma hora.",
       "target_locale": "en",
       "expected_answers_en": [
-        "They have been reviewing the message for two hours."
+        "I have been trying to fix the signal for an hour."
       ],
       "accepted_variants_en": [
-        "They've been reviewing the message for two hours."
+        "I've been trying to fix the signal for an hour."
       ],
-      "explanation_pt": "Present perfect continuous com duração (for).",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "present_perfect_continuous"
       ],
-      "pt": "Eles estão revisando a mensagem há duas horas.",
-      "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-      "blank": "have",
-      "wrong": "They have been reviewed the message for two hours."
+      "communicative_intent": "report_status",
+      "grammar_focus": "present_perfect_continuous",
+      "pattern_signature": "statement|present_perfect_continuous|none|aff|plain",
+      "lexical_verbs": [
+        "fix"
+      ],
+      "pt": "Estou tentando consertar o sinal há uma hora.",
+      "ctx": "Situação: report status.",
+      "blank": "signal",
+      "wrong": "I have been try to fix the signal for an hour."
     },
     {
-      "template_id": "technology_and_communication_b1_if_present_will_future_03",
-      "family_id": "technology_and_communication_b1_if_present_will_future_2",
+      "template_id": "technology_and_communication_b1_tc3_plan_change",
+      "family_id": "technology_and_communication_b1_describe_plan",
       "pack_id": "technology_and_communication_b1",
       "theme": "technology_and_communication",
       "level": "B1",
-      "pattern_id": "if_present_will_future",
-      "primary_skill_id": "gerund_after_been",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "future_going_to",
       "skill_ids": [
-        "gerund_after_been",
+        "future_going_to",
         "vocabulary"
       ],
       "exercise_types": [
@@ -332,41 +389,200 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_b1_video_call"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "If we confirm the video call, we will start tomorrow.",
+      "sentence": "I am going to change my password tomorrow.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Se confirmarmos a chamada de vídeo, vamos começar amanhã.",
+      "source_text_pt": "Vou mudar minha senha amanhã.",
       "target_locale": "en",
       "expected_answers_en": [
-        "If we confirm the video call, we will start tomorrow."
+        "I am going to change my password tomorrow."
       ],
       "accepted_variants_en": [
-        "If we confirm the video call, we'll start tomorrow."
+        "I'm going to change my password tomorrow."
       ],
-      "explanation_pt": "Primeira condicional: if + presente, will + base.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "gerund_after_been"
+        "future_going_to"
       ],
-      "pt": "Se confirmarmos a chamada de vídeo, vamos começar amanhã.",
-      "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-      "blank": "we",
-      "wrong": "If we confirm the video call, we will start tomorrow."
+      "communicative_intent": "describe_plan",
+      "grammar_focus": "going_to",
+      "pattern_signature": "statement|going_to|none|aff|plain",
+      "lexical_verbs": [
+        "change"
+      ],
+      "pt": "Vou mudar minha senha amanhã.",
+      "ctx": "Situação: describe plan.",
+      "blank": "password",
+      "wrong": "I am going to changed my password tomorrow."
     },
     {
-      "template_id": "technology_and_communication_b1_subject_modal_base_verb_04",
-      "family_id": "technology_and_communication_b1_subject_modal_base_verb_3",
+      "template_id": "technology_and_communication_b1_tc3_pp_question",
+      "family_id": "technology_and_communication_b1_ask_experience",
+      "pack_id": "technology_and_communication_b1",
+      "theme": "technology_and_communication",
+      "level": "B1",
+      "pattern_id": "subject_have_past_participle_yet",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Have you ever lost your phone?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você já perdeu seu celular?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Have you ever lost your phone?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "communicative_intent": "ask_experience",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "lose"
+      ],
+      "pt": "Você já perdeu seu celular?",
+      "ctx": "Situação: ask experience.",
+      "blank": "phone",
+      "wrong": "Have you ever lose your phone?"
+    },
+    {
+      "template_id": "technology_and_communication_b1_tc3_advice",
+      "family_id": "technology_and_communication_b1_give_advice",
+      "pack_id": "technology_and_communication_b1",
+      "theme": "technology_and_communication",
+      "level": "B1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "You should save your files.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você deveria salvar seus arquivos.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "You should save your files."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "communicative_intent": "give_advice",
+      "grammar_focus": "modal_advice",
+      "pattern_signature": "statement|present_simple|should|aff|plain",
+      "lexical_verbs": [
+        "save"
+      ],
+      "pt": "Você deveria salvar seus arquivos.",
+      "ctx": "Situação: give advice.",
+      "blank": "files",
+      "wrong": "You should saves your files."
+    },
+    {
+      "template_id": "technology_and_communication_b1_tc3_compare_laptop",
+      "family_id": "technology_and_communication_b1_compare_options",
+      "pack_id": "technology_and_communication_b1",
+      "theme": "technology_and_communication",
+      "level": "B1",
+      "pattern_id": "comparative_than",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "This laptop is lighter than my old one.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Este notebook é mais leve que o antigo.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "This laptop is lighter than my old one."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "comparatives"
+      ],
+      "communicative_intent": "compare_options",
+      "grammar_focus": "comparative",
+      "pattern_signature": "statement|be|none|aff|comparative",
+      "lexical_verbs": [],
+      "pt": "Este notebook é mais leve que o antigo.",
+      "ctx": "Situação: compare options.",
+      "blank": "laptop",
+      "wrong": "This laptop is more light than my old one."
+    },
+    {
+      "template_id": "technology_and_communication_b1_tc3_preference",
+      "family_id": "technology_and_communication_b1_state_preference",
       "pack_id": "technology_and_communication_b1",
       "theme": "technology_and_communication",
       "level": "B1",
@@ -385,245 +601,39 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_b1_laptop"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the laptop today.",
+      "sentence": "I would rather use the laptop today.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar o notebook hoje.",
+      "source_text_pt": "Eu preferiria usar o notebook hoje.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the laptop today."
+        "I would rather use the laptop today."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "accepted_variants_en": [
+        "I'd rather use the laptop today."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "first_conditional"
       ],
-      "pt": "Eu posso atualizar o notebook hoje.",
-      "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-      "blank": "can",
-      "wrong": "I cans update the laptop today."
-    },
-    {
-      "template_id": "technology_and_communication_b1_subject_have_past_participle_yet_05",
-      "family_id": "technology_and_communication_b1_subject_have_past_participle_yet_4",
-      "pack_id": "technology_and_communication_b1",
-      "theme": "technology_and_communication",
-      "level": "B1",
-      "pattern_id": "subject_have_past_participle_yet",
-      "primary_skill_id": "question_auxiliary",
-      "skill_ids": [
-        "question_auxiliary",
-        "vocabulary"
+      "communicative_intent": "state_preference",
+      "grammar_focus": "would_preference",
+      "pattern_signature": "statement|present_simple|would|aff|plain",
+      "lexical_verbs": [
+        "use"
       ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_b1_app_update"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We have checked the app update already.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós já verificamos a atualização do aplicativo.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We have checked the app update already."
-      ],
-      "accepted_variants_en": [
-        "We've checked the app update already."
-      ],
-      "explanation_pt": "Present perfect com already.",
-      "skill_targets": [
-        "question_auxiliary"
-      ],
-      "pt": "Nós já verificamos a atualização do aplicativo.",
-      "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-      "blank": "have",
-      "wrong": "We have check the app update already."
-    },
-    {
-      "template_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_06",
-      "family_id": "technology_and_communication_b1_subject_have_been_ving_object_duration_5",
-      "pack_id": "technology_and_communication_b1",
-      "theme": "technology_and_communication",
-      "level": "B1",
-      "pattern_id": "subject_have_been_ving_object_duration",
-      "primary_skill_id": "collocation",
-      "skill_ids": [
-        "collocation",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_b1_wifi_network"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "They have been reviewing the wifi network for two hours.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eles estão revisando a rede wi-fi há duas horas.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "They have been reviewing the wifi network for two hours."
-      ],
-      "accepted_variants_en": [
-        "They've been reviewing the wifi network for two hours."
-      ],
-      "explanation_pt": "Present perfect continuous com duração (for).",
-      "skill_targets": [
-        "collocation"
-      ],
-      "pt": "Eles estão revisando a rede wi-fi há duas horas.",
-      "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-      "blank": "have",
-      "wrong": "They have been reviewed the wifi network for two hours."
-    },
-    {
-      "template_id": "technology_and_communication_b1_if_present_will_future_07",
-      "family_id": "technology_and_communication_b1_if_present_will_future_0",
-      "pack_id": "technology_and_communication_b1",
-      "theme": "technology_and_communication",
-      "level": "B1",
-      "pattern_id": "if_present_will_future",
-      "primary_skill_id": "preposition",
-      "skill_ids": [
-        "preposition",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_b1_email"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "If we confirm the email, we will start tomorrow.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Se confirmarmos o e-mail, vamos começar amanhã.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "If we confirm the email, we will start tomorrow."
-      ],
-      "accepted_variants_en": [
-        "If we confirm the email, we'll start tomorrow."
-      ],
-      "explanation_pt": "Primeira condicional: if + presente, will + base.",
-      "skill_targets": [
-        "preposition"
-      ],
-      "pt": "Se confirmarmos o e-mail, vamos começar amanhã.",
-      "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-      "blank": "we",
-      "wrong": "If we confirm the email, we will start tomorrow."
-    },
-    {
-      "template_id": "technology_and_communication_b1_subject_modal_base_verb_08",
-      "family_id": "technology_and_communication_b1_subject_modal_base_verb_1",
-      "pack_id": "technology_and_communication_b1",
-      "theme": "technology_and_communication",
-      "level": "B1",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "present_perfect",
-      "skill_ids": [
-        "present_perfect",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_b1_cloud_file"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the cloud file today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar o arquivo na nuvem hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the cloud file today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "present_perfect"
-      ],
-      "pt": "Eu posso atualizar o arquivo na nuvem hoje.",
-      "ctx": "Contexto de tecnologia e comunicação (nível B1).",
-      "blank": "can",
-      "wrong": "I cans update the cloud file today."
+      "pt": "Eu preferiria usar o notebook hoje.",
+      "ctx": "Situação: state preference.",
+      "blank": "laptop",
+      "wrong": "I would rather used the laptop today."
     }
   ],
   "collocations": [

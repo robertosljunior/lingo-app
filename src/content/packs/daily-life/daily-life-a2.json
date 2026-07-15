@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "daily_life_a2_subject_past_simple_object_time_01",
-      "family_id": "daily_life_a2_subject_past_simple_object_time_0",
+      "template_id": "daily_life_a2_dl2_forgot_keys",
+      "family_id": "daily_life_a2_report_problem",
       "pack_id": "daily_life_a2",
       "theme": "daily_life",
       "level": "A2",
@@ -226,144 +226,45 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a2_morning_routine"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the morning routine yesterday.",
+      "sentence": "I forgot my keys this morning.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a rotina matinal ontem.",
+      "source_text_pt": "Esqueci minhas chaves esta manhã.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We checked the morning routine yesterday."
+        "I forgot my keys this morning."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "past_simple"
       ],
-      "pt": "Nós verificamos a rotina matinal ontem.",
-      "ctx": "Contexto de vida cotidiana (nível A2).",
-      "blank": "checked",
-      "wrong": "We check the morning routine yesterday."
+      "communicative_intent": "report_problem",
+      "grammar_focus": "past_simple",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "forget"
+      ],
+      "pt": "Esqueci minhas chaves esta manhã.",
+      "ctx": "Situação: report problem.",
+      "blank": "keys",
+      "wrong": "I forget my keys this morning."
     },
     {
-      "template_id": "daily_life_a2_subject_be_going_to_verb_time_02",
-      "family_id": "daily_life_a2_subject_be_going_to_verb_time_1",
+      "template_id": "daily_life_a2_dl2_compare_house",
+      "family_id": "daily_life_a2_compare_options",
       "pack_id": "daily_life_a2",
       "theme": "daily_life",
       "level": "A2",
-      "pattern_id": "subject_be_going_to_verb_time",
-      "primary_skill_id": "present_continuous",
-      "skill_ids": [
-        "present_continuous",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a2_family_dinner"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "They are going to review the family dinner tomorrow.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eles vão revisar o jantar em família amanhã.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "They are going to review the family dinner tomorrow."
-      ],
-      "accepted_variants_en": [
-        "They're going to review the family dinner tomorrow."
-      ],
-      "explanation_pt": "Futuro com be going to para planos.",
-      "skill_targets": [
-        "present_continuous"
-      ],
-      "pt": "Eles vão revisar o jantar em família amanhã.",
-      "ctx": "Contexto de vida cotidiana (nível A2).",
-      "blank": "are",
-      "wrong": "They go to review the family dinner tomorrow."
-    },
-    {
-      "template_id": "daily_life_a2_subject_simple_present_object_03",
-      "family_id": "daily_life_a2_subject_simple_present_object_2",
-      "pack_id": "daily_life_a2",
-      "theme": "daily_life",
-      "level": "A2",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "future_going_to",
-      "skill_ids": [
-        "future_going_to",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a2_bus_stop"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the bus stop every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o ponto de ônibus todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the bus stop every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "future_going_to"
-      ],
-      "pt": "Nós verificamos o ponto de ônibus todos os dias.",
-      "ctx": "Contexto de vida cotidiana (nível A2).",
-      "blank": "check",
-      "wrong": "We check the bus stop every day."
-    },
-    {
-      "template_id": "daily_life_a2_wh_do_subject_base_verb_04",
-      "family_id": "daily_life_a2_wh_do_subject_base_verb_3",
-      "pack_id": "daily_life_a2",
-      "theme": "daily_life",
-      "level": "A2",
-      "pattern_id": "wh_do_subject_base_verb",
+      "pattern_id": "comparative_than",
       "primary_skill_id": "comparatives",
       "skill_ids": [
         "comparatives",
@@ -378,45 +279,46 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a2_homework"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the homework?",
+      "sentence": "My new house is bigger than the old one.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa da lição de casa?",
+      "source_text_pt": "Minha casa nova é maior que a antiga.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the homework?"
+        "My new house is bigger than the old one."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "comparatives"
       ],
-      "pt": "Quando você precisa da lição de casa?",
-      "ctx": "Contexto de vida cotidiana (nível A2).",
-      "blank": "do",
-      "wrong": "When you do need the homework?"
+      "communicative_intent": "compare_options",
+      "grammar_focus": "comparative",
+      "pattern_signature": "statement|be|none|aff|comparative",
+      "lexical_verbs": [],
+      "pt": "Minha casa nova é maior que a antiga.",
+      "ctx": "Situação: compare options.",
+      "blank": "house",
+      "wrong": "My new house is more big than the old one."
     },
     {
-      "template_id": "daily_life_a2_subject_past_simple_object_time_05",
-      "family_id": "daily_life_a2_subject_past_simple_object_time_4",
+      "template_id": "daily_life_a2_dl2_plan_clean",
+      "family_id": "daily_life_a2_state_plan",
       "pack_id": "daily_life_a2",
       "theme": "daily_life",
       "level": "A2",
-      "pattern_id": "subject_past_simple_object_time",
-      "primary_skill_id": "present_perfect",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "future_going_to",
       "skill_ids": [
-        "present_perfect",
+        "future_going_to",
         "vocabulary"
       ],
       "exercise_types": [
@@ -428,42 +330,47 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a2_neighbor"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the neighbor yesterday.",
+      "sentence": "I am going to clean the kitchen tomorrow.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o vizinho ontem.",
+      "source_text_pt": "Vou limpar a cozinha amanhã.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We checked the neighbor yesterday."
+        "I am going to clean the kitchen tomorrow."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "accepted_variants_en": [
+        "I'm going to clean the kitchen tomorrow."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "present_perfect"
+        "future_going_to"
       ],
-      "pt": "Nós verificamos o vizinho ontem.",
-      "ctx": "Contexto de vida cotidiana (nível A2).",
-      "blank": "checked",
-      "wrong": "We check the neighbor yesterday."
+      "communicative_intent": "state_plan",
+      "grammar_focus": "going_to",
+      "pattern_signature": "statement|going_to|none|aff|plain",
+      "lexical_verbs": [
+        "clean"
+      ],
+      "pt": "Vou limpar a cozinha amanhã.",
+      "ctx": "Situação: state plan.",
+      "blank": "kitchen",
+      "wrong": "I am going to cleaned the kitchen tomorrow."
     },
     {
-      "template_id": "daily_life_a2_subject_be_going_to_verb_time_06",
-      "family_id": "daily_life_a2_subject_be_going_to_verb_time_5",
+      "template_id": "daily_life_a2_dl2_ask_dog",
+      "family_id": "daily_life_a2_ask_detail",
       "pack_id": "daily_life_a2",
       "theme": "daily_life",
       "level": "A2",
-      "pattern_id": "subject_be_going_to_verb_time",
+      "pattern_id": "yes_no_do_question",
       "primary_skill_id": "question_auxiliary",
       "skill_ids": [
         "question_auxiliary",
@@ -478,94 +385,45 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a2_weekend_plan"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They are going to review the weekend plan tomorrow.",
+      "sentence": "Does your neighbor have a dog?",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eles vão revisar o plano de fim de semana amanhã.",
+      "source_text_pt": "Seu vizinho tem um cachorro?",
       "target_locale": "en",
       "expected_answers_en": [
-        "They are going to review the weekend plan tomorrow."
+        "Does your neighbor have a dog?"
       ],
-      "accepted_variants_en": [
-        "They're going to review the weekend plan tomorrow."
-      ],
-      "explanation_pt": "Futuro com be going to para planos.",
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "question_auxiliary"
       ],
-      "pt": "Eles vão revisar o plano de fim de semana amanhã.",
-      "ctx": "Contexto de vida cotidiana (nível A2).",
-      "blank": "are",
-      "wrong": "They go to review the weekend plan tomorrow."
+      "communicative_intent": "ask_detail",
+      "grammar_focus": "yes_no_question",
+      "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "have"
+      ],
+      "pt": "Seu vizinho tem um cachorro?",
+      "ctx": "Situação: ask detail.",
+      "blank": "dog",
+      "wrong": "Your neighbor have a dog?"
     },
     {
-      "template_id": "daily_life_a2_subject_simple_present_object_07",
-      "family_id": "daily_life_a2_subject_simple_present_object_0",
+      "template_id": "daily_life_a2_dl2_lost_keys",
+      "family_id": "daily_life_a2_report_problem_lost",
       "pack_id": "daily_life_a2",
       "theme": "daily_life",
       "level": "A2",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "vocabulary",
-      "skill_ids": [
-        "vocabulary",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a2_appointment"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the appointment every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o compromisso todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the appointment every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "vocabulary"
-      ],
-      "pt": "Nós verificamos o compromisso todos os dias.",
-      "ctx": "Contexto de vida cotidiana (nível A2).",
-      "blank": "check",
-      "wrong": "We check the appointment every day."
-    },
-    {
-      "template_id": "daily_life_a2_wh_do_subject_base_verb_08",
-      "family_id": "daily_life_a2_wh_do_subject_base_verb_1",
-      "pack_id": "daily_life_a2",
-      "theme": "daily_life",
-      "level": "A2",
-      "pattern_id": "wh_do_subject_base_verb",
+      "pattern_id": "subject_past_simple_object_time",
       "primary_skill_id": "past_simple",
       "skill_ids": [
         "past_simple",
@@ -580,34 +438,198 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_a2_coffee_break"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the coffee break?",
+      "sentence": "I lost my keys yesterday.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa da pausa para o café?",
+      "source_text_pt": "Perdi minhas chaves ontem.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the coffee break?"
+        "I lost my keys yesterday."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "past_simple"
       ],
-      "pt": "Quando você precisa da pausa para o café?",
-      "ctx": "Contexto de vida cotidiana (nível A2).",
-      "blank": "do",
-      "wrong": "When you do need the coffee break?"
+      "communicative_intent": "report_problem_lost",
+      "grammar_focus": "past_simple",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "lose"
+      ],
+      "pt": "Perdi minhas chaves ontem.",
+      "ctx": "Situação: report problem lost.",
+      "blank": "keys",
+      "wrong": "I lose my keys yesterday."
+    },
+    {
+      "template_id": "daily_life_a2_dl2_request_laundry",
+      "family_id": "daily_life_a2_request_service",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Could you help me with the laundry?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você poderia me ajudar com a roupa lavada?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Could you help me with the laundry?"
+      ],
+      "accepted_variants_en": [
+        "Can you help me with the laundry?"
+      ],
+      "explanation_pt": "Pedido educado com can/could.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "request_service",
+      "grammar_focus": "modal_request",
+      "pattern_signature": "yesno_question|present_simple|could|aff|plain",
+      "lexical_verbs": [
+        "help"
+      ],
+      "pt": "Você poderia me ajudar com a roupa lavada?",
+      "ctx": "Situação: request service.",
+      "blank": "laundry",
+      "wrong": "You could help me with the laundry?"
+    },
+    {
+      "template_id": "daily_life_a2_dl2_habit_cook",
+      "family_id": "daily_life_a2_talk_habit",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I usually cook dinner on Sundays.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Costumo cozinhar o jantar aos domingos.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I usually cook dinner on Sundays."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "simple_present"
+      ],
+      "communicative_intent": "talk_habit",
+      "grammar_focus": "frequency_adverb",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "cook"
+      ],
+      "pt": "Costumo cozinhar o jantar aos domingos.",
+      "ctx": "Situação: talk habit.",
+      "blank": "dinner",
+      "wrong": "I usually cooks dinner on Sundays."
+    },
+    {
+      "template_id": "daily_life_a2_dl2_there_package",
+      "family_id": "daily_life_a2_point_out",
+      "pack_id": "daily_life_a2",
+      "theme": "daily_life",
+      "level": "A2",
+      "pattern_id": "there_is_are",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "There is a package at the door.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Tem um pacote na porta.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "There is a package at the door."
+      ],
+      "accepted_variants_en": [
+        "There's a package at the door."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "there_is_are"
+      ],
+      "communicative_intent": "point_out",
+      "grammar_focus": "existential",
+      "pattern_signature": "statement|be|none|aff|existential",
+      "lexical_verbs": [],
+      "pt": "Tem um pacote na porta.",
+      "ctx": "Situação: point out.",
+      "blank": "package",
+      "wrong": "There a package at the door."
     }
   ],
   "collocations": [

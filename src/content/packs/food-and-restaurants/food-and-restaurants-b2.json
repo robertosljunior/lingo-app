@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "food_and_restaurants_b2_passive_be_past_participle_01",
-      "family_id": "food_and_restaurants_b2_passive_be_past_participle_0",
+      "template_id": "food_and_restaurants_b2_food4_passive",
+      "family_id": "food_and_restaurants_b2_report_problem",
       "pack_id": "food_and_restaurants_b2",
       "theme": "food_and_restaurants",
       "level": "B2",
@@ -226,40 +226,43 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b2_menu"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "The menu was reviewed by the team.",
+      "sentence": "The reservation was cancelled by mistake.",
       "source_locale": "pt-BR",
-      "source_text_pt": "O cardápio foi revisado pela equipe.",
+      "source_text_pt": "A reserva foi cancelada por engano.",
       "target_locale": "en",
       "expected_answers_en": [
-        "The menu was reviewed by the team."
+        "The reservation was cancelled by mistake."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "accepted_variants_en": [
+        "The reservation was canceled by mistake."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "passive_voice"
       ],
-      "pt": "O cardápio foi revisado pela equipe.",
-      "ctx": "Contexto de comida e restaurantes (nível B2).",
-      "blank": "menu",
-      "wrong": "The menu reviewed by the team."
+      "communicative_intent": "report_problem",
+      "grammar_focus": "passive",
+      "pattern_signature": "statement|passive|none|aff|plain",
+      "lexical_verbs": [
+        "cancel"
+      ],
+      "pt": "A reserva foi cancelada por engano.",
+      "ctx": "Situação: report problem.",
+      "blank": "reservation",
+      "wrong": "The reservation was cancel by mistake."
     },
     {
-      "template_id": "food_and_restaurants_b2_reported_speech_statement_02",
-      "family_id": "food_and_restaurants_b2_reported_speech_statement_1",
+      "template_id": "food_and_restaurants_b2_food4_reported",
+      "family_id": "food_and_restaurants_b2_report_information",
       "pack_id": "food_and_restaurants_b2",
       "theme": "food_and_restaurants",
       "level": "B2",
@@ -278,40 +281,41 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b2_table"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "She said that the table was ready.",
+      "sentence": "The waiter said that the restaurant was full.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Ela disse que a mesa estava pronta.",
+      "source_text_pt": "O garçom disse que o restaurante estava lotado.",
       "target_locale": "en",
       "expected_answers_en": [
-        "She said that the table was ready."
+        "The waiter said that the restaurant was full."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Discurso indireto com said that.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "reported_speech"
       ],
-      "pt": "Ela disse que a mesa estava pronta.",
-      "ctx": "Contexto de comida e restaurantes (nível B2).",
-      "blank": "said",
-      "wrong": "She said the table was ready."
+      "communicative_intent": "report_information",
+      "grammar_focus": "reported_speech",
+      "pattern_signature": "statement|past_simple|none|aff|reported",
+      "lexical_verbs": [
+        "say"
+      ],
+      "pt": "O garçom disse que o restaurante estava lotado.",
+      "ctx": "Situação: report information.",
+      "blank": "restaurant",
+      "wrong": "The waiter said that the restaurant full."
     },
     {
-      "template_id": "food_and_restaurants_b2_second_conditional_03",
-      "family_id": "food_and_restaurants_b2_second_conditional_2",
+      "template_id": "food_and_restaurants_b2_food4_second_cond",
+      "family_id": "food_and_restaurants_b2_hypothesize",
       "pack_id": "food_and_restaurants_b2",
       "theme": "food_and_restaurants",
       "level": "B2",
@@ -330,42 +334,202 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b2_starter"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "If I had more time, I would improve the starter.",
+      "sentence": "If I were you, I would try the fish.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a entrada.",
+      "source_text_pt": "Se eu fosse você, experimentaria o peixe.",
       "target_locale": "en",
       "expected_answers_en": [
-        "If I had more time, I would improve the starter."
+        "If I were you, I would try the fish."
       ],
-      "accepted_variants_en": [
-        "If I had more time, I'd improve the starter."
-      ],
-      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "second_conditional"
       ],
-      "pt": "Se eu tivesse mais tempo, eu melhoraria a entrada.",
-      "ctx": "Contexto de comida e restaurantes (nível B2).",
-      "blank": "I",
-      "wrong": "If I had more time, I will improve the starter."
+      "communicative_intent": "hypothesize",
+      "grammar_focus": "second_conditional",
+      "pattern_signature": "conditional|present_simple|would|aff|second_conditional",
+      "lexical_verbs": [
+        "try"
+      ],
+      "pt": "Se eu fosse você, experimentaria o peixe.",
+      "ctx": "Situação: hypothesize.",
+      "blank": "fish",
+      "wrong": "If I were you, I will try the fish."
     },
     {
-      "template_id": "food_and_restaurants_b2_subject_modal_base_verb_04",
-      "family_id": "food_and_restaurants_b2_subject_modal_base_verb_3",
+      "template_id": "food_and_restaurants_b2_food4_diplomatic",
+      "family_id": "food_and_restaurants_b2_request_politely",
+      "pack_id": "food_and_restaurants_b2",
+      "theme": "food_and_restaurants",
+      "level": "B2",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Would you mind checking the bill again?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você se importaria de conferir a conta de novo?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Would you mind checking the bill again?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "modal_deduction"
+      ],
+      "communicative_intent": "request_politely",
+      "grammar_focus": "diplomatic_request",
+      "pattern_signature": "yesno_question|present_simple|would|aff|plain",
+      "lexical_verbs": [
+        "check"
+      ],
+      "pt": "Você se importaria de conferir a conta de novo?",
+      "ctx": "Situação: request politely.",
+      "blank": "bill",
+      "wrong": "Would you mind check the bill again?"
+    },
+    {
+      "template_id": "food_and_restaurants_b2_food4_pp_just",
+      "family_id": "food_and_restaurants_b2_report_status",
+      "pack_id": "food_and_restaurants_b2",
+      "theme": "food_and_restaurants",
+      "level": "B2",
+      "pattern_id": "subject_have_past_participle_yet",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We have just finished our dessert.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Acabamos de terminar nossa sobremesa.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We have just finished our dessert."
+      ],
+      "accepted_variants_en": [
+        "We've just finished our dessert."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "communicative_intent": "report_status",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "statement|present_perfect|none|aff|plain",
+      "lexical_verbs": [
+        "finish"
+      ],
+      "pt": "Acabamos de terminar nossa sobremesa.",
+      "ctx": "Situação: report status.",
+      "blank": "dessert",
+      "wrong": "We have just finish our dessert."
+    },
+    {
+      "template_id": "food_and_restaurants_b2_food4_passive2",
+      "family_id": "food_and_restaurants_b2_report_problem_replaced",
+      "pack_id": "food_and_restaurants_b2",
+      "theme": "food_and_restaurants",
+      "level": "B2",
+      "pattern_id": "passive_be_past_participle",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The dessert was replaced without asking.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "A sobremesa foi trocada sem avisar.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The dessert was replaced without asking."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "communicative_intent": "report_problem_replaced",
+      "grammar_focus": "passive",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [
+        "replace"
+      ],
+      "pt": "A sobremesa foi trocada sem avisar.",
+      "ctx": "Situação: report problem replaced.",
+      "blank": "dessert",
+      "wrong": "The dessert was replace without asking."
+    },
+    {
+      "template_id": "food_and_restaurants_b2_food4_deduction",
+      "family_id": "food_and_restaurants_b2_make_deduction",
       "pack_id": "food_and_restaurants_b2",
       "theme": "food_and_restaurants",
       "level": "B2",
@@ -384,47 +548,48 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b2_main_course"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the main course today.",
+      "sentence": "The waiter must have forgotten our drinks.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar o prato principal hoje.",
+      "source_text_pt": "O garçom deve ter esquecido nossas bebidas.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the main course today."
+        "The waiter must have forgotten our drinks."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "modal_deduction"
       ],
-      "pt": "Eu posso atualizar o prato principal hoje.",
-      "ctx": "Contexto de comida e restaurantes (nível B2).",
-      "blank": "can",
-      "wrong": "I cans update the main course today."
+      "communicative_intent": "make_deduction",
+      "grammar_focus": "modal_deduction",
+      "pattern_signature": "statement|present_perfect|must|aff|plain",
+      "lexical_verbs": [
+        "forget"
+      ],
+      "pt": "O garçom deve ter esquecido nossas bebidas.",
+      "ctx": "Situação: make deduction.",
+      "blank": "drinks",
+      "wrong": "The waiter must has forgotten our drinks."
     },
     {
-      "template_id": "food_and_restaurants_b2_passive_be_past_participle_05",
-      "family_id": "food_and_restaurants_b2_passive_be_past_participle_4",
+      "template_id": "food_and_restaurants_b2_food4_contrast",
+      "family_id": "food_and_restaurants_b2_describe_experience",
       "pack_id": "food_and_restaurants_b2",
       "theme": "food_and_restaurants",
       "level": "B2",
-      "pattern_id": "passive_be_past_participle",
-      "primary_skill_id": "collocation",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "verb_to_be",
       "skill_ids": [
-        "collocation",
+        "verb_to_be",
         "vocabulary"
       ],
       "exercise_types": [
@@ -436,194 +601,35 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b2_dessert"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "The dessert was reviewed by the team.",
+      "sentence": "The soup was tasty, but it was too salty.",
       "source_locale": "pt-BR",
-      "source_text_pt": "A sobremesa foi revisada pela equipe.",
+      "source_text_pt": "A sopa estava saborosa, mas estava muito salgada.",
       "target_locale": "en",
       "expected_answers_en": [
-        "The dessert was reviewed by the team."
+        "The soup was tasty, but it was too salty."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "collocation"
+        "verb_to_be"
       ],
-      "pt": "A sobremesa foi revisada pela equipe.",
-      "ctx": "Contexto de comida e restaurantes (nível B2).",
-      "blank": "dessert",
-      "wrong": "The dessert reviewed by the team."
-    },
-    {
-      "template_id": "food_and_restaurants_b2_reported_speech_statement_06",
-      "family_id": "food_and_restaurants_b2_reported_speech_statement_5",
-      "pack_id": "food_and_restaurants_b2",
-      "theme": "food_and_restaurants",
-      "level": "B2",
-      "pattern_id": "reported_speech_statement",
-      "primary_skill_id": "word_order",
-      "skill_ids": [
-        "word_order",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b2_bill"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "She said that the bill was ready.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Ela disse que a conta estava pronta.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "She said that the bill was ready."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Discurso indireto com said that.",
-      "skill_targets": [
-        "word_order"
-      ],
-      "pt": "Ela disse que a conta estava pronta.",
-      "ctx": "Contexto de comida e restaurantes (nível B2).",
-      "blank": "said",
-      "wrong": "She said the bill was ready."
-    },
-    {
-      "template_id": "food_and_restaurants_b2_second_conditional_07",
-      "family_id": "food_and_restaurants_b2_second_conditional_0",
-      "pack_id": "food_and_restaurants_b2",
-      "theme": "food_and_restaurants",
-      "level": "B2",
-      "pattern_id": "second_conditional",
-      "primary_skill_id": "vocabulary",
-      "skill_ids": [
-        "vocabulary",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b2_waiter"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "If I had more time, I would improve the waiter.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o garçom.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "If I had more time, I would improve the waiter."
-      ],
-      "accepted_variants_en": [
-        "If I had more time, I'd improve the waiter."
-      ],
-      "explanation_pt": "Segunda condicional: if + passado, would + base.",
-      "skill_targets": [
-        "vocabulary"
-      ],
-      "pt": "Se eu tivesse mais tempo, eu melhoraria o garçom.",
-      "ctx": "Contexto de comida e restaurantes (nível B2).",
-      "blank": "I",
-      "wrong": "If I had more time, I will improve the waiter."
-    },
-    {
-      "template_id": "food_and_restaurants_b2_subject_modal_base_verb_08",
-      "family_id": "food_and_restaurants_b2_subject_modal_base_verb_1",
-      "pack_id": "food_and_restaurants_b2",
-      "theme": "food_and_restaurants",
-      "level": "B2",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "passive_voice",
-      "skill_ids": [
-        "passive_voice",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b2_reservation"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the reservation today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a reserva hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the reservation today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "passive_voice"
-      ],
-      "pt": "Eu posso atualizar a reserva hoje.",
-      "ctx": "Contexto de comida e restaurantes (nível B2).",
-      "blank": "can",
-      "wrong": "I cans update the reservation today."
+      "communicative_intent": "describe_experience",
+      "grammar_focus": "past_contrast",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [],
+      "pt": "A sopa estava saborosa, mas estava muito salgada.",
+      "ctx": "Situação: describe experience.",
+      "blank": "soup",
+      "wrong": "The soup tasty, but it was too salty."
     }
   ],
   "collocations": [

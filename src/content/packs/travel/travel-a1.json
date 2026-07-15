@@ -251,7 +251,7 @@
       ],
       "communicative_intent": "ask_location",
       "grammar_focus": "wh_question_be",
-      "pattern_signature": "wh_question|be|none|aff",
+      "pattern_signature": "wh_question|be|none|aff|plain",
       "lexical_verbs": [],
       "pt": "Onde fica a estação de trem?",
       "ctx": "Situação: ask location.",
@@ -295,14 +295,17 @@
       "expected_answers_en": [
         "I want to buy a ticket to the city."
       ],
-      "accepted_variants_en": [],
+      "accepted_variants_en": [
+        "I'd like to buy a ticket to the city.",
+        "I would like to buy a ticket to the city."
+      ],
       "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
       "skill_targets": [
         "simple_present"
       ],
       "communicative_intent": "buy_ticket",
       "grammar_focus": "want_to_infinitive",
-      "pattern_signature": "statement|present_simple|want_to|aff",
+      "pattern_signature": "statement|present_simple|want_to|aff|plain",
       "lexical_verbs": [
         "buy"
       ],
@@ -355,7 +358,7 @@
       ],
       "communicative_intent": "ask_time",
       "grammar_focus": "wh_question_do",
-      "pattern_signature": "wh_question|present_simple|none|aff",
+      "pattern_signature": "wh_question|present_simple|none|aff|plain",
       "lexical_verbs": [
         "leave"
       ],
@@ -410,7 +413,7 @@
       ],
       "communicative_intent": "find_platform",
       "grammar_focus": "modal_request",
-      "pattern_signature": "yesno_question|present_simple|can|aff",
+      "pattern_signature": "yesno_question|present_simple|can|aff|plain",
       "lexical_verbs": [
         "show"
       ],
@@ -463,7 +466,7 @@
       ],
       "communicative_intent": "describe_luggage",
       "grammar_focus": "be_complement",
-      "pattern_signature": "statement|be|none|aff",
+      "pattern_signature": "statement|be|none|aff|plain",
       "lexical_verbs": [],
       "pt": "Minha bagagem está muito pesada.",
       "ctx": "Situação: describe luggage.",
@@ -507,14 +510,16 @@
       "expected_answers_en": [
         "I have a reservation for tonight."
       ],
-      "accepted_variants_en": [],
+      "accepted_variants_en": [
+        "I've got a reservation for tonight."
+      ],
       "explanation_pt": "Verbo have para posse.",
       "skill_targets": [
         "simple_present"
       ],
       "communicative_intent": "confirm_reservation",
       "grammar_focus": "have_possession",
-      "pattern_signature": "statement|present_simple|none|aff",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
       "lexical_verbs": [
         "have"
       ],
@@ -569,7 +574,7 @@
       ],
       "communicative_intent": "state_destination",
       "grammar_focus": "present_continuous",
-      "pattern_signature": "statement|going_to|none|aff",
+      "pattern_signature": "statement|going_to|none|aff|plain",
       "lexical_verbs": [
         "go"
       ],
@@ -624,7 +629,7 @@
       ],
       "communicative_intent": "ask_help",
       "grammar_focus": "imperative_request",
-      "pattern_signature": "imperative|present_simple|none|aff",
+      "pattern_signature": "imperative|present_simple|none|aff|plain",
       "lexical_verbs": [
         "help"
       ],

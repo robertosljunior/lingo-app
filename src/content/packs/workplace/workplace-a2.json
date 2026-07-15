@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "workplace_a2_subject_past_simple_object_time_01",
-      "family_id": "workplace_a2_subject_past_simple_object_time_0",
+      "template_id": "workplace_a2_wp2_start_late",
+      "family_id": "workplace_a2_report_delay",
       "pack_id": "workplace_a2",
       "theme": "workplace",
       "level": "A2",
@@ -226,144 +226,45 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a2_company"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the company yesterday.",
+      "sentence": "The meeting started late yesterday.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a empresa ontem.",
+      "source_text_pt": "A reunião começou atrasada ontem.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We checked the company yesterday."
+        "The meeting started late yesterday."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "past_simple"
       ],
-      "pt": "Nós verificamos a empresa ontem.",
-      "ctx": "Contexto de trabalho (nível A2).",
-      "blank": "checked",
-      "wrong": "We check the company yesterday."
+      "communicative_intent": "report_delay",
+      "grammar_focus": "past_simple",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [
+        "start"
+      ],
+      "pt": "A reunião começou atrasada ontem.",
+      "ctx": "Situação: report delay.",
+      "blank": "meeting",
+      "wrong": "The meeting start late yesterday."
     },
     {
-      "template_id": "workplace_a2_subject_be_going_to_verb_time_02",
-      "family_id": "workplace_a2_subject_be_going_to_verb_time_1",
+      "template_id": "workplace_a2_wp2_compare_project",
+      "family_id": "workplace_a2_compare_options",
       "pack_id": "workplace_a2",
       "theme": "workplace",
       "level": "A2",
-      "pattern_id": "subject_be_going_to_verb_time",
-      "primary_skill_id": "present_continuous",
-      "skill_ids": [
-        "present_continuous",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a2_project"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "They are going to review the project tomorrow.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eles vão revisar o projeto amanhã.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "They are going to review the project tomorrow."
-      ],
-      "accepted_variants_en": [
-        "They're going to review the project tomorrow."
-      ],
-      "explanation_pt": "Futuro com be going to para planos.",
-      "skill_targets": [
-        "present_continuous"
-      ],
-      "pt": "Eles vão revisar o projeto amanhã.",
-      "ctx": "Contexto de trabalho (nível A2).",
-      "blank": "are",
-      "wrong": "They go to review the project tomorrow."
-    },
-    {
-      "template_id": "workplace_a2_subject_simple_present_object_03",
-      "family_id": "workplace_a2_subject_simple_present_object_2",
-      "pack_id": "workplace_a2",
-      "theme": "workplace",
-      "level": "A2",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "future_going_to",
-      "skill_ids": [
-        "future_going_to",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a2_client"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the client every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o cliente todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the client every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "future_going_to"
-      ],
-      "pt": "Nós verificamos o cliente todos os dias.",
-      "ctx": "Contexto de trabalho (nível A2).",
-      "blank": "check",
-      "wrong": "We check the client every day."
-    },
-    {
-      "template_id": "workplace_a2_wh_do_subject_base_verb_04",
-      "family_id": "workplace_a2_wh_do_subject_base_verb_3",
-      "pack_id": "workplace_a2",
-      "theme": "workplace",
-      "level": "A2",
-      "pattern_id": "wh_do_subject_base_verb",
+      "pattern_id": "comparative_than",
       "primary_skill_id": "comparatives",
       "skill_ids": [
         "comparatives",
@@ -378,45 +279,46 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a2_support_team"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the support team?",
+      "sentence": "This project is more difficult than the last one.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa da equipe de suporte?",
+      "source_text_pt": "Este projeto é mais difícil que o anterior.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the support team?"
+        "This project is more difficult than the last one."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "comparatives"
       ],
-      "pt": "Quando você precisa da equipe de suporte?",
-      "ctx": "Contexto de trabalho (nível A2).",
-      "blank": "do",
-      "wrong": "When you do need the support team?"
+      "communicative_intent": "compare_options",
+      "grammar_focus": "comparative",
+      "pattern_signature": "statement|be|none|aff|comparative",
+      "lexical_verbs": [],
+      "pt": "Este projeto é mais difícil que o anterior.",
+      "ctx": "Situação: compare options.",
+      "blank": "project",
+      "wrong": "This project is difficulter than the last one."
     },
     {
-      "template_id": "workplace_a2_subject_past_simple_object_time_05",
-      "family_id": "workplace_a2_subject_past_simple_object_time_4",
+      "template_id": "workplace_a2_wp2_plan_finish",
+      "family_id": "workplace_a2_state_plan",
       "pack_id": "workplace_a2",
       "theme": "workplace",
       "level": "A2",
-      "pattern_id": "subject_past_simple_object_time",
-      "primary_skill_id": "present_perfect",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "future_going_to",
       "skill_ids": [
-        "present_perfect",
+        "future_going_to",
         "vocabulary"
       ],
       "exercise_types": [
@@ -428,42 +330,47 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a2_deployment"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the deployment yesterday.",
+      "sentence": "I am going to finish the report tomorrow.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a implantação ontem.",
+      "source_text_pt": "Vou terminar o relatório amanhã.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We checked the deployment yesterday."
+        "I am going to finish the report tomorrow."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "accepted_variants_en": [
+        "I'm going to finish the report tomorrow."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "present_perfect"
+        "future_going_to"
       ],
-      "pt": "Nós verificamos a implantação ontem.",
-      "ctx": "Contexto de trabalho (nível A2).",
-      "blank": "checked",
-      "wrong": "We check the deployment yesterday."
+      "communicative_intent": "state_plan",
+      "grammar_focus": "going_to",
+      "pattern_signature": "statement|going_to|none|aff|plain",
+      "lexical_verbs": [
+        "finish"
+      ],
+      "pt": "Vou terminar o relatório amanhã.",
+      "ctx": "Situação: state plan.",
+      "blank": "report",
+      "wrong": "I am going to finished the report tomorrow."
     },
     {
-      "template_id": "workplace_a2_subject_be_going_to_verb_time_06",
-      "family_id": "workplace_a2_subject_be_going_to_verb_time_5",
+      "template_id": "workplace_a2_wp2_ask_printer",
+      "family_id": "workplace_a2_ask_resource",
       "pack_id": "workplace_a2",
       "theme": "workplace",
       "level": "A2",
-      "pattern_id": "subject_be_going_to_verb_time",
+      "pattern_id": "yes_no_do_question",
       "primary_skill_id": "question_auxiliary",
       "skill_ids": [
         "question_auxiliary",
@@ -478,94 +385,45 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a2_report"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They are going to review the report tomorrow.",
+      "sentence": "Does the office have a printer?",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eles vão revisar o relatório amanhã.",
+      "source_text_pt": "O escritório tem uma impressora?",
       "target_locale": "en",
       "expected_answers_en": [
-        "They are going to review the report tomorrow."
+        "Does the office have a printer?"
       ],
-      "accepted_variants_en": [
-        "They're going to review the report tomorrow."
-      ],
-      "explanation_pt": "Futuro com be going to para planos.",
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "question_auxiliary"
       ],
-      "pt": "Eles vão revisar o relatório amanhã.",
-      "ctx": "Contexto de trabalho (nível A2).",
-      "blank": "are",
-      "wrong": "They go to review the report tomorrow."
+      "communicative_intent": "ask_resource",
+      "grammar_focus": "yes_no_question",
+      "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "have"
+      ],
+      "pt": "O escritório tem uma impressora?",
+      "ctx": "Situação: ask resource.",
+      "blank": "printer",
+      "wrong": "The office have a printer?"
     },
     {
-      "template_id": "workplace_a2_subject_simple_present_object_07",
-      "family_id": "workplace_a2_subject_simple_present_object_0",
+      "template_id": "workplace_a2_wp2_lost_report",
+      "family_id": "workplace_a2_report_problem",
       "pack_id": "workplace_a2",
       "theme": "workplace",
       "level": "A2",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "vocabulary",
-      "skill_ids": [
-        "vocabulary",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a2_requirements"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the requirements every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos os requisitos todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the requirements every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "vocabulary"
-      ],
-      "pt": "Nós verificamos os requisitos todos os dias.",
-      "ctx": "Contexto de trabalho (nível A2).",
-      "blank": "check",
-      "wrong": "We check the requirements every day."
-    },
-    {
-      "template_id": "workplace_a2_wh_do_subject_base_verb_08",
-      "family_id": "workplace_a2_wh_do_subject_base_verb_1",
-      "pack_id": "workplace_a2",
-      "theme": "workplace",
-      "level": "A2",
-      "pattern_id": "wh_do_subject_base_verb",
+      "pattern_id": "subject_past_simple_object_time",
       "primary_skill_id": "past_simple",
       "skill_ids": [
         "past_simple",
@@ -580,34 +438,198 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_a2_open_positions"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the open positions?",
+      "sentence": "I lost the report yesterday.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa das vagas abertas?",
+      "source_text_pt": "Perdi o relatório ontem.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the open positions?"
+        "I lost the report yesterday."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "past_simple"
       ],
-      "pt": "Quando você precisa das vagas abertas?",
-      "ctx": "Contexto de trabalho (nível A2).",
-      "blank": "do",
-      "wrong": "When you do need the open positions?"
+      "communicative_intent": "report_problem",
+      "grammar_focus": "past_simple",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "lose"
+      ],
+      "pt": "Perdi o relatório ontem.",
+      "ctx": "Situação: report problem.",
+      "blank": "report",
+      "wrong": "I lose the report yesterday."
+    },
+    {
+      "template_id": "workplace_a2_wp2_request_client",
+      "family_id": "workplace_a2_request_service",
+      "pack_id": "workplace_a2",
+      "theme": "workplace",
+      "level": "A2",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Could you call the client for me?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você poderia ligar para o cliente por mim?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Could you call the client for me?"
+      ],
+      "accepted_variants_en": [
+        "Can you call the client for me?"
+      ],
+      "explanation_pt": "Pedido educado com can/could.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "request_service",
+      "grammar_focus": "modal_request",
+      "pattern_signature": "yesno_question|present_simple|could|aff|plain",
+      "lexical_verbs": [
+        "call"
+      ],
+      "pt": "Você poderia ligar para o cliente por mim?",
+      "ctx": "Situação: request service.",
+      "blank": "client",
+      "wrong": "You could call the client for me?"
+    },
+    {
+      "template_id": "workplace_a2_wp2_check_email",
+      "family_id": "workplace_a2_talk_habit",
+      "pack_id": "workplace_a2",
+      "theme": "workplace",
+      "level": "A2",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I usually check my email in the morning.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Costumo checar meu e-mail de manhã.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I usually check my email in the morning."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "simple_present"
+      ],
+      "communicative_intent": "talk_habit",
+      "grammar_focus": "frequency_adverb",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "check"
+      ],
+      "pt": "Costumo checar meu e-mail de manhã.",
+      "ctx": "Situação: talk habit.",
+      "blank": "email",
+      "wrong": "I usually checks my email in the morning."
+    },
+    {
+      "template_id": "workplace_a2_wp2_there_meeting",
+      "family_id": "workplace_a2_point_out",
+      "pack_id": "workplace_a2",
+      "theme": "workplace",
+      "level": "A2",
+      "pattern_id": "there_is_are",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "There is a meeting at three o’clock.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Tem uma reunião às três horas.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "There is a meeting at three o’clock."
+      ],
+      "accepted_variants_en": [
+        "There's a meeting at three o’clock."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "there_is_are"
+      ],
+      "communicative_intent": "point_out",
+      "grammar_focus": "existential",
+      "pattern_signature": "statement|be|none|aff|existential",
+      "lexical_verbs": [],
+      "pt": "Tem uma reunião às três horas.",
+      "ctx": "Situação: point out.",
+      "blank": "meeting",
+      "wrong": "There a meeting at three o’clock."
     }
   ],
   "collocations": [

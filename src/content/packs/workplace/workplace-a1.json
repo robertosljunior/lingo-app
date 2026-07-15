@@ -249,7 +249,7 @@
       ],
       "communicative_intent": "ask_location",
       "grammar_focus": "wh_question_be",
-      "pattern_signature": "wh_question|be|none|aff",
+      "pattern_signature": "wh_question|be|none|aff|plain",
       "lexical_verbs": [],
       "pt": "Onde fica a sala de reunião?",
       "ctx": "Situação: ask location.",
@@ -300,7 +300,7 @@
       ],
       "communicative_intent": "state_task",
       "grammar_focus": "have_possession",
-      "pattern_signature": "statement|present_simple|none|aff",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
       "lexical_verbs": [
         "have"
       ],
@@ -353,7 +353,7 @@
       ],
       "communicative_intent": "ask_time",
       "grammar_focus": "wh_question_do",
-      "pattern_signature": "wh_question|present_simple|none|aff",
+      "pattern_signature": "wh_question|present_simple|none|aff|plain",
       "lexical_verbs": [
         "start"
       ],
@@ -408,7 +408,7 @@
       ],
       "communicative_intent": "request_help",
       "grammar_focus": "modal_request",
-      "pattern_signature": "yesno_question|present_simple|can|aff",
+      "pattern_signature": "yesno_question|present_simple|can|aff|plain",
       "lexical_verbs": [
         "help"
       ],
@@ -454,14 +454,18 @@
       "expected_answers_en": [
         "The report is ready now."
       ],
-      "accepted_variants_en": [],
+      "accepted_variants_en": [
+        "The report is finished now.",
+        "The report is done now.",
+        "The report is ready."
+      ],
       "explanation_pt": "Verbo to be para descrever algo.",
       "skill_targets": [
         "verb_to_be"
       ],
       "communicative_intent": "describe_status",
       "grammar_focus": "be_complement",
-      "pattern_signature": "statement|be|none|aff",
+      "pattern_signature": "statement|be|none|aff|plain",
       "lexical_verbs": [],
       "pt": "O relatório está pronto agora.",
       "ctx": "Situação: describe status.",
@@ -505,14 +509,16 @@
       "expected_answers_en": [
         "I want to send the email now."
       ],
-      "accepted_variants_en": [],
+      "accepted_variants_en": [
+        "I'd like to send the email now."
+      ],
       "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
       "skill_targets": [
         "simple_present"
       ],
       "communicative_intent": "state_intention",
       "grammar_focus": "want_to_infinitive",
-      "pattern_signature": "statement|present_simple|want_to|aff",
+      "pattern_signature": "statement|present_simple|want_to|aff|plain",
       "lexical_verbs": [
         "send"
       ],
@@ -567,7 +573,7 @@
       ],
       "communicative_intent": "describe_activity",
       "grammar_focus": "present_continuous",
-      "pattern_signature": "statement|present_continuous|none|aff",
+      "pattern_signature": "statement|present_continuous|none|aff|plain",
       "lexical_verbs": [
         "work"
       ],
@@ -620,7 +626,7 @@
       ],
       "communicative_intent": "ask_action",
       "grammar_focus": "imperative_request",
-      "pattern_signature": "imperative|present_simple|none|aff",
+      "pattern_signature": "imperative|present_simple|none|aff|plain",
       "lexical_verbs": [
         "call"
       ],

@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "workplace_b2_passive_be_past_participle_01",
-      "family_id": "workplace_b2_passive_be_past_participle_0",
+      "template_id": "workplace_b2_wp4_passive",
+      "family_id": "workplace_b2_report_problem",
       "pack_id": "workplace_b2",
       "theme": "workplace",
       "level": "B2",
@@ -226,40 +226,43 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b2_company"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "The company was reviewed by the team.",
+      "sentence": "The meeting was cancelled due to a conflict.",
       "source_locale": "pt-BR",
-      "source_text_pt": "A empresa foi revisada pela equipe.",
+      "source_text_pt": "A reunião foi cancelada por causa de um conflito.",
       "target_locale": "en",
       "expected_answers_en": [
-        "The company was reviewed by the team."
+        "The meeting was cancelled due to a conflict."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "accepted_variants_en": [
+        "The meeting was canceled due to a conflict."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "passive_voice"
       ],
-      "pt": "A empresa foi revisada pela equipe.",
-      "ctx": "Contexto de trabalho (nível B2).",
-      "blank": "company",
-      "wrong": "The company reviewed by the team."
+      "communicative_intent": "report_problem",
+      "grammar_focus": "passive",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [
+        "cancel"
+      ],
+      "pt": "A reunião foi cancelada por causa de um conflito.",
+      "ctx": "Situação: report problem.",
+      "blank": "meeting",
+      "wrong": "The meeting was cancel due to a conflict."
     },
     {
-      "template_id": "workplace_b2_reported_speech_statement_02",
-      "family_id": "workplace_b2_reported_speech_statement_1",
+      "template_id": "workplace_b2_wp4_reported",
+      "family_id": "workplace_b2_report_information",
       "pack_id": "workplace_b2",
       "theme": "workplace",
       "level": "B2",
@@ -278,40 +281,41 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b2_project"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "She said that the project was ready.",
+      "sentence": "The manager said that the project was delayed.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Ela disse que o projeto estava pronto.",
+      "source_text_pt": "O gerente disse que o projeto estava atrasado.",
       "target_locale": "en",
       "expected_answers_en": [
-        "She said that the project was ready."
+        "The manager said that the project was delayed."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Discurso indireto com said that.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "reported_speech"
       ],
-      "pt": "Ela disse que o projeto estava pronto.",
-      "ctx": "Contexto de trabalho (nível B2).",
-      "blank": "said",
-      "wrong": "She said the project was ready."
+      "communicative_intent": "report_information",
+      "grammar_focus": "reported_speech",
+      "pattern_signature": "statement|past_simple|none|aff|reported",
+      "lexical_verbs": [
+        "say"
+      ],
+      "pt": "O gerente disse que o projeto estava atrasado.",
+      "ctx": "Situação: report information.",
+      "blank": "project",
+      "wrong": "The manager said that the project delayed."
     },
     {
-      "template_id": "workplace_b2_second_conditional_03",
-      "family_id": "workplace_b2_second_conditional_2",
+      "template_id": "workplace_b2_wp4_second_cond",
+      "family_id": "workplace_b2_hypothesize",
       "pack_id": "workplace_b2",
       "theme": "workplace",
       "level": "B2",
@@ -330,42 +334,202 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b2_client"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "If I had more time, I would improve the client.",
+      "sentence": "If I had more time, I would finish the report.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o cliente.",
+      "source_text_pt": "Se eu tivesse mais tempo, terminaria o relatório.",
       "target_locale": "en",
       "expected_answers_en": [
-        "If I had more time, I would improve the client."
+        "If I had more time, I would finish the report."
       ],
-      "accepted_variants_en": [
-        "If I had more time, I'd improve the client."
-      ],
-      "explanation_pt": "Segunda condicional: if + passado, would + base.",
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "second_conditional"
       ],
-      "pt": "Se eu tivesse mais tempo, eu melhoraria o cliente.",
-      "ctx": "Contexto de trabalho (nível B2).",
-      "blank": "I",
-      "wrong": "If I had more time, I will improve the client."
+      "communicative_intent": "hypothesize",
+      "grammar_focus": "second_conditional",
+      "pattern_signature": "conditional|present_simple|would|aff|second_conditional",
+      "lexical_verbs": [
+        "finish"
+      ],
+      "pt": "Se eu tivesse mais tempo, terminaria o relatório.",
+      "ctx": "Situação: hypothesize.",
+      "blank": "report",
+      "wrong": "If I had more time, I will finish the report."
     },
     {
-      "template_id": "workplace_b2_subject_modal_base_verb_04",
-      "family_id": "workplace_b2_subject_modal_base_verb_3",
+      "template_id": "workplace_b2_wp4_diplomatic",
+      "family_id": "workplace_b2_request_politely",
+      "pack_id": "workplace_b2",
+      "theme": "workplace",
+      "level": "B2",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "modal_deduction",
+      "skill_ids": [
+        "modal_deduction",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Would you mind reviewing this report again?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você se importaria de revisar este relatório de novo?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Would you mind reviewing this report again?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "modal_deduction"
+      ],
+      "communicative_intent": "request_politely",
+      "grammar_focus": "diplomatic_request",
+      "pattern_signature": "yesno_question|present_simple|would|aff|plain",
+      "lexical_verbs": [
+        "review"
+      ],
+      "pt": "Você se importaria de revisar este relatório de novo?",
+      "ctx": "Situação: request politely.",
+      "blank": "report",
+      "wrong": "Would you mind review this report again?"
+    },
+    {
+      "template_id": "workplace_b2_wp4_pp_just",
+      "family_id": "workplace_b2_report_status",
+      "pack_id": "workplace_b2",
+      "theme": "workplace",
+      "level": "B2",
+      "pattern_id": "subject_have_past_participle_yet",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "We have just finished the presentation.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Acabamos de terminar a apresentação.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "We have just finished the presentation."
+      ],
+      "accepted_variants_en": [
+        "We've just finished the presentation."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "communicative_intent": "report_status",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "statement|present_perfect|none|aff|plain",
+      "lexical_verbs": [
+        "finish"
+      ],
+      "pt": "Acabamos de terminar a apresentação.",
+      "ctx": "Situação: report status.",
+      "blank": "presentation",
+      "wrong": "We have just finish the presentation."
+    },
+    {
+      "template_id": "workplace_b2_wp4_passive2",
+      "family_id": "workplace_b2_report_problem_sent",
+      "pack_id": "workplace_b2",
+      "theme": "workplace",
+      "level": "B2",
+      "pattern_id": "passive_be_past_participle",
+      "primary_skill_id": "passive_voice",
+      "skill_ids": [
+        "passive_voice",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "The contract was sent to the wrong client.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "O contrato foi enviado para o cliente errado.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "The contract was sent to the wrong client."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "passive_voice"
+      ],
+      "communicative_intent": "report_problem_sent",
+      "grammar_focus": "passive",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [
+        "send"
+      ],
+      "pt": "O contrato foi enviado para o cliente errado.",
+      "ctx": "Situação: report problem sent.",
+      "blank": "contract",
+      "wrong": "The contract was send to the wrong client."
+    },
+    {
+      "template_id": "workplace_b2_wp4_deduction",
+      "family_id": "workplace_b2_make_deduction",
       "pack_id": "workplace_b2",
       "theme": "workplace",
       "level": "B2",
@@ -384,47 +548,48 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b2_support_team"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the support team today.",
+      "sentence": "The manager must have read the email already.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a equipe de suporte hoje.",
+      "source_text_pt": "O gerente já deve ter lido o e-mail.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the support team today."
+        "The manager must have read the email already."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "modal_deduction"
       ],
-      "pt": "Eu posso atualizar a equipe de suporte hoje.",
-      "ctx": "Contexto de trabalho (nível B2).",
-      "blank": "can",
-      "wrong": "I cans update the support team today."
+      "communicative_intent": "make_deduction",
+      "grammar_focus": "modal_deduction",
+      "pattern_signature": "statement|present_simple|must|aff|plain",
+      "lexical_verbs": [
+        "read"
+      ],
+      "pt": "O gerente já deve ter lido o e-mail.",
+      "ctx": "Situação: make deduction.",
+      "blank": "email",
+      "wrong": "The manager must has read the email already."
     },
     {
-      "template_id": "workplace_b2_passive_be_past_participle_05",
-      "family_id": "workplace_b2_passive_be_past_participle_4",
+      "template_id": "workplace_b2_wp4_contrast",
+      "family_id": "workplace_b2_describe_experience",
       "pack_id": "workplace_b2",
       "theme": "workplace",
       "level": "B2",
-      "pattern_id": "passive_be_past_participle",
-      "primary_skill_id": "collocation",
+      "pattern_id": "subject_be_complement",
+      "primary_skill_id": "verb_to_be",
       "skill_ids": [
-        "collocation",
+        "verb_to_be",
         "vocabulary"
       ],
       "exercise_types": [
@@ -436,194 +601,35 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b2_deployment"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "The deployment was reviewed by the team.",
+      "sentence": "The presentation was long, but it was very useful.",
       "source_locale": "pt-BR",
-      "source_text_pt": "A implantação foi revisada pela equipe.",
+      "source_text_pt": "A apresentação foi longa, mas foi muito útil.",
       "target_locale": "en",
       "expected_answers_en": [
-        "The deployment was reviewed by the team."
+        "The presentation was long, but it was very useful."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Voz passiva: was/were + particípio passado.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "collocation"
+        "verb_to_be"
       ],
-      "pt": "A implantação foi revisada pela equipe.",
-      "ctx": "Contexto de trabalho (nível B2).",
-      "blank": "deployment",
-      "wrong": "The deployment reviewed by the team."
-    },
-    {
-      "template_id": "workplace_b2_reported_speech_statement_06",
-      "family_id": "workplace_b2_reported_speech_statement_5",
-      "pack_id": "workplace_b2",
-      "theme": "workplace",
-      "level": "B2",
-      "pattern_id": "reported_speech_statement",
-      "primary_skill_id": "word_order",
-      "skill_ids": [
-        "word_order",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b2_report"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "She said that the report was ready.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Ela disse que o relatório estava pronto.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "She said that the report was ready."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Discurso indireto com said that.",
-      "skill_targets": [
-        "word_order"
-      ],
-      "pt": "Ela disse que o relatório estava pronto.",
-      "ctx": "Contexto de trabalho (nível B2).",
-      "blank": "said",
-      "wrong": "She said the report was ready."
-    },
-    {
-      "template_id": "workplace_b2_second_conditional_07",
-      "family_id": "workplace_b2_second_conditional_0",
-      "pack_id": "workplace_b2",
-      "theme": "workplace",
-      "level": "B2",
-      "pattern_id": "second_conditional",
-      "primary_skill_id": "vocabulary",
-      "skill_ids": [
-        "vocabulary",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b2_requirements"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "If I had more time, I would improve the requirements.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria os requisitos.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "If I had more time, I would improve the requirements."
-      ],
-      "accepted_variants_en": [
-        "If I had more time, I'd improve the requirements."
-      ],
-      "explanation_pt": "Segunda condicional: if + passado, would + base.",
-      "skill_targets": [
-        "vocabulary"
-      ],
-      "pt": "Se eu tivesse mais tempo, eu melhoraria os requisitos.",
-      "ctx": "Contexto de trabalho (nível B2).",
-      "blank": "I",
-      "wrong": "If I had more time, I will improve the requirements."
-    },
-    {
-      "template_id": "workplace_b2_subject_modal_base_verb_08",
-      "family_id": "workplace_b2_subject_modal_base_verb_1",
-      "pack_id": "workplace_b2",
-      "theme": "workplace",
-      "level": "B2",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "passive_voice",
-      "skill_ids": [
-        "passive_voice",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b2_open_positions"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_passive",
-        "level_allows_reported_speech"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the open positions today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar as vagas abertas hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the open positions today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "passive_voice"
-      ],
-      "pt": "Eu posso atualizar as vagas abertas hoje.",
-      "ctx": "Contexto de trabalho (nível B2).",
-      "blank": "can",
-      "wrong": "I cans update the open positions today."
+      "communicative_intent": "describe_experience",
+      "grammar_focus": "past_contrast",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [],
+      "pt": "A apresentação foi longa, mas foi muito útil.",
+      "ctx": "Situação: describe experience.",
+      "blank": "presentation",
+      "wrong": "The presentation long, but it was very useful."
     }
   ],
   "collocations": [

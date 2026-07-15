@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "food_and_restaurants_a2_subject_past_simple_object_time_01",
-      "family_id": "food_and_restaurants_a2_subject_past_simple_object_time_0",
+      "template_id": "food_and_restaurants_a2_food2_arrive_late",
+      "family_id": "food_and_restaurants_a2_report_delay",
       "pack_id": "food_and_restaurants_a2",
       "theme": "food_and_restaurants",
       "level": "A2",
@@ -226,144 +226,45 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a2_menu"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the menu yesterday.",
+      "sentence": "Our order arrived late tonight.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o cardápio ontem.",
+      "source_text_pt": "Nosso pedido chegou atrasado esta noite.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We checked the menu yesterday."
+        "Our order arrived late tonight."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "past_simple"
       ],
-      "pt": "Nós verificamos o cardápio ontem.",
-      "ctx": "Contexto de comida e restaurantes (nível A2).",
-      "blank": "checked",
-      "wrong": "We check the menu yesterday."
+      "communicative_intent": "report_delay",
+      "grammar_focus": "past_simple",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [
+        "arrive"
+      ],
+      "pt": "Nosso pedido chegou atrasado esta noite.",
+      "ctx": "Situação: report delay.",
+      "blank": "order",
+      "wrong": "Our order arrive late tonight."
     },
     {
-      "template_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_02",
-      "family_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_1",
+      "template_id": "food_and_restaurants_a2_food2_compare_restaurant",
+      "family_id": "food_and_restaurants_a2_compare_options",
       "pack_id": "food_and_restaurants_a2",
       "theme": "food_and_restaurants",
       "level": "A2",
-      "pattern_id": "subject_be_going_to_verb_time",
-      "primary_skill_id": "present_continuous",
-      "skill_ids": [
-        "present_continuous",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a2_table"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "They are going to review the table tomorrow.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eles vão revisar a mesa amanhã.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "They are going to review the table tomorrow."
-      ],
-      "accepted_variants_en": [
-        "They're going to review the table tomorrow."
-      ],
-      "explanation_pt": "Futuro com be going to para planos.",
-      "skill_targets": [
-        "present_continuous"
-      ],
-      "pt": "Eles vão revisar a mesa amanhã.",
-      "ctx": "Contexto de comida e restaurantes (nível A2).",
-      "blank": "are",
-      "wrong": "They go to review the table tomorrow."
-    },
-    {
-      "template_id": "food_and_restaurants_a2_subject_simple_present_object_03",
-      "family_id": "food_and_restaurants_a2_subject_simple_present_object_2",
-      "pack_id": "food_and_restaurants_a2",
-      "theme": "food_and_restaurants",
-      "level": "A2",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "future_going_to",
-      "skill_ids": [
-        "future_going_to",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a2_starter"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the starter every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a entrada todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the starter every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "future_going_to"
-      ],
-      "pt": "Nós verificamos a entrada todos os dias.",
-      "ctx": "Contexto de comida e restaurantes (nível A2).",
-      "blank": "check",
-      "wrong": "We check the starter every day."
-    },
-    {
-      "template_id": "food_and_restaurants_a2_wh_do_subject_base_verb_04",
-      "family_id": "food_and_restaurants_a2_wh_do_subject_base_verb_3",
-      "pack_id": "food_and_restaurants_a2",
-      "theme": "food_and_restaurants",
-      "level": "A2",
-      "pattern_id": "wh_do_subject_base_verb",
+      "pattern_id": "comparative_than",
       "primary_skill_id": "comparatives",
       "skill_ids": [
         "comparatives",
@@ -378,45 +279,46 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a2_main_course"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the main course?",
+      "sentence": "This restaurant is more expensive than the other one.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa do prato principal?",
+      "source_text_pt": "Este restaurante é mais caro que o outro.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the main course?"
+        "This restaurant is more expensive than the other one."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "comparatives"
       ],
-      "pt": "Quando você precisa do prato principal?",
-      "ctx": "Contexto de comida e restaurantes (nível A2).",
-      "blank": "do",
-      "wrong": "When you do need the main course?"
+      "communicative_intent": "compare_options",
+      "grammar_focus": "comparative",
+      "pattern_signature": "statement|be|none|aff|comparative",
+      "lexical_verbs": [],
+      "pt": "Este restaurante é mais caro que o outro.",
+      "ctx": "Situação: compare options.",
+      "blank": "restaurant",
+      "wrong": "This restaurant is expensiver than the other one."
     },
     {
-      "template_id": "food_and_restaurants_a2_subject_past_simple_object_time_05",
-      "family_id": "food_and_restaurants_a2_subject_past_simple_object_time_4",
+      "template_id": "food_and_restaurants_a2_food2_plan_order",
+      "family_id": "food_and_restaurants_a2_state_plan",
       "pack_id": "food_and_restaurants_a2",
       "theme": "food_and_restaurants",
       "level": "A2",
-      "pattern_id": "subject_past_simple_object_time",
-      "primary_skill_id": "present_perfect",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "future_going_to",
       "skill_ids": [
-        "present_perfect",
+        "future_going_to",
         "vocabulary"
       ],
       "exercise_types": [
@@ -428,42 +330,47 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a2_dessert"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the dessert yesterday.",
+      "sentence": "I am going to order the soup.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a sobremesa ontem.",
+      "source_text_pt": "Vou pedir a sopa.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We checked the dessert yesterday."
+        "I am going to order the soup."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "accepted_variants_en": [
+        "I'm going to order the soup."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "present_perfect"
+        "future_going_to"
       ],
-      "pt": "Nós verificamos a sobremesa ontem.",
-      "ctx": "Contexto de comida e restaurantes (nível A2).",
-      "blank": "checked",
-      "wrong": "We check the dessert yesterday."
+      "communicative_intent": "state_plan",
+      "grammar_focus": "going_to",
+      "pattern_signature": "statement|going_to|none|aff|plain",
+      "lexical_verbs": [
+        "order"
+      ],
+      "pt": "Vou pedir a sopa.",
+      "ctx": "Situação: state plan.",
+      "blank": "soup",
+      "wrong": "I am going to ordered the soup."
     },
     {
-      "template_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_06",
-      "family_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_5",
+      "template_id": "food_and_restaurants_a2_food2_ask_table",
+      "family_id": "food_and_restaurants_a2_ask_amenity",
       "pack_id": "food_and_restaurants_a2",
       "theme": "food_and_restaurants",
       "level": "A2",
-      "pattern_id": "subject_be_going_to_verb_time",
+      "pattern_id": "yes_no_do_question",
       "primary_skill_id": "question_auxiliary",
       "skill_ids": [
         "question_auxiliary",
@@ -478,94 +385,45 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a2_bill"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They are going to review the bill tomorrow.",
+      "sentence": "Does the restaurant have a table for four?",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eles vão revisar a conta amanhã.",
+      "source_text_pt": "O restaurante tem uma mesa para quatro?",
       "target_locale": "en",
       "expected_answers_en": [
-        "They are going to review the bill tomorrow."
+        "Does the restaurant have a table for four?"
       ],
-      "accepted_variants_en": [
-        "They're going to review the bill tomorrow."
-      ],
-      "explanation_pt": "Futuro com be going to para planos.",
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "question_auxiliary"
       ],
-      "pt": "Eles vão revisar a conta amanhã.",
-      "ctx": "Contexto de comida e restaurantes (nível A2).",
-      "blank": "are",
-      "wrong": "They go to review the bill tomorrow."
+      "communicative_intent": "ask_amenity",
+      "grammar_focus": "yes_no_question",
+      "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "have"
+      ],
+      "pt": "O restaurante tem uma mesa para quatro?",
+      "ctx": "Situação: ask amenity.",
+      "blank": "table",
+      "wrong": "The restaurant have a table for four?"
     },
     {
-      "template_id": "food_and_restaurants_a2_subject_simple_present_object_07",
-      "family_id": "food_and_restaurants_a2_subject_simple_present_object_0",
+      "template_id": "food_and_restaurants_a2_food2_forgot_order",
+      "family_id": "food_and_restaurants_a2_report_problem",
       "pack_id": "food_and_restaurants_a2",
       "theme": "food_and_restaurants",
       "level": "A2",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "vocabulary",
-      "skill_ids": [
-        "vocabulary",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a2_waiter"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the waiter every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o garçom todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the waiter every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "vocabulary"
-      ],
-      "pt": "Nós verificamos o garçom todos os dias.",
-      "ctx": "Contexto de comida e restaurantes (nível A2).",
-      "blank": "check",
-      "wrong": "We check the waiter every day."
-    },
-    {
-      "template_id": "food_and_restaurants_a2_wh_do_subject_base_verb_08",
-      "family_id": "food_and_restaurants_a2_wh_do_subject_base_verb_1",
-      "pack_id": "food_and_restaurants_a2",
-      "theme": "food_and_restaurants",
-      "level": "A2",
-      "pattern_id": "wh_do_subject_base_verb",
+      "pattern_id": "subject_past_simple_object_time",
       "primary_skill_id": "past_simple",
       "skill_ids": [
         "past_simple",
@@ -580,34 +438,198 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_a2_reservation"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the reservation?",
+      "sentence": "The waiter forgot our order.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa da reserva?",
+      "source_text_pt": "O garçom esqueceu nosso pedido.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the reservation?"
+        "The waiter forgot our order."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "past_simple"
       ],
-      "pt": "Quando você precisa da reserva?",
-      "ctx": "Contexto de comida e restaurantes (nível A2).",
-      "blank": "do",
-      "wrong": "When you do need the reservation?"
+      "communicative_intent": "report_problem",
+      "grammar_focus": "past_simple",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "forget"
+      ],
+      "pt": "O garçom esqueceu nosso pedido.",
+      "ctx": "Situação: report problem.",
+      "blank": "order",
+      "wrong": "The waiter forget our order."
+    },
+    {
+      "template_id": "food_and_restaurants_a2_food2_request_bill",
+      "family_id": "food_and_restaurants_a2_request_service",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Could you bring the bill, please?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você poderia trazer a conta, por favor?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Could you bring the bill, please?"
+      ],
+      "accepted_variants_en": [
+        "Can you bring the bill, please?"
+      ],
+      "explanation_pt": "Pedido educado com can/could.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "request_service",
+      "grammar_focus": "modal_request",
+      "pattern_signature": "yesno_question|present_simple|could|aff|plain",
+      "lexical_verbs": [
+        "bring"
+      ],
+      "pt": "Você poderia trazer a conta, por favor?",
+      "ctx": "Situação: request service.",
+      "blank": "bill",
+      "wrong": "You could bring the bill, please?"
+    },
+    {
+      "template_id": "food_and_restaurants_a2_food2_habit_dish",
+      "family_id": "food_and_restaurants_a2_talk_habit",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I usually order the same dish.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Costumo pedir o mesmo prato.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I usually order the same dish."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "simple_present"
+      ],
+      "communicative_intent": "talk_habit",
+      "grammar_focus": "frequency_adverb",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "order"
+      ],
+      "pt": "Costumo pedir o mesmo prato.",
+      "ctx": "Situação: talk habit.",
+      "blank": "usually",
+      "wrong": "I usually orders the same dish."
+    },
+    {
+      "template_id": "food_and_restaurants_a2_food2_there_table",
+      "family_id": "food_and_restaurants_a2_point_out",
+      "pack_id": "food_and_restaurants_a2",
+      "theme": "food_and_restaurants",
+      "level": "A2",
+      "pattern_id": "there_is_are",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "There is a table available near the window.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Tem uma mesa disponível perto da janela.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "There is a table available near the window."
+      ],
+      "accepted_variants_en": [
+        "There's a table available near the window."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "there_is_are"
+      ],
+      "communicative_intent": "point_out",
+      "grammar_focus": "existential",
+      "pattern_signature": "statement|be|none|aff|existential",
+      "lexical_verbs": [],
+      "pt": "Tem uma mesa disponível perto da janela.",
+      "ctx": "Situação: point out.",
+      "blank": "table",
+      "wrong": "There a table available near the window."
     }
   ],
   "collocations": [

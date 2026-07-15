@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "daily_life_b1_subject_have_past_participle_yet_01",
-      "family_id": "daily_life_b1_subject_have_past_participle_yet_0",
+      "template_id": "daily_life_b1_dl3_pp_cleaned",
+      "family_id": "daily_life_b1_confirm_plan",
       "pack_id": "daily_life_b1",
       "theme": "daily_life",
       "level": "B1",
@@ -226,41 +226,96 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b1_morning_routine"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We have checked the morning routine already.",
+      "sentence": "I have already cleaned the kitchen.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós já verificamos a rotina matinal.",
+      "source_text_pt": "Já limpei a cozinha.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We have checked the morning routine already."
+        "I have already cleaned the kitchen."
       ],
       "accepted_variants_en": [
-        "We've checked the morning routine already."
+        "I've already cleaned the kitchen."
       ],
-      "explanation_pt": "Present perfect com already.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "present_perfect"
       ],
-      "pt": "Nós já verificamos a rotina matinal.",
-      "ctx": "Contexto de vida cotidiana (nível B1).",
-      "blank": "have",
-      "wrong": "We have check the morning routine already."
+      "communicative_intent": "confirm_plan",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "clean"
+      ],
+      "pt": "Já limpei a cozinha.",
+      "ctx": "Situação: confirm plan.",
+      "blank": "kitchen",
+      "wrong": "I have already clean the kitchen."
     },
     {
-      "template_id": "daily_life_b1_subject_have_been_ving_object_duration_02",
-      "family_id": "daily_life_b1_subject_have_been_ving_object_duration_1",
+      "template_id": "daily_life_b1_dl3_first_cond",
+      "family_id": "daily_life_b1_plan_contingency",
+      "pack_id": "daily_life_b1",
+      "theme": "daily_life",
+      "level": "B1",
+      "pattern_id": "if_present_will_future",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "If I finish the laundry early, I will go for a walk.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se eu terminar a roupa lavada cedo, vou dar uma caminhada.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If I finish the laundry early, I will go for a walk."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "first_conditional"
+      ],
+      "communicative_intent": "plan_contingency",
+      "grammar_focus": "first_conditional",
+      "pattern_signature": "conditional|will_future|none|aff|first_conditional",
+      "lexical_verbs": [
+        "finish"
+      ],
+      "pt": "Se eu terminar a roupa lavada cedo, vou dar uma caminhada.",
+      "ctx": "Situação: plan contingency.",
+      "blank": "laundry",
+      "wrong": "If I will finish the laundry early, I go for a walk."
+    },
+    {
+      "template_id": "daily_life_b1_dl3_ppc_cooking",
+      "family_id": "daily_life_b1_report_status",
       "pack_id": "daily_life_b1",
       "theme": "daily_life",
       "level": "B1",
@@ -279,48 +334,50 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b1_family_dinner"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They have been reviewing the family dinner for two hours.",
+      "sentence": "I have been cooking dinner for an hour.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eles estão revisando o jantar em família há duas horas.",
+      "source_text_pt": "Estou cozinhando o jantar há uma hora.",
       "target_locale": "en",
       "expected_answers_en": [
-        "They have been reviewing the family dinner for two hours."
+        "I have been cooking dinner for an hour."
       ],
       "accepted_variants_en": [
-        "They've been reviewing the family dinner for two hours."
+        "I've been cooking dinner for an hour."
       ],
-      "explanation_pt": "Present perfect continuous com duração (for).",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "present_perfect_continuous"
       ],
-      "pt": "Eles estão revisando o jantar em família há duas horas.",
-      "ctx": "Contexto de vida cotidiana (nível B1).",
-      "blank": "have",
-      "wrong": "They have been reviewed the family dinner for two hours."
+      "communicative_intent": "report_status",
+      "grammar_focus": "present_perfect_continuous",
+      "pattern_signature": "statement|present_perfect_continuous|none|aff|plain",
+      "lexical_verbs": [
+        "cook"
+      ],
+      "pt": "Estou cozinhando o jantar há uma hora.",
+      "ctx": "Situação: report status.",
+      "blank": "dinner",
+      "wrong": "I have been cook dinner for an hour."
     },
     {
-      "template_id": "daily_life_b1_if_present_will_future_03",
-      "family_id": "daily_life_b1_if_present_will_future_2",
+      "template_id": "daily_life_b1_dl3_plan_fix",
+      "family_id": "daily_life_b1_describe_plan",
       "pack_id": "daily_life_b1",
       "theme": "daily_life",
       "level": "B1",
-      "pattern_id": "if_present_will_future",
-      "primary_skill_id": "gerund_after_been",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "future_going_to",
       "skill_ids": [
-        "gerund_after_been",
+        "future_going_to",
         "vocabulary"
       ],
       "exercise_types": [
@@ -332,41 +389,200 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b1_bus_stop"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "If we confirm the bus stop, we will start tomorrow.",
+      "sentence": "I am going to fix the door tomorrow.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Se confirmarmos o ponto de ônibus, vamos começar amanhã.",
+      "source_text_pt": "Vou consertar a porta amanhã.",
       "target_locale": "en",
       "expected_answers_en": [
-        "If we confirm the bus stop, we will start tomorrow."
+        "I am going to fix the door tomorrow."
       ],
       "accepted_variants_en": [
-        "If we confirm the bus stop, we'll start tomorrow."
+        "I'm going to fix the door tomorrow."
       ],
-      "explanation_pt": "Primeira condicional: if + presente, will + base.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "gerund_after_been"
+        "future_going_to"
       ],
-      "pt": "Se confirmarmos o ponto de ônibus, vamos começar amanhã.",
-      "ctx": "Contexto de vida cotidiana (nível B1).",
-      "blank": "we",
-      "wrong": "If we confirm the bus stop, we will start tomorrow."
+      "communicative_intent": "describe_plan",
+      "grammar_focus": "going_to",
+      "pattern_signature": "statement|going_to|none|aff|plain",
+      "lexical_verbs": [
+        "fix"
+      ],
+      "pt": "Vou consertar a porta amanhã.",
+      "ctx": "Situação: describe plan.",
+      "blank": "door",
+      "wrong": "I am going to fixed the door tomorrow."
     },
     {
-      "template_id": "daily_life_b1_subject_modal_base_verb_04",
-      "family_id": "daily_life_b1_subject_modal_base_verb_3",
+      "template_id": "daily_life_b1_dl3_pp_question",
+      "family_id": "daily_life_b1_ask_experience",
+      "pack_id": "daily_life_b1",
+      "theme": "daily_life",
+      "level": "B1",
+      "pattern_id": "subject_have_past_participle_yet",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Have you ever lost your keys?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você já perdeu suas chaves?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Have you ever lost your keys?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "communicative_intent": "ask_experience",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "lose"
+      ],
+      "pt": "Você já perdeu suas chaves?",
+      "ctx": "Situação: ask experience.",
+      "blank": "keys",
+      "wrong": "Have you ever lose your keys?"
+    },
+    {
+      "template_id": "daily_life_b1_dl3_advice",
+      "family_id": "daily_life_b1_give_advice",
+      "pack_id": "daily_life_b1",
+      "theme": "daily_life",
+      "level": "B1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "You should talk to your neighbor about the noise.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você deveria falar com seu vizinho sobre o barulho.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "You should talk to your neighbor about the noise."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "communicative_intent": "give_advice",
+      "grammar_focus": "modal_advice",
+      "pattern_signature": "statement|present_simple|should|aff|plain",
+      "lexical_verbs": [
+        "talk"
+      ],
+      "pt": "Você deveria falar com seu vizinho sobre o barulho.",
+      "ctx": "Situação: give advice.",
+      "blank": "neighbor",
+      "wrong": "You should talks to your neighbor about the noise."
+    },
+    {
+      "template_id": "daily_life_b1_dl3_compare_neighborhood",
+      "family_id": "daily_life_b1_compare_options",
+      "pack_id": "daily_life_b1",
+      "theme": "daily_life",
+      "level": "B1",
+      "pattern_id": "comparative_than",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "This neighborhood is quieter than the last one.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Este bairro é mais tranquilo que o anterior.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "This neighborhood is quieter than the last one."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "comparatives"
+      ],
+      "communicative_intent": "compare_options",
+      "grammar_focus": "comparative",
+      "pattern_signature": "statement|be|none|aff|comparative",
+      "lexical_verbs": [],
+      "pt": "Este bairro é mais tranquilo que o anterior.",
+      "ctx": "Situação: compare options.",
+      "blank": "neighborhood",
+      "wrong": "This neighborhood is more quiet than the last one."
+    },
+    {
+      "template_id": "daily_life_b1_dl3_preference",
+      "family_id": "daily_life_b1_state_preference",
       "pack_id": "daily_life_b1",
       "theme": "daily_life",
       "level": "B1",
@@ -385,245 +601,39 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b1_homework"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the homework today.",
+      "sentence": "I would rather clean the house today.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a lição de casa hoje.",
+      "source_text_pt": "Eu preferiria limpar a casa hoje.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the homework today."
+        "I would rather clean the house today."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "accepted_variants_en": [
+        "I'd rather clean the house today."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "first_conditional"
       ],
-      "pt": "Eu posso atualizar a lição de casa hoje.",
-      "ctx": "Contexto de vida cotidiana (nível B1).",
-      "blank": "can",
-      "wrong": "I cans update the homework today."
-    },
-    {
-      "template_id": "daily_life_b1_subject_have_past_participle_yet_05",
-      "family_id": "daily_life_b1_subject_have_past_participle_yet_4",
-      "pack_id": "daily_life_b1",
-      "theme": "daily_life",
-      "level": "B1",
-      "pattern_id": "subject_have_past_participle_yet",
-      "primary_skill_id": "question_auxiliary",
-      "skill_ids": [
-        "question_auxiliary",
-        "vocabulary"
+      "communicative_intent": "state_preference",
+      "grammar_focus": "would_preference",
+      "pattern_signature": "statement|present_simple|would|aff|plain",
+      "lexical_verbs": [
+        "clean"
       ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b1_neighbor"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We have checked the neighbor already.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós já verificamos o vizinho.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We have checked the neighbor already."
-      ],
-      "accepted_variants_en": [
-        "We've checked the neighbor already."
-      ],
-      "explanation_pt": "Present perfect com already.",
-      "skill_targets": [
-        "question_auxiliary"
-      ],
-      "pt": "Nós já verificamos o vizinho.",
-      "ctx": "Contexto de vida cotidiana (nível B1).",
-      "blank": "have",
-      "wrong": "We have check the neighbor already."
-    },
-    {
-      "template_id": "daily_life_b1_subject_have_been_ving_object_duration_06",
-      "family_id": "daily_life_b1_subject_have_been_ving_object_duration_5",
-      "pack_id": "daily_life_b1",
-      "theme": "daily_life",
-      "level": "B1",
-      "pattern_id": "subject_have_been_ving_object_duration",
-      "primary_skill_id": "collocation",
-      "skill_ids": [
-        "collocation",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b1_weekend_plan"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "They have been reviewing the weekend plan for two hours.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eles estão revisando o plano de fim de semana há duas horas.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "They have been reviewing the weekend plan for two hours."
-      ],
-      "accepted_variants_en": [
-        "They've been reviewing the weekend plan for two hours."
-      ],
-      "explanation_pt": "Present perfect continuous com duração (for).",
-      "skill_targets": [
-        "collocation"
-      ],
-      "pt": "Eles estão revisando o plano de fim de semana há duas horas.",
-      "ctx": "Contexto de vida cotidiana (nível B1).",
-      "blank": "have",
-      "wrong": "They have been reviewed the weekend plan for two hours."
-    },
-    {
-      "template_id": "daily_life_b1_if_present_will_future_07",
-      "family_id": "daily_life_b1_if_present_will_future_0",
-      "pack_id": "daily_life_b1",
-      "theme": "daily_life",
-      "level": "B1",
-      "pattern_id": "if_present_will_future",
-      "primary_skill_id": "preposition",
-      "skill_ids": [
-        "preposition",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b1_appointment"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "If we confirm the appointment, we will start tomorrow.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Se confirmarmos o compromisso, vamos começar amanhã.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "If we confirm the appointment, we will start tomorrow."
-      ],
-      "accepted_variants_en": [
-        "If we confirm the appointment, we'll start tomorrow."
-      ],
-      "explanation_pt": "Primeira condicional: if + presente, will + base.",
-      "skill_targets": [
-        "preposition"
-      ],
-      "pt": "Se confirmarmos o compromisso, vamos começar amanhã.",
-      "ctx": "Contexto de vida cotidiana (nível B1).",
-      "blank": "we",
-      "wrong": "If we confirm the appointment, we will start tomorrow."
-    },
-    {
-      "template_id": "daily_life_b1_subject_modal_base_verb_08",
-      "family_id": "daily_life_b1_subject_modal_base_verb_1",
-      "pack_id": "daily_life_b1",
-      "theme": "daily_life",
-      "level": "B1",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "present_perfect",
-      "skill_ids": [
-        "present_perfect",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "daily_life_b1_coffee_break"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the coffee break today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a pausa para o café hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the coffee break today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "present_perfect"
-      ],
-      "pt": "Eu posso atualizar a pausa para o café hoje.",
-      "ctx": "Contexto de vida cotidiana (nível B1).",
-      "blank": "can",
-      "wrong": "I cans update the coffee break today."
+      "pt": "Eu preferiria limpar a casa hoje.",
+      "ctx": "Situação: state preference.",
+      "blank": "house",
+      "wrong": "I would rather cleaned the house today."
     }
   ],
   "collocations": [

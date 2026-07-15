@@ -206,262 +206,12 @@
   ],
   "template_definitions": [
     {
-      "template_id": "shopping_and_services_a1_subject_be_complement_01",
-      "family_id": "shopping_and_services_a1_subject_be_complement_0",
+      "template_id": "shopping_and_services_a1_sh1_ask_store",
+      "family_id": "shopping_and_services_a1_ask_location",
       "pack_id": "shopping_and_services_a1",
       "theme": "shopping_and_services",
       "level": "A1",
-      "pattern_id": "subject_be_complement",
-      "primary_skill_id": "verb_to_be",
-      "skill_ids": [
-        "verb_to_be",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_a1_receipt"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "The receipt is important.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "O recibo é importante.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "The receipt is important."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-      "skill_targets": [
-        "verb_to_be"
-      ],
-      "pt": "O recibo é importante.",
-      "ctx": "Contexto de compras e serviços (nível A1).",
-      "blank": "receipt",
-      "wrong": "The receipt is important."
-    },
-    {
-      "template_id": "shopping_and_services_a1_subject_simple_present_object_02",
-      "family_id": "shopping_and_services_a1_subject_simple_present_object_1",
-      "pack_id": "shopping_and_services_a1",
-      "theme": "shopping_and_services",
-      "level": "A1",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "simple_present",
-      "skill_ids": [
-        "simple_present",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_a1_discount"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the discount every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o desconto todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the discount every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "simple_present"
-      ],
-      "pt": "Nós verificamos o desconto todos os dias.",
-      "ctx": "Contexto de compras e serviços (nível A1).",
-      "blank": "check",
-      "wrong": "We check the discount every day."
-    },
-    {
-      "template_id": "shopping_and_services_a1_wh_do_subject_base_verb_03",
-      "family_id": "shopping_and_services_a1_wh_do_subject_base_verb_2",
-      "pack_id": "shopping_and_services_a1",
-      "theme": "shopping_and_services",
-      "level": "A1",
-      "pattern_id": "wh_do_subject_base_verb",
-      "primary_skill_id": "there_is_are",
-      "skill_ids": [
-        "there_is_are",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_a1_cashier"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "When do you need the cashier?",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa do caixa?",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "When do you need the cashier?"
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
-      "skill_targets": [
-        "there_is_are"
-      ],
-      "pt": "Quando você precisa do caixa?",
-      "ctx": "Contexto de compras e serviços (nível A1).",
-      "blank": "do",
-      "wrong": "When you do need the cashier?"
-    },
-    {
-      "template_id": "shopping_and_services_a1_subject_modal_base_verb_04",
-      "family_id": "shopping_and_services_a1_subject_modal_base_verb_3",
-      "pack_id": "shopping_and_services_a1",
-      "theme": "shopping_and_services",
-      "level": "A1",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "can_ability",
-      "skill_ids": [
-        "can_ability",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_a1_return_policy"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the return policy today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a política de troca hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the return policy today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "can_ability"
-      ],
-      "pt": "Eu posso atualizar a política de troca hoje.",
-      "ctx": "Contexto de compras e serviços (nível A1).",
-      "blank": "can",
-      "wrong": "I cans update the return policy today."
-    },
-    {
-      "template_id": "shopping_and_services_a1_subject_be_complement_05",
-      "family_id": "shopping_and_services_a1_subject_be_complement_4",
-      "pack_id": "shopping_and_services_a1",
-      "theme": "shopping_and_services",
-      "level": "A1",
-      "pattern_id": "subject_be_complement",
-      "primary_skill_id": "can_request",
-      "skill_ids": [
-        "can_request",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_a1_shoe_size"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "The shoe size is important.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "O número do sapato é importante.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "The shoe size is important."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Use o verbo to be (is) para descrever algo.",
-      "skill_targets": [
-        "can_request"
-      ],
-      "pt": "O número do sapato é importante.",
-      "ctx": "Contexto de compras e serviços (nível A1).",
-      "blank": "shoe",
-      "wrong": "The shoe size is important."
-    },
-    {
-      "template_id": "shopping_and_services_a1_subject_simple_present_object_06",
-      "family_id": "shopping_and_services_a1_subject_simple_present_object_5",
-      "pack_id": "shopping_and_services_a1",
-      "theme": "shopping_and_services",
-      "level": "A1",
-      "pattern_id": "subject_simple_present_object",
+      "pattern_id": "wh_be_question",
       "primary_skill_id": "question_structure",
       "skill_ids": [
         "question_structure",
@@ -476,45 +226,46 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_a1_delivery"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We check the delivery every day.",
+      "sentence": "Where is the nearest store?",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a entrega todos os dias.",
+      "source_text_pt": "Onde fica a loja mais próxima?",
       "target_locale": "en",
       "expected_answers_en": [
-        "We check the delivery every day."
+        "Where is the nearest store?"
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
+      "explanation_pt": "Pergunta com Where + verbo to be.",
       "skill_targets": [
         "question_structure"
       ],
-      "pt": "Nós verificamos a entrega todos os dias.",
-      "ctx": "Contexto de compras e serviços (nível A1).",
-      "blank": "check",
-      "wrong": "We check the delivery every day."
+      "communicative_intent": "ask_location",
+      "grammar_focus": "wh_question_be",
+      "pattern_signature": "wh_question|be|none|aff|plain",
+      "lexical_verbs": [],
+      "pt": "Onde fica a loja mais próxima?",
+      "ctx": "Situação: ask location.",
+      "blank": "store",
+      "wrong": "Where the nearest store is?"
     },
     {
-      "template_id": "shopping_and_services_a1_wh_do_subject_base_verb_07",
-      "family_id": "shopping_and_services_a1_wh_do_subject_base_verb_0",
+      "template_id": "shopping_and_services_a1_sh1_buy_shirt",
+      "family_id": "shopping_and_services_a1_state_intention",
       "pack_id": "shopping_and_services_a1",
       "theme": "shopping_and_services",
       "level": "A1",
-      "pattern_id": "wh_do_subject_base_verb",
-      "primary_skill_id": "vocabulary",
+      "pattern_id": "subject_want_to_verb",
+      "primary_skill_id": "simple_present",
       "skill_ids": [
-        "vocabulary",
+        "simple_present",
         "vocabulary"
       ],
       "exercise_types": [
@@ -526,42 +277,155 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_a1_pharmacy"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the pharmacy?",
+      "sentence": "I want to buy a new shirt.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa da farmácia?",
+      "source_text_pt": "Quero comprar uma camisa nova.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the pharmacy?"
+        "I want to buy a new shirt."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "accepted_variants_en": [
+        "I'd like to buy a new shirt."
+      ],
+      "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
       "skill_targets": [
-        "vocabulary"
+        "simple_present"
       ],
-      "pt": "Quando você precisa da farmácia?",
-      "ctx": "Contexto de compras e serviços (nível A1).",
-      "blank": "do",
-      "wrong": "When you do need the pharmacy?"
+      "communicative_intent": "state_intention",
+      "grammar_focus": "want_to_infinitive",
+      "pattern_signature": "statement|present_simple|want_to|aff|plain",
+      "lexical_verbs": [
+        "buy"
+      ],
+      "pt": "Quero comprar uma camisa nova.",
+      "ctx": "Situação: state intention.",
+      "blank": "shirt",
+      "wrong": "I want buy a new shirt."
     },
     {
-      "template_id": "shopping_and_services_a1_subject_modal_base_verb_08",
-      "family_id": "shopping_and_services_a1_subject_modal_base_verb_1",
+      "template_id": "shopping_and_services_a1_sh1_ask_close_time",
+      "family_id": "shopping_and_services_a1_ask_time",
       "pack_id": "shopping_and_services_a1",
       "theme": "shopping_and_services",
       "level": "A1",
-      "pattern_id": "subject_modal_base_verb",
+      "pattern_id": "wh_do_subject_base_verb",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "What time does the store close?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Que horas a loja fecha?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "What time does the store close?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pergunta no presente com o auxiliar do/does.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "communicative_intent": "ask_time",
+      "grammar_focus": "wh_question_do",
+      "pattern_signature": "wh_question|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "close"
+      ],
+      "pt": "Que horas a loja fecha?",
+      "ctx": "Situação: ask time.",
+      "blank": "store",
+      "wrong": "What time the store close?"
+    },
+    {
+      "template_id": "shopping_and_services_a1_sh1_request_size",
+      "family_id": "shopping_and_services_a1_request_help",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Can you help me find my size?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você pode me ajudar a achar meu tamanho?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Can you help me find my size?"
+      ],
+      "accepted_variants_en": [
+        "Could you help me find my size?"
+      ],
+      "explanation_pt": "Pedido educado com can/could.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "request_help",
+      "grammar_focus": "modal_request",
+      "pattern_signature": "yesno_question|present_simple|can|aff|plain",
+      "lexical_verbs": [
+        "help"
+      ],
+      "pt": "Você pode me ajudar a achar meu tamanho?",
+      "ctx": "Situação: request help.",
+      "blank": "size",
+      "wrong": "You can help me find my size?"
+    },
+    {
+      "template_id": "shopping_and_services_a1_sh1_describe_price",
+      "family_id": "shopping_and_services_a1_describe_state",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "subject_be_complement",
       "primary_skill_id": "verb_to_be",
       "skill_ids": [
         "verb_to_be",
@@ -576,34 +440,198 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "shopping_and_services_a1_bank_account"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the bank account today.",
+      "sentence": "This price is very high.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a conta bancária hoje.",
+      "source_text_pt": "Este preço está muito alto.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the bank account today."
+        "This price is very high."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "explanation_pt": "Verbo to be para descrever algo.",
       "skill_targets": [
         "verb_to_be"
       ],
-      "pt": "Eu posso atualizar a conta bancária hoje.",
-      "ctx": "Contexto de compras e serviços (nível A1).",
-      "blank": "can",
-      "wrong": "I cans update the bank account today."
+      "communicative_intent": "describe_state",
+      "grammar_focus": "be_complement",
+      "pattern_signature": "statement|be|none|aff|plain",
+      "lexical_verbs": [],
+      "pt": "Este preço está muito alto.",
+      "ctx": "Situação: describe state.",
+      "blank": "price",
+      "wrong": "This price very high."
+    },
+    {
+      "template_id": "shopping_and_services_a1_sh1_pay_card",
+      "family_id": "shopping_and_services_a1_state_payment",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "subject_want_to_verb",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I want to pay with my card.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Quero pagar com meu cartão.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I want to pay with my card."
+      ],
+      "accepted_variants_en": [
+        "I'd like to pay with my card."
+      ],
+      "explanation_pt": "Estrutura want + to + verbo (querer fazer algo).",
+      "skill_targets": [
+        "simple_present"
+      ],
+      "communicative_intent": "state_payment",
+      "grammar_focus": "want_to_infinitive",
+      "pattern_signature": "statement|present_simple|want_to|aff|plain",
+      "lexical_verbs": [
+        "pay"
+      ],
+      "pt": "Quero pagar com meu cartão.",
+      "ctx": "Situação: state payment.",
+      "blank": "card",
+      "wrong": "I want pay with my card."
+    },
+    {
+      "template_id": "shopping_and_services_a1_sh1_waiting_line",
+      "family_id": "shopping_and_services_a1_describe_activity",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "subject_present_continuous",
+      "primary_skill_id": "present_continuous",
+      "skill_ids": [
+        "present_continuous",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I am waiting in line now.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Estou esperando na fila agora.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I am waiting in line now."
+      ],
+      "accepted_variants_en": [
+        "I'm waiting in line now."
+      ],
+      "explanation_pt": "Presente contínuo (am/is/are + -ing).",
+      "skill_targets": [
+        "present_continuous"
+      ],
+      "communicative_intent": "describe_activity",
+      "grammar_focus": "present_continuous",
+      "pattern_signature": "statement|present_continuous|none|aff|plain",
+      "lexical_verbs": [
+        "wait"
+      ],
+      "pt": "Estou esperando na fila agora.",
+      "ctx": "Situação: describe activity.",
+      "blank": "line",
+      "wrong": "I waiting in line now."
+    },
+    {
+      "template_id": "shopping_and_services_a1_sh1_show_receipt",
+      "family_id": "shopping_and_services_a1_ask_action",
+      "pack_id": "shopping_and_services_a1",
+      "theme": "shopping_and_services",
+      "level": "A1",
+      "pattern_id": "imperative_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Please show me the receipt.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Por favor, me mostre o recibo.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Please show me the receipt."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Pedido no imperativo com please.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "ask_action",
+      "grammar_focus": "imperative_request",
+      "pattern_signature": "imperative|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "show"
+      ],
+      "pt": "Por favor, me mostre o recibo.",
+      "ctx": "Situação: ask action.",
+      "blank": "receipt",
+      "wrong": "Please shows me the receipt."
     }
   ],
   "collocations": [

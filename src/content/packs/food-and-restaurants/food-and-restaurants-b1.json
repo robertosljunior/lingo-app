@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "food_and_restaurants_b1_subject_have_past_participle_yet_01",
-      "family_id": "food_and_restaurants_b1_subject_have_past_participle_yet_0",
+      "template_id": "food_and_restaurants_b1_food3_pp_ordered",
+      "family_id": "food_and_restaurants_b1_confirm_plan",
       "pack_id": "food_and_restaurants_b1",
       "theme": "food_and_restaurants",
       "level": "B1",
@@ -226,41 +226,96 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b1_menu"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We have checked the menu already.",
+      "sentence": "I have already ordered the dessert.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós já verificamos o cardápio.",
+      "source_text_pt": "Já pedi a sobremesa.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We have checked the menu already."
+        "I have already ordered the dessert."
       ],
       "accepted_variants_en": [
-        "We've checked the menu already."
+        "I've already ordered the dessert."
       ],
-      "explanation_pt": "Present perfect com already.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "present_perfect"
       ],
-      "pt": "Nós já verificamos o cardápio.",
-      "ctx": "Contexto de comida e restaurantes (nível B1).",
-      "blank": "have",
-      "wrong": "We have check the menu already."
+      "communicative_intent": "confirm_plan",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "order"
+      ],
+      "pt": "Já pedi a sobremesa.",
+      "ctx": "Situação: confirm plan.",
+      "blank": "dessert",
+      "wrong": "I have already order the dessert."
     },
     {
-      "template_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_02",
-      "family_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_1",
+      "template_id": "food_and_restaurants_b1_food3_first_cond",
+      "family_id": "food_and_restaurants_b1_plan_contingency",
+      "pack_id": "food_and_restaurants_b1",
+      "theme": "food_and_restaurants",
+      "level": "B1",
+      "pattern_id": "if_present_will_future",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "If the restaurant is full, we will book another table.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se o restaurante estiver lotado, vamos reservar outra mesa.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If the restaurant is full, we will book another table."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "first_conditional"
+      ],
+      "communicative_intent": "plan_contingency",
+      "grammar_focus": "first_conditional",
+      "pattern_signature": "conditional|will_future|none|aff|first_conditional",
+      "lexical_verbs": [
+        "book"
+      ],
+      "pt": "Se o restaurante estiver lotado, vamos reservar outra mesa.",
+      "ctx": "Situação: plan contingency.",
+      "blank": "table",
+      "wrong": "If the restaurant is full, we book another table."
+    },
+    {
+      "template_id": "food_and_restaurants_b1_food3_ppc_waiting",
+      "family_id": "food_and_restaurants_b1_report_problem",
       "pack_id": "food_and_restaurants_b1",
       "theme": "food_and_restaurants",
       "level": "B1",
@@ -279,48 +334,50 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b1_table"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They have been reviewing the table for two hours.",
+      "sentence": "We have been waiting for the waiter for ten minutes.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eles estão revisando a mesa há duas horas.",
+      "source_text_pt": "Estamos esperando o garçom há dez minutos.",
       "target_locale": "en",
       "expected_answers_en": [
-        "They have been reviewing the table for two hours."
+        "We have been waiting for the waiter for ten minutes."
       ],
       "accepted_variants_en": [
-        "They've been reviewing the table for two hours."
+        "We've been waiting for the waiter for ten minutes."
       ],
-      "explanation_pt": "Present perfect continuous com duração (for).",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "present_perfect_continuous"
       ],
-      "pt": "Eles estão revisando a mesa há duas horas.",
-      "ctx": "Contexto de comida e restaurantes (nível B1).",
-      "blank": "have",
-      "wrong": "They have been reviewed the table for two hours."
+      "communicative_intent": "report_problem",
+      "grammar_focus": "present_perfect_continuous",
+      "pattern_signature": "statement|present_perfect_continuous|none|aff|plain",
+      "lexical_verbs": [
+        "wait"
+      ],
+      "pt": "Estamos esperando o garçom há dez minutos.",
+      "ctx": "Situação: report problem.",
+      "blank": "waiter",
+      "wrong": "We have been wait for the waiter for ten minutes."
     },
     {
-      "template_id": "food_and_restaurants_b1_if_present_will_future_03",
-      "family_id": "food_and_restaurants_b1_if_present_will_future_2",
+      "template_id": "food_and_restaurants_b1_food3_plan_try",
+      "family_id": "food_and_restaurants_b1_describe_plan",
       "pack_id": "food_and_restaurants_b1",
       "theme": "food_and_restaurants",
       "level": "B1",
-      "pattern_id": "if_present_will_future",
-      "primary_skill_id": "gerund_after_been",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "future_going_to",
       "skill_ids": [
-        "gerund_after_been",
+        "future_going_to",
         "vocabulary"
       ],
       "exercise_types": [
@@ -332,41 +389,200 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b1_starter"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "If we confirm the starter, we will start tomorrow.",
+      "sentence": "I am going to try the new dish tonight.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Se confirmarmos a entrada, vamos começar amanhã.",
+      "source_text_pt": "Vou experimentar o prato novo hoje à noite.",
       "target_locale": "en",
       "expected_answers_en": [
-        "If we confirm the starter, we will start tomorrow."
+        "I am going to try the new dish tonight."
       ],
       "accepted_variants_en": [
-        "If we confirm the starter, we'll start tomorrow."
+        "I'm going to try the new dish tonight."
       ],
-      "explanation_pt": "Primeira condicional: if + presente, will + base.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "gerund_after_been"
+        "future_going_to"
       ],
-      "pt": "Se confirmarmos a entrada, vamos começar amanhã.",
-      "ctx": "Contexto de comida e restaurantes (nível B1).",
-      "blank": "we",
-      "wrong": "If we confirm the starter, we will start tomorrow."
+      "communicative_intent": "describe_plan",
+      "grammar_focus": "going_to",
+      "pattern_signature": "statement|going_to|none|aff|plain",
+      "lexical_verbs": [
+        "try"
+      ],
+      "pt": "Vou experimentar o prato novo hoje à noite.",
+      "ctx": "Situação: describe plan.",
+      "blank": "am",
+      "wrong": "I am going to tried the new dish tonight."
     },
     {
-      "template_id": "food_and_restaurants_b1_subject_modal_base_verb_04",
-      "family_id": "food_and_restaurants_b1_subject_modal_base_verb_3",
+      "template_id": "food_and_restaurants_b1_food3_pp_question",
+      "family_id": "food_and_restaurants_b1_ask_experience",
+      "pack_id": "food_and_restaurants_b1",
+      "theme": "food_and_restaurants",
+      "level": "B1",
+      "pattern_id": "subject_have_past_participle_yet",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Have you ever tried this soup?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você já experimentou esta sopa?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Have you ever tried this soup?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "communicative_intent": "ask_experience",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "try"
+      ],
+      "pt": "Você já experimentou esta sopa?",
+      "ctx": "Situação: ask experience.",
+      "blank": "soup",
+      "wrong": "Have you ever try this soup?"
+    },
+    {
+      "template_id": "food_and_restaurants_b1_food3_advice",
+      "family_id": "food_and_restaurants_b1_give_advice",
+      "pack_id": "food_and_restaurants_b1",
+      "theme": "food_and_restaurants",
+      "level": "B1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "You should ask the waiter about the menu.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você deveria perguntar ao garçom sobre o cardápio.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "You should ask the waiter about the menu."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "communicative_intent": "give_advice",
+      "grammar_focus": "modal_advice",
+      "pattern_signature": "statement|present_simple|should|aff|plain",
+      "lexical_verbs": [
+        "ask"
+      ],
+      "pt": "Você deveria perguntar ao garçom sobre o cardápio.",
+      "ctx": "Situação: give advice.",
+      "blank": "waiter",
+      "wrong": "You should asks the waiter about the menu."
+    },
+    {
+      "template_id": "food_and_restaurants_b1_food3_compare_dish",
+      "family_id": "food_and_restaurants_b1_compare_options",
+      "pack_id": "food_and_restaurants_b1",
+      "theme": "food_and_restaurants",
+      "level": "B1",
+      "pattern_id": "comparative_than",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "This dish is spicier than the soup.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Este prato é mais picante que a sopa.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "This dish is spicier than the soup."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "comparatives"
+      ],
+      "communicative_intent": "compare_options",
+      "grammar_focus": "comparative",
+      "pattern_signature": "statement|be|none|aff|comparative",
+      "lexical_verbs": [],
+      "pt": "Este prato é mais picante que a sopa.",
+      "ctx": "Situação: compare options.",
+      "blank": "dish",
+      "wrong": "This dish is more spicy than the soup."
+    },
+    {
+      "template_id": "food_and_restaurants_b1_food3_preference",
+      "family_id": "food_and_restaurants_b1_state_preference",
       "pack_id": "food_and_restaurants_b1",
       "theme": "food_and_restaurants",
       "level": "B1",
@@ -385,245 +601,39 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b1_main_course"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the main course today.",
+      "sentence": "I would rather have the salad today.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar o prato principal hoje.",
+      "source_text_pt": "Eu preferiria comer a salada hoje.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the main course today."
+        "I would rather have the salad today."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "accepted_variants_en": [
+        "I'd rather have the salad today."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "first_conditional"
       ],
-      "pt": "Eu posso atualizar o prato principal hoje.",
-      "ctx": "Contexto de comida e restaurantes (nível B1).",
-      "blank": "can",
-      "wrong": "I cans update the main course today."
-    },
-    {
-      "template_id": "food_and_restaurants_b1_subject_have_past_participle_yet_05",
-      "family_id": "food_and_restaurants_b1_subject_have_past_participle_yet_4",
-      "pack_id": "food_and_restaurants_b1",
-      "theme": "food_and_restaurants",
-      "level": "B1",
-      "pattern_id": "subject_have_past_participle_yet",
-      "primary_skill_id": "question_auxiliary",
-      "skill_ids": [
-        "question_auxiliary",
-        "vocabulary"
+      "communicative_intent": "state_preference",
+      "grammar_focus": "would_preference",
+      "pattern_signature": "statement|present_simple|would|aff|plain",
+      "lexical_verbs": [
+        "have"
       ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b1_dessert"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We have checked the dessert already.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós já verificamos a sobremesa.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We have checked the dessert already."
-      ],
-      "accepted_variants_en": [
-        "We've checked the dessert already."
-      ],
-      "explanation_pt": "Present perfect com already.",
-      "skill_targets": [
-        "question_auxiliary"
-      ],
-      "pt": "Nós já verificamos a sobremesa.",
-      "ctx": "Contexto de comida e restaurantes (nível B1).",
-      "blank": "have",
-      "wrong": "We have check the dessert already."
-    },
-    {
-      "template_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_06",
-      "family_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_5",
-      "pack_id": "food_and_restaurants_b1",
-      "theme": "food_and_restaurants",
-      "level": "B1",
-      "pattern_id": "subject_have_been_ving_object_duration",
-      "primary_skill_id": "collocation",
-      "skill_ids": [
-        "collocation",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b1_bill"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "They have been reviewing the bill for two hours.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eles estão revisando a conta há duas horas.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "They have been reviewing the bill for two hours."
-      ],
-      "accepted_variants_en": [
-        "They've been reviewing the bill for two hours."
-      ],
-      "explanation_pt": "Present perfect continuous com duração (for).",
-      "skill_targets": [
-        "collocation"
-      ],
-      "pt": "Eles estão revisando a conta há duas horas.",
-      "ctx": "Contexto de comida e restaurantes (nível B1).",
-      "blank": "have",
-      "wrong": "They have been reviewed the bill for two hours."
-    },
-    {
-      "template_id": "food_and_restaurants_b1_if_present_will_future_07",
-      "family_id": "food_and_restaurants_b1_if_present_will_future_0",
-      "pack_id": "food_and_restaurants_b1",
-      "theme": "food_and_restaurants",
-      "level": "B1",
-      "pattern_id": "if_present_will_future",
-      "primary_skill_id": "preposition",
-      "skill_ids": [
-        "preposition",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b1_waiter"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "If we confirm the waiter, we will start tomorrow.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Se confirmarmos o garçom, vamos começar amanhã.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "If we confirm the waiter, we will start tomorrow."
-      ],
-      "accepted_variants_en": [
-        "If we confirm the waiter, we'll start tomorrow."
-      ],
-      "explanation_pt": "Primeira condicional: if + presente, will + base.",
-      "skill_targets": [
-        "preposition"
-      ],
-      "pt": "Se confirmarmos o garçom, vamos começar amanhã.",
-      "ctx": "Contexto de comida e restaurantes (nível B1).",
-      "blank": "we",
-      "wrong": "If we confirm the waiter, we will start tomorrow."
-    },
-    {
-      "template_id": "food_and_restaurants_b1_subject_modal_base_verb_08",
-      "family_id": "food_and_restaurants_b1_subject_modal_base_verb_1",
-      "pack_id": "food_and_restaurants_b1",
-      "theme": "food_and_restaurants",
-      "level": "B1",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "present_perfect",
-      "skill_ids": [
-        "present_perfect",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "food_and_restaurants_b1_reservation"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the reservation today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a reserva hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the reservation today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "present_perfect"
-      ],
-      "pt": "Eu posso atualizar a reserva hoje.",
-      "ctx": "Contexto de comida e restaurantes (nível B1).",
-      "blank": "can",
-      "wrong": "I cans update the reservation today."
+      "pt": "Eu preferiria comer a salada hoje.",
+      "ctx": "Situação: state preference.",
+      "blank": "salad",
+      "wrong": "I would rather had the salad today."
     }
   ],
   "collocations": [

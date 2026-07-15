@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "technology_and_communication_a2_subject_past_simple_object_time_01",
-      "family_id": "technology_and_communication_a2_subject_past_simple_object_time_0",
+      "template_id": "technology_and_communication_a2_tc2_call_late",
+      "family_id": "technology_and_communication_a2_report_delay",
       "pack_id": "technology_and_communication_a2",
       "theme": "technology_and_communication",
       "level": "A2",
@@ -226,144 +226,45 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a2_password"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the password yesterday.",
+      "sentence": "The video call started late today.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a senha ontem.",
+      "source_text_pt": "A videochamada começou atrasada hoje.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We checked the password yesterday."
+        "The video call started late today."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "past_simple"
       ],
-      "pt": "Nós verificamos a senha ontem.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-      "blank": "checked",
-      "wrong": "We check the password yesterday."
+      "communicative_intent": "report_delay",
+      "grammar_focus": "past_simple",
+      "pattern_signature": "statement|past_simple|none|aff|plain",
+      "lexical_verbs": [
+        "start"
+      ],
+      "pt": "A videochamada começou atrasada hoje.",
+      "ctx": "Situação: report delay.",
+      "blank": "call",
+      "wrong": "The video call start late today."
     },
     {
-      "template_id": "technology_and_communication_a2_subject_be_going_to_verb_time_02",
-      "family_id": "technology_and_communication_a2_subject_be_going_to_verb_time_1",
+      "template_id": "technology_and_communication_a2_tc2_compare_phone",
+      "family_id": "technology_and_communication_a2_compare_options",
       "pack_id": "technology_and_communication_a2",
       "theme": "technology_and_communication",
       "level": "A2",
-      "pattern_id": "subject_be_going_to_verb_time",
-      "primary_skill_id": "present_continuous",
-      "skill_ids": [
-        "present_continuous",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a2_message"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "They are going to review the message tomorrow.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eles vão revisar a mensagem amanhã.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "They are going to review the message tomorrow."
-      ],
-      "accepted_variants_en": [
-        "They're going to review the message tomorrow."
-      ],
-      "explanation_pt": "Futuro com be going to para planos.",
-      "skill_targets": [
-        "present_continuous"
-      ],
-      "pt": "Eles vão revisar a mensagem amanhã.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-      "blank": "are",
-      "wrong": "They go to review the message tomorrow."
-    },
-    {
-      "template_id": "technology_and_communication_a2_subject_simple_present_object_03",
-      "family_id": "technology_and_communication_a2_subject_simple_present_object_2",
-      "pack_id": "technology_and_communication_a2",
-      "theme": "technology_and_communication",
-      "level": "A2",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "future_going_to",
-      "skill_ids": [
-        "future_going_to",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a2_video_call"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the video call every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a chamada de vídeo todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the video call every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "future_going_to"
-      ],
-      "pt": "Nós verificamos a chamada de vídeo todos os dias.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-      "blank": "check",
-      "wrong": "We check the video call every day."
-    },
-    {
-      "template_id": "technology_and_communication_a2_wh_do_subject_base_verb_04",
-      "family_id": "technology_and_communication_a2_wh_do_subject_base_verb_3",
-      "pack_id": "technology_and_communication_a2",
-      "theme": "technology_and_communication",
-      "level": "A2",
-      "pattern_id": "wh_do_subject_base_verb",
+      "pattern_id": "comparative_than",
       "primary_skill_id": "comparatives",
       "skill_ids": [
         "comparatives",
@@ -378,45 +279,46 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a2_laptop"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the laptop?",
+      "sentence": "This phone is faster than my old one.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa do notebook?",
+      "source_text_pt": "Este celular é mais rápido que o antigo.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the laptop?"
+        "This phone is faster than my old one."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "comparatives"
       ],
-      "pt": "Quando você precisa do notebook?",
-      "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-      "blank": "do",
-      "wrong": "When you do need the laptop?"
+      "communicative_intent": "compare_options",
+      "grammar_focus": "comparative",
+      "pattern_signature": "statement|be|none|aff|comparative",
+      "lexical_verbs": [],
+      "pt": "Este celular é mais rápido que o antigo.",
+      "ctx": "Situação: compare options.",
+      "blank": "phone",
+      "wrong": "This phone is more fast than my old one."
     },
     {
-      "template_id": "technology_and_communication_a2_subject_past_simple_object_time_05",
-      "family_id": "technology_and_communication_a2_subject_past_simple_object_time_4",
+      "template_id": "technology_and_communication_a2_tc2_plan_update",
+      "family_id": "technology_and_communication_a2_state_plan",
       "pack_id": "technology_and_communication_a2",
       "theme": "technology_and_communication",
       "level": "A2",
-      "pattern_id": "subject_past_simple_object_time",
-      "primary_skill_id": "present_perfect",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "future_going_to",
       "skill_ids": [
-        "present_perfect",
+        "future_going_to",
         "vocabulary"
       ],
       "exercise_types": [
@@ -428,42 +330,47 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a2_app_update"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We checked the app update yesterday.",
+      "sentence": "I am going to update the app tomorrow.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos a atualização do aplicativo ontem.",
+      "source_text_pt": "Vou atualizar o aplicativo amanhã.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We checked the app update yesterday."
+        "I am going to update the app tomorrow."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+      "accepted_variants_en": [
+        "I'm going to update the app tomorrow."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "present_perfect"
+        "future_going_to"
       ],
-      "pt": "Nós verificamos a atualização do aplicativo ontem.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-      "blank": "checked",
-      "wrong": "We check the app update yesterday."
+      "communicative_intent": "state_plan",
+      "grammar_focus": "going_to",
+      "pattern_signature": "statement|going_to|none|aff|plain",
+      "lexical_verbs": [
+        "update"
+      ],
+      "pt": "Vou atualizar o aplicativo amanhã.",
+      "ctx": "Situação: state plan.",
+      "blank": "app",
+      "wrong": "I am going to updated the app tomorrow."
     },
     {
-      "template_id": "technology_and_communication_a2_subject_be_going_to_verb_time_06",
-      "family_id": "technology_and_communication_a2_subject_be_going_to_verb_time_5",
+      "template_id": "technology_and_communication_a2_tc2_ask_battery",
+      "family_id": "technology_and_communication_a2_ask_detail",
       "pack_id": "technology_and_communication_a2",
       "theme": "technology_and_communication",
       "level": "A2",
-      "pattern_id": "subject_be_going_to_verb_time",
+      "pattern_id": "yes_no_do_question",
       "primary_skill_id": "question_auxiliary",
       "skill_ids": [
         "question_auxiliary",
@@ -478,94 +385,45 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a2_wifi_network"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They are going to review the wifi network tomorrow.",
+      "sentence": "Does this laptop have a good battery?",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eles vão revisar a rede wi-fi amanhã.",
+      "source_text_pt": "Este notebook tem uma boa bateria?",
       "target_locale": "en",
       "expected_answers_en": [
-        "They are going to review the wifi network tomorrow."
+        "Does this laptop have a good battery?"
       ],
-      "accepted_variants_en": [
-        "They're going to review the wifi network tomorrow."
-      ],
-      "explanation_pt": "Futuro com be going to para planos.",
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "question_auxiliary"
       ],
-      "pt": "Eles vão revisar a rede wi-fi amanhã.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-      "blank": "are",
-      "wrong": "They go to review the wifi network tomorrow."
+      "communicative_intent": "ask_detail",
+      "grammar_focus": "yes_no_question",
+      "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "have"
+      ],
+      "pt": "Este notebook tem uma boa bateria?",
+      "ctx": "Situação: ask detail.",
+      "blank": "battery",
+      "wrong": "This laptop have a good battery?"
     },
     {
-      "template_id": "technology_and_communication_a2_subject_simple_present_object_07",
-      "family_id": "technology_and_communication_a2_subject_simple_present_object_0",
+      "template_id": "technology_and_communication_a2_tc2_forgot_password",
+      "family_id": "technology_and_communication_a2_report_problem",
       "pack_id": "technology_and_communication_a2",
       "theme": "technology_and_communication",
       "level": "A2",
-      "pattern_id": "subject_simple_present_object",
-      "primary_skill_id": "vocabulary",
-      "skill_ids": [
-        "vocabulary",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a2_email"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We check the email every day.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós verificamos o e-mail todos os dias.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We check the email every day."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Presente simples para uma rotina (every day).",
-      "skill_targets": [
-        "vocabulary"
-      ],
-      "pt": "Nós verificamos o e-mail todos os dias.",
-      "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-      "blank": "check",
-      "wrong": "We check the email every day."
-    },
-    {
-      "template_id": "technology_and_communication_a2_wh_do_subject_base_verb_08",
-      "family_id": "technology_and_communication_a2_wh_do_subject_base_verb_1",
-      "pack_id": "technology_and_communication_a2",
-      "theme": "technology_and_communication",
-      "level": "A2",
-      "pattern_id": "wh_do_subject_base_verb",
+      "pattern_id": "subject_past_simple_object_time",
       "primary_skill_id": "past_simple",
       "skill_ids": [
         "past_simple",
@@ -580,34 +438,198 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "technology_and_communication_a2_cloud_file"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "When do you need the cloud file?",
+      "sentence": "I forgot my password yesterday.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Quando você precisa do arquivo na nuvem?",
+      "source_text_pt": "Esqueci minha senha ontem.",
       "target_locale": "en",
       "expected_answers_en": [
-        "When do you need the cloud file?"
+        "I forgot my password yesterday."
       ],
       "accepted_variants_en": [],
-      "explanation_pt": "Pergunta no presente com o auxiliar do.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "past_simple"
       ],
-      "pt": "Quando você precisa do arquivo na nuvem?",
-      "ctx": "Contexto de tecnologia e comunicação (nível A2).",
-      "blank": "do",
-      "wrong": "When you do need the cloud file?"
+      "communicative_intent": "report_problem",
+      "grammar_focus": "past_simple",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "forget"
+      ],
+      "pt": "Esqueci minha senha ontem.",
+      "ctx": "Situação: report problem.",
+      "blank": "password",
+      "wrong": "I forget my password yesterday."
+    },
+    {
+      "template_id": "technology_and_communication_a2_tc2_request_signal",
+      "family_id": "technology_and_communication_a2_request_service",
+      "pack_id": "technology_and_communication_a2",
+      "theme": "technology_and_communication",
+      "level": "A2",
+      "pattern_id": "can_could_request",
+      "primary_skill_id": "can_request",
+      "skill_ids": [
+        "can_request",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Could you check the signal for me?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você poderia verificar o sinal para mim?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Could you check the signal for me?"
+      ],
+      "accepted_variants_en": [
+        "Can you check the signal for me?"
+      ],
+      "explanation_pt": "Pedido educado com can/could.",
+      "skill_targets": [
+        "can_request"
+      ],
+      "communicative_intent": "request_service",
+      "grammar_focus": "modal_request",
+      "pattern_signature": "yesno_question|present_simple|could|aff|plain",
+      "lexical_verbs": [
+        "check"
+      ],
+      "pt": "Você poderia verificar o sinal para mim?",
+      "ctx": "Situação: request service.",
+      "blank": "signal",
+      "wrong": "You could check the signal for me?"
+    },
+    {
+      "template_id": "technology_and_communication_a2_tc2_habit_charge",
+      "family_id": "technology_and_communication_a2_talk_habit",
+      "pack_id": "technology_and_communication_a2",
+      "theme": "technology_and_communication",
+      "level": "A2",
+      "pattern_id": "subject_simple_present_object",
+      "primary_skill_id": "simple_present",
+      "skill_ids": [
+        "simple_present",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "I usually charge my phone at night.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Costumo carregar meu celular à noite.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "I usually charge my phone at night."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "simple_present"
+      ],
+      "communicative_intent": "talk_habit",
+      "grammar_focus": "frequency_adverb",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "charge"
+      ],
+      "pt": "Costumo carregar meu celular à noite.",
+      "ctx": "Situação: talk habit.",
+      "blank": "phone",
+      "wrong": "I usually charges my phone at night."
+    },
+    {
+      "template_id": "technology_and_communication_a2_tc2_there_signal",
+      "family_id": "technology_and_communication_a2_point_out",
+      "pack_id": "technology_and_communication_a2",
+      "theme": "technology_and_communication",
+      "level": "A2",
+      "pattern_id": "there_is_are",
+      "primary_skill_id": "there_is_are",
+      "skill_ids": [
+        "there_is_are",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "There is a signal problem today.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Tem um problema de sinal hoje.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "There is a signal problem today."
+      ],
+      "accepted_variants_en": [
+        "There's a signal problem today."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "there_is_are"
+      ],
+      "communicative_intent": "point_out",
+      "grammar_focus": "existential",
+      "pattern_signature": "statement|be|none|aff|existential",
+      "lexical_verbs": [],
+      "pt": "Tem um problema de sinal hoje.",
+      "ctx": "Situação: point out.",
+      "blank": "signal",
+      "wrong": "There a signal problem today."
     }
   ],
   "collocations": [
