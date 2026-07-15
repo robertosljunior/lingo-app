@@ -7803,8 +7803,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "workplace_a2_subject_past_simple_object_time_01",
-        "family_id": "workplace_a2_subject_past_simple_object_time_0",
+        "template_id": "workplace_a2_wp2_start_late",
+        "family_id": "workplace_a2_report_delay",
         "pack_id": "workplace_a2",
         "theme": "workplace",
         "level": "A2",
@@ -7823,144 +7823,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a2_company"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the company yesterday.",
+        "sentence": "The meeting started late yesterday.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a empresa ontem.",
+        "source_text_pt": "A reunião começou atrasada ontem.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the company yesterday."
+          "The meeting started late yesterday."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Nós verificamos a empresa ontem.",
-        "ctx": "Contexto de trabalho (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the company yesterday."
+        "communicative_intent": "report_delay",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "start"
+        ],
+        "pt": "A reunião começou atrasada ontem.",
+        "ctx": "Situação: report delay.",
+        "blank": "meeting",
+        "wrong": "The meeting start late yesterday."
       },
       {
-        "template_id": "workplace_a2_subject_be_going_to_verb_time_02",
-        "family_id": "workplace_a2_subject_be_going_to_verb_time_1",
+        "template_id": "workplace_a2_wp2_compare_project",
+        "family_id": "workplace_a2_compare_options",
         "pack_id": "workplace_a2",
         "theme": "workplace",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "present_continuous",
-        "skill_ids": [
-          "present_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a2_project"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the project tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar o projeto amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They are going to review the project tomorrow."
-        ],
-        "accepted_variants_en": [
-          "They're going to review the project tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
-        "skill_targets": [
-          "present_continuous"
-        ],
-        "pt": "Eles vão revisar o projeto amanhã.",
-        "ctx": "Contexto de trabalho (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the project tomorrow."
-      },
-      {
-        "template_id": "workplace_a2_subject_simple_present_object_03",
-        "family_id": "workplace_a2_subject_simple_present_object_2",
-        "pack_id": "workplace_a2",
-        "theme": "workplace",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "future_going_to",
-        "skill_ids": [
-          "future_going_to",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a2_client"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the client every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o cliente todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the client every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "future_going_to"
-        ],
-        "pt": "Nós verificamos o cliente todos os dias.",
-        "ctx": "Contexto de trabalho (nível A2).",
-        "blank": "check",
-        "wrong": "We check the client every day."
-      },
-      {
-        "template_id": "workplace_a2_wh_do_subject_base_verb_04",
-        "family_id": "workplace_a2_wh_do_subject_base_verb_3",
-        "pack_id": "workplace_a2",
-        "theme": "workplace",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "comparative_than",
         "primary_skill_id": "comparatives",
         "skill_ids": [
           "comparatives",
@@ -7975,45 +7876,46 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a2_support_team"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the support team?",
+        "sentence": "This project is more difficult than the last one.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa da equipe de suporte?",
+        "source_text_pt": "Este projeto é mais difícil que o anterior.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the support team?"
+          "This project is more difficult than the last one."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "comparatives"
         ],
-        "pt": "Quando você precisa da equipe de suporte?",
-        "ctx": "Contexto de trabalho (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the support team?"
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "Este projeto é mais difícil que o anterior.",
+        "ctx": "Situação: compare options.",
+        "blank": "project",
+        "wrong": "This project is difficulter than the last one."
       },
       {
-        "template_id": "workplace_a2_subject_past_simple_object_time_05",
-        "family_id": "workplace_a2_subject_past_simple_object_time_4",
+        "template_id": "workplace_a2_wp2_plan_finish",
+        "family_id": "workplace_a2_state_plan",
         "pack_id": "workplace_a2",
         "theme": "workplace",
         "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "present_perfect",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "present_perfect",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -8025,42 +7927,47 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a2_deployment"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the deployment yesterday.",
+        "sentence": "I am going to finish the report tomorrow.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a implantação ontem.",
+        "source_text_pt": "Vou terminar o relatório amanhã.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the deployment yesterday."
+          "I am going to finish the report tomorrow."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "accepted_variants_en": [
+          "I'm going to finish the report tomorrow."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "present_perfect"
+          "future_going_to"
         ],
-        "pt": "Nós verificamos a implantação ontem.",
-        "ctx": "Contexto de trabalho (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the deployment yesterday."
+        "communicative_intent": "state_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "finish"
+        ],
+        "pt": "Vou terminar o relatório amanhã.",
+        "ctx": "Situação: state plan.",
+        "blank": "report",
+        "wrong": "I am going to finished the report tomorrow."
       },
       {
-        "template_id": "workplace_a2_subject_be_going_to_verb_time_06",
-        "family_id": "workplace_a2_subject_be_going_to_verb_time_5",
+        "template_id": "workplace_a2_wp2_ask_printer",
+        "family_id": "workplace_a2_ask_resource",
         "pack_id": "workplace_a2",
         "theme": "workplace",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
+        "pattern_id": "yes_no_do_question",
         "primary_skill_id": "question_auxiliary",
         "skill_ids": [
           "question_auxiliary",
@@ -8075,94 +7982,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a2_report"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They are going to review the report tomorrow.",
+        "sentence": "Does the office have a printer?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar o relatório amanhã.",
+        "source_text_pt": "O escritório tem uma impressora?",
         "target_locale": "en",
         "expected_answers_en": [
-          "They are going to review the report tomorrow."
+          "Does the office have a printer?"
         ],
-        "accepted_variants_en": [
-          "They're going to review the report tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "question_auxiliary"
         ],
-        "pt": "Eles vão revisar o relatório amanhã.",
-        "ctx": "Contexto de trabalho (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the report tomorrow."
+        "communicative_intent": "ask_resource",
+        "grammar_focus": "yes_no_question",
+        "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "have"
+        ],
+        "pt": "O escritório tem uma impressora?",
+        "ctx": "Situação: ask resource.",
+        "blank": "printer",
+        "wrong": "The office have a printer?"
       },
       {
-        "template_id": "workplace_a2_subject_simple_present_object_07",
-        "family_id": "workplace_a2_subject_simple_present_object_0",
+        "template_id": "workplace_a2_wp2_lost_report",
+        "family_id": "workplace_a2_report_problem",
         "pack_id": "workplace_a2",
         "theme": "workplace",
         "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a2_requirements"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the requirements every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos os requisitos todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the requirements every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Nós verificamos os requisitos todos os dias.",
-        "ctx": "Contexto de trabalho (nível A2).",
-        "blank": "check",
-        "wrong": "We check the requirements every day."
-      },
-      {
-        "template_id": "workplace_a2_wh_do_subject_base_verb_08",
-        "family_id": "workplace_a2_wh_do_subject_base_verb_1",
-        "pack_id": "workplace_a2",
-        "theme": "workplace",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "subject_past_simple_object_time",
         "primary_skill_id": "past_simple",
         "skill_ids": [
           "past_simple",
@@ -8177,34 +8035,198 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_a2_open_positions"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the open positions?",
+        "sentence": "I lost the report yesterday.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa das vagas abertas?",
+        "source_text_pt": "Perdi o relatório ontem.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the open positions?"
+          "I lost the report yesterday."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Quando você precisa das vagas abertas?",
-        "ctx": "Contexto de trabalho (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the open positions?"
+        "communicative_intent": "report_problem",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "lose"
+        ],
+        "pt": "Perdi o relatório ontem.",
+        "ctx": "Situação: report problem.",
+        "blank": "report",
+        "wrong": "I lose the report yesterday."
+      },
+      {
+        "template_id": "workplace_a2_wp2_request_client",
+        "family_id": "workplace_a2_request_service",
+        "pack_id": "workplace_a2",
+        "theme": "workplace",
+        "level": "A2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Could you call the client for me?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você poderia ligar para o cliente por mim?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Could you call the client for me?"
+        ],
+        "accepted_variants_en": [
+          "Can you call the client for me?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "request_service",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|could|aff|plain",
+        "lexical_verbs": [
+          "call"
+        ],
+        "pt": "Você poderia ligar para o cliente por mim?",
+        "ctx": "Situação: request service.",
+        "blank": "client",
+        "wrong": "You could call the client for me?"
+      },
+      {
+        "template_id": "workplace_a2_wp2_check_email",
+        "family_id": "workplace_a2_talk_habit",
+        "pack_id": "workplace_a2",
+        "theme": "workplace",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I usually check my email in the morning.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Costumo checar meu e-mail de manhã.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I usually check my email in the morning."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "talk_habit",
+        "grammar_focus": "frequency_adverb",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "check"
+        ],
+        "pt": "Costumo checar meu e-mail de manhã.",
+        "ctx": "Situação: talk habit.",
+        "blank": "email",
+        "wrong": "I usually checks my email in the morning."
+      },
+      {
+        "template_id": "workplace_a2_wp2_there_meeting",
+        "family_id": "workplace_a2_point_out",
+        "pack_id": "workplace_a2",
+        "theme": "workplace",
+        "level": "A2",
+        "pattern_id": "there_is_are",
+        "primary_skill_id": "there_is_are",
+        "skill_ids": [
+          "there_is_are",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "There is a meeting at three o’clock.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Tem uma reunião às três horas.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "There is a meeting at three o’clock."
+        ],
+        "accepted_variants_en": [
+          "There's a meeting at three o’clock."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "communicative_intent": "point_out",
+        "grammar_focus": "existential",
+        "pattern_signature": "statement|be|none|aff|existential",
+        "lexical_verbs": [],
+        "pt": "Tem uma reunião às três horas.",
+        "ctx": "Situação: point out.",
+        "blank": "meeting",
+        "wrong": "There a meeting at three o’clock."
       }
     ],
     "collocations": [
@@ -8502,8 +8524,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "workplace_b1_subject_have_past_participle_yet_01",
-        "family_id": "workplace_b1_subject_have_past_participle_yet_0",
+        "template_id": "workplace_b1_wp3_pp_sent",
+        "family_id": "workplace_b1_confirm_plan",
         "pack_id": "workplace_b1",
         "theme": "workplace",
         "level": "B1",
@@ -8522,41 +8544,96 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b1_company"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We have checked the company already.",
+        "sentence": "I have already sent the report.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos a empresa.",
+        "source_text_pt": "Já enviei o relatório.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We have checked the company already."
+          "I have already sent the report."
         ],
         "accepted_variants_en": [
-          "We've checked the company already."
+          "I've already sent the report."
         ],
-        "explanation_pt": "Present perfect com already.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect"
         ],
-        "pt": "Nós já verificamos a empresa.",
-        "ctx": "Contexto de trabalho (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the company already."
+        "communicative_intent": "confirm_plan",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "send"
+        ],
+        "pt": "Já enviei o relatório.",
+        "ctx": "Situação: confirm plan.",
+        "blank": "report",
+        "wrong": "I have already send the report."
       },
       {
-        "template_id": "workplace_b1_subject_have_been_ving_object_duration_02",
-        "family_id": "workplace_b1_subject_have_been_ving_object_duration_1",
+        "template_id": "workplace_b1_wp3_first_cond",
+        "family_id": "workplace_b1_plan_contingency",
+        "pack_id": "workplace_b1",
+        "theme": "workplace",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "first_conditional",
+        "skill_ids": [
+          "first_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If we finish the project early, we will have more time.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se terminarmos o projeto cedo, teremos mais tempo.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If we finish the project early, we will have more time."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "communicative_intent": "plan_contingency",
+        "grammar_focus": "first_conditional",
+        "pattern_signature": "conditional|will_future|none|aff|first_conditional",
+        "lexical_verbs": [
+          "finish"
+        ],
+        "pt": "Se terminarmos o projeto cedo, teremos mais tempo.",
+        "ctx": "Situação: plan contingency.",
+        "blank": "project",
+        "wrong": "If we will finish the project early, we have more time."
+      },
+      {
+        "template_id": "workplace_b1_wp3_ppc_working",
+        "family_id": "workplace_b1_report_status",
         "pack_id": "workplace_b1",
         "theme": "workplace",
         "level": "B1",
@@ -8575,48 +8652,50 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b1_project"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They have been reviewing the project for two hours.",
+        "sentence": "I have been working on this task for two hours.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando o projeto há duas horas.",
+        "source_text_pt": "Estou trabalhando nesta tarefa há duas horas.",
         "target_locale": "en",
         "expected_answers_en": [
-          "They have been reviewing the project for two hours."
+          "I have been working on this task for two hours."
         ],
         "accepted_variants_en": [
-          "They've been reviewing the project for two hours."
+          "I've been working on this task for two hours."
         ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect_continuous"
         ],
-        "pt": "Eles estão revisando o projeto há duas horas.",
-        "ctx": "Contexto de trabalho (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the project for two hours."
+        "communicative_intent": "report_status",
+        "grammar_focus": "present_perfect_continuous",
+        "pattern_signature": "statement|present_perfect_continuous|none|aff|plain",
+        "lexical_verbs": [
+          "work"
+        ],
+        "pt": "Estou trabalhando nesta tarefa há duas horas.",
+        "ctx": "Situação: report status.",
+        "blank": "task",
+        "wrong": "I have been work on this task for two hours."
       },
       {
-        "template_id": "workplace_b1_if_present_will_future_03",
-        "family_id": "workplace_b1_if_present_will_future_2",
+        "template_id": "workplace_b1_wp3_plan_send",
+        "family_id": "workplace_b1_describe_plan",
         "pack_id": "workplace_b1",
         "theme": "workplace",
         "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "gerund_after_been",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "gerund_after_been",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -8628,41 +8707,200 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b1_client"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If we confirm the client, we will start tomorrow.",
+        "sentence": "I am going to send the email tomorrow.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos o cliente, vamos começar amanhã.",
+        "source_text_pt": "Vou enviar o e-mail amanhã.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If we confirm the client, we will start tomorrow."
+          "I am going to send the email tomorrow."
         ],
         "accepted_variants_en": [
-          "If we confirm the client, we'll start tomorrow."
+          "I'm going to send the email tomorrow."
         ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "gerund_after_been"
+          "future_going_to"
         ],
-        "pt": "Se confirmarmos o cliente, vamos começar amanhã.",
-        "ctx": "Contexto de trabalho (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the client, we will start tomorrow."
+        "communicative_intent": "describe_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "send"
+        ],
+        "pt": "Vou enviar o e-mail amanhã.",
+        "ctx": "Situação: describe plan.",
+        "blank": "email",
+        "wrong": "I am going to sent the email tomorrow."
       },
       {
-        "template_id": "workplace_b1_subject_modal_base_verb_04",
-        "family_id": "workplace_b1_subject_modal_base_verb_3",
+        "template_id": "workplace_b1_wp3_pp_led",
+        "family_id": "workplace_b1_ask_experience",
+        "pack_id": "workplace_b1",
+        "theme": "workplace",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Have you ever led a meeting?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você já liderou uma reunião?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Have you ever led a meeting?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "ask_experience",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "lead"
+        ],
+        "pt": "Você já liderou uma reunião?",
+        "ctx": "Situação: ask experience.",
+        "blank": "meeting",
+        "wrong": "Have you ever lead a meeting?"
+      },
+      {
+        "template_id": "workplace_b1_wp3_advice",
+        "family_id": "workplace_b1_give_advice",
+        "pack_id": "workplace_b1",
+        "theme": "workplace",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "You should talk to the manager about this.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você deveria falar com o gerente sobre isso.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "You should talk to the manager about this."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "give_advice",
+        "grammar_focus": "modal_advice",
+        "pattern_signature": "statement|present_simple|should|aff|plain",
+        "lexical_verbs": [
+          "talk"
+        ],
+        "pt": "Você deveria falar com o gerente sobre isso.",
+        "ctx": "Situação: give advice.",
+        "blank": "manager",
+        "wrong": "You should talks to the manager about this."
+      },
+      {
+        "template_id": "workplace_b1_wp3_compare_task",
+        "family_id": "workplace_b1_compare_options",
+        "pack_id": "workplace_b1",
+        "theme": "workplace",
+        "level": "B1",
+        "pattern_id": "comparative_than",
+        "primary_skill_id": "comparatives",
+        "skill_ids": [
+          "comparatives",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "This task is easier than the last one.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Esta tarefa é mais fácil que a anterior.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "This task is easier than the last one."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "Esta tarefa é mais fácil que a anterior.",
+        "ctx": "Situação: compare options.",
+        "blank": "task",
+        "wrong": "This task is more easy than the last one."
+      },
+      {
+        "template_id": "workplace_b1_wp3_preference",
+        "family_id": "workplace_b1_state_preference",
         "pack_id": "workplace_b1",
         "theme": "workplace",
         "level": "B1",
@@ -8681,245 +8919,39 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b1_support_team"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the support team today.",
+        "sentence": "I would rather finish this task today.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a equipe de suporte hoje.",
+        "source_text_pt": "Eu preferiria terminar esta tarefa hoje.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the support team today."
+          "I would rather finish this task today."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "accepted_variants_en": [
+          "I'd rather finish this task today."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "first_conditional"
         ],
-        "pt": "Eu posso atualizar a equipe de suporte hoje.",
-        "ctx": "Contexto de trabalho (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the support team today."
-      },
-      {
-        "template_id": "workplace_b1_subject_have_past_participle_yet_05",
-        "family_id": "workplace_b1_subject_have_past_participle_yet_4",
-        "pack_id": "workplace_b1",
-        "theme": "workplace",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
+        "communicative_intent": "state_preference",
+        "grammar_focus": "would_preference",
+        "pattern_signature": "statement|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "finish"
         ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b1_deployment"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the deployment already.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos a implantação.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We have checked the deployment already."
-        ],
-        "accepted_variants_en": [
-          "We've checked the deployment already."
-        ],
-        "explanation_pt": "Present perfect com already.",
-        "skill_targets": [
-          "question_auxiliary"
-        ],
-        "pt": "Nós já verificamos a implantação.",
-        "ctx": "Contexto de trabalho (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the deployment already."
-      },
-      {
-        "template_id": "workplace_b1_subject_have_been_ving_object_duration_06",
-        "family_id": "workplace_b1_subject_have_been_ving_object_duration_5",
-        "pack_id": "workplace_b1",
-        "theme": "workplace",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b1_report"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the report for two hours.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando o relatório há duas horas.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They have been reviewing the report for two hours."
-        ],
-        "accepted_variants_en": [
-          "They've been reviewing the report for two hours."
-        ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
-        "skill_targets": [
-          "collocation"
-        ],
-        "pt": "Eles estão revisando o relatório há duas horas.",
-        "ctx": "Contexto de trabalho (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the report for two hours."
-      },
-      {
-        "template_id": "workplace_b1_if_present_will_future_07",
-        "family_id": "workplace_b1_if_present_will_future_0",
-        "pack_id": "workplace_b1",
-        "theme": "workplace",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "preposition",
-        "skill_ids": [
-          "preposition",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b1_requirements"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the requirements, we will start tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos os requisitos, vamos começar amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If we confirm the requirements, we will start tomorrow."
-        ],
-        "accepted_variants_en": [
-          "If we confirm the requirements, we'll start tomorrow."
-        ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
-        "skill_targets": [
-          "preposition"
-        ],
-        "pt": "Se confirmarmos os requisitos, vamos começar amanhã.",
-        "ctx": "Contexto de trabalho (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the requirements, we will start tomorrow."
-      },
-      {
-        "template_id": "workplace_b1_subject_modal_base_verb_08",
-        "family_id": "workplace_b1_subject_modal_base_verb_1",
-        "pack_id": "workplace_b1",
-        "theme": "workplace",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b1_open_positions"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the open positions today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar as vagas abertas hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the open positions today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "present_perfect"
-        ],
-        "pt": "Eu posso atualizar as vagas abertas hoje.",
-        "ctx": "Contexto de trabalho (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the open positions today."
+        "pt": "Eu preferiria terminar esta tarefa hoje.",
+        "ctx": "Situação: state preference.",
+        "blank": "task",
+        "wrong": "I would rather finished this task today."
       }
     ],
     "collocations": [
@@ -9217,8 +9249,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "workplace_b2_passive_be_past_participle_01",
-        "family_id": "workplace_b2_passive_be_past_participle_0",
+        "template_id": "workplace_b2_wp4_passive",
+        "family_id": "workplace_b2_report_problem",
         "pack_id": "workplace_b2",
         "theme": "workplace",
         "level": "B2",
@@ -9237,40 +9269,43 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b2_company"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The company was reviewed by the team.",
+        "sentence": "The meeting was cancelled due to a conflict.",
         "source_locale": "pt-BR",
-        "source_text_pt": "A empresa foi revisada pela equipe.",
+        "source_text_pt": "A reunião foi cancelada por causa de um conflito.",
         "target_locale": "en",
         "expected_answers_en": [
-          "The company was reviewed by the team."
+          "The meeting was cancelled due to a conflict."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "accepted_variants_en": [
+          "The meeting was canceled due to a conflict."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "passive_voice"
         ],
-        "pt": "A empresa foi revisada pela equipe.",
-        "ctx": "Contexto de trabalho (nível B2).",
-        "blank": "company",
-        "wrong": "The company reviewed by the team."
+        "communicative_intent": "report_problem",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "cancel"
+        ],
+        "pt": "A reunião foi cancelada por causa de um conflito.",
+        "ctx": "Situação: report problem.",
+        "blank": "meeting",
+        "wrong": "The meeting was cancel due to a conflict."
       },
       {
-        "template_id": "workplace_b2_reported_speech_statement_02",
-        "family_id": "workplace_b2_reported_speech_statement_1",
+        "template_id": "workplace_b2_wp4_reported",
+        "family_id": "workplace_b2_report_information",
         "pack_id": "workplace_b2",
         "theme": "workplace",
         "level": "B2",
@@ -9289,40 +9324,41 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b2_project"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "She said that the project was ready.",
+        "sentence": "The manager said that the project was delayed.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que o projeto estava pronto.",
+        "source_text_pt": "O gerente disse que o projeto estava atrasado.",
         "target_locale": "en",
         "expected_answers_en": [
-          "She said that the project was ready."
+          "The manager said that the project was delayed."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "reported_speech"
         ],
-        "pt": "Ela disse que o projeto estava pronto.",
-        "ctx": "Contexto de trabalho (nível B2).",
-        "blank": "said",
-        "wrong": "She said the project was ready."
+        "communicative_intent": "report_information",
+        "grammar_focus": "reported_speech",
+        "pattern_signature": "statement|past_simple|none|aff|reported",
+        "lexical_verbs": [
+          "say"
+        ],
+        "pt": "O gerente disse que o projeto estava atrasado.",
+        "ctx": "Situação: report information.",
+        "blank": "project",
+        "wrong": "The manager said that the project delayed."
       },
       {
-        "template_id": "workplace_b2_second_conditional_03",
-        "family_id": "workplace_b2_second_conditional_2",
+        "template_id": "workplace_b2_wp4_second_cond",
+        "family_id": "workplace_b2_hypothesize",
         "pack_id": "workplace_b2",
         "theme": "workplace",
         "level": "B2",
@@ -9341,42 +9377,202 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b2_client"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If I had more time, I would improve the client.",
+        "sentence": "If I had more time, I would finish the report.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o cliente.",
+        "source_text_pt": "Se eu tivesse mais tempo, terminaria o relatório.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If I had more time, I would improve the client."
+          "If I had more time, I would finish the report."
         ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the client."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "second_conditional"
         ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria o cliente.",
-        "ctx": "Contexto de trabalho (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the client."
+        "communicative_intent": "hypothesize",
+        "grammar_focus": "second_conditional",
+        "pattern_signature": "conditional|present_simple|would|aff|second_conditional",
+        "lexical_verbs": [
+          "finish"
+        ],
+        "pt": "Se eu tivesse mais tempo, terminaria o relatório.",
+        "ctx": "Situação: hypothesize.",
+        "blank": "report",
+        "wrong": "If I had more time, I will finish the report."
       },
       {
-        "template_id": "workplace_b2_subject_modal_base_verb_04",
-        "family_id": "workplace_b2_subject_modal_base_verb_3",
+        "template_id": "workplace_b2_wp4_diplomatic",
+        "family_id": "workplace_b2_request_politely",
+        "pack_id": "workplace_b2",
+        "theme": "workplace",
+        "level": "B2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "modal_deduction",
+        "skill_ids": [
+          "modal_deduction",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Would you mind reviewing this report again?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você se importaria de revisar este relatório de novo?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Would you mind reviewing this report again?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "communicative_intent": "request_politely",
+        "grammar_focus": "diplomatic_request",
+        "pattern_signature": "yesno_question|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "review"
+        ],
+        "pt": "Você se importaria de revisar este relatório de novo?",
+        "ctx": "Situação: request politely.",
+        "blank": "report",
+        "wrong": "Would you mind review this report again?"
+      },
+      {
+        "template_id": "workplace_b2_wp4_pp_just",
+        "family_id": "workplace_b2_report_status",
+        "pack_id": "workplace_b2",
+        "theme": "workplace",
+        "level": "B2",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have just finished the presentation.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Acabamos de terminar a apresentação.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have just finished the presentation."
+        ],
+        "accepted_variants_en": [
+          "We've just finished the presentation."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "report_status",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_perfect|none|aff|plain",
+        "lexical_verbs": [
+          "finish"
+        ],
+        "pt": "Acabamos de terminar a apresentação.",
+        "ctx": "Situação: report status.",
+        "blank": "presentation",
+        "wrong": "We have just finish the presentation."
+      },
+      {
+        "template_id": "workplace_b2_wp4_passive2",
+        "family_id": "workplace_b2_report_problem_sent",
+        "pack_id": "workplace_b2",
+        "theme": "workplace",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The contract was sent to the wrong client.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "O contrato foi enviado para o cliente errado.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The contract was sent to the wrong client."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "communicative_intent": "report_problem_sent",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "send"
+        ],
+        "pt": "O contrato foi enviado para o cliente errado.",
+        "ctx": "Situação: report problem sent.",
+        "blank": "contract",
+        "wrong": "The contract was send to the wrong client."
+      },
+      {
+        "template_id": "workplace_b2_wp4_deduction",
+        "family_id": "workplace_b2_make_deduction",
         "pack_id": "workplace_b2",
         "theme": "workplace",
         "level": "B2",
@@ -9395,47 +9591,48 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b2_support_team"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the support team today.",
+        "sentence": "The manager must have read the email already.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a equipe de suporte hoje.",
+        "source_text_pt": "O gerente já deve ter lido o e-mail.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the support team today."
+          "The manager must have read the email already."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "modal_deduction"
         ],
-        "pt": "Eu posso atualizar a equipe de suporte hoje.",
-        "ctx": "Contexto de trabalho (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the support team today."
+        "communicative_intent": "make_deduction",
+        "grammar_focus": "modal_deduction",
+        "pattern_signature": "statement|present_simple|must|aff|plain",
+        "lexical_verbs": [
+          "read"
+        ],
+        "pt": "O gerente já deve ter lido o e-mail.",
+        "ctx": "Situação: make deduction.",
+        "blank": "email",
+        "wrong": "The manager must has read the email already."
       },
       {
-        "template_id": "workplace_b2_passive_be_past_participle_05",
-        "family_id": "workplace_b2_passive_be_past_participle_4",
+        "template_id": "workplace_b2_wp4_contrast",
+        "family_id": "workplace_b2_describe_experience",
         "pack_id": "workplace_b2",
         "theme": "workplace",
         "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "collocation",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "verb_to_be",
         "skill_ids": [
-          "collocation",
+          "verb_to_be",
           "vocabulary"
         ],
         "exercise_types": [
@@ -9447,194 +9644,35 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b2_deployment"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The deployment was reviewed by the team.",
+        "sentence": "The presentation was long, but it was very useful.",
         "source_locale": "pt-BR",
-        "source_text_pt": "A implantação foi revisada pela equipe.",
+        "source_text_pt": "A apresentação foi longa, mas foi muito útil.",
         "target_locale": "en",
         "expected_answers_en": [
-          "The deployment was reviewed by the team."
+          "The presentation was long, but it was very useful."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "collocation"
+          "verb_to_be"
         ],
-        "pt": "A implantação foi revisada pela equipe.",
-        "ctx": "Contexto de trabalho (nível B2).",
-        "blank": "deployment",
-        "wrong": "The deployment reviewed by the team."
-      },
-      {
-        "template_id": "workplace_b2_reported_speech_statement_06",
-        "family_id": "workplace_b2_reported_speech_statement_5",
-        "pack_id": "workplace_b2",
-        "theme": "workplace",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "word_order",
-        "skill_ids": [
-          "word_order",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b2_report"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the report was ready.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que o relatório estava pronto.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "She said that the report was ready."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
-        "skill_targets": [
-          "word_order"
-        ],
-        "pt": "Ela disse que o relatório estava pronto.",
-        "ctx": "Contexto de trabalho (nível B2).",
-        "blank": "said",
-        "wrong": "She said the report was ready."
-      },
-      {
-        "template_id": "workplace_b2_second_conditional_07",
-        "family_id": "workplace_b2_second_conditional_0",
-        "pack_id": "workplace_b2",
-        "theme": "workplace",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b2_requirements"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the requirements.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria os requisitos.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If I had more time, I would improve the requirements."
-        ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the requirements."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria os requisitos.",
-        "ctx": "Contexto de trabalho (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the requirements."
-      },
-      {
-        "template_id": "workplace_b2_subject_modal_base_verb_08",
-        "family_id": "workplace_b2_subject_modal_base_verb_1",
-        "pack_id": "workplace_b2",
-        "theme": "workplace",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "workplace_b2_open_positions"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the open positions today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar as vagas abertas hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the open positions today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "passive_voice"
-        ],
-        "pt": "Eu posso atualizar as vagas abertas hoje.",
-        "ctx": "Contexto de trabalho (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the open positions today."
+        "communicative_intent": "describe_experience",
+        "grammar_focus": "past_contrast",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "A apresentação foi longa, mas foi muito útil.",
+        "ctx": "Situação: describe experience.",
+        "blank": "presentation",
+        "wrong": "The presentation long, but it was very useful."
       }
     ],
     "collocations": [
@@ -13555,8 +13593,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "food_and_restaurants_a2_subject_past_simple_object_time_01",
-        "family_id": "food_and_restaurants_a2_subject_past_simple_object_time_0",
+        "template_id": "food_and_restaurants_a2_food2_arrive_late",
+        "family_id": "food_and_restaurants_a2_report_delay",
         "pack_id": "food_and_restaurants_a2",
         "theme": "food_and_restaurants",
         "level": "A2",
@@ -13575,144 +13613,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_menu"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the menu yesterday.",
+        "sentence": "Our order arrived late tonight.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o cardápio ontem.",
+        "source_text_pt": "Nosso pedido chegou atrasado esta noite.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the menu yesterday."
+          "Our order arrived late tonight."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Nós verificamos o cardápio ontem.",
-        "ctx": "Contexto de comida e restaurantes (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the menu yesterday."
+        "communicative_intent": "report_delay",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "arrive"
+        ],
+        "pt": "Nosso pedido chegou atrasado esta noite.",
+        "ctx": "Situação: report delay.",
+        "blank": "order",
+        "wrong": "Our order arrive late tonight."
       },
       {
-        "template_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_02",
-        "family_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_1",
+        "template_id": "food_and_restaurants_a2_food2_compare_restaurant",
+        "family_id": "food_and_restaurants_a2_compare_options",
         "pack_id": "food_and_restaurants_a2",
         "theme": "food_and_restaurants",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
-        "primary_skill_id": "present_continuous",
-        "skill_ids": [
-          "present_continuous",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_table"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They are going to review the table tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar a mesa amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They are going to review the table tomorrow."
-        ],
-        "accepted_variants_en": [
-          "They're going to review the table tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
-        "skill_targets": [
-          "present_continuous"
-        ],
-        "pt": "Eles vão revisar a mesa amanhã.",
-        "ctx": "Contexto de comida e restaurantes (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the table tomorrow."
-      },
-      {
-        "template_id": "food_and_restaurants_a2_subject_simple_present_object_03",
-        "family_id": "food_and_restaurants_a2_subject_simple_present_object_2",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "future_going_to",
-        "skill_ids": [
-          "future_going_to",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_starter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the starter every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a entrada todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the starter every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "future_going_to"
-        ],
-        "pt": "Nós verificamos a entrada todos os dias.",
-        "ctx": "Contexto de comida e restaurantes (nível A2).",
-        "blank": "check",
-        "wrong": "We check the starter every day."
-      },
-      {
-        "template_id": "food_and_restaurants_a2_wh_do_subject_base_verb_04",
-        "family_id": "food_and_restaurants_a2_wh_do_subject_base_verb_3",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "comparative_than",
         "primary_skill_id": "comparatives",
         "skill_ids": [
           "comparatives",
@@ -13727,45 +13666,46 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_main_course"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the main course?",
+        "sentence": "This restaurant is more expensive than the other one.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa do prato principal?",
+        "source_text_pt": "Este restaurante é mais caro que o outro.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the main course?"
+          "This restaurant is more expensive than the other one."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "comparatives"
         ],
-        "pt": "Quando você precisa do prato principal?",
-        "ctx": "Contexto de comida e restaurantes (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the main course?"
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "Este restaurante é mais caro que o outro.",
+        "ctx": "Situação: compare options.",
+        "blank": "restaurant",
+        "wrong": "This restaurant is expensiver than the other one."
       },
       {
-        "template_id": "food_and_restaurants_a2_subject_past_simple_object_time_05",
-        "family_id": "food_and_restaurants_a2_subject_past_simple_object_time_4",
+        "template_id": "food_and_restaurants_a2_food2_plan_order",
+        "family_id": "food_and_restaurants_a2_state_plan",
         "pack_id": "food_and_restaurants_a2",
         "theme": "food_and_restaurants",
         "level": "A2",
-        "pattern_id": "subject_past_simple_object_time",
-        "primary_skill_id": "present_perfect",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "present_perfect",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -13777,42 +13717,47 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_dessert"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We checked the dessert yesterday.",
+        "sentence": "I am going to order the soup.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos a sobremesa ontem.",
+        "source_text_pt": "Vou pedir a sopa.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We checked the dessert yesterday."
+          "I am going to order the soup."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Passado simples com marcador de tempo (yesterday).",
+        "accepted_variants_en": [
+          "I'm going to order the soup."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "present_perfect"
+          "future_going_to"
         ],
-        "pt": "Nós verificamos a sobremesa ontem.",
-        "ctx": "Contexto de comida e restaurantes (nível A2).",
-        "blank": "checked",
-        "wrong": "We check the dessert yesterday."
+        "communicative_intent": "state_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "order"
+        ],
+        "pt": "Vou pedir a sopa.",
+        "ctx": "Situação: state plan.",
+        "blank": "soup",
+        "wrong": "I am going to ordered the soup."
       },
       {
-        "template_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_06",
-        "family_id": "food_and_restaurants_a2_subject_be_going_to_verb_time_5",
+        "template_id": "food_and_restaurants_a2_food2_ask_table",
+        "family_id": "food_and_restaurants_a2_ask_amenity",
         "pack_id": "food_and_restaurants_a2",
         "theme": "food_and_restaurants",
         "level": "A2",
-        "pattern_id": "subject_be_going_to_verb_time",
+        "pattern_id": "yes_no_do_question",
         "primary_skill_id": "question_auxiliary",
         "skill_ids": [
           "question_auxiliary",
@@ -13827,94 +13772,45 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_bill"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They are going to review the bill tomorrow.",
+        "sentence": "Does the restaurant have a table for four?",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles vão revisar a conta amanhã.",
+        "source_text_pt": "O restaurante tem uma mesa para quatro?",
         "target_locale": "en",
         "expected_answers_en": [
-          "They are going to review the bill tomorrow."
+          "Does the restaurant have a table for four?"
         ],
-        "accepted_variants_en": [
-          "They're going to review the bill tomorrow."
-        ],
-        "explanation_pt": "Futuro com be going to para planos.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "question_auxiliary"
         ],
-        "pt": "Eles vão revisar a conta amanhã.",
-        "ctx": "Contexto de comida e restaurantes (nível A2).",
-        "blank": "are",
-        "wrong": "They go to review the bill tomorrow."
+        "communicative_intent": "ask_amenity",
+        "grammar_focus": "yes_no_question",
+        "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "have"
+        ],
+        "pt": "O restaurante tem uma mesa para quatro?",
+        "ctx": "Situação: ask amenity.",
+        "blank": "table",
+        "wrong": "The restaurant have a table for four?"
       },
       {
-        "template_id": "food_and_restaurants_a2_subject_simple_present_object_07",
-        "family_id": "food_and_restaurants_a2_subject_simple_present_object_0",
+        "template_id": "food_and_restaurants_a2_food2_forgot_order",
+        "family_id": "food_and_restaurants_a2_report_problem",
         "pack_id": "food_and_restaurants_a2",
         "theme": "food_and_restaurants",
         "level": "A2",
-        "pattern_id": "subject_simple_present_object",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_waiter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We check the waiter every day.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós verificamos o garçom todos os dias.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We check the waiter every day."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Presente simples para uma rotina (every day).",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Nós verificamos o garçom todos os dias.",
-        "ctx": "Contexto de comida e restaurantes (nível A2).",
-        "blank": "check",
-        "wrong": "We check the waiter every day."
-      },
-      {
-        "template_id": "food_and_restaurants_a2_wh_do_subject_base_verb_08",
-        "family_id": "food_and_restaurants_a2_wh_do_subject_base_verb_1",
-        "pack_id": "food_and_restaurants_a2",
-        "theme": "food_and_restaurants",
-        "level": "A2",
-        "pattern_id": "wh_do_subject_base_verb",
+        "pattern_id": "subject_past_simple_object_time",
         "primary_skill_id": "past_simple",
         "skill_ids": [
           "past_simple",
@@ -13929,34 +13825,198 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_a2_reservation"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "When do you need the reservation?",
+        "sentence": "The waiter forgot our order.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Quando você precisa da reserva?",
+        "source_text_pt": "O garçom esqueceu nosso pedido.",
         "target_locale": "en",
         "expected_answers_en": [
-          "When do you need the reservation?"
+          "The waiter forgot our order."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Pergunta no presente com o auxiliar do.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "past_simple"
         ],
-        "pt": "Quando você precisa da reserva?",
-        "ctx": "Contexto de comida e restaurantes (nível A2).",
-        "blank": "do",
-        "wrong": "When you do need the reservation?"
+        "communicative_intent": "report_problem",
+        "grammar_focus": "past_simple",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "forget"
+        ],
+        "pt": "O garçom esqueceu nosso pedido.",
+        "ctx": "Situação: report problem.",
+        "blank": "order",
+        "wrong": "The waiter forget our order."
+      },
+      {
+        "template_id": "food_and_restaurants_a2_food2_request_bill",
+        "family_id": "food_and_restaurants_a2_request_service",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "can_request",
+        "skill_ids": [
+          "can_request",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Could you bring the bill, please?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você poderia trazer a conta, por favor?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Could you bring the bill, please?"
+        ],
+        "accepted_variants_en": [
+          "Can you bring the bill, please?"
+        ],
+        "explanation_pt": "Pedido educado com can/could.",
+        "skill_targets": [
+          "can_request"
+        ],
+        "communicative_intent": "request_service",
+        "grammar_focus": "modal_request",
+        "pattern_signature": "yesno_question|present_simple|could|aff|plain",
+        "lexical_verbs": [
+          "bring"
+        ],
+        "pt": "Você poderia trazer a conta, por favor?",
+        "ctx": "Situação: request service.",
+        "blank": "bill",
+        "wrong": "You could bring the bill, please?"
+      },
+      {
+        "template_id": "food_and_restaurants_a2_food2_habit_dish",
+        "family_id": "food_and_restaurants_a2_talk_habit",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "pattern_id": "subject_simple_present_object",
+        "primary_skill_id": "simple_present",
+        "skill_ids": [
+          "simple_present",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "I usually order the same dish.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Costumo pedir o mesmo prato.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "I usually order the same dish."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "simple_present"
+        ],
+        "communicative_intent": "talk_habit",
+        "grammar_focus": "frequency_adverb",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "order"
+        ],
+        "pt": "Costumo pedir o mesmo prato.",
+        "ctx": "Situação: talk habit.",
+        "blank": "usually",
+        "wrong": "I usually orders the same dish."
+      },
+      {
+        "template_id": "food_and_restaurants_a2_food2_there_table",
+        "family_id": "food_and_restaurants_a2_point_out",
+        "pack_id": "food_and_restaurants_a2",
+        "theme": "food_and_restaurants",
+        "level": "A2",
+        "pattern_id": "there_is_are",
+        "primary_skill_id": "there_is_are",
+        "skill_ids": [
+          "there_is_are",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "There is a table available near the window.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Tem uma mesa disponível perto da janela.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "There is a table available near the window."
+        ],
+        "accepted_variants_en": [
+          "There's a table available near the window."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "there_is_are"
+        ],
+        "communicative_intent": "point_out",
+        "grammar_focus": "existential",
+        "pattern_signature": "statement|be|none|aff|existential",
+        "lexical_verbs": [],
+        "pt": "Tem uma mesa disponível perto da janela.",
+        "ctx": "Situação: point out.",
+        "blank": "table",
+        "wrong": "There a table available near the window."
       }
     ],
     "collocations": [
@@ -14254,8 +14314,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "food_and_restaurants_b1_subject_have_past_participle_yet_01",
-        "family_id": "food_and_restaurants_b1_subject_have_past_participle_yet_0",
+        "template_id": "food_and_restaurants_b1_food3_pp_ordered",
+        "family_id": "food_and_restaurants_b1_confirm_plan",
         "pack_id": "food_and_restaurants_b1",
         "theme": "food_and_restaurants",
         "level": "B1",
@@ -14274,41 +14334,96 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_menu"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "We have checked the menu already.",
+        "sentence": "I have already ordered the dessert.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos o cardápio.",
+        "source_text_pt": "Já pedi a sobremesa.",
         "target_locale": "en",
         "expected_answers_en": [
-          "We have checked the menu already."
+          "I have already ordered the dessert."
         ],
         "accepted_variants_en": [
-          "We've checked the menu already."
+          "I've already ordered the dessert."
         ],
-        "explanation_pt": "Present perfect com already.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect"
         ],
-        "pt": "Nós já verificamos o cardápio.",
-        "ctx": "Contexto de comida e restaurantes (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the menu already."
+        "communicative_intent": "confirm_plan",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "order"
+        ],
+        "pt": "Já pedi a sobremesa.",
+        "ctx": "Situação: confirm plan.",
+        "blank": "dessert",
+        "wrong": "I have already order the dessert."
       },
       {
-        "template_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_02",
-        "family_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_1",
+        "template_id": "food_and_restaurants_b1_food3_first_cond",
+        "family_id": "food_and_restaurants_b1_plan_contingency",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "if_present_will_future",
+        "primary_skill_id": "first_conditional",
+        "skill_ids": [
+          "first_conditional",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "If the restaurant is full, we will book another table.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Se o restaurante estiver lotado, vamos reservar outra mesa.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "If the restaurant is full, we will book another table."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "first_conditional"
+        ],
+        "communicative_intent": "plan_contingency",
+        "grammar_focus": "first_conditional",
+        "pattern_signature": "conditional|will_future|none|aff|first_conditional",
+        "lexical_verbs": [
+          "book"
+        ],
+        "pt": "Se o restaurante estiver lotado, vamos reservar outra mesa.",
+        "ctx": "Situação: plan contingency.",
+        "blank": "table",
+        "wrong": "If the restaurant is full, we book another table."
+      },
+      {
+        "template_id": "food_and_restaurants_b1_food3_ppc_waiting",
+        "family_id": "food_and_restaurants_b1_report_problem",
         "pack_id": "food_and_restaurants_b1",
         "theme": "food_and_restaurants",
         "level": "B1",
@@ -14327,48 +14442,50 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_table"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "They have been reviewing the table for two hours.",
+        "sentence": "We have been waiting for the waiter for ten minutes.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando a mesa há duas horas.",
+        "source_text_pt": "Estamos esperando o garçom há dez minutos.",
         "target_locale": "en",
         "expected_answers_en": [
-          "They have been reviewing the table for two hours."
+          "We have been waiting for the waiter for ten minutes."
         ],
         "accepted_variants_en": [
-          "They've been reviewing the table for two hours."
+          "We've been waiting for the waiter for ten minutes."
         ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "present_perfect_continuous"
         ],
-        "pt": "Eles estão revisando a mesa há duas horas.",
-        "ctx": "Contexto de comida e restaurantes (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the table for two hours."
+        "communicative_intent": "report_problem",
+        "grammar_focus": "present_perfect_continuous",
+        "pattern_signature": "statement|present_perfect_continuous|none|aff|plain",
+        "lexical_verbs": [
+          "wait"
+        ],
+        "pt": "Estamos esperando o garçom há dez minutos.",
+        "ctx": "Situação: report problem.",
+        "blank": "waiter",
+        "wrong": "We have been wait for the waiter for ten minutes."
       },
       {
-        "template_id": "food_and_restaurants_b1_if_present_will_future_03",
-        "family_id": "food_and_restaurants_b1_if_present_will_future_2",
+        "template_id": "food_and_restaurants_b1_food3_plan_try",
+        "family_id": "food_and_restaurants_b1_describe_plan",
         "pack_id": "food_and_restaurants_b1",
         "theme": "food_and_restaurants",
         "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "gerund_after_been",
+        "pattern_id": "subject_be_going_to_verb_time",
+        "primary_skill_id": "future_going_to",
         "skill_ids": [
-          "gerund_after_been",
+          "future_going_to",
           "vocabulary"
         ],
         "exercise_types": [
@@ -14380,41 +14497,200 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_starter"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If we confirm the starter, we will start tomorrow.",
+        "sentence": "I am going to try the new dish tonight.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos a entrada, vamos começar amanhã.",
+        "source_text_pt": "Vou experimentar o prato novo hoje à noite.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If we confirm the starter, we will start tomorrow."
+          "I am going to try the new dish tonight."
         ],
         "accepted_variants_en": [
-          "If we confirm the starter, we'll start tomorrow."
+          "I'm going to try the new dish tonight."
         ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "gerund_after_been"
+          "future_going_to"
         ],
-        "pt": "Se confirmarmos a entrada, vamos começar amanhã.",
-        "ctx": "Contexto de comida e restaurantes (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the starter, we will start tomorrow."
+        "communicative_intent": "describe_plan",
+        "grammar_focus": "going_to",
+        "pattern_signature": "statement|going_to|none|aff|plain",
+        "lexical_verbs": [
+          "try"
+        ],
+        "pt": "Vou experimentar o prato novo hoje à noite.",
+        "ctx": "Situação: describe plan.",
+        "blank": "am",
+        "wrong": "I am going to tried the new dish tonight."
       },
       {
-        "template_id": "food_and_restaurants_b1_subject_modal_base_verb_04",
-        "family_id": "food_and_restaurants_b1_subject_modal_base_verb_3",
+        "template_id": "food_and_restaurants_b1_food3_pp_question",
+        "family_id": "food_and_restaurants_b1_ask_experience",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Have you ever tried this soup?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você já experimentou esta sopa?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Have you ever tried this soup?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "ask_experience",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+        "lexical_verbs": [
+          "try"
+        ],
+        "pt": "Você já experimentou esta sopa?",
+        "ctx": "Situação: ask experience.",
+        "blank": "soup",
+        "wrong": "Have you ever try this soup?"
+      },
+      {
+        "template_id": "food_and_restaurants_b1_food3_advice",
+        "family_id": "food_and_restaurants_b1_give_advice",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "subject_modal_base_verb",
+        "primary_skill_id": "question_auxiliary",
+        "skill_ids": [
+          "question_auxiliary",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "You should ask the waiter about the menu.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você deveria perguntar ao garçom sobre o cardápio.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "You should ask the waiter about the menu."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "question_auxiliary"
+        ],
+        "communicative_intent": "give_advice",
+        "grammar_focus": "modal_advice",
+        "pattern_signature": "statement|present_simple|should|aff|plain",
+        "lexical_verbs": [
+          "ask"
+        ],
+        "pt": "Você deveria perguntar ao garçom sobre o cardápio.",
+        "ctx": "Situação: give advice.",
+        "blank": "waiter",
+        "wrong": "You should asks the waiter about the menu."
+      },
+      {
+        "template_id": "food_and_restaurants_b1_food3_compare_dish",
+        "family_id": "food_and_restaurants_b1_compare_options",
+        "pack_id": "food_and_restaurants_b1",
+        "theme": "food_and_restaurants",
+        "level": "B1",
+        "pattern_id": "comparative_than",
+        "primary_skill_id": "comparatives",
+        "skill_ids": [
+          "comparatives",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "This dish is spicier than the soup.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Este prato é mais picante que a sopa.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "This dish is spicier than the soup."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "comparatives"
+        ],
+        "communicative_intent": "compare_options",
+        "grammar_focus": "comparative",
+        "pattern_signature": "statement|be|none|aff|comparative",
+        "lexical_verbs": [],
+        "pt": "Este prato é mais picante que a sopa.",
+        "ctx": "Situação: compare options.",
+        "blank": "dish",
+        "wrong": "This dish is more spicy than the soup."
+      },
+      {
+        "template_id": "food_and_restaurants_b1_food3_preference",
+        "family_id": "food_and_restaurants_b1_state_preference",
         "pack_id": "food_and_restaurants_b1",
         "theme": "food_and_restaurants",
         "level": "B1",
@@ -14433,245 +14709,39 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_main_course"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the main course today.",
+        "sentence": "I would rather have the salad today.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o prato principal hoje.",
+        "source_text_pt": "Eu preferiria comer a salada hoje.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the main course today."
+          "I would rather have the salad today."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "accepted_variants_en": [
+          "I'd rather have the salad today."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "first_conditional"
         ],
-        "pt": "Eu posso atualizar o prato principal hoje.",
-        "ctx": "Contexto de comida e restaurantes (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the main course today."
-      },
-      {
-        "template_id": "food_and_restaurants_b1_subject_have_past_participle_yet_05",
-        "family_id": "food_and_restaurants_b1_subject_have_past_participle_yet_4",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "subject_have_past_participle_yet",
-        "primary_skill_id": "question_auxiliary",
-        "skill_ids": [
-          "question_auxiliary",
-          "vocabulary"
+        "communicative_intent": "state_preference",
+        "grammar_focus": "would_preference",
+        "pattern_signature": "statement|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "have"
         ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_dessert"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "We have checked the dessert already.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Nós já verificamos a sobremesa.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "We have checked the dessert already."
-        ],
-        "accepted_variants_en": [
-          "We've checked the dessert already."
-        ],
-        "explanation_pt": "Present perfect com already.",
-        "skill_targets": [
-          "question_auxiliary"
-        ],
-        "pt": "Nós já verificamos a sobremesa.",
-        "ctx": "Contexto de comida e restaurantes (nível B1).",
-        "blank": "have",
-        "wrong": "We have check the dessert already."
-      },
-      {
-        "template_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_06",
-        "family_id": "food_and_restaurants_b1_subject_have_been_ving_object_duration_5",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "subject_have_been_ving_object_duration",
-        "primary_skill_id": "collocation",
-        "skill_ids": [
-          "collocation",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_bill"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "They have been reviewing the bill for two hours.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eles estão revisando a conta há duas horas.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "They have been reviewing the bill for two hours."
-        ],
-        "accepted_variants_en": [
-          "They've been reviewing the bill for two hours."
-        ],
-        "explanation_pt": "Present perfect continuous com duração (for).",
-        "skill_targets": [
-          "collocation"
-        ],
-        "pt": "Eles estão revisando a conta há duas horas.",
-        "ctx": "Contexto de comida e restaurantes (nível B1).",
-        "blank": "have",
-        "wrong": "They have been reviewed the bill for two hours."
-      },
-      {
-        "template_id": "food_and_restaurants_b1_if_present_will_future_07",
-        "family_id": "food_and_restaurants_b1_if_present_will_future_0",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "if_present_will_future",
-        "primary_skill_id": "preposition",
-        "skill_ids": [
-          "preposition",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_waiter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If we confirm the waiter, we will start tomorrow.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se confirmarmos o garçom, vamos começar amanhã.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If we confirm the waiter, we will start tomorrow."
-        ],
-        "accepted_variants_en": [
-          "If we confirm the waiter, we'll start tomorrow."
-        ],
-        "explanation_pt": "Primeira condicional: if + presente, will + base.",
-        "skill_targets": [
-          "preposition"
-        ],
-        "pt": "Se confirmarmos o garçom, vamos começar amanhã.",
-        "ctx": "Contexto de comida e restaurantes (nível B1).",
-        "blank": "we",
-        "wrong": "If we confirm the waiter, we will start tomorrow."
-      },
-      {
-        "template_id": "food_and_restaurants_b1_subject_modal_base_verb_08",
-        "family_id": "food_and_restaurants_b1_subject_modal_base_verb_1",
-        "pack_id": "food_and_restaurants_b1",
-        "theme": "food_and_restaurants",
-        "level": "B1",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "present_perfect",
-        "skill_ids": [
-          "present_perfect",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b1_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_present_perfect_continuous"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the reservation today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a reserva hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the reservation today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "present_perfect"
-        ],
-        "pt": "Eu posso atualizar a reserva hoje.",
-        "ctx": "Contexto de comida e restaurantes (nível B1).",
-        "blank": "can",
-        "wrong": "I cans update the reservation today."
+        "pt": "Eu preferiria comer a salada hoje.",
+        "ctx": "Situação: state preference.",
+        "blank": "salad",
+        "wrong": "I would rather had the salad today."
       }
     ],
     "collocations": [
@@ -14969,8 +15039,8 @@ export const GENERATED_CONTENT_PACKS = [
     ],
     "template_definitions": [
       {
-        "template_id": "food_and_restaurants_b2_passive_be_past_participle_01",
-        "family_id": "food_and_restaurants_b2_passive_be_past_participle_0",
+        "template_id": "food_and_restaurants_b2_food4_passive",
+        "family_id": "food_and_restaurants_b2_report_problem",
         "pack_id": "food_and_restaurants_b2",
         "theme": "food_and_restaurants",
         "level": "B2",
@@ -14989,40 +15059,43 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_menu"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The menu was reviewed by the team.",
+        "sentence": "The reservation was cancelled by mistake.",
         "source_locale": "pt-BR",
-        "source_text_pt": "O cardápio foi revisado pela equipe.",
+        "source_text_pt": "A reserva foi cancelada por engano.",
         "target_locale": "en",
         "expected_answers_en": [
-          "The menu was reviewed by the team."
+          "The reservation was cancelled by mistake."
         ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "accepted_variants_en": [
+          "The reservation was canceled by mistake."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "passive_voice"
         ],
-        "pt": "O cardápio foi revisado pela equipe.",
-        "ctx": "Contexto de comida e restaurantes (nível B2).",
-        "blank": "menu",
-        "wrong": "The menu reviewed by the team."
+        "communicative_intent": "report_problem",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|passive|none|aff|plain",
+        "lexical_verbs": [
+          "cancel"
+        ],
+        "pt": "A reserva foi cancelada por engano.",
+        "ctx": "Situação: report problem.",
+        "blank": "reservation",
+        "wrong": "The reservation was cancel by mistake."
       },
       {
-        "template_id": "food_and_restaurants_b2_reported_speech_statement_02",
-        "family_id": "food_and_restaurants_b2_reported_speech_statement_1",
+        "template_id": "food_and_restaurants_b2_food4_reported",
+        "family_id": "food_and_restaurants_b2_report_information",
         "pack_id": "food_and_restaurants_b2",
         "theme": "food_and_restaurants",
         "level": "B2",
@@ -15041,40 +15114,41 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_table"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "She said that the table was ready.",
+        "sentence": "The waiter said that the restaurant was full.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que a mesa estava pronta.",
+        "source_text_pt": "O garçom disse que o restaurante estava lotado.",
         "target_locale": "en",
         "expected_answers_en": [
-          "She said that the table was ready."
+          "The waiter said that the restaurant was full."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "reported_speech"
         ],
-        "pt": "Ela disse que a mesa estava pronta.",
-        "ctx": "Contexto de comida e restaurantes (nível B2).",
-        "blank": "said",
-        "wrong": "She said the table was ready."
+        "communicative_intent": "report_information",
+        "grammar_focus": "reported_speech",
+        "pattern_signature": "statement|past_simple|none|aff|reported",
+        "lexical_verbs": [
+          "say"
+        ],
+        "pt": "O garçom disse que o restaurante estava lotado.",
+        "ctx": "Situação: report information.",
+        "blank": "restaurant",
+        "wrong": "The waiter said that the restaurant full."
       },
       {
-        "template_id": "food_and_restaurants_b2_second_conditional_03",
-        "family_id": "food_and_restaurants_b2_second_conditional_2",
+        "template_id": "food_and_restaurants_b2_food4_second_cond",
+        "family_id": "food_and_restaurants_b2_hypothesize",
         "pack_id": "food_and_restaurants_b2",
         "theme": "food_and_restaurants",
         "level": "B2",
@@ -15093,42 +15167,202 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_starter"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "If I had more time, I would improve the starter.",
+        "sentence": "If I were you, I would try the fish.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria a entrada.",
+        "source_text_pt": "Se eu fosse você, experimentaria o peixe.",
         "target_locale": "en",
         "expected_answers_en": [
-          "If I had more time, I would improve the starter."
+          "If I were you, I would try the fish."
         ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the starter."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "second_conditional"
         ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria a entrada.",
-        "ctx": "Contexto de comida e restaurantes (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the starter."
+        "communicative_intent": "hypothesize",
+        "grammar_focus": "second_conditional",
+        "pattern_signature": "conditional|present_simple|would|aff|second_conditional",
+        "lexical_verbs": [
+          "try"
+        ],
+        "pt": "Se eu fosse você, experimentaria o peixe.",
+        "ctx": "Situação: hypothesize.",
+        "blank": "fish",
+        "wrong": "If I were you, I will try the fish."
       },
       {
-        "template_id": "food_and_restaurants_b2_subject_modal_base_verb_04",
-        "family_id": "food_and_restaurants_b2_subject_modal_base_verb_3",
+        "template_id": "food_and_restaurants_b2_food4_diplomatic",
+        "family_id": "food_and_restaurants_b2_request_politely",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "pattern_id": "can_could_request",
+        "primary_skill_id": "modal_deduction",
+        "skill_ids": [
+          "modal_deduction",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "Would you mind checking the bill again?",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Você se importaria de conferir a conta de novo?",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "Would you mind checking the bill again?"
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "modal_deduction"
+        ],
+        "communicative_intent": "request_politely",
+        "grammar_focus": "diplomatic_request",
+        "pattern_signature": "yesno_question|present_simple|would|aff|plain",
+        "lexical_verbs": [
+          "check"
+        ],
+        "pt": "Você se importaria de conferir a conta de novo?",
+        "ctx": "Situação: request politely.",
+        "blank": "bill",
+        "wrong": "Would you mind check the bill again?"
+      },
+      {
+        "template_id": "food_and_restaurants_b2_food4_pp_just",
+        "family_id": "food_and_restaurants_b2_report_status",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "pattern_id": "subject_have_past_participle_yet",
+        "primary_skill_id": "present_perfect",
+        "skill_ids": [
+          "present_perfect",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "We have just finished our dessert.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "Acabamos de terminar nossa sobremesa.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "We have just finished our dessert."
+        ],
+        "accepted_variants_en": [
+          "We've just finished our dessert."
+        ],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "present_perfect"
+        ],
+        "communicative_intent": "report_status",
+        "grammar_focus": "present_perfect",
+        "pattern_signature": "statement|present_perfect|none|aff|plain",
+        "lexical_verbs": [
+          "finish"
+        ],
+        "pt": "Acabamos de terminar nossa sobremesa.",
+        "ctx": "Situação: report status.",
+        "blank": "dessert",
+        "wrong": "We have just finish our dessert."
+      },
+      {
+        "template_id": "food_and_restaurants_b2_food4_passive2",
+        "family_id": "food_and_restaurants_b2_report_problem_replaced",
+        "pack_id": "food_and_restaurants_b2",
+        "theme": "food_and_restaurants",
+        "level": "B2",
+        "pattern_id": "passive_be_past_participle",
+        "primary_skill_id": "passive_voice",
+        "skill_ids": [
+          "passive_voice",
+          "vocabulary"
+        ],
+        "exercise_types": [
+          "translate_natural",
+          "fill_blank",
+          "build_sentence",
+          "choose_best",
+          "rewrite_natural",
+          "listen_type",
+          "speak_sentence"
+        ],
+        "slots": {},
+        "constraints": [
+          "curated_sentence"
+        ],
+        "distractor_strategies": [
+          "wrong_word_order",
+          "wrong_tense",
+          "wrong_collocation"
+        ],
+        "sentence": "The dessert was replaced without asking.",
+        "source_locale": "pt-BR",
+        "source_text_pt": "A sobremesa foi trocada sem avisar.",
+        "target_locale": "en",
+        "expected_answers_en": [
+          "The dessert was replaced without asking."
+        ],
+        "accepted_variants_en": [],
+        "explanation_pt": "Estrutura comunicativa.",
+        "skill_targets": [
+          "passive_voice"
+        ],
+        "communicative_intent": "report_problem_replaced",
+        "grammar_focus": "passive",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [
+          "replace"
+        ],
+        "pt": "A sobremesa foi trocada sem avisar.",
+        "ctx": "Situação: report problem replaced.",
+        "blank": "dessert",
+        "wrong": "The dessert was replace without asking."
+      },
+      {
+        "template_id": "food_and_restaurants_b2_food4_deduction",
+        "family_id": "food_and_restaurants_b2_make_deduction",
         "pack_id": "food_and_restaurants_b2",
         "theme": "food_and_restaurants",
         "level": "B2",
@@ -15147,47 +15381,48 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_main_course"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "I can update the main course today.",
+        "sentence": "The waiter must have forgotten our drinks.",
         "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar o prato principal hoje.",
+        "source_text_pt": "O garçom deve ter esquecido nossas bebidas.",
         "target_locale": "en",
         "expected_answers_en": [
-          "I can update the main course today."
+          "The waiter must have forgotten our drinks."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
           "modal_deduction"
         ],
-        "pt": "Eu posso atualizar o prato principal hoje.",
-        "ctx": "Contexto de comida e restaurantes (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the main course today."
+        "communicative_intent": "make_deduction",
+        "grammar_focus": "modal_deduction",
+        "pattern_signature": "statement|present_perfect|must|aff|plain",
+        "lexical_verbs": [
+          "forget"
+        ],
+        "pt": "O garçom deve ter esquecido nossas bebidas.",
+        "ctx": "Situação: make deduction.",
+        "blank": "drinks",
+        "wrong": "The waiter must has forgotten our drinks."
       },
       {
-        "template_id": "food_and_restaurants_b2_passive_be_past_participle_05",
-        "family_id": "food_and_restaurants_b2_passive_be_past_participle_4",
+        "template_id": "food_and_restaurants_b2_food4_contrast",
+        "family_id": "food_and_restaurants_b2_describe_experience",
         "pack_id": "food_and_restaurants_b2",
         "theme": "food_and_restaurants",
         "level": "B2",
-        "pattern_id": "passive_be_past_participle",
-        "primary_skill_id": "collocation",
+        "pattern_id": "subject_be_complement",
+        "primary_skill_id": "verb_to_be",
         "skill_ids": [
-          "collocation",
+          "verb_to_be",
           "vocabulary"
         ],
         "exercise_types": [
@@ -15199,194 +15434,35 @@ export const GENERATED_CONTENT_PACKS = [
           "listen_type",
           "speak_sentence"
         ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_dessert"
-        },
+        "slots": {},
         "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
+          "curated_sentence"
         ],
         "distractor_strategies": [
           "wrong_word_order",
           "wrong_tense",
           "wrong_collocation"
         ],
-        "sentence": "The dessert was reviewed by the team.",
+        "sentence": "The soup was tasty, but it was too salty.",
         "source_locale": "pt-BR",
-        "source_text_pt": "A sobremesa foi revisada pela equipe.",
+        "source_text_pt": "A sopa estava saborosa, mas estava muito salgada.",
         "target_locale": "en",
         "expected_answers_en": [
-          "The dessert was reviewed by the team."
+          "The soup was tasty, but it was too salty."
         ],
         "accepted_variants_en": [],
-        "explanation_pt": "Voz passiva: was/were + particípio passado.",
+        "explanation_pt": "Estrutura comunicativa.",
         "skill_targets": [
-          "collocation"
+          "verb_to_be"
         ],
-        "pt": "A sobremesa foi revisada pela equipe.",
-        "ctx": "Contexto de comida e restaurantes (nível B2).",
-        "blank": "dessert",
-        "wrong": "The dessert reviewed by the team."
-      },
-      {
-        "template_id": "food_and_restaurants_b2_reported_speech_statement_06",
-        "family_id": "food_and_restaurants_b2_reported_speech_statement_5",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "pattern_id": "reported_speech_statement",
-        "primary_skill_id": "word_order",
-        "skill_ids": [
-          "word_order",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_bill"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "She said that the bill was ready.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Ela disse que a conta estava pronta.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "She said that the bill was ready."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Discurso indireto com said that.",
-        "skill_targets": [
-          "word_order"
-        ],
-        "pt": "Ela disse que a conta estava pronta.",
-        "ctx": "Contexto de comida e restaurantes (nível B2).",
-        "blank": "said",
-        "wrong": "She said the bill was ready."
-      },
-      {
-        "template_id": "food_and_restaurants_b2_second_conditional_07",
-        "family_id": "food_and_restaurants_b2_second_conditional_0",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "pattern_id": "second_conditional",
-        "primary_skill_id": "vocabulary",
-        "skill_ids": [
-          "vocabulary",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_waiter"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "If I had more time, I would improve the waiter.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Se eu tivesse mais tempo, eu melhoraria o garçom.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "If I had more time, I would improve the waiter."
-        ],
-        "accepted_variants_en": [
-          "If I had more time, I'd improve the waiter."
-        ],
-        "explanation_pt": "Segunda condicional: if + passado, would + base.",
-        "skill_targets": [
-          "vocabulary"
-        ],
-        "pt": "Se eu tivesse mais tempo, eu melhoraria o garçom.",
-        "ctx": "Contexto de comida e restaurantes (nível B2).",
-        "blank": "I",
-        "wrong": "If I had more time, I will improve the waiter."
-      },
-      {
-        "template_id": "food_and_restaurants_b2_subject_modal_base_verb_08",
-        "family_id": "food_and_restaurants_b2_subject_modal_base_verb_1",
-        "pack_id": "food_and_restaurants_b2",
-        "theme": "food_and_restaurants",
-        "level": "B2",
-        "pattern_id": "subject_modal_base_verb",
-        "primary_skill_id": "passive_voice",
-        "skill_ids": [
-          "passive_voice",
-          "vocabulary"
-        ],
-        "exercise_types": [
-          "translate_natural",
-          "fill_blank",
-          "build_sentence",
-          "choose_best",
-          "rewrite_natural",
-          "listen_type",
-          "speak_sentence"
-        ],
-        "slots": {
-          "subject": "we",
-          "object": "food_and_restaurants_b2_reservation"
-        },
-        "constraints": [
-          "subject_auxiliary_agreement",
-          "level_allows_passive",
-          "level_allows_reported_speech"
-        ],
-        "distractor_strategies": [
-          "wrong_word_order",
-          "wrong_tense",
-          "wrong_collocation"
-        ],
-        "sentence": "I can update the reservation today.",
-        "source_locale": "pt-BR",
-        "source_text_pt": "Eu posso atualizar a reserva hoje.",
-        "target_locale": "en",
-        "expected_answers_en": [
-          "I can update the reservation today."
-        ],
-        "accepted_variants_en": [],
-        "explanation_pt": "Modal can + verbo na forma base.",
-        "skill_targets": [
-          "passive_voice"
-        ],
-        "pt": "Eu posso atualizar a reserva hoje.",
-        "ctx": "Contexto de comida e restaurantes (nível B2).",
-        "blank": "can",
-        "wrong": "I cans update the reservation today."
+        "communicative_intent": "describe_experience",
+        "grammar_focus": "past_contrast",
+        "pattern_signature": "statement|past_simple|none|aff|plain",
+        "lexical_verbs": [],
+        "pt": "A sopa estava saborosa, mas estava muito salgada.",
+        "ctx": "Situação: describe experience.",
+        "blank": "soup",
+        "wrong": "The soup tasty, but it was too salty."
       }
     ],
     "collocations": [

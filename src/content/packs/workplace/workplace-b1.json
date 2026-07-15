@@ -206,8 +206,8 @@
   ],
   "template_definitions": [
     {
-      "template_id": "workplace_b1_subject_have_past_participle_yet_01",
-      "family_id": "workplace_b1_subject_have_past_participle_yet_0",
+      "template_id": "workplace_b1_wp3_pp_sent",
+      "family_id": "workplace_b1_confirm_plan",
       "pack_id": "workplace_b1",
       "theme": "workplace",
       "level": "B1",
@@ -226,41 +226,96 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b1_company"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "We have checked the company already.",
+      "sentence": "I have already sent the report.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Nós já verificamos a empresa.",
+      "source_text_pt": "Já enviei o relatório.",
       "target_locale": "en",
       "expected_answers_en": [
-        "We have checked the company already."
+        "I have already sent the report."
       ],
       "accepted_variants_en": [
-        "We've checked the company already."
+        "I've already sent the report."
       ],
-      "explanation_pt": "Present perfect com already.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "present_perfect"
       ],
-      "pt": "Nós já verificamos a empresa.",
-      "ctx": "Contexto de trabalho (nível B1).",
-      "blank": "have",
-      "wrong": "We have check the company already."
+      "communicative_intent": "confirm_plan",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "statement|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "send"
+      ],
+      "pt": "Já enviei o relatório.",
+      "ctx": "Situação: confirm plan.",
+      "blank": "report",
+      "wrong": "I have already send the report."
     },
     {
-      "template_id": "workplace_b1_subject_have_been_ving_object_duration_02",
-      "family_id": "workplace_b1_subject_have_been_ving_object_duration_1",
+      "template_id": "workplace_b1_wp3_first_cond",
+      "family_id": "workplace_b1_plan_contingency",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "if_present_will_future",
+      "primary_skill_id": "first_conditional",
+      "skill_ids": [
+        "first_conditional",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "If we finish the project early, we will have more time.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Se terminarmos o projeto cedo, teremos mais tempo.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "If we finish the project early, we will have more time."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "first_conditional"
+      ],
+      "communicative_intent": "plan_contingency",
+      "grammar_focus": "first_conditional",
+      "pattern_signature": "conditional|will_future|none|aff|first_conditional",
+      "lexical_verbs": [
+        "finish"
+      ],
+      "pt": "Se terminarmos o projeto cedo, teremos mais tempo.",
+      "ctx": "Situação: plan contingency.",
+      "blank": "project",
+      "wrong": "If we will finish the project early, we have more time."
+    },
+    {
+      "template_id": "workplace_b1_wp3_ppc_working",
+      "family_id": "workplace_b1_report_status",
       "pack_id": "workplace_b1",
       "theme": "workplace",
       "level": "B1",
@@ -279,48 +334,50 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b1_project"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "They have been reviewing the project for two hours.",
+      "sentence": "I have been working on this task for two hours.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eles estão revisando o projeto há duas horas.",
+      "source_text_pt": "Estou trabalhando nesta tarefa há duas horas.",
       "target_locale": "en",
       "expected_answers_en": [
-        "They have been reviewing the project for two hours."
+        "I have been working on this task for two hours."
       ],
       "accepted_variants_en": [
-        "They've been reviewing the project for two hours."
+        "I've been working on this task for two hours."
       ],
-      "explanation_pt": "Present perfect continuous com duração (for).",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "present_perfect_continuous"
       ],
-      "pt": "Eles estão revisando o projeto há duas horas.",
-      "ctx": "Contexto de trabalho (nível B1).",
-      "blank": "have",
-      "wrong": "They have been reviewed the project for two hours."
+      "communicative_intent": "report_status",
+      "grammar_focus": "present_perfect_continuous",
+      "pattern_signature": "statement|present_perfect_continuous|none|aff|plain",
+      "lexical_verbs": [
+        "work"
+      ],
+      "pt": "Estou trabalhando nesta tarefa há duas horas.",
+      "ctx": "Situação: report status.",
+      "blank": "task",
+      "wrong": "I have been work on this task for two hours."
     },
     {
-      "template_id": "workplace_b1_if_present_will_future_03",
-      "family_id": "workplace_b1_if_present_will_future_2",
+      "template_id": "workplace_b1_wp3_plan_send",
+      "family_id": "workplace_b1_describe_plan",
       "pack_id": "workplace_b1",
       "theme": "workplace",
       "level": "B1",
-      "pattern_id": "if_present_will_future",
-      "primary_skill_id": "gerund_after_been",
+      "pattern_id": "subject_be_going_to_verb_time",
+      "primary_skill_id": "future_going_to",
       "skill_ids": [
-        "gerund_after_been",
+        "future_going_to",
         "vocabulary"
       ],
       "exercise_types": [
@@ -332,41 +389,200 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b1_client"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "If we confirm the client, we will start tomorrow.",
+      "sentence": "I am going to send the email tomorrow.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Se confirmarmos o cliente, vamos começar amanhã.",
+      "source_text_pt": "Vou enviar o e-mail amanhã.",
       "target_locale": "en",
       "expected_answers_en": [
-        "If we confirm the client, we will start tomorrow."
+        "I am going to send the email tomorrow."
       ],
       "accepted_variants_en": [
-        "If we confirm the client, we'll start tomorrow."
+        "I'm going to send the email tomorrow."
       ],
-      "explanation_pt": "Primeira condicional: if + presente, will + base.",
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
-        "gerund_after_been"
+        "future_going_to"
       ],
-      "pt": "Se confirmarmos o cliente, vamos começar amanhã.",
-      "ctx": "Contexto de trabalho (nível B1).",
-      "blank": "we",
-      "wrong": "If we confirm the client, we will start tomorrow."
+      "communicative_intent": "describe_plan",
+      "grammar_focus": "going_to",
+      "pattern_signature": "statement|going_to|none|aff|plain",
+      "lexical_verbs": [
+        "send"
+      ],
+      "pt": "Vou enviar o e-mail amanhã.",
+      "ctx": "Situação: describe plan.",
+      "blank": "email",
+      "wrong": "I am going to sent the email tomorrow."
     },
     {
-      "template_id": "workplace_b1_subject_modal_base_verb_04",
-      "family_id": "workplace_b1_subject_modal_base_verb_3",
+      "template_id": "workplace_b1_wp3_pp_led",
+      "family_id": "workplace_b1_ask_experience",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "subject_have_past_participle_yet",
+      "primary_skill_id": "present_perfect",
+      "skill_ids": [
+        "present_perfect",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "Have you ever led a meeting?",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você já liderou uma reunião?",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "Have you ever led a meeting?"
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "present_perfect"
+      ],
+      "communicative_intent": "ask_experience",
+      "grammar_focus": "present_perfect",
+      "pattern_signature": "yesno_question|present_simple|none|aff|plain",
+      "lexical_verbs": [
+        "lead"
+      ],
+      "pt": "Você já liderou uma reunião?",
+      "ctx": "Situação: ask experience.",
+      "blank": "meeting",
+      "wrong": "Have you ever lead a meeting?"
+    },
+    {
+      "template_id": "workplace_b1_wp3_advice",
+      "family_id": "workplace_b1_give_advice",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "subject_modal_base_verb",
+      "primary_skill_id": "question_auxiliary",
+      "skill_ids": [
+        "question_auxiliary",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "You should talk to the manager about this.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Você deveria falar com o gerente sobre isso.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "You should talk to the manager about this."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "question_auxiliary"
+      ],
+      "communicative_intent": "give_advice",
+      "grammar_focus": "modal_advice",
+      "pattern_signature": "statement|present_simple|should|aff|plain",
+      "lexical_verbs": [
+        "talk"
+      ],
+      "pt": "Você deveria falar com o gerente sobre isso.",
+      "ctx": "Situação: give advice.",
+      "blank": "manager",
+      "wrong": "You should talks to the manager about this."
+    },
+    {
+      "template_id": "workplace_b1_wp3_compare_task",
+      "family_id": "workplace_b1_compare_options",
+      "pack_id": "workplace_b1",
+      "theme": "workplace",
+      "level": "B1",
+      "pattern_id": "comparative_than",
+      "primary_skill_id": "comparatives",
+      "skill_ids": [
+        "comparatives",
+        "vocabulary"
+      ],
+      "exercise_types": [
+        "translate_natural",
+        "fill_blank",
+        "build_sentence",
+        "choose_best",
+        "rewrite_natural",
+        "listen_type",
+        "speak_sentence"
+      ],
+      "slots": {},
+      "constraints": [
+        "curated_sentence"
+      ],
+      "distractor_strategies": [
+        "wrong_word_order",
+        "wrong_tense",
+        "wrong_collocation"
+      ],
+      "sentence": "This task is easier than the last one.",
+      "source_locale": "pt-BR",
+      "source_text_pt": "Esta tarefa é mais fácil que a anterior.",
+      "target_locale": "en",
+      "expected_answers_en": [
+        "This task is easier than the last one."
+      ],
+      "accepted_variants_en": [],
+      "explanation_pt": "Estrutura comunicativa.",
+      "skill_targets": [
+        "comparatives"
+      ],
+      "communicative_intent": "compare_options",
+      "grammar_focus": "comparative",
+      "pattern_signature": "statement|be|none|aff|comparative",
+      "lexical_verbs": [],
+      "pt": "Esta tarefa é mais fácil que a anterior.",
+      "ctx": "Situação: compare options.",
+      "blank": "task",
+      "wrong": "This task is more easy than the last one."
+    },
+    {
+      "template_id": "workplace_b1_wp3_preference",
+      "family_id": "workplace_b1_state_preference",
       "pack_id": "workplace_b1",
       "theme": "workplace",
       "level": "B1",
@@ -385,245 +601,39 @@
         "listen_type",
         "speak_sentence"
       ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b1_support_team"
-      },
+      "slots": {},
       "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
+        "curated_sentence"
       ],
       "distractor_strategies": [
         "wrong_word_order",
         "wrong_tense",
         "wrong_collocation"
       ],
-      "sentence": "I can update the support team today.",
+      "sentence": "I would rather finish this task today.",
       "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar a equipe de suporte hoje.",
+      "source_text_pt": "Eu preferiria terminar esta tarefa hoje.",
       "target_locale": "en",
       "expected_answers_en": [
-        "I can update the support team today."
+        "I would rather finish this task today."
       ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
+      "accepted_variants_en": [
+        "I'd rather finish this task today."
+      ],
+      "explanation_pt": "Estrutura comunicativa.",
       "skill_targets": [
         "first_conditional"
       ],
-      "pt": "Eu posso atualizar a equipe de suporte hoje.",
-      "ctx": "Contexto de trabalho (nível B1).",
-      "blank": "can",
-      "wrong": "I cans update the support team today."
-    },
-    {
-      "template_id": "workplace_b1_subject_have_past_participle_yet_05",
-      "family_id": "workplace_b1_subject_have_past_participle_yet_4",
-      "pack_id": "workplace_b1",
-      "theme": "workplace",
-      "level": "B1",
-      "pattern_id": "subject_have_past_participle_yet",
-      "primary_skill_id": "question_auxiliary",
-      "skill_ids": [
-        "question_auxiliary",
-        "vocabulary"
+      "communicative_intent": "state_preference",
+      "grammar_focus": "would_preference",
+      "pattern_signature": "statement|present_simple|would|aff|plain",
+      "lexical_verbs": [
+        "finish"
       ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b1_deployment"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "We have checked the deployment already.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Nós já verificamos a implantação.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "We have checked the deployment already."
-      ],
-      "accepted_variants_en": [
-        "We've checked the deployment already."
-      ],
-      "explanation_pt": "Present perfect com already.",
-      "skill_targets": [
-        "question_auxiliary"
-      ],
-      "pt": "Nós já verificamos a implantação.",
-      "ctx": "Contexto de trabalho (nível B1).",
-      "blank": "have",
-      "wrong": "We have check the deployment already."
-    },
-    {
-      "template_id": "workplace_b1_subject_have_been_ving_object_duration_06",
-      "family_id": "workplace_b1_subject_have_been_ving_object_duration_5",
-      "pack_id": "workplace_b1",
-      "theme": "workplace",
-      "level": "B1",
-      "pattern_id": "subject_have_been_ving_object_duration",
-      "primary_skill_id": "collocation",
-      "skill_ids": [
-        "collocation",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b1_report"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "They have been reviewing the report for two hours.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eles estão revisando o relatório há duas horas.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "They have been reviewing the report for two hours."
-      ],
-      "accepted_variants_en": [
-        "They've been reviewing the report for two hours."
-      ],
-      "explanation_pt": "Present perfect continuous com duração (for).",
-      "skill_targets": [
-        "collocation"
-      ],
-      "pt": "Eles estão revisando o relatório há duas horas.",
-      "ctx": "Contexto de trabalho (nível B1).",
-      "blank": "have",
-      "wrong": "They have been reviewed the report for two hours."
-    },
-    {
-      "template_id": "workplace_b1_if_present_will_future_07",
-      "family_id": "workplace_b1_if_present_will_future_0",
-      "pack_id": "workplace_b1",
-      "theme": "workplace",
-      "level": "B1",
-      "pattern_id": "if_present_will_future",
-      "primary_skill_id": "preposition",
-      "skill_ids": [
-        "preposition",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b1_requirements"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "If we confirm the requirements, we will start tomorrow.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Se confirmarmos os requisitos, vamos começar amanhã.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "If we confirm the requirements, we will start tomorrow."
-      ],
-      "accepted_variants_en": [
-        "If we confirm the requirements, we'll start tomorrow."
-      ],
-      "explanation_pt": "Primeira condicional: if + presente, will + base.",
-      "skill_targets": [
-        "preposition"
-      ],
-      "pt": "Se confirmarmos os requisitos, vamos começar amanhã.",
-      "ctx": "Contexto de trabalho (nível B1).",
-      "blank": "we",
-      "wrong": "If we confirm the requirements, we will start tomorrow."
-    },
-    {
-      "template_id": "workplace_b1_subject_modal_base_verb_08",
-      "family_id": "workplace_b1_subject_modal_base_verb_1",
-      "pack_id": "workplace_b1",
-      "theme": "workplace",
-      "level": "B1",
-      "pattern_id": "subject_modal_base_verb",
-      "primary_skill_id": "present_perfect",
-      "skill_ids": [
-        "present_perfect",
-        "vocabulary"
-      ],
-      "exercise_types": [
-        "translate_natural",
-        "fill_blank",
-        "build_sentence",
-        "choose_best",
-        "rewrite_natural",
-        "listen_type",
-        "speak_sentence"
-      ],
-      "slots": {
-        "subject": "we",
-        "object": "workplace_b1_open_positions"
-      },
-      "constraints": [
-        "subject_auxiliary_agreement",
-        "level_allows_present_perfect_continuous"
-      ],
-      "distractor_strategies": [
-        "wrong_word_order",
-        "wrong_tense",
-        "wrong_collocation"
-      ],
-      "sentence": "I can update the open positions today.",
-      "source_locale": "pt-BR",
-      "source_text_pt": "Eu posso atualizar as vagas abertas hoje.",
-      "target_locale": "en",
-      "expected_answers_en": [
-        "I can update the open positions today."
-      ],
-      "accepted_variants_en": [],
-      "explanation_pt": "Modal can + verbo na forma base.",
-      "skill_targets": [
-        "present_perfect"
-      ],
-      "pt": "Eu posso atualizar as vagas abertas hoje.",
-      "ctx": "Contexto de trabalho (nível B1).",
-      "blank": "can",
-      "wrong": "I cans update the open positions today."
+      "pt": "Eu preferiria terminar esta tarefa hoje.",
+      "ctx": "Situação: state preference.",
+      "blank": "task",
+      "wrong": "I would rather finished this task today."
     }
   ],
   "collocations": [
