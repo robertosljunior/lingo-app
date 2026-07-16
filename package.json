@@ -14,6 +14,7 @@
     "validate:content-packs": "node scripts/validate-content-packs.mjs",
     "quality:content-packs": "node scripts/quality-content-packs.mjs",
     "validate:knowledge-packs": "node scripts/validate-knowledge-packs.mjs",
+    "validate:pedagogy-v2": "node scripts/validate-pedagogy-v2.mjs",
     "benchmark:structural-nlp": "node scripts/benchmark-structural-nlp.mjs",
     "benchmark:semantic": "node scripts/benchmark-semantic.mjs"
   },

@@ -1,0 +1,683 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "pedagogy_v2_still",
+    "pack_kind": "pedagogical_v2",
+    "title": {
+      "pt": "still — usos progressivos",
+      "en": "still — progressive usage"
+    },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "notes": "Piloto vertical do modelo de conteúdo V2. 'still' é uma palavra funcional frequente: entra cedo, e cada sentido/construção tem a sua própria recomendação de exposição. O lexema não possui nível."
+  },
+  "lexemes": [
+    {
+      "lexeme_id": "lexeme:still",
+      "lemma": "still",
+      "language": "en",
+      "part_of_speech": ["adverb", "discourse_marker"],
+      "glosses_pt": ["ainda", "mesmo assim", "ainda assim"],
+      "frequency_band": "high_frequency_functional",
+      "notes": "Sem nível global por decisão de modelo: o que progride é o sentido, a construção e a autonomia exigida, nunca a palavra."
+    }
+  ],
+  "senses": [
+    {
+      "sense_id": "sense:still.continuity",
+      "lexeme_id": "lexeme:still",
+      "label": "Continuidade / persistência",
+      "meaning_pt": "Algo continua verdadeiro ou continua acontecendo — uma ação que segue em curso ou um estado que segue valendo.",
+      "gloss_en": "a state or action continues to hold",
+      "communicative_function_ids": ["function:express_continuation", "function:express_persistent_state"],
+      "first_exposure_stage": "A1",
+      "related_sense_ids": [],
+      "notes": "Núcleo semântico único realizado por construções diferentes: 'I still live here.' (verbo lexical) e 'I am still tired.' (be + complemento) compartilham este sentido."
+    },
+    {
+      "sense_id": "sense:still.counter_expectation",
+      "lexeme_id": "lexeme:still",
+      "label": "Persistência apesar de obstáculo",
+      "meaning_pt": "A ação ou o resultado acontece mesmo havendo um obstáculo ou uma razão para esperar o contrário.",
+      "gloss_en": "the outcome holds despite an obstacle or contrary expectation",
+      "communicative_function_ids": ["function:express_result_despite_obstacle"],
+      "first_exposure_stage": "A2",
+      "related_sense_ids": ["sense:still.continuity"],
+      "notes": "Decisão de modelagem: sentido próprio, documentado como extensão concessiva convencionalizada da continuidade (related_sense_ids). A leitura concessiva completa emerge da COMBINAÇÃO deste sentido com as construções but/although e com as funções comunicativas — ver docs/pedagogy-v2-content-model.md."
+    },
+    {
+      "sense_id": "sense:still.discourse_reservation",
+      "lexeme_id": "lexeme:still",
+      "label": "Marcador discursivo de ressalva",
+      "meaning_pt": "Organiza o discurso: reconhece o que foi dito antes e introduz uma ressalva ou contraste.",
+      "gloss_en": "clause-initial discourse marker introducing a reservation",
+      "communicative_function_ids": ["function:introduce_discourse_reservation"],
+      "first_exposure_stage": "B1",
+      "related_sense_ids": ["sense:still.counter_expectation"],
+      "notes": "Distingue-se do advérbio intraoracional pela posição inicial de oração seguida de vírgula (representada na construção), e por operar sobre o discurso anterior, não sobre o predicado."
+    }
+  ],
+  "communicative_functions": [
+    {
+      "function_id": "function:express_continuation",
+      "label_pt": "Expressar continuação",
+      "description_pt": "Dizer que uma ação continua acontecendo até agora."
+    },
+    {
+      "function_id": "function:express_persistent_state",
+      "label_pt": "Expressar estado persistente",
+      "description_pt": "Dizer que um estado ou condição continua valendo."
+    },
+    {
+      "function_id": "function:express_result_despite_obstacle",
+      "label_pt": "Expressar resultado apesar de obstáculo",
+      "description_pt": "Dizer que algo aconteceu mesmo com uma dificuldade ou expectativa contrária."
+    },
+    {
+      "function_id": "function:introduce_concession",
+      "label_pt": "Introduzir concessão",
+      "description_pt": "Marcar explicitamente o obstáculo em uma oração subordinada (although) antes do resultado."
+    },
+    {
+      "function_id": "function:introduce_discourse_reservation",
+      "label_pt": "Introduzir ressalva discursiva",
+      "description_pt": "Reconhecer o que foi dito e acrescentar uma ressalva ou ponto de cautela."
+    }
+  ],
+  "constructions": [
+    {
+      "construction_id": "construction:still.subject_still_lexical_verb",
+      "label": "sujeito + still + verbo lexical",
+      "pattern": "SUBJECT + still + LEXICAL_VERB (+ COMPLEMENT)",
+      "fixed_elements": ["still"],
+      "slots": [
+        { "slot_id": "subject", "syntactic_role": "subject", "semantic_role": "agent_or_experiencer", "allowed_forms": ["pronoun", "noun_phrase"] },
+        { "slot_id": "lexical_verb", "syntactic_role": "main_verb", "semantic_role": "ongoing_action", "allowed_forms": ["present_simple"] },
+        { "slot_id": "complement", "syntactic_role": "complement", "semantic_role": "scene_detail", "allowed_forms": ["noun_phrase", "prepositional_phrase", "adverbial"], "optional": true }
+      ],
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_continuation"],
+      "prerequisite_construction_ids": [],
+      "recommended_stage": "A1",
+      "notes": "still ocupa posição pré-verbal. Em perguntas, a ordem interrogativa vem da gramática de perguntas (ponte V1 declarada nos exemplares), não desta construção."
+    },
+    {
+      "construction_id": "construction:still.subject_be_still_complement",
+      "label": "sujeito + be + still + complemento",
+      "pattern": "SUBJECT + BE + still + COMPLEMENT",
+      "fixed_elements": ["still"],
+      "slots": [
+        { "slot_id": "subject", "syntactic_role": "subject", "semantic_role": "experiencer_or_theme", "allowed_forms": ["pronoun", "noun_phrase"] },
+        { "slot_id": "be", "syntactic_role": "copula", "semantic_role": "state_link", "allowed_forms": ["finite_be"] },
+        { "slot_id": "complement", "syntactic_role": "complement", "semantic_role": "persistent_state_or_location", "allowed_forms": ["adjective_phrase", "prepositional_phrase", "noun_phrase"] }
+      ],
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_persistent_state"],
+      "prerequisite_construction_ids": ["construction:still.subject_still_lexical_verb"],
+      "recommended_stage": "A1-A2",
+      "notes": "Mesmo sentido de continuidade da construção com verbo lexical, mas still segue o be finito em vez de precedê-lo. Prova estrutural de que sentido ≠ construção."
+    },
+    {
+      "construction_id": "construction:still.clause_but_subject_still_verb",
+      "label": "oração de obstáculo + but + sujeito + still + verbo",
+      "pattern": "OBSTACLE_CLAUSE + , but + SUBJECT + still + VERB (+ COMPLEMENT)",
+      "fixed_elements": ["but", "still"],
+      "slots": [
+        { "slot_id": "obstacle_clause", "syntactic_role": "clause", "semantic_role": "obstacle_or_contrary_expectation", "allowed_forms": ["finite_clause"] },
+        { "slot_id": "subject", "syntactic_role": "subject", "semantic_role": "agent", "allowed_forms": ["pronoun", "noun_phrase"] },
+        { "slot_id": "result_verb", "syntactic_role": "main_verb", "semantic_role": "achieved_result", "allowed_forms": ["past_simple", "present_simple"] }
+      ],
+      "semantic_relation": {
+        "relation": "result_despite_obstacle",
+        "cause_slot": "obstacle_clause",
+        "result_slot": "result_verb"
+      },
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:express_result_despite_obstacle"],
+      "prerequisite_construction_ids": ["construction:still.subject_still_lexical_verb"],
+      "recommended_stage": "A2",
+      "notes": "A relação obstáculo → resultado-mesmo-assim é da CONSTRUÇÃO, não das palavras isoladas: but liga as orações e still assevera o resultado contra a expectativa."
+    },
+    {
+      "construction_id": "construction:still.although_clause_subject_still_verb",
+      "label": "although + oração, sujeito + still + verbo",
+      "pattern": "Although + OBSTACLE_CLAUSE + , + SUBJECT + still + VERB (+ COMPLEMENT)",
+      "fixed_elements": ["although", "still"],
+      "slots": [
+        { "slot_id": "obstacle_clause", "syntactic_role": "subordinate_clause", "semantic_role": "obstacle_or_contrary_expectation", "allowed_forms": ["finite_clause"] },
+        { "slot_id": "subject", "syntactic_role": "subject", "semantic_role": "agent", "allowed_forms": ["pronoun", "noun_phrase"] },
+        { "slot_id": "result_verb", "syntactic_role": "main_verb", "semantic_role": "achieved_result", "allowed_forms": ["past_simple", "present_simple"] }
+      ],
+      "semantic_relation": {
+        "relation": "result_despite_obstacle",
+        "cause_slot": "obstacle_clause",
+        "result_slot": "result_verb"
+      },
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:introduce_concession", "function:express_result_despite_obstacle"],
+      "prerequisite_construction_ids": ["construction:still.clause_but_subject_still_verb"],
+      "recommended_stage": "A2-B1",
+      "notes": "Padrão completo aprovado: although e still são elementos fixos SOLIDÁRIOS da mesma construção — a subordinada marca o obstáculo e still assevera o resultado. Uma construção que realiza um sentido e combina duas funções comunicativas."
+    },
+    {
+      "construction_id": "construction:still.discourse_still_clause",
+      "label": "Still, + oração",
+      "pattern": "Still, + CLAUSE",
+      "fixed_elements": ["still"],
+      "slots": [
+        { "slot_id": "reservation_clause", "syntactic_role": "main_clause", "semantic_role": "reservation_or_caution", "allowed_forms": ["finite_clause"] }
+      ],
+      "sense_ids": ["sense:still.discourse_reservation"],
+      "communicative_function_ids": ["function:introduce_discourse_reservation"],
+      "prerequisite_construction_ids": ["construction:still.clause_but_subject_still_verb"],
+      "recommended_stage": "B1-B2",
+      "notes": "Posição inicial de oração + vírgula distinguem o marcador discursivo do advérbio intraoracional. O conteúdo contrastado vem do discurso anterior (declarado no context do exemplar)."
+    }
+  ],
+  "exemplars": [
+    {
+      "exemplar_id": "exemplar:still.001",
+      "text_en": "I still live here.",
+      "text_pt": "Eu ainda moro aqui.",
+      "construction_id": "construction:still.subject_still_lexical_verb",
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_continuation"],
+      "pedagogical_targets": [
+        { "target_type": "sense", "target_id": "sense:still.continuity", "role": "primary" },
+        { "target_type": "construction", "target_id": "construction:still.subject_still_lexical_verb", "role": "primary" }
+      ],
+      "prerequisites": [
+        { "type": "grammar_skill_v1", "ref": "simple_present", "compat_bridge": true }
+      ],
+      "intended_new_items": [
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "construction", "ref": "construction:still.subject_still_lexical_verb" }
+      ],
+      "context": "Você reencontra um amigo de infância e conta que nunca se mudou de casa.",
+      "context_items": ["live", "here"],
+      "usage_notes": "Primeira exposição a still: frase curta, concreta, uma ação que continua.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:still.002",
+      "text_en": "We still talk every week.",
+      "text_pt": "Nós ainda conversamos toda semana.",
+      "construction_id": "construction:still.subject_still_lexical_verb",
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_continuation"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.subject_still_lexical_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.continuity", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "construction", "ref": "construction:still.subject_still_lexical_verb" }
+      ],
+      "intended_new_items": [],
+      "context": "Você fala de uma amiga que se mudou para outra cidade.",
+      "context_items": ["talk", "week"],
+      "usage_notes": "Consolidação: nenhuma novidade pretendida, sujeito plural.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:still.003",
+      "text_en": "She still works at the hospital.",
+      "text_pt": "Ela ainda trabalha no hospital.",
+      "construction_id": "construction:still.subject_still_lexical_verb",
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_continuation"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.subject_still_lexical_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.continuity", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "construction", "ref": "construction:still.subject_still_lexical_verb" },
+        { "type": "grammar_skill_v1", "ref": "simple_present", "compat_bridge": true }
+      ],
+      "intended_new_items": [],
+      "context": "Você atualiza um conhecido sobre uma antiga colega de trabalho.",
+      "context_items": ["works", "hospital"],
+      "usage_notes": "Terceira pessoa com -s; a concordância é pré-requisito V1, não alvo.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:still.004",
+      "text_en": "Do you still have my book?",
+      "text_pt": "Você ainda está com o meu livro?",
+      "construction_id": "construction:still.subject_still_lexical_verb",
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_continuation"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.subject_still_lexical_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.continuity", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "construction", "ref": "construction:still.subject_still_lexical_verb" },
+        { "type": "grammar_skill_v1", "ref": "question_structure", "compat_bridge": true }
+      ],
+      "intended_new_items": [],
+      "context": "Você emprestou um livro há meses e quer saber se o amigo ainda o tem.",
+      "context_items": ["book"],
+      "usage_notes": "Variação interrogativa: still permanece pré-verbal; a ordem da pergunta vem da gramática de perguntas (ponte V1).",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:still.005",
+      "text_en": "They still play soccer on Sundays.",
+      "text_pt": "Eles ainda jogam futebol aos domingos.",
+      "construction_id": "construction:still.subject_still_lexical_verb",
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_continuation"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.subject_still_lexical_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.continuity", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "construction", "ref": "construction:still.subject_still_lexical_verb" }
+      ],
+      "intended_new_items": [],
+      "context": "Você comenta sobre um grupo de amigos que mantém um costume antigo.",
+      "context_items": ["play", "soccer"],
+      "usage_notes": "Hábito que continua; complemento adverbial de tempo.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:still.006",
+      "text_en": "I am still tired.",
+      "text_pt": "Eu ainda estou cansado.",
+      "construction_id": "construction:still.subject_be_still_complement",
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_persistent_state"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.subject_be_still_complement", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.continuity", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "grammar_skill_v1", "ref": "verb_to_be", "compat_bridge": true }
+      ],
+      "intended_new_items": [
+        { "type": "construction", "ref": "construction:still.subject_be_still_complement" }
+      ],
+      "context": "Você dormiu mal e acabou de acordar.",
+      "context_items": ["tired"],
+      "usage_notes": "Mesmo sentido de continuidade do exemplar 001, construção nova: still depois do be. Exatamente UMA novidade pretendida.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1-A2"
+    },
+    {
+      "exemplar_id": "exemplar:still.007",
+      "text_en": "The coffee is still hot.",
+      "text_pt": "O café ainda está quente.",
+      "construction_id": "construction:still.subject_be_still_complement",
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_persistent_state"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.subject_be_still_complement", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.continuity", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "construction", "ref": "construction:still.subject_be_still_complement" }
+      ],
+      "intended_new_items": [],
+      "context": "Você oferece a alguém o café que preparou há pouco.",
+      "context_items": ["coffee", "hot"],
+      "usage_notes": "Sujeito não humano; estado físico persistente.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1-A2"
+    },
+    {
+      "exemplar_id": "exemplar:still.008",
+      "text_en": "He is still at work.",
+      "text_pt": "Ele ainda está no trabalho.",
+      "construction_id": "construction:still.subject_be_still_complement",
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_persistent_state"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.subject_be_still_complement", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.continuity", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "construction", "ref": "construction:still.subject_be_still_complement" }
+      ],
+      "intended_new_items": [],
+      "context": "Alguém pergunta pelo seu irmão no fim do dia.",
+      "context_items": ["work"],
+      "usage_notes": "Complemento de localização (sintagma preposicional) em vez de adjetivo.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1-A2"
+    },
+    {
+      "exemplar_id": "exemplar:still.009",
+      "text_en": "Are you still hungry?",
+      "text_pt": "Você ainda está com fome?",
+      "construction_id": "construction:still.subject_be_still_complement",
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_persistent_state"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.subject_be_still_complement", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.continuity", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "construction", "ref": "construction:still.subject_be_still_complement" },
+        { "type": "grammar_skill_v1", "ref": "question_structure", "compat_bridge": true }
+      ],
+      "intended_new_items": [],
+      "context": "Vocês acabaram de jantar e sobrou comida.",
+      "context_items": ["hungry"],
+      "usage_notes": "Pergunta com be: a inversão vem da gramática de perguntas (ponte V1); still segue o sujeito.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1-A2"
+    },
+    {
+      "exemplar_id": "exemplar:still.010",
+      "text_en": "The store is still open.",
+      "text_pt": "A loja ainda está aberta.",
+      "construction_id": "construction:still.subject_be_still_complement",
+      "sense_ids": ["sense:still.continuity"],
+      "communicative_function_ids": ["function:express_persistent_state"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.subject_be_still_complement", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.continuity", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "construction", "ref": "construction:still.subject_be_still_complement" }
+      ],
+      "intended_new_items": [],
+      "context": "Já é tarde e vocês precisam comprar uma coisa antes de voltar para casa.",
+      "context_items": ["store", "open"],
+      "usage_notes": "Estado persistente com relevância prática imediata.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1-A2"
+    },
+    {
+      "exemplar_id": "exemplar:still.011",
+      "text_en": "It was difficult, but I still tried.",
+      "text_pt": "Foi difícil, mas mesmo assim eu tentei.",
+      "construction_id": "construction:still.clause_but_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "primary" },
+        { "target_type": "construction", "target_id": "construction:still.clause_but_subject_still_verb", "role": "primary" },
+        { "target_type": "communicative_function", "target_id": "function:express_result_despite_obstacle", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "construction", "ref": "construction:still.subject_still_lexical_verb" },
+        { "type": "grammar_skill_v1", "ref": "past_simple", "compat_bridge": true }
+      ],
+      "intended_new_items": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.clause_but_subject_still_verb" }
+      ],
+      "context": "Você conta como foi resolver um problema complicado no trabalho.",
+      "context_items": ["difficult", "tried"],
+      "usage_notes": "Primeira exposição ao sentido contra-expectativa: obstáculo explícito na primeira oração, resultado assegurado por still. Duas novidades pretendidas.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:still.012",
+      "text_en": "It was raining, but we still went to the park.",
+      "text_pt": "Estava chovendo, mas mesmo assim fomos ao parque.",
+      "construction_id": "construction:still.clause_but_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.clause_but_subject_still_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.clause_but_subject_still_verb" }
+      ],
+      "intended_new_items": [],
+      "context": "Você conta como foi o fim de semana com as crianças.",
+      "context_items": ["raining", "park"],
+      "usage_notes": "Obstáculo natural (clima) e resultado em movimento; sujeito plural.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:still.013",
+      "text_en": "The test was hard, but she still passed.",
+      "text_pt": "A prova foi difícil, mas mesmo assim ela passou.",
+      "construction_id": "construction:still.clause_but_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.clause_but_subject_still_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.clause_but_subject_still_verb" }
+      ],
+      "intended_new_items": [],
+      "context": "Você dá uma boa notícia sobre uma amiga que estava preocupada com a prova.",
+      "context_items": ["test", "passed"],
+      "usage_notes": "Resultado alcançado contra a expectativa criada pela dificuldade.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:still.014",
+      "text_en": "I was tired, but I still finished my homework.",
+      "text_pt": "Eu estava cansado, mas mesmo assim terminei o dever de casa.",
+      "construction_id": "construction:still.clause_but_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.clause_but_subject_still_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.clause_but_subject_still_verb" }
+      ],
+      "intended_new_items": [],
+      "context": "Você explica ao professor como foi a noite anterior.",
+      "context_items": ["tired", "homework"],
+      "usage_notes": "O obstáculo é um estado interno (cansaço) — conecta com o vocabulário do exemplar 006.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:still.015",
+      "text_en": "Although it was hard, I still tried.",
+      "text_pt": "Embora fosse difícil, mesmo assim eu tentei.",
+      "construction_id": "construction:still.although_clause_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:introduce_concession", "function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.although_clause_subject_still_verb", "role": "primary" },
+        { "target_type": "communicative_function", "target_id": "function:introduce_concession", "role": "secondary" },
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.clause_but_subject_still_verb" }
+      ],
+      "intended_new_items": [
+        { "type": "construction", "ref": "construction:still.although_clause_subject_still_verb" },
+        { "type": "communicative_function", "ref": "function:introduce_concession" }
+      ],
+      "context": "Você resume uma experiência desafiadora em uma entrevista.",
+      "context_items": ["hard", "tried"],
+      "usage_notes": "Mesmo sentido do exemplar 011, agora com a concessão marcada por although: o par prova que but/although mudam a construção e a função, não o sentido.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:still.016",
+      "text_en": "Although he was sick, he still came to the meeting.",
+      "text_pt": "Embora estivesse doente, ele mesmo assim veio à reunião.",
+      "construction_id": "construction:still.although_clause_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:introduce_concession", "function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.although_clause_subject_still_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.although_clause_subject_still_verb" }
+      ],
+      "intended_new_items": [],
+      "context": "Você comenta a dedicação de um colega de equipe.",
+      "context_items": ["sick", "meeting"],
+      "usage_notes": "Obstáculo de saúde; resultado social. Consolidação da construção concessiva.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:still.017",
+      "text_en": "Although the food was expensive, we still ordered dessert.",
+      "text_pt": "Embora a comida fosse cara, mesmo assim pedimos sobremesa.",
+      "construction_id": "construction:still.although_clause_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:introduce_concession", "function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.although_clause_subject_still_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.although_clause_subject_still_verb" }
+      ],
+      "intended_new_items": [],
+      "context": "Você conta como terminou um jantar especial de aniversário.",
+      "context_items": ["food", "dessert"],
+      "usage_notes": "Obstáculo econômico; decisão tomada mesmo assim.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:still.018",
+      "text_en": "Although she was nervous, she still gave the presentation.",
+      "text_pt": "Embora estivesse nervosa, ela mesmo assim fez a apresentação.",
+      "construction_id": "construction:still.although_clause_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:introduce_concession", "function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.although_clause_subject_still_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.although_clause_subject_still_verb" }
+      ],
+      "intended_new_items": [],
+      "context": "Você elogia a coragem de uma colega depois de uma reunião importante.",
+      "context_items": ["nervous", "presentation"],
+      "usage_notes": "Obstáculo emocional; registro levemente mais formal, adequado ao estágio.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:still.019",
+      "text_en": "Still, we need to be careful.",
+      "text_pt": "Ainda assim, precisamos ter cuidado.",
+      "construction_id": "construction:still.discourse_still_clause",
+      "sense_ids": ["sense:still.discourse_reservation"],
+      "communicative_function_ids": ["function:introduce_discourse_reservation"],
+      "pedagogical_targets": [
+        { "target_type": "sense", "target_id": "sense:still.discourse_reservation", "role": "primary" },
+        { "target_type": "construction", "target_id": "construction:still.discourse_still_clause", "role": "primary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.clause_but_subject_still_verb" }
+      ],
+      "intended_new_items": [
+        { "type": "sense", "ref": "sense:still.discourse_reservation" },
+        { "type": "construction", "ref": "construction:still.discourse_still_clause" }
+      ],
+      "context": "Um colega diz que o novo plano parece seguro; você concorda em parte, mas quer registrar uma ressalva.",
+      "context_items": ["careful"],
+      "usage_notes": "Primeira exposição ao marcador discursivo: still abre a oração, seguido de vírgula, e contrasta com o TURNO ANTERIOR do diálogo (declarado no context), não com uma oração interna.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:still.020",
+      "text_en": "Still, it was a good experience.",
+      "text_pt": "Ainda assim, foi uma boa experiência.",
+      "construction_id": "construction:still.discourse_still_clause",
+      "sense_ids": ["sense:still.discourse_reservation"],
+      "communicative_function_ids": ["function:introduce_discourse_reservation"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.discourse_still_clause", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.discourse_reservation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.discourse_reservation" },
+        { "type": "construction", "ref": "construction:still.discourse_still_clause" }
+      ],
+      "intended_new_items": [],
+      "context": "Você acabou de descrever uma viagem cheia de contratempos.",
+      "context_items": ["experience"],
+      "usage_notes": "Avaliação positiva que ressalva o relato negativo anterior — uso conversacional típico.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:still.021",
+      "text_en": "Still, nobody is perfect.",
+      "text_pt": "Ainda assim, ninguém é perfeito.",
+      "construction_id": "construction:still.discourse_still_clause",
+      "sense_ids": ["sense:still.discourse_reservation"],
+      "communicative_function_ids": ["function:introduce_discourse_reservation"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.discourse_still_clause", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.discourse_reservation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.discourse_reservation" },
+        { "type": "construction", "ref": "construction:still.discourse_still_clause" }
+      ],
+      "intended_new_items": [],
+      "context": "Vocês acabaram de comentar os erros de um colega de quem gostam muito.",
+      "context_items": ["perfect"],
+      "usage_notes": "Ressalva que suaviza a crítica anterior; generalização abstrata adequada ao estágio B1-B2.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:still.022",
+      "text_en": "Still, you did your best.",
+      "text_pt": "Ainda assim, você fez o seu melhor.",
+      "construction_id": "construction:still.discourse_still_clause",
+      "sense_ids": ["sense:still.discourse_reservation"],
+      "communicative_function_ids": ["function:introduce_discourse_reservation"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.discourse_still_clause", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.discourse_reservation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.discourse_reservation" },
+        { "type": "construction", "ref": "construction:still.discourse_still_clause" }
+      ],
+      "intended_new_items": [],
+      "context": "Um amigo está triste com o resultado de uma prova que correu mal.",
+      "context_items": ["best"],
+      "usage_notes": "Função consoladora: a ressalva reinterpreta positivamente o que o interlocutor acabou de lamentar.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    }
+  ]
+}
