@@ -112,6 +112,22 @@ describe('recording evidence', () => {
     expect(await storage.getLearnerTargetStatesV2('p1')).toEqual([])
   })
 
+  it('regression: no per-event write loop — valid events BEFORE an invalid tail are never persisted', async () => {
+    // A `for each event: await recordSingleEvent(event)` implementation would
+    // persist good1/good2 (different targets, states written) before failing on
+    // the invalid tail. The atomic batch must leave both stores untouched.
+    const good1 = ev({ target: CONT })
+    const good2 = ev({ target: C_LEX, activity: WRITE_CTRL })
+    const badTail = ev({ outcome: 'partial' }) // partial without partial_score
+    await expect(storage.recordLearnerEvidenceBatchV2([good1, good2, badTail])).rejects.toThrow(/PARTIAL_SCORE_REQUIRED/)
+    expect(await storage.getLearnerEvidenceV2('p1')).toEqual([])
+    expect(await storage.getLearnerTargetStatesV2('p1')).toEqual([])
+    // And the same batch, fixed, records everything in one transaction.
+    const ok = await storage.recordLearnerEvidenceBatchV2([good1, good2, { ...badTail, partial_score: 0.5 }])
+    expect(ok.recorded).toHaveLength(3)
+    expect((await storage.getLearnerTargetStatesV2('p1')).length).toBe(2)
+  })
+
   it('a batch from one interaction can hit several targets atomically', async () => {
     const interaction_id = 'interaction:multi'
     const result = await storage.recordLearnerEvidenceBatchV2([
