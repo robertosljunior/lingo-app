@@ -144,6 +144,24 @@ export default function Settings() {
           </Row>
         </div>
 
+        <div className="card" style={{ padding: 0, overflow: 'hidden' }} data-testid="experimental-settings">
+          <SectionHead>experimental</SectionHead>
+          <Row last>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
+              <div style={{ fontWeight: 700, fontSize: 15 }}>Laboratório V2 — still</div>
+              <button className={`btn btn-sm ${settings.pedagogy_v2_pilot_enabled ? 'btn-primary' : 'btn-secondary'}`}
+                data-testid="toggle-pedagogy-v2-pilot" aria-pressed={!!settings.pedagogy_v2_pilot_enabled}
+                onClick={() => updateSetting('pedagogy_v2_pilot_enabled', !settings.pedagogy_v2_pilot_enabled)}>
+                {settings.pedagogy_v2_pilot_enabled ? 'Ativado' : 'Desativado'}
+              </button>
+            </div>
+            <div className="muted" style={{ fontSize: 12, marginTop: 6, lineHeight: 1.4 }}>
+              O laboratório usa um modelo pedagógico em desenvolvimento: você aprende novos usos da mesma
+              palavra por meio de frases completas. Experimental — pode mudar ou ser removido.
+            </div>
+          </Row>
+        </div>
+
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <SectionHead>diagnóstico</SectionHead>
           <Row last>

@@ -26,7 +26,7 @@ const GROUPS = [
 ]
 
 export default function TrainingHub() {
-  const { db, activeProfile, settings, latest, lessons, sessions, skillProfiles, startLesson, startPracticeSession, generateAdaptiveLesson, showToast, setTab } = useApp()
+  const { db, activeProfile, settings, latest, lessons, sessions, skillProfiles, startLesson, startPracticeSession, generateAdaptiveLesson, showToast, setTab, navigate } = useApp()
   const [summary, setSummary] = useState(null)
   const [theme, setTheme] = useState(null)
   const [progress, setProgress] = useState({})
@@ -72,6 +72,14 @@ export default function TrainingHub() {
           <p className="muted" style={{fontSize:13,margin:'6px 0 12px'}}>{current ? `${current.title || current.focus} · ${current.level}` : 'Gere uma prática curta por tema ou habilidade.'}</p>
           {current ? <button className="btn btn-primary" onClick={() => startLesson(current)}>Continuar <I.chevR s={16}/></button> : <button className="btn btn-primary" onClick={() => startPracticeSession()}>Prática rápida</button>}
         </section>
+        {settings?.pedagogy_v2_pilot_enabled && (
+          <section className="card" data-testid="v2-pilot-card" style={{ padding:16, border:'1px dashed var(--indigo-600)' }}>
+            <div className="label-eyebrow">experimental</div>
+            <div style={{fontWeight:900,fontSize:17,marginTop:4}}>Laboratório V2 — still</div>
+            <p className="muted" style={{fontSize:13,margin:'6px 0 12px'}}>Aprenda novos usos da mesma palavra por meio de frases completas.</p>
+            <button className="btn btn-secondary" data-testid="v2-pilot-open" onClick={() => navigate(SCREENS.PEDAGOGY_V2_PILOT)}>Abrir laboratório</button>
+          </section>
+        )}
         <section><div className="label-eyebrow" style={{marginBottom:10}}>Escolher um tema</div><div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}}>{summary.themes.map(t => <ThemeCard key={t.theme} row={t} onClick={() => setTheme(t)} />)}</div></section>
         <section className="card" style={{padding:16}}><div style={{fontWeight:900,fontSize:17}}>Revisar minhas dificuldades</div>{top.length ? top.map(p => <div key={p.skill_id} style={{display:'flex',justifyContent:'space-between',gap:8,padding:'10px 0',borderBottom:'1px solid var(--border)'}}><div><div style={{fontWeight:800}}>{p.label_pt || getSkill(p.skill_id)?.label_pt || p.skill_id}</div><div className="muted" style={{fontSize:12}}>Domínio estimado: {Math.round((p.mastery||0)*100)}% · evidência real</div></div><button className="btn btn-sm btn-secondary" onClick={() => startPracticeSession(p.skill_id)}>Praticar</button></div>) : <p className="muted">Ainda sem dados suficientes.</p>}</section>
         <SkillsSection onPractice={startPracticeSession} onLesson={async (skill) => { const res=await generateAdaptiveLesson({ targetSkillId:skill, questionCount:10 }); if(res?.lesson) startLesson(res.lesson) }} />

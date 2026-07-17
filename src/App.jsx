@@ -13,6 +13,7 @@ import TrainingHub from './screens/TrainingHub.jsx'
 import Stories from './screens/Stories.jsx'
 import Talk from './screens/Talk.jsx'
 import Onboarding from './screens/Onboarding.jsx'
+import PedagogyV2StillPilot from './screens/PedagogyV2StillPilot.jsx'
 import PwaInstallController from './components/PwaInstallController.jsx'
 
 const SCREEN_COMPONENTS = {
@@ -28,6 +29,7 @@ const SCREEN_COMPONENTS = {
   [SCREENS.TRAINING]: TrainingHub,
   [SCREENS.STORIES]: Stories,
   [SCREENS.TALK]: Talk,
+  [SCREENS.PEDAGOGY_V2_PILOT]: PedagogyV2StillPilot,
 }
 
 // Screens that require an active lesson/session; if reached without one, fall
