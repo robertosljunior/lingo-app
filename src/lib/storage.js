@@ -540,6 +540,9 @@ const SETTINGS_DEFAULTS = {
   tts_voice: '', // '' = auto-pick best voice for the accent
   tts_rate: 0.95,
   tts_autoplay: true, // speak the correct sentence when feedback opens
+  // Slice V2.4: experimental "Laboratório V2" pilot. Default OFF — existing
+  // users see no behavioral change; a settings default needs no migration.
+  pedagogy_v2_pilot_enabled: false,
 }
 
 export async function getSettings() {

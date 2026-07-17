@@ -8,7 +8,10 @@
 // Nothing in the frozen V1 core (lesson-generator, correction-engine, skill
 // registry, generated-lesson contracts) imports from here.
 
-import pedagogy_v2_still from './still.json'
+// The `with { type: 'json' }` attribute is required by plain Node ESM (the
+// benchmark/validator scripts import storage.js, which reaches this module);
+// Vite/vitest accept it as well.
+import pedagogy_v2_still from './still.json' with { type: 'json' }
 
 export const BUILTIN_PEDAGOGY_V2_PACKS = [
   pedagogy_v2_still,

@@ -7,20 +7,26 @@ import {
 } from './helpers.js'
 
 const EXPECTED_STORES = [
-  'answers', 'collocations', 'content_packs', 'lessons', 'lexical_items',
+  'answers', 'collocations', 'content_packs', 'learner_evidence_v2',
+  'learner_target_states_v2', 'lessons', 'lexical_items',
   'mistakes', 'profiles', 'questions', 'settings', 'skill_events',
   'skill_profiles', 'srs', 'template_definitions',
 ]
 
-test('database v4 has the expected stores, indexes and persisted data', async ({ page, context }) => {
+test('database v5 has the expected stores, indexes and persisted data', async ({ page, context }) => {
   const monitor = attachErrorMonitor(page)
   await enableTestHooks(context, { seed: GEN_SEED })
   await seedFixtures(page, { active: PROFILE_A })
   await generateFromHome(page, { count: 30 })
 
   const info = await dbInfo(page)
-  expect(info.version).toBe(4)
+  expect(info.version).toBe(5)
   expect(info.stores).toEqual(EXPECTED_STORES)
+  expect(info.indexes.learner_evidence_v2).toEqual([
+    'exemplar_id', 'interaction_id', 'occurred_at', 'profile_id',
+    'profile_target', 'target_id', 'target_type',
+  ])
+  expect(info.indexes.learner_target_states_v2).toEqual(['profile_id', 'target_id', 'target_type'])
   expect(info.indexes.lessons).toEqual(['created_at'])
   expect(info.indexes.questions).toEqual(['lesson_id'])
   expect(info.indexes.answers).toEqual(['lesson_id', 'mistake_type', 'session_id'])
@@ -60,7 +66,7 @@ test('data survives a real browser close/reopen (persistent context)', async ({ 
   await page2.waitForFunction(() => window.__e2e && window.__e2e.db)
 
   const after = await dbInfo(page2)
-  expect(after.version).toBe(4)
+  expect(after.version).toBe(5)
   expect(after.counts.lessons).toBe(before.counts.lessons)
   expect(after.counts.questions).toBe(before.counts.questions)
   const { lesson, questions } = await readLessonWithQuestions(page2, lessonId)
@@ -71,7 +77,7 @@ test('data survives a real browser close/reopen (persistent context)', async ({ 
   await ctx2.close()
 })
 
-test('opening a legacy v2 database upgrades to v4 preserving data', async ({ page, context }) => {
+test('opening a legacy v2 database upgrades to v5 preserving data', async ({ page, context }) => {
   const monitor = attachErrorMonitor(page)
   await enableTestHooks(context)
 
@@ -111,12 +117,12 @@ test('opening a legacy v2 database upgrades to v4 preserving data', async ({ pag
     db.close()
   })
 
-  // Load the app: it opens the DB at v4 and runs the upgrade path.
+  // Load the app: it opens the DB at v5 and runs the upgrade path.
   await page.goto('./')
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
 
   const info = await dbInfo(page)
-  expect(info.version).toBe(4)
+  expect(info.version).toBe(5)
   expect(info.stores).toEqual(EXPECTED_STORES)
 
   // Legacy data preserved and readable through the app layer.

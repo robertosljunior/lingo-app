@@ -4,7 +4,7 @@
 import { expect } from '@playwright/test'
 
 export const DB_NAME = 'app-idiomas'
-export const DB_VERSION = 4
+export const DB_VERSION = 5 // v5: additive pedagogy V2 learner-model stores
 export const GEN_SEED = 'e2e-generated-lesson-001'
 export const PROFILE_A = 'profile-a'
 export const PROFILE_B = 'profile-b'

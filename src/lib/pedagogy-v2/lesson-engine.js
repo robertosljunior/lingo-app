@@ -254,7 +254,17 @@ function buildResponseContract({ recipe, exemplar, modality, options }) {
 
 // ---- selection --------------------------------------------------------------
 
-export function selectNextActivityV2({ session, pack, learnerStates, recentEvidence, policy = {}, context = null, resolveV1Skill = null } = {}) {
+// runtimeAvailability (optional, Slice V2.4): { unavailable: [{ recipe,
+// modality|null, reason }] } — technical execution restrictions computed by the
+// runtime (runtime-capabilities.js). Not pedagogy: filtered candidates land in
+// the trace's `excluded` with the runtime reason code verbatim.
+function runtimeUnavailableReason(runtimeAvailability, recipe, modality) {
+  const hit = (runtimeAvailability?.unavailable || []).find((u) =>
+    u.recipe === recipe && (u.modality == null || u.modality === modality))
+  return hit ? hit.reason : null
+}
+
+export function selectNextActivityV2({ session, pack, learnerStates, recentEvidence, policy = {}, context = null, resolveV1Skill = null, runtimeAvailability = null } = {}) {
   const p = mergeLessonEnginePolicyV2(policy)
   const states = learnerStates ?? context?.learner_states ?? []
   const recent = recentEvidence ?? context?.recent_evidence ?? []
@@ -334,6 +344,8 @@ export function selectNextActivityV2({ session, pack, learnerStates, recentEvide
 
       for (const recipe of LESSON_RECIPES) {
         for (const [capability, modality] of recipe.pairs) {
+          const runtimeReason = runtimeUnavailableReason(runtimeAvailability, recipe.recipe, modality)
+          if (runtimeReason) { exclude(runtimeReason, recipe.recipe); continue }
           if (!recipeGateOpen({ recipe, capability, modality, primaries, presented, statesById, policy: p })) continue
           let options = null
           if (recipe.needs_options) {

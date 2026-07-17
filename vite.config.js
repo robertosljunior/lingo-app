@@ -118,6 +118,6 @@ export default defineConfig({
   },
   // Vitest: unit tests only — Playwright owns e2e/*.spec.js.
   test: {
-    include: ['src/**/*.test.js'],
+    include: ['src/**/*.test.js', 'src/**/*.test.jsx'],
   },
 })
