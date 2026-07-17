@@ -25,9 +25,17 @@ import { validateGeneratedLesson } from './generated-lesson-validator.js'
 import { indexQuestionSkills, buildAdaptivePracticePlan, buildLessonGenerationContext as buildAdaptiveContextPure, QUESTION_SKILL_INDEX_VERSION } from './adaptive-planner.js'
 import { BUILTIN_CONTENT_PACKS, getBuiltinContentPack } from './content-pack-loader.js'
 import { validateContentPacks } from './content-pack-validator.js'
+import { validateLearnerEvidenceBatchV2 } from './pedagogy-v2/learner-evidence-validator.js'
+import { aggregateTargetEvidence } from './pedagogy-v2/learner-model.js'
+import { learnerTargetStateKey, createPackTargetResolver } from './pedagogy-v2/learner-evidence-contracts.js'
+import { filterEvidence } from './pedagogy-v2/learner-model-query.js'
+import { BUILTIN_PEDAGOGY_V2_PACKS } from '../content/pedagogy-v2/index.js'
 
 const DB_NAME = 'app-idiomas'
-export const DB_VERSION = 4
+// v5: pedagogy V2 learner-model stores (learner_evidence_v2 +
+// learner_target_states_v2). Purely additive — every V1 store is preserved and
+// no V1 data is migrated, reinterpreted or reprocessed on boot.
+export const DB_VERSION = 5
 
 export const DEFAULT_PROFILE = 'default'
 
@@ -121,6 +129,25 @@ function db() {
           s.createIndex('level', 'level')
           s.createIndex('canonical', 'canonical')
           s.createIndex('pack_level', ['pack_id', 'level'])
+        }
+        // v5 — pedagogy V2 learner model (evidence events + derived states).
+        // Serialized state key (`profile:target_type:target_id`) follows the
+        // repo convention used by srs/skill_profiles.
+        if (!d.objectStoreNames.contains('learner_evidence_v2')) {
+          const s = d.createObjectStore('learner_evidence_v2', { keyPath: 'evidence_id' })
+          s.createIndex('profile_id', 'profile_id')
+          s.createIndex('interaction_id', 'interaction_id')
+          s.createIndex('occurred_at', 'occurred_at')
+          s.createIndex('exemplar_id', 'exemplar_id')
+          s.createIndex('target_id', 'target.target_id')
+          s.createIndex('target_type', 'target.target_type')
+          s.createIndex('profile_target', ['profile_id', 'target.target_id'])
+        }
+        if (!d.objectStoreNames.contains('learner_target_states_v2')) {
+          const s = d.createObjectStore('learner_target_states_v2', { keyPath: 'key' })
+          s.createIndex('profile_id', 'profile_id')
+          s.createIndex('target_id', 'target.target_id')
+          s.createIndex('target_type', 'target.target_type')
         }
       },
     })
@@ -566,7 +593,7 @@ export async function getSessionSummaries(profile_id = null) {
 
 export async function wipeAll() {
   const d = await db()
-  const stores = ['lessons', 'questions', 'answers', 'mistakes', 'profiles', 'srs', 'settings', 'skill_events', 'skill_profiles']
+  const stores = ['lessons', 'questions', 'answers', 'mistakes', 'profiles', 'srs', 'settings', 'skill_events', 'skill_profiles', 'learner_evidence_v2', 'learner_target_states_v2']
   const tx = d.transaction(stores, 'readwrite')
   for (const name of stores) {
     await tx.objectStore(name).clear()
@@ -633,6 +660,118 @@ export async function getTrainingHubSummary(profile_id = DEFAULT_PROFILE) {
   }
   return { profile_id, preferences: prefs, themes: [...themes.values()].map(t => ({ ...t, levels: t.levels.sort(), enabled_levels: t.enabled_levels.sort() })), priority_skills: skillProfiles.slice(0, 6) }
 }
+// ---------- Pedagogy V2 learner model (v5) ----------
+// storage.js only COORDINATES persistence here; validation lives in
+// learner-evidence-validator.js and all pedagogical math in learner-model.js.
+// Not wired to any UI/exercise/submitAnswer flow in this slice.
+
+let _v2TargetResolver = null
+function defaultV2TargetResolver() {
+  if (!_v2TargetResolver) _v2TargetResolver = createPackTargetResolver(BUILTIN_PEDAGOGY_V2_PACKS)
+  return _v2TargetResolver
+}
+
+async function evidenceForTargetTx(tx, profile_id, target) {
+  const rows = await tx.objectStore('learner_evidence_v2').index('profile_target').getAll([profile_id, target.target_id])
+  return rows.filter((e) => e.target?.target_type === target.target_type)
+}
+
+/**
+ * Atomically record a batch of evidence events and refresh the affected target
+ * states. ALL events are validated up front — an invalid batch writes nothing.
+ * Re-recording an existing evidence_id is an idempotent no-op (its influence is
+ * never duplicated). Several events may share one interaction_id and hit
+ * different targets.
+ */
+export async function recordLearnerEvidenceBatchV2(events, opts = {}) {
+  const resolveTarget = opts.targetResolver ?? defaultV2TargetResolver()
+  const validation = validateLearnerEvidenceBatchV2(events, { resolveTarget })
+  if (!validation.valid) throw new Error(`LEARNER_EVIDENCE_INVALID:${validation.errors.join(',')}`)
+  const d = await db()
+  const tx = d.transaction(['learner_evidence_v2', 'learner_target_states_v2'], 'readwrite')
+  const evidenceStore = tx.objectStore('learner_evidence_v2')
+  const stateStore = tx.objectStore('learner_target_states_v2')
+  const recorded = []
+  const skipped = []
+  const affected = new Map() // state key → { profile_id, target }
+  for (const event of events) {
+    const existing = await evidenceStore.get(event.evidence_id)
+    if (existing) skipped.push(event.evidence_id)
+    else { await evidenceStore.put(event); recorded.push(event.evidence_id) }
+    affected.set(learnerTargetStateKey(event.profile_id, event.target), { profile_id: event.profile_id, target: { ...event.target } })
+  }
+  const stateKeys = []
+  for (const { profile_id, target } of affected.values()) {
+    const rows = await evidenceForTargetTx(tx, profile_id, target)
+    const state = aggregateTargetEvidence(rows, { profile_id, target })
+    await stateStore.put(state)
+    stateKeys.push(state.key)
+  }
+  await tx.done
+  return { recorded, skipped, state_keys: stateKeys.sort() }
+}
+
+/** Record a single evidence event (thin wrapper over the batch API). */
+export async function recordLearnerEvidenceV2(event, opts = {}) {
+  const result = await recordLearnerEvidenceBatchV2([event], opts)
+  return { recorded: result.recorded.length === 1, state_key: result.state_keys[0] }
+}
+
+export async function getLearnerEvidenceV2(profile_id, filters = {}) {
+  const d = await db()
+  const rows = await d.getAllFromIndex('learner_evidence_v2', 'profile_id', profile_id)
+  return filterEvidence(rows, filters)
+}
+
+export async function getLearnerTargetStateV2(profile_id, target) {
+  const d = await db()
+  return (await d.get('learner_target_states_v2', learnerTargetStateKey(profile_id, target))) || null
+}
+
+export async function getLearnerTargetStatesV2(profile_id, { targetType = null } = {}) {
+  const d = await db()
+  const rows = await d.getAllFromIndex('learner_target_states_v2', 'profile_id', profile_id)
+  return rows.filter((s) => !targetType || s.target?.target_type === targetType).sort((a, b) => (a.key < b.key ? -1 : 1))
+}
+
+/** Rebuild one target state from its stored events. Deletes the state when no
+ * evidence remains (a state is strictly derived data). */
+export async function rebuildLearnerTargetStateV2(profile_id, target) {
+  const d = await db()
+  const tx = d.transaction(['learner_evidence_v2', 'learner_target_states_v2'], 'readwrite')
+  const rows = await evidenceForTargetTx(tx, profile_id, target)
+  const key = learnerTargetStateKey(profile_id, target)
+  if (!rows.length) { await tx.objectStore('learner_target_states_v2').delete(key); await tx.done; return null }
+  const state = aggregateTargetEvidence(rows, { profile_id, target })
+  await tx.objectStore('learner_target_states_v2').put(state)
+  await tx.done
+  return state
+}
+
+/** Rebuild every target state of a profile from evidence, dropping stale ones. */
+export async function rebuildLearnerTargetStatesV2(profile_id) {
+  const d = await db()
+  const tx = d.transaction(['learner_evidence_v2', 'learner_target_states_v2'], 'readwrite')
+  const stateStore = tx.objectStore('learner_target_states_v2')
+  const oldKeys = await stateStore.index('profile_id').getAllKeys(profile_id)
+  for (const k of oldKeys) await stateStore.delete(k)
+  const events = await tx.objectStore('learner_evidence_v2').index('profile_id').getAll(profile_id)
+  const groups = new Map()
+  for (const e of events) {
+    const key = learnerTargetStateKey(profile_id, e.target)
+    if (!groups.has(key)) groups.set(key, { target: { ...e.target }, events: [] })
+    groups.get(key).events.push(e)
+  }
+  const states = []
+  for (const { target, events: rows } of groups.values()) {
+    const state = aggregateTargetEvidence(rows, { profile_id, target })
+    await stateStore.put(state)
+    states.push(state)
+  }
+  await tx.done
+  return states.sort((a, b) => (a.key < b.key ? -1 : 1))
+}
+
 export async function getThemeLevelProgress(profile_id = DEFAULT_PROFILE, theme, level) {
   const [packs, answers, templates] = await Promise.all([listContentPacks(), getAllAnswers(profile_id), getTemplatesForPacks([`core_${String(level).toLowerCase()}`, `${theme}_${String(level).toLowerCase()}`])])
   const relevantPacks = packs.filter(p => (p.theme === theme || p.theme === 'core') && p.level === level)
