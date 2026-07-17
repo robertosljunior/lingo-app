@@ -31,10 +31,9 @@ async function openLab(page) {
 // Answers whatever V2 activity is presenting; returns its recipe.
 async function answerCurrentV2Activity(page) {
   const screen = page.getByTestId('v2-pilot-screen')
-  const recipe = await page.evaluate(() => {
-    const el = document.querySelector('[data-testid^="v2-activity-"]')
-    return el ? el.getAttribute('data-testid').replace('v2-activity-', '') : null
-  })
+  const activity = page.locator('[data-testid^="v2-activity-"]')
+  await expect(activity).toBeVisible() // wait out the advancing → presenting hop
+  const recipe = (await activity.getAttribute('data-testid')).replace('v2-activity-', '')
   expect(recipe).toBeTruthy()
   if (recipe === 'exposure') {
     await page.getByTestId('v2-continue').click()
@@ -138,7 +137,9 @@ test.describe('first session', () => {
     // engine; the diversity weight surfaces the unused modality early).
     let found = false
     for (let step = 0; step < 10; step++) {
-      const testid = await page.locator('[data-testid^="v2-activity-"]').getAttribute('data-testid')
+      const activity = page.locator('[data-testid^="v2-activity-"]')
+      await expect(activity).toBeVisible()
+      const testid = await activity.getAttribute('data-testid')
       if (testid === 'v2-activity-listening_recognition') { found = true; break }
       await answerCurrentV2Activity(page)
       const complete = await page.getByTestId('v2-session-complete').count()
