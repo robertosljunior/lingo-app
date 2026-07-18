@@ -11,6 +11,7 @@
     "version": 1,
     "source": "builtin",
     "primary_lexeme_id": "lexeme:but",
+    "catalog_order": 2,
     "short_description_pt": "Contraste, correção e exceção: ligar ideias que se opõem.",
     "dependencies": [
       {

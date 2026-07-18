@@ -11,6 +11,7 @@
     "version": 1,
     "source": "builtin",
     "primary_lexeme_id": "lexeme:still",
+    "catalog_order": 1,
     "short_description_pt": "Continuidade, contraste e ressalva: a mesma palavra em usos cada vez mais ricos.",
     "notes": "Piloto vertical do modelo de conteúdo V2. 'still' é uma palavra funcional frequente: entra cedo, e cada sentido/construção tem a sua própria recomendação de exposição. O lexema não possui nível."
   },

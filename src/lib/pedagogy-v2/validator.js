@@ -61,6 +61,11 @@ export function validatePedagogyV2Pack(pack, opts = {}) {
     // Slice V2.5: every pack must declare its principal lexeme (validated as
     // OWNED below) — a pedagogy pack without a main lexeme is unnavigable.
     if (!isV2Id('lexeme', m.primary_lexeme_id)) err('PACK_PRIMARY_LEXEME_REQUIRED', `manifest.primary_lexeme_id=${m.primary_lexeme_id ?? 'missing'}`)
+    // Slice V2.6: purely presentational catalog order (an EDITORIAL choice for
+    // the selection screen) — never a level, never planner input.
+    if (m.catalog_order != null && (!Number.isInteger(m.catalog_order) || m.catalog_order < 0)) {
+      err('CATALOG_ORDER_INVALID', `manifest.catalog_order=${m.catalog_order}`)
+    }
     if (m.dependencies != null && !Array.isArray(m.dependencies)) err('DEPENDENCIES_NOT_ARRAY', 'manifest.dependencies')
     dependencies.forEach((d, i) => {
       const where = `manifest.dependencies[${i}]`
