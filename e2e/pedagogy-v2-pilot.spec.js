@@ -1,63 +1,22 @@
-// pedagogy-v2-pilot.spec.js — Slice V2.4 experimental specs for the
-// "Laboratório V2 — still" pilot. Isolated from the V1 suites; the semantic
-// pipeline is never required (the deterministic early-session recipes —
-// exposure, recognition, completion, word order — carry every scenario).
+// pedagogy-v2-pilot.spec.js — pedagogy-V2 lab specs, updated for the
+// multi-pack lab of Slice V2.5: the Hub card opens a pack SELECTION screen
+// ("Laboratório V2"), and a session is scoped to the selected pack. The
+// original V2.4 session guarantees (first exposure, listening contract,
+// persistence, idempotency, V1 smoke) are preserved through the still pack.
+// Isolated from the V1 suites; the semantic pipeline is never required.
 import { test, expect } from '@playwright/test'
 import {
   enableTestHooks, seedFixtures, readStore, attachErrorMonitor,
   generateFromHome, readLessonWithQuestions, answerCurrentQuestion, GEN_SEED, PROFILE_A,
 } from './helpers.js'
+import {
+  setPilotFlag, openHub, openLab, openPackSession, backToSelection,
+  answerCurrentV2Activity, continueFromFeedback,
+} from './v2-helpers.js'
 
-async function setPilotFlag(page, enabled) {
-  await page.evaluate(async (enabled) => {
-    await window.__e2e.db.setSetting('pedagogy_v2_pilot_enabled', enabled)
-  }, enabled)
-  await page.reload()
-  await expect(page.locator('.app-shell')).toBeVisible()
-  await page.waitForFunction(() => window.__e2e && window.__e2e.db)
-}
-
-async function openHub(page) {
-  await page.getByTestId('open-training-hub').click()
-  await expect(page.getByRole('heading', { name: 'Escolha o que treinar' })).toBeVisible()
-}
-
-async function openLab(page) {
-  await openHub(page)
-  await page.getByTestId('v2-pilot-open').click()
-  await expect(page.getByTestId('v2-pilot-screen')).toBeVisible()
-}
-
-// Answers whatever V2 activity is presenting; returns its recipe.
-async function answerCurrentV2Activity(page) {
-  const screen = page.getByTestId('v2-pilot-screen')
-  const activity = page.locator('[data-testid^="v2-activity-"]')
-  await expect(activity).toBeVisible() // wait out the advancing → presenting hop
-  const recipe = (await activity.getAttribute('data-testid')).replace('v2-activity-', '')
-  expect(recipe).toBeTruthy()
-  if (recipe === 'exposure') {
-    await page.getByTestId('v2-continue').click()
-  } else if (recipe === 'meaning_recognition' || recipe === 'listening_recognition') {
-    await page.locator('[data-testid^="v2-option-"]').first().click()
-    await page.getByTestId('v2-submit').click()
-  } else if (recipe === 'completion') {
-    await page.getByTestId('v2-completion-input').fill('still')
-    await page.getByTestId('v2-submit').click()
-  } else if (recipe === 'word-order') {
-    const total = await page.locator('[data-testid^="v2-token-"]').count()
-    for (let i = 0; i < total; i++) await page.locator('[data-testid="v2-token-bank"] button').first().click()
-    await page.getByTestId('v2-submit').click()
-  } else {
-    // production fallback (unused in the deterministic early session)
-    await page.getByTestId('v2-production-input').fill('I still live here.')
-    await page.getByTestId('v2-submit').click()
-  }
-  return { recipe, screen }
-}
-
-async function continueFromFeedback(page) {
-  await expect(page.getByTestId('v2-feedback')).toBeVisible()
-  await page.getByTestId('v2-feedback-continue').click()
+async function openStillSession(page) {
+  await openLab(page)
+  await openPackSession(page, 'still')
 }
 
 test.describe('feature flag', () => {
@@ -71,15 +30,16 @@ test.describe('feature flag', () => {
     await setPilotFlag(page, true)
     await openHub(page)
     await expect(page.getByTestId('v2-pilot-card')).toBeVisible()
-    await expect(page.getByTestId('v2-pilot-card')).toContainText('Laboratório V2 — still')
+    await expect(page.getByTestId('v2-pilot-card')).toContainText('Laboratório V2')
+    await expect(page.getByTestId('v2-pilot-card')).toContainText('Aprofunde palavras fundamentais')
 
-    // Guard: with the flag off again, the screen refuses to open.
+    // Guard: with the flag off again, the card disappears.
     await setPilotFlag(page, false)
     await openHub(page)
     await expect(page.getByTestId('v2-pilot-card')).toHaveCount(0)
   })
 
-  test('settings screen exposes the experimental toggle', async ({ page, context }) => {
+  test('settings screen exposes the experimental toggle (one flag for the whole lab)', async ({ page, context }) => {
     await enableTestHooks(context)
     await seedFixtures(page, { active: PROFILE_A })
     await page.getByRole('button', { name: /Ajustes|Config/ }).first().click()
@@ -91,13 +51,13 @@ test.describe('feature flag', () => {
   })
 })
 
-test.describe('first session', () => {
+test.describe('first still session', () => {
   test('exposure with full sentence → answer next activity → feedback → next reflects recorded state', async ({ page, context }) => {
     const monitor = attachErrorMonitor(page)
     await enableTestHooks(context)
     await seedFixtures(page, { active: PROFILE_A })
     await setPilotFlag(page, true)
-    await openLab(page)
+    await openStillSession(page)
 
     // 1st activity for a brand-new learner: exposure of the first exemplar,
     // full English sentence + translation.
@@ -131,7 +91,7 @@ test.describe('first session', () => {
     await enableTestHooks(context)
     await seedFixtures(page, { active: PROFILE_A })
     await setPilotFlag(page, true)
-    await openLab(page)
+    await openStillSession(page)
 
     // Walk the session until a listening activity appears (deterministic
     // engine; the diversity weight surfaces the unused modality early).
@@ -166,7 +126,7 @@ test.describe('persistence and idempotency', () => {
     await enableTestHooks(context)
     await seedFixtures(page, { active: PROFILE_A })
     await setPilotFlag(page, true)
-    await openLab(page)
+    await openStillSession(page)
 
     // Complete exposure + one assessed interaction.
     await page.getByTestId('v2-continue').click()
@@ -176,11 +136,9 @@ test.describe('persistence and idempotency', () => {
     const before = await readStore(page, 'learner_evidence_v2')
     expect(before.length).toBeGreaterThan(0)
 
-    // Leave the lab (back returns to the Hub) and start a NEW session.
-    await page.getByRole('button', { name: 'Voltar' }).first().click()
-    await expect(page.getByTestId('v2-pilot-card')).toBeVisible()
-    await page.getByTestId('v2-pilot-open').click()
-    await expect(page.getByTestId('v2-pilot-screen')).toBeVisible()
+    // Leave the session (back returns to the lab selection) and start a NEW one.
+    await backToSelection(page)
+    await openPackSession(page, 'still')
     await expect(page.locator('[data-testid^="v2-activity-"]')).toBeVisible()
 
     // Not a brand-new learner anymore: the first activity of the new session
@@ -198,7 +156,7 @@ test.describe('persistence and idempotency', () => {
     await enableTestHooks(context)
     await seedFixtures(page, { active: PROFILE_A })
     await setPilotFlag(page, true)
-    await openLab(page)
+    await openStillSession(page)
 
     await expect(page.getByTestId('v2-continue')).toBeVisible()
     await page.getByTestId('v2-continue').dblclick()

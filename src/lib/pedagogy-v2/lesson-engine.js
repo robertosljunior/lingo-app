@@ -59,13 +59,40 @@ const INSTRUCTIONS_PT = {
   pronunciation: 'Leia a frase em voz alta.',
 }
 
+// ---- multi-pack scope (Slice V2.5) ------------------------------------------
+// The engine receives a FORMAL scope { registry, pack_id, lexeme_id } — never
+// an informal array of packs. During a normal session only exemplars of the
+// active pack are candidates; prerequisites and constructions resolve across
+// the whole registry; learner states are consulted for targets of ANY pack.
+
+function buildRegistryEntityIndex(registry) {
+  const entities = new Map() // entity id → { pack_id, entity }
+  for (const p of registry?.packs || []) {
+    const packId = p.manifest?.pack_id
+    const add = (id, entity) => { if (id && !entities.has(id)) entities.set(id, { pack_id: packId, entity }) }
+    for (const l of p.lexemes || []) add(l.lexeme_id, l)
+    for (const s of p.senses || []) add(s.sense_id, s)
+    for (const c of p.constructions || []) add(c.construction_id, c)
+    for (const f of p.communicative_functions || []) add(f.function_id, f)
+    for (const e of p.exemplars || []) add(e.exemplar_id, e)
+  }
+  return entities
+}
+
 // ---- prerequisite assessment (tri-state) ------------------------------------
 
-function assessExemplarPrerequisites(exemplar, statesById, policy, resolveV1Skill) {
+function assessExemplarPrerequisites(exemplar, statesById, policy, resolveV1Skill, registryIndex = null, activePackId = null) {
   const assessments = []
   for (const pr of getV2Prerequisites(exemplar)) {
     const status = assessTargetPrerequisite(statesById, pr.ref, policy.thresholds.prerequisite)
-    assessments.push({ kind: 'v2', type: pr.type, ref: pr.ref, status, blocking: status !== 'met' })
+    const assessment = { kind: 'v2', type: pr.type, ref: pr.ref, status, blocking: status !== 'met' }
+    // Trace requirement: record when a prerequisite is OWNED by another pack.
+    const ownerPackId = registryIndex?.get(pr.ref)?.pack_id ?? null
+    if (ownerPackId && activePackId && ownerPackId !== activePackId) {
+      assessment.external = true
+      assessment.owner_pack_id = ownerPackId
+    }
+    assessments.push(assessment)
   }
   for (const pr of getV1BridgePrerequisites(exemplar)) {
     let status = 'unknown'
@@ -120,9 +147,27 @@ function recipeGateOpen({ recipe, capability, modality, primaries, presented, st
 
 // ---- recognition options (authored translations only) -----------------------
 
+// Structural normalization for translation comparison: two authored pt-BR
+// sentences that differ only in case/punctuation/whitespace are the SAME
+// alternative and may never appear together as distinct options. This is a
+// structural audit only — no regex attempt at deep synonymy.
+export function normalizeTranslationPt(text) {
+  return String(text || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[.,;:!?…"'()\-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+export function buildRecognitionOptionsV2(pack, exemplar, minOptions) {
+  return buildRecognitionOptions(pack, exemplar, minOptions)
+}
+
 function buildRecognitionOptions(pack, exemplar, minOptions) {
   const targetSenses = new Set(exemplar.sense_ids || [])
   const rows = [{ text_pt: exemplar.text_pt, source_exemplar_id: exemplar.exemplar_id, is_target: true }]
+  const seenNormalized = new Set([normalizeTranslationPt(exemplar.text_pt)])
   const others = (pack.exemplars || []).filter((o) =>
     o.exemplar_id !== exemplar.exemplar_id && o.text_pt && o.text_pt !== exemplar.text_pt)
   // Prefer distractors realizing a DIFFERENT sense (meaning contrast), fall
@@ -133,7 +178,9 @@ function buildRecognitionOptions(pack, exemplar, minOptions) {
   ]
   for (const o of ordered) {
     if (rows.length >= minOptions) break
-    if (rows.some((r) => r.text_pt === o.text_pt)) continue
+    const normalized = normalizeTranslationPt(o.text_pt)
+    if (seenNormalized.has(normalized)) continue // identical or near-identical translation
+    seenNormalized.add(normalized)
     rows.push({ text_pt: o.text_pt, source_exemplar_id: o.exemplar_id, is_target: false })
   }
   if (rows.length < minOptions) return null
@@ -264,15 +311,36 @@ function runtimeUnavailableReason(runtimeAvailability, recipe, modality) {
   return hit ? hit.reason : null
 }
 
-export function selectNextActivityV2({ session, pack, learnerStates, recentEvidence, policy = {}, context = null, resolveV1Skill = null, runtimeAvailability = null } = {}) {
+export function selectNextActivityV2({ session, scope = null, pack = null, learnerStates, recentEvidence, policy = {}, context = null, resolveV1Skill = null, runtimeAvailability = null } = {}) {
   const p = mergeLessonEnginePolicyV2(policy)
+
+  // Resolve the active pack: either through the formal multi-pack scope or the
+  // legacy single-pack parameter (kept for single-pack callers/tests).
+  let activePack = pack
+  let registryIndex = null
+  if (scope) {
+    if (!scope.registry || !scope.pack_id) throw new Error('SCOPE_INVALID:registry and pack_id are required')
+    activePack = (scope.registry.packs || []).find((x) => x.manifest?.pack_id === scope.pack_id) || null
+    if (!activePack) throw new Error(`SCOPE_PACK_UNKNOWN:${scope.pack_id}`)
+    registryIndex = buildRegistryEntityIndex(scope.registry)
+    if (scope.lexeme_id && !registryIndex.has(scope.lexeme_id)) throw new Error(`SCOPE_LEXEME_UNKNOWN:${scope.lexeme_id}`)
+  }
+  const activePackId = activePack?.manifest?.pack_id || null
+  const activeLexemeId = scope?.lexeme_id ?? activePack?.manifest?.primary_lexeme_id ?? null
+  const activeLexeme = activeLexemeId
+    ? (registryIndex?.get(activeLexemeId)?.entity ?? (activePack?.lexemes || []).find((l) => l.lexeme_id === activeLexemeId) ?? null)
+    : null
+  // Cross-pack construction resolution (an exemplar may formally reference a
+  // construction owned by a dependency pack); in-pack resolution otherwise.
+  const resolveConstruction = (id) => registryIndex?.get(id)?.entity ?? getConstruction(activePack, id)
+
   const states = learnerStates ?? context?.learner_states ?? []
   const recent = recentEvidence ?? context?.recent_evidence ?? []
   const nowIso = session?.now ?? context?.now
   const nowMs = Date.parse(nowIso)
   const statesById = indexStatesByTargetId(states)
   const history = session?.history || []
-  const exemplars = pack?.exemplars || []
+  const exemplars = activePack?.exemplars || []
 
   const baseDecision = {
     decision_version: 1,
@@ -328,7 +396,7 @@ export function selectNextActivityV2({ session, pack, learnerStates, recentEvide
       }
 
       // Tri-state prerequisites (V2 blocking; V1 bridges advisory by default).
-      const assessments = assessExemplarPrerequisites(exemplar, statesById, p, resolveV1Skill)
+      const assessments = assessExemplarPrerequisites(exemplar, statesById, p, resolveV1Skill, registryIndex, activePackId)
       prereqByExemplar.set(exemplar.exemplar_id, assessments)
       const blocking = assessments.find((a) => a.blocking)
       if (blocking) { exclude(`prerequisite_${blocking.status}:${blocking.ref}`); return }
@@ -349,7 +417,7 @@ export function selectNextActivityV2({ session, pack, learnerStates, recentEvide
           if (!recipeGateOpen({ recipe, capability, modality, primaries, presented, statesById, policy: p })) continue
           let options = null
           if (recipe.needs_options) {
-            options = buildRecognitionOptions(pack, exemplar, p.min_recognition_options)
+            options = buildRecognitionOptions(activePack, exemplar, p.min_recognition_options)
             if (!options) { exclude('no_safe_options', recipe.recipe); continue }
           }
           const capKey = `${modality}_${capability}`
@@ -467,7 +535,7 @@ export function selectNextActivityV2({ session, pack, learnerStates, recentEvide
     features: [...best.variant.features],
     derived_tier: deriveSupportTier({ features: best.variant.features, hint_count: 0 }),
   }
-  const construction = getConstruction(pack, e.construction_id)
+  const construction = resolveConstruction(e.construction_id)
   const presentation = buildPresentation({ recipe: best.recipe, exemplar: e, variant: best.variant, options: best.options })
   if (best.recipe.recipe === 'fixed_element_completion' && construction) {
     presentation.masked_text_source.fixed_elements = [...(construction.fixed_elements || [])]
@@ -492,7 +560,9 @@ export function selectNextActivityV2({ session, pack, learnerStates, recentEvide
     activity_kind: best.recipe.activity_kind,
     capability: best.capability,
     modality: best.modality,
-    pack_id: pack?.manifest?.pack_id || null,
+    pack_id: activePackId,
+    lexeme_id: activeLexemeId,
+    lexeme_lemma: activeLexeme?.lemma ?? null,
     exemplar_id: e.exemplar_id,
     construction_id: e.construction_id,
     sense_ids: [...(e.sense_ids || [])],

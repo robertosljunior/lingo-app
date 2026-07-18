@@ -148,7 +148,7 @@ export default function Settings() {
           <SectionHead>experimental</SectionHead>
           <Row last>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
-              <div style={{ fontWeight: 700, fontSize: 15 }}>Laboratório V2 — still</div>
+              <div style={{ fontWeight: 700, fontSize: 15 }}>Laboratório V2</div>
               <button className={`btn btn-sm ${settings.pedagogy_v2_pilot_enabled ? 'btn-primary' : 'btn-secondary'}`}
                 data-testid="toggle-pedagogy-v2-pilot" aria-pressed={!!settings.pedagogy_v2_pilot_enabled}
                 onClick={() => updateSetting('pedagogy_v2_pilot_enabled', !settings.pedagogy_v2_pilot_enabled)}>

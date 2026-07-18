@@ -27,9 +27,9 @@ import { BUILTIN_CONTENT_PACKS, getBuiltinContentPack } from './content-pack-loa
 import { validateContentPacks } from './content-pack-validator.js'
 import { validateLearnerEvidenceBatchV2 } from './pedagogy-v2/learner-evidence-validator.js'
 import { aggregateTargetEvidence } from './pedagogy-v2/learner-model.js'
-import { learnerTargetStateKey, createPackTargetResolver } from './pedagogy-v2/learner-evidence-contracts.js'
+import { learnerTargetStateKey } from './pedagogy-v2/learner-evidence-contracts.js'
 import { filterEvidence } from './pedagogy-v2/learner-model-query.js'
-import { BUILTIN_PEDAGOGY_V2_PACKS } from '../content/pedagogy-v2/index.js'
+import { createRegistryTargetResolver } from './pedagogy-v2/registry.js'
 
 const DB_NAME = 'app-idiomas'
 // v5: pedagogy V2 learner-model stores (learner_evidence_v2 +
@@ -668,9 +668,12 @@ export async function getTrainingHubSummary(profile_id = DEFAULT_PROFILE) {
 // learner-evidence-validator.js and all pedagogical math in learner-model.js.
 // Not wired to any UI/exercise/submitAnswer flow in this slice.
 
+// Slice V2.5: targets resolve against the validated multi-pack registry —
+// evidence for ANY registered pack (still, but, …) is accepted; unknown targets
+// keep being rejected.
 let _v2TargetResolver = null
 function defaultV2TargetResolver() {
-  if (!_v2TargetResolver) _v2TargetResolver = createPackTargetResolver(BUILTIN_PEDAGOGY_V2_PACKS)
+  if (!_v2TargetResolver) _v2TargetResolver = createRegistryTargetResolver()
   return _v2TargetResolver
 }
 

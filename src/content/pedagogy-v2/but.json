@@ -1,0 +1,845 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "pedagogy_v2_but",
+    "pack_kind": "pedagogical_v2",
+    "title": {
+      "pt": "but — usos progressivos",
+      "en": "but — progressive usage"
+    },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "primary_lexeme_id": "lexeme:but",
+    "short_description_pt": "Contraste, correção e exceção: ligar ideias que se opõem.",
+    "dependencies": [
+      {
+        "pack_id": "pedagogy_v2_still",
+        "required_schema_version": "1",
+        "reason": "Reutiliza a construção concessiva construction:still.clause_but_subject_still_verb (propriedade do pack still, preservando IDs e evidências persistidas) e a função function:express_result_despite_obstacle."
+      }
+    ],
+    "notes": "Segundo pack pedagógico V2. Princípio curricular preservado: palavras funcionais frequentes entram cedo; seus sentidos, construções, relações e graus de autonomia são aprofundados progressivamente. O aluno não abandona 'but' depois de aprendê-lo como coordenador: volta a encontrá-lo como corretivo, como preposição de exceção e combinado com 'still'. O lexema não possui nível CEFR global."
+  },
+  "lexemes": [
+    {
+      "lexeme_id": "lexeme:but",
+      "lemma": "but",
+      "language": "en",
+      "part_of_speech": ["conjunction", "preposition"],
+      "glosses_pt": ["mas", "porém", "exceto", "menos"],
+      "frequency_band": "high_frequency_functional",
+      "notes": "Sem nível global por decisão de modelo (mesma decisão de still): o que progride é o sentido, a construção e a autonomia exigida, nunca a palavra. A banda de frequência é qualitativa — nenhum valor corpus-based é inventado."
+    }
+  ],
+  "senses": [
+    {
+      "sense_id": "sense:but.contrast",
+      "lexeme_id": "lexeme:but",
+      "label": "Contraste coordenado",
+      "meaning_pt": "Liga duas afirmações que contrastam: a segunda limita, opõe ou qualifica a primeira.",
+      "gloss_en": "coordinates two contrasting statements",
+      "communicative_function_ids": ["function:express_simple_contrast", "function:qualify_with_contrast", "function:introduce_polite_objection"],
+      "first_exposure_stage": "A1",
+      "related_sense_ids": [],
+      "notes": "Núcleo semântico único realizado por construções diferentes: 'I am tired, but I am happy.' (orações coordenadas) e 'The plan is simple but effective.' (adjetivos coordenados) compartilham este sentido. Prova estrutural de que sentido ≠ construção, como no pack still."
+    },
+    {
+      "sense_id": "sense:but.counter_expectation",
+      "lexeme_id": "lexeme:but",
+      "label": "Resultado contrário à expectativa",
+      "meaning_pt": "A segunda oração relata algo que acontece apesar do que a primeira levaria a esperar.",
+      "gloss_en": "the second clause holds despite the expectation raised by the first",
+      "communicative_function_ids": ["function:express_unexpected_result"],
+      "first_exposure_stage": "A2",
+      "related_sense_ids": ["sense:but.contrast"],
+      "notes": "Decisão de modelagem (coerente com sense:still.counter_expectation): sentido próprio, documentado como extensão convencionalizada do contraste (related_sense_ids). A leitura contra-expectativa PLENA emerge da combinação sentido + construção + função: sem still ('I was tired, but I finished the work.') usa a construção coordenada deste pack; com still ('It was difficult, but I still tried.') usa a construção construction:still.clause_but_subject_still_verb, que permanece propriedade do pack still e é referenciada — nunca redefinida — por este pack."
+    },
+    {
+      "sense_id": "sense:but.correction",
+      "lexeme_id": "lexeme:but",
+      "label": "Correção substitutiva",
+      "meaning_pt": "Nega uma ideia e a substitui pela correta: não X, mas Y.",
+      "gloss_en": "replaces a negated element with the asserted one (not X but Y)",
+      "communicative_function_ids": ["function:correct_a_misconception"],
+      "first_exposure_stage": "B1",
+      "related_sense_ids": ["sense:but.contrast"],
+      "notes": "Uso corretivo: o material negado e o afirmado ocupam a mesma função sintática. Distingue-se do contraste coordenado porque não opõe duas afirmações válidas — cancela uma e afirma a outra."
+    },
+    {
+      "sense_id": "sense:but.exception",
+      "lexeme_id": "lexeme:but",
+      "label": "Exceção / exclusão",
+      "meaning_pt": "Exclui um elemento de um conjunto universal: todos/tudo, exceto X.",
+      "gloss_en": "excludes one element from a universal set (everyone but John)",
+      "communicative_function_ids": ["function:single_out_exception"],
+      "first_exposure_stage": "B1-B2",
+      "related_sense_ids": [],
+      "notes": "Aqui but é PREPOSIÇÃO, não coordenador de orações: liga um quantificador universal (all/everyone/everything/every N) a um sintagma nominal excluído. A distinção estrutural em relação ao coordenador é declarada na relação contrasts_with entre as construções."
+    }
+  ],
+  "communicative_functions": [
+    {
+      "function_id": "function:express_simple_contrast",
+      "label_pt": "Expressar contraste simples",
+      "description_pt": "Ligar duas ideias que se opõem ou se limitam mutuamente."
+    },
+    {
+      "function_id": "function:express_unexpected_result",
+      "label_pt": "Expressar resultado inesperado",
+      "description_pt": "Dizer que algo aconteceu apesar do que a situação anterior levaria a esperar."
+    },
+    {
+      "function_id": "function:qualify_with_contrast",
+      "label_pt": "Qualificar com contraste",
+      "description_pt": "Descrever algo combinando duas qualidades que normalmente não andam juntas."
+    },
+    {
+      "function_id": "function:correct_a_misconception",
+      "label_pt": "Corrigir uma ideia equivocada",
+      "description_pt": "Negar a versão errada e afirmar a correta na mesma frase."
+    },
+    {
+      "function_id": "function:single_out_exception",
+      "label_pt": "Destacar uma exceção",
+      "description_pt": "Dizer que uma afirmação vale para todos ou tudo, exceto um elemento."
+    },
+    {
+      "function_id": "function:introduce_polite_objection",
+      "label_pt": "Introduzir objeção educada",
+      "description_pt": "Discordar ou interromper de forma educada, suavizando antes de contrastar."
+    }
+  ],
+  "constructions": [
+    {
+      "construction_id": "construction:but.clause_but_clause",
+      "label": "oração + but + oração",
+      "pattern": "CLAUSE + , but + CLAUSE",
+      "fixed_elements": ["but"],
+      "slots": [
+        { "slot_id": "first_clause", "syntactic_role": "clause", "semantic_role": "first_statement_or_expectation", "allowed_forms": ["finite_clause"] },
+        { "slot_id": "second_clause", "syntactic_role": "clause", "semantic_role": "contrasting_statement_or_outcome", "allowed_forms": ["finite_clause"] }
+      ],
+      "sense_ids": ["sense:but.contrast", "sense:but.counter_expectation"],
+      "communicative_function_ids": ["function:express_simple_contrast", "function:express_unexpected_result"],
+      "prerequisite_construction_ids": [],
+      "recommended_stage": "A1",
+      "notes": "Uma construção que realiza DOIS sentidos: contraste coordenado ('I am tired, but I am happy.') e contra-expectativa ('I was tired, but I finished the work.') — a estrutura é idêntica, a leitura muda com a relação semântica entre as orações. Espelho invertido do pack still (um sentido, duas construções)."
+    },
+    {
+      "construction_id": "construction:but.adjective_but_adjective",
+      "label": "adjetivo + but + adjetivo/complemento",
+      "pattern": "SUBJECT + BE + ADJECTIVE + but + ADJECTIVE",
+      "fixed_elements": ["but"],
+      "slots": [
+        { "slot_id": "subject", "syntactic_role": "subject", "semantic_role": "described_entity", "allowed_forms": ["pronoun", "noun_phrase"] },
+        { "slot_id": "first_adjective", "syntactic_role": "complement", "semantic_role": "conceded_quality", "allowed_forms": ["adjective_phrase"] },
+        { "slot_id": "second_adjective", "syntactic_role": "complement", "semantic_role": "asserted_quality", "allowed_forms": ["adjective_phrase"] }
+      ],
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:qualify_with_contrast"],
+      "prerequisite_construction_ids": ["construction:but.clause_but_clause"],
+      "recommended_stage": "A2-B1",
+      "notes": "Restrição/atenuação dentro de um único predicado: compartilha o sentido de contraste (decisão documentada na seção 7 do briefing), mas usa construção própria — but coordena adjetivos, sem segunda oração e normalmente sem vírgula."
+    },
+    {
+      "construction_id": "construction:but.not_x_but_y",
+      "label": "not + X + but + Y",
+      "pattern": "… not + X + but + Y",
+      "fixed_elements": ["not", "but"],
+      "slots": [
+        { "slot_id": "negated_element", "syntactic_role": "complement", "semantic_role": "rejected_idea", "allowed_forms": ["noun_phrase", "adjective_phrase"] },
+        { "slot_id": "asserted_element", "syntactic_role": "complement", "semantic_role": "corrected_idea", "allowed_forms": ["noun_phrase", "adjective_phrase"] }
+      ],
+      "sense_ids": ["sense:but.correction"],
+      "communicative_function_ids": ["function:correct_a_misconception"],
+      "prerequisite_construction_ids": ["construction:but.clause_but_clause"],
+      "recommended_stage": "B1",
+      "notes": "O elemento negado e o afirmado ocupam o MESMO slot sintático — but não liga orações completas aqui. A negação é elemento fixo solidário da construção."
+    },
+    {
+      "construction_id": "construction:but.universal_but_exception",
+      "label": "all/everyone/everything + but + exceção",
+      "pattern": "UNIVERSAL_QUANTIFIER + but + EXCEPTION_NP",
+      "fixed_elements": ["but"],
+      "slots": [
+        { "slot_id": "universal", "syntactic_role": "quantified_noun_phrase", "semantic_role": "universal_set", "allowed_forms": ["universal_quantifier_phrase"] },
+        { "slot_id": "exception", "syntactic_role": "prepositional_complement", "semantic_role": "excluded_element", "allowed_forms": ["noun_phrase"] }
+      ],
+      "sense_ids": ["sense:but.exception"],
+      "communicative_function_ids": ["function:single_out_exception"],
+      "prerequisite_construction_ids": ["construction:but.clause_but_clause"],
+      "recommended_stage": "B1-B2",
+      "notes": "but preposicional: exige quantificador universal à esquerda (all, everyone, everything, every N) e um sintagma nominal excluído à direita. Deve ser DISTINGUIDO do coordenador de orações — relação contrasts_with declarada."
+    },
+    {
+      "construction_id": "construction:but.polite_marker_but_clause",
+      "label": "marcador de polidez + but + oração",
+      "pattern": "POLITENESS_MARKER + , but + CLAUSE",
+      "fixed_elements": ["but"],
+      "slots": [
+        { "slot_id": "politeness_marker", "syntactic_role": "discourse_marker", "semantic_role": "softening_move", "allowed_forms": ["apology_formula"] },
+        { "slot_id": "objection_clause", "syntactic_role": "main_clause", "semantic_role": "objection_or_request", "allowed_forms": ["finite_clause"] }
+      ],
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:introduce_polite_objection"],
+      "prerequisite_construction_ids": ["construction:but.clause_but_clause"],
+      "recommended_stage": "B1",
+      "notes": "Uso discursivo: o primeiro elemento é um movimento de polidez (Sorry / Excuse me), não uma afirmação plena — but contrasta o abrandamento com a objeção. Paralelo funcional ao marcador discursivo de still, com construção e função próprias."
+    }
+  ],
+  "relations": [
+    {
+      "relation_type": "extends_usage",
+      "from": "construction:still.clause_but_subject_still_verb",
+      "to": "construction:but.clause_but_clause",
+      "description_pt": "A construção but...still (propriedade do pack still) estende o contraste coordenado básico: still assevera o resultado contra a expectativa. É a relação explícita exigida entre o padrão clause + but + subject + still + verb e este pack — a construção é referenciada, nunca duplicada."
+    },
+    {
+      "relation_type": "realizes_shared_function",
+      "from": "construction:but.clause_but_clause",
+      "to": "function:express_result_despite_obstacle",
+      "description_pt": "Na leitura de contra-expectativa, o contraste coordenado com but realiza a mesma função comunicativa 'resultado apesar de obstáculo' já modelada (e possuída) pelo pack still."
+    },
+    {
+      "relation_type": "reuses_lexeme_context",
+      "from": "construction:still.clause_but_subject_still_verb",
+      "to": "lexeme:but",
+      "description_pt": "A construção but...still do pack still embute o lexema but como elemento fixo sem possuí-lo — o contexto lexical é reutilizado entre os packs."
+    },
+    {
+      "relation_type": "contrasts_with",
+      "from": "construction:but.universal_but_exception",
+      "to": "construction:but.clause_but_clause",
+      "description_pt": "O but preposicional de exceção deve ser distinguido do coordenador de orações no ensino: mesma forma, estrutura e sentido diferentes."
+    },
+    {
+      "relation_type": "related_construction",
+      "from": "construction:but.polite_marker_but_clause",
+      "to": "construction:still.discourse_still_clause",
+      "description_pt": "Ambos são usos discursivos que organizam o turno: 'Sorry, but...' suaviza uma objeção; 'Still, ...' introduz uma ressalva. Relação pedagógica, não bloqueante."
+    }
+  ],
+  "exemplars": [
+    {
+      "exemplar_id": "exemplar:but.001",
+      "text_en": "I am tired, but I am happy.",
+      "text_pt": "Estou cansado, mas estou feliz.",
+      "construction_id": "construction:but.clause_but_clause",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:express_simple_contrast"],
+      "pedagogical_targets": [
+        { "target_type": "sense", "target_id": "sense:but.contrast", "role": "primary" },
+        { "target_type": "construction", "target_id": "construction:but.clause_but_clause", "role": "primary" }
+      ],
+      "prerequisites": [
+        { "type": "grammar_skill_v1", "ref": "verb_to_be", "compat_bridge": true }
+      ],
+      "intended_new_items": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "context": "Você chega em casa depois de um dia longo, mas que valeu a pena.",
+      "context_items": ["tired", "happy"],
+      "usage_notes": "Primeira exposição a but: duas orações curtas com be, contraste concreto entre estados. Exatamente duas novidades pretendidas.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:but.002",
+      "text_en": "She is young, but she is very responsible.",
+      "text_pt": "Ela é jovem, mas é muito responsável.",
+      "construction_id": "construction:but.clause_but_clause",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:express_simple_contrast"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.clause_but_clause", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.contrast", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "intended_new_items": [],
+      "context": "Você recomenda uma colega nova para cuidar de um projeto importante.",
+      "context_items": ["young", "responsible"],
+      "usage_notes": "Consolidação: nenhuma novidade pretendida; a segunda oração qualifica a primeira em vez de negá-la.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:but.003",
+      "text_en": "The house is small, but it is comfortable.",
+      "text_pt": "A casa é pequena, mas é confortável.",
+      "construction_id": "construction:but.clause_but_clause",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:express_simple_contrast"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.clause_but_clause", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.contrast", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "intended_new_items": [],
+      "context": "Você descreve seu novo apartamento para um amigo.",
+      "context_items": ["small", "comfortable"],
+      "usage_notes": "Sujeito não humano; contraste entre limitação e qualidade.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:but.004",
+      "text_en": "I tried, but it was difficult.",
+      "text_pt": "Eu tentei, mas foi difícil.",
+      "construction_id": "construction:but.clause_but_clause",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:express_simple_contrast"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.clause_but_clause", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.contrast", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" },
+        { "type": "grammar_skill_v1", "ref": "past_simple", "compat_bridge": true }
+      ],
+      "intended_new_items": [],
+      "context": "Você conta a um professor como foi o exercício de casa.",
+      "context_items": ["tried", "difficult"],
+      "usage_notes": "Contraste no passado; o past simple é pré-requisito V1, não alvo. Prepara o terreno para a leitura de contra-expectativa.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1-A2"
+    },
+    {
+      "exemplar_id": "exemplar:but.005",
+      "text_en": "I was tired, but I finished the work.",
+      "text_pt": "Eu estava cansado, mas terminei o trabalho.",
+      "construction_id": "construction:but.clause_but_clause",
+      "sense_ids": ["sense:but.counter_expectation"],
+      "communicative_function_ids": ["function:express_unexpected_result"],
+      "pedagogical_targets": [
+        { "target_type": "sense", "target_id": "sense:but.counter_expectation", "role": "primary" },
+        { "target_type": "construction", "target_id": "construction:but.clause_but_clause", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" },
+        { "type": "grammar_skill_v1", "ref": "past_simple", "compat_bridge": true }
+      ],
+      "intended_new_items": [
+        { "type": "sense", "ref": "sense:but.counter_expectation" }
+      ],
+      "context": "Você explica como foi o fim do seu expediente de ontem.",
+      "context_items": ["tired", "work"],
+      "usage_notes": "Primeira exposição à contra-expectativa: a MESMA construção coordenada, novo sentido — o cansaço criava a expectativa de não terminar. Exatamente uma novidade pretendida.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:but.006",
+      "text_en": "It was raining, but we went out.",
+      "text_pt": "Estava chovendo, mas nós saímos.",
+      "construction_id": "construction:but.clause_but_clause",
+      "sense_ids": ["sense:but.counter_expectation"],
+      "communicative_function_ids": ["function:express_unexpected_result"],
+      "pedagogical_targets": [
+        { "target_type": "sense", "target_id": "sense:but.counter_expectation", "role": "primary" },
+        { "target_type": "construction", "target_id": "construction:but.clause_but_clause", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.counter_expectation" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "intended_new_items": [],
+      "context": "Você conta como foi o passeio de sábado com a família.",
+      "context_items": ["raining", "went"],
+      "usage_notes": "Obstáculo natural (clima) e ação realizada mesmo assim; sujeito plural.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:but.007",
+      "text_en": "He was busy, but he answered my message.",
+      "text_pt": "Ele estava ocupado, mas respondeu minha mensagem.",
+      "construction_id": "construction:but.clause_but_clause",
+      "sense_ids": ["sense:but.counter_expectation"],
+      "communicative_function_ids": ["function:express_unexpected_result"],
+      "pedagogical_targets": [
+        { "target_type": "sense", "target_id": "sense:but.counter_expectation", "role": "primary" },
+        { "target_type": "construction", "target_id": "construction:but.clause_but_clause", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.counter_expectation" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "intended_new_items": [],
+      "context": "Você elogia a atenção de um colega de trabalho.",
+      "context_items": ["busy", "message"],
+      "usage_notes": "Terceira pessoa; a expectativa contrariada vem da ocupação do sujeito.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:but.008",
+      "text_en": "The bus was late, but I still arrived on time.",
+      "text_pt": "O ônibus atrasou, mas mesmo assim cheguei na hora.",
+      "construction_id": "construction:still.clause_but_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.clause_but_subject_still_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" },
+        { "type": "sense", "ref": "sense:still.continuity" },
+        { "type": "construction", "ref": "construction:still.subject_still_lexical_verb" },
+        { "type": "grammar_skill_v1", "ref": "past_simple", "compat_bridge": true }
+      ],
+      "intended_new_items": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.clause_but_subject_still_verb" }
+      ],
+      "context": "Você conta como foi chegar à entrevista de emprego hoje de manhã.",
+      "context_items": ["bus", "late", "arrived"],
+      "usage_notes": "Ponte curricular entre os packs: a construção but...still pertence ao pack still e é REFERENCIADA aqui (dependência declarada no manifest). Os pré-requisitos exigem o contraste de but E a continuidade de still — para quem já os tem, still assevera o resultado contra a expectativa.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:but.009",
+      "text_en": "The restaurant was crowded, but we still found a table.",
+      "text_pt": "O restaurante estava lotado, mas mesmo assim encontramos uma mesa.",
+      "construction_id": "construction:still.clause_but_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.clause_but_subject_still_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.clause_but_subject_still_verb" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "intended_new_items": [],
+      "context": "Você conta como terminou o jantar de aniversário no centro.",
+      "context_items": ["restaurant", "crowded", "table"],
+      "usage_notes": "Consolidação da construção referenciada; obstáculo situacional e resultado favorável.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:but.010",
+      "text_en": "I was nervous, but I still asked the question.",
+      "text_pt": "Eu estava nervoso, mas mesmo assim fiz a pergunta.",
+      "construction_id": "construction:still.clause_but_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.clause_but_subject_still_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.clause_but_subject_still_verb" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "intended_new_items": [],
+      "context": "Você conta como foi participar de uma palestra com muita gente.",
+      "context_items": ["nervous", "question"],
+      "usage_notes": "Obstáculo emocional; primeira pessoa. O contraste com exemplar:but.005 mostra o que still ACRESCENTA à coordenação simples.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:but.011",
+      "text_en": "The trip was expensive, but we still enjoyed it.",
+      "text_pt": "A viagem foi cara, mas mesmo assim aproveitamos.",
+      "construction_id": "construction:still.clause_but_subject_still_verb",
+      "sense_ids": ["sense:still.counter_expectation"],
+      "communicative_function_ids": ["function:express_result_despite_obstacle"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:still.clause_but_subject_still_verb", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:still.counter_expectation", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:still.counter_expectation" },
+        { "type": "construction", "ref": "construction:still.clause_but_subject_still_verb" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "intended_new_items": [],
+      "context": "Você mostra as fotos das férias para os colegas.",
+      "context_items": ["trip", "expensive", "enjoyed"],
+      "usage_notes": "Obstáculo econômico; avaliação positiva mantida mesmo assim.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:but.012",
+      "text_en": "The plan is simple but effective.",
+      "text_pt": "O plano é simples, mas eficaz.",
+      "construction_id": "construction:but.adjective_but_adjective",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:qualify_with_contrast"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.adjective_but_adjective", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.contrast", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "intended_new_items": [
+        { "type": "construction", "ref": "construction:but.adjective_but_adjective" }
+      ],
+      "context": "Você apresenta sua proposta em uma reunião de equipe.",
+      "context_items": ["plan", "simple", "effective"],
+      "usage_notes": "Mesmo sentido de contraste do exemplar 001, construção nova: but coordena adjetivos dentro de um único predicado. Exatamente uma novidade pretendida.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.013",
+      "text_en": "It is small but useful.",
+      "text_pt": "É pequeno, mas útil.",
+      "construction_id": "construction:but.adjective_but_adjective",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:qualify_with_contrast"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.adjective_but_adjective", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.contrast", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.adjective_but_adjective" }
+      ],
+      "intended_new_items": [],
+      "context": "Você mostra a um amigo um aplicativo que instalou no celular.",
+      "context_items": ["small", "useful"],
+      "usage_notes": "Consolidação; note a ausência de vírgula típica desta coordenação de adjetivos.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.014",
+      "text_en": "The test was long but fair.",
+      "text_pt": "A prova foi longa, mas justa.",
+      "construction_id": "construction:but.adjective_but_adjective",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:qualify_with_contrast"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.adjective_but_adjective", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.contrast", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.adjective_but_adjective" }
+      ],
+      "intended_new_items": [],
+      "context": "Você comenta com a turma como foi a avaliação final.",
+      "context_items": ["test", "long", "fair"],
+      "usage_notes": "Passado com be; qualidades em tensão (custo vs. justiça).",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.015",
+      "text_en": "Her explanation was short but clear.",
+      "text_pt": "A explicação dela foi curta, mas clara.",
+      "construction_id": "construction:but.adjective_but_adjective",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:qualify_with_contrast"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.adjective_but_adjective", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.contrast", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.adjective_but_adjective" }
+      ],
+      "intended_new_items": [],
+      "context": "Você elogia a professora depois de uma aula difícil.",
+      "context_items": ["explanation", "short", "clear"],
+      "usage_notes": "Sujeito abstrato; contraste avaliativo positivo.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.016",
+      "text_en": "It was not luck but hard work.",
+      "text_pt": "Não foi sorte, mas trabalho duro.",
+      "construction_id": "construction:but.not_x_but_y",
+      "sense_ids": ["sense:but.correction"],
+      "communicative_function_ids": ["function:correct_a_misconception"],
+      "pedagogical_targets": [
+        { "target_type": "sense", "target_id": "sense:but.correction", "role": "primary" },
+        { "target_type": "construction", "target_id": "construction:but.not_x_but_y", "role": "primary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "intended_new_items": [
+        { "type": "sense", "ref": "sense:but.correction" },
+        { "type": "construction", "ref": "construction:but.not_x_but_y" }
+      ],
+      "context": "Alguém diz que você teve sorte na promoção; você corrige com educação.",
+      "context_items": ["luck", "work"],
+      "usage_notes": "Primeira exposição ao uso corretivo: nega a explicação errada e afirma a verdadeira no mesmo slot sintático. Duas novidades pretendidas.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.017",
+      "text_en": "She is not my sister but my cousin.",
+      "text_pt": "Ela não é minha irmã, mas minha prima.",
+      "construction_id": "construction:but.not_x_but_y",
+      "sense_ids": ["sense:but.correction"],
+      "communicative_function_ids": ["function:correct_a_misconception"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.not_x_but_y", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.correction", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.correction" },
+        { "type": "construction", "ref": "construction:but.not_x_but_y" }
+      ],
+      "intended_new_items": [],
+      "context": "Um amigo confunde o parentesco da pessoa que chegou com você na festa.",
+      "context_items": ["sister", "cousin"],
+      "usage_notes": "Correção de identidade; os dois sintagmas nominais ocupam a mesma função sintática.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.018",
+      "text_en": "The problem is not the price but the quality.",
+      "text_pt": "O problema não é o preço, mas a qualidade.",
+      "construction_id": "construction:but.not_x_but_y",
+      "sense_ids": ["sense:but.correction"],
+      "communicative_function_ids": ["function:correct_a_misconception"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.not_x_but_y", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.correction", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.correction" },
+        { "type": "construction", "ref": "construction:but.not_x_but_y" }
+      ],
+      "intended_new_items": [],
+      "context": "Você explica ao gerente por que os clientes estão reclamando do produto.",
+      "context_items": ["problem", "price", "quality"],
+      "usage_notes": "Correção de diagnóstico em registro profissional.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.019",
+      "text_en": "He was not angry but disappointed.",
+      "text_pt": "Ele não estava bravo, mas decepcionado.",
+      "construction_id": "construction:but.not_x_but_y",
+      "sense_ids": ["sense:but.correction"],
+      "communicative_function_ids": ["function:correct_a_misconception"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.not_x_but_y", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.correction", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.correction" },
+        { "type": "construction", "ref": "construction:but.not_x_but_y" }
+      ],
+      "intended_new_items": [],
+      "context": "Você descreve a reação do seu pai depois de uma conversa séria.",
+      "context_items": ["angry", "disappointed"],
+      "usage_notes": "Correção de estado emocional com adjetivos no mesmo slot.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.020",
+      "text_en": "Sorry, but I have to go now.",
+      "text_pt": "Desculpa, mas eu preciso ir agora.",
+      "construction_id": "construction:but.polite_marker_but_clause",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:introduce_polite_objection"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.polite_marker_but_clause", "role": "primary" },
+        { "target_type": "communicative_function", "target_id": "function:introduce_polite_objection", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "intended_new_items": [
+        { "type": "construction", "ref": "construction:but.polite_marker_but_clause" },
+        { "type": "communicative_function", "ref": "function:introduce_polite_objection" }
+      ],
+      "context": "A conversa está boa, mas seu ônibus sai em dez minutos.",
+      "context_items": ["go", "now"],
+      "usage_notes": "Primeira exposição ao uso discursivo: o primeiro elemento é um movimento de polidez, não uma afirmação plena. Duas novidades pretendidas.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.021",
+      "text_en": "Excuse me, but this seat is taken.",
+      "text_pt": "Com licença, mas este lugar está ocupado.",
+      "construction_id": "construction:but.polite_marker_but_clause",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:introduce_polite_objection"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.polite_marker_but_clause", "role": "primary" },
+        { "target_type": "communicative_function", "target_id": "function:introduce_polite_objection", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "construction", "ref": "construction:but.polite_marker_but_clause" },
+        { "type": "communicative_function", "ref": "function:introduce_polite_objection" }
+      ],
+      "intended_new_items": [],
+      "context": "Alguém vai se sentar no lugar que você guardou para uma amiga no cinema.",
+      "context_items": ["seat", "taken"],
+      "usage_notes": "Objeção educada a um desconhecido; fórmula de licença + contraste.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.022",
+      "text_en": "Sorry, but I don't agree with you.",
+      "text_pt": "Desculpa, mas eu não concordo com você.",
+      "construction_id": "construction:but.polite_marker_but_clause",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:introduce_polite_objection"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.polite_marker_but_clause", "role": "primary" },
+        { "target_type": "communicative_function", "target_id": "function:introduce_polite_objection", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "construction", "ref": "construction:but.polite_marker_but_clause" },
+        { "type": "communicative_function", "ref": "function:introduce_polite_objection" }
+      ],
+      "intended_new_items": [],
+      "context": "Em uma reunião, um colega propõe uma solução que você considera arriscada.",
+      "context_items": ["agree"],
+      "usage_notes": "Discordância direta suavizada; conteúdo negativo introduzido com polidez.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.023",
+      "text_en": "Excuse me, but the meeting has already started.",
+      "text_pt": "Com licença, mas a reunião já começou.",
+      "construction_id": "construction:but.polite_marker_but_clause",
+      "sense_ids": ["sense:but.contrast"],
+      "communicative_function_ids": ["function:introduce_polite_objection"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.polite_marker_but_clause", "role": "primary" },
+        { "target_type": "communicative_function", "target_id": "function:introduce_polite_objection", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "construction", "ref": "construction:but.polite_marker_but_clause" },
+        { "type": "communicative_function", "ref": "function:introduce_polite_objection" }
+      ],
+      "intended_new_items": [],
+      "context": "Você precisa interromper uma conversa no corredor para chamar os colegas.",
+      "context_items": ["meeting", "started"],
+      "usage_notes": "Interrupção educada com urgência; registro profissional.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:but.024",
+      "text_en": "Everyone but John agreed.",
+      "text_pt": "Todos concordaram, menos o John.",
+      "construction_id": "construction:but.universal_but_exception",
+      "sense_ids": ["sense:but.exception"],
+      "communicative_function_ids": ["function:single_out_exception"],
+      "pedagogical_targets": [
+        { "target_type": "sense", "target_id": "sense:but.exception", "role": "primary" },
+        { "target_type": "construction", "target_id": "construction:but.universal_but_exception", "role": "primary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.contrast" },
+        { "type": "construction", "ref": "construction:but.clause_but_clause" }
+      ],
+      "intended_new_items": [
+        { "type": "sense", "ref": "sense:but.exception" },
+        { "type": "construction", "ref": "construction:but.universal_but_exception" }
+      ],
+      "context": "Você resume a votação da equipe sobre o novo horário.",
+      "context_items": ["agreed"],
+      "usage_notes": "Primeira exposição ao but preposicional: quantificador universal + exceção. É um uso NOVO da mesma palavra — o aluno reencontra but em outra estrutura. Duas novidades pretendidas.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:but.025",
+      "text_en": "I eat everything but meat.",
+      "text_pt": "Eu como de tudo, menos carne.",
+      "construction_id": "construction:but.universal_but_exception",
+      "sense_ids": ["sense:but.exception"],
+      "communicative_function_ids": ["function:single_out_exception"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.universal_but_exception", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.exception", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.exception" },
+        { "type": "construction", "ref": "construction:but.universal_but_exception" }
+      ],
+      "intended_new_items": [],
+      "context": "Você explica suas preferências alimentares ao reservar um jantar.",
+      "context_items": ["eat", "meat"],
+      "usage_notes": "Exceção com everything; presente simples habitual.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:but.026",
+      "text_en": "She works every day but Sunday.",
+      "text_pt": "Ela trabalha todos os dias, menos no domingo.",
+      "construction_id": "construction:but.universal_but_exception",
+      "sense_ids": ["sense:but.exception"],
+      "communicative_function_ids": ["function:single_out_exception"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.universal_but_exception", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.exception", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.exception" },
+        { "type": "construction", "ref": "construction:but.universal_but_exception" }
+      ],
+      "intended_new_items": [],
+      "context": "Você descreve a rotina puxada da sua irmã.",
+      "context_items": ["works", "Sunday"],
+      "usage_notes": "Quantificação universal sobre tempo (every day); exceção temporal.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:but.027",
+      "text_en": "Everything but the kitchen was clean.",
+      "text_pt": "Tudo estava limpo, menos a cozinha.",
+      "construction_id": "construction:but.universal_but_exception",
+      "sense_ids": ["sense:but.exception"],
+      "communicative_function_ids": ["function:single_out_exception"],
+      "pedagogical_targets": [
+        { "target_type": "construction", "target_id": "construction:but.universal_but_exception", "role": "primary" },
+        { "target_type": "sense", "target_id": "sense:but.exception", "role": "secondary" }
+      ],
+      "prerequisites": [
+        { "type": "sense", "ref": "sense:but.exception" },
+        { "type": "construction", "ref": "construction:but.universal_but_exception" }
+      ],
+      "intended_new_items": [],
+      "context": "Você conta como encontrou o apartamento depois da festa dos vizinhos.",
+      "context_items": ["kitchen", "clean"],
+      "usage_notes": "O sintagma de exceção dentro do sujeito; concordância com o quantificador.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    }
+  ]
+}

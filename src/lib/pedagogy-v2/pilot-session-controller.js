@@ -16,8 +16,13 @@
 //   - the engine core stays pure: clock and session id live here.
 //
 // All effects are injected so the controller is fully unit-testable:
-//   { profileId, pack, now(), makeSessionId(), buildContext(profileId,{now}),
+//   { profileId, scope | pack, now(), makeSessionId(),
+//     buildContext(profileId,{now,packId,lexemeId,registry}),
 //     recordBatch(events), assessmentServices, capabilities, policy }
+//
+// Slice V2.5: the controller is pack-agnostic. It receives the FORMAL scope
+// { registry, pack_id, lexeme_id } and drives one session over the active pack
+// only; `pack` is kept as a legacy single-pack parameter for existing tests.
 
 import { createLessonSessionV2, appendActivityToSessionV2 } from './lesson-engine-contracts.js'
 import { selectNextActivityV2 } from './lesson-engine.js'
@@ -34,7 +39,7 @@ export const PILOT_STATES = ['idle', 'loading', 'presenting', 'submitting', 'fee
 
 export function createPilotSessionController(deps) {
   const {
-    profileId, pack,
+    profileId, scope = null, pack: legacyPack = null,
     now = () => new Date().toISOString(),
     makeSessionId = () => `v2pilot-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
     buildContext, recordBatch,
@@ -43,6 +48,12 @@ export function createPilotSessionController(deps) {
     enginePolicy = {},
     assessmentPolicy = undefined,
   } = deps
+
+  const registry = scope?.registry ?? null
+  const pack = scope
+    ? (registry?.packs || []).find((p) => p.manifest?.pack_id === scope.pack_id) || null
+    : legacyPack
+  const lexemeId = scope?.lexeme_id ?? pack?.manifest?.primary_lexeme_id ?? null
 
   const availability = computeRecipeRuntimeAvailability(capabilities)
   const listeners = new Set()
@@ -66,7 +77,9 @@ export function createPilotSessionController(deps) {
 
   function selectNext(session, context) {
     return selectNextActivityV2({
-      session, pack, context, runtimeAvailability: availability, policy: enginePolicy,
+      session,
+      ...(scope ? { scope } : { pack }),
+      context, runtimeAvailability: availability, policy: enginePolicy,
     })
   }
 
@@ -89,10 +102,18 @@ export function createPilotSessionController(deps) {
 
   async function start() {
     if (state.status !== 'idle' && state.status !== 'error') return
+    if (!pack) {
+      // Unknown/unresolvable pack: a stable, NON-recoverable error — the UI
+      // returns to the lab selection instead of retry-looping.
+      set({ status: 'error', error: { code: 'PACK_UNKNOWN', detail: String(scope?.pack_id ?? 'missing pack'), recoverable: false } })
+      return
+    }
     set({ status: 'loading', error: null })
     try {
       const nowIso = now()
-      const context = await buildContext(profileId, { now: nowIso, packId: pack?.manifest?.pack_id })
+      const context = await buildContext(profileId, {
+        now: nowIso, packId: pack.manifest?.pack_id, lexemeId, registry,
+      })
       const session = createLessonSessionV2({ session_id: makeSessionId(), profile_id: profileId, now: nowIso })
       present(selectNext(session, context), session, context, { interactions: [] })
     } catch (e) {
@@ -169,7 +190,9 @@ export function createPilotSessionController(deps) {
     try {
       const nowIso = now()
       const session = appendActivityToSessionV2(state.session, state.decision, { now: nowIso })
-      const context = await buildContext(profileId, { now: nowIso, packId: pack?.manifest?.pack_id })
+      const context = await buildContext(profileId, {
+        now: nowIso, packId: pack?.manifest?.pack_id, lexemeId, registry,
+      })
       present(selectNext(session, context), session, context, {
         interactions: [...state.interactions, interaction],
       })
@@ -186,23 +209,31 @@ export function createPilotSessionController(deps) {
   }
 }
 
-/** Fact-based summary for the session-complete screen (no mastery claims). */
+/** Fact-based summary for the session-complete screen (no mastery claims).
+ * Lexeme identity comes from the session's plans — never hardcoded per word. */
 export function summarizePilotSession(interactions = []) {
-  const exemplars = new Set(); const constructions = new Set(); const modalities = new Set(); const senses = new Set()
-  let assessed = 0; let exposures = 0
+  const exemplars = new Set(); const constructions = new Set(); const modalities = new Set()
+  const senses = new Set(); const functions = new Set()
+  let assessed = 0; let exposures = 0; let lexemeLemma = null; let lexemeId = null
   for (const it of interactions) {
     exemplars.add(it.plan.exemplar_id)
     constructions.add(it.plan.construction_id)
     modalities.add(it.plan.modality)
     for (const s of it.plan.sense_ids || []) senses.add(s)
+    for (const f of it.plan.communicative_function_ids || []) functions.add(f)
     if (it.assessment?.status === 'assessed') assessed++
     if (it.plan.recipe === 'exposure') exposures++
+    lexemeLemma = lexemeLemma ?? it.plan.lexeme_lemma ?? null
+    lexemeId = lexemeId ?? it.plan.lexeme_id ?? null
   }
   return {
+    lexeme_id: lexemeId,
+    lexeme_lemma: lexemeLemma,
     sentences_seen: exemplars.size,
     constructions_practiced: constructions.size,
     modalities_practiced: [...modalities],
     senses_encountered: senses.size,
+    functions_encountered: functions.size,
     assessed_interactions: assessed,
     exposures,
   }

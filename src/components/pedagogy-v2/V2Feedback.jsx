@@ -12,17 +12,20 @@ const STYLES = {
   unable_to_assess: { bg: 'var(--bg-alt)', title: 'Não foi possível avaliar' },
 }
 
+// Copy is derived from the ACTIVE lexeme declared in the plan — this component
+// is shared by every pack and must not hardcode any word.
 function progressPhrase(plan, state) {
-  if (plan.recipe === 'exposure') return 'Você encontrou este uso de still em uma frase completa.'
+  const lemma = plan.lexeme_lemma || 'esta palavra'
+  if (plan.recipe === 'exposure') return `Você encontrou este uso de ${lemma} em uma frase completa.`
   if (state === 'correct') {
     return plan.capability === 'recognition' || plan.capability === 'comprehension'
-      ? 'Você reconheceu este uso de still.'
-      : 'Agora você praticou still em uma nova construção.'
+      ? `Você reconheceu este uso de ${lemma}.`
+      : `Agora você praticou ${lemma} em uma nova construção.`
   }
-  if (state === 'partial') return 'Você está se aproximando deste uso de still.'
+  if (state === 'partial') return `Você está se aproximando deste uso de ${lemma}.`
   if (state === 'incorrect') return 'Compare com a frase de referência e tente de novo.'
   if (state === 'unable_to_assess') return 'Não conseguimos avaliar desta vez — você pode tentar novamente.'
-  return 'Você praticou still nesta frase.'
+  return `Você praticou ${lemma} nesta frase.`
 }
 
 export default function V2Feedback({ plan, assessment, busy, onContinue, onTryAgain }) {

@@ -7,7 +7,7 @@ import {
   getSecondaryTargets, getPrerequisites, getV1BridgePrerequisites,
   getV2Prerequisites, getIntendedNewItems, exposureProgression,
 } from './query.js'
-import { loadBuiltinPedagogyV2Packs, getPedagogyV2Pack, listPedagogyV2Packs, __resetPedagogyV2RegistryForTests } from './pack-registry.js'
+import { loadPedagogyV2Registry, getPedagogyPack, getAllPedagogyPacks, __resetPedagogyV2RegistryForTests } from './registry.js'
 
 describe('pedagogy-v2 query API', () => {
   it('resolves entities by id and returns null for unknown ids', () => {
@@ -80,25 +80,25 @@ describe('pedagogy-v2 query API', () => {
   })
 })
 
-describe('pedagogy-v2 pack registry', () => {
+describe('pedagogy-v2 registry (builtin packs)', () => {
   it('loads, validates and freezes builtin packs', () => {
     __resetPedagogyV2RegistryForTests()
-    const packs = loadBuiltinPedagogyV2Packs()
-    expect(packs.length).toBe(1)
-    expect(Object.isFrozen(packs[0])).toBe(true)
-    expect(Object.isFrozen(packs[0].exemplars[0])).toBe(true)
+    const registry = loadPedagogyV2Registry()
+    expect(registry.packs.length).toBeGreaterThanOrEqual(2)
+    expect(Object.isFrozen(registry)).toBe(true)
+    expect(Object.isFrozen(registry.packs[0])).toBe(true)
+    expect(Object.isFrozen(registry.packs[0].exemplars[0])).toBe(true)
   })
 
-  it('resolves packs by id and lists counts', () => {
-    expect(getPedagogyV2Pack('pedagogy_v2_still')?.manifest.pack_id).toBe('pedagogy_v2_still')
-    expect(getPedagogyV2Pack('nope')).toBeNull()
-    const [row] = listPedagogyV2Packs()
-    expect(row.counts).toEqual({
-      lexemes: 1,
-      senses: 3,
-      constructions: 5,
-      communicative_functions: 5,
-      exemplars: 22,
-    })
+  it('resolves packs by id with the still pack intact', () => {
+    const still = getPedagogyPack('pedagogy_v2_still')
+    expect(still?.manifest.pack_id).toBe('pedagogy_v2_still')
+    expect(getPedagogyPack('nope')).toBeNull()
+    expect(still.lexemes.length).toBe(1)
+    expect(still.senses.length).toBe(3)
+    expect(still.constructions.length).toBe(5)
+    expect(still.communicative_functions.length).toBe(5)
+    expect(still.exemplars.length).toBe(22)
+    expect(getAllPedagogyPacks().map((p) => p.manifest.pack_id)).toContain('pedagogy_v2_but')
   })
 })

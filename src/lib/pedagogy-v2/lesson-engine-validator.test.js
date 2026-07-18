@@ -162,14 +162,22 @@ describe('decision and trace validators', () => {
 })
 
 describe('context validator', () => {
-  it('validates the context contract shape', () => {
+  it('validates the context contract shape (v2: declares the multi-pack scope)', () => {
     expect(validateLessonEngineContextV2({
-      context_version: 1, profile_id: 'p1', now: NOW, learner_states: [], recent_evidence: [],
+      context_version: 2, profile_id: 'p1', now: NOW, learner_states: [], recent_evidence: [],
+      dependencies: [], external_prerequisite_targets: [],
+      active_pack_id: 'pedagogy_v2_still', active_lexeme_id: 'lexeme:still',
     }).valid).toBe(true)
-    expect(validateLessonEngineContextV2({ context_version: 1, profile_id: 'p1', now: 'x', learner_states: null, recent_evidence: [] }).errors)
+    expect(validateLessonEngineContextV2({ context_version: 2, profile_id: 'p1', now: 'x', learner_states: null, recent_evidence: [] }).errors)
       .toEqual(expect.arrayContaining([
         expect.stringContaining('CONTEXT_NOW_INVALID'),
         expect.stringContaining('CONTEXT_STATES_REQUIRED'),
+        expect.stringContaining('CONTEXT_DEPENDENCIES_REQUIRED'),
+        expect.stringContaining('CONTEXT_EXTERNAL_TARGETS_REQUIRED'),
       ]))
+    expect(validateLessonEngineContextV2({
+      context_version: 1, profile_id: 'p1', now: NOW, learner_states: [], recent_evidence: [],
+      dependencies: [], external_prerequisite_targets: [],
+    }).errors).toContainEqual(expect.stringContaining('CONTEXT_VERSION_INVALID'))
   })
 })

@@ -12,9 +12,11 @@
 // benchmark/validator scripts import storage.js, which reaches this module);
 // Vite/vitest accept it as well.
 import pedagogy_v2_still from './still.json' with { type: 'json' }
+import pedagogy_v2_but from './but.json' with { type: 'json' }
 
 export const BUILTIN_PEDAGOGY_V2_PACKS = [
   pedagogy_v2_still,
+  pedagogy_v2_but,
 ]
 
 export function pedagogyV2PackById(id) {
