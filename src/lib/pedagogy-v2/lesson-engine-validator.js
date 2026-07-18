@@ -161,5 +161,12 @@ export function validateLessonEngineContextV2(context) {
   if (typeof context.now !== 'string' || Number.isNaN(Date.parse(context.now))) err('CONTEXT_NOW_INVALID', String(context.now))
   if (!Array.isArray(context.learner_states)) err('CONTEXT_STATES_REQUIRED')
   if (!Array.isArray(context.recent_evidence)) err('CONTEXT_EVIDENCE_REQUIRED')
+  // Multi-pack scope declaration (context_version 2).
+  if (!Array.isArray(context.dependencies)) err('CONTEXT_DEPENDENCIES_REQUIRED')
+  if (!Array.isArray(context.external_prerequisite_targets)) err('CONTEXT_EXTERNAL_TARGETS_REQUIRED')
+  if (context.active_pack_id != null && typeof context.active_pack_id !== 'string') err('CONTEXT_ACTIVE_PACK_INVALID')
+  if (context.active_lexeme_id != null && !String(context.active_lexeme_id).startsWith(ID_PREFIXES.lexeme)) {
+    err('CONTEXT_ACTIVE_LEXEME_INVALID', String(context.active_lexeme_id))
+  }
   return { valid: errors.length === 0, errors }
 }

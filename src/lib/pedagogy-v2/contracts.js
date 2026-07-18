@@ -14,6 +14,27 @@
 
 export const PEDAGOGY_V2_SCHEMA_VERSION = '1'
 export const PEDAGOGY_V2_PACK_KIND = 'pedagogical_v2'
+export const PEDAGOGY_V2_REGISTRY_VERSION = 1
+
+// Typed cross-entity relations a pack may declare (Slice V2.5). Every relation
+// is DIRECTED (from → to) and its semantics are documented here — never a loose
+// string array:
+//   prerequisite            — from should be learned after to (curricular order)
+//   related_construction    — from is pedagogically related to to (non-blocking)
+//   realizes_shared_function— construction `from` realizes function `to` owned
+//                             by another pack (shared communicative territory)
+//   extends_usage           — from extends/deepens the usage pattern of to
+//   contrasts_with          — from must be DISTINGUISHED from to when teaching
+//   reuses_lexeme_context   — construction `from` embeds lexeme `to` as a fixed
+//                             element without owning it
+export const PEDAGOGY_V2_RELATION_TYPES = [
+  'prerequisite',
+  'related_construction',
+  'realizes_shared_function',
+  'extends_usage',
+  'contrasts_with',
+  'reuses_lexeme_context',
+]
 
 // Curricular exposure stages. These are RECOMMENDATIONS for when a given USE
 // (sense/construction/exemplar) is first worth exposing — never a level owned by
@@ -71,6 +92,15 @@ export function isV2Id(kind, id) {
 
 export function isExposureStage(stage) {
   return EXPOSURE_STAGES.includes(stage)
+}
+
+/** Entity kind of a typed V2 id ('lexeme'|'sense'|…|'exemplar'), or null. */
+export function entityKindOfId(id) {
+  if (typeof id !== 'string') return null
+  for (const [kind, prefix] of Object.entries(ID_PREFIXES)) {
+    if (id.startsWith(prefix)) return kind
+  }
+  return null
 }
 
 // Order index of a stage for progression queries (lower = earlier exposure).

@@ -22,7 +22,9 @@ export const LESSON_ENGINE_V2_VERSION = 2 // 1 was the 7038d70 prototype
 export const LESSON_ENGINE_POLICY_VERSION = 2
 export const LESSON_SESSION_V2_VERSION = 1
 export const ACTIVITY_PLAN_V2_VERSION = 1
-export const LESSON_ENGINE_CONTEXT_V2_VERSION = 1
+// 2 (Slice V2.5): declares the multi-pack scope — registry_version,
+// active_pack_id, active_lexeme_id, dependencies, external prerequisite targets.
+export const LESSON_ENGINE_CONTEXT_V2_VERSION = 2
 
 export const DECISION_STATUSES = ['activity', 'no_eligible_activity', 'session_complete']
 export const PREREQUISITE_STATUSES = ['met', 'unmet', 'unknown']

@@ -75,8 +75,8 @@ export default function TrainingHub() {
         {settings?.pedagogy_v2_pilot_enabled && (
           <section className="card" data-testid="v2-pilot-card" style={{ padding:16, border:'1px dashed var(--indigo-600)' }}>
             <div className="label-eyebrow">experimental</div>
-            <div style={{fontWeight:900,fontSize:17,marginTop:4}}>Laboratório V2 — still</div>
-            <p className="muted" style={{fontSize:13,margin:'6px 0 12px'}}>Aprenda novos usos da mesma palavra por meio de frases completas.</p>
+            <div style={{fontWeight:900,fontSize:17,marginTop:4}}>Laboratório V2</div>
+            <p className="muted" style={{fontSize:13,margin:'6px 0 12px'}}>Aprofunde palavras fundamentais em novos sentidos e construções.</p>
             <button className="btn btn-secondary" data-testid="v2-pilot-open" onClick={() => navigate(SCREENS.PEDAGOGY_V2_PILOT)}>Abrir laboratório</button>
           </section>
         )}

@@ -171,15 +171,19 @@ describe('V2SelectionDetails (diagnostics)', () => {
 })
 
 describe('feature-flag gating (screen)', () => {
-  it('the pilot screen blocks access when the flag is off', async () => {
+  it('the lab screen blocks access when the flag is off', async () => {
     vi.doMock('../../store.jsx', () => ({
-      SCREENS: { HOME: 'home', TRAINING: 'training' },
-      useApp: () => ({ settings: { pedagogy_v2_pilot_enabled: false }, activeProfile: 'p1', db: {}, setTab: noop, back: noop }),
+      SCREENS: { HOME: 'home', TRAINING: 'training', PEDAGOGY_V2_PILOT: 'pedagogy_v2_pilot' },
+      useApp: () => ({
+        settings: { pedagogy_v2_pilot_enabled: false }, activeProfile: 'p1', db: {},
+        params: {}, setTab: noop, back: noop, navigate: noop,
+      }),
     }))
-    const { default: Screen } = await import('../../screens/PedagogyV2StillPilot.jsx')
+    const { default: Screen } = await import('../../screens/PedagogyV2Lab.jsx')
     const html = renderToStaticMarkup(<Screen />)
     expect(html).toContain('v2-pilot-disabled')
     expect(html).not.toContain('v2-pilot-screen')
+    expect(html).not.toContain('v2-lab-screen')
     vi.doUnmock('../../store.jsx')
   })
 })
