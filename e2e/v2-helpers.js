@@ -70,6 +70,35 @@ export async function continueFromFeedback(page) {
   await page.getByTestId('v2-feedback-continue').click()
 }
 
+// Selection screen → adaptive/review/explore study session screen.
+export async function openStudyMode(page, mode) {
+  await page.getByTestId(`v2-mode-${mode}`).click()
+  await expect(page.getByTestId('v2-study-screen')).toBeVisible()
+}
+
+// Answers the current activity on EITHER the focused pilot screen or the study
+// screen; returns its recipe. Production fallbacks are unused in the
+// deterministic early session.
+export async function answerCurrentActivity(page) {
+  const activity = page.locator('[data-testid^="v2-activity-"]')
+  await expect(activity).toBeVisible()
+  const recipe = (await activity.getAttribute('data-testid')).replace('v2-activity-', '')
+  if (recipe === 'exposure') {
+    await page.getByTestId('v2-continue').click()
+  } else if (recipe === 'meaning_recognition' || recipe === 'listening_recognition') {
+    await page.locator('[data-testid^="v2-option-"]').first().click()
+    await page.getByTestId('v2-submit').click()
+  } else if (recipe === 'completion') {
+    await page.getByTestId('v2-completion-input').fill('but')
+    await page.getByTestId('v2-submit').click()
+  } else if (recipe === 'word-order') {
+    const total = await page.locator('[data-testid^="v2-token-"]').count()
+    for (let i = 0; i < total; i++) await page.locator('[data-testid="v2-token-bank"] button').first().click()
+    await page.getByTestId('v2-submit').click()
+  }
+  return recipe
+}
+
 /**
  * Seed valid LearnerEvidenceV2 events straight through the public storage
  * layer. `rows` = [{ target_type, target_id, modality ('reading'|'listening'),

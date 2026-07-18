@@ -8,12 +8,22 @@
 // Never modifies any file. Output ordering is fully canonical (sorted ids,
 // no timestamps) so two runs over the same content are byte-identical.
 
+// Slice V2.6 additions: Study-Planner relation roles, curricular entry-path /
+// reachability analysis, structurally impossible recognition targets and an
+// OPTIONAL simulated review queue over a caller-provided fixture
+// (`--fixture <path>` with { now, learner_states, recent_evidence }). The
+// default mode stays purely structural and never depends on real user data.
+
 import { readFileSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { validatePedagogyV2Registry } from '../src/lib/pedagogy-v2/validator.js'
 import { EXPOSURE_STAGES, stageIndex } from '../src/lib/pedagogy-v2/contracts.js'
 import { auditRecognitionOptionsV2 } from '../src/lib/pedagogy-v2/options-audit.js'
+import { buildPedagogyV2Registry } from '../src/lib/pedagogy-v2/registry.js'
+import { buildReviewQueueV2 } from '../src/lib/pedagogy-v2/review-queue.js'
+import { RELATION_PLANNER_POLICY } from '../src/lib/pedagogy-v2/study-planner-contracts.js'
+import { buildRecognitionOptionsV2 } from '../src/lib/pedagogy-v2/lesson-engine.js'
 
 const dir = join(dirname(fileURLToPath(import.meta.url)), '../src/content/pedagogy-v2')
 const files = readdirSync(dir).filter((f) => f.endsWith('.json')).sort()
@@ -207,6 +217,112 @@ for (const p of sortedPacks) {
   const audit = auditRecognitionOptionsV2(p)
   if (audit.clean) { say(`  ${p.manifest.pack_id}: clean`); continue }
   for (const f of audit.findings) say(`  ${p.manifest.pack_id}: ${JSON.stringify(f)}`)
+}
+
+// ---- Study Planner relation roles (V2.6) ----
+say()
+say('Relations as seen by the Study Planner (role per RELATION_PLANNER_POLICY):')
+{
+  let any = false
+  for (const p of sortedPacks) {
+    for (const r of p.relations || []) {
+      say(`  [${RELATION_PLANNER_POLICY[r.relation_type] || 'unknown'}] ${r.relation_type}: ${r.from} → ${r.to}`)
+      any = true
+    }
+  }
+  if (!any) say('  (none)')
+}
+
+// ---- curricular entry paths + reachability (V2.6) ----
+// A pack's ENTRY point is an exemplar with no V2 prerequisites. Reachability:
+// fixed point over "an exemplar is reachable when every V2 prerequisite ref
+// was introduced by an already-reachable exemplar".
+say()
+say('Curricular entry paths:')
+const reachableTargets = new Set()
+{
+  const exemplars = sortedPacks.flatMap((p) => (p.exemplars || []).map((e) => ({ pack_id: p.manifest.pack_id, e })))
+  const v2Prereqs = ({ e }) => (e.prerequisites || []).filter((pr) => pr.type !== 'grammar_skill_v1')
+  for (const p of sortedPacks) {
+    const entries = (p.exemplars || []).filter((e) => !(e.prerequisites || []).some((pr) => pr.type !== 'grammar_skill_v1'))
+    say(`  ${p.manifest.pack_id}: ${entries.length ? `${entries.length} entry exemplar(s) (${entries.map((e) => e.exemplar_id).join(', ')})` : '⚠ NO curricular entry path'}`)
+  }
+  let changed = true
+  const reachableExemplars = new Set()
+  while (changed) {
+    changed = false
+    for (const row of exemplars) {
+      if (reachableExemplars.has(row.e.exemplar_id)) continue
+      if (v2Prereqs(row).every((pr) => reachableTargets.has(pr.ref))) {
+        reachableExemplars.add(row.e.exemplar_id)
+        for (const t of row.e.pedagogical_targets || []) if (!reachableTargets.has(t.target_id)) { reachableTargets.add(t.target_id); changed = true }
+        for (const n of row.e.intended_new_items || []) if (!reachableTargets.has(n.ref)) { reachableTargets.add(n.ref); changed = true }
+        changed = true
+      }
+    }
+  }
+  say()
+  say('Unreachable targets (no prerequisite path can ever introduce them):')
+  const unreachable = nonExemplarIds.filter((id) => targeted.has(id) && !reachableTargets.has(id))
+  say(unreachable.length ? unreachable.map((id) => `  ${id}`).join('\n') : '  (none)')
+
+  say()
+  say('Relations that can never become eligible (an endpoint is unreachable):')
+  const ineligible = []
+  for (const p of sortedPacks) {
+    for (const r of p.relations || []) {
+      const ends = [r.from, r.to].filter((id) => byId.has(id) && byId.get(id).kind !== 'lexeme')
+      if (ends.some((id) => targeted.has(id) && !reachableTargets.has(id))) ineligible.push(`  [${r.relation_type}] ${r.from} → ${r.to}`)
+    }
+  }
+  say(ineligible.length ? ineligible.join('\n') : '  (none)')
+}
+
+// ---- targets without a technically possible recognition recipe (V2.6) ----
+// Structural approximation (no runtime snapshot): a target whose EVERY
+// declaring exemplar cannot form the minimum safe recognition option set.
+say()
+say('Targets without a technically possible recognition recipe:')
+{
+  const bad = []
+  for (const p of sortedPacks) {
+    const byTarget = new Map()
+    for (const e of p.exemplars || []) {
+      for (const t of e.pedagogical_targets || []) {
+        if (!byTarget.has(t.target_id)) byTarget.set(t.target_id, [])
+        byTarget.get(t.target_id).push(e)
+      }
+    }
+    for (const [targetId, exemplars] of [...byTarget.entries()].sort()) {
+      if (exemplars.every((e) => buildRecognitionOptionsV2(p, e, 3) === null)) {
+        bad.push(`  ${targetId} (pack ${p.manifest.pack_id})`)
+      }
+    }
+  }
+  say(bad.length ? bad.join('\n') : '  (none)')
+}
+
+// ---- optional simulated review queue over a fixture (V2.6) ----
+// `--fixture <path>`: { now, learner_states, recent_evidence } — read-only,
+// deterministic. Without the flag nothing user-specific is ever touched.
+{
+  const idx = process.argv.indexOf('--fixture')
+  if (idx !== -1 && process.argv[idx + 1]) {
+    const fixture = JSON.parse(readFileSync(process.argv[idx + 1], 'utf8'))
+    const registry = buildPedagogyV2Registry(packs)
+    const queue = buildReviewQueueV2({
+      registry,
+      learnerStates: fixture.learner_states || [],
+      recentEvidence: fixture.recent_evidence || [],
+      now: fixture.now,
+    })
+    say()
+    say(`Simulated review queue (fixture ${process.argv[idx + 1]}, now=${fixture.now}):`)
+    if (!queue.length) say('  (empty)')
+    for (const item of queue) {
+      say(`  ${item.target.target_id} · ${item.capability_key} · priority ${item.priority} · ${item.reason_codes.join(',')}`)
+    }
+  }
 }
 
 console.log(lines.join('\n'))

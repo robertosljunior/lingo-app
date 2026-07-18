@@ -311,7 +311,11 @@ function runtimeUnavailableReason(runtimeAvailability, recipe, modality) {
   return hit ? hit.reason : null
 }
 
-export function selectNextActivityV2({ session, scope = null, pack = null, learnerStates, recentEvidence, policy = {}, context = null, resolveV1Skill = null, runtimeAvailability = null } = {}) {
+// `focus` (optional, Slice V2.6): a restriction handed down by the Study
+// Planner — { target_id, capability, modality }, every field optional. The
+// engine keeps FULL authority over exemplar/recipe/support choice within the
+// restriction; the planner never picks activities.
+export function selectNextActivityV2({ session, scope = null, pack = null, learnerStates, recentEvidence, policy = {}, context = null, resolveV1Skill = null, runtimeAvailability = null, focus = null } = {}) {
   const p = mergeLessonEnginePolicyV2(policy)
 
   // Resolve the active pack: either through the formal multi-pack scope or the
@@ -395,6 +399,11 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
         exclude('not_targeted'); return
       }
 
+      // Study-planner focus target: same semantics as targeted practice.
+      if (focus?.target_id && !presented.includes(focus.target_id)) {
+        exclude('not_focus_target'); return
+      }
+
       // Tri-state prerequisites (V2 blocking; V1 bridges advisory by default).
       const assessments = assessExemplarPrerequisites(exemplar, statesById, p, resolveV1Skill, registryIndex, activePackId)
       prereqByExemplar.set(exemplar.exemplar_id, assessments)
@@ -412,6 +421,19 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
 
       for (const recipe of LESSON_RECIPES) {
         for (const [capability, modality] of recipe.pairs) {
+          // Study-planner focus restriction on capability/modality. When the
+          // focus names a capability (deepen/review/remediate/independence),
+          // the engine must TRAIN that capability — exposure is filtered too,
+          // so a review never turns into a first-contact exposure of an
+          // un-exposed co-target. Introduction focuses carry no capability and
+          // let exposure through (the exposure gate limits it to new material).
+          const exposureExempt = recipe.recipe === 'exposure' && !focus?.capability
+          if (focus?.capability && capability !== focus.capability && !exposureExempt) {
+            exclude('not_focus_capability', recipe.recipe); continue
+          }
+          if (focus?.modality && modality !== focus.modality && !exposureExempt) {
+            exclude('not_focus_modality', recipe.recipe); continue
+          }
           const runtimeReason = runtimeUnavailableReason(runtimeAvailability, recipe.recipe, modality)
           if (runtimeReason) { exclude(runtimeReason, recipe.recipe); continue }
           if (!recipeGateOpen({ recipe, capability, modality, primaries, presented, statesById, policy: p })) continue

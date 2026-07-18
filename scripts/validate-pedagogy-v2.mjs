@@ -49,13 +49,27 @@ for (const err of result.errors) {
   console.error(`✗ ${err}`)
 }
 
-// Structural audit of authored recognition alternatives (Slice V2.5 §21):
-// reported as warnings — the runtime already degrades safely (no_safe_options
-// → other exemplar/recipe → no_eligible_activity), options are never invented.
+// Structural audit of authored recognition alternatives. Slice V2.6 promotes
+// the OBJECTIVE hazards to CI errors: identical translation, normalized-
+// identical translation, self-distractor, foreign/nonexistent option source
+// and insufficient options. No near-synonym heuristic ever blocks CI — any
+// future non-objective finding stays a warning.
+const OBJECTIVE_AUDIT_ERRORS = new Set([
+  'DUPLICATE_TRANSLATION',
+  'NORMALIZED_DUPLICATE_TRANSLATION',
+  'SELF_DISTRACTOR',
+  'FOREIGN_OPTION_SOURCE',
+  'INSUFFICIENT_OPTIONS',
+])
 for (const { file, pack } of packs) {
   const audit = auditRecognitionOptionsV2(pack)
   for (const f of audit.findings) {
-    console.warn(`⚠ ${join(dir, file)}: ${JSON.stringify(f)}`)
+    if (OBJECTIVE_AUDIT_ERRORS.has(f.code)) {
+      errorCount++
+      console.error(`✗ ${join(dir, file)}: ${JSON.stringify(f)}`)
+    } else {
+      console.warn(`⚠ ${join(dir, file)}: ${JSON.stringify(f)}`)
+    }
   }
 }
 
