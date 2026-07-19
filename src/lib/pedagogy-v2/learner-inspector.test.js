@@ -7,7 +7,9 @@ import { describe, it, expect, beforeAll } from 'vitest'
 import {
   inspectTargetV2, inspectLexemeV2, inspectReviewNeedsV2, inspectPlannerEligibilityV2,
   buildLearnerInspectorSnapshotV2, explainStudyFocusV2, createTelemetryCollectorV2, buildObservabilityExportV2,
+  independenceAvailabilityV2,
 } from './learner-inspector.js'
+import { computeRecipeRuntimeAvailability } from './runtime-capabilities.js'
 import { runSimulationV2 } from './simulation-runner.js'
 import { buildStandardScenarioV2 } from './simulation-scenarios.js'
 import { loadPedagogyV2Registry } from './registry.js'
@@ -124,6 +126,47 @@ describe('§29.8 — telemetry is opt-in and in-memory only', () => {
     expect(t.events).toHaveLength(1)
     expect(() => t.record('NOT_A_REAL_EVENT')).toThrow(/TELEMETRY_EVENT_TYPE_INVALID/)
     expect(t.export()).toEqual({ telemetry_version: 1, events: [{ type: 'STUDY_FOCUS_SELECTED', payload: { a: 1 } }] })
+  })
+})
+
+describe('§29.10 (Slice V2.8, test 32) — the inspector explains independence AVAILABILITY, not learner deficit', () => {
+  const RT = computeRecipeRuntimeAvailability({ text_input: true, audio_output: true, speech_input: true, semantic_assessment: true, pronunciation_assessment: false })
+
+  it('recognition independence is reported unavailable with a structural reason', () => {
+    const a = independenceAvailabilityV2('recognition', 'reading', { runtimeAvailability: RT })
+    expect(a.available).toBe(false)
+    expect(a.reason).toBe('no_independent_recipe')
+    // It is framed as an instrument property — never "the learner has not mastered".
+    expect(a.learner_message).toBe('Ainda não é medido por este tipo de atividade.')
+    expect(a.learner_message).not.toMatch(/aluno|não domina|deficit/i)
+  })
+
+  it('controlled_production/writing independence is reported available', () => {
+    const a = independenceAvailabilityV2('controlled_production', 'writing', { runtimeAvailability: RT })
+    expect(a.available).toBe(true)
+    expect(a.reason).toBeNull()
+  })
+
+  it('per-target capability views carry the independence_availability annotation', () => {
+    const s = states.find((x) => Object.keys(x.capabilities || {}).length > 0)
+    const view = inspectTargetV2(s.target.target_id, { learnerStates: states, registry, runtimeAvailability: RT })
+    const cap = Object.values(view.capabilities)[0]
+    expect(cap.independence_availability).toBeTruthy()
+    expect(typeof cap.independence_availability.available).toBe('boolean')
+  })
+})
+
+describe('§29.11 (Slice V2.8, test 33) — explainability exposes the internal diagnostic reason', () => {
+  it('recognition independence carries INDEPENDENCE_NOT_MEASURABLE_WITH_CURRENT_RECIPES as an internal diagnostic only', () => {
+    const a = independenceAvailabilityV2('recognition', 'reading', {})
+    expect(a.diagnostic).toBe('INDEPENDENCE_NOT_MEASURABLE_WITH_CURRENT_RECIPES')
+    // The diagnostic is internal — the learner-facing message never leaks the code.
+    expect(a.learner_message).not.toContain('INDEPENDENCE_NOT_MEASURABLE')
+  })
+
+  it('a domain with an executable independent recipe carries no diagnostic', () => {
+    const a = independenceAvailabilityV2('controlled_production', 'writing', {})
+    expect(a.diagnostic).toBeNull()
   })
 })
 

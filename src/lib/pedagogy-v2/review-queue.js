@@ -14,6 +14,7 @@ import { entityKindOfId } from './contracts.js'
 import { resolvePedagogyEntity } from './registry.js'
 import { laneMeets } from './lesson-engine-state-queries.js'
 import { mergeStudyPlannerPolicyV2 } from './study-planner-contracts.js'
+import { getTrainingAffordancesV2, canTrainIndependentV2 } from './training-affordances.js'
 
 const DAY_MS = 24 * 60 * 60 * 1000
 const round4 = (n) => +Number(n).toFixed(4)
@@ -44,11 +45,15 @@ function lastOutcomes(recentEvidence) {
  * sorted by priority DESC then (target_id, capability_key) ASC.
  * Only targets that STILL resolve in the registry are queued.
  */
-export function buildReviewQueueV2({ registry, learnerStates, recentEvidence = [], now, policy = {} } = {}) {
+export function buildReviewQueueV2({ registry, learnerStates, recentEvidence = [], now, policy = {}, runtimeAvailability = null } = {}) {
   const p = mergeStudyPlannerPolicyV2(policy)
   const nowMs = Date.parse(now)
   if (Number.isNaN(nowMs)) throw new Error('REVIEW_QUEUE_NOW_REQUIRED')
   const failures = lastOutcomes(recentEvidence)
+  // Slice V2.8: SUPPORTED_WITHOUT_INDEPENDENT is only an ACTIONABLE review need
+  // when the engine can actually train this domain to unaided evidence. For
+  // recognition/comprehension (no independent recipe) it was a false need.
+  const affordances = getTrainingAffordancesV2({ runtimeAvailability })
   const items = []
 
   for (const state of learnerStates || []) {
@@ -90,10 +95,15 @@ export function buildReviewQueueV2({ registry, learnerStates, recentEvidence = [
       }
 
       // SUPPORTED_WITHOUT_INDEPENDENT — supported mastery is ESTABLISHED at
-      // the advancement bar while the independent lane has no evidence.
-      // (Mere early supported practice is consolidation work, not review.)
+      // the advancement bar while the independent lane has no evidence. Only
+      // actionable when an executable independent affordance exists for this
+      // (capability, modality) — otherwise there is no way to satisfy it and it
+      // would be a false, permanent review item (Slice V2.8).
+      const [capModality, ...capRest] = capKey.split('_')
+      const capName = capRest.join('_')
       if (laneMeets(cap.supported, p.thresholds.advancement)
-        && (cap.independent?.assessed_evidence_count || 0) === 0) {
+        && (cap.independent?.assessed_evidence_count || 0) === 0
+        && canTrainIndependentV2(capName, capModality, { affordances })) {
         reasons.push('SUPPORTED_WITHOUT_INDEPENDENT')
         score += 0.5
       }

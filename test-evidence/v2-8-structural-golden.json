@@ -1,0 +1,199 @@
+{
+  "new-learner": {
+    "n": 100,
+    "capability_depth": {
+      "recognition": 56,
+      "comprehension": 11,
+      "controlled_production": 29,
+      "free_production": 4,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 27,
+      "listening": 40,
+      "writing": 0,
+      "speaking": 33
+    },
+    "unpracticed_available": [
+      "writing"
+    ],
+    "review_ratio": 0.1905,
+    "unaided_controlled": 0.4483,
+    "unaided_free": 0,
+    "repetition_target": 18,
+    "cross_pack_transfer": 0,
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION",
+      "warning:SUPPORT_TRAP"
+    ]
+  },
+  "weak-listener": {
+    "n": 80,
+    "capability_depth": {
+      "recognition": 70,
+      "comprehension": 10,
+      "controlled_production": 0,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 17,
+      "listening": 63,
+      "writing": 0,
+      "speaking": 0
+    },
+    "unpracticed_available": [
+      "writing",
+      "speaking"
+    ],
+    "review_ratio": 0.6667,
+    "unaided_controlled": null,
+    "unaided_free": null,
+    "repetition_target": 9,
+    "cross_pack_transfer": 0,
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION"
+    ]
+  },
+  "support-dependent": {
+    "n": 100,
+    "capability_depth": {
+      "recognition": 50,
+      "comprehension": 10,
+      "controlled_production": 39,
+      "free_production": 1,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 27,
+      "listening": 33,
+      "writing": 0,
+      "speaking": 40
+    },
+    "unpracticed_available": [
+      "writing"
+    ],
+    "review_ratio": 0.25,
+    "unaided_controlled": 0.4615,
+    "unaided_free": 0,
+    "repetition_target": 18,
+    "cross_pack_transfer": 0,
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION",
+      "warning:SUPPORT_TRAP"
+    ]
+  },
+  "forgetful": {
+    "n": 60,
+    "capability_depth": {
+      "recognition": 53,
+      "comprehension": 7,
+      "controlled_production": 0,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 24,
+      "listening": 36,
+      "writing": 0,
+      "speaking": 0
+    },
+    "unpracticed_available": [
+      "writing",
+      "speaking"
+    ],
+    "review_ratio": 0.875,
+    "unaided_controlled": null,
+    "unaided_free": null,
+    "repetition_target": 10,
+    "cross_pack_transfer": 0,
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION",
+      "warning:REVIEW_STARVATION",
+      "warning:TARGET_STAGNATION"
+    ]
+  },
+  "fast-learner": {
+    "n": 100,
+    "capability_depth": {
+      "recognition": 53,
+      "comprehension": 16,
+      "controlled_production": 17,
+      "free_production": 14,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 29,
+      "listening": 40,
+      "writing": 0,
+      "speaking": 31
+    },
+    "unpracticed_available": [
+      "writing"
+    ],
+    "review_ratio": 0.0638,
+    "unaided_controlled": 0.2353,
+    "unaided_free": 0.7143,
+    "repetition_target": 18,
+    "cross_pack_transfer": 0,
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION",
+      "warning:SUPPORT_TRAP"
+    ]
+  },
+  "struggling": {
+    "n": 100,
+    "capability_depth": {
+      "recognition": 67,
+      "comprehension": 9,
+      "controlled_production": 19,
+      "free_production": 5,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 41,
+      "listening": 35,
+      "writing": 0,
+      "speaking": 24
+    },
+    "unpracticed_available": [
+      "writing"
+    ],
+    "review_ratio": 0.4085,
+    "unaided_controlled": 0.3684,
+    "unaided_free": 0,
+    "repetition_target": 10,
+    "cross_pack_transfer": 0,
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION",
+      "warning:SUPPORT_TRAP"
+    ]
+  },
+  "cross-pack": {
+    "n": 100,
+    "capability_depth": {
+      "recognition": 86,
+      "comprehension": 5,
+      "controlled_production": 9,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 45,
+      "listening": 46,
+      "writing": 0,
+      "speaking": 9
+    },
+    "unpracticed_available": [
+      "writing"
+    ],
+    "review_ratio": 3.5455,
+    "unaided_controlled": 0,
+    "unaided_free": null,
+    "repetition_target": 2,
+    "cross_pack_transfer": 4,
+    "findings": [
+      "warning:TARGET_STAGNATION"
+    ]
+  }
+}

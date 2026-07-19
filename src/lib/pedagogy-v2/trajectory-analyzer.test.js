@@ -79,6 +79,28 @@ describe('§26.4 — GRAVE: new-item budget violation', () => {
   })
 })
 
+describe('§26.4b — GRAVE (Slice V2.8): independence focus produced a supported activity', () => {
+  it('flags an independence focus served with a non-none support tier as severity error', () => {
+    const interactions = [ix({
+      study_focus: { focus_type: 'independence', capability: 'controlled_production', modality: 'writing' },
+      capability: 'controlled_production', modality: 'writing', support_tier: 'high',
+    })]
+    const { findings, trajectory } = analyzeTrajectoryV2(mkResult({ interactions }), { registry })
+    const f = find(findings, 'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY')
+    expect(f?.severity).toBe('error')
+    expect(trajectory.grave_findings).toBeGreaterThanOrEqual(1)
+  })
+
+  it('does NOT flag an independence focus served unaided (tier none)', () => {
+    const interactions = [ix({
+      study_focus: { focus_type: 'independence', capability: 'controlled_production', modality: 'writing' },
+      capability: 'controlled_production', modality: 'writing', support_tier: 'none',
+    })]
+    const { findings } = analyzeTrajectoryV2(mkResult({ interactions }), { registry })
+    expect(find(findings, 'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY')).toBeUndefined()
+  })
+})
+
 describe('§26.5 — ERROR: premature free production', () => {
   it('flags free production of a target before any controlled production of it', () => {
     const interactions = [
@@ -138,14 +160,21 @@ describe('§26.9 — WARNING: support trap', () => {
   })
 })
 
-describe('§26.10 — WARNING: modality starvation', () => {
-  it('flags an available modality never practiced across enough opportunities', () => {
-    const interactions = Array.from({ length: OBSERVABILITY_POLICY_V2.modality_starvation_opportunities }, (_, i) => ix({ index: i, modality: 'reading' }))
+describe('§26.10 — WARNING: modality starvation (opportunity-aware, Slice V2.8)', () => {
+  it('flags an available modality that HAD eligible opportunities yet was never practiced', () => {
+    // Every step offered writing/listening as eligible domains, but only reading
+    // was ever practiced → writing/listening are pedagogically starved.
+    const interactions = Array.from({ length: OBSERVABILITY_POLICY_V2.modality_starvation_opportunities }, (_, i) => ix({
+      index: i, modality: 'reading',
+      eligible_domains: ['recognition_reading', 'controlled_production_writing', 'recognition_listening'],
+    }))
     const { findings } = analyzeTrajectoryV2(mkResult({ interactions }), { registry })
-    const f = find(findings, 'MODALITY_STARVATION')
-    expect(f?.severity).toBe('warning')
-    // writing/listening/speaking were all available but unpracticed.
-    expect(['writing', 'listening', 'speaking']).toContain(f.details.modality)
+    const starved = findings.filter((x) => x.code === 'MODALITY_STARVATION').map((x) => x.details.modality)
+    expect(starved).toContain('writing')
+    expect(starved).toContain('listening')
+    // Speaking was available in the runtime but NEVER a curricular option here →
+    // it is runtime/curriculum reality, not pedagogical starvation.
+    expect(starved).not.toContain('speaking')
   })
 })
 

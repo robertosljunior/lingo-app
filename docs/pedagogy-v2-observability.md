@@ -146,6 +146,19 @@ Executando os 7 goldens com as políticas atuais, o harness revelou:
 Ambos são **findings de qualidade de trajetória**, não violações de invariante.
 Conforme §22, **não foram recalibrados** — ficam registrados para a Slice V2.8.
 
+> **Atualização — resolvido na Slice V2.8 (correção estrutural, sem recalibrar
+> pesos).** A causa raiz era estrutural: `independence` era tratada como
+> propriedade abstrata da capability. A V2.8 introduziu
+> `training-affordances.js` (fonte única derivada de `LESSON_RECIPES` + runtime):
+> um foco `independence` só existe onde há recipe executável, sem apoio e
+> avaliado. Recognition/comprehension deixaram de gerar `independence` e
+> `SUPPORTED_WITHOUT_INDEPENDENT`; o engine rejeita foco impossível
+> (`FOCUS_INDEPENDENCE_NOT_EXECUTABLE`) e uma nova invariante grave
+> (`INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY`) impede regressão. Resultado:
+> as trajetórias progridem recognition → comprehension → controlled → free
+> production; **nenhuma recalibração de peso foi necessária**. Ver
+> `test-evidence/v2-8-structural-baseline.md`.
+
 ## Bugs reais corrigidos nesta slice
 
 - **Colisão de IDs por reuso de lesson-session:** ao recriar a `LessonSessionV2`

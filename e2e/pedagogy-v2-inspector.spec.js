@@ -82,6 +82,18 @@ test.describe('visualizing real learner state', () => {
     await expect(page.getByTestId('v2-inspector-targets')).toContainText('(selecionado)')
   })
 
+  test('explains independence availability as an instrument property, not a learner deficit (Slice V2.8)', async ({ page }) => {
+    await openInspectorFromLab(page)
+    await expect(page.getByTestId('v2-inspector-targets')).toBeVisible()
+    const indep = page.getByTestId('v2-inspector-independence').first()
+    await expect(indep).toBeVisible()
+    // Recognition has no independent recipe → framed as "not measured by this
+    // activity type", never as "the learner has not mastered".
+    const body = await page.getByTestId('v2-inspector-targets').innerText()
+    expect(body).toContain('Independência mensurável')
+    expect(body).not.toMatch(/aluno (ainda )?não domina/i)
+  })
+
   test('never shows a global-mastery claim about the word', async ({ page }) => {
     await openInspectorFromLab(page)
     await expect(page.getByTestId('v2-inspector-targets')).toBeVisible()

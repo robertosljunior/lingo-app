@@ -30,15 +30,19 @@ export const FINDING_CODES = [
   'REVIEW_MODE_INTRODUCED_NEW_TARGET',
   'RUNTIME_UNAVAILABLE_FOCUS_SELECTED',
   'GLOBAL_MASTERY_FIELD_DETECTED',
+  // Slice V2.8 — a Planner→Engine contract breach: an independence focus that
+  // was served by a SUPPORTED activity (the V2.7 loop, now impossible).
+  'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY',
 ]
 
-// The three findings above that are ALWAYS severity error — a broken invariant,
-// not a heuristic warning.
+// The findings above that are ALWAYS severity error — a broken invariant, not a
+// heuristic warning.
 export const GRAVE_FINDING_CODES = [
   'NEW_ITEM_BUDGET_VIOLATION',
   'REVIEW_MODE_INTRODUCED_NEW_TARGET',
   'RUNTIME_UNAVAILABLE_FOCUS_SELECTED',
   'GLOBAL_MASTERY_FIELD_DETECTED',
+  'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY',
 ]
 
 /** Structured finding factory: { severity, code, target_id?, details }. */
@@ -68,6 +72,12 @@ export const SIMULATION_INVARIANT_CODES = [
   'AUTHORED_SENTENCE_ONLY',           // 13
   'NO_GENERATED_TEXT',                // 14
   'NO_HIDDEN_V1_SKILL',               // 15
+  // Slice V2.8 — Planner→Engine domain alignment. An independence focus must
+  // never be served as a supported activity, and the executed plan's
+  // capability/modality must match the focus that asked for it.
+  'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY', // 16
+  'FOCUS_CAPABILITY_NOT_TRAINED',                   // 17
+  'FOCUS_MODALITY_NOT_TRAINED',                     // 18
 ]
 
 // ---- local telemetry (§19) --------------------------------------------------

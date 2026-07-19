@@ -111,16 +111,23 @@ function assertInvariants({ i, mode, focus, plan, planned, availability, registr
   // 12 — active pack matches focus.
   if (plan.pack_id !== focus.pack_id) fail('ACTIVE_PACK_MATCHES_FOCUS', { plan_pack: plan.pack_id, focus_pack: focus.pack_id })
 
-  // 11 — engine respects the focus restriction.
+  // 11 — engine respects the focus TARGET restriction.
   if (focus.target) {
     const presented = [plan.primary_target, ...(plan.secondary_targets || [])].map((t) => t.target_id)
     if (!presented.includes(focus.target.target_id)) fail('ENGINE_RESPECTS_FOCUS', { focus_target: focus.target.target_id, presented })
   }
+  // 17 / 18 (Slice V2.8) — Planner→Engine domain alignment: when the focus names
+  // a capability/modality, the executed plan must train exactly that domain.
   if (focus.capability && plan.recipe !== 'exposure' && plan.capability !== focus.capability) {
-    fail('ENGINE_RESPECTS_FOCUS', { focus_capability: focus.capability, plan_capability: plan.capability })
+    fail('FOCUS_CAPABILITY_NOT_TRAINED', { focus_capability: focus.capability, plan_capability: plan.capability })
   }
   if (focus.modality && plan.recipe !== 'exposure' && plan.modality !== focus.modality) {
-    fail('ENGINE_RESPECTS_FOCUS', { focus_modality: focus.modality, plan_modality: plan.modality })
+    fail('FOCUS_MODALITY_NOT_TRAINED', { focus_modality: focus.modality, plan_modality: plan.modality })
+  }
+  // 16 (Slice V2.8) — an independence focus must produce UNAIDED evidence; it may
+  // NEVER be served as a supported activity (the V2.7 loop, now impossible).
+  if (focus.focus_type === 'independence' && plan.support.derived_tier !== 'none') {
+    fail('INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY', { tier: plan.support.derived_tier, capability: plan.capability, modality: plan.modality })
   }
 
   // 4 / 15 — target ids resolve and are typed V2 ids (never a bare V1 skill).
@@ -280,6 +287,12 @@ export async function runSimulationV2(scenario, opts = {}) {
         is_new_target: focus.is_new_target, reason_codes: [...focus.reason_codes],
       },
       planner_trace: summarizePlannerTrace(plannerDecision.trace),
+      // Domains (capability_modality) that were ELIGIBLE this step (a viable,
+      // scored candidate existed) — powers opportunity-aware coverage, which
+      // separates "couldn't practice" from "could and never chose to" (§22).
+      eligible_domains: [...new Set((plannerDecision.trace?.candidates || [])
+        .filter((c) => c.adjusted_score != null && c.capability && c.modality)
+        .map((c) => `${c.capability}_${c.modality}`))].sort(),
       pack_switch: plannerDecision.trace.pack_switch,
       activity_plan: compactPlan(plan),
       response: { response_type: response.response_type, intended_success, support_tier: finalizeSupportUsage(response.support_usage).derived_tier },

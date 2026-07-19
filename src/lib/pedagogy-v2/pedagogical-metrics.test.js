@@ -189,6 +189,21 @@ describe('§25.11 — delayed retention per capability key', () => {
   })
 })
 
+describe('§25.13 — opportunity-aware coverage (Slice V2.8)', () => {
+  it('separates domains that were eligible-and-chosen from eligible-and-ignored', () => {
+    const r = mkResult({ interactions: [
+      // reading recognition was eligible and chosen every step; writing was
+      // eligible but never chosen.
+      ix({ capability: 'recognition', modality: 'reading', eligible_domains: ['recognition_reading', 'controlled_production_writing'] }),
+      ix({ capability: 'recognition', modality: 'reading', eligible_domains: ['recognition_reading', 'controlled_production_writing'] }),
+    ] })
+    const m = computePedagogicalMetricsV2(r, { registry })
+    expect(m.opportunity_coverage.recognition_reading).toEqual({ eligible_opportunities: 2, selected_opportunities: 2, coverage_ratio: 1 })
+    // Writing had opportunities but was never chosen → coverage 0.
+    expect(m.opportunity_coverage.controlled_production_writing).toEqual({ eligible_opportunities: 2, selected_opportunities: 0, coverage_ratio: 0 })
+  })
+})
+
 describe('§25.12 — lexical depth (facts only, never a global mastery %)', () => {
   it('reports per-lexeme fact counts for every pack in the registry', () => {
     const m = computePedagogicalMetricsV2(real, { registry })

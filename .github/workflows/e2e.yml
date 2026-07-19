@@ -28,7 +28,7 @@ jobs:
       - name: Validate pedagogy V2 (registry, packs, contracts)
         run: npm run validate:pedagogy-v2
 
-      - name: Pedagogy V2 simulation smoke (deterministic, halts on invariant/grave)
+      - name: Pedagogy V2 simulation smoke (deterministic; halts on any invariant, incl. V2.8 INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY)
         run: npm run simulate:pedagogy-v2 -- --scenario all --check-determinism
 
       - name: Build

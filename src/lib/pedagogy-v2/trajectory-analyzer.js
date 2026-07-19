@@ -10,7 +10,7 @@ import { OBSERVABILITY_POLICY_V2, makeFinding, GRAVE_FINDING_CODES } from './obs
 import { computeRecipeRuntimeAvailability, isRecipeExecutable } from './runtime-capabilities.js'
 import { getLane, laneMeets } from './lesson-engine-state-queries.js'
 import { loadPedagogyV2Registry } from './registry.js'
-import { availableModalitiesFor } from './pedagogical-metrics.js'
+import { availableModalitiesFor, modalitiesWithOpportunityV2 } from './pedagogical-metrics.js'
 
 const ADVANCEMENT = { min_mastery: 0.7, min_evidence_level: 'emerging' }
 const GLOBAL_MASTERY_KEYS = ['mastery', 'global_mastery', 'mastery_global', 'overall_mastery', 'lexeme_mastery']
@@ -63,11 +63,25 @@ export function analyzeTrajectoryV2(result, { policy = OBSERVABILITY_POLICY_V2, 
   for (const it of interactions) {
     if ((it.new_item_refs || []).length > 2) add('error', 'NEW_ITEM_BUDGET_VIOLATION', { new_item_refs: it.new_item_refs }, it.target.target_id)
   }
+  // INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY (Slice V2.8) — an independence
+  // focus served by a scaffolded activity. A real run halts on this; the analyzer
+  // still detects it in a synthetic trajectory so the detection is testable.
+  for (const it of interactions) {
+    if (it.study_focus?.focus_type === 'independence' && it.support_tier && it.support_tier !== 'none') {
+      add('error', 'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY', { support_tier: it.support_tier, capability: it.capability, modality: it.modality }, it.target.target_id)
+    }
+  }
 
   // ---- trajectory warnings (heuristic) ----
 
-  // TARGET_STAGNATION — many assessed activities on a target, best lane still
-  // insufficient at the end.
+  // TARGET_STAGNATION — many assessed activities on a target with NO real
+  // progress in any lane. Slice V2.8 measurement fix: a supported-only domain
+  // (e.g. recognition) can reach high MASTERY while its evidence_level stays
+  // 'insufficient' (that level credits unaided evidence, which recognition
+  // cannot produce). Rising mastery is learning, not stagnation — so a best
+  // lane at/above the advancement mastery bar counts as progressing even when
+  // its evidence_level lags. This removes the false positives that otherwise
+  // grow once the loop is broken and targets climb the ladder.
   const assessedByTarget = new Map()
   for (const it of interactions) {
     if (it.assessment.status !== 'assessed') continue
@@ -77,8 +91,12 @@ export function analyzeTrajectoryV2(result, { policy = OBSERVABILITY_POLICY_V2, 
   for (const [targetId, count] of assessedByTarget) {
     if (count < policy.stagnation_activities) continue
     const state = statesByTarget.get(targetId)
-    const bestEstablished = Object.keys(state?.capabilities || {}).some((k) => laneMeets(getLane(state, k, 'overall'), { min_mastery: 0.5, min_evidence_level: 'emerging' }))
-    if (!bestEstablished) add('warning', 'TARGET_STAGNATION', { assessed_activities: count }, targetId)
+    const progressing = Object.keys(state?.capabilities || {}).some((k) => {
+      const lane = getLane(state, k, 'overall')
+      return laneMeets(lane, { min_mastery: 0.5, min_evidence_level: 'emerging' })
+        || (lane?.mastery_estimate ?? 0) >= ADVANCEMENT.min_mastery
+    })
+    if (!progressing) add('warning', 'TARGET_STAGNATION', { assessed_activities: count }, targetId)
   }
 
   // PREMATURE_FREE_PRODUCTION — free production for a target before any
@@ -136,12 +154,19 @@ export function analyzeTrajectoryV2(result, { policy = OBSERVABILITY_POLICY_V2, 
     }
   }
 
-  // MODALITY_STARVATION — an available modality never practiced.
+  // MODALITY_STARVATION — a modality that was technically AVAILABLE and had at
+  // least one eligible CURRICULAR opportunity, yet was never practiced across
+  // enough interactions (Slice V2.8: opportunity-aware). A modality the runtime
+  // cannot support, or that never became a real curricular option, is NOT
+  // flagged — that is runtime/curriculum reality, not pedagogical starvation.
   if (interactions.length >= policy.modality_starvation_opportunities) {
     const counts = {}
     for (const it of interactions) counts[it.modality] = (counts[it.modality] || 0) + 1
+    const withOpportunity = modalitiesWithOpportunityV2(result)
     for (const m of availableModalitiesFor(capabilities)) {
-      if (!counts[m]) add('warning', 'MODALITY_STARVATION', { modality: m, interactions: interactions.length })
+      if (counts[m]) continue // practiced
+      if (!withOpportunity.has(m)) continue // available but never a real curricular option → not starvation
+      add('warning', 'MODALITY_STARVATION', { modality: m, interactions: interactions.length })
     }
   }
 

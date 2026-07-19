@@ -11,7 +11,34 @@ import { buildReviewQueueV2, modalityGapCounterpart } from './review-queue.js'
 import { buildStudyCandidatesV2, selectNextStudyFocusV2, factualPackProgressV2 } from './study-planner.js'
 import { createStudySessionV2 } from './study-planner-contracts.js'
 import { computeRecipeRuntimeAvailability } from './runtime-capabilities.js'
+import { independenceUnavailabilityReasonV2 } from './training-affordances.js'
 import { TELEMETRY_EVENT_TYPES } from './observability-contracts.js'
+
+// Learner-facing phrasing for WHY independence isn't measured yet — framed as a
+// property of the ACTIVITY TYPE, never as a learner deficit (Slice V2.8 §25/§26).
+const INDEPENDENCE_REASON_LEARNER_TEXT = {
+  no_independent_recipe: 'Ainda não é medido por este tipo de atividade.',
+  runtime_unavailable: 'Requer um recurso do dispositivo que não está disponível agora.',
+  assessment_unavailable: 'Requer uma avaliação que não está disponível agora.',
+}
+// Internal diagnostic code (never shown to the learner) for the structural case.
+const INDEPENDENCE_STRUCTURAL_DIAGNOSTIC = 'INDEPENDENCE_NOT_MEASURABLE_WITH_CURRENT_RECIPES'
+
+/**
+ * Whether independent evidence is MEASURABLE for a (capability, modality) with
+ * the current recipes + runtime, and — if not — why. This is a property of the
+ * measurement instrument, not of the learner (§25). `reason` is null when
+ * independence IS available.
+ */
+export function independenceAvailabilityV2(capability, modality, { runtimeAvailability = null } = {}) {
+  const reason = independenceUnavailabilityReasonV2(capability, modality, { runtimeAvailability })
+  return {
+    available: reason == null,
+    reason,
+    diagnostic: reason === 'no_independent_recipe' ? INDEPENDENCE_STRUCTURAL_DIAGNOSTIC : null,
+    learner_message: reason ? INDEPENDENCE_REASON_LEARNER_TEXT[reason] : null,
+  }
+}
 
 const CAPABILITY_LABELS = {
   reading_recognition: 'reconhecimento ao ler',
@@ -27,15 +54,19 @@ const CAPABILITY_LABELS = {
 
 // ---- per-target inspection --------------------------------------------------
 
-export function inspectTargetV2(targetId, { learnerStates = [], registry = loadPedagogyV2Registry() } = {}) {
+export function inspectTargetV2(targetId, { learnerStates = [], registry = loadPedagogyV2Registry(), runtimeAvailability = null } = {}) {
   const state = indexStatesByTargetId(learnerStates).get(targetId) || null
   const owner = resolvePedagogyEntity(targetId, registry)
   const capabilities = {}
   for (const [capKey, cap] of Object.entries(state?.capabilities || {})) {
+    const [capModality, ...capRest] = capKey.split('_')
     capabilities[capKey] = {
       overall: laneView(cap.overall),
       supported: laneView(cap.supported),
       independent: laneView(cap.independent),
+      // Slice V2.8: is independence even MEASURABLE here? (Instrument property,
+      // never a learner deficit — the UI frames it accordingly.)
+      independence_availability: independenceAvailabilityV2(capRest.join('_'), capModality, { runtimeAvailability }),
       retention: state.retention?.[capKey]
         ? {
             last_retrieval_at: state.retention[capKey].last_retrieval_at,
@@ -156,11 +187,12 @@ export function buildLearnerInspectorSnapshotV2({
   now, mode = 'adaptive', runtimeCapabilities = null, studySession = null,
   recentFocuses = [], recentActivityPlans = [],
 } = {}) {
+  const runtimeAvailability = runtimeCapabilities ? computeRecipeRuntimeAvailability(runtimeCapabilities) : null
   return {
     snapshot_version: 1,
     generated_for_now: now ?? null,
     lexemes: registry.packs.map((p) => inspectLexemeV2(p.manifest.primary_lexeme_id, { learnerStates, registry })),
-    targets: learnerStates.map((s) => inspectTargetV2(s.target.target_id, { learnerStates, registry })),
+    targets: learnerStates.map((s) => inspectTargetV2(s.target.target_id, { learnerStates, registry, runtimeAvailability })),
     review_queue: now ? inspectReviewNeedsV2({ registry, learnerStates, recentEvidence, now }) : [],
     planner: now ? inspectPlannerEligibilityV2({ registry, learnerStates, recentEvidence, mode, now, runtimeCapabilities, studySession }) : null,
     recent_focuses: recentFocuses,
