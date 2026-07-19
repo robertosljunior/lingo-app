@@ -543,6 +543,9 @@ const SETTINGS_DEFAULTS = {
   // Slice V2.4: experimental "Laboratório V2" pilot. Default OFF — existing
   // users see no behavioral change; a settings default needs no migration.
   pedagogy_v2_pilot_enabled: false,
+  // Slice V2.7: internal Learner Inspector (read-only diagnostics). Default OFF;
+  // also enabled implicitly in a dev build. A settings default needs no migration.
+  pedagogy_v2_diagnostics_enabled: false,
 }
 
 export async function getSettings() {

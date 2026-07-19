@@ -20,6 +20,7 @@ export const SCREENS = {
   MISTAKES: 'mistakes', SETTINGS: 'settings', TRAINING: 'training',
   STORIES: 'stories', TALK: 'talk',
   PEDAGOGY_V2_PILOT: 'pedagogy_v2_pilot',
+  PEDAGOGY_V2_INSPECTOR: 'pedagogy_v2_inspector',
 }
 
 const TABS = new Set([SCREENS.HOME, SCREENS.HISTORY, SCREENS.MISTAKES, SCREENS.SETTINGS, SCREENS.STORIES, SCREENS.TALK])

@@ -25,6 +25,12 @@ jobs:
       - name: Unit tests
         run: npm test
 
+      - name: Validate pedagogy V2 (registry, packs, contracts)
+        run: npm run validate:pedagogy-v2
+
+      - name: Pedagogy V2 simulation smoke (deterministic, halts on invariant/grave)
+        run: npm run simulate:pedagogy-v2 -- --scenario all --check-determinism
+
       - name: Build
         run: npm run build
 
