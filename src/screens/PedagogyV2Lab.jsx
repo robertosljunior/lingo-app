@@ -141,8 +141,10 @@ export default function PedagogyV2Lab() {
 
   if (!pack) {
     return <LabPackSelection registry={registry}
+      diagnosticsEnabled={!!(import.meta.env?.DEV || settings?.pedagogy_v2_diagnostics_enabled)}
       onOpenPack={(id) => navigate(SCREENS.PEDAGOGY_V2_PILOT, { packId: id })}
       onOpenMode={(mode) => navigate(SCREENS.PEDAGOGY_V2_PILOT, { mode })}
+      onOpenInspector={() => navigate(SCREENS.PEDAGOGY_V2_INSPECTOR, {})}
       onBack={() => back(SCREENS.TRAINING)} />
   }
 
@@ -152,7 +154,7 @@ export default function PedagogyV2Lab() {
 
 // ---- selection --------------------------------------------------------------
 
-function LabPackSelection({ registry, onOpenPack, onOpenMode, onBack }) {
+function LabPackSelection({ registry, onOpenPack, onOpenMode, onBack, onOpenInspector, diagnosticsEnabled }) {
   const { db, activeProfile } = useApp()
   const [states, setStates] = useState(null)
   const [showQueue, setShowQueue] = useState(false)
@@ -269,6 +271,13 @@ function LabPackSelection({ registry, onOpenPack, onOpenMode, onBack }) {
             </button>
           )
         })}
+
+        {diagnosticsEnabled && (
+          <button className="btn btn-ghost btn-sm" data-testid="v2-open-inspector"
+            onClick={onOpenInspector} style={{ marginTop: 8 }}>
+            Inspector (diagnóstico)
+          </button>
+        )}
       </div>
     </div>
   )

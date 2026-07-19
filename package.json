@@ -16,6 +16,8 @@
     "validate:knowledge-packs": "node scripts/validate-knowledge-packs.mjs",
     "validate:pedagogy-v2": "node scripts/validate-pedagogy-v2.mjs",
     "inspect:pedagogy-v2": "node scripts/inspect-pedagogy-v2.mjs",
+    "simulate:pedagogy-v2": "node scripts/simulate-pedagogy-v2.mjs",
+    "inspect:learner-v2": "node scripts/inspect-learner-v2.mjs",
     "benchmark:structural-nlp": "node scripts/benchmark-structural-nlp.mjs",
     "benchmark:semantic": "node scripts/benchmark-semantic.mjs"
   },

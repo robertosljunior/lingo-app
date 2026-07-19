@@ -13,6 +13,18 @@ export async function setPilotFlag(page, enabled) {
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
 }
 
+// Toggle the read-only diagnostics/inspector flag (Slice V2.7). In the built
+// preview app import.meta.env.DEV is false, so the inspector is gated purely by
+// this setting.
+export async function setDiagnosticsFlag(page, enabled) {
+  await page.evaluate(async (enabled) => {
+    await window.__e2e.db.setSetting('pedagogy_v2_diagnostics_enabled', enabled)
+  }, enabled)
+  await page.reload()
+  await expect(page.locator('.app-shell')).toBeVisible()
+  await page.waitForFunction(() => window.__e2e && window.__e2e.db)
+}
+
 export async function openHub(page) {
   await page.getByTestId('open-training-hub').click()
   await expect(page.getByRole('heading', { name: 'Escolha o que treinar' })).toBeVisible()
