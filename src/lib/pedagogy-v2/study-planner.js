@@ -20,6 +20,7 @@ import {
 } from './lesson-engine-state-queries.js'
 import { LESSON_RECIPES } from './lesson-engine-contracts.js'
 import { isRecipeExecutable } from './runtime-capabilities.js'
+import { getTrainingAffordancesV2, canTrainIndependentV2 } from './training-affordances.js'
 import { buildReviewQueueV2, modalityGapCounterpart } from './review-queue.js'
 import {
   STUDY_FOCUS_V2_VERSION, STUDY_PLANNER_V2_VERSION, RELATION_PLANNER_POLICY,
@@ -132,6 +133,7 @@ function lastAssessedByTargetCap(recentEvidence) {
  */
 export function buildStudyCandidatesV2({
   registry, learnerStates = [], recentEvidence = [], policy = {}, allowedPackIds = null, now,
+  runtimeAvailability = null,
 } = {}) {
   const p = mergeStudyPlannerPolicyV2(policy)
   const index = buildPlanningIndex(registry)
@@ -139,7 +141,11 @@ export function buildStudyCandidatesV2({
   const lastOutcome = lastAssessedByTargetCap(recentEvidence)
   const allowed = allowedPackIds ? new Set(allowedPackIds) : null
   const packs = index.packs.filter((pk) => !allowed || allowed.has(pk.manifest.pack_id))
-  const queue = buildReviewQueueV2({ registry, learnerStates, recentEvidence, now, policy: p })
+  // Single source of truth for "what can actually be trained here" (Slice V2.8).
+  // Independence is only a real focus when an executable, unaided, assessed
+  // recipe exists for the domain — recognition/comprehension have none.
+  const affordances = getTrainingAffordancesV2({ runtimeAvailability })
+  const queue = buildReviewQueueV2({ registry, learnerStates, recentEvidence, now, policy: p, runtimeAvailability })
   const queueByKey = new Map(queue.map((item) => [`${item.target.target_id}|${item.capability_key}`, item]))
   const candidates = new Map() // key → candidate
   const maxStageIdx = EXPOSURE_STAGES.length - 1
@@ -292,9 +298,13 @@ export function buildStudyCandidatesV2({
         addCandidate(c)
       }
 
-      // independence — supported established, independent absent.
+      // independence — supported established, independent absent, AND the engine
+      // can actually train this domain to unaided assessed evidence (Slice V2.8:
+      // recognition/comprehension have no independent recipe, so no independence
+      // focus is generated for them — this breaks the V2.7 independence loop).
       if (laneMeets(getLane(state, capKey, 'supported'), p.thresholds.advancement)
-        && (getLane(state, capKey, 'independent')?.assessed_evidence_count || 0) === 0) {
+        && (getLane(state, capKey, 'independent')?.assessed_evidence_count || 0) === 0
+        && canTrainIndependentV2(capability, modality, { affordances })) {
         const c = {
           ...base, focus_type: 'independence', capability, modality,
           reason_codes: ['SUPPORTED_WITHOUT_INDEPENDENT'],
@@ -431,7 +441,7 @@ export function selectNextStudyFocusV2({
     mode,
   }
 
-  const raw = buildStudyCandidatesV2({ registry, learnerStates, recentEvidence, policy: p, allowedPackIds, now })
+  const raw = buildStudyCandidatesV2({ registry, learnerStates, recentEvidence, policy: p, allowedPackIds, now, runtimeAvailability })
   const excluded = []
   const exclude = (candidate, reason) => excluded.push({ key: candidate.key, target_id: candidate.target?.target_id ?? null, reason })
 
@@ -636,6 +646,10 @@ export function studyFocusToLessonScopeV2(focus, registry) {
       target_id: focus.target?.target_id ?? null,
       capability: focus.capability ?? null,
       modality: focus.modality ?? null,
+      // Slice V2.8: an independence focus demands UNAIDED (tier-none) evidence.
+      // The engine must honor this and never silently fall back to a supported
+      // activity — it rejects the focus instead (FOCUS_INDEPENDENCE_NOT_EXECUTABLE).
+      require_independent: focus.focus_type === 'independence',
     },
     policyOverride: focus.target ? { targeted_practice: { target_id: focus.target.target_id } } : {},
   }

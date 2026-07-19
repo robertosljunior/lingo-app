@@ -33,6 +33,8 @@ const B_COUNTER = { target_type: 'sense', target_id: 'sense:but.counter_expectat
 
 const READ_REC = { activity_kind: 'meaning_recognition', capability: 'recognition', modality: 'reading' }
 const LISTEN_REC = { activity_kind: 'listening_recognition', capability: 'recognition', modality: 'listening' }
+// controlled_production/writing HAS an executable independent recipe (Slice V2.8).
+const WRITE_CTRL = { activity_kind: 'guided_production', capability: 'controlled_production', modality: 'writing' }
 
 let seq = 0
 const ev = (target, activity, over = {}) => buildLearnerEvidenceV2({
@@ -119,12 +121,22 @@ describe('§25.6–11 — capability/independence/failure/trend/retention needs'
     expect(cands).toContain('listening')
   })
 
-  it('7: supported established, independent absent → independence candidate exists', () => {
+  it('7: supported established in a domain WITH an independent recipe → independence candidate exists (Slice V2.8)', () => {
     const supported = (t) => Array.from({ length: 4 }, () =>
-      ev(t, READ_REC, { support: { features: ['translation'], hint_count: 0, attempt_number: 1 } }))
+      ev(t, WRITE_CTRL, { support: { features: ['translation'], hint_count: 0, attempt_number: 1 } }))
     const st = states(supported(B_CONTRAST).concat(supported(B_CLAUSE)))
     const cands = buildStudyCandidatesV2({ registry, learnerStates: st, recentEvidence: [], now: NOW })
-    expect(cands.some((c) => c.focus_type === 'independence' && c.reason_codes.includes('SUPPORTED_WITHOUT_INDEPENDENT'))).toBe(true)
+    expect(cands.some((c) => c.focus_type === 'independence'
+      && c.capability === 'controlled_production' && c.modality === 'writing'
+      && c.reason_codes.includes('SUPPORTED_WITHOUT_INDEPENDENT'))).toBe(true)
+  })
+
+  it('7b: supported established in RECOGNITION produces NO independence candidate (no independent recipe → loop broken, Slice V2.8)', () => {
+    const supported = (t) => Array.from({ length: 6 }, () =>
+      ev(t, READ_REC, { support: { features: ['multiple_choice'], hint_count: 0, attempt_number: 1 } }))
+    const st = states(supported(B_CONTRAST).concat(supported(B_CLAUSE)))
+    const cands = buildStudyCandidatesV2({ registry, learnerStates: st, recentEvidence: [], now: NOW })
+    expect(cands.some((c) => c.focus_type === 'independence' && c.capability === 'recognition')).toBe(false)
   })
 
   it('8: a recent failure produces a remediate candidate', () => {

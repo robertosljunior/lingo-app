@@ -181,6 +181,27 @@ export function computePedagogicalMetricsV2(result, { registry = loadPedagogyV2R
     }
   }
 
+  // 8.13 opportunity-aware coverage (Slice V2.8) — per (capability, modality):
+  // how often was the domain ELIGIBLE (a viable planner candidate existed) vs.
+  // actually SELECTED. Separates "never practiced because it couldn't be" from
+  // "could be practiced and never was". Diagnostic only — never a planner input.
+  const opportunity_coverage = {}
+  const ensureDom = (key) => {
+    if (!opportunity_coverage[key]) opportunity_coverage[key] = { eligible_opportunities: 0, selected_opportunities: 0 }
+    return opportunity_coverage[key]
+  }
+  for (const it of interactions) {
+    const selKey = it.capability && it.modality ? `${it.capability}_${it.modality}` : null
+    const eligible = new Set(it.eligible_domains || [])
+    if (selKey) eligible.add(selKey) // the selected domain was, by definition, eligible
+    for (const dom of eligible) ensureDom(dom).eligible_opportunities += 1
+    if (selKey) ensureDom(selKey).selected_opportunities += 1
+  }
+  for (const key of Object.keys(opportunity_coverage)) {
+    const o = opportunity_coverage[key]
+    o.coverage_ratio = o.eligible_opportunities ? round4(o.selected_opportunities / o.eligible_opportunities) : null
+  }
+
   return {
     target_isolation_rate,
     new_item_load,
@@ -194,5 +215,21 @@ export function computePedagogicalMetricsV2(result, { registry = loadPedagogyV2R
     cross_pack_transfer,
     delayed_retention,
     lexical_depth,
+    opportunity_coverage,
   }
+}
+
+/**
+ * The set of modalities that had at least one ELIGIBLE planner opportunity
+ * across a result. A domain key is `${capability}_${modality}`, so the modality
+ * is the last segment. Used by the analyzer to tell pedagogical starvation
+ * (available + eligible + ignored) from "never a real curricular option".
+ */
+export function modalitiesWithOpportunityV2(result) {
+  const modalities = new Set()
+  for (const it of result.interactions || []) {
+    for (const dom of it.eligible_domains || []) modalities.add(dom.split('_').pop())
+    if (it.modality) modalities.add(it.modality)
+  }
+  return modalities
 }

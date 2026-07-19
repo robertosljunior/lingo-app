@@ -27,6 +27,7 @@ import {
   assessTargetPrerequisite, bestOverallMastery, independentUnlocked,
   retentionDueRatio, lastAssessedOutcomeByTarget,
 } from './lesson-engine-state-queries.js'
+import { canTrainIndependentV2 } from './training-affordances.js'
 
 export { DEFAULT_LESSON_ENGINE_POLICY_V2, mergeLessonEnginePolicyV2 }
 
@@ -357,6 +358,29 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     return { ...baseDecision, status: 'session_complete', plan: null, trace: null }
   }
 
+  // Slice V2.8 invariant: an independence focus demands UNAIDED (tier-none)
+  // assessed evidence. If the engine has no executable independent recipe for
+  // this (capability, modality) — e.g. recognition/comprehension only offer
+  // scaffolded recipes — the focus is IMPOSSIBLE. Reject it explicitly instead
+  // of silently serving a supported activity (which would never move the
+  // independent lane and would trap the trajectory in a loop).
+  if (focus?.require_independent && focus.capability
+    && !canTrainIndependentV2(focus.capability, focus.modality ?? null, { runtimeAvailability })) {
+    return {
+      ...baseDecision,
+      status: 'focus_not_executable',
+      reason: 'FOCUS_INDEPENDENCE_NOT_EXECUTABLE',
+      plan: null,
+      trace: {
+        trace_version: 1,
+        engine_version: LESSON_ENGINE_V2_VERSION,
+        policy_version: p.policy_version,
+        reason: 'FOCUS_INDEPENDENCE_NOT_EXECUTABLE',
+        focus: { capability: focus.capability, modality: focus.modality ?? null, require_independent: true },
+      },
+    }
+  }
+
   const introduced = newItemsIntroducedInSessionV2(session)
   const budgetRemaining = Math.max(0, p.new_item_budget_per_session - introduced.size)
   const recentExemplars = history.slice(-p.exemplar_cooldown).map((h) => h.exemplar_id)
@@ -444,6 +468,9 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
           }
           const capKey = `${modality}_${capability}`
           for (const variant of recipe.variants) {
+            // Slice V2.8: an independence focus may ONLY be served by an
+            // independent (tier-none) variant — never a supported fallback.
+            if (focus?.require_independent && variant.lane !== 'independent') continue
             if (variant.lane === 'independent'
               && !primaries.every((id) => independentUnlocked(statesById.get(id), capKey, p.thresholds))) continue
             out.push(scoreCandidate({ exemplar, authoredIndex, primaryTargets, primaries, newRefs, recipe, capability, modality, capKey, variant, options }))

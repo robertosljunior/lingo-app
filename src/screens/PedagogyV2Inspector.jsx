@@ -125,8 +125,15 @@ export default function PedagogyV2Inspector() {
                 <div key={t.target_id} style={{ borderTop: '1px solid var(--border)', padding: '6px 0', fontSize: 12 }}>
                   <div style={{ fontWeight: 700 }}>{t.target_id} <span className="muted">[{t.kind}] exposição {t.exposure.count}</span></div>
                   {Object.entries(t.capabilities).map(([capKey, cap]) => (
-                    <div key={capKey} className="muted">
-                      {capKey}: overall {cap.overall?.evidence_level}/{cap.overall?.mastery_estimate ?? '—'} · apoio {cap.supported?.evidence_level || '—'} · indep. {cap.independent?.evidence_level || '—'} · tend. {cap.overall?.trend}
+                    <div key={capKey}>
+                      <div className="muted">
+                        {capKey}: overall {cap.overall?.evidence_level}/{cap.overall?.mastery_estimate ?? '—'} · apoio {cap.supported?.evidence_level || '—'} · indep. {cap.independent?.evidence_level || '—'} · tend. {cap.overall?.trend}
+                      </div>
+                      {cap.independence_availability && (
+                        <div className="muted" data-testid="v2-inspector-independence" style={{ fontSize: 11, fontStyle: 'italic' }}>
+                          Independência mensurável: {cap.independence_availability.available ? 'sim' : `não — ${cap.independence_availability.learner_message}`}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>

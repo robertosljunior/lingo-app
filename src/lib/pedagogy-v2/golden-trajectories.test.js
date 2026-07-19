@@ -83,21 +83,29 @@ describe('§27 — adaptive journeys reach both packs (interleaving is real)', (
   }
 })
 
-describe('§27 — documented systemic finding is pinned (recognition support trap)', () => {
-  // The merged V2.6 planner keeps generating independence focuses for
-  // recognition/comprehension (which have no independent engine variant), so the
-  // independent lane never builds and higher modalities go unpracticed. This is
-  // a FINDING for V2.8, not a bug fixed here — pinning it makes any future
-  // planner change deliberate. See docs/pedagogy-v2-observability.md §22.
+describe('§27 (Slice V2.8) — the recognition independence loop is broken', () => {
+  // V2.7 pinned the systemic finding: recognition/comprehension independence
+  // focuses served as supported activities, trapping every persona in
+  // recognition. V2.8 fixed the structural mismatch (training-affordances +
+  // engine invariant). These goldens now pin the CORRECTED behavior: no
+  // independence focus ever produces a supported activity, and journeys
+  // progress up the capability ladder past recognition.
   for (const id of STANDARD_SCENARIO_IDS) {
-    it(`${id}: surfaces SUPPORT_TRAP and MODALITY_STARVATION warnings`, () => {
+    it(`${id}: no INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY, and progresses past recognition`, () => {
       const r = results.get(id)
-      const { findings } = analyzeTrajectoryV2(r, { registry })
-      const codes = new Set(findings.map((f) => f.code))
-      expect(codes.has('SUPPORT_TRAP')).toBe(true)
-      expect(codes.has('MODALITY_STARVATION')).toBe(true)
-      // And none of them is severity error.
-      expect(findings.filter((f) => ['SUPPORT_TRAP', 'MODALITY_STARVATION'].includes(f.code)).every((f) => f.severity === 'warning')).toBe(true)
+      const { findings, trajectory } = analyzeTrajectoryV2(r, { registry })
+      // The V2.8 grave code is never produced by a real run (the runner would
+      // have halted; the analyzer confirms none is present).
+      expect(findings.some((f) => f.code === 'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY')).toBe(false)
+      expect(trajectory.grave_findings).toBe(0)
+      // Every real independence focus was served UNAIDED (tier none).
+      for (const it of r.interactions) {
+        if (it.study_focus?.focus_type === 'independence') expect(it.support_tier).toBe('none')
+      }
+      // The journey reaches at least comprehension — it is no longer stuck in
+      // pure recognition (the V2.7 loop).
+      const caps = new Set(r.interactions.map((it) => it.capability))
+      expect(caps.size).toBeGreaterThan(1)
     })
   }
 })

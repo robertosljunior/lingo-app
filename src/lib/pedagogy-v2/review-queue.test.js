@@ -19,6 +19,8 @@ const CONT = { target_type: 'sense', target_id: 'sense:still.continuity' }
 const B_CONTRAST = { target_type: 'sense', target_id: 'sense:but.contrast' }
 const READ_REC = { activity_kind: 'meaning_recognition', capability: 'recognition', modality: 'reading' }
 const LISTEN_REC = { activity_kind: 'listening_recognition', capability: 'recognition', modality: 'listening' }
+// controlled_production/writing HAS an executable independent recipe (Slice V2.8).
+const WRITE_CTRL = { activity_kind: 'guided_production', capability: 'controlled_production', modality: 'writing' }
 
 let seq = 0
 const ev = (target, activity, at, over = {}) => buildLearnerEvidenceV2({
@@ -92,16 +94,26 @@ describe('review queue — lane-shape reasons', () => {
     expect(both.filter((i) => i.reason_codes.includes('MODALITY_GAP'))).toEqual([])
   })
 
-  it('supported-without-independent requires ESTABLISHED supported mastery', () => {
-    // `translation` is a MEDIUM-tier scaffold (weight 0.6 per answer).
-    const supported = (n, from) => Array.from({ length: n }, (_, i) =>
-      ev(CONT, READ_REC, daysAgo(0, from + i), { support: { features: ['translation'], hint_count: 0, attempt_number: 1 } }))
+  it('supported-without-independent requires ESTABLISHED supported mastery AND an executable independent affordance (Slice V2.8)', () => {
+    // controlled_production/writing DOES have an unaided recipe. `translation`
+    // is a MEDIUM-tier scaffold (weight 0.6 per answer).
+    const supportedWriting = (n, from) => Array.from({ length: n }, (_, i) =>
+      ev(CONT, WRITE_CTRL, daysAgo(0, from + i), { support: { features: ['translation'], hint_count: 0, attempt_number: 1 } }))
     // 2 supported answers (weight 1.2 < emerging bar of 2): NOT queued.
-    expect(queueFor(supported(2, -50)).find((i) => i.reason_codes.includes('SUPPORTED_WITHOUT_INDEPENDENT'))).toBeFalsy()
+    expect(queueFor(supportedWriting(2, -50)).find((i) => i.reason_codes.includes('SUPPORTED_WITHOUT_INDEPENDENT'))).toBeFalsy()
     // 4 supported answers (weight 2.4 ≥ emerging, mastery .77 ≥ .7): queued.
-    const item = queueFor(supported(4, -50)).find((i) => i.reason_codes.includes('SUPPORTED_WITHOUT_INDEPENDENT'))
+    const item = queueFor(supportedWriting(4, -50)).find((i) => i.reason_codes.includes('SUPPORTED_WITHOUT_INDEPENDENT'))
     expect(item).toBeTruthy()
-    expect(item.capability_key).toBe('reading_recognition')
+    expect(item.capability_key).toBe('writing_controlled_production')
+  })
+
+  it('supported-without-independent is NEVER produced for recognition (no independent recipe → false review removed, Slice V2.8)', () => {
+    // Even fully-established supported recognition has no way to be trained to
+    // independent evidence, so it must not spawn a permanent, unsatisfiable need.
+    const supportedRecognition = Array.from({ length: 6 }, (_, i) =>
+      ev(CONT, READ_REC, daysAgo(0, -50 + i), { support: { features: ['multiple_choice'], hint_count: 0, attempt_number: 1 } }))
+    const q = queueFor(supportedRecognition)
+    expect(q.find((i) => i.reason_codes.includes('SUPPORTED_WITHOUT_INDEPENDENT'))).toBeFalsy()
   })
 })
 
