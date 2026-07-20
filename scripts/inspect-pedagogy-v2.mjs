@@ -302,6 +302,34 @@ say('Targets without a technically possible recognition recipe:')
   say(bad.length ? bad.join('\n') : '  (none)')
 }
 
+// ---- training-domain reachability audit (Slice V2.9) ----
+// Structural: for every engine-level training domain (capability × modality),
+// can the planner GENERATE a candidate for it, can the engine EXECUTE it, and
+// does it produce ASSESSED evidence? This is the audit that catches a domain
+// like production/writing being trainable yet never proposable (the V2.8 bug).
+{
+  const { auditTrainingDomainReachabilityV2 } = await import('../src/lib/pedagogy-v2/training-domain-reachability.js')
+  const { getTrainingAffordancesV2, getTrainableModalitiesForCapabilityV2 } = await import('../src/lib/pedagogy-v2/training-affordances.js')
+  const audit = auditTrainingDomainReachabilityV2({})
+  say()
+  say('Training-domain reachability (engine-level; runtime-dependent domains are conditional at runtime):')
+  for (const d of audit.domains) {
+    say(`  ${d.capability}/${d.modality} · ${d.status} · candidate:${d.has_candidate_path ? 'yes' : 'NO'} engine:${d.has_engine_path ? 'yes' : 'NO'} assessed:${d.has_assessment_path ? 'yes' : 'NO'}`)
+  }
+  say(audit.warnings.length
+    ? `  WARNINGS: ${audit.warnings.map((w) => `${w.code}:${w.capability}/${w.modality}`).join(' ')}`
+    : '  No reachability warnings — every trainable domain has a candidate path.')
+
+  const affordances = getTrainingAffordancesV2({})
+  const capabilities = [...new Set(affordances.map((a) => a.capability))].sort()
+  say()
+  say('Capabilities with multiple trainable modalities (modality-expansion applies):')
+  for (const cap of capabilities) {
+    const mods = getTrainableModalitiesForCapabilityV2(cap, { affordances })
+    if (mods.length >= 2) say(`  ${cap}: ${mods.join(', ')}`)
+  }
+}
+
 // ---- optional simulated review queue over a fixture (V2.6) ----
 // `--fixture <path>`: { now, learner_states, recent_evidence } — read-only,
 // deterministic. Without the flag nothing user-specific is ever touched.

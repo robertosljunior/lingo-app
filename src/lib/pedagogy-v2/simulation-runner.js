@@ -27,6 +27,7 @@ import { buildLearnerEvidenceBatchFromInteractionV2 } from './assessment-to-evid
 import { aggregateProfileEvidence } from './learner-model.js'
 import { indexStatesByTargetId } from './lesson-engine-state-queries.js'
 import { computeRecipeRuntimeAvailability, isRecipeExecutable } from './runtime-capabilities.js'
+import { getTrainingAffordancesV2, canProduceAssessedEvidenceV2 } from './training-affordances.js'
 import { buildReviewQueueV2 } from './review-queue.js'
 
 export class SimulationInvariantError extends Error {
@@ -105,7 +106,7 @@ function planNext({ registry, learnerStates, recentEvidence, studySession, polic
   return { complete: true, plannerDecision: null }
 }
 
-function assertInvariants({ i, mode, focus, plan, planned, availability, registry, events, profileId, response, studySessionBudget }) {
+function assertInvariants({ i, mode, focus, plan, planned, availability, affordances, registry, events, profileId, response, studySessionBudget }) {
   const fail = (code, details) => { throw new SimulationInvariantError(code, i, details) }
 
   // 12 — active pack matches focus.
@@ -128,6 +129,12 @@ function assertInvariants({ i, mode, focus, plan, planned, availability, registr
   // NEVER be served as a supported activity (the V2.7 loop, now impossible).
   if (focus.focus_type === 'independence' && plan.support.derived_tier !== 'none') {
     fail('INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY', { tier: plan.support.derived_tier, capability: plan.capability, modality: plan.modality })
+  }
+  // 19 (Slice V2.9) — an explicit focus modality must name a domain some
+  // executable affordance can train to ASSESSED evidence in this runtime.
+  if (focus.capability && focus.modality
+    && !canProduceAssessedEvidenceV2(focus.capability, focus.modality, { affordances })) {
+    fail('FOCUS_MODALITY_HAS_NO_AFFORDANCE', { capability: focus.capability, modality: focus.modality })
   }
 
   // 4 / 15 — target ids resolve and are typed V2 ids (never a bare V1 skill).
@@ -200,6 +207,7 @@ export async function runSimulationV2(scenario, opts = {}) {
   const registry = opts.registry ?? loadPedagogyV2Registry()
   const persona = getPersona(scenario.persona)
   const availability = computeRecipeRuntimeAvailability(scenario.runtime_capabilities)
+  const affordances = getTrainingAffordancesV2({ runtimeAvailability: availability })
   const assessmentServices = opts.assessmentServices ?? SimulationAssessmentServiceV2
   const profileId = scenario.profile_id
   const seed = String(scenario.seed)
@@ -265,7 +273,7 @@ export async function runSimulationV2(scenario, opts = {}) {
 
     // Invariants (halt on any violation).
     assertInvariants({
-      i, mode: scenario.mode, focus, plan, planned, availability, registry, events, profileId, response,
+      i, mode: scenario.mode, focus, plan, planned, availability, affordances, registry, events, profileId, response,
       studySessionBudget: studySession.new_target_budget,
     })
     for (const e of events) {

@@ -116,6 +116,53 @@ export function canProduceAssessedEvidenceV2(capability, modality = null, { affo
   return !!(a && a.can_produce_assessed_evidence)
 }
 
+// ---- trainable-modality APIs (Slice V2.9) -----------------------------------
+// A TRAINING DOMAIN is (capability × modality). These APIs answer which
+// modalities of a capability are genuinely trainable — derived ONLY from the
+// recipe table + runtime availability, never from a manual pairing table like
+// reading↔listening / writing↔speaking. A future modality becomes eligible by
+// appearing in a recipe's pairs, with no planner change.
+
+/**
+ * Modalities of `capability` with an executable affordance that produces
+ * ASSESSED evidence (mastery-moving — exposure-only domains don't count as
+ * trainable). Sorted, deterministic.
+ */
+export function getTrainableModalitiesForCapabilityV2(capability, { affordances = null, runtimeAvailability = null, recipes = LESSON_RECIPES } = {}) {
+  const list = affordances || getTrainingAffordancesV2({ recipes, runtimeAvailability })
+  return list
+    .filter((a) => a.capability === capability && a.can_produce_assessed_evidence)
+    .map((a) => a.modality)
+    .sort()
+}
+
+/**
+ * Every trainable domain for a target: (capability, modality) pairs with an
+ * executable, assessed affordance. The pedagogical identity stays
+ * target × capability × modality; content coverage and learner-state readiness
+ * are judged elsewhere (engine selection / candidate readiness) — the domain
+ * list itself is a property of recipes + runtime, identical for every target.
+ */
+export function getTrainableDomainsForTargetV2(target, { affordances = null, runtimeAvailability = null, recipes = LESSON_RECIPES } = {}) {
+  void target
+  const list = affordances || getTrainingAffordancesV2({ recipes, runtimeAvailability })
+  return list
+    .filter((a) => a.can_produce_assessed_evidence)
+    .map((a) => ({ capability: a.capability, modality: a.modality }))
+}
+
+/**
+ * Sibling trainable domains: other modalities of the SAME capability that are
+ * trainable here. The generic seed of modality-gap generation — e.g. for
+ * (free_production, speaking) it returns [{ free_production, writing }] when
+ * writing is executable, and vice-versa.
+ */
+export function getSiblingTrainableDomainsV2({ capability, current_modality, affordances = null, runtimeAvailability = null, recipes = LESSON_RECIPES } = {}) {
+  return getTrainableModalitiesForCapabilityV2(capability, { affordances, runtimeAvailability, recipes })
+    .filter((m) => m !== current_modality)
+    .map((modality) => ({ capability, modality }))
+}
+
 // Diagnostic reasons for WHY a domain cannot be trained independently.
 export const INDEPENDENCE_UNAVAILABLE_REASONS = ['no_independent_recipe', 'runtime_unavailable', 'assessment_unavailable']
 

@@ -136,6 +136,19 @@ export default function PedagogyV2Inspector() {
                       )}
                     </div>
                   ))}
+                  {targetView && t.modality_opportunities && (
+                    <div data-testid="v2-inspector-modality-map" style={{ marginTop: 6 }}>
+                      <div style={{ fontWeight: 700, fontSize: 12 }}>Formas por capacidade</div>
+                      {Object.entries(t.modality_opportunities).map(([capName, rows]) => (
+                        <div key={capName} className="muted" style={{ fontSize: 11 }}>
+                          {capName}: {rows.map((r) =>
+                            `${r.modality} — ${r.opportunity === 'practiced'
+                              ? `${r.assessed_evidence_count} evidências${r.last_practiced ? ` · última: ${new Date(r.last_practiced).toLocaleDateString('pt-BR')}` : ''}`
+                              : r.learner_message}`).join(' · ')}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </section>

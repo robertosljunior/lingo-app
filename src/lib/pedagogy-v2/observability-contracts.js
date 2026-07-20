@@ -33,6 +33,9 @@ export const FINDING_CODES = [
   // Slice V2.8 — a Planner→Engine contract breach: an independence focus that
   // was served by a SUPPORTED activity (the V2.7 loop, now impossible).
   'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY',
+  // Slice V2.9 — a focus naming an explicit modality for which NO executable
+  // affordance can produce assessed evidence (a domain the engine cannot train).
+  'FOCUS_MODALITY_HAS_NO_AFFORDANCE',
 ]
 
 // The findings above that are ALWAYS severity error — a broken invariant, not a
@@ -43,6 +46,7 @@ export const GRAVE_FINDING_CODES = [
   'RUNTIME_UNAVAILABLE_FOCUS_SELECTED',
   'GLOBAL_MASTERY_FIELD_DETECTED',
   'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY',
+  'FOCUS_MODALITY_HAS_NO_AFFORDANCE',
 ]
 
 /** Structured finding factory: { severity, code, target_id?, details }. */
@@ -78,6 +82,9 @@ export const SIMULATION_INVARIANT_CODES = [
   'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY', // 16
   'FOCUS_CAPABILITY_NOT_TRAINED',                   // 17
   'FOCUS_MODALITY_NOT_TRAINED',                     // 18
+  // Slice V2.9 — a focus modality must map to a real, executable, assessable
+  // training domain (affordance) in the scenario's runtime.
+  'FOCUS_MODALITY_HAS_NO_AFFORDANCE',               // 19
 ]
 
 // ---- local telemetry (§19) --------------------------------------------------

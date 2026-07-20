@@ -101,6 +101,43 @@ describe('§26.4b — GRAVE (Slice V2.8): independence focus produced a supporte
   })
 })
 
+describe('§26.4c — GRAVE (Slice V2.9): focus modality without an affordance', () => {
+  it('flags a focus naming a domain no executable affordance can train', () => {
+    const interactions = [ix({
+      study_focus: { focus_type: 'deepen', capability: 'controlled_production', modality: 'speaking' },
+      capability: 'controlled_production', modality: 'speaking', recipe: 'guided_production',
+    })]
+    // No microphone: the speaking production domain has no executable affordance.
+    const caps = { ...FULL_CAPS, speech_input: false }
+    const { findings } = analyzeTrajectoryV2(mkResult({ interactions, caps }), { registry })
+    const f = find(findings, 'FOCUS_MODALITY_HAS_NO_AFFORDANCE')
+    expect(f?.severity).toBe('error')
+  })
+
+  it('does NOT flag a focus whose domain is trainable in the runtime', () => {
+    const interactions = [ix({
+      study_focus: { focus_type: 'deepen', capability: 'recognition', modality: 'reading' },
+      capability: 'recognition', modality: 'reading',
+    })]
+    const { findings } = analyzeTrajectoryV2(mkResult({ interactions }), { registry })
+    expect(find(findings, 'FOCUS_MODALITY_HAS_NO_AFFORDANCE')).toBeUndefined()
+  })
+})
+
+describe('§32.22 (Slice V2.9) — starvation distinguishes runtime-unavailable from ignored', () => {
+  it('a runtime-unavailable modality is never flagged even with many interactions', () => {
+    // audio off → listening technically unavailable → not starvation, even if
+    // some synthetic eligible_domains mention it.
+    const caps = { ...FULL_CAPS, audio_output: false }
+    const interactions = Array.from({ length: OBSERVABILITY_POLICY_V2.modality_starvation_opportunities }, (_, i) => ix({
+      index: i, modality: 'reading', eligible_domains: ['recognition_reading', 'recognition_listening'],
+    }))
+    const { findings } = analyzeTrajectoryV2(mkResult({ interactions, caps }), { registry })
+    const starved = findings.filter((x) => x.code === 'MODALITY_STARVATION').map((x) => x.details.modality)
+    expect(starved).not.toContain('listening')
+  })
+})
+
 describe('§26.5 — ERROR: premature free production', () => {
   it('flags free production of a target before any controlled production of it', () => {
     const interactions = [

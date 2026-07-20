@@ -25,7 +25,8 @@ import {
 import {
   indexStatesByTargetId, getLane, laneMeets, exposureCount,
   assessTargetPrerequisite, bestOverallMastery, independentUnlocked,
-  retentionDueRatio, lastAssessedOutcomeByTarget,
+  retentionDueRatio, lastAssessedOutcomeByTarget, capabilityGateMetV2,
+  RECOGNITION_CAPABILITY_KEYS, PRODUCTION_CAPABILITY_KEYS,
 } from './lesson-engine-state-queries.js'
 import { canTrainIndependentV2 } from './training-affordances.js'
 
@@ -35,8 +36,8 @@ export { DEFAULT_LESSON_ENGINE_POLICY_V2, mergeLessonEnginePolicyV2 }
 // rungs with open gaps score higher via the `ladder` component, but nothing
 // here hard-blocks a later capability whose gate is open.
 const CAPABILITY_LADDER = ['recognition', 'comprehension', 'controlled_production', 'free_production', 'pronunciation']
-const RECOGNITION_KEYS = ['reading_recognition', 'listening_recognition', 'multimodal_recognition']
-const PRODUCTION_KEYS = ['writing_controlled_production', 'speaking_controlled_production', 'writing_free_production', 'speaking_free_production']
+const RECOGNITION_KEYS = RECOGNITION_CAPABILITY_KEYS
+const PRODUCTION_KEYS = PRODUCTION_CAPABILITY_KEYS
 
 const clamp01 = (x) => Math.max(0, Math.min(1, x))
 
@@ -119,31 +120,14 @@ function anyKeyMeets(state, keys, threshold) {
 }
 
 function recipeGateOpen({ recipe, capability, modality, primaries, presented, statesById, policy }) {
-  const adv = policy.thresholds.advancement
   const st = (id) => statesById.get(id)
-  switch (recipe.recipe) {
-    case 'exposure':
-      // First contact only: something presented is still unseen.
-      return presented.some((id) => exposureCount(st(id)) === 0)
-    case 'meaning_recognition':
-    case 'listening_recognition':
-      if (!primaries.every((id) => exposureCount(st(id)) > 0)) return false
-      if (capability === 'comprehension') {
-        // Comprehension builds on recognition in the SAME modality.
-        return primaries.every((id) => laneMeets(getLane(st(id), `${modality}_recognition`, 'overall'), adv))
-      }
-      return true
-    case 'fixed_element_completion':
-    case 'word_order_reconstruction':
-    case 'guided_production':
-      return primaries.every((id) => anyKeyMeets(st(id), RECOGNITION_KEYS, adv))
-    case 'free_production':
-      return primaries.every((id) => laneMeets(getLane(st(id), `${modality}_controlled_production`, 'overall'), adv))
-    case 'pronunciation':
-      return primaries.every((id) => anyKeyMeets(st(id), PRODUCTION_KEYS, adv))
-    default:
-      return false
-  }
+  // First contact only: something presented is still unseen. (The only gate
+  // that is per-recipe rather than per-capability.)
+  if (recipe.recipe === 'exposure') return presented.some((id) => exposureCount(st(id)) === 0)
+  // Every other recipe gate IS the capability gate — shared with the planner's
+  // modality-expansion readiness via capabilityGateMetV2 (Slice V2.9), so the
+  // planner can never propose a domain this engine would refuse.
+  return primaries.every((id) => capabilityGateMetV2(st(id), capability, modality, policy.thresholds))
 }
 
 // ---- recognition options (authored translations only) -----------------------

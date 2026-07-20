@@ -14,11 +14,10 @@ import { entityKindOfId } from './contracts.js'
 import { resolvePedagogyEntity } from './registry.js'
 import { laneMeets } from './lesson-engine-state-queries.js'
 import { mergeStudyPlannerPolicyV2 } from './study-planner-contracts.js'
-import { getTrainingAffordancesV2, canTrainIndependentV2 } from './training-affordances.js'
+import { getTrainingAffordancesV2, canTrainIndependentV2, getSiblingTrainableDomainsV2 } from './training-affordances.js'
 
 const DAY_MS = 24 * 60 * 60 * 1000
 const round4 = (n) => +Number(n).toFixed(4)
-const MODALITY_PAIRS = [['reading_recognition', 'listening_recognition']]
 
 const ASSESSED = ['correct', 'partial', 'incorrect']
 
@@ -114,14 +113,19 @@ export function buildReviewQueueV2({ registry, learnerStates, recentEvidence = [
         score += 1.25
       }
 
-      // MODALITY_GAP — the paired modality of the same capability has no
-      // assessed evidence while this one is practiced (reading vs listening).
-      for (const [a, b] of MODALITY_PAIRS) {
-        const other = capKey === a ? b : capKey === b ? a : null
-        if (!other) continue
-        const otherCap = state.capabilities?.[other]
-        if ((cap.overall?.assessed_evidence_count || 0) > 0
-          && !(otherCap && (otherCap.overall?.assessed_evidence_count || 0) > 0)) {
+      // MODALITY_GAP — a parallel TRAINABLE modality of the same capability has
+      // no assessed evidence while this one is practiced. Slice V2.9: the
+      // sibling is derived from the affordances (recipes × runtime), not from a
+      // manual reading↔listening table — production pairs count too. The gap
+      // marks the PRACTICED key as having asymmetric coverage; introducing the
+      // missing modality itself is the planner's deepen/modality-expansion
+      // candidate, never a review item (§11).
+      if ((cap.overall?.assessed_evidence_count || 0) > 0) {
+        const [capModality2, ...capRest2] = capKey.split('_')
+        const hasUnpracticedSibling = getSiblingTrainableDomainsV2({
+          capability: capRest2.join('_'), current_modality: capModality2, affordances,
+        }).some((sib) => ((state.capabilities?.[`${sib.modality}_${capRest2.join('_')}`]?.overall?.assessed_evidence_count) || 0) === 0)
+        if (hasUnpracticedSibling) {
           reasons.push('MODALITY_GAP')
           score += 0.5
         }
@@ -145,11 +149,15 @@ export function buildReviewQueueV2({ registry, learnerStates, recentEvidence = [
   return items
 }
 
-/** The paired modality capability key that is missing evidence, if any. */
+/**
+ * The first parallel trainable capability key of the same capability, if any.
+ * Derived from the engine's recipes (Slice V2.9) — reading_recognition →
+ * listening_recognition, writing_controlled_production →
+ * speaking_controlled_production, …; null for single-modality capabilities.
+ */
 export function modalityGapCounterpart(capabilityKey) {
-  for (const [a, b] of MODALITY_PAIRS) {
-    if (capabilityKey === a) return b
-    if (capabilityKey === b) return a
-  }
-  return null
+  const [modality, ...rest] = capabilityKey.split('_')
+  const capability = rest.join('_')
+  const sibling = getSiblingTrainableDomainsV2({ capability, current_modality: modality })[0]
+  return sibling ? `${sibling.modality}_${capability}` : null
 }
