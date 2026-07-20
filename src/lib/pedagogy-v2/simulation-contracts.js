@@ -77,6 +77,11 @@ export function createSimulationScenarioV2(fields) {
     initial_evidence: [],
     policy_overrides: {},
     focused_pack_id: null,
+    // Slice V2.10 — long-horizon realism: rotate to a FRESH StudySession every
+    // N interactions (a new "sitting"), resetting per-session budgets/histories
+    // while learner state persists. null (default) keeps the single-session
+    // behavior of every pre-V2.10 scenario — same seeds, same results.
+    session_rotation_interactions: null,
     ...fields,
   }
 }
@@ -112,6 +117,10 @@ export function validateSimulationScenarioV2(scenario) {
 
   // Policy overrides must be an EXPLICIT object (never a silent side channel).
   if (scenario.policy_overrides != null && typeof scenario.policy_overrides !== 'object') err('POLICY_OVERRIDES_INVALID')
+  if (scenario.session_rotation_interactions != null
+    && (!Number.isInteger(scenario.session_rotation_interactions) || scenario.session_rotation_interactions < 1)) {
+    err('SESSION_ROTATION_INVALID', String(scenario.session_rotation_interactions))
+  }
   if (scenario.runtime_capabilities != null && typeof scenario.runtime_capabilities !== 'object') err('RUNTIME_CAPABILITIES_INVALID')
   if (scenario.initial_evidence != null && !Array.isArray(scenario.initial_evidence)) err('INITIAL_EVIDENCE_INVALID')
 

@@ -12,6 +12,7 @@ import { getLane, laneMeets } from './lesson-engine-state-queries.js'
 import { loadPedagogyV2Registry } from './registry.js'
 import { availableModalitiesFor, modalitiesWithOpportunityV2 } from './pedagogical-metrics.js'
 import { getTrainingAffordancesV2, canProduceAssessedEvidenceV2 } from './training-affordances.js'
+import { computeCurriculumSaturationV2 } from './long-horizon-analyzer.js'
 
 const ADVANCEMENT = { min_mastery: 0.7, min_evidence_level: 'emerging' }
 const GLOBAL_MASTERY_KEYS = ['mastery', 'global_mastery', 'mastery_global', 'overall_mastery', 'lexeme_mastery']
@@ -195,8 +196,20 @@ export function analyzeTrajectoryV2(result, { policy = OBSERVABILITY_POLICY_V2, 
   if (switchRatio > policy.ping_pong_switch_ratio) add('warning', 'EXCESSIVE_PACK_SWITCHING', { switches, ratio: +switchRatio.toFixed(4) })
 
   // EXCESSIVE_TARGET_REPETITION — same primary target too many times in a row.
+  // Slice V2.10 (§19): under CURRICULUM SATURATION some repetition is
+  // inevitable — every eligible target has been seen, so the planner cannot be
+  // blamed for revisiting; the threshold doubles and the finding records the
+  // saturation context. With unseen material remaining the normal bar applies.
+  const saturationInfo = computeCurriculumSaturationV2(result, { registry })
+  const repetitionBar = saturationInfo.curriculum_saturation
+    ? policy.excessive_target_repetition * 2
+    : policy.excessive_target_repetition
   const targetRun = longestRunWithValue(interactions, (it) => it.target.target_id)
-  if (targetRun.len > policy.excessive_target_repetition) add('warning', 'EXCESSIVE_TARGET_REPETITION', { consecutive: targetRun.len }, targetRun.value)
+  if (targetRun.len > repetitionBar) {
+    add('warning', 'EXCESSIVE_TARGET_REPETITION', {
+      consecutive: targetRun.len, curriculum_saturated: saturationInfo.curriculum_saturation,
+    }, targetRun.value)
+  }
 
   // Deterministic ordering: severity (error>warning>info), then code, target.
   const sevRank = { error: 0, warning: 1, info: 2 }

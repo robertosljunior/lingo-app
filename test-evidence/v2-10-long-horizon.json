@@ -1,0 +1,1167 @@
+{
+  "single_session": {
+    "new-learner": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 50,
+          "comprehension": 17,
+          "controlled_production": 32,
+          "free_production": 1,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 32,
+          "listening": 35,
+          "writing": 13,
+          "speaking": 20
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.1,
+            "new_rate": 0.12
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.34,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 22,
+          "total_targets": 28,
+          "exposed_targets": 6
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION"
+        ]
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 56,
+          "comprehension": 33,
+          "controlled_production": 74,
+          "free_production": 37,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 34,
+          "listening": 55,
+          "writing": 36,
+          "speaking": 75
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.1,
+            "new_rate": 0.12
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.34,
+            "new_rate": 0
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.37,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 22,
+          "total_targets": 28,
+          "exposed_targets": 6
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION",
+          "LONG_HORIZON_PACK_STARVATION",
+          "LONG_HORIZON_TARGET_LOOP"
+        ]
+      }
+    },
+    "weak-listener": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 83,
+          "comprehension": 14,
+          "controlled_production": 3,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 17,
+          "listening": 80,
+          "writing": 2,
+          "speaking": 1
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.32,
+            "new_rate": 0.14
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.56,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 20,
+          "total_targets": 28,
+          "exposed_targets": 8
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION"
+        ]
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 135,
+          "comprehension": 34,
+          "controlled_production": 15,
+          "free_production": 16,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 22,
+          "listening": 147,
+          "writing": 15,
+          "speaking": 16
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.32,
+            "new_rate": 0.14
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.56,
+            "new_rate": 0
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.36,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 20,
+          "total_targets": 28,
+          "exposed_targets": 8
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION",
+          "LONG_HORIZON_PACK_STARVATION"
+        ]
+      }
+    },
+    "support-dependent": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 53,
+          "comprehension": 19,
+          "controlled_production": 23,
+          "free_production": 5,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 45,
+          "listening": 27,
+          "writing": 16,
+          "speaking": 12
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.06,
+            "new_rate": 0.12
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.14,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 22,
+          "total_targets": 28,
+          "exposed_targets": 6
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION"
+        ]
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 53,
+          "comprehension": 34,
+          "controlled_production": 71,
+          "free_production": 42,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 57,
+          "listening": 30,
+          "writing": 55,
+          "speaking": 58
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.06,
+            "new_rate": 0.12
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.14,
+            "new_rate": 0
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.52,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 22,
+          "total_targets": 28,
+          "exposed_targets": 6
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION",
+          "LONG_HORIZON_PACK_STARVATION"
+        ]
+      }
+    },
+    "forgetful": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 75,
+          "comprehension": 15,
+          "controlled_production": 10,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 28,
+          "listening": 62,
+          "writing": 4,
+          "speaking": 6
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.44,
+            "new_rate": 0.14
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.54,
+            "new_rate": 0.04
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 18,
+          "total_targets": 28,
+          "exposed_targets": 10
+        },
+        "lh_findings": []
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 90,
+          "comprehension": 34,
+          "controlled_production": 33,
+          "free_production": 43,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 38,
+          "listening": 86,
+          "writing": 40,
+          "speaking": 36
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.44,
+            "new_rate": 0.14
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.54,
+            "new_rate": 0.04
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.36,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 18,
+          "total_targets": 28,
+          "exposed_targets": 10
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION",
+          "LONG_HORIZON_PACK_STARVATION"
+        ]
+      }
+    },
+    "fast-learner": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 57,
+          "comprehension": 21,
+          "controlled_production": 19,
+          "free_production": 3,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 39,
+          "listening": 39,
+          "writing": 11,
+          "speaking": 11
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.12,
+            "new_rate": 0.12
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.06,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 22,
+          "total_targets": 28,
+          "exposed_targets": 6
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION"
+        ]
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 64,
+          "comprehension": 48,
+          "controlled_production": 45,
+          "free_production": 43,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 55,
+          "listening": 57,
+          "writing": 49,
+          "speaking": 39
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.12,
+            "new_rate": 0.12
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.06,
+            "new_rate": 0
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.32,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 22,
+          "total_targets": 28,
+          "exposed_targets": 6
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION",
+          "LONG_HORIZON_PACK_STARVATION"
+        ]
+      }
+    },
+    "struggling": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 69,
+          "comprehension": 8,
+          "controlled_production": 23,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 41,
+          "listening": 36,
+          "writing": 8,
+          "speaking": 15
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.2,
+            "new_rate": 0.14
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.42,
+            "new_rate": 0.04
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 18,
+          "total_targets": 28,
+          "exposed_targets": 10
+        },
+        "lh_findings": []
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 94,
+          "comprehension": 40,
+          "controlled_production": 66,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 53,
+          "listening": 81,
+          "writing": 41,
+          "speaking": 25
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.2,
+            "new_rate": 0.14
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.42,
+            "new_rate": 0.04
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.38,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 18,
+          "total_targets": 28,
+          "exposed_targets": 10
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION",
+          "LONG_HORIZON_PACK_STARVATION"
+        ]
+      }
+    },
+    "cross-pack": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 86,
+          "comprehension": 9,
+          "controlled_production": 5,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 49,
+          "listening": 46,
+          "writing": 2,
+          "speaking": 3
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.76,
+            "new_rate": 0.04
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.8,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 20,
+          "total_targets": 28,
+          "exposed_targets": 8
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION"
+        ]
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 169,
+          "comprehension": 10,
+          "controlled_production": 21,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 90,
+          "listening": 89,
+          "writing": 10,
+          "speaking": 11
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.76,
+            "new_rate": 0.04
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.8,
+            "new_rate": 0
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.8,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 20,
+          "total_targets": 28,
+          "exposed_targets": 8
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION",
+          "LONG_HORIZON_PACK_STARVATION"
+        ]
+      }
+    }
+  },
+  "rotated_sessions": {
+    "new-learner": {
+      "200r": {
+        "horizon": 182,
+        "capability_depth": {
+          "recognition": 111,
+          "comprehension": 12,
+          "controlled_production": 59,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 76,
+          "listening": 47,
+          "writing": 37,
+          "speaking": 22
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.18,
+            "new_rate": 0.18
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.24,
+            "new_rate": 0.08
+          },
+          {
+            "w": [
+              101,
+              182
+            ],
+            "review": 0.1585,
+            "new_rate": 0.0244
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 12,
+          "total_targets": 28,
+          "exposed_targets": 16
+        },
+        "lh_findings": []
+      }
+    },
+    "weak-listener": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 188,
+          "comprehension": 12,
+          "controlled_production": 0,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 35,
+          "listening": 165,
+          "writing": 0,
+          "speaking": 0
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.26,
+            "new_rate": 0.22
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.52,
+            "new_rate": 0.08
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.47,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 12,
+          "total_targets": 28,
+          "exposed_targets": 16
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION"
+        ]
+      }
+    },
+    "support-dependent": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 104,
+          "comprehension": 10,
+          "controlled_production": 84,
+          "free_production": 2,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 61,
+          "listening": 53,
+          "writing": 77,
+          "speaking": 9
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0,
+            "new_rate": 0.18
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.12,
+            "new_rate": 0.08
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.32,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 15,
+          "total_targets": 28,
+          "exposed_targets": 13
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION"
+        ]
+      }
+    },
+    "forgetful": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 180,
+          "comprehension": 16,
+          "controlled_production": 4,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 135,
+          "listening": 61,
+          "writing": 2,
+          "speaking": 2
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.52,
+            "new_rate": 0.14
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.64,
+            "new_rate": 0.2
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.82,
+            "new_rate": 0.02
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 8,
+          "total_targets": 28,
+          "exposed_targets": 20
+        },
+        "lh_findings": [
+          "LATE_REVIEW_DOMINANCE"
+        ]
+      },
+      "500r": {
+        "horizon": 500,
+        "capability_depth": {
+          "recognition": 423,
+          "comprehension": 34,
+          "controlled_production": 33,
+          "free_production": 10,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 382,
+          "listening": 75,
+          "writing": 18,
+          "speaking": 25
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.52,
+            "new_rate": 0.14
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.64,
+            "new_rate": 0.2
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.82,
+            "new_rate": 0.02
+          },
+          {
+            "w": [
+              201,
+              500
+            ],
+            "review": 0.81,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 8,
+          "total_targets": 28,
+          "exposed_targets": 20
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION",
+          "LATE_REVIEW_DOMINANCE"
+        ]
+      }
+    },
+    "fast-learner": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 135,
+          "comprehension": 26,
+          "controlled_production": 14,
+          "free_production": 25,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 87,
+          "listening": 74,
+          "writing": 27,
+          "speaking": 12
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.04,
+            "new_rate": 0.22
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.1,
+            "new_rate": 0.04
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.21,
+            "new_rate": 0.02
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 12,
+          "total_targets": 28,
+          "exposed_targets": 16
+        },
+        "lh_findings": []
+      },
+      "500r": {
+        "horizon": 221,
+        "capability_depth": {
+          "recognition": 146,
+          "comprehension": 32,
+          "controlled_production": 16,
+          "free_production": 27,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 100,
+          "listening": 78,
+          "writing": 30,
+          "speaking": 13
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.04,
+            "new_rate": 0.22
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.1,
+            "new_rate": 0.04
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.21,
+            "new_rate": 0.02
+          },
+          {
+            "w": [
+              201,
+              221
+            ],
+            "review": 0.2857,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 12,
+          "total_targets": 28,
+          "exposed_targets": 16
+        },
+        "lh_findings": []
+      }
+    },
+    "struggling": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 137,
+          "comprehension": 20,
+          "controlled_production": 40,
+          "free_production": 3,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 97,
+          "listening": 60,
+          "writing": 33,
+          "speaking": 10
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.34,
+            "new_rate": 0.18
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.42,
+            "new_rate": 0.08
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.29,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 15,
+          "total_targets": 28,
+          "exposed_targets": 13
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION"
+        ]
+      }
+    },
+    "cross-pack": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 181,
+          "comprehension": 15,
+          "controlled_production": 4,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 108,
+          "listening": 88,
+          "writing": 2,
+          "speaking": 2
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.68,
+            "new_rate": 0.16
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.76,
+            "new_rate": 0.04
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.83,
+            "new_rate": 0
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 12,
+          "total_targets": 28,
+          "exposed_targets": 16
+        },
+        "lh_findings": [
+          "LATE_NOVELTY_STARVATION",
+          "LATE_REVIEW_DOMINANCE"
+        ]
+      }
+    }
+  }
+}

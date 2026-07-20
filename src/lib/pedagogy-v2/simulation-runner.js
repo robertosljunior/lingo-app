@@ -28,6 +28,8 @@ import { aggregateProfileEvidence } from './learner-model.js'
 import { indexStatesByTargetId } from './lesson-engine-state-queries.js'
 import { computeRecipeRuntimeAvailability, isRecipeExecutable } from './runtime-capabilities.js'
 import { getTrainingAffordancesV2, canProduceAssessedEvidenceV2 } from './training-affordances.js'
+import { findFirstOpenCapabilityRungV2, capabilityEntrySilentlyStuckV2 } from './capability-entry.js'
+import { mergeStudyPlannerPolicyV2 } from './study-planner-contracts.js'
 import { buildReviewQueueV2 } from './review-queue.js'
 
 export class SimulationInvariantError extends Error {
@@ -187,6 +189,42 @@ function assertInvariants({ i, mode, focus, plan, planned, availability, afforda
   }
 }
 
+// 20 (Slice V2.10) — a curricularly-ready capability rung with an executable,
+// curriculum-ready entry modality must ALWAYS receive some planner candidate.
+// Fires only on silent stalls; never when the runtime offers no executable
+// modality (runtime reality) and never in focused mode (packs are filtered by
+// design there, so absent candidates for other packs are intentional).
+function assertCapabilityEntryCoverage({ i, mode, trace, registry, learnerStates, runtimeAffordances, engineLevelAffordances, thresholds }) {
+  if (!trace || mode === 'focused') return
+  const generatedByTarget = new Map()
+  const add = (targetId, capability) => {
+    if (!targetId || !capability || targetId === '-' || capability === '-') return
+    if (!generatedByTarget.has(targetId)) generatedByTarget.set(targetId, new Set())
+    generatedByTarget.get(targetId).add(capability)
+  }
+  for (const c of trace.candidates || []) add(c.target_id, c.capability)
+  for (const x of trace.excluded || []) {
+    const parts = String(x.key || '').split('|') // pack|focus_type|target|capability|modality
+    if (parts.length >= 5) add(parts[2], parts[3])
+  }
+  for (const state of learnerStates) {
+    // Targets outside the registry never receive candidates by design.
+    if (!resolvePedagogyEntity(state.target?.target_id, registry)) continue
+    const rung = findFirstOpenCapabilityRungV2(state, { engineLevelAffordances, thresholds })
+    if (!rung) continue
+    const stuck = capabilityEntrySilentlyStuckV2({
+      target: state.target, capability: rung, learnerState: state,
+      affordances: runtimeAffordances, thresholds,
+      generatedCapabilities: generatedByTarget.get(state.target.target_id) || new Set(),
+    })
+    if (stuck) {
+      throw new SimulationInvariantError('CAPABILITY_READY_BUT_NO_EXECUTABLE_ENTRY_DOMAIN', i, {
+        target_id: state.target.target_id, capability: rung,
+      })
+    }
+  }
+}
+
 function assertNoGlobalMastery(states, i) {
   for (const s of states) {
     for (const k of GLOBAL_MASTERY_KEYS) {
@@ -208,6 +246,8 @@ export async function runSimulationV2(scenario, opts = {}) {
   const persona = getPersona(scenario.persona)
   const availability = computeRecipeRuntimeAvailability(scenario.runtime_capabilities)
   const affordances = getTrainingAffordancesV2({ runtimeAvailability: availability })
+  const engineLevelAffordances = getTrainingAffordancesV2({ runtimeAvailability: null })
+  const plannerThresholds = mergeStudyPlannerPolicyV2(scenario.policy_overrides?.planner ?? {}).thresholds
   const assessmentServices = opts.assessmentServices ?? SimulationAssessmentServiceV2
   const profileId = scenario.profile_id
   const seed = String(scenario.seed)
@@ -249,11 +289,34 @@ export async function runSimulationV2(scenario, opts = {}) {
     assertNoGlobalMastery(learnerStates, i)
     const statesById = indexStatesByTargetId(learnerStates)
     const recentEvidence = evidence.slice(-recentLimit)
+    // Slice V2.10 — session rotation: model a new SITTING every N interactions.
+    // A fresh StudySession resets the per-session novelty budget, pack/focus
+    // histories and pacing limits (as real usage does); learner state persists
+    // through the evidence store. Off (null) for every pre-V2.10 scenario.
+    const rotation = scenario.session_rotation_interactions
+    if (rotation != null && i > 0 && i % rotation === 0) {
+      studySession = createStudySessionV2({
+        study_session_id: `sim:${scenario.scenario_id}:s${Math.floor(i / rotation)}`,
+        mode: scenario.mode, profile_id: profileId, now, seed,
+      })
+      // A new sitting starts fresh LESSON sessions as well (the real study
+      // session controller is per-sitting): per-lesson budgets/history reset,
+      // ids stay unique via the monotonic counter, learner state persists.
+      for (const key of Object.keys(lessonSessions)) delete lessonSessions[key]
+    }
     studySession = { ...studySession, now }
 
     const planned = planNext({
       registry, learnerStates, recentEvidence, studySession, policy, availability,
       allowedPackIds, profileId, now, lessonSessions, makeLessonSessionId,
+    })
+    // 20 (Slice V2.10) — verified on EVERY planning step, including the final
+    // one that ends the run: a ready capability with an executable entry must
+    // never be silently starved of candidates.
+    assertCapabilityEntryCoverage({
+      i, mode: scenario.mode, trace: planned.plannerDecision?.trace ?? null,
+      registry, learnerStates, runtimeAffordances: affordances,
+      engineLevelAffordances, thresholds: plannerThresholds,
     })
     if (planned.complete) break
 
@@ -300,6 +363,17 @@ export async function runSimulationV2(scenario, opts = {}) {
       // separates "couldn't practice" from "could and never chose to" (§22).
       eligible_domains: [...new Set((plannerDecision.trace?.candidates || [])
         .filter((c) => c.adjusted_score != null && c.capability && c.modality)
+        .map((c) => `${c.capability}_${c.modality}`))].sort(),
+      // Slice V2.10 — the same, split by HOW the domain became eligible:
+      // capability ENTRY (opening a new rung) vs modality EXPANSION (a
+      // parallel modality of a practiced capability).
+      eligible_entry_domains: [...new Set((plannerDecision.trace?.candidates || [])
+        .filter((c) => c.adjusted_score != null && c.capability && c.modality
+          && (c.reason_codes || []).includes('ENTRY_MODALITY_SELECTED'))
+        .map((c) => `${c.capability}_${c.modality}`))].sort(),
+      eligible_expansion_domains: [...new Set((plannerDecision.trace?.candidates || [])
+        .filter((c) => c.adjusted_score != null && c.capability && c.modality
+          && (c.reason_codes || []).includes('PARALLEL_MODALITY_UNPRACTICED'))
         .map((c) => `${c.capability}_${c.modality}`))].sort(),
       pack_switch: plannerDecision.trace.pack_switch,
       activity_plan: compactPlan(plan),

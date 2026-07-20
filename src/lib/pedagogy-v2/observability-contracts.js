@@ -36,6 +36,18 @@ export const FINDING_CODES = [
   // Slice V2.9 — a focus naming an explicit modality for which NO executable
   // affordance can produce assessed evidence (a domain the engine cannot train).
   'FOCUS_MODALITY_HAS_NO_AFFORDANCE',
+  // Slice V2.10 — a capability rung is curricularly ready and at least one
+  // executable, curriculum-ready entry modality exists, yet the planner
+  // generated NO candidate for that capability (silent entry starvation).
+  // Never emitted when the runtime offers no executable modality.
+  'CAPABILITY_READY_BUT_NO_EXECUTABLE_ENTRY_DOMAIN',
+  // Slice V2.10 — long-horizon diagnostics (always warnings, never CI-failing).
+  'LATE_REVIEW_DOMINANCE',
+  'LATE_NOVELTY_STARVATION',
+  'LONG_HORIZON_MODALITY_STARVATION',
+  'LONG_HORIZON_PACK_STARVATION',
+  'LONG_HORIZON_TARGET_LOOP',
+  'CAPABILITY_DEPTH_PLATEAU',
 ]
 
 // The findings above that are ALWAYS severity error — a broken invariant, not a
@@ -47,6 +59,7 @@ export const GRAVE_FINDING_CODES = [
   'GLOBAL_MASTERY_FIELD_DETECTED',
   'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY',
   'FOCUS_MODALITY_HAS_NO_AFFORDANCE',
+  'CAPABILITY_READY_BUT_NO_EXECUTABLE_ENTRY_DOMAIN',
 ]
 
 /** Structured finding factory: { severity, code, target_id?, details }. */
@@ -85,6 +98,9 @@ export const SIMULATION_INVARIANT_CODES = [
   // Slice V2.9 — a focus modality must map to a real, executable, assessable
   // training domain (affordance) in the scenario's runtime.
   'FOCUS_MODALITY_HAS_NO_AFFORDANCE',               // 19
+  // Slice V2.10 — a curricularly-ready capability with an executable entry
+  // modality must always receive SOME planner candidate (no silent stall).
+  'CAPABILITY_READY_BUT_NO_EXECUTABLE_ENTRY_DOMAIN', // 20
 ]
 
 // ---- local telemetry (§19) --------------------------------------------------

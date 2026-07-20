@@ -144,7 +144,7 @@ export default function PedagogyV2Inspector() {
                           {capName}: {rows.map((r) =>
                             `${r.modality} — ${r.opportunity === 'practiced'
                               ? `${r.assessed_evidence_count} evidências${r.last_practiced ? ` · última: ${new Date(r.last_practiced).toLocaleDateString('pt-BR')}` : ''}`
-                              : r.learner_message}`).join(' · ')}
+                              : r.learner_message} (entrada: ${r.entry_path === 'yes' ? 'sim' : r.entry_path === 'conditional' ? 'condicional' : 'não'} · expansão: ${r.expansion_path === 'yes' ? 'sim' : r.expansion_path === 'conditional' ? 'condicional' : 'não'})`).join(' · ')}
                         </div>
                       ))}
                     </div>

@@ -35,8 +35,14 @@ describe('§29 — with the full runtime every trainable domain is reachable', (
     expect(d.has_candidate_path).toBe(true)
   })
 
-  it('no reachability warnings with the current recipes + planner', () => {
-    expect(audit.warnings).toEqual([])
+  it('no structural path warnings; only the pronunciation entry note (assessor off) surfaces', () => {
+    // No candidate/engine/assessment-path warnings exist with the current
+    // recipes + planner. The single V2.10 note is factual: pronunciation has
+    // no executable entry while the acoustic assessor is unavailable —
+    // conditional runtime reality, surfaced explicitly, never CI-failing.
+    expect(audit.warnings).toEqual([
+      { code: 'CAPABILITY_WITHOUT_EXECUTABLE_ENTRY_PATH', capability: 'pronunciation', modality: null },
+    ])
   })
 })
 
@@ -51,6 +57,53 @@ describe('§29 — restricted runtimes mark domains conditional, never unreachab
     expect(domain(audit, 'controlled_production', 'speaking').status).toBe('conditional')
     expect(domain(audit, 'free_production', 'speaking').status).toBe('conditional')
     expect(domain(audit, 'controlled_production', 'writing').status).toBe('reachable')
+  })
+})
+
+describe('§34.7–9 (Slice V2.10) — entry path vs expansion path', () => {
+  it('7: every full-runtime production domain has BOTH an entry and an expansion path', () => {
+    const audit = auditTrainingDomainReachabilityV2({ runtimeAvailability: avail(FULL_CAPS) })
+    for (const [c, m] of [['controlled_production', 'writing'], ['controlled_production', 'speaking'], ['free_production', 'writing'], ['free_production', 'speaking']]) {
+      const d = domain(audit, c, m)
+      expect(d.has_capability_entry_path).toBe(true)
+      expect(d.has_modality_expansion_path).toBe(true)
+    }
+  })
+
+  it('8: without a microphone, writing keeps its ENTRY path but loses the expansion partner', () => {
+    const audit = auditTrainingDomainReachabilityV2({ runtimeAvailability: avail({ ...FULL_CAPS, speech_input: false }) })
+    const writing = domain(audit, 'controlled_production', 'writing')
+    expect(writing.has_capability_entry_path).toBe(true)   // enters directly
+    expect(writing.has_modality_expansion_path).toBe(false) // no executable sibling to expand from
+    const speaking = domain(audit, 'controlled_production', 'speaking')
+    expect(speaking.has_capability_entry_path).toBe(false) // conditional in this runtime
+    expect(speaking.status).toBe('conditional')
+  })
+
+  it('9: a capability with zero executable modalities surfaces CAPABILITY_WITHOUT_EXECUTABLE_ENTRY_PATH', () => {
+    const audit = auditTrainingDomainReachabilityV2({ runtimeAvailability: avail(FULL_CAPS) })
+    expect(audit.warnings).toContainEqual({ code: 'CAPABILITY_WITHOUT_EXECUTABLE_ENTRY_PATH', capability: 'pronunciation', modality: null })
+    // Engine-level view (runtime null): no such note — the gap is runtime-conditional.
+    const engineOnly = auditTrainingDomainReachabilityV2({})
+    expect(engineOnly.warnings.some((w) => w.code === 'CAPABILITY_WITHOUT_EXECUTABLE_ENTRY_PATH')).toBe(false)
+  })
+
+  it('10: a domain reachable only through runtime-blocked siblings is detected', () => {
+    // A non-ladder capability with two modalities where the sibling requires a
+    // microphone: without speech input, the writing domain's ONLY structural
+    // path (expansion from the sibling) is unavailable.
+    // Reuse the `free_production` recipe name so the standard runtime
+    // requirements apply: the speaking pair needs a microphone, writing does not.
+    const recipes = [...LESSON_RECIPES, {
+      recipe: 'free_production', activity_kind: 'free_production',
+      pairs: [['interaction', 'speaking'], ['interaction', 'writing']],
+      variants: [{ lane: 'independent', features: [] }],
+      needs_options: false, attribution_rule: 'assessed_only', response_type: 'produced_text',
+    }]
+    // Make the speaking sibling runtime-blocked.
+    const audit = auditTrainingDomainReachabilityV2({ recipes, runtimeAvailability: avail({ ...FULL_CAPS, speech_input: false }) })
+    expect(audit.warnings.some((w) => w.code === 'TRAINABLE_DOMAIN_ONLY_REACHABLE_BY_UNAVAILABLE_SIBLING'
+      && w.capability === 'interaction' && w.modality === 'writing')).toBe(true)
   })
 })
 
