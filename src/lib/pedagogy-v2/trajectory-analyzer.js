@@ -11,6 +11,7 @@ import { computeRecipeRuntimeAvailability, isRecipeExecutable } from './runtime-
 import { getLane, laneMeets } from './lesson-engine-state-queries.js'
 import { loadPedagogyV2Registry } from './registry.js'
 import { availableModalitiesFor, modalitiesWithOpportunityV2 } from './pedagogical-metrics.js'
+import { getTrainingAffordancesV2, canProduceAssessedEvidenceV2 } from './training-affordances.js'
 
 const ADVANCEMENT = { min_mastery: 0.7, min_evidence_level: 'emerging' }
 const GLOBAL_MASTERY_KEYS = ['mastery', 'global_mastery', 'mastery_global', 'overall_mastery', 'lexeme_mastery']
@@ -69,6 +70,16 @@ export function analyzeTrajectoryV2(result, { policy = OBSERVABILITY_POLICY_V2, 
   for (const it of interactions) {
     if (it.study_focus?.focus_type === 'independence' && it.support_tier && it.support_tier !== 'none') {
       add('error', 'INDEPENDENCE_FOCUS_PRODUCED_SUPPORTED_ACTIVITY', { support_tier: it.support_tier, capability: it.capability, modality: it.modality }, it.target.target_id)
+    }
+  }
+  // FOCUS_MODALITY_HAS_NO_AFFORDANCE (Slice V2.9) — a focus named an explicit
+  // modality no executable affordance can train to assessed evidence here.
+  const runtimeAffordances = getTrainingAffordancesV2({ runtimeAvailability: availability })
+  for (const it of interactions) {
+    const f = it.study_focus
+    if (f?.capability && f?.modality
+      && !canProduceAssessedEvidenceV2(f.capability, f.modality, { affordances: runtimeAffordances })) {
+      add('error', 'FOCUS_MODALITY_HAS_NO_AFFORDANCE', { capability: f.capability, modality: f.modality }, it.target.target_id)
     }
   }
 

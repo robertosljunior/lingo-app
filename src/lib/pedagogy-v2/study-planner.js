@@ -20,8 +20,11 @@ import {
 } from './lesson-engine-state-queries.js'
 import { LESSON_RECIPES } from './lesson-engine-contracts.js'
 import { isRecipeExecutable } from './runtime-capabilities.js'
-import { getTrainingAffordancesV2, canTrainIndependentV2 } from './training-affordances.js'
-import { buildReviewQueueV2, modalityGapCounterpart } from './review-queue.js'
+import {
+  getTrainingAffordancesV2, canTrainIndependentV2, getTrainableModalitiesForCapabilityV2,
+} from './training-affordances.js'
+import { buildModalityGapCandidatesV2 } from './modality-gap.js'
+import { buildReviewQueueV2 } from './review-queue.js'
 import {
   STUDY_FOCUS_V2_VERSION, STUDY_PLANNER_V2_VERSION, RELATION_PLANNER_POLICY,
   mergeStudyPlannerPolicyV2, effectiveWeight, consecutiveSamePack, consecutiveReviews,
@@ -41,13 +44,15 @@ function tieHash(str) {
 // determinism). Mirrors the approved learner-model taxonomy — never restated
 // per lexeme.
 const CAPABILITY_LADDER = ['recognition', 'comprehension', 'controlled_production', 'free_production', 'pronunciation']
-const CAPABILITY_MODALITIES = Object.freeze({
-  recognition: ['listening', 'reading'],
-  comprehension: ['listening', 'reading'],
-  controlled_production: ['speaking', 'writing'],
-  free_production: ['speaking', 'writing'],
-  pronunciation: ['speaking'],
-})
+// Trainable modalities per capability, DERIVED from the engine's recipe table
+// (Slice V2.9) — never a manual reading↔listening / writing↔speaking table. A
+// new modality that gains a recipe joins these lists (and the modality-gap
+// generator) with no planner change. Engine-level view: runtime availability
+// filters candidates later, at selection (§22 of V2.6) and in gap generation.
+const ENGINE_LEVEL_AFFORDANCES = getTrainingAffordancesV2({ runtimeAvailability: null })
+const CAPABILITY_MODALITIES = Object.freeze(Object.fromEntries(CAPABILITY_LADDER.map((cap) => [
+  cap, getTrainableModalitiesForCapabilityV2(cap, { affordances: ENGINE_LEVEL_AFFORDANCES }),
+])))
 
 /** Is at least one recipe serving (capability, modality) executable here? */
 export function focusRuntimeExecutable(runtimeAvailability, capability, modality) {
@@ -341,21 +346,22 @@ export function buildStudyCandidatesV2({
         addCandidate(c)
       }
 
-      // deepen (modality gap) — same capability, paired modality without evidence.
-      const counterpart = modalityGapCounterpart(capKey)
-      if (counterpart && (cap.overall?.assessed_evidence_count || 0) > 0) {
-        const otherCap = state.capabilities?.[counterpart]
-        if (!(otherCap && (otherCap.overall?.assessed_evidence_count || 0) > 0)) {
-          const [gapModality, ...gapRest] = counterpart.split('_')
-          const c = {
-            ...base, focus_type: 'deepen', capability: gapRest.join('_'), modality: gapModality,
-            reason_codes: ['MODALITY_GAP'],
-            components: emptyComponents(),
-          }
-          c.components.modality_gap = 1
-          addCandidate(c)
-        }
+    }
+
+    // deepen (modality expansion, Slice V2.9) — the SAME capability in a
+    // parallel TRAINABLE modality without evidence. Generic: gaps emerge from
+    // the affordances (recipes × runtime) + the shared capability gate, never
+    // from a manual reading↔listening / writing↔speaking table. This is what
+    // gives production a writing path once speaking is practiced (and vice
+    // versa) — modality expansion, orthogonal to capability progression.
+    for (const gap of buildModalityGapCandidatesV2({ state, affordances, thresholds: p.thresholds })) {
+      const c = {
+        ...base, focus_type: 'deepen', capability: gap.capability, modality: gap.modality,
+        reason_codes: [...gap.reason_codes],
+        components: emptyComponents(),
       }
+      c.components.modality_gap = 1
+      addCandidate(c)
     }
 
     // deepen (first rung): exposed but never assessed at all — the natural

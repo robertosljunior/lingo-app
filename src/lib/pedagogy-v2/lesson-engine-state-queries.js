@@ -73,6 +73,47 @@ export function independentUnlocked(state, capabilityKey, { advancement, prerequ
     || laneMeets(getLane(state, capabilityKey, 'independent'), prerequisite)
 }
 
+// Capability-key families used by the capability gates. Derived from the
+// approved learner-model taxonomy — never restated per lexeme.
+export const RECOGNITION_CAPABILITY_KEYS = ['reading_recognition', 'listening_recognition', 'multimodal_recognition']
+export const PRODUCTION_CAPABILITY_KEYS = ['writing_controlled_production', 'speaking_controlled_production', 'writing_free_production', 'speaking_free_production']
+
+/** Any of the given capability keys whose OVERALL lane meets the threshold. */
+export function anyKeyMeets(state, keys, threshold) {
+  return keys.some((k) => laneMeets(getLane(state, k, 'overall'), threshold))
+}
+
+/**
+ * SINGLE SOURCE of the per-capability curriculum gate for one target state
+ * (Slice V2.9). Says whether `capability` may be practiced in `modality` given
+ * the state — the same predicate the lesson engine applies per recipe, now
+ * shared so the planner's modality-expansion readiness can never diverge from
+ * what the engine will actually serve:
+ *   recognition           — the target has been exposed
+ *   comprehension         — exposed + SAME-modality recognition at advancement
+ *   controlled_production — ANY recognition key at advancement
+ *   free_production       — SAME-modality controlled production at advancement
+ *   pronunciation         — any production key at advancement
+ */
+export function capabilityGateMetV2(state, capability, modality, thresholds) {
+  const adv = thresholds.advancement
+  switch (capability) {
+    case 'recognition':
+      return exposureCount(state) > 0
+    case 'comprehension':
+      return exposureCount(state) > 0
+        && laneMeets(getLane(state, `${modality}_recognition`, 'overall'), adv)
+    case 'controlled_production':
+      return anyKeyMeets(state, RECOGNITION_CAPABILITY_KEYS, adv)
+    case 'free_production':
+      return laneMeets(getLane(state, `${modality}_controlled_production`, 'overall'), adv)
+    case 'pronunciation':
+      return anyKeyMeets(state, PRODUCTION_CAPABILITY_KEYS, adv)
+    default:
+      return false
+  }
+}
+
 /**
  * Retention pressure of one capability key: how overdue the next retrieval is.
  * Interval = stability_estimate (days) when present, else the policy default.

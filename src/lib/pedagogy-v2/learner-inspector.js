@@ -11,7 +11,12 @@ import { buildReviewQueueV2, modalityGapCounterpart } from './review-queue.js'
 import { buildStudyCandidatesV2, selectNextStudyFocusV2, factualPackProgressV2 } from './study-planner.js'
 import { createStudySessionV2 } from './study-planner-contracts.js'
 import { computeRecipeRuntimeAvailability } from './runtime-capabilities.js'
-import { independenceUnavailabilityReasonV2 } from './training-affordances.js'
+import {
+  independenceUnavailabilityReasonV2, getTrainingAffordancesV2, getTrainableModalitiesForCapabilityV2,
+  findTrainingAffordanceV2,
+} from './training-affordances.js'
+import { capabilityGateMetV2 } from './lesson-engine-state-queries.js'
+import { DEFAULT_LESSON_ENGINE_POLICY_V2 } from './lesson-engine-contracts.js'
 import { TELEMETRY_EVENT_TYPES } from './observability-contracts.js'
 
 // Learner-facing phrasing for WHY independence isn't measured yet — framed as a
@@ -84,6 +89,9 @@ export function inspectTargetV2(targetId, { learnerStates = [], registry = loadP
     resolved: !!owner,
     exposure: state?.exposure ? { ...state.exposure } : { count: 0 },
     capabilities,
+    // Slice V2.9: the modality-opportunity map — which parallel forms of each
+    // capability are practiced / available / runtime-blocked / not yet ready.
+    modality_opportunities: inspectModalityOpportunitiesV2(targetId, { learnerStates, registry, runtimeAvailability }),
     last_evidence_at: state?.updated_at ?? null,
   }
 }
@@ -96,6 +104,58 @@ function laneView(lane) {
     evidence_level: lane.evidence_level,
     trend: lane.trend,
   }
+}
+
+// ---- per-capability modality opportunities (Slice V2.9) ---------------------
+// For one target: every trainable modality of every trainable capability, with
+// its evidence facts and the OPPORTUNITY state — a property of the curriculum /
+// runtime, never a learner deficit and never a mastery percentage:
+//   practiced            — assessed evidence exists in this modality
+//   available            — trainable, runtime-executable, curriculum-ready
+//   runtime_unavailable  — an affordance exists but this runtime can't run it
+//   not_curriculum_ready — the capability gate for this modality isn't met yet
+
+const OPPORTUNITY_LEARNER_TEXT = {
+  practiced: 'Já praticado nesta forma.',
+  available: 'Oportunidade disponível.',
+  runtime_unavailable: 'Indisponível neste dispositivo no momento.',
+  not_curriculum_ready: 'Ainda não chegou nesta etapa do percurso.',
+}
+
+export function inspectModalityOpportunitiesV2(targetId, {
+  learnerStates = [], registry = loadPedagogyV2Registry(), runtimeAvailability = null,
+  thresholds = DEFAULT_LESSON_ENGINE_POLICY_V2.thresholds,
+} = {}) {
+  void registry
+  const state = indexStatesByTargetId(learnerStates).get(targetId) || null
+  const engineLevel = getTrainingAffordancesV2({ runtimeAvailability: null })
+  const runtimeLevel = runtimeAvailability == null ? engineLevel : getTrainingAffordancesV2({ runtimeAvailability })
+  const capabilities = [...new Set(engineLevel.filter((a) => a.can_produce_assessed_evidence).map((a) => a.capability))].sort()
+
+  const out = {}
+  for (const capability of capabilities) {
+    const rows = []
+    for (const modality of getTrainableModalitiesForCapabilityV2(capability, { affordances: engineLevel })) {
+      const capKey = `${modality}_${capability}`
+      const lane = state?.capabilities?.[capKey]?.overall || null
+      const practiced = (lane?.assessed_evidence_count || 0) > 0
+      let opportunity
+      if (practiced) opportunity = 'practiced'
+      else if (!findTrainingAffordanceV2(runtimeLevel, capability, modality)) opportunity = 'runtime_unavailable'
+      else if (!capabilityGateMetV2(state, capability, modality, thresholds)) opportunity = 'not_curriculum_ready'
+      else opportunity = 'available'
+      rows.push({
+        modality,
+        assessed_evidence_count: lane?.assessed_evidence_count || 0,
+        evidence_level: lane?.evidence_level ?? null,
+        last_practiced: state?.retention?.[capKey]?.last_retrieval_at ?? null,
+        opportunity,
+        learner_message: OPPORTUNITY_LEARNER_TEXT[opportunity],
+      })
+    }
+    out[capability] = rows
+  }
+  return out
 }
 
 // ---- per-lexeme inspection --------------------------------------------------
@@ -220,6 +280,13 @@ const REASON_TEMPLATES = {
   CURRICULUM_FRONTIER: 'É o próximo passo natural da progressão.',
   CAPABILITY_GAP: 'Você domina o passo anterior; este é o próximo.',
   MODALITY_GAP: 'Você já reconhece este uso em outra forma, mas ainda há pouca evidência aqui.',
+  // modality expansion (Slice V2.9) — internal/diagnostic templates; the normal
+  // UI uses simple pedagogical copy, never an absolute-deficit framing.
+  PARALLEL_MODALITY_UNPRACTICED: 'Este uso já foi praticado em uma forma paralela; esta forma ainda não tem evidência.',
+  WRITING_BEHIND_SPEAKING: 'Este uso já foi praticado ao falar, mas ainda há pouca evidência ao escrever.',
+  SPEAKING_BEHIND_WRITING: 'Este uso já foi praticado ao escrever, mas ainda há pouca evidência ao falar.',
+  LISTENING_BEHIND_READING: 'Este uso já é reconhecido ao ler, mas ainda há pouca evidência ao ouvir.',
+  READING_BEHIND_LISTENING: 'Este uso já é reconhecido ao ouvir, mas ainda há pouca evidência ao ler.',
   SUPPORTED_WITHOUT_INDEPENDENT: 'Você foi bem com apoio; agora sem ajuda.',
   RECENT_FAILURE: 'Uma tentativa recente falhou.',
   DECLINING_TREND: 'Os resultados recentes caíram.',

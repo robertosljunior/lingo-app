@@ -170,6 +170,44 @@ describe('§29.11 (Slice V2.8, test 33) — explainability exposes the internal 
   })
 })
 
+describe('§32.27–29 (Slice V2.9) — modality opportunity states per capability', () => {
+  const RT = computeRecipeRuntimeAvailability({ text_input: true, audio_output: true, speech_input: true, semantic_assessment: true, pronunciation_assessment: false })
+
+  it('27: a practiced modality reports evidence; an unpracticed available one reports opportunity', async () => {
+    const { inspectModalityOpportunitiesV2 } = await import('./learner-inspector.js')
+    const s = states.find((x) => (x.capabilities?.reading_recognition?.overall?.assessed_evidence_count || 0) > 0)
+    const map = inspectModalityOpportunitiesV2(s.target.target_id, { learnerStates: states, registry, runtimeAvailability: RT })
+    const reading = map.recognition.find((r) => r.modality === 'reading')
+    expect(reading.opportunity).toBe('practiced')
+    expect(reading.assessed_evidence_count).toBeGreaterThan(0)
+    // Never a mastery percentage — facts + opportunity state only.
+    expect(reading).not.toHaveProperty('mastery')
+    expect(reading).not.toHaveProperty('mastery_estimate')
+  })
+
+  it('28: a runtime-unavailable modality is reported as such (device property, not learner deficit)', async () => {
+    const { inspectModalityOpportunitiesV2 } = await import('./learner-inspector.js')
+    const noMic = computeRecipeRuntimeAvailability({ text_input: true, audio_output: true, speech_input: false, semantic_assessment: true, pronunciation_assessment: false })
+    const s = states[0]
+    const map = inspectModalityOpportunitiesV2(s.target.target_id, { learnerStates: states, registry, runtimeAvailability: noMic })
+    const speaking = map.controlled_production.find((r) => r.modality === 'speaking')
+    if (speaking.opportunity !== 'practiced') {
+      expect(speaking.opportunity).toBe('runtime_unavailable')
+      expect(speaking.learner_message).toBe('Indisponível neste dispositivo no momento.')
+      expect(speaking.learner_message).not.toMatch(/aluno|não domina/i)
+    }
+  })
+
+  it('29: a modality whose capability gate is not met reports not_curriculum_ready', async () => {
+    const { inspectModalityOpportunitiesV2 } = await import('./learner-inspector.js')
+    // A brand-new (never-exposed) target: free production is not curriculum-ready.
+    const map = inspectModalityOpportunitiesV2('sense:but.contrast', { learnerStates: [], registry, runtimeAvailability: RT })
+    const freeWriting = map.free_production.find((r) => r.modality === 'writing')
+    expect(freeWriting.opportunity).toBe('not_curriculum_ready')
+    expect(freeWriting.learner_message).toBe('Ainda não chegou nesta etapa do percurso.')
+  })
+})
+
 describe('§29.9 — the observability export is privacy-safe by construction', () => {
   it('omits profile_id by default and only lists telemetry event types', () => {
     const t = createTelemetryCollectorV2({ enabled: true })

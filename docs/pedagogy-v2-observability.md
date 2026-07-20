@@ -188,3 +188,16 @@ Conforme §22, **não foram recalibrados** — ficam registrados para a Slice V2
    produção.
 4. Usar as métricas desta slice como baseline antes/depois de qualquer
    recalibração.
+
+> **Atualização — Slice V2.9 (modality path completeness).** Após a V2.8, o
+> harness revelou que `writing` produção ficava com `opportunity_coverage 0/0`:
+> a escada introduz produção por `speaking` e o único *modality gap* era a
+> tabela manual `reading↔listening`. A V2.9 generalizou a geração
+> (`modality-gap.js` + APIs de modalidades treináveis derivadas das
+> affordances; tabela manual removida), compartilhou o gate de capability entre
+> Planner e Engine (`capabilityGateMetV2`), adicionou a invariante grave
+> `FOCUS_MODALITY_HAS_NO_AFFORDANCE` e a auditoria estática
+> `auditTrainingDomainReachabilityV2` (exposta em `inspect:pedagogy-v2`).
+> Resultado: writing elegível E selecionado em toda persona com produção
+> desbloqueada (ex.: support-dependent 51/24), zero starvation, **nenhum peso
+> alterado**. Ver `test-evidence/v2-9-modality-baseline.md`.
