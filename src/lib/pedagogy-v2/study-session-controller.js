@@ -74,11 +74,16 @@ export function createStudySessionControllerV2(deps) {
   /**
    * One planning round: select a focus, materialize an activity with the
    * engine. Focuses the engine cannot serve are suppressed and planning
-   * retries — the planner never loops forever (bounded attempts).
+   * retries — each attempt suppresses one focus key, so the walk over the
+   * candidate pool terminates naturally (the guard is a hard stop only).
+   * Slice V2.11 structural fix: the old cap of 5 attempts starved sessions
+   * once three packs put many same-family unservable focuses (e.g.
+   * comprehension gaps whose exemplar prerequisites the engine still
+   * rejects) above servable candidates.
    */
   function planNext(studySession, context, lessonSessions, nowIso) {
     const suppressed = []
-    for (let attempt = 0; attempt < 5; attempt++) {
+    for (let attempt = 0; attempt < 60; attempt++) {
       const plannerDecision = selectNextStudyFocusV2({
         registry,
         learnerStates: context.learner_states,

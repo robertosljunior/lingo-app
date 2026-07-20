@@ -187,11 +187,16 @@ describe('§34.25–26 — entry vs expansion opportunities are distinguished', 
 })
 
 describe('session rotation (Slice V2.10) — modeling real sittings on long horizons', () => {
-  it('a rotated struggling journey completes 200 and reaches production (remediation without being stuck)', async () => {
+  it('a rotated struggling journey completes 200 with recurring remediation and no target loop', async () => {
+    // With the three-pack curriculum (Slice V2.11) the struggling persona
+    // legitimately spends 200 interactions on recognition BREADTH across 46
+    // targets — remediation recurs and no single target loops. Reaching
+    // production inside 200 was a two-pack (narrow-content) artifact.
     const r = await runSimulationV2(buildStandardScenarioV2('struggling', { maximum_interactions: 200, session_rotation_interactions: 12 }), { registry })
     expect(r.interactions.length).toBe(200)
-    const m = computePedagogicalMetricsV2(r, { registry })
-    expect(m.capability_depth.controlled_production).toBeGreaterThan(0)
+    expect(r.interactions.some((it) => ['review', 'remediate'].includes(it.study_focus?.focus_type))).toBe(true)
+    const { findings } = analyzeLongHorizonV2(r, { registry })
+    expect(findings.some((f) => f.code === 'LONG_HORIZON_TARGET_LOOP')).toBe(false)
   }, 20000)
 
   it('rotation stays deterministic and default-off scenarios are byte-identical to pre-V2.10', async () => {

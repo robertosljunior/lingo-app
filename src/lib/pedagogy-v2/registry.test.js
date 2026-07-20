@@ -74,10 +74,10 @@ describe('registry — two valid packs', () => {
     expect(r.pack_ids).toEqual(['pedagogy_v2_alpha', 'pedagogy_v2_beta'])
   })
 
-  it('the builtin registry (still + but) is valid and loads', () => {
+  it('the builtin registry (still + but + yet) is valid and loads', () => {
     const registry = loadPedagogyV2Registry()
-    expect(registry.pack_ids).toEqual(['pedagogy_v2_but', 'pedagogy_v2_still'])
-    expect(getAllPedagogyPacks(registry)).toHaveLength(2)
+    expect(registry.pack_ids).toEqual(['pedagogy_v2_but', 'pedagogy_v2_still', 'pedagogy_v2_yet'])
+    expect(getAllPedagogyPacks(registry)).toHaveLength(3)
   })
 })
 

@@ -13,10 +13,12 @@
 // Vite/vitest accept it as well.
 import pedagogy_v2_still from './still.json' with { type: 'json' }
 import pedagogy_v2_but from './but.json' with { type: 'json' }
+import pedagogy_v2_yet from './yet.json' with { type: 'json' }
 
 export const BUILTIN_PEDAGOGY_V2_PACKS = [
   pedagogy_v2_still,
   pedagogy_v2_but,
+  pedagogy_v2_yet,
 ]
 
 export function pedagogyV2PackById(id) {

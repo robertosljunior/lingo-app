@@ -1,0 +1,232 @@
+[
+  {
+    "persona": "new-learner",
+    "profile": "full",
+    "capability_depth": {
+      "recognition": 44,
+      "comprehension": 17,
+      "controlled_production": 24,
+      "free_production": 15,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 22,
+      "listening": 39,
+      "writing": 31,
+      "speaking": 8
+    },
+    "lexemes": [
+      "lexeme:but",
+      "lexeme:still",
+      "lexeme:yet"
+    ],
+    "grave": 0
+  },
+  {
+    "persona": "weak-listener",
+    "profile": "full",
+    "capability_depth": {
+      "recognition": 95,
+      "comprehension": 5,
+      "controlled_production": 0,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 14,
+      "listening": 86,
+      "writing": 0,
+      "speaking": 0
+    },
+    "lexemes": [
+      "lexeme:but",
+      "lexeme:still",
+      "lexeme:yet"
+    ],
+    "grave": 0
+  },
+  {
+    "persona": "support-dependent",
+    "profile": "full",
+    "capability_depth": {
+      "recognition": 44,
+      "comprehension": 17,
+      "controlled_production": 24,
+      "free_production": 15,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 22,
+      "listening": 39,
+      "writing": 12,
+      "speaking": 27
+    },
+    "lexemes": [
+      "lexeme:but",
+      "lexeme:still",
+      "lexeme:yet"
+    ],
+    "grave": 0
+  },
+  {
+    "persona": "forgetful",
+    "profile": "full",
+    "capability_depth": {
+      "recognition": 85,
+      "comprehension": 11,
+      "controlled_production": 4,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 55,
+      "listening": 41,
+      "writing": 1,
+      "speaking": 3
+    },
+    "lexemes": [
+      "lexeme:but",
+      "lexeme:still",
+      "lexeme:yet"
+    ],
+    "grave": 0
+  },
+  {
+    "persona": "fast-learner",
+    "profile": "full",
+    "capability_depth": {
+      "recognition": 44,
+      "comprehension": 27,
+      "controlled_production": 29,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 35,
+      "listening": 36,
+      "writing": 15,
+      "speaking": 14
+    },
+    "lexemes": [
+      "lexeme:but",
+      "lexeme:still",
+      "lexeme:yet"
+    ],
+    "grave": 0
+  },
+  {
+    "persona": "struggling",
+    "profile": "full",
+    "capability_depth": {
+      "recognition": 61,
+      "comprehension": 14,
+      "controlled_production": 25,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 40,
+      "listening": 35,
+      "writing": 21,
+      "speaking": 4
+    },
+    "lexemes": [
+      "lexeme:but",
+      "lexeme:still",
+      "lexeme:yet"
+    ],
+    "grave": 0
+  },
+  {
+    "persona": "cross-pack",
+    "profile": "full",
+    "capability_depth": {
+      "recognition": 85,
+      "comprehension": 10,
+      "controlled_production": 5,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 50,
+      "listening": 45,
+      "writing": 2,
+      "speaking": 3
+    },
+    "lexemes": [
+      "lexeme:but",
+      "lexeme:still",
+      "lexeme:yet"
+    ],
+    "grave": 0
+  },
+  {
+    "persona": "fast-learner",
+    "profile": "text-first",
+    "capability_depth": {
+      "recognition": 44,
+      "comprehension": 26,
+      "controlled_production": 23,
+      "free_production": 7,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 34,
+      "listening": 36,
+      "writing": 30,
+      "speaking": 0
+    },
+    "lexemes": [
+      "lexeme:but",
+      "lexeme:still",
+      "lexeme:yet"
+    ],
+    "grave": 0
+  },
+  {
+    "persona": "fast-learner",
+    "profile": "text-only",
+    "capability_depth": {
+      "recognition": 26,
+      "comprehension": 20,
+      "controlled_production": 20,
+      "free_production": 34,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 46,
+      "listening": 0,
+      "writing": 54,
+      "speaking": 0
+    },
+    "lexemes": [
+      "lexeme:but",
+      "lexeme:still",
+      "lexeme:yet"
+    ],
+    "grave": 0
+  },
+  {
+    "persona": "weak-listener",
+    "profile": "no-audio",
+    "capability_depth": {
+      "recognition": 26,
+      "comprehension": 19,
+      "controlled_production": 36,
+      "free_production": 19,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 45,
+      "listening": 0,
+      "writing": 29,
+      "speaking": 26
+    },
+    "lexemes": [
+      "lexeme:but",
+      "lexeme:still",
+      "lexeme:yet"
+    ],
+    "grave": 0
+  }
+]

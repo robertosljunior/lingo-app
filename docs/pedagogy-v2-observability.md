@@ -214,3 +214,23 @@ Conforme §22, **não foram recalibrados** — ficam registrados para a Slice V2
 > sessão no harness (`session_rotation_interactions`) para horizontes 200–500.
 > **Nenhum peso alterado; planner_version permanece 1.** Ver
 > `test-evidence/v2-10-long-horizon-baseline.md`.
+
+> **Atualização — Slice V2.11 (terceiro lexema `yet` + grafo de três packs).**
+> O registry passou a carregar `still`, `but` e `yet` (registry_version 1
+> inalterado; ordem de import irrelevante). O pack `yet` é servido pela MESMA
+> observabilidade: aparece automaticamente em `lexical_depth` (3 lexemas) e nas
+> métricas de transferência cross-pack — nenhuma lógica por lexema. O grafo
+> deixou de ser cadeia: `construction:still.clause_but_subject_still_verb`
+> recebe relações de `but` E de `yet` (N-para-N), e `yet` declara dependências
+> dirigidas a `still` e `but` (DAG, sem ciclo). O **teto curricular subiu de 28
+> para 46 targets** — em cada persona/horizonte, `remaining_eligible_unseen_targets`
+> é maior no mesmo ponto de trajetória que o baseline de dois packs, com **0
+> findings graves** e transferência cross-pack observada (`still→yet`, `but→yet`).
+> Matriz de runtime revalidada (full × 7 personas + text-first/text-only fast
+> learner + no-audio weak-listener, 0 graves). **Nenhum peso recalibrado;
+> planner_version permanece 1.** A única correção estrutural foi elevar o teto
+> de tentativas de supressão de foco do controlador/runner (o pool de
+> candidatos de três packs excede o antigo limite de 5–6 e famintava sessões
+> sem isso — cada tentativa suprime uma chave, então a caminhada termina
+> naturalmente). Ver `test-evidence/v2-11-three-pack-long-horizon.json` e
+> `test-evidence/v2-11-runtime-matrix.json`.

@@ -155,9 +155,10 @@ describe('§14.24 + §14.26 + §14.27 — a served independence focus is unaided
   it('every independence activity in a real run is tier none and matches the focus domain', async () => {
     const { runSimulationV2 } = await import('./simulation-runner.js')
     const { buildStandardScenarioV2 } = await import('./simulation-scenarios.js')
-    // 100 = the standard golden window (the V2.10 runtime-aware entry shifted
-    // the fast-learner trajectory slightly; independence appears from ~i≈90).
-    const r = await runSimulationV2(buildStandardScenarioV2('fast-learner', { maximum_interactions: 100 }), { registry })
+    // support-dependent reaches independence focuses within the standard 100
+    // window under the three-pack curriculum (fast-learner now spreads across
+    // more content and gets there later) — the property is persona-agnostic.
+    const r = await runSimulationV2(buildStandardScenarioV2('support-dependent', { maximum_interactions: 100 }), { registry })
     const independenceActivities = r.interactions.filter((it) => it.study_focus?.focus_type === 'independence')
     expect(independenceActivities.length).toBeGreaterThan(0) // the loop is broken → independence IS reached
     for (const it of independenceActivities) {

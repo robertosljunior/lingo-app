@@ -77,10 +77,15 @@ function compactPlan(plan) {
   }
 }
 
-/** Mirror of the study session controller's planNext (bounded re-planning). */
+/** Mirror of the study session controller's planNext (bounded re-planning).
+ * Slice V2.11 structural fix: the old cap of 6 suppression attempts starved
+ * runs once the candidate pool grew (three packs put many same-family focuses
+ * — e.g. comprehension/listening gaps whose exemplar prerequisites the engine
+ * still rejects — above servable ones). Each attempt suppresses one focus key,
+ * so walking the pool terminates naturally; the guard is just a hard stop. */
 function planNext({ registry, learnerStates, recentEvidence, studySession, policy, availability, allowedPackIds, profileId, now, lessonSessions, makeLessonSessionId }) {
   const suppressed = []
-  for (let attempt = 0; attempt < 6; attempt++) {
+  for (let attempt = 0; attempt < 60; attempt++) {
     const plannerDecision = selectNextStudyFocusV2({
       registry, learnerStates, recentEvidence, studySession,
       policy: policy.planner, runtimeAvailability: availability, allowedPackIds,
