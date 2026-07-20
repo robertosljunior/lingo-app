@@ -16,14 +16,16 @@ import { LESSON_RECIPES } from './lesson-engine-contracts.js'
 import {
   getTrainingAffordancesV2, findTrainingAffordanceV2, getTrainableModalitiesForCapabilityV2,
 } from './training-affordances.js'
+import { CAPABILITY_LADDER } from './capability-entry.js'
 
 export const REACHABILITY_WARNING_CODES = [
   'TRAINABLE_DOMAIN_WITHOUT_CANDIDATE_PATH',
   'CANDIDATE_DOMAIN_WITHOUT_ENGINE_PATH',
   'ENGINE_DOMAIN_WITHOUT_ASSESSMENT_PATH',
+  // Slice V2.10 — entry/expansion path analysis
+  'CAPABILITY_WITHOUT_EXECUTABLE_ENTRY_PATH',
+  'TRAINABLE_DOMAIN_ONLY_REACHABLE_BY_UNAVAILABLE_SIBLING',
 ]
-
-const CAPABILITY_LADDER = ['recognition', 'comprehension', 'controlled_production', 'free_production', 'pronunciation']
 
 /**
  * auditTrainingDomainReachabilityV2({ recipes, runtimeAvailability })
@@ -52,14 +54,24 @@ export function auditTrainingDomainReachabilityV2({ recipes = LESSON_RECIPES, ru
     //   free   — recognition focuses may omit the modality (first rung /
     //            introduction), letting the engine pick any recognition recipe.
     const trainableModalities = getTrainableModalitiesForCapabilityV2(capability, { affordances: engineLevel })
-    const isLadderEntry = trainableModalities[0] === modality && CAPABILITY_LADDER.includes(capability)
+    const runtimeModalities = getTrainableModalitiesForCapabilityV2(capability, { affordances: runtimeLevel })
+    // Slice V2.10: the ladder entry is RUNTIME-AWARE — any executable,
+    // curriculum-permitting modality can open the rung, not just the first
+    // sorted one. Statically, a domain has an entry path when its capability is
+    // a ladder rung and the domain itself is executable + assessed.
     const hasSiblingGapPath = trainableModalities.length >= 2
     const engineFreeChoice = capability === 'recognition'
-    const has_candidate_path = isLadderEntry || hasSiblingGapPath || engineFreeChoice
+    const has_candidate_path = CAPABILITY_LADDER.includes(capability) || hasSiblingGapPath || engineFreeChoice
 
     const runtimeAff = findTrainingAffordanceV2(runtimeLevel, capability, modality)
     const has_engine_path = !!runtimeAff
     const has_assessment_path = !!(runtimeAff ?? aff).can_produce_assessed_evidence
+    const has_capability_entry_path = CAPABILITY_LADDER.includes(capability) && has_engine_path && has_assessment_path
+    // Expansion needs an executable sibling in THIS runtime to have been
+    // practiced first: with the domain itself executable but every sibling
+    // blocked, expansion cannot start here (entry still can).
+    const executableSiblings = runtimeModalities.filter((m) => m !== modality)
+    const has_modality_expansion_path = has_engine_path && has_assessment_path && executableSiblings.length > 0
 
     const reachable = has_candidate_path && has_engine_path && has_assessment_path
     const status = reachable
@@ -72,6 +84,8 @@ export function auditTrainingDomainReachabilityV2({ recipes = LESSON_RECIPES, ru
       capability, modality,
       has_affordance: true,
       has_candidate_path,
+      has_capability_entry_path,
+      has_modality_expansion_path,
       has_engine_path,
       has_assessment_path,
       reachable,
@@ -86,6 +100,25 @@ export function auditTrainingDomainReachabilityV2({ recipes = LESSON_RECIPES, ru
     }
     if (has_engine_path && !has_assessment_path) {
       warnings.push({ code: 'ENGINE_DOMAIN_WITHOUT_ASSESSMENT_PATH', capability, modality })
+    }
+    // Executable domain whose ONLY structural path is expansion from siblings
+    // that are all runtime-blocked (entry impossible: capability not a ladder
+    // rung) — reachable in theory, unreachable with this runtime's siblings.
+    if (has_engine_path && has_assessment_path && !has_capability_entry_path
+      && trainableModalities.length >= 2 && executableSiblings.length === 0) {
+      warnings.push({ code: 'TRAINABLE_DOMAIN_ONLY_REACHABLE_BY_UNAVAILABLE_SIBLING', capability, modality })
+    }
+  }
+
+  // Slice V2.10 — per-CAPABILITY entry coverage under a PROVIDED runtime: a
+  // ladder capability with assessed affordances but zero executable modalities
+  // cannot be entered here (conditional runtime reality, surfaced explicitly).
+  if (runtimeAvailability != null) {
+    for (const capability of CAPABILITY_LADDER) {
+      const engineMods = getTrainableModalitiesForCapabilityV2(capability, { affordances: engineLevel })
+      if (!engineMods.length) continue
+      const runtimeMods = getTrainableModalitiesForCapabilityV2(capability, { affordances: runtimeLevel })
+      if (!runtimeMods.length) warnings.push({ code: 'CAPABILITY_WITHOUT_EXECUTABLE_ENTRY_PATH', capability, modality: null })
     }
   }
 

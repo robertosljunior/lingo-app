@@ -198,9 +198,9 @@ describe('§25.13 — opportunity-aware coverage (Slice V2.8)', () => {
       ix({ capability: 'recognition', modality: 'reading', eligible_domains: ['recognition_reading', 'controlled_production_writing'] }),
     ] })
     const m = computePedagogicalMetricsV2(r, { registry })
-    expect(m.opportunity_coverage.recognition_reading).toEqual({ eligible_opportunities: 2, selected_opportunities: 2, coverage_ratio: 1 })
+    expect(m.opportunity_coverage.recognition_reading).toEqual({ eligible_opportunities: 2, selected_opportunities: 2, entry_opportunities: 0, expansion_opportunities: 0, coverage_ratio: 1 })
     // Writing had opportunities but was never chosen → coverage 0.
-    expect(m.opportunity_coverage.controlled_production_writing).toEqual({ eligible_opportunities: 2, selected_opportunities: 0, coverage_ratio: 0 })
+    expect(m.opportunity_coverage.controlled_production_writing).toEqual({ eligible_opportunities: 2, selected_opportunities: 0, entry_opportunities: 0, expansion_opportunities: 0, coverage_ratio: 0 })
   })
 })
 

@@ -1,0 +1,551 @@
+{
+  "new-learner": {
+    "n": 100,
+    "capability_depth": {
+      "recognition": 52,
+      "comprehension": 18,
+      "controlled_production": 30,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 33,
+      "listening": 37,
+      "writing": 9,
+      "speaking": 21
+    },
+    "review_ratio": 0.2346,
+    "unaided_controlled": 0.0333,
+    "unaided_free": null,
+    "repetition_target": 18,
+    "support_dependency": {
+      "reading_recognition": {
+        "supported": 42,
+        "independent": 0
+      },
+      "listening_recognition": {
+        "supported": 54,
+        "independent": 0
+      },
+      "listening_comprehension": {
+        "supported": 20,
+        "independent": 0
+      },
+      "reading_comprehension": {
+        "supported": 16,
+        "independent": 0
+      },
+      "speaking_controlled_production": {
+        "supported": 35,
+        "independent": 0
+      },
+      "writing_controlled_production": {
+        "supported": 15,
+        "independent": 2
+      }
+    },
+    "opportunity_coverage": {
+      "recognition_reading": {
+        "eligible_opportunities": 99,
+        "selected_opportunities": 25,
+        "coverage_ratio": 0.2525
+      },
+      "recognition_listening": {
+        "eligible_opportunities": 97,
+        "selected_opportunities": 27,
+        "coverage_ratio": 0.2784
+      },
+      "comprehension_listening": {
+        "eligible_opportunities": 76,
+        "selected_opportunities": 10,
+        "coverage_ratio": 0.1316
+      },
+      "comprehension_reading": {
+        "eligible_opportunities": 69,
+        "selected_opportunities": 8,
+        "coverage_ratio": 0.1159
+      },
+      "controlled_production_speaking": {
+        "eligible_opportunities": 50,
+        "selected_opportunities": 21,
+        "coverage_ratio": 0.42
+      },
+      "controlled_production_writing": {
+        "eligible_opportunities": 49,
+        "selected_opportunities": 9,
+        "coverage_ratio": 0.1837
+      }
+    },
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION",
+      "warning:SUPPORT_TRAP"
+    ]
+  },
+  "weak-listener": {
+    "n": 80,
+    "capability_depth": {
+      "recognition": 70,
+      "comprehension": 10,
+      "controlled_production": 0,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 17,
+      "listening": 63,
+      "writing": 0,
+      "speaking": 0
+    },
+    "review_ratio": 0.7021,
+    "unaided_controlled": null,
+    "unaided_free": null,
+    "repetition_target": 9,
+    "support_dependency": {
+      "listening_recognition": {
+        "supported": 115,
+        "independent": 0
+      },
+      "reading_recognition": {
+        "supported": 31,
+        "independent": 0
+      },
+      "listening_comprehension": {
+        "supported": 20,
+        "independent": 0
+      }
+    },
+    "opportunity_coverage": {
+      "recognition_reading": {
+        "eligible_opportunities": 79,
+        "selected_opportunities": 17,
+        "coverage_ratio": 0.2152
+      },
+      "recognition_listening": {
+        "eligible_opportunities": 79,
+        "selected_opportunities": 53,
+        "coverage_ratio": 0.6709
+      },
+      "comprehension_listening": {
+        "eligible_opportunities": 42,
+        "selected_opportunities": 10,
+        "coverage_ratio": 0.2381
+      },
+      "comprehension_reading": {
+        "eligible_opportunities": 16,
+        "selected_opportunities": 0,
+        "coverage_ratio": 0
+      }
+    },
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION"
+    ]
+  },
+  "support-dependent": {
+    "n": 100,
+    "capability_depth": {
+      "recognition": 52,
+      "comprehension": 17,
+      "controlled_production": 31,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 43,
+      "listening": 26,
+      "writing": 24,
+      "speaking": 7
+    },
+    "review_ratio": 0.2195,
+    "unaided_controlled": 0.3871,
+    "unaided_free": null,
+    "repetition_target": 18,
+    "support_dependency": {
+      "reading_recognition": {
+        "supported": 54,
+        "independent": 0
+      },
+      "listening_recognition": {
+        "supported": 42,
+        "independent": 0
+      },
+      "listening_comprehension": {
+        "supported": 10,
+        "independent": 0
+      },
+      "reading_comprehension": {
+        "supported": 24,
+        "independent": 0
+      },
+      "speaking_controlled_production": {
+        "supported": 11,
+        "independent": 0
+      },
+      "writing_controlled_production": {
+        "supported": 24,
+        "independent": 24
+      }
+    },
+    "opportunity_coverage": {
+      "recognition_reading": {
+        "eligible_opportunities": 98,
+        "selected_opportunities": 31,
+        "coverage_ratio": 0.3163
+      },
+      "recognition_listening": {
+        "eligible_opportunities": 99,
+        "selected_opportunities": 21,
+        "coverage_ratio": 0.2121
+      },
+      "comprehension_listening": {
+        "eligible_opportunities": 76,
+        "selected_opportunities": 5,
+        "coverage_ratio": 0.0658
+      },
+      "comprehension_reading": {
+        "eligible_opportunities": 69,
+        "selected_opportunities": 12,
+        "coverage_ratio": 0.1739
+      },
+      "controlled_production_speaking": {
+        "eligible_opportunities": 52,
+        "selected_opportunities": 7,
+        "coverage_ratio": 0.1346
+      },
+      "controlled_production_writing": {
+        "eligible_opportunities": 51,
+        "selected_opportunities": 24,
+        "coverage_ratio": 0.4706
+      },
+      "free_production_speaking": {
+        "eligible_opportunities": 1,
+        "selected_opportunities": 0,
+        "coverage_ratio": 0
+      }
+    },
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION",
+      "warning:SUPPORT_TRAP",
+      "warning:TARGET_STAGNATION"
+    ]
+  },
+  "forgetful": {
+    "n": 60,
+    "capability_depth": {
+      "recognition": 54,
+      "comprehension": 6,
+      "controlled_production": 0,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 24,
+      "listening": 36,
+      "writing": 0,
+      "speaking": 0
+    },
+    "review_ratio": 0.9355,
+    "unaided_controlled": null,
+    "unaided_free": null,
+    "repetition_target": 10,
+    "support_dependency": {
+      "listening_recognition": {
+        "supported": 71,
+        "independent": 0
+      },
+      "reading_recognition": {
+        "supported": 45,
+        "independent": 0
+      },
+      "listening_comprehension": {
+        "supported": 12,
+        "independent": 0
+      }
+    },
+    "opportunity_coverage": {
+      "recognition_reading": {
+        "eligible_opportunities": 59,
+        "selected_opportunities": 24,
+        "coverage_ratio": 0.4068
+      },
+      "recognition_listening": {
+        "eligible_opportunities": 59,
+        "selected_opportunities": 30,
+        "coverage_ratio": 0.5085
+      },
+      "comprehension_listening": {
+        "eligible_opportunities": 30,
+        "selected_opportunities": 6,
+        "coverage_ratio": 0.2
+      },
+      "comprehension_reading": {
+        "eligible_opportunities": 17,
+        "selected_opportunities": 0,
+        "coverage_ratio": 0
+      }
+    },
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION",
+      "warning:REVIEW_STARVATION",
+      "warning:TARGET_STAGNATION"
+    ]
+  },
+  "fast-learner": {
+    "n": 100,
+    "capability_depth": {
+      "recognition": 50,
+      "comprehension": 22,
+      "controlled_production": 16,
+      "free_production": 12,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 42,
+      "listening": 30,
+      "writing": 9,
+      "speaking": 19
+    },
+    "review_ratio": 0.0309,
+    "unaided_controlled": 0.1875,
+    "unaided_free": 0.5833,
+    "repetition_target": 18,
+    "support_dependency": {
+      "listening_recognition": {
+        "supported": 44,
+        "independent": 0
+      },
+      "reading_recognition": {
+        "supported": 48,
+        "independent": 0
+      },
+      "listening_comprehension": {
+        "supported": 16,
+        "independent": 0
+      },
+      "reading_comprehension": {
+        "supported": 28,
+        "independent": 0
+      },
+      "speaking_controlled_production": {
+        "supported": 13,
+        "independent": 2
+      },
+      "writing_controlled_production": {
+        "supported": 12,
+        "independent": 4
+      },
+      "speaking_free_production": {
+        "supported": 4,
+        "independent": 7
+      },
+      "writing_free_production": {
+        "supported": 1,
+        "independent": 0
+      }
+    },
+    "opportunity_coverage": {
+      "recognition_reading": {
+        "eligible_opportunities": 99,
+        "selected_opportunities": 28,
+        "coverage_ratio": 0.2828
+      },
+      "recognition_listening": {
+        "eligible_opportunities": 99,
+        "selected_opportunities": 22,
+        "coverage_ratio": 0.2222
+      },
+      "comprehension_listening": {
+        "eligible_opportunities": 75,
+        "selected_opportunities": 8,
+        "coverage_ratio": 0.1067
+      },
+      "comprehension_reading": {
+        "eligible_opportunities": 65,
+        "selected_opportunities": 14,
+        "coverage_ratio": 0.2154
+      },
+      "controlled_production_speaking": {
+        "eligible_opportunities": 54,
+        "selected_opportunities": 8,
+        "coverage_ratio": 0.1481
+      },
+      "controlled_production_writing": {
+        "eligible_opportunities": 39,
+        "selected_opportunities": 8,
+        "coverage_ratio": 0.2051
+      },
+      "free_production_speaking": {
+        "eligible_opportunities": 23,
+        "selected_opportunities": 11,
+        "coverage_ratio": 0.4783
+      },
+      "free_production_writing": {
+        "eligible_opportunities": 22,
+        "selected_opportunities": 1,
+        "coverage_ratio": 0.0455
+      }
+    },
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION",
+      "warning:SUPPORT_TRAP"
+    ]
+  },
+  "struggling": {
+    "n": 100,
+    "capability_depth": {
+      "recognition": 69,
+      "comprehension": 8,
+      "controlled_production": 23,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 41,
+      "listening": 36,
+      "writing": 8,
+      "speaking": 15
+    },
+    "review_ratio": 0.4493,
+    "unaided_controlled": 0,
+    "unaided_free": null,
+    "repetition_target": 10,
+    "support_dependency": {
+      "reading_recognition": {
+        "supported": 93,
+        "independent": 0
+      },
+      "listening_recognition": {
+        "supported": 62,
+        "independent": 0
+      },
+      "listening_comprehension": {
+        "supported": 16,
+        "independent": 0
+      },
+      "speaking_controlled_production": {
+        "supported": 30,
+        "independent": 0
+      },
+      "writing_controlled_production": {
+        "supported": 16,
+        "independent": 0
+      }
+    },
+    "opportunity_coverage": {
+      "recognition_reading": {
+        "eligible_opportunities": 99,
+        "selected_opportunities": 41,
+        "coverage_ratio": 0.4141
+      },
+      "recognition_listening": {
+        "eligible_opportunities": 99,
+        "selected_opportunities": 28,
+        "coverage_ratio": 0.2828
+      },
+      "comprehension_listening": {
+        "eligible_opportunities": 69,
+        "selected_opportunities": 8,
+        "coverage_ratio": 0.1159
+      },
+      "comprehension_reading": {
+        "eligible_opportunities": 30,
+        "selected_opportunities": 0,
+        "coverage_ratio": 0
+      },
+      "controlled_production_speaking": {
+        "eligible_opportunities": 51,
+        "selected_opportunities": 15,
+        "coverage_ratio": 0.2941
+      },
+      "controlled_production_writing": {
+        "eligible_opportunities": 48,
+        "selected_opportunities": 8,
+        "coverage_ratio": 0.1667
+      }
+    },
+    "findings": [
+      "warning:EXCESSIVE_TARGET_REPETITION",
+      "warning:TARGET_STAGNATION"
+    ]
+  },
+  "cross-pack": {
+    "n": 100,
+    "capability_depth": {
+      "recognition": 86,
+      "comprehension": 9,
+      "controlled_production": 5,
+      "free_production": 0,
+      "pronunciation": 0
+    },
+    "modality_balance": {
+      "reading": 49,
+      "listening": 46,
+      "writing": 2,
+      "speaking": 3
+    },
+    "review_ratio": 3.5455,
+    "unaided_controlled": 0,
+    "unaided_free": null,
+    "repetition_target": 2,
+    "support_dependency": {
+      "listening_recognition": {
+        "supported": 85,
+        "independent": 15
+      },
+      "reading_recognition": {
+        "supported": 89,
+        "independent": 15
+      },
+      "listening_comprehension": {
+        "supported": 10,
+        "independent": 0
+      },
+      "reading_comprehension": {
+        "supported": 8,
+        "independent": 0
+      },
+      "speaking_controlled_production": {
+        "supported": 6,
+        "independent": 0
+      },
+      "writing_controlled_production": {
+        "supported": 4,
+        "independent": 0
+      }
+    },
+    "opportunity_coverage": {
+      "comprehension_listening": {
+        "eligible_opportunities": 100,
+        "selected_opportunities": 5,
+        "coverage_ratio": 0.05
+      },
+      "recognition_listening": {
+        "eligible_opportunities": 100,
+        "selected_opportunities": 41,
+        "coverage_ratio": 0.41
+      },
+      "recognition_reading": {
+        "eligible_opportunities": 100,
+        "selected_opportunities": 45,
+        "coverage_ratio": 0.45
+      },
+      "comprehension_reading": {
+        "eligible_opportunities": 91,
+        "selected_opportunities": 4,
+        "coverage_ratio": 0.044
+      },
+      "controlled_production_speaking": {
+        "eligible_opportunities": 26,
+        "selected_opportunities": 3,
+        "coverage_ratio": 0.1154
+      },
+      "controlled_production_writing": {
+        "eligible_opportunities": 21,
+        "selected_opportunities": 2,
+        "coverage_ratio": 0.0952
+      }
+    },
+    "findings": [
+      "warning:TARGET_STAGNATION"
+    ]
+  }
+}

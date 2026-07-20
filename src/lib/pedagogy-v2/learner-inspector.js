@@ -135,21 +135,32 @@ export function inspectModalityOpportunitiesV2(targetId, {
   const out = {}
   for (const capability of capabilities) {
     const rows = []
-    for (const modality of getTrainableModalitiesForCapabilityV2(capability, { affordances: engineLevel })) {
+    const engineMods = getTrainableModalitiesForCapabilityV2(capability, { affordances: engineLevel })
+    const runtimeMods = getTrainableModalitiesForCapabilityV2(capability, { affordances: runtimeLevel })
+    for (const modality of engineMods) {
       const capKey = `${modality}_${capability}`
       const lane = state?.capabilities?.[capKey]?.overall || null
       const practiced = (lane?.assessed_evidence_count || 0) > 0
+      const executable = !!findTrainingAffordanceV2(runtimeLevel, capability, modality)
       let opportunity
       if (practiced) opportunity = 'practiced'
-      else if (!findTrainingAffordanceV2(runtimeLevel, capability, modality)) opportunity = 'runtime_unavailable'
+      else if (!executable) opportunity = 'runtime_unavailable'
       else if (!capabilityGateMetV2(state, capability, modality, thresholds)) opportunity = 'not_curriculum_ready'
       else opportunity = 'available'
+      // Slice V2.10 — reachability of this domain, framed as curriculum/runtime
+      // structure, never a learner deficit: 'yes' (runtime-executable now),
+      // 'conditional' (exists but blocked by this runtime), 'no' (no such path).
+      const entry_path = executable ? 'yes' : 'conditional'
+      const expansion_path = engineMods.length < 2 ? 'no'
+        : (executable && runtimeMods.some((m) => m !== modality)) ? 'yes' : 'conditional'
       rows.push({
         modality,
         assessed_evidence_count: lane?.assessed_evidence_count || 0,
         evidence_level: lane?.evidence_level ?? null,
         last_practiced: state?.retention?.[capKey]?.last_retrieval_at ?? null,
         opportunity,
+        entry_path,
+        expansion_path,
         learner_message: OPPORTUNITY_LEARNER_TEXT[opportunity],
       })
     }

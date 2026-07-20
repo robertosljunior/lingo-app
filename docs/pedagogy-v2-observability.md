@@ -201,3 +201,16 @@ Conforme §22, **não foram recalibrados** — ficam registrados para a Slice V2
 > Resultado: writing elegível E selecionado em toda persona com produção
 > desbloqueada (ex.: support-dependent 51/24), zero starvation, **nenhum peso
 > alterado**. Ver `test-evidence/v2-9-modality-baseline.md`.
+
+> **Atualização — Slice V2.10 (runtime-aware entry + long horizon).** A entrada
+> de capability deixou de ser a primeira modalidade ordenada: `capability-entry.js`
+> escolhe entre modalidades executáveis e curriculum-ready (sem mic, produção
+> entra por writing; sem áudio, comprehension entra por reading — antes o
+> text-only morria em 15 interações). Invariante grave nova
+> `CAPABILITY_READY_BUT_NO_EXECUTABLE_ENTRY_DOMAIN`; auditoria com
+> entry/expansion paths; matriz de 4 perfis de runtime (28 execuções, 0 graves);
+> métricas por janela temporal, `curriculum_saturation` (fato, não finding),
+> diagnósticos long-horizon (`LATE_REVIEW_DOMINANCE` etc.) e rotação opcional de
+> sessão no harness (`session_rotation_interactions`) para horizontes 200–500.
+> **Nenhum peso alterado; planner_version permanece 1.** Ver
+> `test-evidence/v2-10-long-horizon-baseline.md`.

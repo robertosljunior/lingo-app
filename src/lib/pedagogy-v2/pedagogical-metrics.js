@@ -187,7 +187,15 @@ export function computePedagogicalMetricsV2(result, { registry = loadPedagogyV2R
   // "could be practiced and never was". Diagnostic only — never a planner input.
   const opportunity_coverage = {}
   const ensureDom = (key) => {
-    if (!opportunity_coverage[key]) opportunity_coverage[key] = { eligible_opportunities: 0, selected_opportunities: 0 }
+    if (!opportunity_coverage[key]) {
+      opportunity_coverage[key] = {
+        eligible_opportunities: 0, selected_opportunities: 0,
+        // Slice V2.10 — HOW the domain became eligible: opening a new
+        // capability rung (entry) vs a parallel modality of a practiced
+        // capability (expansion). Diagnostic only, never a planner input.
+        entry_opportunities: 0, expansion_opportunities: 0,
+      }
+    }
     return opportunity_coverage[key]
   }
   for (const it of interactions) {
@@ -195,6 +203,8 @@ export function computePedagogicalMetricsV2(result, { registry = loadPedagogyV2R
     const eligible = new Set(it.eligible_domains || [])
     if (selKey) eligible.add(selKey) // the selected domain was, by definition, eligible
     for (const dom of eligible) ensureDom(dom).eligible_opportunities += 1
+    for (const dom of it.eligible_entry_domains || []) ensureDom(dom).entry_opportunities += 1
+    for (const dom of it.eligible_expansion_domains || []) ensureDom(dom).expansion_opportunities += 1
     if (selKey) ensureDom(selKey).selected_opportunities += 1
   }
   for (const key of Object.keys(opportunity_coverage)) {

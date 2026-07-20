@@ -24,6 +24,7 @@ import {
   getTrainingAffordancesV2, canTrainIndependentV2, getTrainableModalitiesForCapabilityV2,
 } from './training-affordances.js'
 import { buildModalityGapCandidatesV2 } from './modality-gap.js'
+import { selectEntryModalityV2 } from './capability-entry.js'
 import { buildReviewQueueV2 } from './review-queue.js'
 import {
   STUDY_FOCUS_V2_VERSION, STUDY_PLANNER_V2_VERSION, RELATION_PLANNER_POLICY,
@@ -379,6 +380,12 @@ export function buildStudyCandidatesV2({
     }
 
     // deepen (capability ladder gap): previous rung met, next rung unassessed.
+    // Slice V2.10: the ENTRY modality is runtime-aware — chosen among the
+    // modalities that are executable in this runtime AND curriculum-ready on
+    // this target (never the first lexically-sorted one regardless of runtime).
+    // A learner without a microphone enters production through writing; without
+    // audio, comprehension enters through reading. When nothing is executable
+    // and ready, no candidate is generated (runtime reality, not a defect).
     for (let i = 1; i < CAPABILITY_LADDER.length; i++) {
       const prev = CAPABILITY_LADDER[i - 1]
       const next = CAPABILITY_LADDER[i]
@@ -386,14 +393,23 @@ export function buildStudyCandidatesV2({
       if (!prevMet) continue
       const nextAssessed = CAPABILITY_MODALITIES[next].some((m) => (getLane(state, `${m}_${next}`, 'overall')?.assessed_evidence_count || 0) > 0)
       if (nextAssessed) continue
-      const modality = CAPABILITY_MODALITIES[next][0] // sorted → deterministic
-      const c = {
-        ...base, focus_type: 'deepen', capability: next, modality,
-        reason_codes: ['CAPABILITY_GAP'],
-        components: emptyComponents(),
+      const entry = selectEntryModalityV2({
+        target: state.target, capability: next, learnerState: state,
+        affordances, engineLevelAffordances: ENGINE_LEVEL_AFFORDANCES, thresholds: p.thresholds,
+      })
+      if (entry.modality != null) {
+        const reasons = ['CAPABILITY_GAP', 'ENTRY_MODALITY_SELECTED']
+        if (entry.preferred_unavailable) {
+          reasons.push('RUNTIME_AWARE_CAPABILITY_ENTRY', 'PREFERRED_MODALITY_RUNTIME_UNAVAILABLE', 'ALTERNATE_MODALITY_SELECTED')
+        }
+        const c = {
+          ...base, focus_type: 'deepen', capability: next, modality: entry.modality,
+          reason_codes: reasons.sort(),
+          components: emptyComponents(),
+        }
+        c.components.capability_gap = 1
+        addCandidate(c)
       }
-      c.components.capability_gap = 1
-      addCandidate(c)
       break // only the FIRST open rung per target
     }
   }
@@ -561,6 +577,7 @@ export function selectNextStudyFocusV2({
       target_id: s.candidate.target?.target_id ?? null,
       capability: s.candidate.capability,
       modality: s.candidate.modality,
+      reason_codes: [...s.candidate.reason_codes],
       score: s.score,
       adjusted_score: s.adjusted === -Infinity ? null : s.adjusted,
       is_pack_switch: s.isSwitch,
