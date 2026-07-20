@@ -81,7 +81,7 @@ describe('§25.1–2 — brand-new learner', () => {
     expect(d.focus.focus_type).toBe('introduce')
     expect(d.focus.is_new_target).toBe(true)
     expect(d.focus.reason_codes).toContain('NEVER_EXPOSED')
-    expect(['pedagogy_v2_still', 'pedagogy_v2_but']).toContain(d.focus.pack_id)
+    expect(['pedagogy_v2_still', 'pedagogy_v2_but', 'pedagogy_v2_yet']).toContain(d.focus.pack_id)
     // Its introducing exemplar has no unmet V2 prerequisite.
     expect(d.trace.excluded.every((x) => x.key !== d.trace.selected_key)).toBe(true)
   })

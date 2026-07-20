@@ -1,0 +1,1195 @@
+{
+  "single_session": {
+    "new-learner": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 44,
+          "comprehension": 17,
+          "controlled_production": 24,
+          "free_production": 15,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 22,
+          "listening": 39,
+          "writing": 31,
+          "speaking": 8
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.06
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.4
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 39,
+          "total_targets": 46,
+          "exposed_targets": 7
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 44,
+          "comprehension": 34,
+          "controlled_production": 34,
+          "free_production": 88,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 22,
+          "listening": 56,
+          "writing": 65,
+          "speaking": 57
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.06
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.4
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.65
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 39,
+          "total_targets": 46,
+          "exposed_targets": 7
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "weak-listener": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 95,
+          "comprehension": 5,
+          "controlled_production": 0,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 14,
+          "listening": 86,
+          "writing": 0,
+          "speaking": 0
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.32
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.68
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 38,
+          "total_targets": 46,
+          "exposed_targets": 8
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 153,
+          "comprehension": 47,
+          "controlled_production": 0,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 16,
+          "listening": 184,
+          "writing": 0,
+          "speaking": 0
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.32
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.68
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.55
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 38,
+          "total_targets": 46,
+          "exposed_targets": 8
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "support-dependent": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 44,
+          "comprehension": 17,
+          "controlled_production": 24,
+          "free_production": 15,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 22,
+          "listening": 39,
+          "writing": 12,
+          "speaking": 27
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.06
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.24
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 39,
+          "total_targets": 46,
+          "exposed_targets": 7
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 44,
+          "comprehension": 20,
+          "controlled_production": 52,
+          "free_production": 84,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 22,
+          "listening": 42,
+          "writing": 39,
+          "speaking": 97
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.06
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.24
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.7
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 39,
+          "total_targets": 46,
+          "exposed_targets": 7
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "forgetful": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 85,
+          "comprehension": 11,
+          "controlled_production": 4,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 55,
+          "listening": 41,
+          "writing": 1,
+          "speaking": 3
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.5
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.68
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 38,
+          "total_targets": 46,
+          "exposed_targets": 8
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 119,
+          "comprehension": 27,
+          "controlled_production": 36,
+          "free_production": 18,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 87,
+          "listening": 59,
+          "writing": 42,
+          "speaking": 12
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.5
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.68
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.5
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 38,
+          "total_targets": 46,
+          "exposed_targets": 8
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "fast-learner": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 44,
+          "comprehension": 27,
+          "controlled_production": 29,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 35,
+          "listening": 36,
+          "writing": 15,
+          "speaking": 14
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.02
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.34
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 37,
+          "total_targets": 46,
+          "exposed_targets": 9
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 44,
+          "comprehension": 69,
+          "controlled_production": 46,
+          "free_production": 41,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 53,
+          "listening": 60,
+          "writing": 61,
+          "speaking": 26
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.02
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.34
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.53
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 37,
+          "total_targets": 46,
+          "exposed_targets": 9
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "struggling": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 61,
+          "comprehension": 14,
+          "controlled_production": 25,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 40,
+          "listening": 35,
+          "writing": 21,
+          "speaking": 4
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.2
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.38
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 39,
+          "total_targets": 46,
+          "exposed_targets": 7
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 61,
+          "comprehension": 43,
+          "controlled_production": 63,
+          "free_production": 33,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 64,
+          "listening": 40,
+          "writing": 73,
+          "speaking": 23
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.2
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.38
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.45
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 39,
+          "total_targets": 46,
+          "exposed_targets": 7
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "cross-pack": {
+      "100": {
+        "horizon": 100,
+        "capability_depth": {
+          "recognition": 85,
+          "comprehension": 10,
+          "controlled_production": 5,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 50,
+          "listening": 45,
+          "writing": 2,
+          "speaking": 3
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.6
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.7
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 34,
+          "total_targets": 46,
+          "exposed_targets": 12
+        },
+        "cross_pack_transfer": 4,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      },
+      "200": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 155,
+          "comprehension": 16,
+          "controlled_production": 20,
+          "free_production": 9,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 92,
+          "listening": 79,
+          "writing": 9,
+          "speaking": 20
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.6
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.7
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.71
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 34,
+          "total_targets": 46,
+          "exposed_targets": 12
+        },
+        "cross_pack_transfer": 4,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    }
+  },
+  "rotated_sessions": {
+    "new-learner": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 111,
+          "comprehension": 24,
+          "controlled_production": 63,
+          "free_production": 2,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 58,
+          "listening": 77,
+          "writing": 7,
+          "speaking": 58
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.1
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.18
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.31
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 31,
+          "total_targets": 46,
+          "exposed_targets": 15
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "weak-listener": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 200,
+          "comprehension": 0,
+          "controlled_production": 0,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 45,
+          "listening": 155,
+          "writing": 0,
+          "speaking": 0
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.34
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.3
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.38
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 19,
+          "total_targets": 46,
+          "exposed_targets": 27
+        },
+        "cross_pack_transfer": 5,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "support-dependent": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 109,
+          "comprehension": 30,
+          "controlled_production": 60,
+          "free_production": 1,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 56,
+          "listening": 83,
+          "writing": 48,
+          "speaking": 13
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.08
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.39
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 31,
+          "total_targets": 46,
+          "exposed_targets": 15
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "forgetful": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 193,
+          "comprehension": 7,
+          "controlled_production": 0,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 134,
+          "listening": 66,
+          "writing": 0,
+          "speaking": 0
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.54
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.68
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.7
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 18,
+          "total_targets": 46,
+          "exposed_targets": 28
+        },
+        "cross_pack_transfer": 5,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      },
+      "500r": {
+        "horizon": 500,
+        "capability_depth": {
+          "recognition": 428,
+          "comprehension": 32,
+          "controlled_production": 38,
+          "free_production": 2,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 389,
+          "listening": 71,
+          "writing": 20,
+          "speaking": 20
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.54
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.68
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.7
+          },
+          {
+            "w": [
+              201,
+              500
+            ],
+            "review": 0.8
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 16,
+          "total_targets": 46,
+          "exposed_targets": 30
+        },
+        "cross_pack_transfer": 5,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "fast-learner": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 118,
+          "comprehension": 36,
+          "controlled_production": 20,
+          "free_production": 26,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 102,
+          "listening": 52,
+          "writing": 16,
+          "speaking": 30
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.14
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.46
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 31,
+          "total_targets": 46,
+          "exposed_targets": 15
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      },
+      "500r": {
+        "horizon": 500,
+        "capability_depth": {
+          "recognition": 199,
+          "comprehension": 126,
+          "controlled_production": 61,
+          "free_production": 114,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 229,
+          "listening": 96,
+          "writing": 110,
+          "speaking": 65
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.14
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.46
+          },
+          {
+            "w": [
+              201,
+              500
+            ],
+            "review": 0.4
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 24,
+          "total_targets": 46,
+          "exposed_targets": 22
+        },
+        "cross_pack_transfer": 0,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "struggling": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 200,
+          "comprehension": 0,
+          "controlled_production": 0,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 117,
+          "listening": 83,
+          "writing": 0,
+          "speaking": 0
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.26
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.24
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.22
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 17,
+          "total_targets": 46,
+          "exposed_targets": 29
+        },
+        "cross_pack_transfer": 1,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    },
+    "cross-pack": {
+      "200r": {
+        "horizon": 200,
+        "capability_depth": {
+          "recognition": 180,
+          "comprehension": 18,
+          "controlled_production": 2,
+          "free_production": 0,
+          "pronunciation": 0
+        },
+        "modality_balance": {
+          "reading": 111,
+          "listening": 87,
+          "writing": 1,
+          "speaking": 1
+        },
+        "windows": [
+          {
+            "w": [
+              1,
+              50
+            ],
+            "review": 0.58
+          },
+          {
+            "w": [
+              51,
+              100
+            ],
+            "review": 0.8
+          },
+          {
+            "w": [
+              101,
+              200
+            ],
+            "review": 0.82
+          }
+        ],
+        "saturation": {
+          "curriculum_saturation": false,
+          "remaining_eligible_unseen_targets": 23,
+          "total_targets": 46,
+          "exposed_targets": 23
+        },
+        "cross_pack_transfer": 5,
+        "lexemes": [
+          "lexeme:but",
+          "lexeme:still",
+          "lexeme:yet"
+        ],
+        "lh_findings": []
+      }
+    }
+  }
+}

@@ -1,0 +1,1918 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "pedagogy_v2_yet",
+    "pack_kind": "pedagogical_v2",
+    "title": {
+      "pt": "yet — usos progressivos",
+      "en": "yet — progressive usage"
+    },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "primary_lexeme_id": "lexeme:yet",
+    "catalog_order": 3,
+    "short_description_pt": "O esperado que ainda não aconteceu — e o contraste que resiste a ele.",
+    "dependencies": [
+      {
+        "pack_id": "pedagogy_v2_still",
+        "required_schema_version": "1",
+        "reason": "Relação temporal explícita: sense:still.continuity (continuidade) contrasta com o pendente-esperado de yet; as construções com be e a família but...still / although...still são referenciadas, nunca duplicadas."
+      },
+      {
+        "pack_id": "pedagogy_v2_but",
+        "required_schema_version": "1",
+        "reason": "O yet concessivo realiza a função function:express_unexpected_result (propriedade do pack but) com construção própria; construction:but.clause_but_clause é pré-requisito real dos exemplares concessivos."
+      }
+    ],
+    "notes": "Terceiro pack pedagógico V2. Princípio curricular preservado: palavras funcionais frequentes entram cedo; seus sentidos, construções, posições e funções comunicativas são aprofundados progressivamente. O aluno conhece 'I'm not ready yet.' muito antes de 'It was difficult, yet we continued.' — e ao encontrar o segundo deve sentir que conhece a palavra e está aprendendo uma NOVA maneira de usá-la. O lexema não possui nível CEFR global."
+  },
+  "lexemes": [
+    {
+      "lexeme_id": "lexeme:yet",
+      "lemma": "yet",
+      "language": "en",
+      "part_of_speech": [
+        "adverb",
+        "conjunction"
+      ],
+      "glosses_pt": [
+        "ainda",
+        "já",
+        "porém",
+        "mais um"
+      ],
+      "frequency_band": "high_frequency_functional",
+      "notes": "Sem nível global por decisão de modelo (mesma decisão de still e but): o que progride é o sentido, a construção e a autonomia exigida, nunca a palavra. A tradução NUNCA é global — 'ainda' (negativo temporal), 'já' (interrogativo), 'porém' (concessivo), 'até agora' (máximo), 'mais um' (aditivo) — por isso ela vive nos exemplares, não no lexema. A banda de frequência é qualitativa."
+    }
+  ],
+  "senses": [
+    {
+      "sense_id": "sense:yet.temporal_pending",
+      "lexeme_id": "lexeme:yet",
+      "label": "Esperado ainda não ocorrido",
+      "meaning_pt": "Algo esperado não aconteceu até o momento de referência — mas a expectativa de que aconteça permanece aberta.",
+      "gloss_en": "an expected situation has not happened up to the reference time",
+      "communicative_function_ids": [
+        "function:signal_pending_situation",
+        "function:ask_about_expected_completion",
+        "function:report_pending_obligation"
+      ],
+      "first_exposure_stage": "A1",
+      "related_sense_ids": [],
+      "notes": "Núcleo temporal único realizado por QUATRO construções: negativa com be ('I'm not ready yet.'), interrogativa ('Is dinner ready yet?'), perfect negativo ('We haven't finished yet.') e 'have yet to' ('We have yet to decide.'). Decisão de modelo: a interrogativa NÃO é um sentido separado — a mesma expectativa pendente é consultada em vez de afirmada; multiplicar senses aqui seria artificial. Contrasta com sense:still.continuity: still afirma que algo CONTINUA; yet marca que o esperado AINDA NÃO chegou."
+    },
+    {
+      "sense_id": "sense:yet.concessive",
+      "lexeme_id": "lexeme:yet",
+      "label": "Contraste concessivo",
+      "meaning_pt": "Liga duas orações em que a segunda vale APESAR da primeira — contraste com ênfase formal ou discursiva.",
+      "gloss_en": "links two clauses where the second holds despite the first",
+      "communicative_function_ids": [
+        "function:emphasize_formal_contrast"
+      ],
+      "first_exposure_stage": "B1",
+      "related_sense_ids": [],
+      "notes": "Claramente distinto do núcleo temporal: aqui yet é conjuntivo, não adverbial. Ocupa o espaço funcional do contraste já modelado por but (function:express_unexpected_result, propriedade do pack but) com registro mais formal/enfático — função compartilhada, construção e registro diferentes, nunca a mesma entidade."
+    },
+    {
+      "sense_id": "sense:yet.maximal_so_far",
+      "lexeme_id": "lexeme:yet",
+      "label": "Máximo até o momento",
+      "meaning_pt": "Marca que uma expressão superlativa ou comparativa vale sobre tudo o que aconteceu ATÉ AGORA — o recorde pode ainda ser superado.",
+      "gloss_en": "marks a superlative as holding over everything so far",
+      "communicative_function_ids": [
+        "function:highlight_record_so_far"
+      ],
+      "first_exposure_stage": "B1-B2",
+      "related_sense_ids": [],
+      "notes": "Núcleo distinto do temporal principal: não há evento pendente — há um recorde aberto ('best result yet' = melhor até agora, e a série continua). A análise linguística confirma que reduzi-lo ao temporal apagaria a leitura de série aberta que o caracteriza."
+    },
+    {
+      "sense_id": "sense:yet.additive_repetition",
+      "lexeme_id": "lexeme:yet",
+      "label": "Repetição além do esperado",
+      "meaning_pt": "Marca MAIS UMA ocorrência de algo que já se repetiu — com a implicação de que já era o bastante.",
+      "gloss_en": "marks one more occurrence beyond what was expected",
+      "communicative_function_ids": [
+        "function:signal_unexpected_repetition"
+      ],
+      "first_exposure_stage": "B1-B2",
+      "related_sense_ids": [],
+      "notes": "Quarto núcleo justificado: 'yet another email' não é pendência temporal, contraste nem recorde — é iteração contra a expectativa ('mais um, e olha que já bastava'). Realizado pela construção yet + another + NP."
+    }
+  ],
+  "communicative_functions": [
+    {
+      "function_id": "function:signal_pending_situation",
+      "label_pt": "Sinalizar situação pendente",
+      "description_pt": "Dizer que algo esperado ainda não aconteceu, mantendo a expectativa aberta."
+    },
+    {
+      "function_id": "function:ask_about_expected_completion",
+      "label_pt": "Perguntar se o esperado já ocorreu",
+      "description_pt": "Consultar se uma situação esperada já se realizou até agora."
+    },
+    {
+      "function_id": "function:report_pending_obligation",
+      "label_pt": "Relatar pendência formal",
+      "description_pt": "Registrar, em tom mais formal, que algo segue por fazer até o momento."
+    },
+    {
+      "function_id": "function:emphasize_formal_contrast",
+      "label_pt": "Marcar contraste com ênfase formal",
+      "description_pt": "Opor duas afirmações com peso retórico ou formal maior que o contraste cotidiano."
+    },
+    {
+      "function_id": "function:highlight_record_so_far",
+      "label_pt": "Destacar recorde até o momento",
+      "description_pt": "Apresentar algo como o máximo/melhor da série até agora, com a série ainda aberta."
+    },
+    {
+      "function_id": "function:signal_unexpected_repetition",
+      "label_pt": "Marcar repetição inesperada",
+      "description_pt": "Apontar mais uma ocorrência de algo que já se repetia — além do que se esperava."
+    }
+  ],
+  "constructions": [
+    {
+      "construction_id": "construction:yet.subject_be_not_complement_yet",
+      "label": "sujeito + be + not + complemento + yet",
+      "pattern": "SUBJECT + BE + not + COMPLEMENT + yet",
+      "fixed_elements": [
+        "yet"
+      ],
+      "slots": [
+        {
+          "slot_id": "subject",
+          "syntactic_role": "subject",
+          "semantic_role": "expected_participant",
+          "allowed_forms": [
+            "noun_phrase",
+            "pronoun"
+          ]
+        },
+        {
+          "slot_id": "complement",
+          "syntactic_role": "complement",
+          "semantic_role": "expected_state",
+          "allowed_forms": [
+            "adjective_phrase",
+            "prepositional_phrase"
+          ]
+        }
+      ],
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:signal_pending_situation"
+      ],
+      "prerequisite_construction_ids": [],
+      "recommended_stage": "A1",
+      "notes": "Porta de entrada de yet: estado esperado negado com be. Espelho negativo de construction:still.subject_be_still_complement — still afirma que o estado continua, yet nega que o estado esperado tenha chegado."
+    },
+    {
+      "construction_id": "construction:yet.interrogative_clause_yet",
+      "label": "pergunta + yet",
+      "pattern": "AUX/BE + SUBJECT + ... + yet ?",
+      "fixed_elements": [
+        "yet"
+      ],
+      "slots": [
+        {
+          "slot_id": "question_clause",
+          "syntactic_role": "clause",
+          "semantic_role": "expected_situation_queried",
+          "allowed_forms": [
+            "interrogative_clause"
+          ]
+        }
+      ],
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:ask_about_expected_completion"
+      ],
+      "prerequisite_construction_ids": [
+        "construction:yet.subject_be_not_complement_yet"
+      ],
+      "recommended_stage": "A1-A2",
+      "notes": "MESMO sentido temporal em construção interrogativa (decisão documentada — não é um sense novo): a expectativa pendente é consultada. A tradução muda de 'ainda (não)' para 'já': prova de tradução por sentido/construção, nunca global."
+    },
+    {
+      "construction_id": "construction:yet.negative_perfect_yet",
+      "label": "perfect negativo + yet",
+      "pattern": "SUBJECT + have/has + not + PAST_PARTICIPLE + ... + yet",
+      "fixed_elements": [
+        "yet"
+      ],
+      "slots": [
+        {
+          "slot_id": "perfect_clause",
+          "syntactic_role": "clause",
+          "semantic_role": "expected_event_not_done",
+          "allowed_forms": [
+            "negative_perfect_clause"
+          ]
+        }
+      ],
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:signal_pending_situation"
+      ],
+      "prerequisite_construction_ids": [
+        "construction:yet.subject_be_not_complement_yet"
+      ],
+      "recommended_stage": "A2",
+      "notes": "O mesmo pendente-esperado sobre EVENTOS (perfect) em vez de estados com be. Ancora o uso mais frequente de yet em inglês real."
+    },
+    {
+      "construction_id": "construction:yet.have_yet_to_infinitive",
+      "label": "have yet to + infinitivo",
+      "pattern": "SUBJECT + have/has + yet + TO_INFINITIVE",
+      "fixed_elements": [
+        "yet",
+        "to"
+      ],
+      "slots": [
+        {
+          "slot_id": "subject",
+          "syntactic_role": "subject",
+          "semantic_role": "responsible_party",
+          "allowed_forms": [
+            "noun_phrase",
+            "pronoun"
+          ]
+        },
+        {
+          "slot_id": "pending_action",
+          "syntactic_role": "verb_phrase",
+          "semantic_role": "pending_action",
+          "allowed_forms": [
+            "to_infinitive_phrase"
+          ]
+        }
+      ],
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:report_pending_obligation"
+      ],
+      "prerequisite_construction_ids": [
+        "construction:yet.negative_perfect_yet"
+      ],
+      "recommended_stage": "A2-B1",
+      "notes": "Pendência em registro mais formal, AFIRMATIVA na forma e negativa no sentido ('have yet to decide' = ainda não decidimos). Reutiliza o sentido temporal com construção própria — sem criar sense novo."
+    },
+    {
+      "construction_id": "construction:yet.clause_yet_clause",
+      "label": "oração + yet + oração",
+      "pattern": "CLAUSE + , yet + CLAUSE",
+      "fixed_elements": [
+        "yet"
+      ],
+      "slots": [
+        {
+          "slot_id": "first_clause",
+          "syntactic_role": "clause",
+          "semantic_role": "obstacle_or_expectation",
+          "allowed_forms": [
+            "finite_clause"
+          ]
+        },
+        {
+          "slot_id": "second_clause",
+          "syntactic_role": "clause",
+          "semantic_role": "outcome_despite_first",
+          "allowed_forms": [
+            "finite_clause"
+          ]
+        }
+      ],
+      "sense_ids": [
+        "sense:yet.concessive"
+      ],
+      "communicative_function_ids": [
+        "function:emphasize_formal_contrast"
+      ],
+      "prerequisite_construction_ids": [],
+      "recommended_stage": "B1",
+      "notes": "O salto de sentido do lexema: yet conjuntivo. Mesma função comunicativa do contraste com but (relação explícita com construction:but.clause_but_clause e function:express_unexpected_result), construção e registro DIFERENTES — mais formal/enfático. Nunca tratado como sinônimo intercambiável de but."
+    },
+    {
+      "construction_id": "construction:yet.and_yet_clause",
+      "label": "oração + and yet + oração",
+      "pattern": "CLAUSE + , and yet + CLAUSE",
+      "fixed_elements": [
+        "and",
+        "yet"
+      ],
+      "slots": [
+        {
+          "slot_id": "first_clause",
+          "syntactic_role": "clause",
+          "semantic_role": "acknowledged_obstacle",
+          "allowed_forms": [
+            "finite_clause"
+          ]
+        },
+        {
+          "slot_id": "second_clause",
+          "syntactic_role": "clause",
+          "semantic_role": "persistent_outcome",
+          "allowed_forms": [
+            "finite_clause"
+          ]
+        }
+      ],
+      "sense_ids": [
+        "sense:yet.concessive"
+      ],
+      "communicative_function_ids": [
+        "function:emphasize_formal_contrast"
+      ],
+      "prerequisite_construction_ids": [
+        "construction:yet.clause_yet_clause"
+      ],
+      "recommended_stage": "B1-B2",
+      "notes": "Ênfase discursiva sobre o concessivo: 'and yet' reconhece plenamente o obstáculo e sustenta o resultado. Mesmo espaço funcional de but...still e although...still (relações explícitas com as construções do pack still e com function:express_result_despite_obstacle) — persistência apesar de obstáculo, sem equivalência total."
+    },
+    {
+      "construction_id": "construction:yet.superlative_yet",
+      "label": "superlativo + yet",
+      "pattern": "SUBJECT + BE + SUPERLATIVE_NP + yet",
+      "fixed_elements": [
+        "yet"
+      ],
+      "slots": [
+        {
+          "slot_id": "subject",
+          "syntactic_role": "subject",
+          "semantic_role": "record_holder",
+          "allowed_forms": [
+            "noun_phrase",
+            "pronoun"
+          ]
+        },
+        {
+          "slot_id": "superlative_np",
+          "syntactic_role": "complement",
+          "semantic_role": "open_series_record",
+          "allowed_forms": [
+            "superlative_noun_phrase"
+          ]
+        }
+      ],
+      "sense_ids": [
+        "sense:yet.maximal_so_far"
+      ],
+      "communicative_function_ids": [
+        "function:highlight_record_so_far"
+      ],
+      "prerequisite_construction_ids": [],
+      "recommended_stage": "B1-B2",
+      "notes": "Recorde de série aberta: 'best result yet'. A tradução natural é 'até agora' — mais uma prova de que a tradução pertence ao sentido/exemplar."
+    },
+    {
+      "construction_id": "construction:yet.yet_another_np",
+      "label": "yet another + substantivo",
+      "pattern": "yet + another + NOUN_PHRASE",
+      "fixed_elements": [
+        "yet",
+        "another"
+      ],
+      "slots": [
+        {
+          "slot_id": "repeated_item",
+          "syntactic_role": "noun_phrase",
+          "semantic_role": "item_repeated_beyond_expectation",
+          "allowed_forms": [
+            "singular_noun_phrase"
+          ]
+        }
+      ],
+      "sense_ids": [
+        "sense:yet.additive_repetition"
+      ],
+      "communicative_function_ids": [
+        "function:signal_unexpected_repetition"
+      ],
+      "prerequisite_construction_ids": [],
+      "recommended_stage": "B1-B2",
+      "notes": "Iteração contra a expectativa: 'yet another' = 'mais um(a), e olha que já bastava'. Núcleo aditivo próprio, distinto do temporal, do concessivo e do máximo."
+    }
+  ],
+  "relations": [
+    {
+      "relation_type": "contrasts_with",
+      "from": "sense:yet.temporal_pending",
+      "to": "sense:still.continuity",
+      "description_pt": "Par temporal central do currículo: 'I still live here.' afirma continuidade; 'I don't live there yet.' marca estado esperado ainda não alcançado. Relacionados e semanticamente DISTINTOS — nunca sinônimos, nunca fundidos."
+    },
+    {
+      "relation_type": "related_construction",
+      "from": "construction:yet.subject_be_not_complement_yet",
+      "to": "construction:still.subject_be_still_complement",
+      "description_pt": "Espelho com be: still afirma que o estado continua ('I am still tired.'); yet nega que o estado esperado tenha chegado ('I'm not ready yet.'). Relação pedagógica para ensino contrastivo, não bloqueante."
+    },
+    {
+      "relation_type": "related_construction",
+      "from": "construction:yet.clause_yet_clause",
+      "to": "construction:but.clause_but_clause",
+      "description_pt": "Mesma função de contraste/contra-expectativa, construções distintas: 'It was difficult, but we continued.' (cotidiano) vs 'It was difficult, yet we continued.' (mais formal/enfático). A diferença é de construção e registro — nunca um nível global."
+    },
+    {
+      "relation_type": "realizes_shared_function",
+      "from": "construction:yet.clause_yet_clause",
+      "to": "function:express_unexpected_result",
+      "description_pt": "O concessivo de yet realiza a função 'resultado inesperado' já modelada (e possuída) pelo pack but — entidade canônica referenciada, nunca duplicada."
+    },
+    {
+      "relation_type": "related_construction",
+      "from": "construction:yet.and_yet_clause",
+      "to": "construction:still.clause_but_subject_still_verb",
+      "description_pt": "Família da contraexpectativa: 'It was difficult, but I still tried.' e 'It was difficult, and yet I tried.' compartilham a persistência apesar do obstáculo, com construções diferentes."
+    },
+    {
+      "relation_type": "related_construction",
+      "from": "construction:yet.and_yet_clause",
+      "to": "construction:still.although_clause_subject_still_verb",
+      "description_pt": "'Although it was difficult, I still tried.' e 'It was difficult, and yet I tried.' realizam o mesmo espaço funcional em registros distintos — subordinação concessiva vs coordenação enfática."
+    },
+    {
+      "relation_type": "realizes_shared_function",
+      "from": "construction:yet.and_yet_clause",
+      "to": "function:express_result_despite_obstacle",
+      "description_pt": "'and yet' realiza a função 'resultado apesar de obstáculo' possuída pelo pack still — terceiro pack ligado à mesma entidade canônica, provando o grafo N-para-N."
+    },
+    {
+      "relation_type": "extends_usage",
+      "from": "construction:yet.and_yet_clause",
+      "to": "construction:yet.clause_yet_clause",
+      "description_pt": "'and yet' estende o concessivo básico de yet com reconhecimento pleno do obstáculo e ênfase discursiva."
+    }
+  ],
+  "exemplars": [
+    {
+      "exemplar_id": "exemplar:yet.001",
+      "text_en": "I'm not ready yet.",
+      "text_pt": "Ainda não estou pronto.",
+      "construction_id": "construction:yet.subject_be_not_complement_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:signal_pending_situation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.subject_be_not_complement_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "grammar_skill_v1",
+          "ref": "verb_to_be",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.subject_be_not_complement_yet"
+        }
+      ],
+      "context": "Alguém bate na porta para sair juntos e você ainda está se arrumando.",
+      "context_items": [
+        "ready"
+      ],
+      "usage_notes": "Primeira exposição a yet: estado esperado negado com be, tradução 'ainda não'. Exatamente duas novidades pretendidas.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.002",
+      "text_en": "The bus isn't here yet.",
+      "text_pt": "O ônibus ainda não está aqui.",
+      "construction_id": "construction:yet.subject_be_not_complement_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:signal_pending_situation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.subject_be_not_complement_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.subject_be_not_complement_yet"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "No ponto, olhando o horário: o ônibus está atrasado.",
+      "context_items": [
+        "bus",
+        "here"
+      ],
+      "usage_notes": "Mesmo padrão com lugar em vez de qualidade: a espera é por uma CHEGADA. Nenhuma novidade pretendida.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.003",
+      "text_en": "Dinner isn't ready yet, so let's wait.",
+      "text_pt": "O jantar ainda não está pronto, então vamos esperar.",
+      "construction_id": "construction:yet.subject_be_not_complement_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:signal_pending_situation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.subject_be_not_complement_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.subject_be_not_complement_yet"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "A casa cheira a comida e alguém já quer sentar à mesa.",
+      "context_items": [
+        "dinner",
+        "wait"
+      ],
+      "usage_notes": "A pendência motiva uma ação ('so let's wait'): yet dentro de um turno maior, não em frase isolada.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.004",
+      "text_en": "The store isn't open yet.",
+      "text_pt": "A loja ainda não abriu.",
+      "construction_id": "construction:yet.subject_be_not_complement_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:signal_pending_situation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.subject_be_not_complement_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.subject_be_not_complement_yet"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Vocês chegaram cedo demais ao shopping e as portas seguem fechadas.",
+      "context_items": [
+        "store",
+        "open"
+      ],
+      "usage_notes": "Horário de funcionamento como expectativa institucional: o esperado tem hora marcada. A tradução usa 'abriu' porque 'está aberta' soaria menos natural aqui — tradução por exemplar, nunca palavra a palavra.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.005",
+      "text_en": "Is dinner ready yet?",
+      "text_pt": "O jantar já está pronto?",
+      "construction_id": "construction:yet.interrogative_clause_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:ask_about_expected_completion"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.interrogative_clause_yet",
+          "role": "primary"
+        },
+        {
+          "target_type": "communicative_function",
+          "target_id": "function:ask_about_expected_completion",
+          "role": "secondary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.subject_be_not_complement_yet"
+        },
+        {
+          "type": "grammar_skill_v1",
+          "ref": "question_structure",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
+          "type": "construction",
+          "ref": "construction:yet.interrogative_clause_yet"
+        }
+      ],
+      "context": "Da sala, com fome, alguém grita para a cozinha.",
+      "context_items": [
+        "dinner",
+        "ready"
+      ],
+      "usage_notes": "MESMO sentido temporal, construção interrogativa nova: a tradução vira 'já'. Uma novidade pretendida (a construção).",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1-A2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.006",
+      "text_en": "Are you home yet?",
+      "text_pt": "Você já está em casa?",
+      "construction_id": "construction:yet.interrogative_clause_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:ask_about_expected_completion"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.interrogative_clause_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.interrogative_clause_yet"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Mensagem de texto para alguém que saiu do trabalho faz um tempo.",
+      "context_items": [
+        "home"
+      ],
+      "usage_notes": "Pergunta cotidiana por mensagem: expectativa de chegada consultada.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1-A2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.007",
+      "text_en": "Is the movie over yet?",
+      "text_pt": "O filme já acabou?",
+      "construction_id": "construction:yet.interrogative_clause_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:ask_about_expected_completion"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.interrogative_clause_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.interrogative_clause_yet"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Esperando do lado de fora do cinema para encontrar alguém.",
+      "context_items": [
+        "movie",
+        "over"
+      ],
+      "usage_notes": "Expectativa de término: 'over' como complemento. Ainda a mesma consulta ao pendente.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1-A2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.008",
+      "text_en": "Have they arrived yet?",
+      "text_pt": "Eles já chegaram?",
+      "construction_id": "construction:yet.interrogative_clause_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:ask_about_expected_completion"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.interrogative_clause_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.interrogative_clause_yet"
+        },
+        {
+          "type": "grammar_skill_v1",
+          "ref": "present_perfect",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Organizando uma festa surpresa, você pergunta pelos convidados de honra.",
+      "context_items": [
+        "arrived"
+      ],
+      "usage_notes": "A interrogativa com perfect antecipa a construção seguinte (perfect negativo) — ponte natural dentro do mesmo sentido.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A1-A2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.009",
+      "text_en": "We haven't finished yet.",
+      "text_pt": "A gente ainda não terminou.",
+      "construction_id": "construction:yet.negative_perfect_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:signal_pending_situation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.negative_perfect_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.subject_be_not_complement_yet"
+        },
+        {
+          "type": "grammar_skill_v1",
+          "ref": "present_perfect",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
+          "type": "construction",
+          "ref": "construction:yet.negative_perfect_yet"
+        }
+      ],
+      "context": "O professor pede os trabalhos e o grupo pede mais um tempo.",
+      "context_items": [
+        "finished"
+      ],
+      "usage_notes": "O pendente sobre EVENTOS: perfect negativo. Uma novidade pretendida (a construção).",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.010",
+      "text_en": "I haven't eaten yet.",
+      "text_pt": "Eu ainda não comi.",
+      "construction_id": "construction:yet.negative_perfect_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:signal_pending_situation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.negative_perfect_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.negative_perfect_yet"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Já passa das duas da tarde e o dia foi corrido demais para almoçar.",
+      "context_items": [
+        "eaten"
+      ],
+      "usage_notes": "Pendência pessoal cotidiana: convite implícito para almoçar junto.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.011",
+      "text_en": "She hasn't answered my message yet.",
+      "text_pt": "Ela ainda não respondeu minha mensagem.",
+      "construction_id": "construction:yet.negative_perfect_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:signal_pending_situation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.negative_perfect_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.negative_perfect_yet"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Você mandou uma pergunta importante de manhã e segue conferindo o celular.",
+      "context_items": [
+        "answered",
+        "message"
+      ],
+      "usage_notes": "Expectativa sobre a ação de OUTRA pessoa: a espera vira leve ansiedade.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.012",
+      "text_en": "They haven't chosen a name yet.",
+      "text_pt": "Eles ainda não escolheram um nome.",
+      "construction_id": "construction:yet.negative_perfect_yet",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:signal_pending_situation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.negative_perfect_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.negative_perfect_yet"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "O bebê nasce em um mês e a família inteira dá palpite.",
+      "context_items": [
+        "chosen",
+        "name"
+      ],
+      "usage_notes": "Decisão pendente de um grupo — prepara o terreno para 'have yet to decide'.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.013",
+      "text_en": "We have yet to decide.",
+      "text_pt": "Ainda estamos por decidir.",
+      "construction_id": "construction:yet.have_yet_to_infinitive",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:report_pending_obligation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.have_yet_to_infinitive",
+          "role": "primary"
+        },
+        {
+          "target_type": "communicative_function",
+          "target_id": "function:report_pending_obligation",
+          "role": "secondary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.negative_perfect_yet"
+        }
+      ],
+      "intended_new_items": [
+        {
+          "type": "construction",
+          "ref": "construction:yet.have_yet_to_infinitive"
+        }
+      ],
+      "context": "Reunião de equipe: o prazo se aproxima e a escolha final não saiu.",
+      "context_items": [
+        "decide"
+      ],
+      "usage_notes": "Forma afirmativa, sentido pendente: registro mais formal que 'we haven't decided yet'. Uma novidade pretendida.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.014",
+      "text_en": "She has yet to reply to the invitation.",
+      "text_pt": "Ela ainda está para responder ao convite.",
+      "construction_id": "construction:yet.have_yet_to_infinitive",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:report_pending_obligation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.have_yet_to_infinitive",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.have_yet_to_infinitive"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "A lista de confirmados do casamento está quase fechada.",
+      "context_items": [
+        "reply",
+        "invitation"
+      ],
+      "usage_notes": "Mesma pendência de resposta do exemplar 011, agora em registro formal — o contraste de registro é o ponto.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.015",
+      "text_en": "The team has yet to lose a game.",
+      "text_pt": "O time ainda não perdeu nenhum jogo.",
+      "construction_id": "construction:yet.have_yet_to_infinitive",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:report_pending_obligation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.have_yet_to_infinitive",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.have_yet_to_infinitive"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Comentário sobre a campanha invicta do campeonato.",
+      "context_items": [
+        "team",
+        "lose",
+        "game"
+      ],
+      "usage_notes": "A 'pendência' aqui é positiva (a derrota não veio) — mostra que a construção relata o não-ocorrido, não uma obrigação literal.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.016",
+      "text_en": "I have yet to see the final results.",
+      "text_pt": "Eu ainda estou para ver os resultados finais.",
+      "construction_id": "construction:yet.have_yet_to_infinitive",
+      "sense_ids": [
+        "sense:yet.temporal_pending"
+      ],
+      "communicative_function_ids": [
+        "function:report_pending_obligation"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.have_yet_to_infinitive",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.have_yet_to_infinitive"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "O relatório saiu para alguns colegas, mas a sua cópia não chegou.",
+      "context_items": [
+        "results"
+      ],
+      "usage_notes": "Primeira pessoa em contexto de trabalho: pendência relatada com distanciamento profissional.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.017",
+      "text_en": "It was difficult, yet we continued.",
+      "text_pt": "Foi difícil, porém continuamos.",
+      "construction_id": "construction:yet.clause_yet_clause",
+      "sense_ids": [
+        "sense:yet.concessive"
+      ],
+      "communicative_function_ids": [
+        "function:emphasize_formal_contrast"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.concessive",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.clause_yet_clause",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:but.contrast"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:but.clause_but_clause"
+        },
+        {
+          "type": "grammar_skill_v1",
+          "ref": "past_simple",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.concessive"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.clause_yet_clause"
+        }
+      ],
+      "context": "Relembrando um projeto pesado que o grupo levou até o fim.",
+      "context_items": [
+        "difficult",
+        "continued"
+      ],
+      "usage_notes": "O salto do lexema: yet conjuntivo. Pré-requisito REAL no contraste com but (cross-pack): quem já opõe orações com but aprende aqui a versão formal/enfática. Duas novidades pretendidas.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.018",
+      "text_en": "The room is small, yet comfortable.",
+      "text_pt": "O quarto é pequeno, porém confortável.",
+      "construction_id": "construction:yet.clause_yet_clause",
+      "sense_ids": [
+        "sense:yet.concessive"
+      ],
+      "communicative_function_ids": [
+        "function:emphasize_formal_contrast"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.concessive",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.clause_yet_clause",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.concessive"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.clause_yet_clause"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Avaliação de um quarto de pousada que surpreendeu positivamente.",
+      "context_items": [
+        "room",
+        "small",
+        "comfortable"
+      ],
+      "usage_notes": "Forma reduzida (complementos coordenados): o mesmo concessivo sem repetir sujeito e verbo — paralela à redução de but com adjetivos.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.019",
+      "text_en": "She was tired, yet she kept smiling.",
+      "text_pt": "Ela estava cansada, porém continuou sorrindo.",
+      "construction_id": "construction:yet.clause_yet_clause",
+      "sense_ids": [
+        "sense:yet.concessive"
+      ],
+      "communicative_function_ids": [
+        "function:emphasize_formal_contrast"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.concessive",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.clause_yet_clause",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.concessive"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.clause_yet_clause"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Fim de um plantão longo; a recepcionista não perdeu a gentileza.",
+      "context_items": [
+        "tired",
+        "smiling"
+      ],
+      "usage_notes": "Obstáculo interno (cansaço) e resultado que persiste — a leitura de contra-expectativa fica explícita.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.020",
+      "text_en": "The plan sounded strange, yet it worked.",
+      "text_pt": "O plano parecia estranho, porém funcionou.",
+      "construction_id": "construction:yet.clause_yet_clause",
+      "sense_ids": [
+        "sense:yet.concessive"
+      ],
+      "communicative_function_ids": [
+        "function:emphasize_formal_contrast"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.concessive",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.clause_yet_clause",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.concessive"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.clause_yet_clause"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Balanço de uma ideia arriscada que deu certo contra as previsões.",
+      "context_items": [
+        "plan",
+        "worked"
+      ],
+      "usage_notes": "Expectativa criada pela primeira oração ('parecia estranho') e desfeita pela segunda: o núcleo concessivo em ação.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1"
+    },
+    {
+      "exemplar_id": "exemplar:yet.021",
+      "text_en": "He knew the risks, and yet he agreed.",
+      "text_pt": "Ele conhecia os riscos, e mesmo assim aceitou.",
+      "construction_id": "construction:yet.and_yet_clause",
+      "sense_ids": [
+        "sense:yet.concessive"
+      ],
+      "communicative_function_ids": [
+        "function:emphasize_formal_contrast"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.concessive",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.and_yet_clause",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.concessive"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.clause_yet_clause"
+        }
+      ],
+      "intended_new_items": [
+        {
+          "type": "construction",
+          "ref": "construction:yet.and_yet_clause"
+        }
+      ],
+      "context": "Conversa sobre alguém que aceitou um projeto sabendo de tudo.",
+      "context_items": [
+        "risks",
+        "agreed"
+      ],
+      "usage_notes": "'and yet' reconhece plenamente o obstáculo antes de sustentar o resultado — mesma família funcional de but...still e although...still. Uma novidade pretendida.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.022",
+      "text_en": "She was exhausted, and yet she kept working.",
+      "text_pt": "Ela estava exausta, e mesmo assim continuou trabalhando.",
+      "construction_id": "construction:yet.and_yet_clause",
+      "sense_ids": [
+        "sense:yet.concessive"
+      ],
+      "communicative_function_ids": [
+        "function:emphasize_formal_contrast"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.concessive",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.and_yet_clause",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.concessive"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.and_yet_clause"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Fechamento de balanço na empresa; a coordenadora não largou a equipe.",
+      "context_items": [
+        "exhausted",
+        "working"
+      ],
+      "usage_notes": "Persistência apesar de obstáculo — compare com 'She was tired, but she still kept working': mesmo espaço funcional, ferramentas diferentes.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.023",
+      "text_en": "The evidence was clear, and yet nobody acted.",
+      "text_pt": "As provas eram claras, e mesmo assim ninguém agiu.",
+      "construction_id": "construction:yet.and_yet_clause",
+      "sense_ids": [
+        "sense:yet.concessive"
+      ],
+      "communicative_function_ids": [
+        "function:emphasize_formal_contrast"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.concessive",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.and_yet_clause",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.concessive"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.and_yet_clause"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Debate sobre um problema conhecido que ficou sem resposta.",
+      "context_items": [
+        "evidence",
+        "acted"
+      ],
+      "usage_notes": "Registro argumentativo: a ênfase de 'and yet' carrega crítica — o resultado esperado NÃO veio, invertendo a persistência dos exemplares anteriores.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.024",
+      "text_en": "It rained all day, and yet the show went on.",
+      "text_pt": "Choveu o dia inteiro, e mesmo assim o show continuou.",
+      "construction_id": "construction:yet.and_yet_clause",
+      "sense_ids": [
+        "sense:yet.concessive"
+      ],
+      "communicative_function_ids": [
+        "function:emphasize_formal_contrast"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.concessive",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.and_yet_clause",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.concessive"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.and_yet_clause"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Festival ao ar livre debaixo de chuva que ninguém abandonou.",
+      "context_items": [
+        "rained",
+        "show"
+      ],
+      "usage_notes": "Obstáculo externo e coletivo: o evento persiste. Fecha o quarteto concessivo enfático.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.025",
+      "text_en": "This is our best result yet.",
+      "text_pt": "Este é o nosso melhor resultado até agora.",
+      "construction_id": "construction:yet.superlative_yet",
+      "sense_ids": [
+        "sense:yet.maximal_so_far"
+      ],
+      "communicative_function_ids": [
+        "function:highlight_record_so_far"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.maximal_so_far",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.superlative_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "grammar_skill_v1",
+          "ref": "comparatives",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.maximal_so_far"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.superlative_yet"
+        }
+      ],
+      "context": "A equipe comemora os números do trimestre, melhores que todos os anteriores.",
+      "context_items": [
+        "best",
+        "result"
+      ],
+      "usage_notes": "Recorde de série aberta: 'até agora' — e a série continua. O pré-requisito no sentido temporal ancora a leitura 'até o momento'. Duas novidades pretendidas.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.026",
+      "text_en": "That was her hardest race yet.",
+      "text_pt": "Aquela foi a corrida mais difícil dela até agora.",
+      "construction_id": "construction:yet.superlative_yet",
+      "sense_ids": [
+        "sense:yet.maximal_so_far"
+      ],
+      "communicative_function_ids": [
+        "function:highlight_record_so_far"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.maximal_so_far",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.superlative_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.maximal_so_far"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.superlative_yet"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Depois da maratona na serra, comparando com as corridas anteriores.",
+      "context_items": [
+        "hardest",
+        "race"
+      ],
+      "usage_notes": "Passado narrativo com recorde aberto: a próxima corrida pode superar.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.027",
+      "text_en": "It was their biggest challenge yet.",
+      "text_pt": "Foi o maior desafio deles até agora.",
+      "construction_id": "construction:yet.superlative_yet",
+      "sense_ids": [
+        "sense:yet.maximal_so_far"
+      ],
+      "communicative_function_ids": [
+        "function:highlight_record_so_far"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.maximal_so_far",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.superlative_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.maximal_so_far"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.superlative_yet"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Documentário sobre uma expedição mais dura que todas as anteriores.",
+      "context_items": [
+        "biggest",
+        "challenge"
+      ],
+      "usage_notes": "Terceira pessoa plural e tom narrativo: o padrão viaja entre contextos sem trocar apenas o substantivo — muda o tempo, a pessoa e a cena.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.028",
+      "text_en": "This is the team's strongest season yet.",
+      "text_pt": "Esta é a temporada mais forte do time até agora.",
+      "construction_id": "construction:yet.superlative_yet",
+      "sense_ids": [
+        "sense:yet.maximal_so_far"
+      ],
+      "communicative_function_ids": [
+        "function:highlight_record_so_far"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.maximal_so_far",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.superlative_yet",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.maximal_so_far"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.superlative_yet"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "O comentarista compara a campanha atual com toda a história do clube.",
+      "context_items": [
+        "strongest",
+        "season"
+      ],
+      "usage_notes": "Posse + superlativo: retoma o time invicto do exemplar 015 — coerência interna do pack sem repetir frase.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.029",
+      "text_en": "Yet another email arrived this morning.",
+      "text_pt": "Mais um e-mail chegou hoje de manhã.",
+      "construction_id": "construction:yet.yet_another_np",
+      "sense_ids": [
+        "sense:yet.additive_repetition"
+      ],
+      "communicative_function_ids": [
+        "function:signal_unexpected_repetition"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.additive_repetition",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.yet_another_np",
+          "role": "primary"
+        },
+        {
+          "target_type": "communicative_function",
+          "target_id": "function:signal_unexpected_repetition",
+          "role": "secondary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "grammar_skill_v1",
+          "ref": "past_simple",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.additive_repetition"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.yet_another_np"
+        }
+      ],
+      "context": "A caixa de entrada não para de encher sobre o mesmo assunto.",
+      "context_items": [
+        "email",
+        "arrived"
+      ],
+      "usage_notes": "Quarto núcleo: iteração além do esperado — 'mais um, e olha que já bastava'. Duas novidades pretendidas.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.030",
+      "text_en": "She found yet another mistake in the report.",
+      "text_pt": "Ela encontrou mais um erro no relatório.",
+      "construction_id": "construction:yet.yet_another_np",
+      "sense_ids": [
+        "sense:yet.additive_repetition"
+      ],
+      "communicative_function_ids": [
+        "function:signal_unexpected_repetition"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.additive_repetition",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.yet_another_np",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.additive_repetition"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.yet_another_np"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Revisão final de um documento que já voltou três vezes.",
+      "context_items": [
+        "mistake",
+        "report"
+      ],
+      "usage_notes": "A frustração é parte do sentido: a repetição ultrapassou o tolerável.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.031",
+      "text_en": "We need yet another meeting about this.",
+      "text_pt": "Precisamos de mais uma reunião sobre isso.",
+      "construction_id": "construction:yet.yet_another_np",
+      "sense_ids": [
+        "sense:yet.additive_repetition"
+      ],
+      "communicative_function_ids": [
+        "function:signal_unexpected_repetition"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.additive_repetition",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.yet_another_np",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.additive_repetition"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.yet_another_np"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "O assunto voltou à pauta pela quarta semana seguida.",
+      "context_items": [
+        "meeting"
+      ],
+      "usage_notes": "Presente e primeira pessoa do plural: a ironia leve de 'yet another' em fala de trabalho.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    },
+    {
+      "exemplar_id": "exemplar:yet.032",
+      "text_en": "He told yet another version of the story.",
+      "text_pt": "Ele contou mais uma versão da história.",
+      "construction_id": "construction:yet.yet_another_np",
+      "sense_ids": [
+        "sense:yet.additive_repetition"
+      ],
+      "communicative_function_ids": [
+        "function:signal_unexpected_repetition"
+      ],
+      "pedagogical_targets": [
+        {
+          "target_type": "sense",
+          "target_id": "sense:yet.additive_repetition",
+          "role": "primary"
+        },
+        {
+          "target_type": "construction",
+          "target_id": "construction:yet.yet_another_np",
+          "role": "primary"
+        }
+      ],
+      "prerequisites": [
+        {
+          "type": "sense",
+          "ref": "sense:yet.additive_repetition"
+        },
+        {
+          "type": "construction",
+          "ref": "construction:yet.yet_another_np"
+        }
+      ],
+      "intended_new_items": [],
+      "context": "Cada vez que conta o caso, os detalhes mudam.",
+      "context_items": [
+        "version",
+        "story"
+      ],
+      "usage_notes": "Desconfiança construída pela repetição: fecha o quarteto aditivo com objeto abstrato.",
+      "naturalness_status": "curated",
+      "exposure_stage": "B1-B2"
+    }
+  ]
+}

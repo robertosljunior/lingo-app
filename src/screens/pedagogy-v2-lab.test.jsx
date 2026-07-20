@@ -172,3 +172,57 @@ describe('§26.65 — no still hardcodes in generic components', () => {
     }
   })
 })
+
+// ---- Slice V2.11 (§42) — the third pack in the shared UI --------------------
+
+describe('§42.51–52 — the lab lists three packs in catalog order', () => {
+  it('shows still, but and yet with factual counts, ordered still→but→yet', async () => {
+    const html = await renderLab({ params: {} })
+    expect(html).toContain('v2-pack-still')
+    expect(html).toContain('v2-pack-but')
+    expect(html).toContain('v2-pack-yet')
+    expect(html).toContain('4 usos · 8 construções') // yet: factual counts
+    // catalog_order 1/2/3 is editorial presentation only.
+    const iStill = html.indexOf('v2-pack-still')
+    const iBut = html.indexOf('v2-pack-but')
+    const iYet = html.indexOf('v2-pack-yet')
+    expect(iStill).toBeLessThan(iBut)
+    expect(iBut).toBeLessThan(iYet)
+  })
+})
+
+describe('§42.53–55 — focused yet flows through the same parameterized session', () => {
+  it('opening yet renders a yet-scoped session with copy derived from the active lexeme', async () => {
+    const html = await renderLab({ params: { packId: 'pedagogy_v2_yet' } })
+    expect(html).toContain('v2-pilot-screen')
+    expect(html).toContain('data-pack-id="pedagogy_v2_yet"')
+    expect(html).toContain('Laboratório V2 — yet')
+    expect(html).not.toContain('Laboratório V2 — still')
+  })
+
+  it('feedback copy for a yet plan speaks about yet, never still or but', async () => {
+    mockApp({})
+    const { default: V2FeedbackYet } = await import('../components/pedagogy-v2/V2Feedback.jsx')
+    const plan = selectNextActivityV2({
+      session: createLessonSessionV2({ session_id: 's-yet-ui', profile_id: 'p1', now: NOW }),
+      scope: { registry, pack_id: 'pedagogy_v2_yet', lexeme_id: 'lexeme:yet' },
+      learnerStates: [], recentEvidence: [],
+    }).plan
+    expect(plan.lexeme_lemma).toBe('yet')
+    const html = renderToStaticMarkup(
+      <V2FeedbackYet plan={plan} assessment={{ status: 'not_assessed', outcome: 'observed', feedback: {}, assessment_confidence: 1 }}
+        busy={false} onContinue={noop} onTryAgain={noop} />)
+    expect(html).toContain('uso de yet')
+    expect(html).not.toContain('uso de still')
+    expect(html).not.toContain('uso de but')
+  })
+})
+
+describe('§42.56+58–59 — factual progress, never a global mastery or CEFR for yet', () => {
+  it('the yet card shows only facts (no %, no level, no domination claim)', async () => {
+    const html = await renderLab({ params: {} })
+    const yetCard = html.slice(html.indexOf('v2-pack-yet'), html.indexOf('v2-pack-yet') + 900)
+    expect(yetCard).not.toMatch(/%|n[ií]vel|dom[ií]nio|B1|A1|CEFR/i)
+    expect(yetCard).toContain('Carregando progresso…')
+  })
+})
