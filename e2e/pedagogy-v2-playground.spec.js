@@ -64,6 +64,8 @@ test.describe('Sessão V2', () => {
     await expect(diag.getByTestId('v2pg-diag-focus')).toBeVisible()
     await expect(diag.getByTestId('v2pg-diag-plan')).toContainText('activity_id')
     await expect(diag.getByTestId('v2pg-diag-assessment')).toContainText('status')
+    // Slice V2.13: the typed diagnosis panel is present (raw → diagnosis → feedback).
+    await expect(diag.getByTestId('v2pg-diag-diagnosis')).toContainText('cause coverage')
     await expect(diag.getByTestId('v2pg-diag-planned-evidence')).toBeVisible()
     await expect(diag.getByTestId('v2pg-diag-recorded-evidence')).toContainText('evidence:')
 
@@ -90,7 +92,9 @@ test.describe('Sandbox de avaliação', () => {
     // Baseline: the learner-evidence store before any sandbox work.
     const before = await readStore(page, 'learner_evidence_v2')
 
-    // Materialize a real production activity (default controlled_production/writing).
+    // Materialize a real, deterministically text-answerable production activity.
+    await page.getByTestId('v2pg-target-capability').selectOption('free_production')
+    await page.getByTestId('v2pg-target-modality').selectOption('writing')
     await page.getByTestId('v2pg-sandbox-materialize').click()
     await expect(page.getByTestId('v2pg-sandbox-activity')).toBeVisible()
 
@@ -112,6 +116,31 @@ test.describe('Sandbox de avaliação', () => {
     // Isolation guarantee: no evidence was written across either evaluation.
     const after = await readStore(page, 'learner_evidence_v2')
     expect(after.length).toBe(before.length)
+  })
+
+  // §18/§33 — the diagnosis chain raw semantic → diagnosis → feedback is
+  // inspectable for a real semantic (free production) assessment.
+  test('shows the raw → diagnosis → feedback chain for a semantic assessment', async ({ page }) => {
+    await openPlayground(page)
+    await page.getByTestId('v2pg-mode-sandbox').click()
+
+    // Force a semantic recipe: free production / writing.
+    await page.getByTestId('v2pg-target-capability').selectOption('free_production')
+    await page.getByTestId('v2pg-target-modality').selectOption('writing')
+    await page.getByTestId('v2pg-sandbox-materialize').click()
+    await expect(page.getByTestId('v2pg-sandbox-activity')).toBeVisible()
+
+    await page.getByTestId('v2pg-sandbox-answer').fill('It is not ready yet.')
+    await page.getByTestId('v2pg-sandbox-evaluate').click()
+    await expect(page.getByTestId('v2pg-feedback')).toBeVisible()
+
+    await page.getByTestId('v2pg-diagnostics').getByText('Diagnóstico técnico').first().click()
+    const diag = page.getByTestId('v2pg-diagnostics')
+    // The four layers of the pipeline are all present and distinct.
+    await expect(diag.getByTestId('v2pg-diag-diagnosis')).toContainText('cause coverage')
+    await expect(diag.getByTestId('v2pg-diag-raw-semantic')).toBeVisible()
+    await expect(diag.getByTestId('v2pg-raw-assessment')).toBeVisible()
+    await expect(diag.getByTestId('v2pg-feedback-vm')).toBeVisible()
   })
 })
 

@@ -18,6 +18,7 @@
 
 import { mapSemanticResultToOutcome, combineSpeechConfidence, DEFAULT_ASSESSMENT_POLICY_V2 } from './assessment-policy.js'
 import { buildMaskedCompletion, canonicalOrderTokens } from './activity-runtime-contracts.js'
+import { buildAssessmentDiagnosisV2 } from './assessment-diagnosis.js'
 
 export const ASSESSMENT_VERSION = 1
 
@@ -61,7 +62,31 @@ async function assessSemantics({ plan, text, mode, services }) {
   })
 }
 
-export async function evaluateActivityResponseV2({ activityPlan: plan, response, assessmentServices = {}, policy = DEFAULT_ASSESSMENT_POLICY_V2 }) {
+/**
+ * Public entry: evaluate a response and attach a typed AssessmentDiagnosisV2
+ * (Slice V2.13). The diagnosis explains WHY the outcome happened, from
+ * structured evidence only. The raw semantic result is attached (in memory) for
+ * production recipes so the Playground can show raw → diagnosis → feedback; it
+ * is NEVER read by the evidence adapter and NEVER persisted.
+ */
+export async function evaluateActivityResponseV2(args) {
+  const assessment = await evaluateActivityResponseCoreV2(args)
+  const semanticResult = assessment.__semantic_result ?? null
+  if ('__semantic_result' in assessment) delete assessment.__semantic_result
+  assessment.diagnosis = buildAssessmentDiagnosisV2({
+    activityPlan: args.activityPlan,
+    response: args.response,
+    semanticResult,
+    assessmentOutcome: assessment.outcome,
+    assessmentStatus: assessment.status,
+    feedback: assessment.feedback,
+  })
+  // In-memory only (Playground diagnostics). Not persisted, not in evidence.
+  if (semanticResult) assessment.semantic_result = semanticResult
+  return assessment
+}
+
+async function evaluateActivityResponseCoreV2({ activityPlan: plan, response, assessmentServices = {}, policy = DEFAULT_ASSESSMENT_POLICY_V2 }) {
   switch (plan.recipe) {
     // ---- exposure: no right or wrong exists -------------------------------
     case 'exposure':
@@ -165,6 +190,8 @@ export async function evaluateActivityResponseV2({ activityPlan: plan, response,
           natural_alternatives: (result.natural_alternatives || []).slice(0, 2),
         },
         target_assessments: mapped.status === 'assessed' ? primaryTargets(plan) : [],
+        // Full raw result carried to the diagnosis layer (in memory only).
+        __semantic_result: result,
       })
     }
 

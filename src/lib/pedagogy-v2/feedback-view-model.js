@@ -28,7 +28,7 @@
 //                    assessment_confidence, semantic_verdict, note, ... },
 //   }
 
-export const FEEDBACK_VIEW_MODEL_VERSION = 1
+export const FEEDBACK_VIEW_MODEL_VERSION = 2
 
 // A detected_error belongs to NATURALNESS (a suggestion) — not to linguistic
 // correctness — when the assessor itself labelled it so. Everything else the
@@ -130,34 +130,57 @@ export function buildV2FeedbackViewModel({
   const status = statusFor(assessment)
   const feedback = assessment?.feedback || {}
   const provenance = assessmentProvenanceV2(plan, response, assessment)
+  const diagnosis = assessment?.diagnosis || null
 
   const detectedErrors = Array.isArray(feedback.detected_errors) ? feedback.detected_errors : []
   const naturalAlternatives = Array.isArray(feedback.natural_alternatives) ? feedback.natural_alternatives : []
 
-  // §8 partition of the assessor's OWN reported items — no re-classification.
-  const linguisticErrors = detectedErrors.filter((e) => !isNaturalnessError(e))
-  const naturalnessErrors = detectedErrors.filter((e) => isNaturalnessError(e))
-
-  const issues = linguisticErrors.map((e) => {
-    const t = issueText(e)
-    return {
-      title: t.title,
-      text: t.summary,
-      category: e.category ?? null,
-      severity: e.severity ?? null,
-    }
-  })
-
+  const issues = []
   const suggestions = []
-  for (const e of naturalnessErrors) {
-    const t = issueText(e)
-    suggestions.push({ text: t.summary, source: 'naturalness_note' })
+  let target_form_note = null
+
+  // §14 — PRIORITY: when a typed diagnosis is present, the view model consumes
+  // it (grammar/lexical_choice/semantic_context/incomplete_response → issues,
+  // naturalness → suggestions, target_form → a note). The UI does no new
+  // analysis; it only routes what the diagnosis already classified.
+  if (diagnosis) {
+    for (const c of diagnosis.causes || []) {
+      if (c.category === 'naturalness') {
+        suggestions.push({ text: c.explanation?.summary ?? c.code, source: c.source, code: c.code })
+      } else if (c.category === 'target_form') {
+        target_form_note = target_form_note ?? (c.explanation?.summary ?? c.code)
+      } else {
+        // grammar | lexical_choice | semantic_context | incomplete_response
+        issues.push({
+          title: c.explanation?.title ?? null,
+          text: c.explanation?.summary ?? c.code,
+          category: c.category,
+          severity: c.severity ?? null,
+          code: c.code,
+          source: c.source,
+        })
+      }
+    }
+    // A structurally-different target form (e.g. a missing fixed element) is a
+    // NOTE, never an issue.
+    if (!target_form_note && diagnosis.target_form_relation?.status === 'different_form' && plan?.recipe !== 'exposure') {
+      target_form_note = 'A resposta não realiza exatamente a forma-alvo praticada por esta atividade.'
+    }
+  } else {
+    // Fallback (no diagnosis, e.g. legacy assessment): the V2.12 behavior —
+    // partition the assessor's OWN reported items, never re-classify.
+    for (const e of detectedErrors) {
+      const t = issueText(e)
+      if (isNaturalnessError(e)) suggestions.push({ text: t.summary, source: 'naturalness_note' })
+      else issues.push({ title: t.title, text: t.summary, category: e.category ?? null, severity: e.severity ?? null })
+    }
   }
+
+  // Naturalness alternatives + a "one natural form" hint are SUGGESTIONS, never
+  // errors (shared by both paths; only added when they actually differ).
   for (const alt of naturalAlternatives) {
-    if (alt?.text) suggestions.push({ text: alt.text, source: 'natural_alternative' })
+    if (alt?.text && !suggestions.some((s) => s.text === alt.text)) suggestions.push({ text: alt.text, source: 'natural_alternative' })
   }
-  // A "one natural form" hint from the semantic engine is a SUGGESTION, never
-  // an error — it only appears when it actually differs from the reference.
   if (feedback.corrected_version && feedback.corrected_version !== plan?.text_en
     && !suggestions.some((s) => s.text === feedback.corrected_version)) {
     suggestions.push({ text: feedback.corrected_version, source: 'corrected_version' })
@@ -186,7 +209,12 @@ export function buildV2FeedbackViewModel({
   // up as a specific error. Detect it and record a factual note instead.
   let headline = HEADLINES[status]
   let note = null
-  const hasStructuredCause = issues.length > 0 || suggestions.length > 0
+  // With a diagnosis, "no structured cause" is authoritative (cause_coverage
+  // none / unknown primary). Without one, fall back to the presentation counts.
+  const coverageNone = diagnosis
+    ? (diagnosis.cause_coverage === 'none' || diagnosis.primary_cause?.category === 'unknown')
+    : (issues.length === 0 && suggestions.length === 0)
+  const hasStructuredCause = !coverageNone
   if (status === 'partial' && !hasStructuredCause) {
     headline = 'Resposta parcialmente adequada'
     note = 'O avaliador não forneceu uma causa linguística específica.'
@@ -220,6 +248,7 @@ export function buildV2FeedbackViewModel({
     issues,
     suggestions,
     target_form,
+    target_form_note,
     diagnostics: {
       provenance,
       assessment_status: assessment?.status ?? null,
@@ -228,6 +257,12 @@ export function buildV2FeedbackViewModel({
       partial_score: assessment?.partial_score ?? null,
       semantic_verdict: feedback.kind === 'semantic' ? (feedback.verdict ?? null) : null,
       assessment_kind: feedback.kind ?? null,
+      // Typed diagnosis provenance (§14/§18), when present.
+      diagnosis_present: !!diagnosis,
+      primary_cause: diagnosis?.primary_cause ?? null,
+      cause_coverage: diagnosis?.cause_coverage ?? null,
+      semantic_relation: diagnosis?.semantic_relation ?? null,
+      target_form_relation: diagnosis?.target_form_relation ?? null,
       note,
       // Counts kept explicit so a reviewer can confirm nothing was invented:
       // every issue/suggestion traces to a reported item.
