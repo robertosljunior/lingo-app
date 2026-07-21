@@ -145,6 +145,7 @@ export default function PedagogyV2Lab() {
       onOpenPack={(id) => navigate(SCREENS.PEDAGOGY_V2_PILOT, { packId: id })}
       onOpenMode={(mode) => navigate(SCREENS.PEDAGOGY_V2_PILOT, { mode })}
       onOpenInspector={() => navigate(SCREENS.PEDAGOGY_V2_INSPECTOR, {})}
+      onOpenPlayground={() => navigate(SCREENS.PEDAGOGY_V2_PLAYGROUND, {})}
       onBack={() => back(SCREENS.TRAINING)} />
   }
 
@@ -154,7 +155,7 @@ export default function PedagogyV2Lab() {
 
 // ---- selection --------------------------------------------------------------
 
-function LabPackSelection({ registry, onOpenPack, onOpenMode, onBack, onOpenInspector, diagnosticsEnabled }) {
+function LabPackSelection({ registry, onOpenPack, onOpenMode, onBack, onOpenInspector, onOpenPlayground, diagnosticsEnabled }) {
   const { db, activeProfile } = useApp()
   const [states, setStates] = useState(null)
   const [showQueue, setShowQueue] = useState(false)
@@ -273,10 +274,16 @@ function LabPackSelection({ registry, onOpenPack, onOpenMode, onBack, onOpenInsp
         })}
 
         {diagnosticsEnabled && (
-          <button className="btn btn-ghost btn-sm" data-testid="v2-open-inspector"
-            onClick={onOpenInspector} style={{ marginTop: 8 }}>
-            Inspector (diagnóstico)
-          </button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 8 }}>
+            <button className="btn btn-ghost btn-sm" data-testid="v2-open-inspector"
+              onClick={onOpenInspector}>
+              Inspector (diagnóstico)
+            </button>
+            <button className="btn btn-ghost btn-sm" data-testid="v2-open-playground"
+              onClick={onOpenPlayground}>
+              Playground V2 (teste manual)
+            </button>
+          </div>
         )}
       </div>
     </div>
