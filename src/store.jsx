@@ -21,6 +21,7 @@ export const SCREENS = {
   STORIES: 'stories', TALK: 'talk',
   PEDAGOGY_V2_PILOT: 'pedagogy_v2_pilot',
   PEDAGOGY_V2_INSPECTOR: 'pedagogy_v2_inspector',
+  PEDAGOGY_V2_PLAYGROUND: 'pedagogy_v2_playground',
 }
 
 const TABS = new Set([SCREENS.HOME, SCREENS.HISTORY, SCREENS.MISTAKES, SCREENS.SETTINGS, SCREENS.STORIES, SCREENS.TALK])

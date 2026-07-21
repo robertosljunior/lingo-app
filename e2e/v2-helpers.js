@@ -37,6 +37,39 @@ export async function openLab(page) {
   await expect(page.getByTestId('v2-lab-screen')).toBeVisible()
 }
 
+/** Hub → Lab → "Playground V2" card → the Pedagogy V2 Playground screen.
+ * Requires both the pilot flag (to reach the lab) and the diagnostics flag. */
+export async function openPlayground(page) {
+  await openLab(page)
+  await page.getByTestId('v2-open-playground').click()
+  await expect(page.getByTestId('v2pg-screen')).toBeVisible()
+}
+
+// Answers whatever activity the Playground currently presents (via the shared
+// V2 renderers). Returns the recipe. Used by the Sessão V2 E2E.
+export async function answerPlaygroundActivity(page) {
+  const activity = page.locator('[data-testid^="v2-activity-"]')
+  await expect(activity).toBeVisible()
+  const recipe = (await activity.getAttribute('data-testid')).replace('v2-activity-', '')
+  if (recipe === 'exposure') {
+    await page.getByTestId('v2-continue').click()
+  } else if (recipe === 'meaning_recognition' || recipe === 'listening_recognition') {
+    await page.locator('[data-testid^="v2-option-"]').first().click()
+    await page.getByTestId('v2-submit').click()
+  } else if (recipe === 'fixed_element_completion') {
+    await page.getByTestId('v2-completion-input').fill('yet')
+    await page.getByTestId('v2-submit').click()
+  } else if (recipe === 'word_order_reconstruction') {
+    const total = await page.locator('[data-testid="v2-token-bank"] button').count()
+    for (let i = 0; i < total; i++) await page.locator('[data-testid="v2-token-bank"] button').first().click()
+    await page.getByTestId('v2-submit').click()
+  } else {
+    await page.getByTestId('v2-production-input').fill('I still live here.')
+    await page.getByTestId('v2-submit').click()
+  }
+  return recipe
+}
+
 /** Selection screen → session screen of the given lemma ('still' | 'but'). */
 export async function openPackSession(page, lemma) {
   await page.getByTestId(`v2-pack-${lemma}`).click()
