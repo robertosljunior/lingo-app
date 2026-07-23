@@ -25,6 +25,7 @@ import { buildReviewQueueV2 } from '../lib/pedagogy-v2/review-queue.js'
 import { factualPackProgressV2 } from '../lib/pedagogy-v2/study-planner.js'
 import { buildStudyPlannerContextV2 } from '../lib/pedagogy-v2/study-planner-context.js'
 import { createStudySessionControllerV2, summarizeStudySessionV2 } from '../lib/pedagogy-v2/study-session-controller.js'
+import { createProductionAssessmentServicesV2 } from '../lib/pedagogy-v2/production-assessment-service.js'
 import { speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
 import V2ActivityRenderer from '../components/pedagogy-v2/V2ActivityRenderer.jsx'
@@ -312,10 +313,7 @@ function StudyModeSession({ registry, mode, onExitToSelection }) {
       buildPlannerContext: (profileId, opts) => buildStudyPlannerContextV2(profileId, opts),
       recordBatch: (events) => db.recordLearnerEvidenceBatchV2(events),
       capabilities,
-      assessmentServices: {
-        analyzeSemantics: async ({ text, assessmentMode }) =>
-          (await import('../lib/language-analysis/index.js')).analyzeProduction({ text, assessmentMode }),
-      },
+      assessmentServices: createProductionAssessmentServicesV2(),
     })
     controllerRef.current = controller
     setState(controller.getState())
@@ -456,12 +454,9 @@ function LabSession({ registry, pack, onExitToSelection }) {
       buildContext: (profileId, opts) => buildLessonEngineContextV2(profileId, opts),
       recordBatch: (events) => db.recordLearnerEvidenceBatchV2(events),
       capabilities,
-      assessmentServices: {
-        // Existing semantic pipeline through its PUBLIC API only, loaded
-        // lazily so the lab does not weigh on the main bundle.
-        analyzeSemantics: async ({ text, assessmentMode }) =>
-          (await import('../lib/language-analysis/index.js')).analyzeProduction({ text, assessmentMode }),
-      },
+      // Shared production-assessment service (Slice V2.14): the SemanticAssessment
+      // bridge request reaches the public API without dropping any field.
+      assessmentServices: createProductionAssessmentServicesV2(),
     })
     controllerRef.current = controller
     setState(controller.getState())

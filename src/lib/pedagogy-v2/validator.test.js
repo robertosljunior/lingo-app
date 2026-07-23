@@ -270,3 +270,35 @@ describe('V1 compatibility — frozen validators keep passing', () => {
     expect(result.valid).toBe(true)
   })
 })
+
+// ---- Slice V2.14 — authored semantic-assessment metadata validation (§25) ----
+describe('pedagogy-v2 validator — semantic_assessment metadata', () => {
+  const clone = () => structuredClone(stillPack)
+  const withExemplarMeta = (meta) => { const p = clone(); p.exemplars[0].semantic_assessment = meta; return p }
+
+  it('accepts a valid equivalent_meaning target (essential word in the reference)', () => {
+    const p = clone()
+    const w = p.exemplars[0].text_en.split(/\W+/).filter(Boolean)[1] // a real word from the sentence
+    p.exemplars[0].semantic_assessment = { strategy: 'equivalent_meaning', essential_words: [w] }
+    const r = validatePedagogyV2Pack(p)
+    expect(r.errors.filter((e) => /SEMANTIC|EQUIVALENT|INTENT/.test(e))).toEqual([])
+  })
+
+  it('rejects an invalid strategy', () => {
+    expectError(withExemplarMeta({ strategy: 'nonsense' }), 'INVALID_SEMANTIC_ASSESSMENT_STRATEGY')
+  })
+  it('rejects equivalent_meaning without essential words', () => {
+    expectError(withExemplarMeta({ strategy: 'equivalent_meaning', essential_words: [] }), 'EQUIVALENT_TARGET_WITHOUT_ESSENTIAL_WORDS')
+  })
+  it('rejects an essential word absent from the reference sentence', () => {
+    expectError(withExemplarMeta({ strategy: 'equivalent_meaning', essential_words: ['zzytemplate'] }), 'SEMANTIC_TARGET_REFERENCES_NON_AUTHORED_TEXT')
+  })
+  it('rejects an invented requested_intent for guided_intent', () => {
+    expectError(withExemplarMeta({ strategy: 'guided_intent', requested_intent: 'made_up_intent' }), 'INVALID_REQUESTED_INTENT')
+  })
+  it('rejects equivalent_meaning at the construction level (no authored reference text)', () => {
+    const p = clone()
+    p.constructions[0].semantic_assessment = { strategy: 'equivalent_meaning', essential_words: ['x'] }
+    expectError(p, 'EQUIVALENT_TARGET_WITHOUT_TEXT')
+  })
+})

@@ -9,7 +9,7 @@
 // Warnings are advisory only — this audit NEVER fails CI (Slice V2.13 §21).
 
 import { evaluateActivityResponseV2 } from '../src/lib/pedagogy-v2/activity-assessment.js'
-import { buildAssessmentCauseCoverageV2 } from '../src/lib/pedagogy-v2/assessment-diagnosis.js'
+import { buildAssessmentCauseCoverageV2, buildAssessmentStrategyCoverageV2 } from '../src/lib/pedagogy-v2/assessment-diagnosis.js'
 
 // ---- controlled plan + responses -------------------------------------------
 
@@ -49,13 +49,16 @@ const R = {
   coarse: { verdict: 'needs_revision', confidence: 0.6, detected_errors: [], natural_alternatives: [] },
 }
 
+// Slice V2.14: an authored equivalent_meaning target activates the bridge; the
+// canned result stands in for the engine's equivalent-mode output.
+const EQ = { strategy: 'equivalent_meaning', essential_words: ['price'] }
 const cases = [
-  { id: 'A/grammar', text: 'This price are very high.', result: R.grammar },
-  { id: 'B/naturalness', text: 'The price is very expensive.', result: R.naturalness },
-  { id: 'B2/valid-different', text: 'Its price is very expensive.', result: R.valid_diff },
-  { id: 'C/acceptable-target-form', text: 'The price is too high.', result: R.valid_diff, plan: plan({ construction_fixed_elements: ['very', 'high'] }) },
-  { id: 'D/semantic-with-evidence', text: 'I like bananas.', result: R.semantic_with_evidence },
-  { id: 'D2/semantic-coarse (real-engine gap)', text: 'I like bananas.', result: R.coarse },
+  { id: 'A/grammar (free)', text: 'This price are very high.', result: R.grammar },
+  { id: 'B/naturalness (free)', text: 'The price is very expensive.', result: R.naturalness },
+  { id: 'B2/valid-different (free)', text: 'Its price is very expensive.', result: R.valid_diff },
+  { id: 'C/target-form (free)', text: 'The price is too high.', result: R.valid_diff, plan: plan({ construction_fixed_elements: ['very', 'high'] }) },
+  { id: 'D/semantic (equivalent)', text: 'I like bananas.', result: R.semantic_with_evidence, plan: plan({ semantic_assessment: EQ, semantic_assessment_source: 'exemplar:audit:ex' }) },
+  { id: 'D2/semantic-coarse (equivalent)', text: 'I like bananas.', result: R.coarse, plan: plan({ semantic_assessment: EQ, semantic_assessment_source: 'exemplar:audit:ex' }) },
 ]
 
 const pad = (s, n) => String(s).padEnd(n)
@@ -63,7 +66,7 @@ const pad = (s, n) => String(s).padEnd(n)
 async function main() {
   const records = []
   console.log('\nSlice V2.13 — Assessment cause-coverage audit (controlled fixtures)\n')
-  console.log(pad('case', 28), pad('outcome', 10), pad('primary cause', 18), pad('code', 34), pad('source', 22), 'coverage')
+  console.log(pad('case', 30), pad('outcome', 10), pad('strategy', 18), pad('primary cause', 18), pad('code', 30), 'coverage')
   console.log('-'.repeat(130))
   for (const c of cases) {
     const p = c.plan || plan()
@@ -72,10 +75,10 @@ async function main() {
     const d = assessment.diagnosis
     records.push({ isProductionAssessment: true, diagnosis: d, id: c.id })
     console.log(
-      pad(c.id, 28), pad(assessment.outcome, 10),
+      pad(c.id, 30), pad(assessment.outcome, 10),
+      pad(d.semantic_bridge?.strategy ?? '—', 18),
       pad(d.primary_cause?.category ?? '—', 18),
-      pad(d.primary_cause?.code ?? '—', 34),
-      pad(d.primary_cause?.source ?? '—', 22),
+      pad(d.primary_cause?.code ?? '—', 30),
       d.cause_coverage,
     )
   }
@@ -83,6 +86,10 @@ async function main() {
   const cov = buildAssessmentCauseCoverageV2(records)
   console.log('\nCoverage metrics:')
   console.log(JSON.stringify(cov, null, 2))
+
+  const strategyCov = buildAssessmentStrategyCoverageV2(records)
+  console.log('\nStrategy coverage (§23 — free and equivalent are NOT compared as equals):')
+  console.log(JSON.stringify(strategyCov, null, 2))
 
   // Advisory warnings only (never fail CI).
   const warnings = []

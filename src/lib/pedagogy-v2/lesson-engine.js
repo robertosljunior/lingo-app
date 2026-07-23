@@ -604,6 +604,15 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     text_en: e.text_en,
     text_pt: e.text_pt,
     context: e.context,
+    // Fixed lexical elements of the construction, for a structural target-form
+    // check on production (Slice V2.13/§20) — never string equality.
+    construction_fixed_elements: construction?.fixed_elements ? [...construction.fixed_elements] : null,
+    // Slice V2.14: authored semantic-assessment metadata drives the semantic
+    // strategy (bridge). Exemplar-level wins over construction-level (§6).
+    semantic_assessment: e.semantic_assessment ?? construction?.semantic_assessment ?? null,
+    semantic_assessment_source: e.semantic_assessment
+      ? `exemplar:${e.exemplar_id}`
+      : (construction?.semantic_assessment ? `construction:${e.construction_id}` : null),
     primary_target: { target_type: best.primaryTargets[0].target_type, target_id: best.primaryTargets[0].target_id },
     secondary_targets: [
       ...best.primaryTargets.slice(1).map((t) => ({ target_type: t.target_type, target_id: t.target_id, role: 'primary' })),

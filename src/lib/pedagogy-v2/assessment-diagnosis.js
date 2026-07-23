@@ -114,6 +114,7 @@ function emptyDiagnosis(fields) {
     target_form_relation: { status: 'not_applicable' },
     semantic_relation: { status: 'unknown' },
     cause_coverage: 'none',
+    semantic_bridge: null,
     ...fields,
   }
 }
@@ -128,6 +129,7 @@ export function buildAssessmentDiagnosisV2({
   activityPlan: plan,
   response = null,
   semanticResult = null,
+  semanticBridge = null,
   assessmentOutcome = null,
   assessmentStatus = null,
   feedback = {},
@@ -236,6 +238,7 @@ export function buildAssessmentDiagnosisV2({
         cause_coverage: 'none',
         semantic_relation: { status: 'unknown' },
         target_form_relation: { status: 'unknown' },
+        semantic_bridge: semanticBridge,
         applicability: 'unable_to_assess',
       })
     }
@@ -309,6 +312,7 @@ export function buildAssessmentDiagnosisV2({
       target_form_relation: targetForm,
       semantic_relation: { status: semanticStatus, source: 'semantic_engine' },
       cause_coverage: coverage,
+      semantic_bridge: semanticBridge,
       applicability: 'assessed',
     })
   }
@@ -361,4 +365,34 @@ export function buildAssessmentCauseCoverageV2(records = []) {
     cause_coverage_rate: assessedProduction ? Math.round((specific / assessedProduction) * 1e4) / 1e4 : 0,
     cause_distribution: distribution,
   }
+}
+
+// ---- strategy-aware coverage (Slice V2.14 §23) -----------------------------
+// Separates coverage BY semantic strategy — free and equivalent_meaning must
+// NOT be compared as if they should have the same coverage (free legitimately
+// stays unknown). NOT a mastery metric; never fed to the Planner.
+//
+//   records: Array<{ diagnosis }>, where diagnosis carries `semantic_bridge`.
+export function buildAssessmentStrategyCoverageV2(records = []) {
+  const strategy_distribution = { free: 0, guided_intent: 0, equivalent_meaning: 0 }
+  const semantic_target_coverage = { activities_with_authored_target: 0, activities_without_authored_target: 0 }
+  const byStrategy = {}
+  for (const r of records) {
+    const d = r?.diagnosis
+    if (!d) continue
+    const strategy = d.semantic_bridge?.strategy ?? 'free'
+    if (strategy in strategy_distribution) strategy_distribution[strategy] += 1
+    if (strategy === 'free') semantic_target_coverage.activities_without_authored_target += 1
+    else semantic_target_coverage.activities_with_authored_target += 1
+
+    const bucket = byStrategy[strategy] || (byStrategy[strategy] = { assessed: 0, specific: 0, partial: 0, unknown: 0, semantic_context_specific: 0 })
+    if (d.applicability === 'assessed') {
+      bucket.assessed += 1
+      if (d.cause_coverage === 'specific') bucket.specific += 1
+      else if (d.cause_coverage === 'partial') bucket.partial += 1
+      else bucket.unknown += 1
+      if (d.primary_cause?.category === 'semantic_context' && d.cause_coverage === 'specific') bucket.semantic_context_specific += 1
+    }
+  }
+  return { assessment_strategy_distribution: strategy_distribution, semantic_target_coverage, cause_coverage_by_strategy: byStrategy }
 }
