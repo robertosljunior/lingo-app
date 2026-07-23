@@ -52,6 +52,15 @@ test.describe('Sessão V2', () => {
 
     // A real authored activity renders through the shared V2 renderers.
     await expect(page.locator('[data-testid^="v2-activity-"]')).toBeVisible()
+
+    // Slice V2.16: the Focus Resolution diagnostics panel is present and shows a
+    // materialized selection (no magic cap; termination by candidate exhaustion).
+    const fr = page.getByTestId('v2pg-focus-resolution')
+    await expect(fr).toBeVisible()
+    await fr.getByText('Focus Resolution').click()
+    await expect(fr).toContainText('selected rank')
+    await expect(fr).toContainText('candidates')
+
     await answerPlaygroundActivity(page)
 
     // Feedback appears, built by the pure view model.
