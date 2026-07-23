@@ -25,9 +25,77 @@ export async function setDiagnosticsFlag(page, enabled) {
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
 }
 
+// Toggle the Slice V2.17 learner-experience product flag (default false).
+export async function setLearnerFlag(page, enabled) {
+  await page.evaluate(async (enabled) => {
+    await window.__e2e.db.setSetting('v2_learner_experience_enabled', enabled)
+  }, enabled)
+  await page.reload()
+  await expect(page.locator('.app-shell')).toBeVisible()
+  await page.waitForFunction(() => window.__e2e && window.__e2e.db)
+}
+
 export async function openHub(page) {
   await page.getByTestId('open-training-hub').click()
   await expect(page.getByRole('heading', { name: 'Escolha o que treinar' })).toBeVisible()
+}
+
+// Hub → "Nova experiência V2" card → the learner lesson screen (Slice V2.17).
+export async function openLearnerExperience(page) {
+  await openHub(page)
+  await page.getByTestId('v2-learner-open').click()
+  await expect(page.getByTestId('v2lx-screen')).toBeVisible()
+  await expect(page.getByTestId('v2lx-shell')).toBeVisible()
+}
+
+// Wait for the horizontal transition to complete after a "Continuar": either the
+// factual activity counter changed (a new activity is presenting) or the session
+// summary appeared. Robust against the slide animation swapping the DOM.
+export async function waitForAdvance(page, counterBefore) {
+  await page.waitForFunction((prev) => {
+    if (document.querySelector('[data-testid="v2lx-summary"]')) return true
+    const c = document.querySelector('[data-testid="v2lx-step-counter"]')
+    return !!c && c.textContent !== prev
+  }, counterBefore, { timeout: 15000 })
+}
+
+// Answers whatever learner activity is presenting, then continues to the next
+// and waits for the transition to complete. Returns the recipe answered. Skips
+// (returns null) an un-answerable speaking activity when STT is unavailable.
+export async function answerLearnerActivity(page) {
+  const activity = page.locator('[data-testid^="v2lx-activity-"]')
+  await expect(activity).toBeVisible()
+  const recipe = (await activity.getAttribute('data-testid')).replace('v2lx-activity-', '')
+  const counterBefore = await page.getByTestId('v2lx-step-counter').textContent()
+  if (recipe === 'exposure') {
+    await page.getByTestId('v2lx-continue').click()
+    await waitForAdvance(page, counterBefore)
+    return recipe
+  }
+  if (recipe === 'meaning_recognition' || recipe === 'listening_recognition') {
+    await page.locator('[data-testid^="v2lx-option-"]').first().click() // evaluate on tap
+  } else if (recipe === 'completion') {
+    const bank = page.locator('[data-testid="v2lx-word-bank"] button')
+    if (await bank.count()) await bank.first().click()
+    else await page.getByTestId('v2lx-completion-input').fill('still')
+    await page.getByTestId('v2lx-check').click()
+  } else if (recipe === 'word-order') {
+    const total = await page.locator('[data-testid="v2lx-token-bank"] button').count()
+    for (let i = 0; i < total; i++) await page.locator('[data-testid="v2lx-token-bank"] button').first().click()
+    await page.getByTestId('v2lx-check').click()
+  } else if (recipe === 'guided_production' || recipe === 'free_production') {
+    const input = page.getByTestId('v2lx-production-input')
+    if (!(await input.count())) return null // speaking modality without STT — skip
+    await input.fill('I still live here.')
+    await page.getByTestId('v2lx-check').click()
+  } else {
+    return null // speaking / pronunciation without STT in the test runtime
+  }
+  // Feedback appears on the SAME screen; then continue to the next activity.
+  await expect(page.getByTestId('v2lx-feedback')).toBeVisible()
+  await page.getByTestId('v2lx-continue').click()
+  await waitForAdvance(page, counterBefore)
+  return recipe
 }
 
 /** Hub → "Laboratório V2" card → pack-selection screen. */

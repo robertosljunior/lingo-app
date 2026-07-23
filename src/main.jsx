@@ -15,6 +15,7 @@ import '@fontsource/baloo-2/latin-700.css'
 import '@fontsource/baloo-2/latin-800.css'
 
 import './styles/tokens.css'
+import './styles/v2-learner.css'
 import { AppProvider } from './store.jsx'
 import App from './App.jsx'
 import { ErrorBoundary } from './components/error-boundary.jsx'

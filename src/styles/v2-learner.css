@@ -1,0 +1,200 @@
+/* v2-learner.css — Slice V2.17 Learner UX design tokens + motion (handoff §07,
+   §09, §29, §30, §33). Everything is scoped under `.v2lx` so the new learner
+   experience never regresses V1. Colors are CSS variables — no hex is spread
+   inline through the components. The palette derives from the handoff and adapts
+   to the app's dark theme so contrast stays AA in both. */
+
+.v2lx {
+  /* Brand + neutrals (§33) */
+  --v2-primary: #3E63F2;
+  --v2-primary-strong: #2743B8;
+  --v2-on-primary: #ffffff;
+  --v2-ink: #17204A;
+  --v2-muted: #6B7495;
+  --v2-muted-2: #8A92AE;
+  --v2-bg: #F7F8FC;
+  --v2-surface: #ffffff;
+  --v2-surface-alt: #EEF1FB;
+  --v2-line: #E4E8F2;
+
+  /* Feedback accents — one per visual variant (§06/§33). Never a saturated,
+     aggressive red; `linguistic` is a soft coral. */
+  --v2-fb-correct: #0E9F6E;
+  --v2-fb-correct-bg: #E9F9F1;
+  --v2-fb-suggestion: #C77D18;
+  --v2-fb-suggestion-bg: #FDF6E7;
+  --v2-fb-partial: #D97706;
+  --v2-fb-partial-bg: #FDF3E6;
+  --v2-fb-linguistic: #E4645B;
+  --v2-fb-linguistic-bg: #FDEDEC;
+  --v2-fb-semantic: #7C6BE6;
+  --v2-fb-semantic-bg: #F1EEFC;
+  --v2-fb-unknown: #64748B;
+  --v2-fb-unknown-bg: #F1F3F8;
+
+  /* Shape + elevation (§33) */
+  --v2-radius-chip: 13px;
+  --v2-radius-option: 16px;
+  --v2-radius-card: 20px;
+  --v2-radius-cta: 18px;
+  --v2-shadow-card: 0 3px 12px rgba(23, 32, 74, .06);
+  --v2-shadow-cta: 0 8px 18px rgba(62, 99, 242, .28);
+
+  /* Motion (§29) — durations/easing as tokens so reduced-motion can zero them. */
+  --v2-ease: cubic-bezier(.4, 0, .2, 1);
+  --v2-dur-stage-out: 220ms;
+  --v2-dur-stage-in: 260ms;
+  --v2-dur-feedback: 240ms;
+  --v2-dur-disclosure: 200ms;
+
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  color: var(--v2-ink);
+  background: var(--v2-bg);
+}
+
+/* Dark theme mapping — keeps the same roles, adjusted for a dark surface. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .v2lx {
+    --v2-ink: #F2F0FA;
+    --v2-muted: #A9B0C9;
+    --v2-muted-2: #8B93AE;
+    --v2-bg: #0E0B1A;
+    --v2-surface: #1B172C;
+    --v2-surface-alt: #221D38;
+    --v2-line: #2B2645;
+    --v2-primary: #5B7BFF;
+    --v2-primary-strong: #8AA1FF;
+    --v2-fb-correct-bg: #0F3D26;
+    --v2-fb-suggestion-bg: #3A2A0E;
+    --v2-fb-partial-bg: #3A2A0E;
+    --v2-fb-linguistic-bg: #3D1C1A;
+    --v2-fb-semantic-bg: #241F3D;
+    --v2-fb-unknown-bg: #1F2233;
+  }
+}
+:root[data-theme="dark"] .v2lx {
+  --v2-ink: #F2F0FA;
+  --v2-muted: #A9B0C9;
+  --v2-muted-2: #8B93AE;
+  --v2-bg: #0E0B1A;
+  --v2-surface: #1B172C;
+  --v2-surface-alt: #221D38;
+  --v2-line: #2B2645;
+  --v2-primary: #5B7BFF;
+  --v2-primary-strong: #8AA1FF;
+  --v2-fb-correct-bg: #0F3D26;
+  --v2-fb-suggestion-bg: #3A2A0E;
+  --v2-fb-partial-bg: #3A2A0E;
+  --v2-fb-linguistic-bg: #3D1C1A;
+  --v2-fb-semantic-bg: #241F3D;
+  --v2-fb-unknown-bg: #1F2233;
+}
+
+/* ---- layout ---------------------------------------------------------------- */
+
+.v2lx-shell { display: flex; flex-direction: column; height: 100%; overflow: hidden; background: var(--v2-bg); }
+.v2lx-header { flex: none; padding: 8px 20px 12px; }
+.v2lx-headrow { display: flex; align-items: center; gap: 12px; }
+.v2lx-progress-track { flex: 1; height: 10px; background: var(--v2-line); border-radius: 999px; overflow: hidden; }
+.v2lx-progress-fill { height: 100%; background: var(--v2-primary); border-radius: 999px; transition: width 400ms var(--v2-ease); }
+.v2lx-focus-chip { flex: none; display: inline-flex; align-items: center; gap: 5px; background: var(--v2-surface-alt); color: var(--v2-primary); font-weight: 800; font-size: 12px; padding: 6px 10px; border-radius: 999px; }
+.v2lx-iconbtn { border: none; background: var(--v2-surface-alt); width: 40px; height: 40px; min-width: 44px; min-height: 44px; border-radius: 12px; cursor: pointer; font-size: 18px; font-weight: 900; color: var(--v2-muted); display: inline-flex; align-items: center; justify-content: center; }
+
+.v2lx-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 4px 20px 24px; }
+.v2lx-content { max-width: 560px; margin: 0 auto; width: 100%; }
+
+.v2lx-footer { flex: none; padding: 12px 20px 22px; background: linear-gradient(0deg, var(--v2-bg) 60%, transparent); }
+
+.v2lx-card { background: var(--v2-surface); border-radius: var(--v2-radius-card); box-shadow: var(--v2-shadow-card); padding: 20px; }
+.v2lx-sentence { font-weight: 900; font-size: 26px; line-height: 1.3; color: var(--v2-ink); text-wrap: pretty; }
+.v2lx-sentence--display { font-size: 32px; }
+.v2lx-translation { font-weight: 700; font-size: 16px; color: var(--v2-muted); }
+.v2lx-eyebrow { font-weight: 800; font-size: 13px; color: var(--v2-muted-2); letter-spacing: .4px; text-transform: uppercase; }
+
+/* ---- CTA ------------------------------------------------------------------- */
+
+.v2lx-cta { width: 100%; border: none; border-radius: var(--v2-radius-cta); font-weight: 900; font-size: 18px; padding: 17px; cursor: pointer; background: var(--v2-primary); color: var(--v2-on-primary); box-shadow: var(--v2-shadow-cta); min-height: 44px; }
+.v2lx-cta:disabled { background: #C9D0E4; color: #fff; box-shadow: none; cursor: not-allowed; }
+:root[data-theme="dark"] .v2lx .v2lx-cta:disabled,
+:root:not([data-theme="light"]) .v2lx .v2lx-cta:disabled { background: #2B2645; color: #6E6A85; }
+
+/* ---- options / chips ------------------------------------------------------- */
+
+.v2lx-option { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; text-align: left; border: 2px solid var(--v2-line); background: var(--v2-surface); border-radius: var(--v2-radius-option); padding: 16px 18px; cursor: pointer; font: inherit; font-weight: 800; font-size: 17px; color: var(--v2-ink); min-height: 44px; }
+.v2lx-option[aria-checked="true"] { border-color: var(--v2-primary); }
+.v2lx-option[data-result="correct"] { border-color: var(--v2-fb-correct); background: var(--v2-fb-correct-bg); }
+.v2lx-option[data-result="wrong"] { border-color: var(--v2-fb-linguistic); background: var(--v2-fb-linguistic-bg); }
+.v2lx-option[data-dim="true"] { opacity: .55; }
+
+.v2lx-chip { border: 2px solid var(--v2-line); background: var(--v2-surface); color: var(--v2-ink); font-weight: 800; font-size: 16px; padding: 10px 15px; border-radius: var(--v2-radius-chip); cursor: pointer; font-family: inherit; min-height: 44px; }
+.v2lx-chip--placed { border: none; background: var(--v2-primary); color: var(--v2-on-primary); }
+
+.v2lx-input { width: 100%; border: 2px solid var(--v2-line); border-radius: 16px; padding: 14px 16px; font-size: 17px; font-weight: 700; color: var(--v2-ink); background: var(--v2-surface); font-family: inherit; }
+.v2lx-input:focus { outline: none; border-color: var(--v2-primary); }
+textarea.v2lx-input { resize: none; }
+
+/* ---- feedback panel -------------------------------------------------------- */
+
+.v2lx-fb { margin-top: 20px; border-radius: var(--v2-radius-card); padding: 18px 18px 16px; }
+.v2lx-fb[data-tone="correct"] { background: var(--v2-fb-correct-bg); --v2-fb-accent: var(--v2-fb-correct); }
+.v2lx-fb[data-tone="suggestion"] { background: var(--v2-fb-suggestion-bg); --v2-fb-accent: var(--v2-fb-suggestion); }
+.v2lx-fb[data-tone="partial"] { background: var(--v2-fb-partial-bg); --v2-fb-accent: var(--v2-fb-partial); }
+.v2lx-fb[data-tone="linguistic"] { background: var(--v2-fb-linguistic-bg); --v2-fb-accent: var(--v2-fb-linguistic); }
+.v2lx-fb[data-tone="semantic"] { background: var(--v2-fb-semantic-bg); --v2-fb-accent: var(--v2-fb-semantic); }
+.v2lx-fb[data-tone="unknown"] { background: var(--v2-fb-unknown-bg); --v2-fb-accent: var(--v2-fb-unknown); }
+.v2lx-fb-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.v2lx-fb-icon { width: 30px; height: 30px; border-radius: 10px; background: var(--v2-fb-accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; flex: none; }
+.v2lx-fb-headline { font-weight: 900; font-size: 17px; color: var(--v2-fb-accent); }
+.v2lx-fb-body { font-weight: 700; font-size: 14px; color: var(--v2-ink); line-height: 1.45; }
+.v2lx-fb-note { margin-top: 12px; background: rgba(255, 255, 255, .7); border-radius: 14px; padding: 12px 14px; }
+:root[data-theme="dark"] .v2lx .v2lx-fb-note,
+:root:not([data-theme="light"]) .v2lx .v2lx-fb-note { background: rgba(255, 255, 255, .08); }
+.v2lx-fb-note-label { font-weight: 800; font-size: 12px; color: var(--v2-fb-accent); text-transform: uppercase; letter-spacing: .3px; margin-bottom: 5px; }
+.v2lx-fb-target { font-weight: 900; font-size: 17px; color: var(--v2-ink); }
+.v2lx-disclose { margin-top: 12px; border: none; background: transparent; color: var(--v2-fb-accent); font-weight: 800; font-size: 14px; cursor: pointer; padding: 6px 0; display: inline-flex; align-items: center; gap: 5px; min-height: 44px; }
+.v2lx-disclose-chev { display: inline-block; transition: transform var(--v2-dur-disclosure) var(--v2-ease); }
+.v2lx-disclose[aria-expanded="true"] .v2lx-disclose-chev { transform: rotate(90deg); }
+
+/* ---- banners --------------------------------------------------------------- */
+
+.v2lx-banner { display: flex; align-items: center; gap: 10px; background: var(--v2-fb-semantic-bg); border: 1px solid var(--v2-fb-semantic); border-radius: 16px; padding: 12px 14px; margin-bottom: 18px; }
+.v2lx-banner-icon { width: 26px; height: 26px; border-radius: 8px; background: var(--v2-fb-semantic); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; flex: none; }
+.v2lx-banner-text { font-weight: 800; font-size: 13px; color: var(--v2-fb-semantic); line-height: 1.3; }
+
+/* ---- speaking -------------------------------------------------------------- */
+
+.v2lx-mic { width: 76px; height: 76px; border-radius: 50%; border: none; cursor: pointer; font-size: 28px; color: #fff; background: var(--v2-primary); box-shadow: 0 8px 20px rgba(62, 99, 242, .3); display: inline-flex; align-items: center; justify-content: center; }
+.v2lx-mic[data-mic="listening"] { background: var(--v2-fb-linguistic); animation: v2lxPulse 1.4s infinite; }
+.v2lx-mic[data-mic="processing"] { background: var(--v2-muted-2); }
+
+/* ---- animations (§29) ------------------------------------------------------ */
+
+@keyframes v2lxStageOut { from { transform: none; opacity: 1; } to { transform: translateX(-7%); opacity: 0; } }
+@keyframes v2lxStageIn { from { transform: translateX(7%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes v2lxFbUp { from { transform: translateY(14px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes v2lxRiseFade { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes v2lxPulse { 0% { box-shadow: 0 0 0 0 rgba(62, 99, 242, .35); } 70% { box-shadow: 0 0 0 16px rgba(62, 99, 242, 0); } 100% { box-shadow: 0 0 0 0 rgba(62, 99, 242, 0); } }
+
+.v2lx-stage[data-phase="out"] { animation: v2lxStageOut var(--v2-dur-stage-out) var(--v2-ease) forwards; }
+.v2lx-stage[data-phase="in"] { animation: v2lxStageIn var(--v2-dur-stage-in) var(--v2-ease); }
+.v2lx-fb { animation: v2lxFbUp var(--v2-dur-feedback) var(--v2-ease); }
+.v2lx-rise { animation: v2lxRiseFade var(--v2-dur-disclosure) var(--v2-ease); }
+
+/* ---- reduced motion (§30) — no slide, no pulse, immediate change ----------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .v2lx-stage[data-phase="out"],
+  .v2lx-stage[data-phase="in"],
+  .v2lx-fb,
+  .v2lx-rise { animation: none !important; }
+  .v2lx-mic[data-mic="listening"] { animation: none !important; }
+  .v2lx-progress-fill { transition: none !important; }
+}
+/* The app also exposes an explicit toggle; when set, the shell adds
+   `data-reduced-motion="true"` which mirrors the media query (§30). */
+.v2lx[data-reduced-motion="true"] .v2lx-stage[data-phase="out"],
+.v2lx[data-reduced-motion="true"] .v2lx-stage[data-phase="in"],
+.v2lx[data-reduced-motion="true"] .v2lx-fb,
+.v2lx[data-reduced-motion="true"] .v2lx-rise { animation: none !important; }
+.v2lx[data-reduced-motion="true"] .v2lx-mic[data-mic="listening"] { animation: none !important; }
+.v2lx[data-reduced-motion="true"] .v2lx-progress-fill { transition: none !important; }

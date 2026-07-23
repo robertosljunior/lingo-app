@@ -16,6 +16,7 @@ import Onboarding from './screens/Onboarding.jsx'
 import PedagogyV2Lab from './screens/PedagogyV2Lab.jsx'
 import PedagogyV2Inspector from './screens/PedagogyV2Inspector.jsx'
 import PedagogyV2Playground from './screens/PedagogyV2Playground.jsx'
+import V2LessonExperience from './screens/V2LessonExperience.jsx'
 import PwaInstallController from './components/PwaInstallController.jsx'
 
 const SCREEN_COMPONENTS = {
@@ -34,6 +35,7 @@ const SCREEN_COMPONENTS = {
   [SCREENS.PEDAGOGY_V2_PILOT]: PedagogyV2Lab,
   [SCREENS.PEDAGOGY_V2_INSPECTOR]: PedagogyV2Inspector,
   [SCREENS.PEDAGOGY_V2_PLAYGROUND]: PedagogyV2Playground,
+  [SCREENS.PEDAGOGY_V2_LEARNER]: V2LessonExperience,
 }
 
 // Screens that require an active lesson/session; if reached without one, fall
