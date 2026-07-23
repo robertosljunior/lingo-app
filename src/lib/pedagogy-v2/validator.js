@@ -15,6 +15,7 @@ import {
   ID_PREFIXES, FORBIDDEN_LEXEME_LEVEL_KEYS, PEDAGOGY_V2_RELATION_TYPES,
   hasV2Prefix, isV2Id, isExposureStage, entityKindOfId,
 } from './contracts.js'
+import { validateSemanticAssessmentMetadataV2 } from './semantic-assessment-bridge.js'
 
 const SECTIONS = ['lexemes', 'senses', 'constructions', 'communicative_functions', 'exemplars']
 
@@ -192,6 +193,13 @@ export function validatePedagogyV2Pack(pack, opts = {}) {
       if (!slot.slot_id) err('SLOT_ID_REQUIRED', `${where}.slots[${i}]`)
       if (!slot.syntactic_role) err('SLOT_SYNTACTIC_ROLE_REQUIRED', `${where}.slots[${i}]`)
     })
+    // Slice V2.14: construction-level semantic-assessment metadata (stable
+    // intent across exemplars). A construction has no single reference sentence,
+    // so `equivalent_meaning` (which needs authored text) is rejected here.
+    if (c.semantic_assessment != null) {
+      const sv = validateSemanticAssessmentMetadataV2(c.semantic_assessment, { referenceText: null })
+      for (const code of sv.errors) err(code, `${where}.semantic_assessment`)
+    }
   })
 
   // Cycle detection over construction prerequisites (invariant 15).
@@ -327,6 +335,14 @@ export function validatePedagogyV2Pack(pack, opts = {}) {
     ;(e.context_items || []).forEach((w) => {
       if (!containsWord(e.text_en, w)) err('CONTEXT_ITEM_MISSING_FROM_TEXT', `${where}="${w}"`)
     })
+
+    // Slice V2.14: optional authored semantic-assessment metadata. Objective
+    // errors fail the build (§25); a guided_production exemplar without a
+    // semantic target is only a warning (surfaced by inspect, not here).
+    if (e.semantic_assessment != null) {
+      const sv = validateSemanticAssessmentMetadataV2(e.semantic_assessment, { referenceText: e.text_en })
+      for (const code of sv.errors) err(code, `${where}.semantic_assessment`)
+    }
   })
 
   // ---- typed relations (Slice V2.5) ----

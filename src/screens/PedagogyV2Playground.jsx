@@ -40,6 +40,7 @@ import { speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
 import V2ActivityRenderer from '../components/pedagogy-v2/V2ActivityRenderer.jsx'
 import { buildV2FeedbackViewModel } from '../lib/pedagogy-v2/feedback-view-model.js'
+import { createProductionAssessmentServicesV2 } from '../lib/pedagogy-v2/production-assessment-service.js'
 import {
   packReferencedTargetsV2, synthesizeIsolatedStatesV2, CAPABILITY_LADDER,
 } from '../lib/pedagogy-v2/playground-support.js'
@@ -244,6 +245,22 @@ function DiagnosticsPanel({ focus, plan, response, assessment, plannedEvidence, 
           </section>
         )}
 
+        {assessment?.semantic_bridge && (
+          <section data-testid="v2pg-diag-bridge">
+            <div className="label-eyebrow">Semantic Assessment Bridge</div>
+            <KV k="strategy" v={assessment.semantic_bridge.strategy} />
+            <KV k="assessment_mode" v={assessment.semantic_bridge.assessment_mode} />
+            <KV k="requested_intent" v={assessment.semantic_bridge.requested_intent} />
+            {/* Authored target metadata only — never the learner's answer. */}
+            <KV k="equivalent_target" v={assessment.semantic_bridge.equivalent_target
+              ? `text="${assessment.semantic_bridge.equivalent_target.text}" · essential=[${(assessment.semantic_bridge.equivalent_target.essential_words || []).join(', ')}]`
+              : null} />
+            <KV k="bridge source" v={assessment.semantic_bridge.provenance?.source} />
+            <KV k="provenance target" v={assessment.semantic_bridge.provenance?.target_id} />
+            <KV k="fallback reason" v={assessment.semantic_bridge.fallback_reason} />
+          </section>
+        )}
+
         <section data-testid="v2pg-diag-planned-evidence">
           <div className="label-eyebrow">Planned evidence</div>
           {planned.length === 0 ? <div className="muted">—</div> : planned.map((pe, i) => (
@@ -365,10 +382,7 @@ function SessionMode({ registry }) {
       buildPlannerContext: (profileId, opts) => buildStudyPlannerContextV2(profileId, opts),
       recordBatch: (events) => db.recordLearnerEvidenceBatchV2(events),
       capabilities,
-      assessmentServices: {
-        analyzeSemantics: async ({ text, assessmentMode }) =>
-          (await import('../lib/language-analysis/index.js')).analyzeProduction({ text, assessmentMode }),
-      },
+      assessmentServices: createProductionAssessmentServicesV2(),
     })
     controllerRef.current = controller
     setState(controller.getState())
@@ -520,7 +534,11 @@ async function materializeActivityV2({ registry, packId, target, capability, mod
     context = { external_prerequisite_targets: shape.external_prerequisite_targets, isolated: true }
   }
 
-  const session = createLessonSessionV2({ session_id: `v2pg-${packId}-${Date.now().toString(36)}`, profile_id: profileId, now })
+  // Deterministic seed (Slice V2.14): the same (pack, target, capability,
+  // modality) materializes the SAME authored activity every time — a diagnostic
+  // tool should be reproducible, and it lets tests target authored metadata.
+  const seedKey = `v2pg-${packId}-${target?.target_id ?? 'none'}-${capability ?? 'intro'}-${modality ?? 'none'}`
+  const session = createLessonSessionV2({ session_id: seedKey, profile_id: profileId, now })
   const decision = selectNextActivityV2({
     session, scope, learnerStates, recentEvidence,
     focus: capability ? { target_id: target?.target_id, capability, modality } : { target_id: target?.target_id },
@@ -611,9 +629,7 @@ function TargetMode({ registry }) {
     const response = buildActivityResponseV2({ plan, responseType: type, payload, supportRuntime: createSupportRuntime(plan), submittedAt: new Date().toISOString(), capabilities: runtimeCaps })
     const v = validateActivityResponseV2(response, plan)
     if (!v.valid) { setAssessed({ error: v.errors.join(',') }); return }
-    const assessment = await evaluateActivityResponseV2({ activityPlan: plan, response, assessmentServices: {
-      analyzeSemantics: async ({ text, assessmentMode }) => (await import('../lib/language-analysis/index.js')).analyzeProduction({ text, assessmentMode }),
-    } })
+    const assessment = await evaluateActivityResponseV2({ activityPlan: plan, response, assessmentServices: createProductionAssessmentServicesV2() })
     const events = buildLearnerEvidenceBatchFromInteractionV2({ activityPlan: plan, response, assessment, profileId: activeProfile, sessionId: plan.session_id })
     // ISOLATED never persists. Current-state persists into the real store.
     let recordedEvidence = null
@@ -713,9 +729,7 @@ function SandboxMode({ registry }) {
   const evaluate = async () => {
     if (!plan || !answer.trim()) return
     const response = buildActivityResponseV2({ plan, responseType: responseTypeFor(plan), payload: { text: answer }, supportRuntime: createSupportRuntime(plan), submittedAt: new Date().toISOString(), capabilities: runtimeCaps })
-    const assessment = await evaluateActivityResponseV2({ activityPlan: plan, response, assessmentServices: {
-      analyzeSemantics: async ({ text, assessmentMode }) => (await import('../lib/language-analysis/index.js')).analyzeProduction({ text, assessmentMode }),
-    } })
+    const assessment = await evaluateActivityResponseV2({ activityPlan: plan, response, assessmentServices: createProductionAssessmentServicesV2() })
     // Compute the batch that WOULD be recorded, but never persist it.
     const wouldRecord = buildLearnerEvidenceBatchFromInteractionV2({ activityPlan: plan, response, assessment, profileId: 'sandbox', sessionId: plan.session_id })
     setAssessed({ assessment, response, wouldRecord })
@@ -744,6 +758,12 @@ function SandboxMode({ registry }) {
         <>
           <div className="card" style={{ padding: 14 }} data-testid="v2pg-sandbox-activity">
             <div className="muted" style={{ fontSize: 12 }}>Atividade: {plan.recipe} · {plan.capability}/{plan.modality}</div>
+            {/* §22 — the strategy of the LOADED plan is visible but never editable
+                in the normal flow (it comes from authored metadata). */}
+            <div className="muted" data-testid="v2pg-sandbox-strategy" style={{ fontSize: 12 }}>
+              Semantic strategy: {plan.semantic_assessment?.strategy ?? 'free'}
+              {plan.semantic_assessment?.essential_words ? ` · essential=[${plan.semantic_assessment.essential_words.join(', ')}]` : ''}
+            </div>
             <p style={{ fontSize: 14, marginTop: 6 }}>{plan.context}</p>
             <div style={{ fontWeight: 700, fontSize: 14 }}>{plan.text_pt}</div>
           </div>

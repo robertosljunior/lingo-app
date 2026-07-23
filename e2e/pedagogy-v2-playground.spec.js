@@ -136,11 +136,40 @@ test.describe('Sandbox de avaliação', () => {
 
     await page.getByTestId('v2pg-diagnostics').getByText('Diagnóstico técnico').first().click()
     const diag = page.getByTestId('v2pg-diagnostics')
-    // The four layers of the pipeline are all present and distinct.
+    // The pipeline layers are all present and distinct (§18/§21).
     await expect(diag.getByTestId('v2pg-diag-diagnosis')).toContainText('cause coverage')
+    await expect(diag.getByTestId('v2pg-diag-bridge')).toContainText('strategy')
     await expect(diag.getByTestId('v2pg-diag-raw-semantic')).toBeVisible()
     await expect(diag.getByTestId('v2pg-raw-assessment')).toBeVisible()
     await expect(diag.getByTestId('v2pg-feedback-vm')).toBeVisible()
+  })
+
+  // §35 — an authored equivalent_meaning target makes semantic_context reachable.
+  // The default sandbox (but pack, first sense, free_production/writing)
+  // deterministically materializes exemplar:but.012 which carries the metadata.
+  test('an authored semantic target flags off-topic as semantic_context, accepts variation', async ({ page }) => {
+    await openPlayground(page)
+    await page.getByTestId('v2pg-mode-sandbox').click()
+    await page.getByTestId('v2pg-target-capability').selectOption('free_production')
+    await page.getByTestId('v2pg-target-modality').selectOption('writing')
+    await page.getByTestId('v2pg-sandbox-materialize').click()
+    await expect(page.getByTestId('v2pg-sandbox-activity')).toBeVisible()
+    // The loaded plan's strategy is visible (§22) and is the authored one.
+    await expect(page.getByTestId('v2pg-sandbox-strategy')).toContainText('equivalent_meaning')
+
+    // C: semantically incompatible → semantic_context, never grammar.
+    await page.getByTestId('v2pg-sandbox-answer').fill('I like bananas.')
+    await page.getByTestId('v2pg-sandbox-evaluate').click()
+    await expect(page.getByTestId('v2pg-feedback')).toBeVisible()
+    await page.getByTestId('v2pg-diagnostics').getByText('Diagnóstico técnico').first().click()
+    await expect(page.getByTestId('v2pg-diag-bridge')).toContainText('equivalent_meaning')
+    await expect(page.getByTestId('v2pg-diag-diagnosis')).toContainText('semantic_context')
+
+    // A: a response keeping the essential word → NOT a semantic mismatch.
+    await page.getByTestId('v2pg-sandbox-answer').fill('The plan is very good.')
+    await page.getByTestId('v2pg-sandbox-evaluate').click()
+    await expect(page.getByTestId('v2pg-feedback')).toBeVisible()
+    await expect(page.getByTestId('v2pg-diag-diagnosis')).not.toContainText('MEANING_MISMATCH')
   })
 })
 

@@ -19,6 +19,7 @@
 import { mapSemanticResultToOutcome, combineSpeechConfidence, DEFAULT_ASSESSMENT_POLICY_V2 } from './assessment-policy.js'
 import { buildMaskedCompletion, canonicalOrderTokens } from './activity-runtime-contracts.js'
 import { buildAssessmentDiagnosisV2 } from './assessment-diagnosis.js'
+import { buildSemanticAssessmentRequestV2 } from './semantic-assessment-bridge.js'
 
 export const ASSESSMENT_VERSION = 1
 
@@ -52,14 +53,14 @@ const primaryTargets = (plan) => [
   ...(plan.secondary_targets || []).filter((t) => t.role === 'primary'),
 ].map((t) => ({ target_type: t.target_type, target_id: t.target_id }))
 
-async function assessSemantics({ plan, text, mode, services }) {
-  if (typeof services?.analyzeSemantics !== 'function') return null
-  return services.analyzeSemantics({
-    text,
-    assessmentMode: mode,
-    equivalentTarget: plan.text_en,
-    context: { text_pt: plan.text_pt, situation: plan.context },
-  })
+// Slice V2.14: the strategy comes from the plan's authored metadata via the
+// bridge — NOT from the recipe name. The complete SemanticAssessmentRequestV2 is
+// passed to the shared service, which forwards every engine-consumed field.
+async function assessSemantics({ plan, text, responseType, services }) {
+  const request = buildSemanticAssessmentRequestV2({ plan, text, responseType })
+  if (typeof services?.analyzeSemantics !== 'function') return { result: null, request }
+  const result = await services.analyzeSemantics(request)
+  return { result, request }
 }
 
 /**
@@ -72,17 +73,21 @@ async function assessSemantics({ plan, text, mode, services }) {
 export async function evaluateActivityResponseV2(args) {
   const assessment = await evaluateActivityResponseCoreV2(args)
   const semanticResult = assessment.__semantic_result ?? null
+  const semanticBridge = assessment.__semantic_bridge ?? null
   if ('__semantic_result' in assessment) delete assessment.__semantic_result
+  if ('__semantic_bridge' in assessment) delete assessment.__semantic_bridge
   assessment.diagnosis = buildAssessmentDiagnosisV2({
     activityPlan: args.activityPlan,
     response: args.response,
     semanticResult,
+    semanticBridge,
     assessmentOutcome: assessment.outcome,
     assessmentStatus: assessment.status,
     feedback: assessment.feedback,
   })
   // In-memory only (Playground diagnostics). Not persisted, not in evidence.
   if (semanticResult) assessment.semantic_result = semanticResult
+  if (semanticBridge) assessment.semantic_bridge = semanticBridge
   return assessment
 }
 
@@ -146,21 +151,28 @@ async function evaluateActivityResponseCoreV2({ activityPlan: plan, response, as
     // ---- guided / free production: existing semantic pipeline -------------
     case 'guided_production':
     case 'free_production': {
-      const mode = plan.recipe === 'guided_production' ? 'guided' : 'free'
       const spoken = response.response_type === 'speech_transcript'
       const text = spoken ? response.payload.transcript : response.payload.text
+      const bridgeReq = buildSemanticAssessmentRequestV2({ plan, text, responseType: response.response_type })
+      const bridgeInfo = {
+        strategy: bridgeReq.strategy, assessment_mode: bridgeReq.assessment_mode,
+        requested_intent: bridgeReq.requested_intent, equivalent_target: bridgeReq.equivalent_target,
+        provenance: bridgeReq.provenance, fallback_reason: bridgeReq.fallback_reason,
+      }
       if (spoken && !String(text || '').trim()) {
         return base(plan, response, {
           status: 'unable_to_assess', outcome: 'not_assessed', assessment_confidence: 0,
           feedback: { kind: 'speech', reason: 'no_transcript' },
+          __semantic_bridge: bridgeInfo,
         })
       }
       let result = null
-      try { result = await assessSemantics({ plan, text, mode, services: assessmentServices }) } catch { result = null }
+      try { ({ result } = await assessSemantics({ plan, text, responseType: response.response_type, services: assessmentServices })) } catch { result = null }
       if (!result) {
         return base(plan, response, {
           status: 'unable_to_assess', outcome: 'not_assessed', assessment_confidence: 0,
           feedback: { kind: 'semantic', reason: 'engine_unavailable' },
+          __semantic_bridge: bridgeInfo,
         })
       }
       const mapped = mapSemanticResultToOutcome(result)
@@ -190,8 +202,9 @@ async function evaluateActivityResponseCoreV2({ activityPlan: plan, response, as
           natural_alternatives: (result.natural_alternatives || []).slice(0, 2),
         },
         target_assessments: mapped.status === 'assessed' ? primaryTargets(plan) : [],
-        // Full raw result carried to the diagnosis layer (in memory only).
+        // Full raw result + bridge carried to the diagnosis layer (in memory only).
         __semantic_result: result,
+        __semantic_bridge: bridgeInfo,
       })
     }
 

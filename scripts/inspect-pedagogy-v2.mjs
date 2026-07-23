@@ -332,6 +332,36 @@ say('Targets without a technically possible recognition recipe:')
 
 // ---- optional simulated review queue over a fixture (V2.6) ----
 // `--fixture <path>`: { now, learner_states, recent_evidence } — read-only,
+// Slice V2.14: authored semantic-assessment metadata audit. Never fails; a
+// guided_production exemplar without a semantic target is a WARNING only (§24).
+{
+  const { validateSemanticAssessmentMetadataV2 } = await import('../src/lib/pedagogy-v2/semantic-assessment-bridge.js')
+  say()
+  say('Semantic-assessment metadata (Slice V2.14):')
+  let withMeta = 0
+  const warnings = []
+  for (const pack of packs) {
+    for (const e of pack.exemplars || []) {
+      if (e.semantic_assessment != null) {
+        withMeta++
+        const v = validateSemanticAssessmentMetadataV2(e.semantic_assessment, { referenceText: e.text_en })
+        const status = v.valid ? 'OK' : `INVALID(${v.errors.join(',')})`
+        say(`  ${e.exemplar_id} · ${e.semantic_assessment.strategy} · essential=[${(e.semantic_assessment.essential_words || []).join(', ')}] · ${status}`)
+      }
+    }
+    for (const c of pack.constructions || []) {
+      if (c.semantic_assessment != null) {
+        withMeta++
+        const v = validateSemanticAssessmentMetadataV2(c.semantic_assessment, { referenceText: null })
+        say(`  ${c.construction_id} · ${c.semantic_assessment.strategy} · ${v.valid ? 'OK' : `INVALID(${v.errors.join(',')})`}`)
+      }
+    }
+  }
+  if (!withMeta) say('  (no authored semantic-assessment metadata)')
+  say(`  total exemplars/constructions with metadata: ${withMeta}`)
+  if (warnings.length) { say('  warnings:'); for (const w of warnings) say(`    ⚠ ${w}`) }
+}
+
 // deterministic. Without the flag nothing user-specific is ever touched.
 {
   const idx = process.argv.indexOf('--fixture')

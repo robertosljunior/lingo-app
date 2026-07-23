@@ -140,8 +140,14 @@ export function simulatePersonaResponseV2({ persona: personaInput, plan, statesB
 // `needs_revision` with a high-severity error. No linguistic modeling.
 export const SimulationAssessmentServiceV2 = Object.freeze({
   __simulation_only: true,
-  async analyzeSemantics({ text, equivalentTarget }) {
-    const match = normalizeSentence(text) === normalizeSentence(equivalentTarget)
+  // Slice V2.14: receives the full SemanticAssessmentRequestV2. It compares the
+  // learner text to the authored target (equivalent_target.text when the bridge
+  // built an equivalent request, else reference_text) — identical behavior to
+  // the pre-bridge string target, so golden trajectories are unchanged.
+  async analyzeSemantics(request) {
+    const text = request?.text
+    const target = request?.equivalent_target?.text ?? request?.reference_text ?? null
+    const match = normalizeSentence(text) === normalizeSentence(target)
     if (match) {
       return { verdict: 'valid', confidence: 1, detected_errors: [], corrected_version: null, natural_alternatives: [] }
     }
@@ -149,7 +155,7 @@ export const SimulationAssessmentServiceV2 = Object.freeze({
       verdict: 'needs_revision',
       confidence: 1,
       detected_errors: [{ severity: 'high', rule_id: 'simulation.mismatch' }],
-      corrected_version: equivalentTarget,
+      corrected_version: target,
       natural_alternatives: [],
     }
   },
