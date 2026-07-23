@@ -338,7 +338,7 @@
       "usage_notes": "Sujeito não humano; estado físico persistente.",
       "naturalness_status": "curated",
       "exposure_stage": "A1-A2",
-      "semantic_assessment": { "strategy": "equivalent_meaning", "essential_words": ["coffee"], "note": "Contexto fechado: a atividade elicita este significado; palavra essencial minima e curada (Slice V2.14). Ver test-evidence/v2-14-semantic-bridge.md." }
+      "semantic_assessment": { "strategy": "equivalent_meaning", "essential_words": ["coffee"], "polarity": "affirmative", "note": "Contexto fechado: a atividade elicita este significado; palavra essencial minima e curada (Slice V2.14). Ver test-evidence/v2-14-semantic-bridge.md." }
     },
     {
       "exemplar_id": "exemplar:still.008",

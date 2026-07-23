@@ -51,7 +51,7 @@ describe('§34.4/7/8 — equivalent_meaning', () => {
     const r = buildSemanticAssessmentRequestV2({ plan: plan({ semantic_assessment: { strategy: 'equivalent_meaning', essential_words: ['coffee'] }, semantic_assessment_source: 'exemplar:x' }), text: 'The coffee is warm.' })
     expect(r.strategy).toBe('equivalent_meaning')
     expect(r.assessment_mode).toBe('equivalent')
-    expect(r.equivalent_target).toEqual({ text: 'The coffee is still hot.', essential_words: ['coffee'] })
+    expect(r.equivalent_target).toEqual({ text: 'The coffee is still hot.', essential_words: ['coffee'], polarity: null })
     expect(r.provenance.source).toBe('exemplar:x')
   })
 
@@ -113,7 +113,7 @@ describe('§28 — no field is dropped by the shared service', () => {
     const params = spy.mock.calls[0][0]
     expect(params.text).toBe('The coffee is warm.')
     expect(params.assessmentMode).toBe('equivalent')
-    expect(params.equivalentTarget).toEqual({ text: 'The coffee is still hot.', essential_words: ['coffee'] })
+    expect(params.equivalentTarget).toEqual({ text: 'The coffee is still hot.', essential_words: ['coffee'], polarity: null })
     // guided example: requestedIntent must also survive
     const gspy = vi.fn(async () => ({ verdict: 'valid', confidence: 1, detected_errors: [] }))
     const gsvc = createProductionAssessmentServicesV2({ analyzeProduction: gspy })

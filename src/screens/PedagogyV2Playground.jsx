@@ -261,6 +261,23 @@ function DiagnosticsPanel({ focus, plan, response, assessment, plannedEvidence, 
           </section>
         )}
 
+        {assessment?.semantic_result?.semantic_equivalence && (() => {
+          const eq = assessment.semantic_result.semantic_equivalence
+          const ev = eq.evidence || {}
+          return (
+            <section data-testid="v2pg-diag-equivalence">
+              <div className="label-eyebrow">Semantic Equivalence</div>
+              <KV k="status" v={eq.status} />
+              <KV k="confidence" v={eq.confidence} />
+              <KV k="engine" v={eq.engine} />
+              <KV k="reason_codes" v={(eq.reason_codes || []).join(', ')} />
+              <KV k="essential" v={ev.essential_entities ? `preserved=${ev.essential_entities.preserved} · missing=[${(ev.essential_entities.missing || []).join(', ')}]` : null} />
+              <KV k="polarity" v={ev.polarity ? `target=${ev.polarity.target ?? '—'}(authored=${ev.polarity.target_authored}) · response=${ev.polarity.response} · contradiction=${ev.polarity.contradiction}` : null} />
+              <KV k="similarity" v={ev.semantic_similarity ? `${ev.semantic_similarity.score ?? '—'} (thr=${ev.semantic_similarity.threshold}, meets=${ev.semantic_similarity.meets_threshold})` : null} />
+            </section>
+          )
+        })()}
+
         <section data-testid="v2pg-diag-planned-evidence">
           <div className="label-eyebrow">Planned evidence</div>
           {planned.length === 0 ? <div className="muted">—</div> : planned.map((pe, i) => (

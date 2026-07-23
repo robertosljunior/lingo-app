@@ -302,3 +302,20 @@ describe('pedagogy-v2 validator — semantic_assessment metadata', () => {
     expectError(p, 'EQUIVALENT_TARGET_WITHOUT_TEXT')
   })
 })
+
+// ---- Slice V2.15 — authored polarity (§27) ----------------------------------
+describe('pedagogy-v2 validator — semantic polarity', () => {
+  const clone = () => structuredClone(stillPack)
+  it('accepts affirmative/negative polarity on an equivalent target', () => {
+    const p = clone()
+    const w = p.exemplars[0].text_en.split(/\W+/).filter(Boolean)[1]
+    p.exemplars[0].semantic_assessment = { strategy: 'equivalent_meaning', essential_words: [w], polarity: 'negative' }
+    expect(validatePedagogyV2Pack(p).errors.filter((e) => /POLARITY/.test(e))).toEqual([])
+  })
+  it('rejects an invalid polarity value', () => {
+    const p = clone()
+    const w = p.exemplars[0].text_en.split(/\W+/).filter(Boolean)[1]
+    p.exemplars[0].semantic_assessment = { strategy: 'equivalent_meaning', essential_words: [w], polarity: 'maybe' }
+    expectError(p, 'INVALID_SEMANTIC_POLARITY')
+  })
+})

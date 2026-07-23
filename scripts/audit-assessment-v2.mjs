@@ -103,12 +103,45 @@ async function main() {
   const unknownRate = cov.assessed_production_count ? cov.unknown_cause_count / cov.assessed_production_count : 0
   if (unknownRate > 0.5) warnings.push(`HIGH_UNKNOWN_CAUSE_RATE: ${(unknownRate * 100).toFixed(0)}% of assessed production has no typed cause`)
 
+  // ---- Slice V2.15: meaning-equivalence coverage (§19), per engine ----------
+  const { evaluateSemanticEquivalenceV2 } = await import('../src/lib/language-analysis/semantic-equivalence.js')
+  // Golden matrix with expected status per engine (see semantic-equivalence.test.js).
+  const MATRIX = [
+    { t: 'The coffee is still hot.', e: ['coffee'], p: 'affirmative', rows: [
+      { r: 'The coffee is still hot.', h: 1.0, u: 1.0, hExp: 'aligned', uExp: 'aligned' },
+      { r: 'The coffee remains hot.', h: 0.504, u: 0.90, hExp: 'uncertain', uExp: 'aligned' },
+      { r: 'The coffee is not hot anymore.', h: 0.603, u: 0.60, hExp: 'not_aligned', uExp: 'not_aligned' },
+      { r: 'The tea is still hot.', h: 0.667, u: 0.70, hExp: 'not_aligned', uExp: 'not_aligned' },
+      { r: 'The coffee is very good.', h: 0.5, u: 0.45, hExp: 'uncertain', uExp: 'uncertain' } ] },
+    { t: 'The plan is simple but effective.', e: ['plan'], p: 'affirmative', rows: [
+      { r: 'The plan is simple and effective.', h: 0.727, u: 0.88, hExp: 'uncertain', uExp: 'aligned' },
+      { r: 'The plan is very good.', h: 0.502, u: 0.45, hExp: 'uncertain', uExp: 'uncertain' },
+      { r: 'The idea is simple but effective.', h: 0.727, u: 0.85, hExp: 'not_aligned', uExp: 'not_aligned' } ] },
+    { t: 'She has yet to reply to the invitation.', e: ['invitation'], p: 'negative', rows: [
+      { r: "She still hasn't replied to the invitation.", h: 0.538, u: 0.88, hExp: 'uncertain', uExp: 'aligned' },
+      { r: 'She likes the invitation.', h: 0.367, u: 0.30, hExp: 'not_aligned', uExp: 'not_aligned' } ] },
+  ]
+  const cover = (engine, simKey) => {
+    const dist = { aligned: 0, not_aligned: 0, uncertain: 0 }
+    let count = 0, falsePos = 0, falseNeg = 0
+    for (const set of MATRIX) for (const row of set.rows) {
+      const got = evaluateSemanticEquivalenceV2({ targetText: set.t, responseText: row.r, essentialWords: set.e, similarity: row[simKey], engine, targetPolarity: set.p }).status
+      const exp = engine === 'use' ? row.uExp : row.hExp
+      dist[got] += 1; count++
+      if (got === 'aligned' && exp === 'not_aligned') falsePos++       // accepted a wrong meaning
+      if (got === 'not_aligned' && exp === 'aligned') falseNeg++       // rejected a valid meaning
+    }
+    return { semantic_equivalence_count: count, aligned_count: dist.aligned, not_aligned_count: dist.not_aligned, uncertain_count: dist.uncertain, false_positive_fixture_count: falsePos, false_negative_fixture_count: falseNeg }
+  }
+  console.log('\nMeaning-equivalence coverage (§19), separated by engine:')
+  console.log(JSON.stringify({ hashing: cover('hashing', 'h'), use_controlled: cover('use', 'u') }, null, 2))
+
   console.log('\nWarnings (advisory — do not fail CI):')
   if (!warnings.length) console.log('  none')
   else for (const w of warnings) console.log('  ⚠ ' + w)
-  console.log('\nNote: cases whose cause remains `unknown` are EXPECTED and correct when the')
-  console.log('semantic engine provides no structured cause (§28/§29). See')
-  console.log('test-evidence/v2-13-assessment-cause-coverage.md.\n')
+  console.log('\nNote: cases whose cause remains `unknown`/`uncertain` are EXPECTED and correct when')
+  console.log('the local infrastructure cannot prove meaning (§15/§28/§29). See')
+  console.log('test-evidence/v2-15-semantic-equivalence.md.\n')
 }
 
 main().catch((e) => { console.error(e); process.exit(1) })

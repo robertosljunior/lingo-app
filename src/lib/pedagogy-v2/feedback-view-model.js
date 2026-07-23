@@ -227,14 +227,27 @@ export function buildV2FeedbackViewModel({
     }
   } else if (status === 'not_assessed') {
     if (assessment?.status === 'unable_to_assess') {
-      headline = 'Não foi possível avaliar'
-      note = feedback.reason
-        ? `O avaliador não pôde avaliar esta resposta (motivo técnico: ${feedback.reason}).`
-        : 'O avaliador não pôde avaliar esta resposta.'
+      // Slice V2.15: an `uncertain` meaning-equivalence gets its own honest copy
+      // (§22) instead of a generic "could not assess".
+      if (diagnosis?.semantic_relation?.status === 'uncertain') {
+        headline = 'Não deu para confirmar'
+        note = 'Não consegui confirmar com segurança se a resposta corresponde ao significado pedido.'
+      } else {
+        headline = 'Não foi possível avaliar'
+        note = feedback.reason
+          ? `O avaliador não pôde avaliar esta resposta (motivo técnico: ${feedback.reason}).`
+          : 'O avaliador não pôde avaliar esta resposta.'
+      }
     } else if (assessment?.outcome === 'observed') {
       headline = 'Prática registrada'
       note = 'Atividade de exposição: registrada como observada, sem avaliação de acerto.'
     }
+  }
+
+  // §22 — aligned meaning with a different target form: reassure that the idea
+  // was communicated, while noting the activity practices another form.
+  if (diagnosis?.semantic_relation?.status === 'aligned' && diagnosis?.target_form_relation?.status === 'different_form') {
+    target_form_note = 'Sua frase comunica a ideia. Aqui praticamos outra forma de dizer isso.'
   }
 
   const planned = plannedEvidence ?? plan?.planned_evidence ?? []

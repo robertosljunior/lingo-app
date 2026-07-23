@@ -157,19 +157,24 @@ test.describe('Sandbox de avaliação', () => {
     // The loaded plan's strategy is visible (§22) and is the authored one.
     await expect(page.getByTestId('v2pg-sandbox-strategy')).toContainText('equivalent_meaning')
 
-    // C: semantically incompatible → semantic_context, never grammar.
+    // C: off-topic (essential entity gone) → not_aligned → semantic_context.
     await page.getByTestId('v2pg-sandbox-answer').fill('I like bananas.')
     await page.getByTestId('v2pg-sandbox-evaluate').click()
     await expect(page.getByTestId('v2pg-feedback')).toBeVisible()
     await page.getByTestId('v2pg-diagnostics').getByText('Diagnóstico técnico').first().click()
     await expect(page.getByTestId('v2pg-diag-bridge')).toContainText('equivalent_meaning')
     await expect(page.getByTestId('v2pg-diag-diagnosis')).toContainText('semantic_context')
+    // Slice V2.15: the composite Semantic Equivalence panel is present.
+    await expect(page.getByTestId('v2pg-diag-equivalence')).toContainText('not_aligned')
+    await expect(page.getByTestId('v2pg-diag-equivalence')).toContainText('MISSING_ESSENTIAL_ENTITY')
 
-    // A: a response keeping the essential word → NOT a semantic mismatch.
+    // A: essential word present but meaning unconfirmable under hashing → the
+    // equivalence is `uncertain` and NO meaning mismatch is invented (§23/§36.1).
     await page.getByTestId('v2pg-sandbox-answer').fill('The plan is very good.')
     await page.getByTestId('v2pg-sandbox-evaluate').click()
     await expect(page.getByTestId('v2pg-feedback')).toBeVisible()
     await expect(page.getByTestId('v2pg-diag-diagnosis')).not.toContainText('MEANING_MISMATCH')
+    await expect(page.getByTestId('v2pg-diag-equivalence')).toContainText('uncertain')
   })
 })
 

@@ -115,6 +115,7 @@ function emptyDiagnosis(fields) {
     semantic_relation: { status: 'unknown' },
     cause_coverage: 'none',
     semantic_bridge: null,
+    semantic_equivalence: null,
     ...fields,
   }
 }
@@ -231,14 +232,31 @@ export function buildAssessmentDiagnosisV2({
 
   // ---- semantic recipes (guided / free production) ------------------------
   if (kind === 'semantic') {
-    // Engine could not assess (no result / unable): honest unknown.
+    // Slice V2.15: the composite meaning-equivalence result, when present.
+    const eq = semanticResult?.semantic_equivalence ?? null
+    // target_form_relation for production: NEVER string equality. Only a
+    // structurally verifiable fixed lexical element counts (§10). Computed
+    // independently of meaning so the two dimensions stay separate (§9/§20).
+    const fixedEls = plan?.construction_fixed_elements || plan?.presentation?.masked_text_source?.fixed_elements || []
+    const respTxt = response?.payload?.text ?? response?.payload?.transcript ?? null
+    let targetFormRel = { status: 'unknown' }
+    if (fixedEls.length && typeof respTxt === 'string' && respTxt.trim()) {
+      const allPresent = fixedEls.every((el) => containsFixedElement(respTxt, el))
+      targetFormRel = { status: allPresent ? 'matches' : 'different_form', source: 'deterministic_comparison', fixed_elements: [...fixedEls] }
+    }
+
+    // Engine could not confidently assess meaning: unable / uncertain. An
+    // `uncertain` equivalence is surfaced honestly (§4/§22) — never a cause.
     if (assessmentStatus !== 'assessed' || !semanticResult) {
       return emptyDiagnosis({
-        primary_cause: unknownCause(semanticResult ? 'SEMANTIC_UNABLE_TO_ASSESS' : 'SEMANTIC_ENGINE_UNAVAILABLE', 'semantic_engine'),
+        primary_cause: eq?.status === 'uncertain'
+          ? unknownCause('SEMANTIC_EQUIVALENCE_UNCERTAIN', 'semantic_equivalence')
+          : unknownCause(semanticResult ? 'SEMANTIC_UNABLE_TO_ASSESS' : 'SEMANTIC_ENGINE_UNAVAILABLE', 'semantic_engine'),
         cause_coverage: 'none',
-        semantic_relation: { status: 'unknown' },
-        target_form_relation: { status: 'unknown' },
+        semantic_relation: eq ? { status: eq.status, source: 'semantic_equivalence', confidence: eq.confidence } : { status: 'unknown' },
+        target_form_relation: targetFormRel,
         semantic_bridge: semanticBridge,
+        semantic_equivalence: eq,
         applicability: 'unable_to_assess',
       })
     }
@@ -260,24 +278,16 @@ export function buildAssessmentDiagnosisV2({
       }
     }
 
-    // target_form_relation for production: NEVER string equality. Only a
-    // structurally verifiable fixed lexical element counts (§10). Otherwise
-    // unknown.
-    const fixedElements = plan?.construction_fixed_elements
-      || plan?.presentation?.masked_text_source?.fixed_elements
-      || []
-    const respText = response?.payload?.text ?? response?.payload?.transcript ?? null
-    let targetForm = { status: 'unknown' }
-    if (fixedElements.length && typeof respText === 'string' && respText.trim()) {
-      const allPresent = fixedElements.every((el) => containsFixedElement(respText, el))
-      targetForm = { status: allPresent ? 'matches' : 'different_form', source: 'deterministic_comparison', fixed_elements: [...fixedElements] }
-    }
+    const targetForm = targetFormRel
 
-    // semantic_relation from the ENGINE's verdict + explicit meaning/task
-    // signals — never from raw similarity alone (§9).
+    // semantic_relation: prefer the composite equivalence result (Slice V2.15);
+    // otherwise fall back to the verdict + explicit meaning signals (never raw
+    // similarity alone, §9). Equivalence is authoritative for meaning here.
     const verdict = semanticResult.verdict
     let semanticStatus = 'unknown'
-    if (hasSemanticCause) semanticStatus = 'not_aligned'
+    let semanticSource = 'semantic_engine'
+    if (eq) { semanticStatus = eq.status; semanticSource = 'semantic_equivalence' }
+    else if (hasSemanticCause) semanticStatus = 'not_aligned'
     else if (verdict === 'valid') semanticStatus = 'aligned'
     else if (verdict === 'valid_with_suggestions') semanticStatus = 'partially_aligned'
     // needs_revision without a semantic cause = grammar-driven → stays unknown.
@@ -310,9 +320,10 @@ export function buildAssessmentDiagnosisV2({
       causes,
       positive_findings: positive,
       target_form_relation: targetForm,
-      semantic_relation: { status: semanticStatus, source: 'semantic_engine' },
+      semantic_relation: { status: semanticStatus, source: semanticSource, ...(eq ? { confidence: eq.confidence } : {}) },
       cause_coverage: coverage,
       semantic_bridge: semanticBridge,
+      semantic_equivalence: eq,
       applicability: 'assessed',
     })
   }
