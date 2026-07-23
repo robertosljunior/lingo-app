@@ -1099,7 +1099,7 @@
       "usage_notes": "Mesma pendência de resposta do exemplar 011, agora em registro formal — o contraste de registro é o ponto.",
       "naturalness_status": "curated",
       "exposure_stage": "A2-B1",
-      "semantic_assessment": { "strategy": "equivalent_meaning", "essential_words": ["invitation"], "note": "Contexto fechado: a atividade elicita este significado; palavra essencial minima e curada (Slice V2.14). Ver test-evidence/v2-14-semantic-bridge.md." }
+      "semantic_assessment": { "strategy": "equivalent_meaning", "essential_words": ["invitation"], "polarity": "negative", "note": "Contexto fechado: a atividade elicita este significado; palavra essencial minima e curada (Slice V2.14). Ver test-evidence/v2-14-semantic-bridge.md." }
     },
     {
       "exemplar_id": "exemplar:yet.015",

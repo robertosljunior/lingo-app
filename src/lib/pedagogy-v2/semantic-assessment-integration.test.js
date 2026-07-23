@@ -57,15 +57,29 @@ describe('§34.15/§18 — naturalness is never a semantic mismatch', () => {
   })
 })
 
-describe('§34.17/§20 — target form is independent from meaning', () => {
-  it('correct meaning but missing the fixed construction element → aligned meaning + different target form', async () => {
-    // Response keeps the essential word (coffee) but drops the fixed element "still".
+describe('§34.17/§20/§9 — target form is independent from meaning', () => {
+  it('aligned meaning can coexist with a different target form', async () => {
+    // Controlled service: force an ALIGNED equivalence while the response drops
+    // the fixed element "still" — the two dimensions must stay separate.
+    const aligned = { verdict: 'valid', confidence: 0.9, detected_errors: [], natural_alternatives: [],
+      semantic_equivalence: { equivalence_version: 1, status: 'aligned', confidence: 0.85, engine: 'use', reason_codes: ['HIGH_SEMANTIC_OVERLAP'], evidence: {} } }
+    const controlled = { analyzeSemantics: async () => aligned }
+    const plan = prodPlan({ ...EQ, construction_fixed_elements: ['still'] })
+    const a = await evaluateActivityResponseV2({ activityPlan: plan, response: resp(plan, 'The coffee remains warm.'), assessmentServices: controlled })
+    expect(a.diagnosis.semantic_relation.status).toBe('aligned')
+    expect(a.diagnosis.target_form_relation.status).toBe('different_form') // dropped "still"
+    // meaning aligned is NOT a semantic_context error
+    expect(a.diagnosis.causes.some((c) => c.category === 'semantic_context')).toBe(false)
+  })
+
+  it('under real hashing an unconfirmable paraphrase is uncertain (not a false pass, not an error)', async () => {
     const plan = prodPlan({ ...EQ, construction_fixed_elements: ['still'] })
     const a = await evalOne(plan, 'The coffee is warm.')
-    expect(a.diagnosis.semantic_relation.status === 'aligned' || a.diagnosis.semantic_relation.status === 'partially_aligned').toBe(true)
-    expect(a.diagnosis.target_form_relation.status).toBe('different_form')
-    // and it is NOT reclassified as semantic_context
+    expect(a.diagnosis.semantic_relation.status).toBe('uncertain')
     expect(a.diagnosis.causes.some((c) => c.category === 'semantic_context')).toBe(false)
+    // uncertain → unable_to_assess / not_assessed, never partial (§29)
+    expect(a.status).toBe('unable_to_assess')
+    expect(a.outcome).toBe('not_assessed')
   })
 })
 

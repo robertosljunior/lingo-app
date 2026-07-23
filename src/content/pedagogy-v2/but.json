@@ -502,7 +502,7 @@
       "usage_notes": "Mesmo sentido de contraste do exemplar 001, construção nova: but coordena adjetivos dentro de um único predicado. Exatamente uma novidade pretendida.",
       "naturalness_status": "curated",
       "exposure_stage": "A2-B1",
-      "semantic_assessment": { "strategy": "equivalent_meaning", "essential_words": ["plan"], "note": "Contexto fechado: a atividade elicita este significado; palavra essencial minima e curada (Slice V2.14). Ver test-evidence/v2-14-semantic-bridge.md." }
+      "semantic_assessment": { "strategy": "equivalent_meaning", "essential_words": ["plan"], "polarity": "affirmative", "note": "Contexto fechado: a atividade elicita este significado; palavra essencial minima e curada (Slice V2.14). Ver test-evidence/v2-14-semantic-bridge.md." }
     },
     {
       "exemplar_id": "exemplar:but.013",

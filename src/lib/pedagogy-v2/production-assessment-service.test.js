@@ -33,7 +33,7 @@ describe('§34.10 — the shared service forwards the full request', () => {
     await svc.analyzeSemantics(req)
     expect(spy.mock.calls[0][0]).toEqual({
       text: 'The coffee is warm.', assessmentMode: 'equivalent',
-      requestedIntent: null, equivalentTarget: { text: 'The coffee is still hot.', essential_words: ['coffee'] },
+      requestedIntent: null, equivalentTarget: { text: 'The coffee is still hot.', essential_words: ['coffee'], polarity: null },
     })
   })
 })

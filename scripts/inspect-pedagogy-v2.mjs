@@ -346,7 +346,8 @@ say('Targets without a technically possible recognition recipe:')
         withMeta++
         const v = validateSemanticAssessmentMetadataV2(e.semantic_assessment, { referenceText: e.text_en })
         const status = v.valid ? 'OK' : `INVALID(${v.errors.join(',')})`
-        say(`  ${e.exemplar_id} · ${e.semantic_assessment.strategy} · essential=[${(e.semantic_assessment.essential_words || []).join(', ')}] · ${status}`)
+        const pol = e.semantic_assessment.polarity ? ` · polarity=${e.semantic_assessment.polarity}` : ''
+        say(`  ${e.exemplar_id} · ${e.semantic_assessment.strategy} · essential=[${(e.semantic_assessment.essential_words || []).join(', ')}]${pol} · ${status}`)
       }
     }
     for (const c of pack.constructions || []) {

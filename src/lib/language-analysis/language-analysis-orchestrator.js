@@ -15,6 +15,7 @@ import { KnowledgeBase } from './knowledge-base.js'
 import { matchesWhen } from './usage-rule-resolvers.js'
 import { applyTransformation } from './transformation-registry.js'
 import { resolveFrameThresholds, assessFrameChoice } from './frame-thresholds.js'
+import { evaluateSemanticEquivalenceV2 } from './semantic-equivalence.js'
 
 export const ANALYSIS_VERSION = '1'
 
@@ -247,20 +248,33 @@ export async function analyzeUserProduction(params) {
   const natural_alternatives = buildAlternatives({ kb, structure, frame: semantics.topFrame, level, corrected_version, primaryError, text: trimmed })
   for (const s of naturalness_suggestions) if (!natural_alternatives.some((a) => a.text === s)) natural_alternatives.push({ text: s, tone: 'natural', from_naturalness: true })
 
-  // 7. Fusion → verdict, applying the assessment-mode-specific policy and the
-  //    hard safety rule that semantics alone cannot fail free production.
-  const fusion = fuseVerdict({
-    assessmentMode, detected_errors, structure, semantics, requestedIntent,
-    equivalentTarget, encoderReady: true, semanticEncoder, evidence, corrected_version,
-    natural_alternatives, kb,
-  })
-
   // Engine-effective reporting (requested vs effective, fallback events).
   const grammar_requested = /harper/.test(grammarChecker.engine || '') ? 'harper' : 'internal'
   const grammar_effective = grammar.ok ? (/(harper)/.test(grammar.engine || '') ? 'harper' : 'internal') : 'internal'
   const semReport = typeof semanticEncoder.report === 'function'
     ? semanticEncoder.report()
     : { requested_engine: semanticEncoder.kind || 'hashing', effective_engine: semanticEncoder.kind || 'hashing', fallback_used: false, fallback_reason: null }
+
+  // Slice V2.15: for equivalent mode, compute the ONE response↔target similarity
+  // the equivalence evaluator needs (reusing the encoder — no duplicate embeds
+  // of KB exemplars). Only done in equivalent mode, so free/guided pay nothing.
+  let equivalenceSimilarity = null
+  if (assessmentMode === 'equivalent' && equivalentTarget?.text) {
+    try {
+      const ranked = await semanticEncoder.rank(trimmed, [{ text: equivalentTarget.text }])
+      equivalenceSimilarity = ranked?.[0]?.score ?? null
+    } catch { equivalenceSimilarity = null }
+  }
+
+  // 7. Fusion → verdict, applying the assessment-mode-specific policy and the
+  //    hard safety rule that semantics alone cannot fail free production.
+  const fusion = fuseVerdict({
+    assessmentMode, detected_errors, structure, semantics, requestedIntent,
+    equivalentTarget, encoderReady: true, semanticEncoder, evidence, corrected_version,
+    natural_alternatives, kb,
+    equivalenceSimilarity, semanticEffective: semReport.effective_engine,
+  })
+
   const fallback_events = []
   if (!grammar.ok) fallback_events.push({ engine: 'grammar', code: grammar.code || 'GRAMMAR_ENGINE_UNAVAILABLE' })
   if (semReport.fallback_used) fallback_events.push({ engine: 'semantic', code: semReport.fallback_reason || 'SEMANTIC_FALLBACK' })
@@ -280,6 +294,8 @@ export async function analyzeUserProduction(params) {
     corrected_version: fusion.corrected_version ?? corrected_version,
     natural_alternatives: fusion.natural_alternatives ?? natural_alternatives,
     verdict: fusion.verdict, confidence: fusion.confidence, evidence,
+    // Slice V2.15: composite meaning-equivalence result (equivalent mode only).
+    semantic_equivalence: fusion.semantic_equivalence ?? null,
     engines: engineReport,
     fallback_events,
     knowledge_pack_versions: Object.fromEntries((kb.packs || []).map((p) => [p.manifest.pack_id, p.manifest.version])),
@@ -374,45 +390,50 @@ function fuseVerdict(ctx) {
   const hasHardError = detected_errors.some((e) => e.severity === 'high' || e.severity === 'critical')
   const hasSoftIssue = detected_errors.some((e) => e.severity === 'medium' || e.severity === 'low')
 
-  // Equivalent mode: meaning must match the target. Combine similarity with
-  // essential-word / intent evidence — never on similarity alone.
+  // Equivalent mode (Slice V2.15): meaning equivalence is decided by the COMPOSITE
+  // evidence evaluator — never by essential-token presence or similarity alone.
+  // Grammar still dominates (§17); an unambiguous error is a revision regardless
+  // of meaning. Otherwise the three-way result maps:
+  //   aligned      → valid (meaning preserved)
+  //   not_aligned  → needs_revision + a typed meaning_mismatch (semantic_context)
+  //   uncertain    → unable_to_assess (no fabricated error, §4/§29)
   if (assessmentMode === 'equivalent' && equivalentTarget) {
-    // Exact / paraphrase short-circuit: if the learner reproduced the target (or
-    // used every essential content word), it is a meaning match by definition.
-    const userNorm = normSurface(structure.sentences?.[0] || structure.tokens.join(' '))
-    const targetNorm = normSurface(equivalentTarget.text || '')
-    if (userNorm && userNorm === targetNorm) {
-      return { ...ctx, verdict: hasSoftIssue ? 'valid_with_suggestions' : 'valid', confidence: 0.9 }
+    const userText = structure.sentences?.[0] || structure.tokens.join(' ')
+    const eq = evaluateSemanticEquivalenceV2({
+      targetText: equivalentTarget.text || '',
+      responseText: userText,
+      essentialWords: equivalentTarget.essential_words || [],
+      similarity: ctx.equivalenceSimilarity ?? null,
+      engine: ctx.semanticEffective || semanticEncoder?.kind || 'hashing',
+      targetPolarity: equivalentTarget.polarity ?? null,
+    })
+    if (hasHardError) {
+      return { ...ctx, verdict: 'needs_revision', confidence: 0.9, semantic_equivalence: eq }
     }
-    const essential = (equivalentTarget.essential_words || []).map((w) => w.toLowerCase())
-    // Match essential CONTENT words against the normalized user surface (word
-    // boundaries), not the split-clitic token list — so contractions/morphology
-    // never cause false "missing word" mismatches.
-    const userWords = new Set(userNorm.split(' ').filter(Boolean))
-    const missingEssential = essential.filter((w) => !userWords.has(w))
-    // A missing essential CONTENT word signals a different meaning (e.g. target
-    // "The dessert is important" vs "Please give me a dessert" drops "important").
-    // Contractions/function words are excluded from `essential`, so exact answers
-    // and legitimate paraphrases keep all content words and pass.
-    const meaningMismatch = essential.length > 0 && missingEssential.length > 0
-    if (hasHardError) return { ...ctx, verdict: 'needs_revision', confidence: 0.9 }
-    if (meaningMismatch) {
+    if (eq.status === 'not_aligned') {
       return {
         ...ctx,
         verdict: 'needs_revision',
-        confidence: 0.8,
+        confidence: Math.max(0.6, eq.confidence),
+        semantic_equivalence: eq,
         detected_errors: [
           ...detected_errors,
           {
-            error_id: 'meaning_mismatch', category: 'meaning', subtype: 'equivalent_meaning', severity: 'high', confidence: 0.8,
+            error_id: 'meaning_mismatch', category: 'meaning', subtype: 'equivalent_meaning', severity: 'high', confidence: eq.confidence,
             message: 'A frase está gramaticalmente correta, mas o significado não corresponde ao pedido.',
             explanation_pt: { title: 'Significado diferente', summary: `A frase esperada fala sobre: "${equivalentTarget.text}". Sua frase tem outro sentido.` },
-            source: 'semantic_equivalence',
+            source: 'semantic_equivalence', reason_codes: eq.reason_codes,
           },
         ],
       }
     }
-    return { ...ctx, verdict: hasSoftIssue ? 'valid_with_suggestions' : 'valid', confidence: 0.7 }
+    if (eq.status === 'uncertain') {
+      // Not enough evidence to confirm OR reject meaning — do not invent an error
+      // and do not falsely pass. unable_to_assess maps to not_assessed downstream.
+      return { ...ctx, verdict: 'unable_to_assess', confidence: eq.confidence, semantic_equivalence: eq }
+    }
+    // aligned
+    return { ...ctx, verdict: hasSoftIssue ? 'valid_with_suggestions' : 'valid', confidence: Math.max(0.7, eq.confidence), semantic_equivalence: eq }
   }
 
   // Guided mode: confirm the requested frame/intent is present (structure is the

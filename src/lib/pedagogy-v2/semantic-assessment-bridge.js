@@ -73,6 +73,11 @@ export function validateSemanticAssessmentMetadataV2(meta, { referenceText = nul
         if (!wordInText(referenceText, w)) errors.push('SEMANTIC_TARGET_REFERENCES_NON_AUTHORED_TEXT')
       }
     }
+    // Slice V2.15: optional authored polarity (needed for targets whose meaning
+    // is negative without a negation marker, e.g. "yet"). Only two valid values.
+    if (meta.polarity != null && meta.polarity !== 'affirmative' && meta.polarity !== 'negative') {
+      errors.push('INVALID_SEMANTIC_POLARITY')
+    }
   } else if (strategy === 'guided_intent') {
     if (!meta.requested_intent || !KNOWN_SEMANTIC_INTENTS.includes(meta.requested_intent)) errors.push('INVALID_REQUESTED_INTENT')
   }
@@ -130,7 +135,7 @@ export function buildSemanticAssessmentRequestV2({ plan, text, responseType = 't
       reference_text: plan.text_en,
       response_type: responseType,
       requested_intent: null,
-      equivalent_target: { text: plan.text_en, essential_words: [...essential] },
+      equivalent_target: { text: plan.text_en, essential_words: [...essential], polarity: meta.polarity ?? null },
       context,
       provenance: { source, reason: 'AUTHORED_EQUIVALENT_TARGET', ...provenanceBase },
       fallback_reason: null,

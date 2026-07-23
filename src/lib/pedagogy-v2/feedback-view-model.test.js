@@ -290,3 +290,21 @@ describe('§14/§32.21 — feedback VM prioritizes the diagnosis', () => {
     expect(vm.suggestions.length).toBeGreaterThan(0)
   })
 })
+
+// ---- Slice V2.15 §22 — semantic-equivalence-aware learner copy --------------
+describe('§22 — meaning-equivalence feedback copy', () => {
+  const semAssess = (o) => ({ status: o.status, outcome: o.outcome, assessment_confidence: 0.4, feedback: { kind: 'semantic' }, diagnosis: o.diagnosis })
+  it('uncertain equivalence → honest "could not confirm" copy, no invented error', () => {
+    const a = semAssess({ status: 'unable_to_assess', outcome: 'not_assessed', diagnosis: diag({ semantic_relation: { status: 'uncertain' }, cause_coverage: 'none', primary_cause: { category: 'unknown', code: 'SEMANTIC_EQUIVALENCE_UNCERTAIN', source: 'semantic_equivalence' } }) })
+    const vm = buildV2FeedbackViewModel({ plan: productionPlan(), response: textResponse('The plan is very good.'), assessment: a })
+    expect(vm.issues).toEqual([])
+    expect(vm.diagnostics.note).toMatch(/não consegui confirmar/i)
+  })
+  it('aligned meaning + different target form → reassuring target-form note', () => {
+    const a = { status: 'assessed', outcome: 'correct', assessment_confidence: 0.85, feedback: { kind: 'semantic' },
+      diagnosis: diag({ semantic_relation: { status: 'aligned' }, target_form_relation: { status: 'different_form' }, cause_coverage: 'specific' }) }
+    const vm = buildV2FeedbackViewModel({ plan: productionPlan(), response: textResponse('The coffee remains warm.'), assessment: a })
+    expect(vm.target_form_note).toMatch(/comunica a ideia/i)
+    expect(vm.issues.some((i) => i.category === 'semantic_context')).toBe(false)
+  })
+})
