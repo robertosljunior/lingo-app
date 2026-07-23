@@ -112,9 +112,10 @@ describe('V2NewUseBanner / V2PackTransition', () => {
     expect(html).not.toMatch(/KNOWN_|CROSS_PACK|reason_code|line-through/i)
   })
 
-  it('pack transition shows a headline and never struck-through content (§16)', () => {
-    const html = renderToStaticMarkup(<V2PackTransition transition={{ from_label: 'still', to_label: 'yet', headline: 'Agora vamos ver “yet”.', subhead: 'Uma nova maneira — o que você já viu continua valendo.', cross_pack_hint: null }} />)
-    expect(html).toContain('Agora vamos ver')
+  it('pack transition shows a NEUTRAL headline, no “Novo uso” claim, no strike-through (V2.17-R §3/§16)', () => {
+    const html = renderToStaticMarkup(<V2PackTransition transition={{ from_label: 'still', to_label: 'yet', headline: 'Agora vamos praticar “yet”.', subhead: 'Vamos continuar sua prática.', cross_pack_hint: null }} />)
+    expect(html).toContain('Agora vamos praticar')
+    expect(html).not.toMatch(/novo uso|nova maneira/i)
     expect(html).not.toMatch(/line-through|text-decoration:\s*line/i)
   })
 })
@@ -129,12 +130,22 @@ describe('V2SessionSummary / V2LessonHeader', () => {
     expect(html).not.toMatch(/%|CEFR|domínio|master/i)
   })
 
-  it('header shows a factual counter and a progressbar with NO fake denominator (§26)', () => {
+  it('header shows a factual counter and NO artificial progress bar (V2.17-R §1)', () => {
     const html = renderToStaticMarkup(<V2LessonHeader focusLabel="still" activityNumber={4} onClose={noop} />)
     expect(html).toContain('Atividade 4')
-    expect(html).toContain('role="progressbar"')
-    // No "step / total" style denominator.
-    expect(html).not.toMatch(/\bde\s+\d+\b|\/\s*\d+/)
+    // No progress bar semantics or implicit denominator.
+    expect(html).not.toContain('role="progressbar"')
+    expect(html).not.toMatch(/aria-valuenow|aria-valuemax|aria-valuetext/i)
+    expect(html).not.toContain('v2lx-progress-fill')
+    expect(html).not.toMatch(/width:\s*\d+%/) // no width driven by activity number
+    expect(html).not.toMatch(/\bde\s+\d+\b|\/\s*\d+/) // no "N de M" / "N/M"
+  })
+
+  it('header progress is independent of the activity number (no growing fill)', () => {
+    const a = renderToStaticMarkup(<V2LessonHeader focusLabel="still" activityNumber={1} onClose={noop} />)
+    const b = renderToStaticMarkup(<V2LessonHeader focusLabel="still" activityNumber={9} onClose={noop} />)
+    // Only the counter text differs; no width/percentage grows between them.
+    expect(a.replace('Atividade 1', 'Atividade N')).toBe(b.replace('Atividade 9', 'Atividade N'))
   })
 })
 

@@ -78,8 +78,11 @@ export default function V2LessonExperience() {
       transition: s.transition,
       registry,
       recordedEvidence: s.recordedEvents,
+      // Learner state from the planning context (built BEFORE this activity) —
+      // lets the adapter prove real familiarity with the current lexeme (§2).
+      learnerStates: s.context?.learner_states ?? null,
     })
-  }, [s?.plan, s?.assessment, s?.pendingResponse, s?.focus, s?.transition, registry, s?.recordedEvents])
+  }, [s?.plan, s?.assessment, s?.pendingResponse, s?.focus, s?.transition, registry, s?.recordedEvents, s?.context])
 
   const summary = useMemo(() => {
     if (s?.status !== 'complete') return null

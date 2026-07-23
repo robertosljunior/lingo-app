@@ -27,7 +27,6 @@
 //       codes), never inferred from an ActivityPlan change.
 
 import { buildV2FeedbackViewModel } from './feedback-view-model.js'
-import { summarizeStudySessionV2 } from './study-session-controller.js'
 import { getLexemeAcrossRegistry, getPedagogyPack } from './registry.js'
 
 export const LEARNER_PRESENTATION_VERSION = 1
@@ -228,46 +227,87 @@ function lemmaForPack(packId, plan, registry) {
 }
 
 /**
- * New-use presentation (§14/§15/§16). Returns a learner-facing banner ONLY when
- * the focus carries a structured new-use reason code AND a known word is
- * available. The previous use is NEVER framed as replaced or wrong (§16 — no
- * strike-through; that is enforced in the component too).
+ * Structured proof that THIS lexeme was encountered before (V2.17-R §2). A
+ * new-use RELATION reason code proves related knowledge of a function or a
+ * construction — it does NOT prove the learner has met the current word. We only
+ * claim familiarity when a target of the focus's pack (its own senses /
+ * constructions) already has real exposure in the learner state built BEFORE
+ * this activity. No learnerStates / registry ⇒ cannot prove ⇒ false.
  */
-function buildNewUse({ focus, plan, registry }) {
+function lexemeIsFamiliarV2({ focus, registry, learnerStates }) {
+  if (!Array.isArray(learnerStates) || !learnerStates.length) return false
+  const packId = focus?.pack_id
+  if (!packId || !registry) return false
+  const pack = getPedagogyPack(packId, registry)
+  if (!pack) return false
+  const targetIds = new Set()
+  for (const s of pack.senses || []) targetIds.add(s.sense_id)
+  for (const c of pack.constructions || []) targetIds.add(c.construction_id)
+  if (!targetIds.size) return false
+  return learnerStates.some((st) => targetIds.has(st?.target?.target_id) && (st?.exposure?.count || 0) > 0)
+}
+
+/**
+ * New-use presentation (§14/§15/§16 + V2.17-R §2). The affirmation "Você já
+ * conhece {word}." requires STRUCTURED evidence that the current lexeme was met
+ * before — never inferred from a relation reason code alone. When a useful new-
+ * use relation exists but familiarity cannot be proven, a NEUTRAL headline is
+ * used (never claiming the learner already knows this word). The previous use is
+ * never framed as replaced or wrong (§16 — no strike-through).
+ */
+function buildNewUse({ focus, plan, registry, learnerStates }) {
   if (!focus) return null
   const codes = focus.reason_codes || []
   const isNewUse = codes.some((c) => NEW_USE_REASON_CODES.includes(c))
   if (!isNewUse) return null
   const word = lemmaForPack(focus.pack_id, plan, registry)
-  if (!word) return null
-  const crossPack = codes.some((c) => CROSS_PACK_REASON_CODES.includes(c))
+  // Cross-pack hint derives from the CURRENT focus reason codes (correct
+  // provenance), and never exposes the code itself (§18/§3).
+  const crossHint = codes.some((c) => CROSS_PACK_REASON_CODES.includes(c))
+    ? 'Esta ideia se conecta a algo que você já praticou.'
+    : null
+
+  if (word && lexemeIsFamiliarV2({ focus, registry, learnerStates })) {
+    return {
+      known_word: word,
+      headline: `Você já conhece “${word}”.`,
+      subhead: 'Agora veja outra maneira de usar essa palavra.',
+      // The old use stays valid — reassurance, never a correction.
+      reassurance: 'O que você já sabia continua valendo.',
+      cross_pack_hint: crossHint,
+    }
+  }
+  // Useful relation but no proof of familiarity with the current word (§2).
   return {
-    known_word: word,
-    headline: `Você já conhece “${word}”.`,
-    subhead: 'Agora veja outra maneira de usar essa palavra.',
-    // The old use stays valid — reassurance, never a correction.
-    reassurance: 'O que você já sabia continua valendo.',
-    cross_pack_hint: crossPack ? 'Esta ideia se conecta a algo que você já praticou.' : null,
+    known_word: null,
+    headline: 'Veja uma nova forma de expressar esta ideia.',
+    subhead: null,
+    reassurance: null,
+    cross_pack_hint: crossHint,
   }
 }
 
 /**
- * Pack-transition presentation (§17). This is a PRESENTATIONAL interstitial
- * only — it is NOT an ActivityPlan and produces NO evidence/target/Learner
- * Model change. Derived from the controller's `transition` ({from_pack,
- * to_pack, code}); the old form is never struck through (§16).
+ * Pack-transition presentation (§17 + V2.17-R §3). A pack switch is NOT
+ * automatically a new use, so the copy is NEUTRAL — it never claims "a new way
+ * to use a word". This is a PRESENTATIONAL interstitial only (no evidence /
+ * target / Learner Model change); the old form is never struck through (§16).
+ * The cross-pack hint derives from the CURRENT focus reason codes — NOT from
+ * `transition.code`, which comes from the PACK_SWITCH_* family and is the wrong
+ * provenance (§3).
  */
-function buildTransition({ transition, plan, registry }) {
+function buildTransition({ transition, plan, registry, focus }) {
   if (!transition || !transition.to_pack) return null
   const fromLemma = lemmaForPack(transition.from_pack, null, registry)
   const toLemma = lemmaForPack(transition.to_pack, plan, registry)
-  const crossPack = transition.code && CROSS_PACK_REASON_CODES.includes(transition.code)
+  const crossPack = (focus?.reason_codes || []).some((c) => CROSS_PACK_REASON_CODES.includes(c))
   return {
     from_label: fromLemma,
     to_label: toLemma,
-    headline: toLemma ? `Agora vamos ver “${toLemma}”.` : 'Novo uso',
-    subhead: 'Uma nova maneira de usar uma palavra — o que você já viu continua valendo.',
-    cross_pack_hint: crossPack ? 'Esta ideia lembra um contraste que você já praticou.' : null,
+    // Neutral — a pack switch does not imply a new use (§3).
+    headline: toLemma ? `Agora vamos praticar “${toLemma}”.` : 'Vamos continuar',
+    subhead: 'Vamos continuar sua prática.',
+    cross_pack_hint: crossPack ? 'Esta ideia se conecta a algo que você já praticou.' : null,
   }
 }
 
@@ -305,6 +345,7 @@ export function buildLearnerPresentationV2({
   transition = null,
   registry = null,
   recordedEvidence = null,
+  learnerStates = null,
 } = {}) {
   const feedback = buildLearnerFeedback({ plan, response, assessment, recordedEvidence })
   const focusLabel = lemmaForPack(focus?.pack_id, plan, registry)
@@ -313,8 +354,8 @@ export function buildLearnerPresentationV2({
     activity: buildActivityPresentation({ plan }),
     focus: focus ? { label: focusLabel } : null,
     feedback,
-    new_use: buildNewUse({ focus, plan, registry }),
-    transition: buildTransition({ transition, plan, registry }),
+    new_use: buildNewUse({ focus, plan, registry, learnerStates }),
+    transition: buildTransition({ transition, plan, registry, focus }),
     session_summary: null,
   }
 }
@@ -327,7 +368,6 @@ export function buildLearnerPresentationV2({
  */
 export function buildLearnerSessionSummaryV2({ interactions = [], registry = null } = {}) {
   const facts = []
-  const summary = summarizeStudySessionV2(interactions)
 
   // Activities practiced — always a verifiable fact.
   const n = interactions.length
@@ -343,16 +383,10 @@ export function buildLearnerSessionSummaryV2({ interactions = [], registry = nul
     facts.push({ icon: '↔', text: `Você praticou ${list}.` })
   }
 
-  // Distinct authored "uses" (constructions + senses) encountered for the
-  // primary lemma — an OBJECTIVELY derivable count (§27), only when > 1 and a
-  // single lemma dominates the session.
-  const lemmas = summary.lemmas_practiced
-  if (lemmas.length === 1) {
-    const usesCount = summary.constructions_practiced + summary.senses_encountered
-    if (usesCount >= 2) {
-      facts.push({ icon: `${usesCount}`, text: `${usesCount} formas de usar “${lemmas[0]}” encontradas.` })
-    }
-  }
+  // NOTE (V2.17-R §4): we intentionally do NOT report "N formas de usar X". Sense
+  // and construction are DISTINCT dimensions that can describe the SAME use, so
+  // summing them is not a verifiable "usage count". A real learner-facing usage
+  // unit must be defined first; until then only provable facts are shown.
 
   // New use(s) introduced this session — from focus new-target flags.
   const newUseLemmas = [...new Set(interactions

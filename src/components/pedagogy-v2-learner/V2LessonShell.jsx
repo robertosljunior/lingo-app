@@ -93,7 +93,7 @@ export default function V2LessonShell({
   if (status === 'error') {
     return (
       <div className="v2lx-shell v2lx" data-reduced-motion={reducedMotion || undefined} data-testid="v2lx-shell">
-        <V2LessonHeader focusLabel={presentation?.focus?.label} activityNumber={activityNumber} onClose={requestClose} reducedMotion={reducedMotion} />
+        <V2LessonHeader focusLabel={presentation?.focus?.label} activityNumber={activityNumber} onClose={requestClose} />
         <div className="v2lx-scroll"><div className="v2lx-content">
           <div className="v2lx-card" data-testid="v2lx-error">
             <div style={{ fontWeight: 900, fontSize: 17 }}>Algo deu errado</div>

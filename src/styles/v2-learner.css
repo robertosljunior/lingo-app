@@ -95,8 +95,11 @@
 .v2lx-shell { display: flex; flex-direction: column; height: 100%; overflow: hidden; background: var(--v2-bg); }
 .v2lx-header { flex: none; padding: 8px 20px 12px; }
 .v2lx-headrow { display: flex; align-items: center; gap: 12px; }
-.v2lx-progress-track { flex: 1; height: 10px; background: var(--v2-line); border-radius: 999px; overflow: hidden; }
-.v2lx-progress-fill { height: 100%; background: var(--v2-primary); border-radius: 999px; transition: width 400ms var(--v2-ease); }
+/* Neutral header spacer — pushes the focus chip right. NOT a progress bar: no
+   width driven by activity number (V2.17-R §1). */
+.v2lx-head-spacer { flex: 1; }
+/* Static decorative divider under the header — fixed, never grows. */
+.v2lx-head-divider { height: 1px; background: var(--v2-line); border-radius: 999px; margin-top: 10px; }
 .v2lx-focus-chip { flex: none; display: inline-flex; align-items: center; gap: 5px; background: var(--v2-surface-alt); color: var(--v2-primary); font-weight: 800; font-size: 12px; padding: 6px 10px; border-radius: 999px; }
 .v2lx-iconbtn { border: none; background: var(--v2-surface-alt); width: 40px; height: 40px; min-width: 44px; min-height: 44px; border-radius: 12px; cursor: pointer; font-size: 18px; font-weight: 900; color: var(--v2-muted); display: inline-flex; align-items: center; justify-content: center; }
 
@@ -188,7 +191,6 @@ textarea.v2lx-input { resize: none; }
   .v2lx-fb,
   .v2lx-rise { animation: none !important; }
   .v2lx-mic[data-mic="listening"] { animation: none !important; }
-  .v2lx-progress-fill { transition: none !important; }
 }
 /* The app also exposes an explicit toggle; when set, the shell adds
    `data-reduced-motion="true"` which mirrors the media query (§30). */
@@ -197,4 +199,3 @@ textarea.v2lx-input { resize: none; }
 .v2lx[data-reduced-motion="true"] .v2lx-fb,
 .v2lx[data-reduced-motion="true"] .v2lx-rise { animation: none !important; }
 .v2lx[data-reduced-motion="true"] .v2lx-mic[data-mic="listening"] { animation: none !important; }
-.v2lx[data-reduced-motion="true"] .v2lx-progress-fill { transition: none !important; }
