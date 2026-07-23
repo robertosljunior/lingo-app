@@ -84,6 +84,14 @@ function KV({ k, v }) {
 
 function targetStr(t) { return t ? `${t.target_type} ${t.target_id}` : '—' }
 
+// Raw assessment for display: the semantic_result (shown in its own section) is
+// stripped here so the two panels don't duplicate the same large payload.
+function rawAssessmentForDisplay(assessment) {
+  if (!assessment) return assessment
+  const { semantic_result, ...rest } = assessment // eslint-disable-line no-unused-vars
+  return rest
+}
+
 // ---- feedback (built from the PURE view model) ------------------------------
 
 function FeedbackView({ plan, response, assessment, recordedEvidence }) {
@@ -137,6 +145,13 @@ function FeedbackView({ plan, response, assessment, recordedEvidence }) {
           <ul data-testid="v2pg-suggestions" style={{ margin: '4px 0 0', paddingLeft: 18, fontSize: 14 }}>
             {vm.suggestions.map((s, i) => <li key={i}>{s.text}</li>)}
           </ul>
+        </div>
+      )}
+
+      {vm.target_form_note && (
+        <div style={{ marginTop: 10 }}>
+          <div className="label-eyebrow">Forma-alvo</div>
+          <p data-testid="v2pg-target-form-note" style={{ fontSize: 13, margin: 0 }}>{vm.target_form_note}</p>
         </div>
       )}
 
@@ -208,6 +223,27 @@ function DiagnosticsPanel({ focus, plan, response, assessment, plannedEvidence, 
           </section>
         )}
 
+        {assessment?.diagnosis && (
+          <section data-testid="v2pg-diag-diagnosis">
+            <div className="label-eyebrow">Assessment Diagnosis</div>
+            <KV k="cause coverage" v={assessment.diagnosis.cause_coverage} />
+            <KV k="primary cause" v={assessment.diagnosis.primary_cause
+              ? `${assessment.diagnosis.primary_cause.category} · ${assessment.diagnosis.primary_cause.code}`
+              : '— (nenhuma / correto)'} />
+            <KV k="primary severity" v={assessment.diagnosis.primary_cause?.severity} />
+            <KV k="primary confidence" v={assessment.diagnosis.primary_cause?.confidence} />
+            <KV k="primary source" v={assessment.diagnosis.primary_cause?.source} />
+            <KV k="semantic relation" v={assessment.diagnosis.semantic_relation?.status} />
+            <KV k="target form relation" v={assessment.diagnosis.target_form_relation?.status} />
+            {(assessment.diagnosis.causes || []).map((c, i) => (
+              <KV key={i} k={`cause[${i}]`} v={`${c.category}/${c.severity ?? '—'} · ${c.code} · src=${c.source}${c.origin ? ` (${c.origin})` : ''}`} />
+            ))}
+            {(assessment.diagnosis.positive_findings || []).map((p, i) => (
+              <KV key={`p${i}`} k={`positive[${i}]`} v={`${p.code} · src=${p.source}`} />
+            ))}
+          </section>
+        )}
+
         <section data-testid="v2pg-diag-planned-evidence">
           <div className="label-eyebrow">Planned evidence</div>
           {planned.length === 0 ? <div className="muted">—</div> : planned.map((pe, i) => (
@@ -229,10 +265,16 @@ function DiagnosticsPanel({ focus, plan, response, assessment, plannedEvidence, 
           </section>
         )}
 
+        {assessment?.semantic_result && (
+          <section data-testid="v2pg-diag-raw-semantic">
+            <div className="label-eyebrow">Raw semantic result (em memória — não persistido)</div>
+            <pre data-testid="v2pg-raw-semantic" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontSize: 11, margin: 0 }}>{JSON.stringify(assessment.semantic_result, null, 1)}</pre>
+          </section>
+        )}
         {assessment && (
           <section data-testid="v2pg-diag-raw">
             <div className="label-eyebrow">Raw assessment</div>
-            <pre data-testid="v2pg-raw-assessment" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontSize: 11, margin: 0 }}>{JSON.stringify(assessment, null, 1)}</pre>
+            <pre data-testid="v2pg-raw-assessment" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontSize: 11, margin: 0 }}>{JSON.stringify(rawAssessmentForDisplay(assessment), null, 1)}</pre>
           </section>
         )}
         {vm && (
@@ -241,6 +283,7 @@ function DiagnosticsPanel({ focus, plan, response, assessment, plannedEvidence, 
             <pre data-testid="v2pg-feedback-vm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontSize: 11, margin: 0 }}>{JSON.stringify({
               status: vm.status, headline: vm.headline, correct_points: vm.correct_points,
               issues: vm.issues, suggestions: vm.suggestions, target_form: vm.target_form,
+              target_form_note: vm.target_form_note,
             }, null, 1)}</pre>
           </section>
         )}
@@ -640,8 +683,11 @@ function SandboxMode({ registry }) {
   const { capabilities: capOptions } = useAffordanceOptions(availability)
   const [sel, setSel] = useState(() => {
     const pack = registry.packs[0]
-    // Default to a production domain so a manual text answer is natural.
-    return { packId: pack.manifest.pack_id, target: packReferencedTargetsV2(pack)[0], capability: capOptions.includes('controlled_production') ? 'controlled_production' : (capOptions[0] || 'recognition'), modality: 'writing' }
+    // Default to FREE production / writing: it is always a single text-answerable
+    // recipe, ideal for comparing arbitrary responses on the same activity (§16).
+    const capability = capOptions.includes('free_production') ? 'free_production'
+      : (capOptions.includes('controlled_production') ? 'controlled_production' : (capOptions[0] || 'recognition'))
+    return { packId: pack.manifest.pack_id, target: packReferencedTargetsV2(pack)[0], capability, modality: 'writing' }
   })
   const [plan, setPlan] = useState(null)
   const [decision, setDecision] = useState(null)

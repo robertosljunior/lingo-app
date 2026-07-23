@@ -222,3 +222,71 @@ describe('§17/§19 — presented feedback is traceable to the raw assessment', 
     expect(JSON.stringify(vm)).not.toMatch(/skill_id|grammar_skill_v1/)
   })
 })
+
+// ---- §14/§32.21 — the view model CONSUMES the typed diagnosis ---------------
+
+const diag = (fields) => ({ diagnosis_version: 1, primary_cause: null, causes: [], positive_findings: [], target_form_relation: { status: 'unknown' }, semantic_relation: { status: 'unknown' }, cause_coverage: 'none', ...fields })
+
+describe('§14/§32.21 — feedback VM prioritizes the diagnosis', () => {
+  it('routes grammar/lexical/semantic causes to issues and naturalness to suggestions', () => {
+    const assessment = {
+      ...semanticAssessment({ verdict: 'needs_revision' }, { outcome: 'incorrect', partial: null }),
+      diagnosis: diag({
+        cause_coverage: 'specific',
+        primary_cause: { category: 'grammar', code: 'AGR', source: 'structured_error', severity: 'high', explanation: { title: 'Concordância', summary: 'Use is.' } },
+        causes: [
+          { category: 'grammar', code: 'AGR', source: 'structured_error', severity: 'high', explanation: { title: 'Concordância', summary: 'Use is.' } },
+          { category: 'naturalness', code: 'NAT', source: 'semantic_engine', severity: 'low', explanation: { summary: 'high soa melhor' } },
+        ],
+      }),
+    }
+    const vm = buildV2FeedbackViewModel({ plan: productionPlan(), response: textResponse('This price are high.'), assessment })
+    expect(vm.issues).toHaveLength(1)
+    expect(vm.issues[0].category).toBe('grammar')
+    expect(vm.issues[0].source).toBe('structured_error')
+    expect(vm.suggestions.some((s) => /soa melhor/.test(s.text))).toBe(true)
+    expect(vm.diagnostics.diagnosis_present).toBe(true)
+    expect(vm.diagnostics.cause_coverage).toBe('specific')
+  })
+
+  it('a target_form cause becomes a note, never an issue (§14)', () => {
+    const assessment = {
+      status: 'assessed', outcome: 'incorrect', assessment_confidence: 1,
+      feedback: { kind: 'completion', expected_tokens: ['yet'], given: ['no'] },
+      diagnosis: diag({
+        cause_coverage: 'specific',
+        primary_cause: { category: 'target_form', code: 'FIXED_ELEMENT_MISMATCH', source: 'deterministic_comparison', severity: null, explanation: { summary: 'Não corresponde à forma esperada.' } },
+        causes: [{ category: 'target_form', code: 'FIXED_ELEMENT_MISMATCH', source: 'deterministic_comparison', severity: null, explanation: { summary: 'Não corresponde à forma esperada.' } }],
+        target_form_relation: { status: 'different_form' },
+      }),
+    }
+    const vm = buildV2FeedbackViewModel({ plan: productionPlan({ recipe: 'fixed_element_completion' }), response: textResponse('no'), assessment })
+    expect(vm.issues).toEqual([])
+    expect(vm.target_form_note).toBeTruthy()
+  })
+
+  it('§9/§34 — diagnosis cause_coverage none → honest note, no invented issue', () => {
+    const assessment = {
+      ...semanticAssessment({ verdict: 'needs_revision' }, { outcome: 'partial', partial: 0.5 }),
+      diagnosis: diag({ cause_coverage: 'none', primary_cause: { category: 'unknown', code: 'X', source: 'semantic_engine' } }),
+    }
+    const vm = buildV2FeedbackViewModel({ plan: productionPlan(), response: textResponse('This is high price.'), assessment })
+    expect(vm.issues).toEqual([])
+    expect(vm.suggestions).toEqual([])
+    expect(vm.diagnostics.note).toMatch(/não forneceu uma causa/i)
+  })
+
+  it('§22 — a naturalness diagnosis cause never lands in issues (invariant)', () => {
+    const assessment = {
+      ...semanticAssessment({ verdict: 'valid_with_suggestions' }, { outcome: 'correct', partial: null }),
+      diagnosis: diag({
+        cause_coverage: 'specific',
+        causes: [{ category: 'naturalness', code: 'NAT', source: 'semantic_engine', severity: 'low', explanation: { summary: 'mais natural' } }],
+      }),
+    }
+    const vm = buildV2FeedbackViewModel({ plan: productionPlan(), response: textResponse('The price is very expensive.'), assessment })
+    expect(vm.issues.some((i) => i.category === 'grammar')).toBe(false)
+    expect(vm.issues).toEqual([])
+    expect(vm.suggestions.length).toBeGreaterThan(0)
+  })
+})
