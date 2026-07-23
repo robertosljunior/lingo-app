@@ -70,6 +70,7 @@ async function runOne(id, args, profileName) {
     serialized_scenario_hashlen: serializeScenarioV2(scenario).length,
     interactions: result.interactions.length,
     metrics, trajectory, findings,
+    focus_materialization: result.focus_materialization ?? null, // Slice V2.16 (§26)
     curriculum_saturation: computeCurriculumSaturationV2(result),
   }
   if (args.windowed) {
@@ -90,6 +91,8 @@ function printText(summary) {
   lines.push(`  review ratio: ${m.review_ratio.ratio} · pack switches: ${m.pack_switch.count} ${JSON.stringify(m.pack_switch.reasons)}`)
   lines.push(`  cross-pack transfer: ${m.cross_pack_transfer.total}`)
   lines.push(`  repetition (target/pack/modality): ${m.repetition_pressure.same_target}/${m.repetition_pressure.same_pack}/${m.repetition_pressure.same_modality}`)
+  const fm = summary.focus_materialization
+  if (fm) lines.push(`  focus resolution: rate ${fm.focus_materialization_rate} · mean rank ${fm.mean_selected_rank} · mean rejected ${fm.mean_rejected_before_selection} · max rejected ${fm.max_rejected_before_selection} · no_materializable ${fm.no_materializable_focus_count} · reasons ${JSON.stringify(fm.rejection_reason_distribution)}`)
   const bySeverity = { error: [], warning: [], info: [] }
   for (const f of summary.findings) bySeverity[f.severity].push(f.code)
   lines.push(`  findings — error: ${bySeverity.error.join(',') || 'none'} · warning: ${[...new Set(bySeverity.warning)].join(',') || 'none'}`)

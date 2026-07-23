@@ -17,9 +17,9 @@ import { getPersona } from './simulation-personas.js'
 import { simulatePersonaResponseV2, SimulationAssessmentServiceV2 } from './simulation-response-model.js'
 import { loadPedagogyV2Registry, resolvePedagogyEntity, resolvePedagogyExemplar } from './registry.js'
 import { createStudySessionV2, advanceStudySessionV2 } from './study-planner-contracts.js'
-import { selectNextStudyFocusV2, studyFocusToLessonScopeV2, studyFocusKeyV2 } from './study-planner.js'
-import { selectNextActivityV2 } from './lesson-engine.js'
-import { createLessonSessionV2, appendActivityToSessionV2 } from './lesson-engine-contracts.js'
+import { studyFocusKeyV2 } from './study-planner.js'
+import { appendActivityToSessionV2 } from './lesson-engine-contracts.js'
+import { resolveNextStudyActivityV2, buildFocusMaterializationMetricsV2, detectMaterializationRejectionPressureV2 } from './study-focus-resolver.js'
 import { validateActivityResponseV2 } from './activity-runtime-validator.js'
 import { evaluateActivityResponseV2 } from './activity-assessment.js'
 import { finalizeSupportUsage, buildInteractionIdV2 } from './activity-runtime-contracts.js'
@@ -77,40 +77,27 @@ function compactPlan(plan) {
   }
 }
 
-/** Mirror of the study session controller's planNext (bounded re-planning).
- * Slice V2.11 structural fix: the old cap of 6 suppression attempts starved
- * runs once the candidate pool grew (three packs put many same-family focuses
- * — e.g. comprehension/listening gaps whose exemplar prerequisites the engine
- * still rejects — above servable ones). Each attempt suppresses one focus key,
- * so walking the pool terminates naturally; the guard is just a hard stop. */
+/** Planner→Engine materialization, delegated to the SHARED resolver (Slice
+ * V2.16). The simulation no longer mirrors the suppression walk; it keeps the
+ * same adapter shape so the rest of the runner is unchanged. Termination is by
+ * candidate exhaustion (no magic cap), identical to the real controller. */
 function planNext({ registry, learnerStates, recentEvidence, studySession, policy, availability, allowedPackIds, profileId, now, lessonSessions, makeLessonSessionId }) {
-  const suppressed = []
-  for (let attempt = 0; attempt < 60; attempt++) {
-    const plannerDecision = selectNextStudyFocusV2({
-      registry, learnerStates, recentEvidence, studySession,
-      policy: policy.planner, runtimeAvailability: availability, allowedPackIds,
-      suppressedFocusKeys: suppressed,
-    })
-    if (plannerDecision.status !== 'focus') return { complete: true, plannerDecision }
-    const focus = plannerDecision.focus
-    const { scope, focus: engineFocus, policyOverride } = studyFocusToLessonScopeV2(focus, registry)
-    let lessonSession = lessonSessions[focus.pack_id]
-      ?? createLessonSessionV2({ session_id: makeLessonSessionId(focus.pack_id), profile_id: profileId, now })
-    const runEngine = (session) => selectNextActivityV2({
-      session, scope, focus: engineFocus,
-      learnerStates, recentEvidence,
-      policy: { ...policy.engine, ...policyOverride },
-      runtimeAvailability: availability,
-    })
-    let engineDecision = runEngine(lessonSession)
-    if (engineDecision.status === 'session_complete') {
-      lessonSession = createLessonSessionV2({ session_id: makeLessonSessionId(focus.pack_id), profile_id: profileId, now })
-      engineDecision = runEngine(lessonSession)
+  const resolution = resolveNextStudyActivityV2({
+    registry, learnerStates, recentEvidence, studySession, lessonSessions,
+    plannerPolicy: policy.planner, enginePolicy: policy.engine,
+    runtimeAvailability: availability, allowedPackIds, profileId, now, makeLessonSessionId,
+  })
+  if (resolution.status === 'activity') {
+    return {
+      complete: false,
+      focus: resolution.focus,
+      plannerDecision: resolution.planner_decision,
+      engineDecision: resolution.engine_decision,
+      lessonSession: resolution.lesson_session,
+      resolution,
     }
-    if (engineDecision.status === 'activity') return { focus, plannerDecision, engineDecision, lessonSession }
-    suppressed.push(studyFocusKeyV2(focus))
   }
-  return { complete: true, plannerDecision: null }
+  return { complete: true, plannerDecision: resolution.planner_decision ?? null, resolution }
 }
 
 function assertInvariants({ i, mode, focus, plan, planned, availability, affordances, registry, events, profileId, response, studySessionBudget }) {
@@ -285,6 +272,7 @@ export async function runSimulationV2(scenario, opts = {}) {
   })
   const lessonSessions = {}
   const interactions = []
+  const resolutions = [] // Slice V2.16 — focus-resolution traces for metrics (§21)
   let lastNow = studySession.now
 
   for (let i = 0; i < scenario.maximum_interactions; i++) {
@@ -323,6 +311,7 @@ export async function runSimulationV2(scenario, opts = {}) {
       registry, learnerStates, runtimeAffordances: affordances,
       engineLevelAffordances, thresholds: plannerThresholds,
     })
+    if (planned.resolution) resolutions.push({ status: planned.resolution.status, resolution_trace: planned.resolution.resolution_trace })
     if (planned.complete) break
 
     const { focus, plannerDecision, engineDecision } = planned
@@ -419,6 +408,12 @@ export async function runSimulationV2(scenario, opts = {}) {
     evidence_generated: evidence.filter((e) => !(scenario.initial_evidence || []).some((s) => s.evidence_id === e.evidence_id)),
     final_learner_states: finalLearnerStates,
     final_review_queue: finalReviewQueue,
+    // Slice V2.16 — focus-materialization observability (§21/§22). Architecture
+    // metrics only; never fed to the Planner.
+    focus_materialization: (() => {
+      const metrics = buildFocusMaterializationMetricsV2(resolutions)
+      return { ...metrics, findings: detectMaterializationRejectionPressureV2(metrics) }
+    })(),
     invariants: { checked: [...SIMULATION_INVARIANT_CODES], violations: [] },
   }
 }

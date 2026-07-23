@@ -15,8 +15,7 @@
 //     (idempotent ids); a new attempt bumps attempt_number;
 //   - planner and engine cores stay pure — clock and ids live here.
 
-import { createLessonSessionV2, appendActivityToSessionV2 } from './lesson-engine-contracts.js'
-import { selectNextActivityV2 } from './lesson-engine.js'
+import { appendActivityToSessionV2 } from './lesson-engine-contracts.js'
 import { validateActivityPlanV2 } from './lesson-engine-validator.js'
 import { validateActivityResponseV2 } from './activity-runtime-validator.js'
 import { evaluateActivityResponseV2 } from './activity-assessment.js'
@@ -24,7 +23,9 @@ import { buildLearnerEvidenceBatchFromInteractionV2 } from './assessment-to-evid
 import { computeRecipeRuntimeAvailability } from './runtime-capabilities.js'
 import { createSupportRuntime, useSupportFeature, buildActivityResponseV2 } from './activity-runtime-contracts.js'
 import { createStudySessionV2, advanceStudySessionV2 } from './study-planner-contracts.js'
-import { selectNextStudyFocusV2, studyFocusToLessonScopeV2, studyFocusKeyV2 } from './study-planner.js'
+// Slice V2.16: the Planner→Engine materialization walk lives in the SHARED
+// resolver — the controller no longer implements a local suppression loop.
+import { resolveNextStudyActivityV2 } from './study-focus-resolver.js'
 
 export const STUDY_CONTROLLER_STATES = ['idle', 'planning', 'presenting', 'submitting', 'feedback', 'advancing', 'complete', 'error']
 
@@ -55,6 +56,7 @@ export function createStudySessionControllerV2(deps) {
     plannerDecision: null,
     decision: null,
     plan: null,
+    resolution: null,       // Slice V2.16: last focus-resolution (status + trace)
     transition: null,       // { from_pack, to_pack, code } for the switch banner
     supportRuntime: null,
     assessment: null,
@@ -72,59 +74,40 @@ export function createStudySessionControllerV2(deps) {
     : null
 
   /**
-   * One planning round: select a focus, materialize an activity with the
-   * engine. Focuses the engine cannot serve are suppressed and planning
-   * retries — each attempt suppresses one focus key, so the walk over the
-   * candidate pool terminates naturally (the guard is a hard stop only).
-   * Slice V2.11 structural fix: the old cap of 5 attempts starved sessions
-   * once three packs put many same-family unservable focuses (e.g.
-   * comprehension gaps whose exemplar prerequisites the engine still
-   * rejects) above servable candidates.
+   * One planning round, delegated to the SHARED Study Focus Resolver (Slice
+   * V2.16): it walks the planner's ranking, materializes the first focus the
+   * engine can serve, and terminates by CANDIDATE EXHAUSTION — no magic cap.
+   * The controller only adapts the resolver result to its `planned` shape and
+   * keeps the resolution (status + trace) for diagnostics.
    */
   function planNext(studySession, context, lessonSessions, nowIso) {
-    const suppressed = []
-    for (let attempt = 0; attempt < 60; attempt++) {
-      const plannerDecision = selectNextStudyFocusV2({
-        registry,
-        learnerStates: context.learner_states,
-        recentEvidence: context.recent_evidence,
-        studySession,
-        policy: plannerPolicy,
-        runtimeAvailability: availability,
-        allowedPackIds,
-        suppressedFocusKeys: suppressed,
-      })
-      if (plannerDecision.status !== 'focus') return { complete: true, plannerDecision }
-      const focus = plannerDecision.focus
-      const { scope, focus: engineFocus, policyOverride } = studyFocusToLessonScopeV2(focus, registry)
-
-      let lessonSession = lessonSessions[focus.pack_id]
-        ?? createLessonSessionV2({ session_id: makeLessonSessionId(focus.pack_id), profile_id: profileId, now: nowIso })
-      let engineDecision = selectNextActivityV2({
-        session: lessonSession, scope,
-        learnerStates: context.learner_states, recentEvidence: context.recent_evidence,
-        policy: { ...enginePolicy, ...policyOverride },
-        focus: engineFocus,
-        runtimeAvailability: availability,
-      })
-      if (engineDecision.status === 'session_complete') {
-        // The pack's lesson session hit its cap; the STUDY session may go on
-        // with a fresh lesson session for that pack.
-        lessonSession = createLessonSessionV2({ session_id: makeLessonSessionId(focus.pack_id), profile_id: profileId, now: nowIso })
-        engineDecision = selectNextActivityV2({
-          session: lessonSession, scope,
-          learnerStates: context.learner_states, recentEvidence: context.recent_evidence,
-          policy: { ...enginePolicy, ...policyOverride },
-          focus: engineFocus,
-          runtimeAvailability: availability,
-        })
+    const resolution = resolveNextStudyActivityV2({
+      registry,
+      learnerStates: context.learner_states,
+      recentEvidence: context.recent_evidence,
+      studySession,
+      lessonSessions,
+      plannerPolicy,
+      enginePolicy,
+      runtimeAvailability: availability,
+      allowedPackIds,
+      profileId,
+      now: nowIso,
+      makeLessonSessionId,
+    })
+    if (resolution.status === 'activity') {
+      return {
+        complete: false,
+        focus: resolution.focus,
+        plannerDecision: resolution.planner_decision,
+        engineDecision: resolution.engine_decision,
+        lessonSession: resolution.lesson_session,
+        resolution,
       }
-      if (engineDecision.status === 'activity') {
-        return { focus, plannerDecision, engineDecision, lessonSession }
-      }
-      suppressed.push(studyFocusKeyV2(focus))
     }
-    return { complete: true, plannerDecision: null }
+    // planner_empty and no_materializable_focus both end the session for the
+    // learner, but stay DISTINCT in the resolution trace (§18/§19).
+    return { complete: true, plannerDecision: resolution.planner_decision ?? null, resolution }
   }
 
   function presentPlanned(planned, studySession, context, { interactions, lessonSessions } = {}) {
@@ -134,6 +117,7 @@ export function createStudySessionControllerV2(deps) {
       set({
         status: 'complete', studySession, context, focus: null, plan: null, decision: null,
         transition: null, error: null, interactions: baseInteractions, lessonSessions: baseSessions,
+        resolution: planned.resolution ?? null,
       })
       return
     }
@@ -166,6 +150,7 @@ export function createStudySessionControllerV2(deps) {
       plannerDecision: planned.plannerDecision,
       decision: planned.engineDecision,
       plan: planned.engineDecision.plan,
+      resolution: planned.resolution ?? null,
       transition,
       supportRuntime: createSupportRuntime(planned.engineDecision.plan),
       assessment: null, recordedEvents: null, pendingResponse: null, error: null,

@@ -338,6 +338,32 @@ function laneSummary(state) {
   return out
 }
 
+// Slice V2.16 — Focus Resolution diagnostics (§20). Diagnostics only; never
+// shown to the learner. Distinguishes planner_empty from no_materializable_focus.
+function FocusResolutionPanel({ resolution }) {
+  if (!resolution) return null
+  const t = resolution.resolution_trace || {}
+  const rejected = (t.attempts || []).filter((a) => a.result === 'rejected')
+  const reasonDist = {}
+  for (const a of rejected) for (const code of a.reason_codes || []) reasonDist[code] = (reasonDist[code] || 0) + 1
+  return (
+    <details data-testid="v2pg-focus-resolution" style={{ fontSize: 12, border: '1px dashed var(--border)', borderRadius: 10, padding: 10 }}>
+      <summary style={{ cursor: 'pointer', fontWeight: 800 }}>Focus Resolution</summary>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 8 }}>
+        <KV k="status" v={resolution.status} />
+        <KV k="candidates" v={t.candidate_count} />
+        <KV k="attempted" v={t.attempted_count} />
+        <KV k="selected rank" v={t.selected?.planner_rank ?? '—'} />
+        <KV k="rejected before selection" v={rejected.length} />
+        <KV k="reason distribution" v={Object.keys(reasonDist).length ? Object.entries(reasonDist).map(([c, n]) => `${c}×${n}`).join(', ') : '—'} />
+        {rejected.slice(0, 8).map((a, i) => (
+          <KV key={i} k={`rejected[${a.planner_rank}]`} v={`${a.focus_key} · ${(a.reason_codes || []).join(',')}`} />
+        ))}
+      </div>
+    </details>
+  )
+}
+
 function LearnerChangePanel({ affectedTargets, statesAfter }) {
   if (!affectedTargets || affectedTargets.length === 0) return null
   const byId = new Map((statesAfter || []).map((s) => [s.target?.target_id, s]))
@@ -475,6 +501,7 @@ function SessionMode({ registry }) {
             busy={s.status === 'submitting'}
             onSubmit={(type, payload) => c.submit(type, payload)}
             onSupport={(f) => c.recordSupport(f)} />
+          <FocusResolutionPanel resolution={s.resolution} />
           <DiagnosticsPanel focus={focusForDiag} plan={s.plan} plannerDecision={s.plannerDecision?.trace} />
         </>
       )}
@@ -490,11 +517,20 @@ function SessionMode({ registry }) {
       )}
 
       {s?.status === 'complete' && (
-        <div className="card" data-testid="v2pg-session-complete" style={{ padding: 16 }}>
-          <div style={{ fontWeight: 800 }}>Sessão concluída</div>
-          <p className="muted" style={{ fontSize: 13 }}>{s.interactions.length} interações avaliadas nesta sessão.</p>
-          <button className="btn btn-secondary" onClick={() => { setRunning(false); setState(null) }}>Nova sessão</button>
-        </div>
+        <>
+          <div className="card" data-testid="v2pg-session-complete" style={{ padding: 16 }}>
+            <div style={{ fontWeight: 800 }}>Sessão concluída</div>
+            <p className="muted" style={{ fontSize: 13 }}>{s.interactions.length} interações avaliadas nesta sessão.</p>
+            {/* §19 — the learner sees only "done"; diagnostics expose why. */}
+            {s.resolution && s.resolution.status !== 'activity' && (
+              <p className="muted" data-testid="v2pg-session-end-reason" style={{ fontSize: 12 }}>
+                Motivo (diagnóstico): {s.resolution.status === 'planner_empty' ? 'nenhum foco elegível' : 'nenhum foco materializável agora'}
+              </p>
+            )}
+            <button className="btn btn-secondary" onClick={() => { setRunning(false); setState(null) }}>Nova sessão</button>
+          </div>
+          <FocusResolutionPanel resolution={s.resolution} />
+        </>
       )}
     </div>
   )
