@@ -11,7 +11,8 @@ export default function V2NewUseBanner({ newUse, reducedMotion = false }) {
       <div className="v2lx-banner-icon" aria-hidden="true">✦</div>
       <div>
         <div className="v2lx-banner-text" data-testid="v2lx-new-use-headline">{newUse.headline}</div>
-        <div className="v2lx-banner-text" style={{ fontWeight: 700, color: 'var(--v2-muted)' }}>{newUse.subhead}</div>
+        {newUse.subhead && <div className="v2lx-banner-text" style={{ fontWeight: 700, color: 'var(--v2-muted)' }}>{newUse.subhead}</div>}
+        {newUse.reassurance && <div className="v2lx-banner-text" data-testid="v2lx-new-use-reassurance" style={{ fontWeight: 700, color: 'var(--v2-muted)', marginTop: 4 }}>{newUse.reassurance}</div>}
         {newUse.cross_pack_hint && (
           <div className="v2lx-banner-text" data-testid="v2lx-cross-pack" style={{ fontWeight: 700, color: 'var(--v2-muted)', marginTop: 4 }}>
             {newUse.cross_pack_hint}

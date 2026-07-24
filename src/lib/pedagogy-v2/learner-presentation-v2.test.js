@@ -10,6 +10,16 @@ import {
   deriveVisualVariantV2,
   LEARNER_VISUAL_VARIANTS,
 } from './learner-presentation-v2.js'
+import { loadPedagogyV2Registry, getPedagogyPack } from './registry.js'
+
+// A learner state proving REAL prior familiarity with a pack's lexeme: one of
+// its own targets already has exposure (V2.17-R §2).
+const registry = loadPedagogyV2Registry()
+function familiarStatesFor(packId) {
+  const pack = getPedagogyPack(packId, registry)
+  const tid = pack.senses?.[0]?.sense_id || pack.constructions?.[0]?.construction_id
+  return [{ target: { target_type: 'sense', target_id: tid }, exposure: { count: 1 } }]
+}
 
 // ---- fixtures ---------------------------------------------------------------
 
@@ -271,18 +281,45 @@ describe('§20 — exposure is observed, no feedback panel', () => {
   })
 })
 
-// ---- §14/§45 new-use banner -------------------------------------------------
+// ---- §14/§45 + V2.17-R §2 — new-use requires real lexeme familiarity --------
 
-describe('§14/§45 — new-use banner from structured reason codes only', () => {
-  it('a known-lexeme new-construction focus yields a new-use banner', () => {
+describe('§14/§45 + V2.17-R §2 — “Você já conhece X” requires proven familiarity', () => {
+  it('a known lexeme (real prior exposure) + new construction yields the affirmation (§6.2)', () => {
     const p = buildLearnerPresentationV2({
       plan: productionPlan({ pack_id: 'pedagogy_v2_yet', lexeme_lemma: 'yet' }),
-      focus: { pack_id: 'pedagogy_v2_yet', reason_codes: ['KNOWN_FUNCTION_NEW_CONSTRUCTION'] },
+      focus: { pack_id: 'pedagogy_v2_yet', reason_codes: ['KNOWN_LEXEME_CONTEXT_EXTENDED'] },
+      registry,
+      learnerStates: familiarStatesFor('pedagogy_v2_yet'),
     })
     expect(p.new_use).toBeTruthy()
     expect(p.new_use.known_word).toBe('yet')
     expect(p.new_use.headline).toMatch(/já conhece/i)
     expect(p.new_use.reassurance).toMatch(/continua valendo/i) // §16 — old use stays valid
+  })
+
+  it('CRITICAL: a reused construction in a NEW pack does NOT claim the word is known (§6.4)', () => {
+    // current lexeme unseen, reason=KNOWN_CONSTRUCTION_REUSED_IN_NEW_PACK, no evidence.
+    const p = buildLearnerPresentationV2({
+      plan: productionPlan({ pack_id: 'pedagogy_v2_yet', lexeme_lemma: 'new_word' }),
+      focus: { pack_id: 'pedagogy_v2_yet', reason_codes: ['KNOWN_CONSTRUCTION_REUSED_IN_NEW_PACK'] },
+      registry,
+      learnerStates: [], // no evidence for this lexeme
+    })
+    expect(p.new_use).toBeTruthy()
+    expect(p.new_use.known_word).toBeNull()
+    expect(p.new_use.headline).not.toMatch(/já conhece/i)
+    expect(p.new_use.headline).not.toContain('new_word')
+  })
+
+  it('a related known FUNCTION does not imply the current word is known (§6.3)', () => {
+    const p = buildLearnerPresentationV2({
+      plan: productionPlan({ pack_id: 'pedagogy_v2_yet', lexeme_lemma: 'yet' }),
+      focus: { pack_id: 'pedagogy_v2_yet', reason_codes: ['KNOWN_FUNCTION_NEW_CONSTRUCTION'] },
+      registry,
+      learnerStates: [], // no prior exposure of the current lexeme
+    })
+    expect(p.new_use.known_word).toBeNull()
+    expect(p.new_use.headline).not.toMatch(/já conhece/i)
   })
 
   it('a plain focus change (no reason code) does NOT invent a new use (§14)', () => {
@@ -299,22 +336,50 @@ describe('§14/§45 — new-use banner from structured reason codes only', () =>
       focus: { pack_id: 'pedagogy_v2_yet', reason_codes: ['KNOWN_LEXEME_CONTEXT_EXTENDED', 'CROSS_PACK_TRANSFER_OPPORTUNITY'] },
     })
     expect(p.new_use.cross_pack_hint).toMatch(/já praticou/i)
+    // No technical reason code leaks into the learner-facing values.
+    expect(p.new_use.headline).not.toMatch(/KNOWN_|CROSS_PACK|relation|prerequisite/i)
+    expect(p.new_use.cross_pack_hint).not.toMatch(/KNOWN_|CROSS_PACK|relation|prerequisite/i)
     expect(JSON.stringify(p.new_use)).not.toMatch(/relation|prerequisite|target_id|score/i)
   })
 })
 
-// ---- §17 pack transition ----------------------------------------------------
+// ---- §17 + V2.17-R §3 — pack transition is neutral, not new use -------------
 
-describe('§17 — pack transition is presentational only', () => {
-  it('a real transition yields a banner, never struck-through content', () => {
-    const p = buildLearnerPresentationV2({
-      plan: productionPlan({ pack_id: 'pedagogy_v2_yet', lexeme_lemma: 'yet' }),
-      focus: { pack_id: 'pedagogy_v2_yet' },
-      transition: { from_pack: 'pedagogy_v2_still', to_pack: 'pedagogy_v2_yet', code: 'PACK_SWITCH_FOR_CROSS_PACK_PROGRESSION' },
-    })
-    expect(p.transition).toBeTruthy()
-    expect(p.transition.to_label).toBe('yet')
-    expect(p.transition.subhead).toMatch(/continua valendo/i)
+describe('§17 + V2.17-R §3 — pack transition ≠ new use', () => {
+  const transitionFor = (focusCodes, code) => buildLearnerPresentationV2({
+    plan: productionPlan({ pack_id: 'pedagogy_v2_yet', lexeme_lemma: 'yet' }),
+    focus: { pack_id: 'pedagogy_v2_yet', reason_codes: focusCodes },
+    transition: { from_pack: 'pedagogy_v2_still', to_pack: 'pedagogy_v2_yet', code },
+  }).transition
+
+  it('a real transition yields a NEUTRAL banner, no new-use claim, no strike-through', () => {
+    const t = transitionFor([], 'PACK_SWITCH_FOR_CROSS_PACK_PROGRESSION')
+    expect(t).toBeTruthy()
+    expect(t.to_label).toBe('yet')
+    expect(t.headline).toMatch(/vamos praticar/i)
+    expect(JSON.stringify(t)).not.toMatch(/novo uso|nova maneira|line-through/i)
+  })
+
+  it('A: PACK_SWITCH_FOR_RETENTION → neutral, no cross-pack hint (§6.5/§6.6)', () => {
+    const t = transitionFor(['RETENTION_OVERDUE'], 'PACK_SWITCH_FOR_RETENTION')
+    expect(t.headline).toMatch(/vamos praticar/i)
+    expect(t.cross_pack_hint).toBeNull()
+  })
+
+  it('B: PACK_SWITCH_FOR_REMEDIATION → neutral', () => {
+    const t = transitionFor(['RECENT_FAILURE'], 'PACK_SWITCH_FOR_REMEDIATION')
+    expect(t.cross_pack_hint).toBeNull()
+    expect(JSON.stringify(t)).not.toMatch(/novo uso|nova maneira/i)
+  })
+
+  it('C: focus with CROSS_PACK_TRANSFER_OPPORTUNITY → soft cross-pack hint (§6.7)', () => {
+    const t = transitionFor(['CROSS_PACK_TRANSFER_OPPORTUNITY'], 'PACK_SWITCH_FOR_CROSS_PACK_PROGRESSION')
+    expect(t.cross_pack_hint).toMatch(/já praticou/i)
+  })
+
+  it('D: a PACK_SWITCH_* code alone (no focus cross reason) yields NO hint — provenance is the focus (§3)', () => {
+    const t = transitionFor([], 'PACK_SWITCH_FOR_CROSS_PACK_PROGRESSION')
+    expect(t.cross_pack_hint).toBeNull()
   })
 
   it('no transition when packs did not change', () => {
@@ -352,5 +417,15 @@ describe('§27/§47 — factual session summary', () => {
   it('singular activity copy', () => {
     const s = buildLearnerSessionSummaryV2({ interactions: [interaction('reading', 'still')] })
     expect(s.facts[0].text).toMatch(/praticou 1 atividade\b/i)
+  })
+
+  it('V2.17-R §4/§6.8 — sense + construction are NOT summed into a usage count', () => {
+    // A single lemma with 1 construction + 1 sense must NOT become "2 formas de usar".
+    const s = buildLearnerSessionSummaryV2({
+      interactions: [interaction('reading', 'still')], // construction_id + sense_ids present
+    })
+    const texts = s.facts.map((f) => f.text).join(' | ')
+    expect(texts).not.toMatch(/formas de usar/i)
+    expect(texts).not.toMatch(/\b2 formas\b/i)
   })
 })

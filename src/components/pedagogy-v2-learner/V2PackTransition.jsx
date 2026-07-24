@@ -1,13 +1,13 @@
-// V2PackTransition.jsx — Slice V2.17 (§17). A PRESENTATIONAL interstitial shown
-// when the controller reports a real pack transition. It is NOT an activity and
-// produces NO evidence. The previous form is presented as still-valid — never
-// struck through / replaced (§16). Receives the resolved `transition` object.
+// V2PackTransition.jsx — Slice V2.17 (§17) + V2.17-R §3. A PRESENTATIONAL
+// interstitial shown when the controller reports a real pack transition. It is
+// NOT an activity and produces NO evidence. A pack switch is NOT automatically a
+// new use, so the copy is NEUTRAL — there is no "Novo uso" claim here. The
+// previous form is presented as still-valid — never struck through (§16).
 
 export default function V2PackTransition({ transition, reducedMotion = false }) {
   if (!transition) return null
   return (
     <div className={`v2lx-card${reducedMotion ? '' : ' v2lx-rise'}`} data-testid="v2lx-pack-transition" style={{ marginBottom: 18, textAlign: 'center' }}>
-      <div className="v2lx-focus-chip" style={{ display: 'inline-flex', marginBottom: 14 }}>✦ Novo uso</div>
       <div style={{ fontWeight: 900, fontSize: 22, color: 'var(--v2-ink)', lineHeight: 1.3 }} data-testid="v2lx-pack-transition-headline">
         {transition.headline}
       </div>
