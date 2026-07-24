@@ -8,28 +8,8 @@ import { test, expect } from '@playwright/test'
 import { enableTestHooks, seedFixtures, attachErrorMonitor, PROFILE_A } from './helpers.js'
 import { setLearnerFlag, openHub, openLearnerExperience, answerLearnerActivity, waitForAdvance } from './v2-helpers.js'
 
-test.describe('gating', () => {
-  test('the learner card is hidden while the flag is off', async ({ page, context }) => {
-    await enableTestHooks(context)
-    await seedFixtures(page, { active: PROFILE_A })
-    await setLearnerFlag(page, false)
-    await openHub(page)
-    await expect(page.getByTestId('v2-learner-open')).toHaveCount(0)
-  })
-
-  test('with the flag on, the card opens the new experience', async ({ page, context }) => {
-    await enableTestHooks(context)
-    await seedFixtures(page, { active: PROFILE_A })
-    await setLearnerFlag(page, true)
-    await openHub(page)
-    await expect(page.getByTestId('v2-learner-open')).toBeVisible()
-    await page.getByTestId('v2-learner-open').click()
-    await expect(page.getByTestId('v2lx-shell')).toBeVisible()
-    // No internal diagnostics leak onto the learner surface (§37).
-    await expect(page.getByTestId('v2pg-pipeline-badge')).toHaveCount(0)
-    await expect(page.locator('body')).not.toContainText(/StudyFocus|ActivityPlan|planner_rank|evidence:/)
-  })
-})
+// Gating + Home entry are covered comprehensively by pedagogy-v2-learner-home.spec.js.
+// This suite focuses on the Lesson experience reached from the V2 Home.
 
 test.describe('real pipeline', () => {
   test.beforeEach(async ({ page, context }) => {
@@ -119,11 +99,10 @@ test.describe('UI safety', () => {
 })
 
 test.describe('V1 coexistence', () => {
-  test('V1 home still works with the learner flag on', async ({ page, context }) => {
+  test('with the learner flag OFF, the legacy Training hub is intact', async ({ page, context }) => {
     await enableTestHooks(context)
     await seedFixtures(page, { active: PROFILE_A })
-    await setLearnerFlag(page, true)
-    // The standard Home + training hub remain reachable and intact.
+    await setLearnerFlag(page, false)
     await expect(page.getByTestId('open-training-hub')).toBeVisible()
     await openHub(page)
     await expect(page.getByRole('heading', { name: 'Escolha o que treinar' })).toBeVisible()

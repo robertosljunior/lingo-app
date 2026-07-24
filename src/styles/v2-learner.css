@@ -120,6 +120,27 @@
 .v2lx-cta:disabled { background: #C9D0E4; color: #fff; box-shadow: none; cursor: not-allowed; }
 :root[data-theme="dark"] .v2lx .v2lx-cta:disabled,
 :root:not([data-theme="light"]) .v2lx .v2lx-cta:disabled { background: #2B2645; color: #6E6A85; }
+/* Secondary CTA — same shape, quieter surface. */
+.v2lx-cta--secondary { background: var(--v2-surface); color: var(--v2-primary); box-shadow: none; border: 2px solid var(--v2-line); }
+/* Text-only affordance (e.g. "Voltar ao início", "Ferramentas V2"). */
+.v2lx-textbtn { border: none; background: transparent; color: var(--v2-muted); font-weight: 800; font-size: 14px; cursor: pointer; padding: 10px; min-height: 44px; }
+.v2lx-textbtn:hover { color: var(--v2-primary); }
+
+/* ---- V2 Learner Home (§4–§6) ---------------------------------------------- */
+.v2lx-home-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 4px 18px; }
+.v2lx-home-brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 900; font-size: 18px; color: var(--v2-ink); }
+.v2lx-home-logo { width: 34px; height: 34px; border-radius: 11px; background: var(--v2-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; }
+.v2lx-greeting { font-weight: 800; font-size: 15px; color: var(--v2-muted); }
+.v2lx-home-title { font-weight: 900; font-size: 26px; color: var(--v2-ink); letter-spacing: -.3px; line-height: 1.15; margin: 2px 0 18px; }
+.v2lx-hero { background: linear-gradient(135deg, var(--v2-primary), #5B7BFF); border-radius: 26px; padding: 22px; color: #fff; box-shadow: var(--v2-shadow-cta); }
+.v2lx-hero-eyebrow { font-weight: 700; font-size: 13px; opacity: .9; }
+.v2lx-hero-cta { width: 100%; border: none; background: #fff; color: var(--v2-primary-strong); font-weight: 900; font-size: 17px; padding: 16px; border-radius: 16px; cursor: pointer; box-shadow: 0 6px 14px rgba(0, 0, 0, .12); min-height: 44px; margin-top: 16px; }
+.v2lx-action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.v2lx-action-card { text-align: left; border: 1px solid var(--v2-line); background: var(--v2-surface); border-radius: 20px; padding: 16px; cursor: pointer; box-shadow: var(--v2-shadow-card); font: inherit; min-height: 44px; }
+.v2lx-action-card:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: 2px; }
+.v2lx-action-title { font-weight: 900; font-size: 15px; color: var(--v2-ink); }
+.v2lx-action-desc { font-weight: 600; font-size: 12px; color: var(--v2-muted-2); margin-top: 2px; line-height: 1.35; }
+.v2lx-home-tools { text-align: center; margin-top: 8px; }
 
 /* ---- options / chips ------------------------------------------------------- */
 

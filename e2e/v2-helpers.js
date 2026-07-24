@@ -40,10 +40,17 @@ export async function openHub(page) {
   await expect(page.getByRole('heading', { name: 'Escolha o que treinar' })).toBeVisible()
 }
 
-// Hub → "Nova experiência V2" card → the learner lesson screen (Slice V2.17).
+// Training → V2 Learner Home (Slice V2.18: with the flag ON, Training IS the V2
+// home, not the legacy hub). Requires v2_learner_experience_enabled.
+export async function openV2Home(page) {
+  await page.getByTestId('open-training-hub').click()
+  await expect(page.getByTestId('v2lx-home')).toBeVisible()
+}
+
+// V2 Home → "Praticar agora" → the learner lesson screen (adaptive).
 export async function openLearnerExperience(page) {
-  await openHub(page)
-  await page.getByTestId('v2-learner-open').click()
+  await openV2Home(page)
+  await page.getByTestId('v2lxh-primary').click()
   await expect(page.getByTestId('v2lx-screen')).toBeVisible()
   await expect(page.getByTestId('v2lx-shell')).toBeVisible()
 }
