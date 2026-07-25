@@ -123,7 +123,77 @@ lane**, que é exatamente o comportamento que o analisador de longo horizonte
 condena. O ganho e o defeito eram o mesmo efeito. Revertido — não vou entregar
 uma calibração que só passa porque um golden foi afrouxado.
 
-## 5. Direção correta indicada pela evidência
+## 4b. Segunda rodada: mais quatro hipóteses testadas e derrubadas
+
+Depois da consolidação, testei a via da **largura** (a direção que a §5 abaixo
+apontava) e mais duas. Todas medidas na jornada real (60) **e** nos goldens de
+200 interações das cinco personas, olhando `LONG_HORIZON_TARGET_LOOP`.
+
+Baseline dos goldens (para comparar): `fast-learner` já tem 2 loops
+(share 0.68 / 0.61) e `cross-pack` 2 (0.68 / 0.62). São pré-existentes.
+
+**(a) Breadth gate — penalizar abrir lane nova (alvo novo + expansão de
+modalidade) enquanto houver lanes inacabadas.** Melhor ponto: budget 3,
+peso 4 → `comprehension 10`, `controlled_production 4`, 9 exemplares,
+`guided_production` no pipeline. Mas o `fast-learner` vai de 0.68 para
+**1.0 de share** (a janela tardia inteira num único alvo) e o `new-learner`
+ganha um loop novo. Rejeitado.
+
+**(b) Mesmo gate, mas contando só lanes ABANDONADAS** (inacabadas e sem
+evidência recente), para não punir quem está consolidando bem. Resultado: o
+ganho na jornada **desaparece por completo** (volta a `recognition 60`, 6
+exemplares) e os loops aumentam. Na jornada real as lanes são revisitadas com
+frequência suficiente para nunca parecerem abandonadas.
+
+**(c) Penalizar só a introdução de alvos novos, poupando a expansão de
+modalidade.** Efeito fraco (`comprehension 2`, 6 exemplares) e o
+`fast-learner` ainda chega a 1.0 com peso 6. Rejeitado.
+
+**(d) Baixar a barra de evidência** (`EVIDENCE_LEVEL_THRESHOLDS.emerging` de 2
+para 1.5 e 1.2), atacando diretamente a aritmética das 5 respostas. Não
+destrava nada: continua `recognition 60`, e os loops aumentam. Mais lanes
+avançam, o Planner passa a gerar mais candidatos de largura, e a largura
+consome o ganho.
+
+**(e) Subir `capability_gap_weight`** (1.5 → 2.5 → 3.5 → 4.5). **Zero efeito**
+sobre a trajetória em todos os valores — `recognition 60` sempre.
+
+O (e) revela o detalhe mais importante: candidatos de comprehension **são
+gerados** (domínios elegíveis nos 60 passos: `recognition_listening 58`,
+`recognition_reading 58`, `comprehension_reading 8`,
+`comprehension_listening 9`), mas nunca vencem — e mexer no peso deles não
+muda isso. O bloqueio não está no score do candidato de profundidade.
+
+## 5. Conclusão da investigação
+
+Há um padrão consistente nas seis variantes testadas:
+
+> **Toda configuração que aumenta profundidade concentra a janela tardia num
+> único alvo, e toda configuração que preserva a variedade tardia mantém a
+> trajetória presa em recognition.**
+
+Com 3 packs e poucos exemplares elegíveis por target, profundidade e variedade
+são objetivos diretamente concorrentes: não existe ponto no espaço de
+parâmetros do Planner que atenda aos dois. Isso é um **teto de volume de
+conteúdo**, não um bug de ranking — e a §13 do próprio brief antecipa esse
+caso ("não impor um percentual artificial quando o conteúdo não oferece
+alternativas").
+
+As duas saídas reais estão fora do que esta slice autoriza mexer:
+
+1. **Mais conteúdo por target** — exemplares elegíveis suficientes para que
+   profundidade não implique repetição. É a saída que não exige tocar em
+   pedagogia.
+2. **Mudar a política de evidência para produção assistida** — hoje um
+   recognition de múltipla escolha vale 0.4, então a barra exige 5 acertos na
+   mesma lane. Reduzir essa exigência é uma decisão pedagógica (§23 congela o
+   core), não uma calibração.
+
+Recomendo decidir entre (1) e (2) antes de qualquer nova alteração no Planner:
+sem isso, qualquer ajuste vai apenas trocar um sintoma por outro, como as seis
+variantes acima demonstram.
+
+## 5b. Direção testada e descartada (registro histórico)
 
 O gargalo não é priorizar consolidação: é **largura**. Em 60 atividades o
 Planner abre ~28 lanes (novos targets + expansão de modalidade) mais rápido do
