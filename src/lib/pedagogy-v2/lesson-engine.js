@@ -653,6 +653,8 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
 
   let best
   let diversityApplied = false
+  let recipeShare = 0
+  let recipeShareSwapApplied = false
   // V2.21 §9 — pool/band observability. Filled in below; emitted in the trace so
   // the audit can prove whether the acceptable band is what collapses variety.
   const poolStats = {
@@ -703,6 +705,33 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     if (streak >= streakMax) {
       const alts = band.filter((c) => c.recipe.recipe !== anchor.recipe.recipe)
       if (alts.length) band = alts
+    }
+
+    // Recipe-SHARE control (§21/§22): the streak above only catches back-to-back
+    // repeats over one construction. A recipe can still own a whole capability
+    // while constructions rotate — the measured case where guided_production
+    // took every controlled-production slot and word_order_reconstruction was
+    // never served despite being runtime-executable and content-eligible. So
+    // monotony is also read as a share of the recent activities of the SAME
+    // (capability, modality); when it exceeds the cap and the band offers an
+    // equivalent alternative, the alternative is preferred. Never a cadence:
+    // no alternative in the band → nothing changes; focus is untouched.
+    const shareWindow = diversity.recipe_share_window ?? 8
+    const shareMax = diversity.recipe_share_max ?? 0.5
+    const shareMin = diversity.recipe_share_min_observations ?? 3
+    // Scoped to the CAPABILITY, not to (capability, modality): "I keep being
+    // asked to produce the sentence from a model" is the same monotony whether
+    // the last one was spoken or written, and a per-modality count barely
+    // reaches 2 within a sitting. The ALTERNATIVE still comes from the band,
+    // which is same-focus, so nothing crosses modalities in the actual choice.
+    const domainHistory = history
+      .filter((h) => h.capability === anchor.capability)
+      .slice(-shareWindow)
+    const anchorRecipeCount = domainHistory.filter((h) => h.recipe === anchor.recipe.recipe).length
+    recipeShare = domainHistory.length ? anchorRecipeCount / domainHistory.length : 0
+    if (anchorRecipeCount >= shareMin && recipeShare > shareMax) {
+      const alts = band.filter((c) => c.recipe.recipe !== anchor.recipe.recipe)
+      if (alts.length) { band = alts; recipeShareSwapApplied = true }
     }
 
     // Cross-session recency: if any acceptable realization is OUTSIDE the recency
@@ -798,6 +827,9 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
       context_repeat: best._context_repeat ?? 0,
       recent_window: recentWindow,
       context_recognition_swap: contextSwapApplied,
+      // §21/§22 — recipe-share monotony control within the capability domain.
+      recipe_share: Math.round(recipeShare * 1e6) / 1e6,
+      recipe_share_swap: recipeShareSwapApplied,
       // V2.21 §9 — how many realizations existed BEFORE and AFTER the band.
       pool: { ...poolStats },
     },

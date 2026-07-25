@@ -17,6 +17,7 @@ import { resolvePedagogyEntity } from './registry.js'
 import { getV2Prerequisites, getIntendedNewItems, getPrimaryTargets, exposureProgression } from './query.js'
 import {
   indexStatesByTargetId, getLane, laneMeets, exposureCount, assessTargetPrerequisite,
+  capabilityAdvancementMetV2,
 } from './lesson-engine-state-queries.js'
 import { LESSON_RECIPES } from './lesson-engine-contracts.js'
 import { isRecipeExecutable } from './runtime-capabilities.js'
@@ -389,7 +390,9 @@ export function buildStudyCandidatesV2({
     for (let i = 1; i < CAPABILITY_LADDER.length; i++) {
       const prev = CAPABILITY_LADDER[i - 1]
       const next = CAPABILITY_LADDER[i]
-      const prevMet = CAPABILITY_MODALITIES[prev].some((m) => laneMeets(getLane(state, `${m}_${prev}`, 'overall'), p.thresholds.advancement))
+      // V2.21-R3: "previous rung met" is a question about the CAPABILITY, so
+      // it is read from the capability rollup, not from a single modality lane.
+      const prevMet = capabilityAdvancementMetV2(state, prev, p.thresholds.advancement)
       if (!prevMet) continue
       const nextAssessed = CAPABILITY_MODALITIES[next].some((m) => (getLane(state, `${m}_${next}`, 'overall')?.assessed_evidence_count || 0) > 0)
       if (nextAssessed) continue

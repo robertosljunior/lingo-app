@@ -145,10 +145,10 @@ describe('cross-session exemplar recency', () => {
 // ---- Part I / R: determinism & version --------------------------------------
 
 describe('determinism and versioning', () => {
-  it('engine version bumped to 3, policy version to 3', () => {
+  it('engine version 3, policy version 4 (V2.21-R3 recipe-share control)', () => {
     const d = pick({ id: 'v' })
     expect(d.engine_version).toBe(3)
-    expect(d.policy_version).toBe(3)
+    expect(d.policy_version).toBe(4)
     expect(validateLessonDecisionV2(d).errors).toEqual([])
   })
 

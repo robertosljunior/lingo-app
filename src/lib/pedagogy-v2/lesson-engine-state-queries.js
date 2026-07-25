@@ -84,16 +84,71 @@ export function anyKeyMeets(state, keys, threshold) {
 }
 
 /**
+ * The CAPABILITY ROLLUP lane of a state: the same evidence folded across the
+ * capability's modalities (learner-model AGGREGATION_VERSION 2). States
+ * produced before that version have no rollups; for those we fall back to the
+ * per-modality reading so a synthetic or not-yet-rebuilt state degrades to the
+ * old semantics instead of reading as "no evidence at all". Persisted profiles
+ * never rely on this path — storage rebuilds on aggregation-version mismatch.
+ */
+export function getCapabilityRollup(state, capability, lane = 'overall') {
+  return state?.capability_rollups?.[capability]?.[lane] ?? null
+}
+
+/**
+ * Has this target met a ladder rung? Slice V2.21-R3: the question is about the
+ * CAPABILITY, so it is answered on the capability rollup — a learner who
+ * recognised a construction six times in reading and six times in listening
+ * has demonstrated recognition, even though neither lane alone carries the
+ * bar. The threshold NUMBERS are unchanged; only the population of evidence
+ * the bar is applied to. Per-modality lanes keep their own meaning everywhere
+ * else (modality expansion, independence, retention).
+ */
+export function capabilityAdvancementMetV2(state, capability, threshold, lane = 'overall') {
+  const rollup = getCapabilityRollup(state, capability, lane)
+  if (rollup) return laneMeets(rollup, threshold)
+  // Pre-rollup state: old per-modality semantics.
+  return (CAPABILITY_MODALITY_KEYS[capability] || [])
+    .some((k) => laneMeets(getLane(state, k, lane), threshold))
+}
+
+// Modality keys per capability, used only by the pre-rollup fallback above.
+const CAPABILITY_MODALITY_KEYS = {
+  recognition: RECOGNITION_CAPABILITY_KEYS,
+  comprehension: ['reading_comprehension', 'listening_comprehension', 'multimodal_comprehension'],
+  controlled_production: ['writing_controlled_production', 'speaking_controlled_production'],
+  free_production: ['writing_free_production', 'speaking_free_production'],
+  pronunciation: ['speaking_pronunciation'],
+}
+
+/**
  * SINGLE SOURCE of the per-capability curriculum gate for one target state
  * (Slice V2.9). Says whether `capability` may be practiced in `modality` given
  * the state — the same predicate the lesson engine applies per recipe, now
  * shared so the planner's modality-expansion readiness can never diverge from
  * what the engine will actually serve:
  *   recognition           — the target has been exposed
- *   comprehension         — exposed + SAME-modality recognition at advancement
- *   controlled_production — ANY recognition key at advancement
+ *   comprehension         — exposed + recognition at advancement
+ *   controlled_production — recognition at advancement
  *   free_production       — SAME-modality controlled production at advancement
  *   pronunciation         — any production key at advancement
+ *
+ * Slice V2.21-R3 changed ONE clause. Comprehension used to require the SAME
+ * modality's recognition lane to carry the whole advancement bar; a learner
+ * spreading correct answers over reading and listening halves each lane and so
+ * opened neither rung, while having demonstrably recognised the target (the
+ * measured case: 5 of 12 targets in the real successful journey). It now
+ * requires BOTH
+ *   - recognition met on the CAPABILITY rollup (all modalities together), and
+ *   - some assessed recognition evidence in THIS modality.
+ * The modality axis is therefore not collapsed: a learner who has only ever
+ * read still does not walk into listening comprehension. What changed is that
+ * the modality no longer has to clear the bar on its own.
+ *
+ * Free production deliberately KEEPS its same-modality prerequisite: writing
+ * fluently is not unlocked by having spoken (V2.9/V2.10 decision, with its own
+ * regressions). Receptive modalities inform one capability; productive ones
+ * are separate skills.
  */
 export function capabilityGateMetV2(state, capability, modality, thresholds) {
   const adv = thresholds.advancement
@@ -102,9 +157,12 @@ export function capabilityGateMetV2(state, capability, modality, thresholds) {
       return exposureCount(state) > 0
     case 'comprehension':
       return exposureCount(state) > 0
-        && laneMeets(getLane(state, `${modality}_recognition`, 'overall'), adv)
+        && capabilityAdvancementMetV2(state, 'recognition', adv)
+        && (getLane(state, `${modality}_recognition`, 'overall')?.assessed_evidence_count || 0) > 0
     case 'controlled_production':
-      return anyKeyMeets(state, RECOGNITION_CAPABILITY_KEYS, adv)
+      // Unchanged in effect: this clause was already cross-modality
+      // (anyKeyMeets over the recognition keys); the rollup states it directly.
+      return capabilityAdvancementMetV2(state, 'recognition', adv)
     case 'free_production':
       return laneMeets(getLane(state, `${modality}_controlled_production`, 'overall'), adv)
     case 'pronunciation':
