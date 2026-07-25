@@ -248,3 +248,28 @@ describe('§15 — stale derived states are rebuilt, evidence is never touched',
     expect(await storage.ensureLearnerTargetStatesCurrentV2('p1')).toEqual({ rebuilt: false, reason: 'current' })
   })
 })
+
+// V2.21-R3c §18 — the singular read is deliberately NOT version-reconciling
+// (see storage.js). That is only safe while it stays out of learner-facing
+// code: the plural read is the one that calls ensureLearnerTargetStatesCurrentV2.
+// This guard turns the audit's conclusion into an invariant instead of a note.
+describe('§18 — singular target-state read stays out of learner-facing flows', () => {
+  it('no non-test module calls getLearnerTargetStateV2', async () => {
+    const { readdirSync, readFileSync, statSync } = await import('node:fs')
+    const { join } = await import('node:path')
+    const offenders = []
+    const walk = (dir) => {
+      for (const name of readdirSync(dir)) {
+        const full = join(dir, name)
+        if (statSync(full).isDirectory()) { walk(full); continue }
+        if (!/\.(js|jsx|mjs)$/.test(name) || /\.test\.jsx?$/.test(name)) continue
+        // storage.js is the definition site itself.
+        if (full.endsWith(join('lib', 'storage.js'))) continue
+        const src = readFileSync(full, 'utf8')
+        if (/\bgetLearnerTargetStateV2\s*\(/.test(src)) offenders.push(full)
+      }
+    }
+    walk(new URL('../../', import.meta.url).pathname)
+    expect(offenders).toEqual([])
+  })
+})

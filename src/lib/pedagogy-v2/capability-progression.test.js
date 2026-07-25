@@ -147,8 +147,15 @@ describe('§6/§7 — the model stays multidimensional', () => {
     // No state carries a target-level mastery, and no two target types share a key.
     for (const s of [...senses, ...constructions]) {
       expect(s.mastery_estimate).toBeUndefined()
-      expect(Object.keys(s.capabilities).length).toBeGreaterThan(0)
+      // V2.21-R3c §8/§23 — a state may legitimately be EXPOSURE-ONLY: a bounded
+      // active frontier means a target met as a side effect of another
+      // exemplar's exposure waits for a frontier slot instead of being
+      // practised immediately (it is served by the 200-activity horizon). What
+      // must never happen is a state with neither exposure nor capabilities.
+      if (!Object.keys(s.capabilities).length) expect(s.exposure?.count || 0).toBeGreaterThan(0)
     }
+    // Every target the planner actually CHOSE carries capability lanes.
+    expect([...senses, ...constructions].filter((s) => Object.keys(s.capabilities).length).length).toBeGreaterThan(0)
     // At least one pair disagrees — collapsing them would make them identical.
     const anyDifferent = senses.some((s) => constructions.some((c) =>
       JSON.stringify(s.capability_rollups) !== JSON.stringify(c.capability_rollups)))

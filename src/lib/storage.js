@@ -734,6 +734,25 @@ export async function getLearnerEvidenceV2(profile_id, filters = {}) {
   return filterEvidence(rows, filters)
 }
 
+/**
+ * Read ONE persisted target state, exactly as stored.
+ *
+ * V2.21-R3c §18 — audited: this read does NOT reconcile AGGREGATION_VERSION,
+ * and it does not need to. Every learner-facing flow reaches derived state
+ * through the profile-level `getLearnerTargetStatesV2`, which calls
+ * `ensureLearnerTargetStatesCurrentV2` first; the singular read has no
+ * production call site at all — its only callers are
+ * learner-model-storage.test.js and learner-model-multipack.test.js, which
+ * assert the STORED row on purpose (including the deliberately downgraded row
+ * in "a state persisted under an older aggregation version is rebuilt on
+ * read"). Adding an ensure here would therefore reconcile nothing a learner can
+ * observe, would make the low-level read non-inspectable, and would put a
+ * profile-wide rebuild behind a single-key get.
+ *
+ * The guarantee is enforced, not just asserted: `no learner-facing flow reads a
+ * single target state without version reconciliation` (learner-model-storage
+ * .test.js) fails if any non-test module starts calling this.
+ */
 export async function getLearnerTargetStateV2(profile_id, target) {
   const d = await db()
   return (await d.get('learner_target_states_v2', learnerTargetStateKey(profile_id, target))) || null

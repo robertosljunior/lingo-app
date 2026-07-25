@@ -21,7 +21,13 @@ import { PEDAGOGY_V2_RELATION_TYPES } from './contracts.js'
 export const STUDY_PLANNER_V2_VERSION = 1
 export const STUDY_FOCUS_V2_VERSION = 1
 export const STUDY_SESSION_V2_VERSION = 1
-export const STUDY_PLANNER_POLICY_VERSION = 2 // 2 = V2.21-R3b working set
+// 2 = V2.21-R3b working set
+// 3 = V2.21-R3c scale-safe active frontier: ACTIVE redefined as "materializable
+//     current work" (§8), and the frontier gate is a rule about the learner
+//     rather than a score penalty, so it cannot be outvoted by a bigger
+//     catalogue (§23). STUDY_PLANNER_V2_VERSION is unchanged — the StudyFocus /
+//     trace CONTRACT did not change, only the selection policy.
+export const STUDY_PLANNER_POLICY_VERSION = 3
 
 // Study modes offered by the lab:
 //   focused  — the learner picked one pack; the session stays in it
@@ -129,6 +135,12 @@ export const DEFAULT_STUDY_PLANNER_POLICY_V2 = Object.freeze({
     // budget on a bounded WORKING SET of active targets; targets outside it are
     // penalised, never excluded (so the planner can always fall back and never
     // stalls). Diversity INSIDE the set is untouched — this is not camping.
+    //
+    // V2.21-R3c: the weight is UNCHANGED. It still shapes the ranking of deepen
+    // candidates outside the frontier, but it is no longer what bounds breadth:
+    // no finite penalty can, because a bigger catalogue always offers more
+    // ceiling-scoring introductions (§5 class F). Bounding breadth is the
+    // selection-time gate's job.
     working_set_penalty_weight: 2.5,
   }),
 
@@ -150,9 +162,21 @@ export const DEFAULT_STUDY_PLANNER_POLICY_V2 = Object.freeze({
     max_consecutive_review: 4,      // avoid all-review grind outside review mode
     min_activities_before_switch: 2, // coherence: prefer staying briefly
     minimum_review_spacing: 2,      // focuses between two reviews of the SAME capability key
-    // How many active targets share the deepen budget at once (§7 — calibrated
-    // by measurement over the real journey, not chosen by taste).
-    working_set_size: 8,
+    // How many ACTIVE targets share the deepen budget at once — calibrated by
+    // measurement over the real journey, not chosen by taste.
+    //
+    // V2.21-R3c: re-derived, because the quantity itself changed meaning. R3b
+    // counted every target with assessed evidence, including ones with no
+    // materializable work left, so "8 slots" was worth fewer than 8 real
+    // unfinished targets. Under the §8 definition a slot is a genuinely
+    // unfinished target, and the sweep 3/4/5/6/8 over 3/6/9/12 packs shows 6 is
+    // the largest size that still produces controlled production at the
+    // 60-activity horizon (8 → 2 controlled activities at 3 packs; 6 → 8) while
+    // keeping top-target share under the 0.35 camping bound on the product
+    // catalogue (sizes 3–5 all breach it). This is not the §2 shortcut of
+    // turning a knob instead of diagnosing: the diagnosis came first, and the
+    // gate below it is what makes the number scale-invariant.
+    working_set_size: 6,
   }),
 
   // Retention thresholds consumed by the review queue (heuristics, not SRS).
