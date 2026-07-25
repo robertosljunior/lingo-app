@@ -157,15 +157,84 @@ export function buildStudyCandidatesV2({
   const candidates = new Map() // key → candidate
   const maxStageIdx = EXPOSURE_STAGES.length - 1
 
+  /**
+   * V2.21-R3b §6/§8 — the ACTIVE FRONTIER (working set).
+   *
+   * Measured problem: adaptive is NOT opening breadth too fast (only 5 new
+   * targets in 60 activities). It spreads its 55 deepen slots evenly across 9
+   * active targets, so each gets ~6 — and a rung needs 5 correct answers in the
+   * SAME lane. Mean latency from first exposure to comprehension was 42.75
+   * activities. Depth never arrives because the budget is diluted, not because
+   * novelty crowds it out.
+   *
+   * The working set bounds how many active targets share that budget at once.
+   * It is DERIVED from the learner state (no new store, DB_VERSION unchanged),
+   * so it survives across sittings by construction: session 2 rebuilds the same
+   * set session 1 left in progress.
+   *
+   * Ranking is deterministic and pedagogical — the most advanced, best-evidenced
+   * unfinished targets first (finish what is nearest to crossing), with the
+   * target id as the final tie-break. Targets outside the set are PENALISED,
+   * never excluded: if nothing inside is materializable the planner still
+   * proceeds, so it can never stall.
+   */
+  const workingSet = (() => {
+    const size = p.limits.working_set_size
+    if (!size || size < 1) return null
+    const scored = []
+    for (const state of learnerStates || []) {
+      const targetId = state?.target?.target_id
+      if (!targetId) continue
+      let depth = -1
+      let weight = 0
+      for (const [key, lane] of Object.entries(state.capabilities || {})) {
+        const o = lane?.overall
+        if (!((o?.assessed_evidence_count || 0) > 0)) continue
+        const capability = key.split('_').slice(1).join('_')
+        depth = Math.max(depth, CAPABILITY_LADDER.indexOf(capability))
+        weight += o.effective_evidence_weight || 0
+      }
+      if (depth < 0) continue // never assessed — not active yet
+      scored.push({ targetId, depth, weight })
+    }
+    scored.sort((a, b) => b.depth - a.depth || b.weight - a.weight || a.targetId.localeCompare(b.targetId))
+    return new Set(scored.slice(0, size).map((r) => r.targetId))
+  })()
+
+  const workingSetFull = !!workingSet && workingSet.size >= p.limits.working_set_size
+  const outsideWorkingSet = (targetId) => workingSetFull && !!targetId && !workingSet.has(targetId)
+
   const emptyComponents = () => ({
     retention_need: 0, recent_failure: 0, trend_need: 0,
     capability_gap: 0, modality_gap: 0, independence_gap: 0,
     curriculum_frontier: 0, cross_pack_transfer: 0,
     novelty_value: 0, diversity: 0, recency_penalty: 0,
+    // V2.21-R3b §6 — see workingSet above.
+    outside_working_set: 0,
   })
 
   const addCandidate = (c) => {
     const key = `${c.pack_id}|${c.focus_type}|${c.target?.target_id ?? '-'}|${c.capability ?? '-'}|${c.modality ?? '-'}`
+    // V2.21-R3b §6 — deepening an ACTIVE target outside the working set dilutes
+    // the depth budget. Introductions are never penalised here: breadth is not
+    // the measured problem, and §9 requires novelty to stay possible.
+    if (c.focus_type === 'deepen' && outsideWorkingSet(c.target?.target_id)) {
+      c.components.outside_working_set = 1
+      c.reason_codes = [...c.reason_codes, 'OUTSIDE_WORKING_SET']
+    }
+    // Opening yet another target while the working set is already full dilutes
+    // depth again. This is what makes the pacing survive a BIGGER catalogue:
+    // with three packs breadth exhausts itself quickly, but the synthetic scale
+    // test (§16) showed that at six and nine packs the unbounded introductions
+    // pushed the learner straight back to recognition-only. Penalised, never
+    // excluded — §9 keeps novelty reachable whenever depth is not available.
+    // Cross-pack transfer is exempt: meeting a known idea in a new pack is the
+    // pedagogical payoff of a multi-pack curriculum, not breadth for its own
+    // sake (the yet-concessive golden proves it must survive).
+    if (c.is_new_target && workingSetFull && c.focus_type !== 'cross_pack_progression') {
+      c.components.outside_working_set = 1
+      c.reason_codes = [...c.reason_codes, 'WORKING_SET_FULL']
+    }
     if (!candidates.has(key)) candidates.set(key, { ...c, key, reason_codes: [...new Set(c.reason_codes)].sort() })
   }
 
@@ -436,6 +505,7 @@ function scoreOf(candidate, { policy, mode, session }) {
   score += w('novelty_weight') * c.novelty_value
   score += w('diversity_weight') * c.diversity
   score -= w('recency_penalty_weight') * c.recency_penalty
+  score -= w('working_set_penalty_weight') * c.outside_working_set
   void session
   return round4(score)
 }
