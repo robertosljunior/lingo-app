@@ -41,14 +41,15 @@ npx serve dist        # ou: npm run preview
 
 **GitHub Pages**: o deploy é automático. O workflow
 [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml)
-publica o `dist/` versionado na branch `gh-pages` a cada push na `main`
-(o `dist/` já inclui `.nojekyll`), e o Pages serve essa branch. Como a
-`base` é relativa, o app funciona no caminho `usuario.github.io/lingo-app/`.
+roda `npm ci` + `npm run build` a cada push na `main` e publica o `dist/`
+recém-buildado direto no Pages (`actions/deploy-pages`, source
+**GitHub Actions** — não há mais branch `gh-pages`). Como a `base` é
+relativa, o app funciona no caminho `usuario.github.io/lingo-app/`.
 
 App publicado: <https://robertosljunior.github.io/lingo-app/>
 
-Depois de alterar o código, rode `npm run build` e commite o `dist/`
-atualizado junto — é ele que vai ao ar.
+O `dist/` continua versionado no repositório para uso offline/local, mas o
+que vai ao ar é sempre o build feito no CI a partir do código da `main`.
 
 ## Pedagogia V2
 
