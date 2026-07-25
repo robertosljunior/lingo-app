@@ -1,32 +1,62 @@
 name: Deploy to GitHub Pages
 
-# Publica o conteúdo pré-buildado de dist/ na branch gh-pages a cada push na
-# main. O GitHub Pages serve essa branch automaticamente. O dist/ é versionado
-# no repositório (ver README → Deploy), então não é necessário rodar
-# npm install/build aqui.
+# Faz o BUILD do app a cada push na main e publica dist/ no GitHub Pages usando
+# o deploy oficial de Actions (sem branch gh-pages). Antes, este workflow apenas
+# empurrava o dist/ versionado no repositório para a branch gh-pages — se o
+# dist/ commitado estivesse desatualizado, o site publicado ficava velho mesmo
+# com a main atualizada. Agora o artefato publicado é sempre construído a partir
+# do código da main.
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
+# Permissões mínimas: ler o código, publicar no Pages e assinar o deployment.
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
+# Um deploy de Pages por vez. Sem cancel-in-progress: um deploy já em andamento
+# deve terminar, senão o site pode ficar em estado parcial.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # git subtree split precisa do histórico completo
 
-      - name: Publica dist/ na branch gh-pages
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git push origin "$(git subtree split --prefix dist main)":refs/heads/gh-pages --force
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # mesma versão usada no workflow e2e
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload dist/ as Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
