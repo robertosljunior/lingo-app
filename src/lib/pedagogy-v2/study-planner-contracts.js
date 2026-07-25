@@ -21,7 +21,7 @@ import { PEDAGOGY_V2_RELATION_TYPES } from './contracts.js'
 export const STUDY_PLANNER_V2_VERSION = 1
 export const STUDY_FOCUS_V2_VERSION = 1
 export const STUDY_SESSION_V2_VERSION = 1
-export const STUDY_PLANNER_POLICY_VERSION = 1
+export const STUDY_PLANNER_POLICY_VERSION = 2 // 2 = V2.21-R3b working set
 
 // Study modes offered by the lab:
 //   focused  — the learner picked one pack; the session stays in it
@@ -123,6 +123,13 @@ export const DEFAULT_STUDY_PLANNER_POLICY_V2 = Object.freeze({
     novelty_weight: 1.5,
     diversity_weight: 0.75,
     recency_penalty_weight: 1,
+    // V2.21-R3b §6 — ACTIVE FRONTIER. Deepening is spread across every active
+    // target, so with N targets open each one only gets 1/N of the deepen slots
+    // and needs many sittings to cross a rung. This concentrates the deepen
+    // budget on a bounded WORKING SET of active targets; targets outside it are
+    // penalised, never excluded (so the planner can always fall back and never
+    // stalls). Diversity INSIDE the set is untouched — this is not camping.
+    working_set_penalty_weight: 2.5,
   }),
 
   // Per-mode weight emphasis: MULTIPLIERS applied over the base weights
@@ -143,6 +150,9 @@ export const DEFAULT_STUDY_PLANNER_POLICY_V2 = Object.freeze({
     max_consecutive_review: 4,      // avoid all-review grind outside review mode
     min_activities_before_switch: 2, // coherence: prefer staying briefly
     minimum_review_spacing: 2,      // focuses between two reviews of the SAME capability key
+    // How many active targets share the deepen budget at once (§7 — calibrated
+    // by measurement over the real journey, not chosen by taste).
+    working_set_size: 8,
   }),
 
   // Retention thresholds consumed by the review queue (heuristics, not SRS).
