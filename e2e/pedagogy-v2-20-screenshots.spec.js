@@ -5,9 +5,20 @@
 //
 // It runs only when V2_SHOTS=1, so the normal suite is unaffected.
 //
-// Feedback variants come from the real Assessment wherever a real session can
-// produce them; the states the adaptive pipeline will not reliably schedule are
-// captured from the learner presentation via the Playground rather than faked.
+// Every frame comes from a REAL session: real plans, real Assessment, real
+// feedback variants. Nothing is faked to fill the grid.
+//
+// KNOWN GAP (V2.20): the matrix is therefore incomplete. Which recipes appear is
+// a planner decision, and the harness answers recognition by tapping the first
+// option — often wrong — so the seeded learner never accumulates the correct
+// evidence Capability Entry needs to open the production/controlled recipes.
+// In practice this pass captures exposure, meaning/listening recognition and the
+// correct/semantic feedback variants; completion, word order, guided/free
+// production, context_recognition and the partial/linguistic/unable variants are
+// NOT captured here. Their structure is covered by the unit tests in
+// src/components/pedagogy-v2-learner/v2-polish-v2-20.test.jsx instead.
+// Closing the gap needs a harness that can answer correctly (or a DEV-only
+// forced-plan route) — deliberately not built in this slice.
 
 import { test, expect } from '@playwright/test'
 import fs from 'node:fs'
