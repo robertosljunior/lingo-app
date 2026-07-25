@@ -21,9 +21,10 @@ function planStub({ modality = 'reading', capability = 'recognition', recipe = '
 }
 const NO_STATES = new Map()
 
-describe('§24.1 — the seven personas all exist and are well-formed config', () => {
+describe('§24.1 — the personas all exist and are well-formed config', () => {
   it('every persona has a skill map and modulation knobs (never learner state)', () => {
-    expect(PERSONA_IDS).toHaveLength(7)
+    // 7 original personas + real-successful (V2.21 §32, the reported journey).
+    expect(PERSONA_IDS).toHaveLength(8)
     for (const id of PERSONA_IDS) {
       const p = SIMULATION_PERSONAS[id]
       expect(p.id).toBe(id)

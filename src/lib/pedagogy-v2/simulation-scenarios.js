@@ -77,6 +77,17 @@ const CATALOG = {
     start_at: T0, maximum_interactions: 100, clock: { strategy: 'constant_interval', interval_minutes: 5 },
     initial_evidence: CROSS_PACK_SEED('sim-profile'), ...o,
   }),
+  // V2.21 §32 — the scenario that reproduces the REAL reported journey:
+  // 5 sittings x 12 activities, a learner who answers correctly. The session
+  // rotation is what makes it a real journey rather than one long session:
+  // each sitting starts a fresh StudySession/LessonSession exactly like
+  // pressing "Praticar agora" again from the Home.
+  'real-successful-60': (o) => createSimulationScenarioV2({
+    scenario_id: 'golden:real-successful-60', persona: 'real-successful', mode: 'adaptive',
+    seed: 'golden-real-60', start_at: T0, maximum_interactions: 60,
+    session_rotation_interactions: 12,
+    clock: { strategy: 'constant_interval', interval_minutes: 5 }, ...o,
+  }),
 }
 
 export const STANDARD_SCENARIO_IDS = Object.keys(CATALOG)
