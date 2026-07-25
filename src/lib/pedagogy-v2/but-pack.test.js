@@ -93,11 +93,19 @@ describe('but pack — §23.19–21 explicit pedagogy on every exemplar', () => 
     }
   })
 
-  it('each novelty is introduced exactly once inside the pack', () => {
-    const introduced = butPack.exemplars.flatMap((e) => getIntendedNewItems(e).map((n) => n.ref))
-    expect(new Set(introduced).size).toBe(introduced.length)
-    for (const c of butPack.constructions) expect(introduced).toContain(c.construction_id)
-    for (const s of butPack.senses) expect(introduced).toContain(s.sense_id)
+  it('each new item belongs to exactly ONE canonical introduction group (V2.21-R2)', () => {
+    const groupOf = new Map()
+    for (const e of butPack.exemplars) {
+      const refs = (e.intended_new_items || []).map((n) => n.ref)
+      if (!refs.length) continue
+      const gid = e.introduction_group_id || `intro:solo.${e.exemplar_id}`
+      for (const ref of refs) {
+        if (groupOf.has(ref)) expect(groupOf.get(ref), ref).toBe(gid)
+        else groupOf.set(ref, gid)
+      }
+    }
+    for (const c of butPack.constructions) expect([...groupOf.keys()]).toContain(c.construction_id)
+    for (const s of butPack.senses) expect([...groupOf.keys()]).toContain(s.sense_id)
   })
 })
 

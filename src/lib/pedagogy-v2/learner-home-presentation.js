@@ -65,6 +65,37 @@ function greetingFor(profileName) {
 }
 
 /**
+ * V2.21-R2 §19/§20 — the learner-facing "Escolher prática" entries, one per
+ * authored pack. Copy comes STRAIGHT from the authored manifest
+ * (`title.pt` / `short_description_pt`); React never infers a linguistic
+ * description, and no technical id ever reaches the screen.
+ *
+ * Each entry carries the REAL focused-mode arguments, so tapping it starts the
+ * same createStudySessionControllerV2 in `focused` mode for that pack. Choosing
+ * a category picks the PACK, never a sentence: the Planner and the Engine keep
+ * deciding target, recipe and exemplar inside it (§22).
+ */
+export function buildPracticeCategoriesV2(registry) {
+  return (registry?.packs || [])
+    .map((pack) => {
+      const m = pack?.manifest
+      if (!m?.pack_id) return null
+      // "still — usos progressivos" → "Still": the learner sees the word, not
+      // the authoring title.
+      const lemma = String(m.title?.pt ?? '').split('—')[0].trim()
+      if (!lemma) return null
+      return {
+        pack_id: m.pack_id,
+        label: lemma.charAt(0).toUpperCase() + lemma.slice(1),
+        description: m.short_description_pt ?? '',
+        mode: 'focused',
+      }
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.pack_id.localeCompare(b.pack_id))
+}
+
+/**
  * buildLearnerHomePresentationV2 — the pure Home adapter (§15). Deterministic.
  *   buildLearnerHomePresentationV2({ profileName })
  * Returns { presentation_version, greeting, subhead, primary_action, actions,

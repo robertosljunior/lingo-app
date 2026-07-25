@@ -16,7 +16,8 @@
 import { useMemo } from 'react'
 import { useApp, SCREENS } from '../store.jsx'
 import { BottomNav } from '../components/ui.jsx'
-import { buildLearnerHomePresentationV2 } from '../lib/pedagogy-v2/learner-home-presentation.js'
+import { buildLearnerHomePresentationV2, buildPracticeCategoriesV2 } from '../lib/pedagogy-v2/learner-home-presentation.js'
+import { loadPedagogyV2Registry } from '../lib/pedagogy-v2/registry.js'
 import {
   experienceSwitcherAvailable,
   resolveLearnerExperienceMode,
@@ -32,10 +33,15 @@ export default function V2LearnerHome() {
     [profiles, activeProfile],
   )
   const home = useMemo(() => buildLearnerHomePresentationV2({ profileName }), [profileName])
+  // V2.21-R2 §19: one entry per authored pack, copy taken from the manifest.
+  const categories = useMemo(() => buildPracticeCategoriesV2(loadPedagogyV2Registry()), [])
 
   // The Home never runs the Planner just to enable a button; it always routes to
   // a real session which resolves to an activity OR a factual empty state.
   const startMode = (mode) => navigate(SCREENS.PEDAGOGY_V2_LEARNER, { mode })
+  // Focused practice: the SAME lesson screen and the SAME controller, with the
+  // pack pinned. The category chooses the pack, never the sentence (§21/§22).
+  const startFocused = (packId) => navigate(SCREENS.PEDAGOGY_V2_LEARNER, { mode: 'focused', pack: packId })
 
   const devToolsAvailable = experienceSwitcherAvailable(settings)
   const mode = resolveLearnerExperienceMode(settings)
@@ -70,6 +76,29 @@ export default function V2LearnerHome() {
               </button>
             ))}
           </div>
+
+          {/* Escolher prática — a discreet secondary control, never a dashboard:
+              no CEFR, no mastery, no technical id (§19/§23). */}
+          {categories.length > 0 && (
+            <section className="v2lx-categories" aria-label="Escolher prática" data-testid="v2lxh-categories">
+              <h2 className="v2lx-categories-title">Escolher prática</h2>
+              <div className="v2lx-category-list">
+                {categories.map((c) => (
+                  <button
+                    key={c.pack_id}
+                    type="button"
+                    className="v2lx-category-card"
+                    data-testid={`v2lxh-category-${c.pack_id}`}
+                    data-pack={c.pack_id}
+                    onClick={() => startFocused(c.pack_id)}
+                  >
+                    <div className="v2lx-category-label">{c.label}</div>
+                    <div className="v2lx-category-desc">{c.description}</div>
+                  </button>
+                ))}
+              </div>
+            </section>
+          )}
 
           {home.facts.length > 0 && (
             <div className="v2lx-home-facts" data-testid="v2lxh-facts">

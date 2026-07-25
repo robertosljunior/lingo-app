@@ -22,8 +22,13 @@ beforeAll(async () => {
   }
 })
 
-describe('§27 — the seven goldens run to completion with no invariant violation', () => {
-  for (const id of STANDARD_SCENARIO_IDS) {
+// V2.21-R2 §26: the focused scenarios are single-pack, 36-interaction journeys
+// (three sittings of the Home's "Escolher prática"). The multi-pack adaptive
+// assertions below do not apply to them; they have their own audits.
+const ADAPTIVE_SCENARIO_IDS = STANDARD_SCENARIO_IDS.filter((id) => !id.includes('-focused-'))
+
+describe('§27 — the adaptive goldens run to completion with no invariant violation', () => {
+  for (const id of ADAPTIVE_SCENARIO_IDS) {
     it(`${id}: reaches ≥50 interactions, all targets resolve, no global mastery leaks`, () => {
       const r = results.get(id)
       expect(r.interactions.length).toBeGreaterThanOrEqual(50)
@@ -75,7 +80,7 @@ describe('§27 — recognition before production (the engine never front-runs pr
 describe('§27 — adaptive journeys reach every pack (interleaving is real)', () => {
   // Slice V2.11: three packs — every persona\'s journey covers ALL of them,
   // with the planner discovering `yet` purely through the registry.
-  for (const id of STANDARD_SCENARIO_IDS) {
+  for (const id of ADAPTIVE_SCENARIO_IDS) {
     it(`${id}: the pack history covers all authored packs`, () => {
       const r = results.get(id)
       const packs = new Set(r.pack_history)

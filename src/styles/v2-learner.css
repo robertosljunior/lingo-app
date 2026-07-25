@@ -222,6 +222,19 @@
 .v2lx-action-desc { font-weight: 600; font-size: 12px; color: var(--v2-muted-2); margin-top: 2px; line-height: 1.35; }
 .v2lx-home-tools { text-align: center; margin-top: 8px; }
 
+/* ---- Escolher prática (V2.21-R2 §19/§23) -----------------------------------
+   A discreet secondary control under the three study entries: same V2.20
+   language, visually lighter than the action cards so "Praticar agora" stays
+   the hierarchy's peak. No CEFR, no mastery, no technical ids. */
+.v2lx-categories { margin-top: 22px; }
+.v2lx-categories-title { font-weight: 800; font-size: 13px; letter-spacing: .02em; color: var(--v2-muted-2); margin: 0 0 10px; text-transform: none; }
+.v2lx-category-list { display: flex; flex-direction: column; gap: 8px; }
+.v2lx-category-card { text-align: left; border: 1px solid var(--v2-line); background: transparent; border-radius: 16px; padding: 12px 14px; cursor: pointer; font: inherit; min-height: 44px; box-shadow: none; transition: background-color 120ms var(--v2-ease), border-color 120ms var(--v2-ease); }
+.v2lx-category-card:hover { background: var(--v2-surface-alt); }
+.v2lx-category-card:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: 2px; }
+.v2lx-category-label { font-weight: 900; font-size: 15px; color: var(--v2-ink); }
+.v2lx-category-desc { font-weight: 600; font-size: 12px; color: var(--v2-muted-2); margin-top: 2px; line-height: 1.35; }
+
 /* ---- options / chips ------------------------------------------------------- */
 
 /* §8 — an answer list, not a registration form: no idle shadow, transparent

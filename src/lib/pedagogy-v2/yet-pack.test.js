@@ -69,9 +69,17 @@ describe('§38.8–11 — exemplar completeness', () => {
       expect(Array.isArray(e.intended_new_items)).toBe(true)
       expect(e.intended_new_items.length).toBeLessThanOrEqual(2)
     }
-    // Each sense and construction is introduced exactly once.
-    const introduced = pack.exemplars.flatMap((e) => e.intended_new_items.map((n) => n.ref))
-    expect(new Set(introduced).size).toBe(introduced.length)
+    // V2.21-R2: each item belongs to exactly ONE canonical introduction group;
+    // a group may own several interchangeable realizations.
+    const groupOf = new Map()
+    for (const e of pack.exemplars) {
+      const gid = e.introduction_group_id || `intro:solo.${e.exemplar_id}`
+      for (const n of e.intended_new_items) {
+        if (groupOf.has(n.ref)) expect(groupOf.get(n.ref), n.ref).toBe(gid)
+        else groupOf.set(n.ref, gid)
+      }
+    }
+    const introduced = [...groupOf.keys()]
     for (const s of pack.senses) expect(introduced).toContain(s.sense_id)
     for (const c of pack.constructions) expect(introduced).toContain(c.construction_id)
   })
