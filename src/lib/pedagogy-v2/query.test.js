@@ -48,7 +48,16 @@ describe('pedagogy-v2 query API', () => {
       'sense:still.continuity',
       'construction:still.subject_still_lexical_verb',
     ])
-    const consolidation = getExemplar(stillPack, 'exemplar:still.002')
+    // V2.21-R2b: still.002 joined the lexical introduction group, so both the
+    // construction (the curricular step) and the sense are primary for it —
+    // the CONSTRUCTION first, which is what the plan reports as primary_target.
+    const grouped = getExemplar(stillPack, 'exemplar:still.002')
+    expect(getPrimaryTargets(grouped).map((t) => t.target_id)).toEqual([
+      'construction:still.subject_still_lexical_verb',
+      'sense:still.continuity',
+    ])
+    // A real consolidation exemplar still keeps the sense as secondary.
+    const consolidation = getExemplar(stillPack, 'exemplar:still.004')
     expect(getSecondaryTargets(consolidation).map((t) => t.target_id)).toEqual(['sense:still.continuity'])
   })
 
@@ -65,7 +74,14 @@ describe('pedagogy-v2 query API', () => {
     expect(getIntendedNewItems(getExemplar(stillPack, 'exemplar:still.006'))).toEqual([
       { type: 'construction', ref: 'construction:still.subject_be_still_complement' },
     ])
-    expect(getIntendedNewItems(getExemplar(stillPack, 'exemplar:still.002'))).toEqual([])
+    // still.002 is now an equivalent realization of the same first contact, so
+    // it declares the SAME items as its group seed (the budget still counts the
+    // item once — see the introduction-group tests).
+    expect(getIntendedNewItems(getExemplar(stillPack, 'exemplar:still.002'))).toEqual([
+      { type: 'sense', ref: 'sense:still.continuity' },
+      { type: 'construction', ref: 'construction:still.subject_still_lexical_verb' },
+    ])
+    expect(getIntendedNewItems(getExemplar(stillPack, 'exemplar:still.004'))).toEqual([])
   })
 
   it('orders the exposure progression from A1 to B1-B2', () => {

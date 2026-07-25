@@ -428,13 +428,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:but.contrast",
+          "target_type": "construction",
+          "target_id": "construction:but.clause_but_clause",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:but.clause_but_clause",
+          "target_type": "sense",
+          "target_id": "sense:but.contrast",
           "role": "primary"
         }
       ],
@@ -478,13 +478,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:but.contrast",
+          "target_type": "construction",
+          "target_id": "construction:but.clause_but_clause",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:but.clause_but_clause",
+          "target_type": "sense",
+          "target_id": "sense:but.contrast",
           "role": "primary"
         }
       ],
@@ -1654,13 +1654,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:but.contrast",
+          "target_type": "construction",
+          "target_id": "construction:but.clause_but_clause",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:but.clause_but_clause",
+          "target_type": "sense",
+          "target_id": "sense:but.contrast",
           "role": "primary"
         }
       ],
@@ -1705,13 +1705,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:but.contrast",
+          "target_type": "construction",
+          "target_id": "construction:but.clause_but_clause",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:but.clause_but_clause",
+          "target_type": "sense",
+          "target_id": "sense:but.contrast",
           "role": "primary"
         }
       ],
@@ -1756,13 +1756,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:but.contrast",
+          "target_type": "construction",
+          "target_id": "construction:but.clause_but_clause",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:but.clause_but_clause",
+          "target_type": "sense",
+          "target_id": "sense:but.contrast",
           "role": "primary"
         }
       ],
@@ -1808,13 +1808,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:but.contrast",
+          "target_type": "construction",
+          "target_id": "construction:but.clause_but_clause",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:but.clause_but_clause",
+          "target_type": "sense",
+          "target_id": "sense:but.contrast",
           "role": "primary"
         }
       ],

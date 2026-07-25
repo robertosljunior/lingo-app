@@ -520,13 +520,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:yet.temporal_pending",
+          "target_type": "construction",
+          "target_id": "construction:yet.subject_be_not_complement_yet",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:yet.subject_be_not_complement_yet",
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
           "role": "primary"
         }
       ],
@@ -570,13 +570,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:yet.temporal_pending",
+          "target_type": "construction",
+          "target_id": "construction:yet.subject_be_not_complement_yet",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:yet.subject_be_not_complement_yet",
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
           "role": "primary"
         }
       ],
@@ -620,13 +620,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:yet.temporal_pending",
+          "target_type": "construction",
+          "target_id": "construction:yet.subject_be_not_complement_yet",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:yet.subject_be_not_complement_yet",
+          "target_type": "sense",
+          "target_id": "sense:yet.temporal_pending",
           "role": "primary"
         }
       ],
@@ -1647,13 +1647,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:yet.maximal_so_far",
+          "target_type": "construction",
+          "target_id": "construction:yet.superlative_yet",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:yet.superlative_yet",
+          "target_type": "sense",
+          "target_id": "sense:yet.maximal_so_far",
           "role": "primary"
         }
       ],
@@ -1701,13 +1701,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:yet.maximal_so_far",
+          "target_type": "construction",
+          "target_id": "construction:yet.superlative_yet",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:yet.superlative_yet",
+          "target_type": "sense",
+          "target_id": "sense:yet.maximal_so_far",
           "role": "primary"
         }
       ],
@@ -1755,13 +1755,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:yet.maximal_so_far",
+          "target_type": "construction",
+          "target_id": "construction:yet.superlative_yet",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:yet.superlative_yet",
+          "target_type": "sense",
+          "target_id": "sense:yet.maximal_so_far",
           "role": "primary"
         }
       ],
@@ -1864,13 +1864,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:yet.additive_repetition",
+          "target_type": "construction",
+          "target_id": "construction:yet.yet_another_np",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:yet.yet_another_np",
+          "target_type": "sense",
+          "target_id": "sense:yet.additive_repetition",
           "role": "primary"
         }
       ],
@@ -1956,13 +1956,13 @@
       ],
       "pedagogical_targets": [
         {
-          "target_type": "sense",
-          "target_id": "sense:yet.additive_repetition",
+          "target_type": "construction",
+          "target_id": "construction:yet.yet_another_np",
           "role": "primary"
         },
         {
-          "target_type": "construction",
-          "target_id": "construction:yet.yet_another_np",
+          "target_type": "sense",
+          "target_id": "sense:yet.additive_repetition",
           "role": "primary"
         }
       ],

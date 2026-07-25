@@ -109,7 +109,9 @@ describe('§24.31 + §9 — still state and evidence stay valid after the multi-
     })
     // NOT the first exposure again: the engine moves to the next construction.
     expect(d.status).toBe('activity')
-    expect(d.plan.exemplar_id).toBe('exemplar:still.006')
+    // V2.21-R2b: the be-construction's first contact is an introduction GROUP.
+    expect(['exemplar:still.006', 'exemplar:still.007', 'exemplar:still.008', 'exemplar:still.010'])
+      .toContain(d.plan.exemplar_id)
     expect(d.plan.recipe).toBe('exposure')
   })
 })

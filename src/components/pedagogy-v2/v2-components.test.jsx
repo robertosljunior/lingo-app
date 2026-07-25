@@ -22,11 +22,16 @@ const realDecision = selectNextActivityV2({
   pack: stillPack, learnerStates: [], recentEvidence: [],
 })
 const exposurePlan = realDecision.plan
+// V2.21-R2b: the first contact is served by an INTRODUCTION GROUP, so the engine
+// may pick any interchangeable realization. The component contract is about the
+// plan's own sentence — assert against it rather than a pinned string.
+const EN = exposurePlan.text_en
+const PT = exposurePlan.text_pt
 
 // …and hand-shaped plans reusing its structure for the other recipes.
 const variant = (over) => ({ ...exposurePlan, ...over })
 const options = [
-  { option_id: 'option:1', text_pt: 'Eu ainda moro aqui.', source_exemplar_id: 'exemplar:still.001', is_target: true },
+  { option_id: 'option:1', text_pt: PT, source_exemplar_id: exposurePlan.exemplar_id, is_target: true },
   { option_id: 'option:2', text_pt: 'Eu me mudei.', source_exemplar_id: 'exemplar:still.002', is_target: false },
 ]
 
@@ -83,16 +88,16 @@ describe('V2ActivityRenderer — every recipe renders', () => {
 
   it('exposure shows the full sentence, translation and continue button', () => {
     const html = render(PLANS.exposure)
-    expect(html).toContain('I still live here.')
-    expect(html).toContain('Eu ainda moro aqui.')
+    expect(html).toContain(EN)
+    expect(html).toContain(PT)
     expect(html).toContain('v2-continue')
   })
 
   it('listening never shows the English sentence before the answer, but audio is present', () => {
     const html = render(PLANS.listening_recognition)
-    expect(html).not.toContain('I still live here.')
+    expect(html).not.toContain(EN)
     expect(html).toContain('v2-audio-button')
-    expect(html).toContain('Eu ainda moro aqui.') // the pt options ARE shown
+    expect(html).toContain(PT) // the pt options ARE shown
   })
 
   it('meaning recognition shows exactly the declared options, none marked correct', () => {
@@ -104,21 +109,24 @@ describe('V2ActivityRenderer — every recipe renders', () => {
 
   it('completion masks only the fixed element and offers the declared word bank', () => {
     const html = render(PLANS.fixed_element_completion)
-    expect(html).toContain('I ___ live here.')
+    expect(html).toContain(exposurePlan.text_en.replace(/\bstill\b/, '___'))
     expect(html).toContain('v2-word-bank')
   })
 
   it('word order shows every token in plan-declared lexicographic order', () => {
     const html = render(PLANS.word_order_reconstruction)
-    for (const t of ['I', 'still', 'live', 'here.']) expect(html).toContain(`>${t}</button>`)
-    expect(html.indexOf('>here.<')).toBeLessThan(html.indexOf('>still<'))
+    // Tokens come from the plan's own sentence, sorted lexicographically.
+    const tokens = EN.split(' ')
+    for (const t of tokens) expect(html).toContain(`>${t}</button>`)
+    const sorted = [...tokens].sort((a, b) => a.localeCompare(b))
+    expect(html.indexOf(`>${sorted[0]}<`)).toBeLessThan(html.indexOf(`>${sorted[sorted.length - 1]}<`))
   })
 
   it('free production has a free field and no word bank', () => {
     const html = render(PLANS.free_production)
     expect(html).toContain('v2-production-input')
     expect(html).not.toContain('v2-word-bank')
-    expect(html).not.toContain('I still live here.') // reference hidden before answer
+    expect(html).not.toContain(EN) // reference hidden before answer
   })
 
   it('pronunciation states availability and disables recording without STT', () => {
@@ -145,7 +153,7 @@ describe('V2Feedback', () => {
     ]) {
       const html = feedback(status, outcome)
       expect(html).toContain(marker)
-      expect(html).toContain('I still live here.')
+      expect(html).toContain(EN)
       expect(html).toContain('v2-feedback-continue')
     }
   })
