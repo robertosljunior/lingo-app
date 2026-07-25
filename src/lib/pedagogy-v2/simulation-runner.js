@@ -157,9 +157,12 @@ function assertInvariants({ i, mode, focus, plan, planned, availability, afforda
   if (!authored || authored.text_en !== plan.text_en || authored.text_pt !== plan.text_pt) {
     fail('AUTHORED_SENTENCE_ONLY', { exemplar_id: plan.exemplar_id })
   }
+  // Options are authored: translations by default, or authored CONTEXTS for the
+  // Slice V2.19 context_recognition shape. Either way, never generated text.
+  const authoredField = plan.presentation?.option_kind === 'authored_context' ? 'context' : 'text_pt'
   for (const o of plan.presentation?.options || []) {
     const src = resolvePedagogyExemplar(o.source_exemplar_id, registry)?.entity
-    if (!src || src.text_pt !== o.text_pt) fail('NO_GENERATED_TEXT', { option: o.option_id, source: o.source_exemplar_id })
+    if (!src || String(src[authoredField]).trim() !== o.text_pt) fail('NO_GENERATED_TEXT', { option: o.option_id, source: o.source_exemplar_id })
   }
 
   // 6 / 5 / 7 — deterministic interaction id, unique + isolated evidence.

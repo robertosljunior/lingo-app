@@ -11,9 +11,12 @@ export default function V2ChoiceActivity({ plan, capabilities, settings, busy, o
   const [chosen, setChosen] = useState(null)
   const showEnglish = (plan.presentation.show || []).includes('text_en')
   const isListening = plan.recipe === 'listening_recognition'
+  // context_recognition asks WHICH situation fits — the options ARE contexts, so
+  // the exemplar's own context must never be shown as a prompt (it is the answer).
+  const isContextRecognition = plan.recipe === 'context_recognition'
   return (
     <div data-testid={`v2-activity-${plan.recipe}`} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-      <p className="muted" style={{ fontSize: 13 }}>{plan.context}</p>
+      {!isContextRecognition && <p className="muted" style={{ fontSize: 13 }}>{plan.context}</p>}
       {showEnglish && (
         <div className="card" style={{ padding: 18 }}>
           <div data-testid="v2-text-en" style={{ fontWeight: 900, fontSize: 20 }}>{plan.text_en}</div>

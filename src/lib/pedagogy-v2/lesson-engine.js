@@ -29,6 +29,9 @@ import {
   RECOGNITION_CAPABILITY_KEYS, PRODUCTION_CAPABILITY_KEYS,
 } from './lesson-engine-state-queries.js'
 import { canTrainIndependentV2 } from './training-affordances.js'
+import {
+  buildRecentExemplarUsageV2, exemplarRecencyRank, seededShuffle, seededTokenShuffle,
+} from './experience-diversity.js'
 
 export { DEFAULT_LESSON_ENGINE_POLICY_V2, mergeLessonEnginePolicyV2 }
 
@@ -54,6 +57,7 @@ const INSTRUCTIONS_PT = {
   exposure: 'Leia a frase com atenção e observe como ela é usada.',
   meaning_recognition: 'Escolha a tradução correta da frase.',
   listening_recognition: 'Ouça a frase e escolha a tradução correta.',
+  context_recognition: 'Em qual situação essa frase faria sentido?',
   fixed_element_completion: 'Complete a frase com o que está faltando.',
   word_order_reconstruction: 'Coloque as palavras na ordem correta.',
   guided_production: 'Produza a frase em inglês para esta situação.',
@@ -173,6 +177,33 @@ function buildRecognitionOptions(pack, exemplar, minOptions) {
   return rows.map((r, i) => ({ option_id: `option:${i + 1}`, ...r }))
 }
 
+// Context-recognition options (Slice V2.19): the correct option is THIS
+// exemplar's authored situation (context); distractors are OTHER exemplars'
+// authored contexts, preferring a DIFFERENT sense so the contrast is meaningful.
+// Never generated — every option is authored context text.
+export function buildContextOptionsV2(pack, exemplar, minOptions) {
+  const target = String(exemplar.context || '').trim()
+  if (!target) return null
+  const targetSenses = new Set(exemplar.sense_ids || [])
+  const rows = [{ text_pt: target, source_exemplar_id: exemplar.exemplar_id, is_target: true }]
+  const seen = new Set([normalizeTranslationPt(target)])
+  const others = (pack.exemplars || []).filter((o) => o.exemplar_id !== exemplar.exemplar_id && o.context)
+  const ordered = [
+    ...others.filter((o) => !(o.sense_ids || []).some((sid) => targetSenses.has(sid))),
+    ...others.filter((o) => (o.sense_ids || []).some((sid) => targetSenses.has(sid))),
+  ]
+  for (const o of ordered) {
+    if (rows.length >= minOptions) break
+    const norm = normalizeTranslationPt(o.context)
+    if (seen.has(norm)) continue
+    seen.add(norm)
+    rows.push({ text_pt: String(o.context).trim(), source_exemplar_id: o.exemplar_id, is_target: false })
+  }
+  if (rows.length < minOptions) return null
+  rows.sort((a, b) => (a.text_pt < b.text_pt ? -1 : a.text_pt > b.text_pt ? 1 : 0))
+  return rows.map((r, i) => ({ option_id: `option:${i + 1}`, ...r }))
+}
+
 // ---- planned evidence -------------------------------------------------------
 // Declares the evidence a future assessment slice COULD record — nothing is
 // written here. Attributions are exactly the approved direct/indirect/exposure.
@@ -216,13 +247,16 @@ function plannedEvidenceFor(recipe, exemplar, capability, modality) {
 
 // ---- presentation / response contract ---------------------------------------
 
-function buildPresentation({ recipe, exemplar, variant, options }) {
+function buildPresentation({ recipe, exemplar, variant, options, presentationSeed = null, diversityOn = true }) {
   const base = { instructions_pt: INSTRUCTIONS_PT[recipe.recipe] }
   switch (recipe.recipe) {
     case 'exposure':
       return { ...base, show: ['text_en', 'text_pt', 'context'] }
     case 'meaning_recognition':
       return { ...base, show: ['text_en'], options }
+    case 'context_recognition':
+      // Present the EN sentence; options are authored pt-BR situations.
+      return { ...base, show: ['text_en'], options, option_kind: 'authored_context' }
     case 'listening_recognition':
       return {
         ...base, show: [], options,
@@ -233,11 +267,28 @@ function buildPresentation({ recipe, exemplar, variant, options }) {
         ...base, show: ['text_pt', 'context'],
         masked_text_source: { exemplar_id: exemplar.exemplar_id, mask: 'construction_fixed_elements' },
       }
-    case 'word_order_reconstruction':
+    case 'word_order_reconstruction': {
+      // Slice V2.19: present the token bank in a deterministic seeded order
+      // instead of always-lexicographic. canonicalOrderTokens() (the correct
+      // answer) is untouched; the plan carries the FINAL presented order so the
+      // renderer never runs its own randomness, and the shuffle can never
+      // accidentally equal the canonical sentence.
+      const canonical = String(exemplar.text_en || '').trim().split(/\s+/)
+      const useShuffle = diversityOn && presentationSeed && canonical.length > 1
+      const presented = useShuffle
+        ? seededTokenShuffle(canonical, `${presentationSeed}|tokens`)
+        : null
       return {
         ...base, show: ['text_pt'],
-        token_source: { exemplar_id: exemplar.exemplar_id, tokenization: 'text_en_whitespace', presentation_order: 'lexicographic' },
+        token_source: presented
+          ? {
+            exemplar_id: exemplar.exemplar_id, tokenization: 'text_en_whitespace',
+            presentation_order: 'seeded_shuffle', presentation_seed: `${presentationSeed}|tokens`,
+            presented_tokens: presented,
+          }
+          : { exemplar_id: exemplar.exemplar_id, tokenization: 'text_en_whitespace', presentation_order: 'lexicographic' },
       }
+    }
     case 'guided_production':
       return {
         ...base, show: ['context', 'text_pt'],
@@ -330,6 +381,23 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
   const statesById = indexStatesByTargetId(states)
   const history = session?.history || []
   const exemplars = activePack?.exemplars || []
+  const exemplarById = new Map(exemplars.map((e) => [e.exemplar_id, e]))
+
+  // Slice V2.19 — cross-session exemplar recency, derived from the ALREADY
+  // persisted evidence tail (no new store, DB_VERSION unchanged). Counted per
+  // INTERACTION so a multi-target exemplar is not over-counted.
+  const diversity = p.diversity || {}
+  const diversityOn = diversity.enabled !== false
+  const recentWindow = diversity.recent_exemplar_interactions ?? 6
+  const recentUsage = buildRecentExemplarUsageV2(recent, { window: recentWindow })
+  // context_items of exemplars seen inside the recency window — the ONLY signal
+  // used for context diversity (authored, exact match, never inferred).
+  const recentContextItems = new Set()
+  recentUsage.forEach((entry, xid) => {
+    if (entry.interactions_since_seen >= recentWindow) return
+    const ex = exemplarById.get(xid)
+    for (const ci of ex?.context_items || []) recentContextItems.add(ci)
+  })
 
   const baseDecision = {
     decision_version: 1,
@@ -428,6 +496,10 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
       }
 
       for (const recipe of LESSON_RECIPES) {
+        // Presentation-only variants (Slice V2.19 context_recognition) are never
+        // scored as independent candidates — they only ever REPLACE a chosen
+        // activity's presentation, so they can't change the trained focus.
+        if (recipe.presentation_variant_of) continue
         for (const [capability, modality] of recipe.pairs) {
           // Study-planner focus restriction on capability/modality. When the
           // focus names a capability (deepen/review/remediate/independence),
@@ -547,29 +619,150 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     return { ...baseDecision, status: 'no_eligible_activity', plan: null, trace: traceBase }
   }
 
-  // Deterministic pick: max score; EXACT ties resolved by seeded hash (a
-  // different seed can only permute equal-score candidates), then by canonical
-  // generation order.
-  const bestScore = candidates.reduce((m, c) => Math.max(m, c.score), -Infinity)
-  const tied = candidates.filter((c) => c.score === bestScore)
+  // Deterministic pick. Baseline pedagogy is unchanged: the highest score is
+  // the ceiling. Slice V2.19 layers EXPERIENCE DIVERSITY on top — but only
+  // among candidates within a pedagogically-acceptable band of the best score,
+  // so a materially weaker activity never wins just for being novel.
   const seed = String(session?.seed ?? session?.session_id ?? '')
-  let best = tied[0]
-  if (tied.length > 1) {
+  const bestScore = candidates.reduce((m, c) => Math.max(m, c.score), -Infinity)
+
+  // Annotate every candidate with its cross-session recency (per interaction).
+  for (const c of candidates) {
+    const r = exemplarRecencyRank(recentUsage, c.exemplar.exemplar_id, recentWindow)
+    c._within_window = r.within_window
+    c._since_seen = r.interactions_since_seen
+    // context repeat: how many of this exemplar's context_items were just seen.
+    c._context_repeat = (c.exemplar.context_items || [])
+      .reduce((n, ci) => n + (recentContextItems.has(ci) ? 1 : 0), 0)
+  }
+
+  const seededTie = (list) => {
+    let picked = list[0]
     let bestHash = Infinity
-    for (const c of tied) {
+    for (const c of list) {
       const h = tieHash(`${seed}|${c.exemplar.exemplar_id}|${c.recipe.recipe}|${c.capKey}|${c.variant.lane}`)
-      if (h < bestHash) { bestHash = h; best = c }
+      if (h < bestHash) { bestHash = h; picked = c }
     }
+    return picked
+  }
+
+  // The pedagogical winner (max score, exact-tie seeded) is the ANCHOR. It fixes
+  // WHAT is trained: target, capability, modality, lane are taken from it and
+  // NEVER changed by diversity (acceptance §4, "NÃO RANDOMIZAR O FOCO").
+  const anchor = seededTie(candidates.filter((c) => c.score === bestScore))
+
+  let best
+  let diversityApplied = false
+  if (!diversityOn) {
+    best = anchor
+  } else {
+    diversityApplied = true
+    // Experience diversity competes ONLY among candidates that realize the SAME
+    // focus as the anchor — identical primary target, capability, modality and
+    // lane. This is the "hard filtering by recency among candidates sharing
+    // target/capability/modality/lane" endorsed in Part H: the focus cannot
+    // drift, only the exemplar and (equivalent) recipe within it may vary.
+    const anchorTarget = anchor.primaries[0]
+    const sameFocus = (c) => c.primaries[0] === anchorTarget
+      && c.capability === anchor.capability
+      && c.modality === anchor.modality
+      && c.variant.lane === anchor.variant.lane
+    // Within that focus, only candidates inside the pedagogically-acceptable
+    // band may compete, so a clearly weaker realization never wins for novelty.
+    const bandFloor = bestScore * (1 - (diversity.acceptable_score_band ?? 0.15))
+    let band = candidates.filter((c) => sameFocus(c) && c.score >= bandFloor)
+    if (!band.length) band = [anchor] // defensive: anchor always qualifies
+
+    // Recipe-streak control: monotony is measured PER FOCUS — consecutive
+    // trailing activities of the anchor's recipe on the same capability /
+    // modality / construction. Only that genuine repetition (completion →
+    // completion → …) triggers a swap; unrelated recent recipes don't perturb
+    // the choice. When the streak would exceed the cap and a valid equivalent
+    // alternative recipe is in the band, prefer it (never changing focus/lane).
+    const streakMax = diversity.recipe_streak_max ?? 2
+    let streak = 0
+    for (let i = history.length - 1; i >= 0; i--) {
+      const h = history[i]
+      if (h.recipe === anchor.recipe.recipe && h.capability === anchor.capability
+        && h.modality === anchor.modality && h.construction_id === anchor.exemplar.construction_id) streak += 1
+      else break
+    }
+    if (streak >= streakMax) {
+      const alts = band.filter((c) => c.recipe.recipe !== anchor.recipe.recipe)
+      if (alts.length) band = alts
+    }
+
+    // Cross-session recency: if any acceptable realization is OUTSIDE the recency
+    // window, restrict to those (never repeat a recent exemplar while a valid
+    // fresh alternative exists). Otherwise LEAST-RECENT fallback over the band.
+    const outside = band.filter((c) => !c._within_window)
+    const pool = outside.length ? outside : band
+    const leastRecentFallback = outside.length === 0
+
+    // recency tier → pedagogical score → context diversity → deterministic seed.
+    const cmp = (a, b) => {
+      if (leastRecentFallback && a._since_seen !== b._since_seen) return b._since_seen - a._since_seen
+      if (a.score !== b.score) return b.score - a.score
+      if (a._context_repeat !== b._context_repeat) return a._context_repeat - b._context_repeat
+      return 0
+    }
+    const sorted = pool.slice().sort(cmp)
+    const topEquivalent = sorted.filter((c) => cmp(c, sorted[0]) === 0)
+    best = seededTie(topEquivalent)
   }
 
   const e = best.exemplar
   const sequence_index = history.length
+
+  // Slice V2.19 — context_recognition presentation swap. When the chosen
+  // activity is reading meaning_recognition and that exact shape has just
+  // repeated (in-session monotony over the same construction), re-present the
+  // SAME exemplar as the context_recognition shape: the learner reads the EN
+  // sentence and picks the authored pt-BR situation. Target, exemplar, capability,
+  // modality, lane, attribution and planned evidence are UNCHANGED — only the UI
+  // varies — so the adaptive flow (and every long-horizon invariant) is intact.
+  let contextSwapApplied = false
+  if (diversityOn && best.recipe.recipe === 'meaning_recognition'
+    && best.capability === 'comprehension' && best.modality === 'reading') {
+    // Count only a run of the STANDARD shape (a context_recognition breaks the
+    // run) so the swap ALTERNATES rather than persisting — meaning_recognition
+    // stays the norm and context_recognition punctuates monotony.
+    let cxStreak = 0
+    for (let i = history.length - 1; i >= 0; i--) {
+      const h = history[i]
+      if (h.recipe === 'meaning_recognition'
+        && h.capability === 'comprehension' && h.modality === 'reading'
+        && h.construction_id === e.construction_id) cxStreak += 1
+      else break
+    }
+    if (cxStreak >= (diversity.recipe_streak_max ?? 2)) {
+      const cxOptions = buildContextOptionsV2(activePack, e, p.min_recognition_options)
+      const cxRecipe = LESSON_RECIPES.find((r) => r.recipe === 'context_recognition')
+      if (cxOptions && cxRecipe) {
+        best = { ...best, recipe: cxRecipe, options: cxOptions }
+        contextSwapApplied = true
+      }
+    }
+  }
+
+  // Per-activity presentation seed (Slice V2.19): session seed + sequence index
+  // + exemplar id. Same input → same order; different session → may differ.
+  const presentationSeed = `${seed}|${sequence_index}|${e.exemplar_id}`
+  // Recognition options: preserve the authored set and the correct alternative,
+  // only VARY the presentation order via a deterministic seeded shuffle so the
+  // target is not structurally frozen at one index. option_id follows the
+  // presented position; correct_option_id is re-derived from the shuffled set.
+  if (best.options && diversityOn) {
+    const shuffled = seededShuffle(best.options, `${presentationSeed}|options`)
+      .map((o, i) => ({ ...o, option_id: `option:${i + 1}` }))
+    best.options = shuffled
+  }
   const support = {
     features: [...best.variant.features],
     derived_tier: deriveSupportTier({ features: best.variant.features, hint_count: 0 }),
   }
   const construction = resolveConstruction(e.construction_id)
-  const presentation = buildPresentation({ recipe: best.recipe, exemplar: e, variant: best.variant, options: best.options })
+  const presentation = buildPresentation({ recipe: best.recipe, exemplar: e, variant: best.variant, options: best.options, presentationSeed, diversityOn })
   if (best.recipe.recipe === 'fixed_element_completion' && construction) {
     presentation.masked_text_source.fixed_elements = [...(construction.fixed_elements || [])]
   }
@@ -577,7 +770,19 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
   const trace = {
     ...traceBase,
     budget: { ...traceBase.budget, remaining_after: budgetRemaining - best.newRefs.length },
-    tie_break: { tied: tied.length, seed },
+    tie_break: { seed },
+    // Slice V2.19 diagnostics (product/engine only — never learner mastery).
+    experience_diversity: {
+      applied: diversityApplied,
+      best_score: Math.round(bestScore * 1e6) / 1e6,
+      candidate_score: best.score,
+      score_delta: Math.round((bestScore - best.score) * 1e6) / 1e6,
+      exemplar_within_recent_window: !!best._within_window,
+      interactions_since_seen: best._since_seen === Infinity ? null : best._since_seen,
+      context_repeat: best._context_repeat ?? 0,
+      recent_window: recentWindow,
+      context_recognition_swap: contextSwapApplied,
+    },
     prerequisite_assessments: prereqByExemplar.get(e.exemplar_id) || [],
     score_breakdown: best.components,
     reasons: describeDecision(best, p),

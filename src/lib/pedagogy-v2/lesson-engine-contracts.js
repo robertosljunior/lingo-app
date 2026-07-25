@@ -18,8 +18,12 @@ import {
 } from './learner-model-constants.js'
 import { deriveSupportTier } from './learner-evidence-contracts.js'
 
-export const LESSON_ENGINE_V2_VERSION = 2 // 1 was the 7038d70 prototype
-export const LESSON_ENGINE_POLICY_VERSION = 2
+// 3 (Slice V2.19): selection now applies EXPERIENCE DIVERSITY (cross-session
+// exemplar recency, least-recent fallback, recipe-streak control, seeded option
+// / word-order presentation) on top of pedagogical scoring. The pedagogy is
+// unchanged; the realization chosen for a given focus is now varied.
+export const LESSON_ENGINE_V2_VERSION = 3 // 1 was the 7038d70 prototype; 2 = V2.3-R…V2.18
+export const LESSON_ENGINE_POLICY_VERSION = 3
 export const LESSON_SESSION_V2_VERSION = 1
 export const ACTIVITY_PLAN_V2_VERSION = 1
 // 2 (Slice V2.5): declares the multi-pack scope — registry_version,
@@ -61,6 +65,29 @@ export const LESSON_RECIPES = [
     needs_options: true,
     attribution_rule: 'meaning_first',
     response_type: 'option_select',
+  },
+  {
+    // Slice V2.19 — a NEW comprehension shape that varies the recognition UI
+    // without generating language. The learner reads an authored EN sentence
+    // and picks the authored pt-BR SITUATION (context) it fits; distractors are
+    // other exemplars' authored contexts. Reuses the meaning_recognition
+    // activity kind / meaning_first attribution (comprehension evidence for the
+    // sense), so no new taxonomy is introduced.
+    recipe: 'context_recognition',
+    activity_kind: 'meaning_recognition',
+    pairs: [['comprehension', 'reading']],
+    variants: [{ lane: 'supported', features: ['multiple_choice'] }],
+    needs_options: true,
+    option_source: 'authored_context',
+    attribution_rule: 'meaning_first',
+    response_type: 'option_select',
+    // Presentation-only VARIANT of meaning_recognition: it is never scored as an
+    // independent candidate (so it can never change WHICH exemplar/target the
+    // adaptive flow trains — that would perturb the planner). Instead the engine
+    // swaps a chosen reading-comprehension activity to this shape when the same
+    // recipe would otherwise repeat, varying the UI over the SAME exemplar,
+    // target and evidence.
+    presentation_variant_of: 'meaning_recognition',
   },
   {
     recipe: 'listening_recognition',
@@ -187,6 +214,34 @@ export const DEFAULT_LESSON_ENGINE_POLICY_V2 = Object.freeze({
   // Optional focus: { target_id } restricts candidates to exemplars declaring
   // that pedagogical target.
   targeted_practice: null,
+  // ---- experience diversity (Slice V2.19) -----------------------------------
+  // Controlled variety knobs, all versioned. NEVER change WHAT is trained (the
+  // Planner's focus, target, capability, modality, lane are untouched); they
+  // only reorder/deduplicate pedagogically-equivalent realizations.
+  diversity: Object.freeze({
+    // Recency window measured in INTERACTIONS (not days). An exemplar whose last
+    // appearance is fewer than this many distinct interactions ago is "recent"
+    // and is avoided while any equally-valid non-recent alternative exists.
+    // Calibrated against audit:practice-variety-v2 AND the 200-interaction
+    // long-horizon simulation. A window of 6 (one full short session) crossed
+    // the target-loop grave-finding threshold for the struggling persona
+    // (0.51 > 0.50) because deeper rotation perturbs the remediation trajectory;
+    // 4 keeps every long-horizon invariant (0.44) while still rotating a whole
+    // short session before any exemplar repeats. See docs/pedagogy-v2/slice-v2-19.md.
+    recent_exemplar_interactions: 4,
+    // Pedagogically-acceptable band: only candidates whose score is within this
+    // fraction of the best score may compete on experience diversity. Keeps a
+    // clearly-weaker activity from winning merely for being novel. Phase-A audit
+    // (score distribution) justifies the value; 0.15 keeps near-equals eligible
+    // while excluding materially worse candidates.
+    acceptable_score_band: 0.15,
+    // Recipe-streak control: at most this many CONSECUTIVE activities of the
+    // same recipe when a valid equivalent alternative recipe exists for the
+    // SAME focus (capability/modality/lane/target).
+    recipe_streak_max: 2,
+    // Master switch — off restores exact V2.18 selection behavior.
+    enabled: true,
+  }),
 })
 
 export function mergeLessonEnginePolicyV2(policy = {}) {
@@ -200,6 +255,7 @@ export function mergeLessonEnginePolicyV2(policy = {}) {
     },
     retention: { ...d.retention, ...(policy.retention || {}) },
     weights: { ...d.weights, ...(policy.weights || {}) },
+    diversity: { ...d.diversity, ...(policy.diversity || {}) },
   }
 }
 

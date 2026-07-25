@@ -13,6 +13,7 @@ import V2PronunciationActivity from './V2PronunciationActivity.jsx'
 const RENDERERS = {
   exposure: V2ExposureActivity,
   meaning_recognition: V2ChoiceActivity,
+  context_recognition: V2ChoiceActivity, // Slice V2.19: EN sentence + authored pt-BR situations
   listening_recognition: V2ChoiceActivity,
   fixed_element_completion: V2CompletionActivity,
   word_order_reconstruction: V2WordOrderActivity,
