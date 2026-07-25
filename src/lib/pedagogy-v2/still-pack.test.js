@@ -171,11 +171,19 @@ describe('still pack — progressive exposure and novelty budget', () => {
     expect(firstStage(COUNTER)).toBeLessThan(firstStage(DISCOURSE))
   })
 
-  it('each new sense/construction is introduced exactly once as an intended new item', () => {
-    const introduced = stillPack.exemplars.flatMap((e) => getIntendedNewItems(e).map((n) => n.ref))
-    expect(new Set(introduced).size).toBe(introduced.length)
-    for (const c of stillPack.constructions) expect(introduced).toContain(c.construction_id)
-    for (const s of stillPack.senses) expect(introduced).toContain(s.sense_id)
+  it('each new item belongs to exactly ONE canonical introduction group (V2.21-R2b)', () => {
+    const groupOf = new Map()
+    for (const e of stillPack.exemplars) {
+      const refs = getIntendedNewItems(e).map((n) => n.ref)
+      if (!refs.length) continue
+      const gid = e.introduction_group_id || `intro:solo.${e.exemplar_id}`
+      for (const ref of refs) {
+        if (groupOf.has(ref)) expect(groupOf.get(ref), ref).toBe(gid)
+        else groupOf.set(ref, gid)
+      }
+    }
+    for (const c of stillPack.constructions) expect([...groupOf.keys()]).toContain(c.construction_id)
+    for (const s of stillPack.senses) expect([...groupOf.keys()]).toContain(s.sense_id)
   })
 
   it('consolidation exemplars declare what they assume as prerequisites', () => {

@@ -12,6 +12,7 @@ import { selectNextActivityV2 } from './lesson-engine.js'
 import { validateLessonDecisionV2 } from './lesson-engine-validator.js'
 
 // ---- targets of the still pack ----------------------------------------------
+const STILL_LEXICAL_GROUP = ['exemplar:still.001', 'exemplar:still.002', 'exemplar:still.003', 'exemplar:still.005']
 const CONT = { target_type: 'sense', target_id: 'sense:still.continuity' }
 const COUNTER = { target_type: 'sense', target_id: 'sense:still.counter_expectation' }
 const DISC = { target_type: 'sense', target_id: 'sense:still.discourse_reservation' }
@@ -77,8 +78,9 @@ describe('scenario 1 — brand-new learner starts with exposure to the first aut
   it('selects exposure of exemplar 001 with translation support', () => {
     expect(d.status).toBe('activity')
     expect(d.plan.recipe).toBe('exposure')
-    expect(d.plan.exemplar_id).toBe('exemplar:still.001')
-    expect(d.plan.text_en).toBe('I still live here.')
+    expect(STILL_LEXICAL_GROUP).toContain(d.plan.exemplar_id)
+    // Any member of the lexical introduction group is a correct first contact.
+    expect(d.plan.text_en).toEqual(expect.stringContaining('still'))
     expect(d.plan.support.features).toEqual(['translation'])
     expect(d.plan.support.derived_tier).toBe('medium')
     expect(d.plan.new_item_refs).toEqual([
@@ -112,7 +114,7 @@ describe('scenario 2 — exposure without mastery moves to meaning recognition',
     expect(d.plan.recipe).toBe('meaning_recognition')
     expect(d.plan.capability).toBe('recognition')
     expect(d.plan.modality).toBe('reading')
-    expect(d.plan.exemplar_id).toBe('exemplar:still.001')
+    expect(STILL_LEXICAL_GROUP).toContain(d.plan.exemplar_id)
     expect(d.plan.new_item_refs).toEqual([]) // exposure consumed the novelty
   })
 
@@ -125,7 +127,8 @@ describe('scenario 2 — exposure without mastery moves to meaning recognition',
       expect(o.source_exemplar_id).toMatch(/^exemplar:/)
     }
     const target = options.find((o) => o.is_target)
-    expect(target.text_pt).toBe('Eu ainda moro aqui.')
+    const authoredPtById = new Map(stillPack.exemplars.map((e) => [e.exemplar_id, e.text_pt]))
+    expect(target.text_pt).toBe(authoredPtById.get(d.plan.exemplar_id))
     expect(d.plan.response_contract.correct_option_id).toBe(target.option_id)
   })
 })
@@ -404,7 +407,7 @@ describe('scenario 20 — independent lane gate is per target × capability × m
 describe('tri-state prerequisites and the V1 bridge', () => {
   it('V2 prerequisites: unknown blocks and is reported as unknown, not unmet', () => {
     const d = select({})
-    const gated = d.trace.excluded.find((x) => x.exemplar_id === 'exemplar:still.002')
+    const gated = d.trace.excluded.find((x) => x.exemplar_id === 'exemplar:still.004')
     expect(gated.reason).toBe('prerequisite_unknown:sense:still.continuity')
   })
 
@@ -415,7 +418,7 @@ describe('tri-state prerequisites and the V1 bridge', () => {
       ...est(BE, READ_REC, 1).map((e) => ({ ...e, outcome: 'incorrect' })),
     ])
     const d = select({ learnerStates: st })
-    const gated = d.trace.excluded.find((x) => x.exemplar_id === 'exemplar:still.007')
+    const gated = d.trace.excluded.find((x) => x.exemplar_id === 'exemplar:still.009')
     expect(gated.reason).toBe('prerequisite_unmet:construction:still.subject_be_still_complement')
   })
 
@@ -431,10 +434,12 @@ describe('tri-state prerequisites and the V1 bridge', () => {
   it('strict policy blocks on unknown V1 bridges; a resolver can satisfy them', () => {
     const strict = select({ policy: { v1_bridge_mode: 'strict' } })
     expect(strict.status).toBe('no_eligible_activity')
-    expect(strict.trace.excluded).toContainEqual({ exemplar_id: 'exemplar:still.001', reason: 'prerequisite_unknown:simple_present' })
+    for (const id of STILL_LEXICAL_GROUP) {
+      expect(strict.trace.excluded).toContainEqual({ exemplar_id: id, reason: 'prerequisite_unknown:simple_present' })
+    }
     const resolved = select({ policy: { v1_bridge_mode: 'strict' }, resolveV1Skill: () => true })
     expect(resolved.status).toBe('activity')
-    expect(resolved.plan.exemplar_id).toBe('exemplar:still.001')
+    expect(STILL_LEXICAL_GROUP).toContain(resolved.plan.exemplar_id)
   })
 })
 
