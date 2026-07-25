@@ -106,6 +106,24 @@ const CROSS_PACK_TRANSFER = persona({
   learning_rate: 0.06,
 })
 
+// 4.8 (V2.21 §32) Real successful learner — the persona that reproduces the
+// journey a REAL learner reported after the V2 cutover: they answered
+// essentially everything correctly across five sittings. Success probabilities
+// are near-certain on every capability so the run isolates SYSTEM behaviour
+// (what the pipeline offers a learner who keeps getting it right) from learner
+// error. It is not a claim that real learners are perfect — it is the control
+// case for "correct answers must produce progression and variety".
+const REAL_SUCCESSFUL = persona({
+  id: 'real-successful',
+  label: 'Aprendiz que acerta',
+  description: 'Responde corretamente de forma consistente; usado para provar progressão e variedade reais.',
+  skill: { recognition: 0.995, comprehension: 0.995, controlled_production: 0.99, free_production: 0.98, pronunciation: 0.98 },
+  support_bonus: 0.005,
+  independent_penalty: 0,
+  learning_rate: 0.08,
+  max_learning_gain: 0.15,
+})
+
 export const SIMULATION_PERSONAS = Object.freeze({
   'new-learner': NEW_LEARNER,
   'strong-reader-weak-listener': STRONG_READER_WEAK_LISTENER,
@@ -114,6 +132,7 @@ export const SIMULATION_PERSONAS = Object.freeze({
   'fast-learner': FAST_LEARNER,
   struggling: STRUGGLING,
   'cross-pack-transfer': CROSS_PACK_TRANSFER,
+  'real-successful': REAL_SUCCESSFUL,
 })
 
 export const PERSONA_IDS = Object.keys(SIMULATION_PERSONAS)

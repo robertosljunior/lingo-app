@@ -355,6 +355,20 @@ export async function runSimulationV2(scenario, opts = {}) {
         is_new_target: focus.is_new_target, reason_codes: [...focus.reason_codes],
       },
       planner_trace: summarizePlannerTrace(plannerDecision.trace),
+      // V2.21 §2/§9 — the engine's diversity/pool diagnostics for this step, so
+      // the practice-dynamics audit can trace WHY this realization was chosen.
+      engine_diversity: engineDecision.trace?.experience_diversity
+        ? { ...engineDecision.trace.experience_diversity }
+        : null,
+      engine_considered: engineDecision.trace?.considered ?? null,
+      // Why realizations were dropped BEFORE scoring — the audit needs this to
+      // tell "content has no alternative" apart from "alternatives were gated".
+      engine_excluded: (() => {
+        const counts = {}
+        for (const x of engineDecision.trace?.excluded || []) counts[x.reason] = (counts[x.reason] || 0) + 1
+        return counts
+      })(),
+      engine_frontier_stage: engineDecision.trace?.frontier_stage ?? null,
       // Domains (capability_modality) that were ELIGIBLE this step (a viable,
       // scored candidate existed) — powers opportunity-aware coverage, which
       // separates "couldn't practice" from "could and never chose to" (§22).

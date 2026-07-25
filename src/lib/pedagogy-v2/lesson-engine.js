@@ -653,6 +653,16 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
 
   let best
   let diversityApplied = false
+  // V2.21 §9 — pool/band observability. Filled in below; emitted in the trace so
+  // the audit can prove whether the acceptable band is what collapses variety.
+  const poolStats = {
+    total_candidates: candidates.length,
+    same_focus_candidates: null,
+    band_size: null,
+    fresh_candidates: null,
+    band_recipes: null,
+    band_exemplars: null,
+  }
   if (!diversityOn) {
     best = anchor
   } else {
@@ -670,8 +680,11 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     // Within that focus, only candidates inside the pedagogically-acceptable
     // band may compete, so a clearly weaker realization never wins for novelty.
     const bandFloor = bestScore * (1 - (diversity.acceptable_score_band ?? 0.15))
-    let band = candidates.filter((c) => sameFocus(c) && c.score >= bandFloor)
+    const sameFocusPool = candidates.filter(sameFocus)
+    let band = sameFocusPool.filter((c) => c.score >= bandFloor)
     if (!band.length) band = [anchor] // defensive: anchor always qualifies
+    poolStats.same_focus_candidates = sameFocusPool.length
+    poolStats.band_size = band.length
 
     // Recipe-streak control: monotony is measured PER FOCUS — consecutive
     // trailing activities of the anchor's recipe on the same capability /
@@ -698,6 +711,9 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     const outside = band.filter((c) => !c._within_window)
     const pool = outside.length ? outside : band
     const leastRecentFallback = outside.length === 0
+    poolStats.fresh_candidates = outside.length
+    poolStats.band_recipes = [...new Set(band.map((c) => c.recipe.recipe))].sort()
+    poolStats.band_exemplars = [...new Set(band.map((c) => c.exemplar.exemplar_id))].sort()
 
     // recency tier → pedagogical score → context diversity → deterministic seed.
     const cmp = (a, b) => {
@@ -782,6 +798,8 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
       context_repeat: best._context_repeat ?? 0,
       recent_window: recentWindow,
       context_recognition_swap: contextSwapApplied,
+      // V2.21 §9 — how many realizations existed BEFORE and AFTER the band.
+      pool: { ...poolStats },
     },
     prerequisite_assessments: prereqByExemplar.get(e.exemplar_id) || [],
     score_breakdown: best.components,
