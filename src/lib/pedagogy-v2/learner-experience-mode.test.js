@@ -1,6 +1,6 @@
-// learner-experience-mode.test.js — Slice V2.20 §2. The dogfood resolution must
-// (a) default DEV/E2E to V2 so nobody tests V1 believing it is V2, and (b) leave
-// the production rollout exactly as it was.
+// learner-experience-mode.test.js — V2.20-R §17. The cutover contract: V2 is the
+// default product in EVERY environment (production included), and only an
+// explicit `false` still resolves to the legacy V1 experience.
 import { describe, it, expect } from 'vitest'
 import {
   resolveLearnerExperienceMode,
@@ -27,25 +27,33 @@ describe('resolveLearnerExperienceMode', () => {
     }
   })
 
-  it('defaults to V2 in a dev build when the setting was never chosen', () => {
-    expect(resolveLearnerExperienceMode({}, DEV)).toBe('v2')
-    expect(resolveLearnerExperienceMode(null, DEV)).toBe('v2')
-    expect(resolveLearnerExperienceMode({ v2_learner_experience_enabled: undefined }, DEV)).toBe('v2')
+  it('defaults to V2 when the setting was never chosen — in EVERY environment', () => {
+    for (const env of [PROD, DEV, DOGFOOD_BUILD]) {
+      expect(resolveLearnerExperienceMode(undefined, env)).toBe('v2')
+      expect(resolveLearnerExperienceMode(null, env)).toBe('v2')
+      expect(resolveLearnerExperienceMode({}, env)).toBe('v2')
+      expect(resolveLearnerExperienceMode({ v2_learner_experience_enabled: undefined }, env)).toBe('v2')
+    }
   })
 
-  it('defaults to V2 in an explicit dogfood build (the E2E preview bundle)', () => {
-    expect(resolveLearnerExperienceMode({}, DOGFOOD_BUILD)).toBe('v2')
-    expect(resolveLearnerExperienceMode({}, { DEV: false, VITE_V2_DOGFOOD: 'true' })).toBe('v2')
+  it('V2.20-R §3 — a PRODUCTION build with no flag opens V2 (the cutover)', () => {
+    // This is the published GitHub Pages bundle: production build, no dogfood
+    // env, no stored choice. It must be the V2 product.
+    expect(resolveLearnerExperienceMode({}, PROD)).toBe('v2')
+    expect(learnerExperienceV2Enabled({}, PROD)).toBe(true)
+    // ...and it must not depend on the environment argument at all.
+    expect(learnerExperienceV2Enabled({})).toBe(true)
   })
 
-  it('does NOT change the production rollout: unset stays V1 in a production build', () => {
-    expect(resolveLearnerExperienceMode({}, PROD)).toBe('v1')
-    expect(resolveLearnerExperienceMode(null, PROD)).toBe('v1')
-    expect(learnerExperienceV2Enabled({}, PROD)).toBe(false)
+  it('V2.20-R §4 — explicit false remains the emergency rollback to V1', () => {
+    expect(resolveLearnerExperienceMode({ v2_learner_experience_enabled: false }, PROD)).toBe('v1')
+    expect(learnerExperienceV2Enabled({ v2_learner_experience_enabled: false }, PROD)).toBe(false)
   })
 })
 
 describe('isDogfoodBuild', () => {
+  // Still meaningful — but only for DEV TOOLING (§3): it no longer selects a
+  // product.
   it('is true for dev and for an explicit dogfood flag only', () => {
     expect(isDogfoodBuild(DEV)).toBe(true)
     expect(isDogfoodBuild(DOGFOOD_BUILD)).toBe(true)

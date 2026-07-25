@@ -11,7 +11,8 @@ async function onboardAsKids(page) {
   await page.getByRole('button', { name: 'Continuar' }).click()
   await page.getByTestId('onboarding-level-A1').click()
   await page.getByTestId('onboarding-finish').click()
-  await expect(page.getByRole('button', { name: /Abrir hub de treinamento/ })).toBeVisible({ timeout: 15_000 })
+  // V2.20-R §5: a fresh install lands on the V2 Home (no experience flag set).
+  await expect(page.getByTestId('v2lx-home')).toBeVisible({ timeout: 15_000 })
 }
 
 test('kids can open and finish an illustrated story', async ({ page, context }) => {
@@ -60,7 +61,8 @@ test('adult mode has no Stories tab', async ({ page, context }) => {
   await page.getByRole('button', { name: 'Continuar' }).click()
   await page.getByTestId('onboarding-level-B1').click()
   await page.getByTestId('onboarding-finish').click()
-  await expect(page.getByRole('button', { name: /Abrir hub de treinamento/ })).toBeVisible({ timeout: 15_000 })
+  // V2.20-R §5: a fresh install lands on the V2 Home (no experience flag set).
+  await expect(page.getByTestId('v2lx-home')).toBeVisible({ timeout: 15_000 })
   await expect(page.getByRole('button', { name: 'Histórias' })).toHaveCount(0)
   await expect(page.getByRole('button', { name: 'Fale', exact: true })).toBeVisible()
 })

@@ -7,6 +7,11 @@
 import { defineConfig, devices } from '@playwright/test'
 
 const PORT = 4173
+// V2.20-R §16: a SECOND server, serving a plain `vite build` (no dogfood env) —
+// the exact bundle GitHub Pages publishes. The production-cutover spec runs
+// against this one; a dogfood bundle could never prove the cutover.
+const PROD_PORT = 4174
+const PROD_DIST = 'dist-production-smoke'
 
 // Optional local browser override: some sandboxes ship a Chromium revision that
 // differs from the one @playwright/test pins. Set PW_CHROMIUM_EXECUTABLE to that
@@ -34,13 +39,25 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 800 }, launchOptions: { executablePath } },
       // The real-model spec runs in its own serial project (see below); the
       // mobile smoke runs in the mobile project.
-      testIgnore: [/mobile-smoke/, /real-model/],
+      testIgnore: [/mobile-smoke/, /real-model/, /production-cutover/],
     },
     {
       // Essential smoke on a mobile viewport; the full flows run on desktop.
       name: 'chromium-mobile',
       use: { ...devices['Pixel 7'], launchOptions: { executablePath } },
       testMatch: /mobile-smoke/,
+    },
+    {
+      // V2.20-R §16 — the production cutover proof: a plain production build,
+      // no VITE_V2_DOGFOOD, no flag. Opening it must land on V2.
+      name: 'production-build',
+      testMatch: /production-cutover/,
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1280, height: 800 },
+        baseURL: `http://127.0.0.1:${PROD_PORT}/`,
+        launchOptions: { executablePath },
+      },
     },
     {
       // Real Universal Sentence Encoder / structural-NLP specs. One file → one
@@ -51,14 +68,24 @@ export default defineConfig({
       name: 'use-model',
       testMatch: /real-model/,
       fullyParallel: false,
-      dependencies: ['chromium-desktop', 'chromium-mobile'],
+      dependencies: ['chromium-desktop', 'chromium-mobile', 'production-build'],
       use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 800 }, launchOptions: { executablePath } },
     },
   ],
-  webServer: {
-    command: `VITE_V2_DOGFOOD=1 npm run build && npm run preview -- --host 127.0.0.1 --port ${PORT} --strictPort`,
-    url: `http://127.0.0.1:${PORT}/`,
-    reuseExistingServer: !process.env.CI,
-    timeout: 240_000,
-  },
+  webServer: [
+    {
+      command: `VITE_V2_DOGFOOD=1 npm run build && npm run preview -- --host 127.0.0.1 --port ${PORT} --strictPort`,
+      url: `http://127.0.0.1:${PORT}/`,
+      reuseExistingServer: !process.env.CI,
+      timeout: 240_000,
+    },
+    {
+      // Plain production build into its OWN outDir so it never races with the
+      // dogfood bundle in dist/ (which the repo also versions).
+      command: `npx vite build --outDir ${PROD_DIST} --emptyOutDir && npx vite preview --outDir ${PROD_DIST} --host 127.0.0.1 --port ${PROD_PORT} --strictPort`,
+      url: `http://127.0.0.1:${PROD_PORT}/`,
+      reuseExistingServer: !process.env.CI,
+      timeout: 240_000,
+    },
+  ],
 })

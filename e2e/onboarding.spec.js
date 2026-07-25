@@ -23,9 +23,11 @@ test('fresh install shows the Bob onboarding and completes into the app', async 
   await page.getByTestId('onboarding-level-A2').click()
   await page.getByTestId('onboarding-finish').click()
 
-  // Lands in the app (Home) and greets by name.
-  await expect(page.getByRole('button', { name: /Abrir hub de treinamento/ })).toBeVisible({ timeout: 15_000 })
-  await expect(page.getByRole('heading', { name: /Rob/ })).toBeVisible()
+  // Lands in the app and greets by name. V2.20-R §5: the root Home is the V2
+  // Learner Home now — a fresh install has no experience flag, and unset means
+  // V2 in every environment.
+  await expect(page.getByTestId('v2lx-home')).toBeVisible({ timeout: 15_000 })
+  await expect(page.getByTestId('v2lxh-greeting')).toContainText('Rob')
 
   // Persisted: a reload does not show onboarding again.
   await page.reload()

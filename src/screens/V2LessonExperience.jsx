@@ -101,7 +101,10 @@ export default function V2LessonExperience() {
     return buildLearnerSessionResultV2({ interactions: s.interactions, mode: session.mode, registry })
   }, [s?.status, s?.interactions, session.mode, registry])
 
-  const goHome = () => setTab(SCREENS.TRAINING)
+  // V2.20-R §9: closing a lesson and finishing a session return to the ROOT
+  // Home, which is the V2 Home now — not to Training. Same destination the
+  // bottom-nav "Início" reaches, so there is one V2 home, not two.
+  const goHome = () => setTab(SCREENS.HOME)
 
   if (!v2LearnerExperienceEnabled(settings)) {
     return (
