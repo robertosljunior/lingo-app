@@ -1,16 +1,18 @@
-// V2LessonExperience.jsx — Slice V2.17 learner-facing lesson screen. This is the
-// FIRST learner-facing surface built on the real V2 pipeline:
+// V2LessonExperience.jsx — Slice V2.17 learner-facing lesson screen, extended in
+// V2.18 with explicit STUDY-MODE routing. It is the learner surface built on the
+// real V2 pipeline:
 //
 //   Study Planner → Study Focus Resolver → Lesson Engine → ActivityPlan
 //     → response → Assessment → Evidence → Learner Model → next planning
 //
-// It owns the real study-session controller and, on every state change, derives
-// the learner-facing presentation with the PURE buildLearnerPresentationV2
-// adapter. No React component here chooses a target, pack, recipe, modality or
-// the next exercise — the pipeline does. There is NO pre-computed playlist.
+// The screen owns the real study-session controller and derives the learner-
+// facing presentation with the PURE adapters. No React code chooses a target,
+// pack, recipe, modality or the next exercise — the pipeline does. The only
+// thing the caller picks is the Study `mode` (adaptive / explore / review /
+// focused) — the SAME createStudySessionControllerV2, never a parallel one (§12).
 //
-// Gated behind `v2_learner_experience_enabled` (default false, §2). V1 and the
-// diagnostic surfaces (Playground/Inspector/Lab) are untouched (§38).
+// Gated behind `v2_learner_experience_enabled` (default false). V1 and the
+// diagnostic surfaces (Playground/Inspector/Lab) are untouched.
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useApp, SCREENS } from '../store.jsx'
@@ -21,7 +23,8 @@ import { createProductionAssessmentServicesV2 } from '../lib/pedagogy-v2/product
 import { detectRuntimeCapabilitiesV2 } from '../lib/pedagogy-v2/runtime-capabilities.js'
 import { speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
-import { buildLearnerPresentationV2, buildLearnerSessionSummaryV2 } from '../lib/pedagogy-v2/learner-presentation-v2.js'
+import { buildLearnerPresentationV2 } from '../lib/pedagogy-v2/learner-presentation-v2.js'
+import { buildLearnerSessionResultV2, resolveLessonModeV2 } from '../lib/pedagogy-v2/learner-home-presentation.js'
 import V2LessonShell from '../components/pedagogy-v2-learner/V2LessonShell.jsx'
 import V2SessionSummary from '../components/pedagogy-v2-learner/V2SessionSummary.jsx'
 import { useReducedMotion } from '../components/pedagogy-v2-learner/useReducedMotion.js'
@@ -36,20 +39,25 @@ export default function V2LessonExperience() {
   const capabilities = useMemo(() => detectRuntimeCapabilitiesV2({ ttsSupported: speechSupported, sttSupported }), [])
   const reducedMotion = useReducedMotion(settings?.reduced_motion)
 
+  // The requested mode is resolved ONCE from the entry params; empty-state
+  // actions restart in-place with a new mode via `session` (no re-navigation).
+  const initial = useMemo(() => resolveLessonModeV2(params), []) // eslint-disable-line react-hooks/exhaustive-deps
+  const [session, setSession] = useState({ mode: initial.mode, pack: initial.focusedPackId, error: initial.error ?? null, nonce: 0 })
   const [state, setState] = useState(null)
   const controllerRef = useRef(null)
 
-  // Start the real controller once, when the screen mounts. Focused mode is
-  // available via params (used by tests); the default is an adaptive session.
+  const restartWithMode = (mode) => setSession((s) => ({ mode, pack: null, error: null, nonce: s.nonce + 1 }))
+
+  // Create/replace the real controller when the (mode, pack, nonce) changes. The
+  // ONLY difference between modes is the `mode` argument — same controller (§12).
   useEffect(() => {
-    if (controllerRef.current) return undefined
     if (!v2LearnerExperienceEnabled(settings)) return undefined
-    const focusedPackId = params?.pack || null
+    if (session.error) return undefined
     const controller = createStudySessionControllerV2({
       profileId: activeProfile,
       registry,
-      mode: focusedPackId ? 'focused' : 'adaptive',
-      focusedPackId,
+      mode: session.mode,
+      focusedPackId: session.pack,
       buildPlannerContext: (profileId, opts) => buildStudyPlannerContextV2(profileId, opts),
       recordBatch: (events) => db.recordLearnerEvidenceBatchV2(events),
       capabilities,
@@ -59,15 +67,13 @@ export default function V2LessonExperience() {
     const unsub = controller.subscribe(setState)
     setState(controller.getState())
     controller.start()
-    return () => { unsub?.() }
+    return () => { unsub?.(); controllerRef.current = null }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [session.mode, session.pack, session.nonce])
 
   const c = controllerRef.current
   const s = state
 
-  // Derive the learner-facing presentation from the CURRENT pipeline state. Pure
-  // — no analysis, no storage. Recomputed on each state change.
   const presentation = useMemo(() => {
     if (!s || !s.plan) return null
     return buildLearnerPresentationV2({
@@ -79,15 +85,19 @@ export default function V2LessonExperience() {
       registry,
       recordedEvidence: s.recordedEvents,
       // Learner state from the planning context (built BEFORE this activity) —
-      // lets the adapter prove real familiarity with the current lexeme (§2).
+      // lets the adapter prove real familiarity with the current lexeme.
       learnerStates: s.context?.learner_states ?? null,
     })
   }, [s?.plan, s?.assessment, s?.pendingResponse, s?.focus, s?.transition, registry, s?.recordedEvents, s?.context])
 
-  const summary = useMemo(() => {
+  // Mode-aware session result: a completed factual summary OR an honest empty
+  // state (zero activities is NEVER "você praticou 0 atividades") (§18).
+  const sessionResult = useMemo(() => {
     if (s?.status !== 'complete') return null
-    return buildLearnerSessionSummaryV2({ interactions: s.interactions, registry })
-  }, [s?.status, s?.interactions, registry])
+    return buildLearnerSessionResultV2({ interactions: s.interactions, mode: session.mode, registry })
+  }, [s?.status, s?.interactions, session.mode, registry])
+
+  const goHome = () => setTab(SCREENS.TRAINING)
 
   if (!v2LearnerExperienceEnabled(settings)) {
     return (
@@ -100,10 +110,23 @@ export default function V2LessonExperience() {
     )
   }
 
-  const goHome = () => setTab(SCREENS.TRAINING)
+  // Invalid mode / focused-without-pack: a safe, learner-facing error — no
+  // arbitrary fallback session (§29).
+  if (session.error) {
+    return (
+      <div className="phone v2lx" data-testid="v2lx-screen">
+        <div className="v2lx-scroll"><div className="v2lx-content" style={{ textAlign: 'center', paddingTop: 60 }}>
+          <div className="v2lx-card" data-testid="v2lx-mode-error">
+            <div style={{ fontWeight: 900, fontSize: 18 }}>Não foi possível abrir esta prática.</div>
+            <button type="button" className="v2lx-cta" style={{ marginTop: 16 }} onClick={goHome}>Voltar</button>
+          </div>
+        </div></div>
+      </div>
+    )
+  }
 
   return (
-    <div className="phone" data-testid="v2lx-screen" style={{ overflow: 'hidden' }}>
+    <div className="phone" data-testid="v2lx-screen" data-mode={session.mode} style={{ overflow: 'hidden' }}>
       {(!s || s.status === 'idle' || s.status === 'planning') && (
         <div className="screen-body" style={{ justifyContent: 'center', textAlign: 'center' }}>
           <p className="muted" data-testid="v2lx-loading">Preparando sua prática…</p>
@@ -111,7 +134,11 @@ export default function V2LessonExperience() {
       )}
 
       {s && s.status === 'complete' && (
-        <V2SessionSummary summary={summary} onFinish={goHome} />
+        <V2SessionSummary
+          result={sessionResult}
+          onFinish={goHome}
+          onAction={(mode) => restartWithMode(mode)}
+        />
       )}
 
       {s && (s.plan || s.status === 'error') && ['presenting', 'submitting', 'feedback', 'advancing', 'error'].includes(s.status) && (
