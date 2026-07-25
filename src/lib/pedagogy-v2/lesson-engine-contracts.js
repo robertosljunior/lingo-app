@@ -246,11 +246,22 @@ export const DEFAULT_LESSON_ENGINE_POLICY_V2 = Object.freeze({
     // exactly how guided_production came to own controlled_production writing
     // and word_order_reconstruction was never served. Monotony is therefore
     // ALSO measured as a share: over the trailing `recipe_share_window`
-    // activities of the anchor's (capability, modality), if the anchor's recipe
+    // activities of the anchor's CAPABILITY, if the anchor's recipe
     // already holds more than `recipe_share_max` of them and an equivalent
     // alternative exists in the acceptable band, the alternative is preferred.
     // This is opportunity-based, not a forced cadence: with no alternative in
     // the band nothing changes, and the focus is never altered.
+    //
+    // V2.21-R3c §20 — the share is scoped to the CAPABILITY, not to
+    // (capability, modality). That is the approved and tested behaviour: "I keep
+    // being asked to produce the sentence from a model" is the same monotony
+    // whether the last one was spoken or written, and a per-modality count
+    // barely reaches `recipe_share_min_observations` within one sitting. The
+    // ALTERNATIVE still comes from the acceptable band, which is same-focus, so
+    // nothing crosses modalities in the actual choice. This comment previously
+    // said "(capability, modality)" and contradicted lesson-engine.js; the
+    // comment was wrong, the behaviour was not (LESSON_ENGINE_POLICY_VERSION
+    // therefore stays 4 — no selection behaviour changed in this round).
     recipe_share_window: 8,
     recipe_share_max: 0.5,
     recipe_share_min_observations: 3,

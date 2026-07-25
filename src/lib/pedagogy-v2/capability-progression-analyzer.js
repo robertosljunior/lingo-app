@@ -476,6 +476,12 @@ function buildRecipeMatrix(result, { registry, trace }) {
       content_eligible: exemplarCount > 0,
       planner_opportunity_count: plannerOpportunities,
       selected_count: selected[recipe.recipe] || 0,
+      // V2.21-R3c §17 — a PRESENTATION VARIANT is not a recipe the engine can
+      // ever choose: it is explicitly skipped when candidates are scored
+      // (lesson-engine.js, `if (recipe.presentation_variant_of) continue`) and
+      // only replaces an already-chosen activity's UI. Its opportunity is
+      // therefore NOT the capability domain's opportunity count.
+      presentation_variant_of: recipe.presentation_variant_of ?? null,
     }
   })
 }
@@ -491,6 +497,31 @@ function buildFindings(matrix, funnel) {
   const findings = []
   for (const row of matrix) {
     if (!row.runtime_executable || !row.content_eligible) continue
+    // V2.21-R3c §17 — presentation variants are reclassified, never starved.
+    // Measured for context_recognition (the only one): 24–31 "opportunities"
+    // reported by the capability-domain metric, but its actual precondition —
+    // a run of the SAME reading-comprehension shape on the SAME construction
+    // inside one lesson session — was reached at most once across the 60-, 120-
+    // and 36-activity goldens, because the planner interleaves capabilities and
+    // modalities. It is low-opportunity BY DESIGN (it exists to punctuate
+    // monotony), not a recipe the selector is refusing to serve. Forcing it
+    // would mean manufacturing the monotony it is meant to break (§17: "não
+    // forçar context recognition").
+    if (row.presentation_variant_of) {
+      if (row.selected_count === 0) {
+        findings.push({
+          code: 'RECIPE_LOW_OPPORTUNITY_BY_DESIGN',
+          severity: 'info',
+          recipe: row.recipe,
+          capability: row.capability,
+          presentation_variant_of: row.presentation_variant_of,
+          detail: `presentation variant of ${row.presentation_variant_of}: never scored as an independent`
+            + ' candidate, so it has no starvation semantics — it replaces an already-chosen activity\'s'
+            + ' presentation only when that exact shape repeats in-session',
+        })
+      }
+      continue
+    }
     if (row.planner_opportunity_count >= RECIPE_STARVATION_MIN_OPPORTUNITIES && row.selected_count === 0) {
       findings.push({
         code: 'RECIPE_REACHABLE_BUT_STARVED',

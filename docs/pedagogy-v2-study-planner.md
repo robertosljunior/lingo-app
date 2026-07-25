@@ -72,6 +72,31 @@ científica** — codificam julgamento editorial. Não existe — e não pode
 existir — mastery global por lexema: o planner produz apenas métricas
 factuais separadas (construções/formas encontradas, revisões disponíveis).
 
+## 6b. Active frontier (working set)
+
+O orçamento de profundidade é limitado a um conjunto bounded de targets ATIVOS
+(`limits.working_set_size`), derivado do estado do aluno — sem store novo, sem
+`DB_VERSION`. Um target é **ativo** quando está exposto E este snapshot produziu
+para ele um candidato progress-bearing (`deepen`/`remediate`), isto é, existe
+trabalho pedagógico atual e materializável cujo próximo avanço ainda não foi
+concluído. Um target recém-introduzido conta como ativo (o trabalho atual é a
+primeira avaliação); quem só aguarda retenção, não. Ordenação determinística por
+depth, weight, target id — depth primeiro, de modo que avançar nunca tira um
+target do frontier.
+
+Targets fora do conjunto são **penalizados** (`working_set_penalty_weight`),
+nunca excluídos. A LARGURA, porém, não é controlada por peso: enquanto o
+frontier está em capacidade e existe profundidade real dentro dele, abrir mais um
+target é suprimido em selection (`frontier_at_capacity`). Isso é o que torna a
+política independente do tamanho do catálogo — nenhuma penalidade finita
+sobreviveria a um catálogo suficientemente grande, porque uma introdução pontua
+no teto e nunca decai. A supressão exige que uma alternativa interna tenha
+sobrevivido aos filtros duros, então o planner nunca trava, e
+`cross_pack_progression` é isento. Nenhum pack é escondido do ranking.
+
+Ver `docs/pedagogy-v2/slice-v2-21-r3c.md` e
+`npm run audit:catalog-scale-v2`.
+
 ## 7. Review queue (`review-queue.js`)
 
 Calculada em runtime sobre os estados persistidos (`retention`,

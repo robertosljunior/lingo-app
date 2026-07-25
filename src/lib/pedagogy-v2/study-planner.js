@@ -157,53 +157,6 @@ export function buildStudyCandidatesV2({
   const candidates = new Map() // key → candidate
   const maxStageIdx = EXPOSURE_STAGES.length - 1
 
-  /**
-   * V2.21-R3b §6/§8 — the ACTIVE FRONTIER (working set).
-   *
-   * Measured problem: adaptive is NOT opening breadth too fast (only 5 new
-   * targets in 60 activities). It spreads its 55 deepen slots evenly across 9
-   * active targets, so each gets ~6 — and a rung needs 5 correct answers in the
-   * SAME lane. Mean latency from first exposure to comprehension was 42.75
-   * activities. Depth never arrives because the budget is diluted, not because
-   * novelty crowds it out.
-   *
-   * The working set bounds how many active targets share that budget at once.
-   * It is DERIVED from the learner state (no new store, DB_VERSION unchanged),
-   * so it survives across sittings by construction: session 2 rebuilds the same
-   * set session 1 left in progress.
-   *
-   * Ranking is deterministic and pedagogical — the most advanced, best-evidenced
-   * unfinished targets first (finish what is nearest to crossing), with the
-   * target id as the final tie-break. Targets outside the set are PENALISED,
-   * never excluded: if nothing inside is materializable the planner still
-   * proceeds, so it can never stall.
-   */
-  const workingSet = (() => {
-    const size = p.limits.working_set_size
-    if (!size || size < 1) return null
-    const scored = []
-    for (const state of learnerStates || []) {
-      const targetId = state?.target?.target_id
-      if (!targetId) continue
-      let depth = -1
-      let weight = 0
-      for (const [key, lane] of Object.entries(state.capabilities || {})) {
-        const o = lane?.overall
-        if (!((o?.assessed_evidence_count || 0) > 0)) continue
-        const capability = key.split('_').slice(1).join('_')
-        depth = Math.max(depth, CAPABILITY_LADDER.indexOf(capability))
-        weight += o.effective_evidence_weight || 0
-      }
-      if (depth < 0) continue // never assessed — not active yet
-      scored.push({ targetId, depth, weight })
-    }
-    scored.sort((a, b) => b.depth - a.depth || b.weight - a.weight || a.targetId.localeCompare(b.targetId))
-    return new Set(scored.slice(0, size).map((r) => r.targetId))
-  })()
-
-  const workingSetFull = !!workingSet && workingSet.size >= p.limits.working_set_size
-  const outsideWorkingSet = (targetId) => workingSetFull && !!targetId && !workingSet.has(targetId)
-
   const emptyComponents = () => ({
     retention_need: 0, recent_failure: 0, trend_need: 0,
     capability_gap: 0, modality_gap: 0, independence_gap: 0,
@@ -215,26 +168,6 @@ export function buildStudyCandidatesV2({
 
   const addCandidate = (c) => {
     const key = `${c.pack_id}|${c.focus_type}|${c.target?.target_id ?? '-'}|${c.capability ?? '-'}|${c.modality ?? '-'}`
-    // V2.21-R3b §6 — deepening an ACTIVE target outside the working set dilutes
-    // the depth budget. Introductions are never penalised here: breadth is not
-    // the measured problem, and §9 requires novelty to stay possible.
-    if (c.focus_type === 'deepen' && outsideWorkingSet(c.target?.target_id)) {
-      c.components.outside_working_set = 1
-      c.reason_codes = [...c.reason_codes, 'OUTSIDE_WORKING_SET']
-    }
-    // Opening yet another target while the working set is already full dilutes
-    // depth again. This is what makes the pacing survive a BIGGER catalogue:
-    // with three packs breadth exhausts itself quickly, but the synthetic scale
-    // test (§16) showed that at six and nine packs the unbounded introductions
-    // pushed the learner straight back to recognition-only. Penalised, never
-    // excluded — §9 keeps novelty reachable whenever depth is not available.
-    // Cross-pack transfer is exempt: meeting a known idea in a new pack is the
-    // pedagogical payoff of a multi-pack curriculum, not breadth for its own
-    // sake (the yet-concessive golden proves it must survive).
-    if (c.is_new_target && workingSetFull && c.focus_type !== 'cross_pack_progression') {
-      c.components.outside_working_set = 1
-      c.reason_codes = [...c.reason_codes, 'WORKING_SET_FULL']
-    }
     if (!candidates.has(key)) candidates.set(key, { ...c, key, reason_codes: [...new Set(c.reason_codes)].sort() })
   }
 
@@ -486,7 +419,124 @@ export function buildStudyCandidatesV2({
     }
   }
 
-  return [...candidates.values()]
+  return annotateActiveFrontier([...candidates.values()], { learnerStates, policy: p })
+}
+
+/**
+ * V2.21-R3c §8/§9/§23 — the ACTIVE FRONTIER, corrected.
+ *
+ * R3b bounded the depth budget with a working set derived from "has assessed
+ * evidence", ranked by ladder depth and LIFETIME evidence weight, and gated
+ * introductions on that set being full. It fixed the three-pack journey and
+ * broke at scale: with 9 and 12 synthetic packs the same successful learner
+ * lost controlled production entirely (measured — see audit-catalog-scale-v2).
+ *
+ * The scale trace (§4) shows exactly why, and it is NOT dilution-in-general:
+ *
+ *   - the gate only engages once `working_set_size` targets are already
+ *     assessed, so the first sitting is ungated. Introduction candidates score
+ *     at the novelty+frontier ceiling and never decay, deepen candidates decay
+ *     as evidence accumulates, and the number of ceiling-scoring introductions
+ *     grows with the catalogue. Best-of-N over introductions therefore beats
+ *     the best deepen more and more often as N grows (§5 class F, mechanically
+ *     enabled by class B — one need per pack, multiplied);
+ *   - "assessed evidence" also counts targets that have no CURRENT work left
+ *     (nothing materializable, only retention pending), so finished targets
+ *     hold frontier slots that unfinished ones need (§5 class D).
+ *
+ * The correction restates ACTIVE as §8 defines it — exposed, with pedagogical
+ * work that is materializable RIGHT NOW, and whose next advancement has not been
+ * reached — and derives it from the candidates themselves. A target is active
+ * iff this snapshot produced a progress-bearing (deepen/remediate) candidate for
+ * it: that is precisely "there is current work and it is not blocked, not
+ * consolidated and not merely awaiting retention", with no second definition to
+ * keep in sync with the filters.
+ *
+ * Ranking is by CURRENT need (§9): deepest open rung first (finish what is
+ * nearest to crossing), then evidence accumulated IN that rung — progress toward
+ * the advancement actually pending, not a lifetime total that rewards targets
+ * which have been practised most — then target id.
+ *
+ * Capacity is reported, not enforced, here: the penalty stays a component and
+ * the hard gate lives in selection, where it can require that a real in-set
+ * alternative survived the filters (§9 — the planner must never stall).
+ */
+function annotateActiveFrontier(list, { learnerStates, policy }) {
+  const size = policy.limits.working_set_size
+  if (!size || size < 1) return list
+
+  // §8 — "there is current pedagogical work" is what the candidate set already
+  // answers. review is deliberately excluded: a target waiting only for
+  // retention is not consuming active depth budget.
+  const hasCurrentWork = new Set()
+  for (const c of list) {
+    if (['deepen', 'remediate'].includes(c.focus_type) && c.target?.target_id) hasCurrentWork.add(c.target.target_id)
+  }
+
+  const ranked = []
+  for (const state of learnerStates || []) {
+    const targetId = state?.target?.target_id
+    if (!targetId || !hasCurrentWork.has(targetId)) continue
+    let depth = -1
+    for (const [key, lane] of Object.entries(state.capabilities || {})) {
+      if (!((lane?.overall?.assessed_evidence_count || 0) > 0)) continue
+      depth = Math.max(depth, CAPABILITY_LADDER.indexOf(key.split('_').slice(1).join('_')))
+    }
+    // A target that was just INTRODUCED — exposed, no assessed evidence yet —
+    // is active: its current work is the first assessment of the entry rung.
+    // Leaving it out would let the planner open a target it can then never
+    // practise, because everything inside the frontier would outrank it
+    // forever (observed: a state with zero assessed lanes surviving 120
+    // activities). It enters at the bottom rung with no accumulated weight.
+    if (depth < 0) {
+      if (!(exposureCount(state) > 0)) continue
+      depth = 0
+    }
+    let weight = 0
+    for (const [key, lane] of Object.entries(state.capabilities || {})) {
+      const o = lane?.overall
+      if (!((o?.assessed_evidence_count || 0) > 0)) continue
+      weight += o.effective_evidence_weight || 0
+    }
+    ranked.push({ targetId, depth, weight })
+  }
+  // §9 — ranking by CURRENT need was measured against the R3b ordering (depth,
+  // then accumulated evidence weight) at 3/6/9/12 packs: restricting the weight
+  // to the deepest open rung changed no outcome in any scenario. The simpler
+  // ordering is therefore kept, as §9 requires — depth first, so a target can
+  // never fall out of the frontier by ADVANCING, which is the property that
+  // matters for "finish what is nearest to crossing".
+  ranked.sort((a, b) => b.depth - a.depth || b.weight - a.weight || a.targetId.localeCompare(b.targetId))
+
+  const workingSet = new Set(ranked.slice(0, size).map((r) => r.targetId))
+  const atCapacity = ranked.length >= size
+  const frontier = {
+    active_target_count: ranked.length,
+    working_set_size: size,
+    at_capacity: atCapacity,
+    working_set: [...workingSet].sort(),
+  }
+
+  return list.map((c) => {
+    const targetId = c.target?.target_id ?? null
+    const inWorkingSet = !!targetId && workingSet.has(targetId)
+    const components = { ...c.components }
+    let reasonCodes = [...c.reason_codes]
+    // Deepening an active target outside the set still dilutes the budget.
+    if (c.focus_type === 'deepen' && atCapacity && !inWorkingSet && hasCurrentWork.has(targetId)) {
+      components.outside_working_set = 1
+      reasonCodes = [...reasonCodes, 'OUTSIDE_WORKING_SET']
+    }
+    // Opening yet another target while the frontier is at capacity. Cross-pack
+    // transfer stays exempt: the scale measurement (§6) found ZERO cross-pack
+    // selections at 3/6/9/12 packs, so the exemption is not what breaks scale,
+    // and removing it would only cost the yet-concessive golden.
+    if (c.is_new_target && atCapacity && c.focus_type !== 'cross_pack_progression') {
+      components.outside_working_set = 1
+      reasonCodes = [...reasonCodes, 'FRONTIER_AT_CAPACITY']
+    }
+    return { ...c, components, reason_codes: [...new Set(reasonCodes)].sort(), frontier: { ...frontier, in_working_set: inWorkingSet } }
+  })
 }
 
 // ---- selection (§11–§14) ----------------------------------------------------
@@ -600,6 +650,49 @@ export function selectNextStudyFocusV2({
     }
     eligible.push(candidate)
   }
+
+  /**
+   * V2.21-R3c §5(F)/§23 — the SCALE-SAFE frontier gate.
+   *
+   * A score penalty cannot bound breadth in a growing catalogue: an
+   * introduction sits at the novelty+frontier ceiling and never decays, deepen
+   * candidates decay as evidence accumulates, and a bigger catalogue simply
+   * offers more ceiling-scoring introductions. Whatever the penalty, some N
+   * makes best-of-N introductions win again — which is exactly the phase break
+   * measured at 9 packs, and would return at 15 or 30.
+   *
+   * The gate is therefore stated as a rule about the LEARNER, not a weight:
+   * while the active frontier is at capacity AND real depth work is available
+   * inside it, opening yet another target is not the pedagogically right move —
+   * however many packs happen to offer one. That makes the decision independent
+   * of catalogue size by construction (§24: no pack is ever hidden; the planner
+   * still ranks across all of them, it just does not open more simultaneous
+   * knowledge than the learner can carry).
+   *
+   * It can never stall (§9): suppression applies only when an in-set,
+   * progress-bearing alternative actually survived the hard filters. When depth
+   * runs out — the frontier drains, everything inside is consolidated or
+   * blocked — introductions become eligible again on the very next step.
+   * Cross-pack progression is exempt (§6: measured at zero across 3/6/9/12
+   * packs, so it is not the scale defect; §7's two-class split stays unbuilt
+   * because the trace does not justify it).
+   */
+  const frontier = eligible.find((c) => c.frontier)?.frontier ?? null
+  if (frontier?.at_capacity) {
+    const depthAvailable = eligible.some((c) => !c.is_new_target
+      && c.frontier?.in_working_set
+      && ['deepen', 'remediate'].includes(c.focus_type))
+    if (depthAvailable) {
+      for (let i = eligible.length - 1; i >= 0; i--) {
+        const c = eligible[i]
+        if (c.is_new_target && c.focus_type !== 'cross_pack_progression') {
+          exclude(c, 'frontier_at_capacity')
+          eligible.splice(i, 1)
+        }
+      }
+    }
+  }
+
   // Fallback: if the review cap starved the session, reviewing again beats stalling.
   const pool = eligible.length ? eligible : reviewLimited
 
