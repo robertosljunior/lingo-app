@@ -24,6 +24,7 @@ export const RESPONSE_TYPES = [
 export const RESPONSE_TYPES_FOR_RECIPE = {
   exposure: ['continue'],
   meaning_recognition: ['single_choice'],
+  context_recognition: ['single_choice'],
   listening_recognition: ['single_choice'],
   fixed_element_completion: ['text'],
   word_order_reconstruction: ['token_sequence'],
@@ -147,8 +148,14 @@ export function canonicalOrderTokens(plan) {
  * Contractions and punctuation are preserved verbatim.
  */
 export function presentedOrderTokens(plan) {
-  const order = plan?.presentation?.token_source?.presentation_order || 'lexicographic'
+  const src = plan?.presentation?.token_source
+  const order = src?.presentation_order || 'lexicographic'
   const tokens = canonicalOrderTokens(plan)
+  // Slice V2.19: the plan may carry the FINAL presented order (seeded shuffle);
+  // when it does, trust it verbatim so the renderer never re-shuffles.
+  if (order === 'seeded_shuffle' && Array.isArray(src?.presented_tokens)) {
+    return src.presented_tokens.slice()
+  }
   if (order === 'lexicographic') {
     return tokens.map((t, i) => ({ t, i }))
       .sort((a, b) => (a.t.toLowerCase() < b.t.toLowerCase() ? -1 : a.t.toLowerCase() > b.t.toLowerCase() ? 1 : a.i - b.i))

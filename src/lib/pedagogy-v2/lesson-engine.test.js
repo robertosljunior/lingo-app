@@ -151,7 +151,7 @@ describe('scenario 4 — strong recognition (both modalities), comprehension abs
 
   it('selects a comprehension activity', () => {
     expect(d.plan.capability).toBe('comprehension')
-    expect(['meaning_recognition', 'listening_recognition']).toContain(d.plan.recipe)
+    expect(['meaning_recognition', 'context_recognition', 'listening_recognition']).toContain(d.plan.recipe)
   })
 })
 

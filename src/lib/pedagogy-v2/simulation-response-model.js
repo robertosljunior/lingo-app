@@ -67,7 +67,12 @@ export function personaSuccessProbability(persona, plan, statesById) {
 /** Deterministic success/fail draw for an interaction. */
 export function personaSucceeds(persona, plan, statesById, { seed, interactionIndex }) {
   const p = personaSuccessProbability(persona, plan, statesById)
-  const u = hash01(`${seed}|${interactionIndex}|${plan.modality}_${plan.capability}|${plan.primary_target.target_id}|${plan.recipe}`)
+  // context_recognition (Slice V2.19) is the SAME difficulty class as
+  // meaning_recognition for a simulated learner — single-choice comprehension of
+  // the same target — so its success draw is identical. This keeps the mere
+  // AVAILABILITY of the new shape from perturbing every long-horizon trajectory.
+  const recipeClass = plan.recipe === 'context_recognition' ? 'meaning_recognition' : plan.recipe
+  const u = hash01(`${seed}|${interactionIndex}|${plan.modality}_${plan.capability}|${plan.primary_target.target_id}|${recipeClass}`)
   return u < p
 }
 
@@ -90,6 +95,7 @@ export function buildPersonaResponsePayload(persona, plan, statesById, ctx) {
     case 'exposure':
       return { responseType: 'continue', payload: {}, supportRuntime, success }
     case 'meaning_recognition':
+    case 'context_recognition':
     case 'listening_recognition': {
       const correctId = plan.response_contract.correct_option_id
       return { responseType: 'single_choice', payload: { option_id: success ? correctId : wrongOptionId(plan, correctId) }, supportRuntime, success }

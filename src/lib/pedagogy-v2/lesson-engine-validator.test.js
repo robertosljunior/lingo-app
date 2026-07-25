@@ -29,9 +29,9 @@ describe('recipe table — safety invariants against the approved V2.2 contracts
     }
   })
 
-  it('covers the eight required plan types', () => {
+  it('covers the required plan types (incl. Slice V2.19 context_recognition)', () => {
     expect(LESSON_RECIPES.map((r) => r.recipe)).toEqual([
-      'exposure', 'meaning_recognition', 'listening_recognition',
+      'exposure', 'meaning_recognition', 'context_recognition', 'listening_recognition',
       'fixed_element_completion', 'word_order_reconstruction',
       'guided_production', 'free_production', 'pronunciation',
     ])

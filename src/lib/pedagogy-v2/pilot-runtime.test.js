@@ -8,6 +8,7 @@ import { aggregateProfileEvidence } from './learner-model.js'
 import { validateLearnerEvidenceBatchV2 } from './learner-evidence-validator.js'
 import { deriveSupportTier, createPackTargetResolver } from './learner-evidence-contracts.js'
 import { validateActivityPlanV2 } from './lesson-engine-validator.js'
+import { LESSON_ENGINE_POLICY_VERSION } from './lesson-engine-contracts.js'
 import {
   buildInteractionIdV2, buildEvidenceIdV2, createSupportRuntime, useSupportFeature,
   finalizeSupportUsage, buildActivityResponseV2, buildMaskedCompletion,
@@ -137,7 +138,7 @@ function makePlan(recipe, over = {}) {
     },
   }
   return {
-    plan_version: 1, policy_version: 2,
+    plan_version: 1, policy_version: LESSON_ENGINE_POLICY_VERSION,
     activity_id: 'activity:sess1.0', session_id: 'sess1', sequence_index: 0,
     recipe,
     pack_id: 'pedagogy_v2_still', exemplar_id: 'exemplar:still.001',
