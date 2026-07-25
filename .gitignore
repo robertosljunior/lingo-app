@@ -11,3 +11,6 @@ blob-report/
 # dist/ is intentionally committed — a prebuilt, mobile-ready PWA is shipped in
 # the repo (see README → Deploy). Rebuild with `npm run build`.
 e2e/.cache/
+
+# V2.20-R §16: the plain production build served to the production-cutover E2E
+dist-production-smoke/

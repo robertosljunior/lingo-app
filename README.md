@@ -68,25 +68,38 @@ Código em `src/lib/pedagogy-v2/` (núcleo pedagógico, puro e testado) e
 Documentação detalhada em [`docs/`](docs/) — content model, learner model,
 lesson engine, study planner, multipack e observabilidade.
 
-### Qual experiência aparece em Treino
+### Qual experiência o app abre (cutover V2.20-R)
 
-A rota de Treino resolve **um** dos dois produtos, nunca os dois juntos
+**A V2 é o produto.** A raiz do app (`SCREENS.HOME`) e a rota de Treino são
+roteadores finos (`src/screens/Home.jsx`, `src/screens/TrainingHub.jsx`) que
+resolvem **um** dos dois produtos, nunca os dois juntos
 (`src/lib/pedagogy-v2/learner-experience-mode.js`):
 
-| `v2_learner_experience_enabled` | dev / build de dogfood | build de produção |
+| `v2_learner_experience_enabled` | dev / dogfood | build de produção |
 |---|---|---|
 | `true` (escolha explícita) | V2 | V2 |
 | `false` (escolha explícita) | V1 legado | V1 legado |
-| não definido | **V2** | V1 legado |
+| não definido | **V2** | **V2** |
 
-Ou seja: **em desenvolvimento você vê a V2 por padrão**, sem precisar descobrir
-nenhuma flag escondida no IndexedDB; a produção mantém o rollout existente
-inalterado. Um build de produção pode entrar em modo dogfood com
-`VITE_V2_DOGFOOD=1` (é assim que o bundle usado pelos testes E2E roda).
+Ou seja: abrir o app publicado — sem flag, sem query parameter, sem DevTools —
+entra direto na V2, em qualquer ambiente. A ausência da configuração nunca
+significa V1. O `false` explícito continua existindo como *escape hatch* de
+rollback e é o que os testes de regressão da V1 usam para fixar o legado.
 
-Em dev há ainda um seletor visível na Home da V2 (**DEV · Experiência de
-aprendizagem: V2 / Legado V1**) que grava a escolha explícita — o caminho de
-regressão da V1 fica a um toque, sem contaminar a experiência V2.
+A V1 não foi destruída: a Home antiga vive em `src/screens/LegacyHome.jsx` e o
+hub antigo em `src/screens/LegacyTrainingHub.jsx`, alcançáveis apenas pelo
+opt-out explícito. O mascote Bob pertence ao legado — ele não aparece em
+nenhuma superfície V2.
+
+`VITE_V2_DOGFOOD=1` **não decide mais qual produto é o padrão**; ele só liga
+ferramentas de desenvolvimento. Em dev/dogfood há um seletor visível na Home da
+V2 (**DEV · Experiência de aprendizagem: V2 / Legado V1**) que grava a escolha
+explícita — o caminho de regressão da V1 fica a um toque, e o aluno do build
+público nunca vê esse seletor.
+
+O cutover é provado de ponta a ponta por `e2e/production-cutover.spec.js`, que
+roda contra um `vite build` **normal** (sem dogfood, projeto Playwright
+`production-build`) — um bundle de dogfood não poderia provar isso.
 
 As raízes learner da V2 carregam `data-experience="v2"` (marcador de
 teste/DEV, invisível para o aluno) para que os E2E provem qual produto renderizou.

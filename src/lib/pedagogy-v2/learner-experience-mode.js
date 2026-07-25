@@ -1,25 +1,24 @@
-// learner-experience-mode.js — Slice V2.20 §2. Resolves WHICH learning product
-// Training renders: the V2 learner experience or the legacy V1 Training Hub.
+// learner-experience-mode.js — resolves WHICH learning product the app renders:
+// the V2 learner experience or the legacy V1 surfaces (Home / Training Hub).
 //
-// The problem this solves: until V2.19 the only way to see V2 was to know that a
-// hidden IndexedDB key (`v2_learner_experience_enabled`) existed and flip it. A
-// developer opening Training in a dev build silently landed on the V1 hub and
-// could believe they were dogfooding the new product (§2/§33).
+// V2.20-R §3 — PRODUCTION CUTOVER. Until V2.20 the environment decided the
+// default: a dogfood build (dev / VITE_V2_DOGFOOD) opened V2 while a production
+// build opened V1. That rollout is over. V2 is now THE product, in every
+// environment, and V1 is an explicitly requested legacy fallback:
 //
-// The resolution is deliberately three-valued, so DEV can default to V2 WITHOUT
-// touching the production rollout (§2 "Não alterar rollout de produção sem
-// necessidade"):
+//   setting === true       → 'v2'   (explicit opt-in — redundant, but honoured)
+//   setting === false      → 'v1'   (explicit opt-out: the emergency rollback
+//                                    escape hatch, and how legacy/regression
+//                                    tests pin V1 on purpose — §4)
+//   setting undefined/null → 'v2'   (EVERY environment, production included)
 //
-//   setting === true       → 'v2'   (explicit opt-in — any environment)
-//   setting === false      → 'v1'   (explicit opt-out — any environment; this is
-//                                    how regression/legacy tests pin V1)
-//   setting undefined/null → the ENVIRONMENT default:
-//                              dogfood build (dev / VITE_V2_DOGFOOD) → 'v2'
-//                              production                           → 'v1'
+// The absence of the setting never means V1 again. A plain `npm run build`
+// served from GitHub Pages must open the V2 Home with no flag, no query
+// parameter and no DevTools (§12/§20).
 //
-// Only the *unset* case changes behaviour, so every existing production install
-// (which has no row for the key) keeps the V1 hub in a production bundle, and
-// every stored explicit choice is still honoured verbatim.
+// The build environment no longer decides which PRODUCT is default; it only
+// decides whether DEVELOPER tooling (the V1/V2 switch) is offered at all — see
+// `experienceSwitcherAvailable` (§3/§13).
 //
 // This module is pure: the environment is passed in, never read from globals, so
 // it is unit-testable and the caller decides what "dogfood" means.
@@ -37,9 +36,10 @@ export function readBuildEnvironment(env = undefined) {
 }
 
 /**
- * True when this build should default the learner experience to V2. A dev server
- * always dogfoods; a build can opt in explicitly with VITE_V2_DOGFOOD=1 (that is
- * how the E2E preview build — which is a *production* build — dogfoods V2).
+ * True when this build is a DEVELOPER build (dev server, or an explicit
+ * VITE_V2_DOGFOOD=1 bundle such as the E2E preview). Since V2.20-R this no
+ * longer influences which product is default — V2 is default everywhere — it
+ * only gates developer tooling like the visible V1/V2 switch (§3/§13).
  */
 export function isDogfoodBuild(env = undefined) {
   const { dev, dogfood } = readBuildEnvironment(env)
@@ -47,14 +47,14 @@ export function isDogfoodBuild(env = undefined) {
 }
 
 /**
- * The single source of truth for "am I in V2 or V1?".
+ * The single source of truth for "am I in V2 or V1?". V2 unless the learner (or
+ * a test) explicitly asked for the legacy product — in EVERY environment.
  * @returns {'v2'|'v1'}
  */
-export function resolveLearnerExperienceMode(settings, env = undefined) {
+export function resolveLearnerExperienceMode(settings, _env = undefined) {
   const explicit = settings?.v2_learner_experience_enabled
-  if (explicit === true) return EXPERIENCE_V2
   if (explicit === false) return EXPERIENCE_V1
-  return isDogfoodBuild(env) ? EXPERIENCE_V2 : EXPERIENCE_V1
+  return EXPERIENCE_V2
 }
 
 /** Convenience predicate — the V2 learner experience is the active product. */
