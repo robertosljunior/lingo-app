@@ -1,28 +1,43 @@
-// V2FeedbackPanel.jsx — Slice V2.17 learner feedback (handoff §05, spec §8–§13).
-// Renders the learner-facing `feedback` block produced by
-// buildLearnerPresentationV2. It NEVER decides anything linguistic: it only
-// presents the fields it receives. Appears BELOW the activity (never a modal),
-// with an aria-live region so it is announced when it expands (§35).
+// V2FeedbackPanel.jsx — learner feedback, FLATTENED in Slice V2.20 (§16–§25).
+//
+// CRITICAL: the design changed, the SEMANTICS did not. This component still only
+// presents the `feedback` block produced by buildLearnerPresentationV2. It never
+// decides anything linguistic, never reclassifies a variant, never turns a
+// semantic mismatch into "Vocabulário" and never turns naturalness into an error
+// (§18/§22/§26/§27). Absence of a structured cause stays an honest, unspecific
+// message — the component cannot invent a category.
+//
+// What V2.20 changed, per the Polish Pass:
+//   • the outer card is compact (16px radius, tighter padding) (§17);
+//   • the suggestion / reference-form / disclosure blocks are NO LONGER nested
+//     cards — they are separated by a hairline rule + spacing + typography (§17);
+//   • `correct` is the fastest state to consume: icon + headline + points (§19);
+//   • `unable_to_assess` reads as "not confirmed", never as a failure (§24).
+//
+// It stays BELOW the activity on the SAME screen (never a modal, never a route
+// change) with an aria-live region so it is announced when it expands (§16/§37).
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const VARIANT_ICON = {
   correct: '✓', suggestion: '✦', partial: '◑', linguistic: '↺', semantic: '↔', unknown: '…',
 }
 
-// A single linguistic issue: a short line + optional deeper explanation. The
-// span highlight is intentionally not invented here (§9/§14).
+// A single linguistic issue: a short line. The span highlight is intentionally
+// not invented here.
 function V2FeedbackIssue({ issue }) {
   return (
-    <div className="v2lx-fb-body" data-testid="v2lx-fb-issue" style={{ display: 'flex', gap: 8, alignItems: 'flex-start', marginTop: 4 }}>
+    <div className="v2lx-fb-body" data-testid="v2lx-fb-issue" style={{ display: 'flex', gap: 8, alignItems: 'flex-start', marginTop: 6 }}>
       <span aria-hidden="true" style={{ color: 'var(--v2-fb-accent)', fontWeight: 900, flex: 'none' }}>·</span>
       <span>{issue.text}</span>
     </div>
   )
 }
 
-// A naturalness suggestion / reference form block (§12/§13). Amber tone; never
-// error language.
+// A naturalness suggestion / reference form block (§20/§25). It is a hairline
+// SECTION of the panel now, not a card inside a card. The label always comes
+// from the adapter — the component never writes "Forma correta" / "Resposta
+// correta" anywhere (§25, mandatory regression gate).
 function V2FeedbackSuggestion({ suggestion, targetForm }) {
   return (
     <div className="v2lx-fb-note" data-testid="v2lx-fb-suggestion">
@@ -35,15 +50,34 @@ function V2FeedbackSuggestion({ suggestion, targetForm }) {
 
 export default function V2FeedbackPanel({ feedback, reducedMotion = false }) {
   const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+
+  // §30 — on mobile the panel often expands below the fold. Scroll the MINIMUM
+  // needed to expose the headline + first content + CTA, never to the top, and
+  // never steal focus (the aria-live region already announces it). `nearest`
+  // keeps the activity above still visible, so the learner stays oriented (§29).
+  useEffect(() => {
+    const el = ref.current
+    if (!el || typeof window === 'undefined' || !el.scrollIntoView) return
+    const prefersReduced = reducedMotion ||
+      (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+    try {
+      el.scrollIntoView({ block: 'nearest', behavior: prefersReduced ? 'auto' : 'smooth' })
+    } catch {
+      el.scrollIntoView(false)
+    }
+  }, [feedback?.visual_variant, reducedMotion])
+
   if (!feedback) return null
   const { visual_variant: variant, tone, headline, body, correct_points, issues, suggestions, target_form, target_form_note, detail } = feedback
   const icon = VARIANT_ICON[tone] || '…'
   // The reference form shows with the first suggestion when one exists; if there
-  // is a target form but no suggestion, show it as its own reference block.
+  // is a target form but no suggestion, it becomes its own reference section.
   const primarySuggestion = suggestions[0] || null
 
   return (
     <div
+      ref={ref}
       className={`v2lx-fb${reducedMotion ? ' v2lx-fb--noanim' : ''}`}
       data-testid="v2lx-feedback"
       data-variant={variant}
@@ -71,8 +105,8 @@ export default function V2FeedbackPanel({ feedback, reducedMotion = false }) {
       {primarySuggestion && <V2FeedbackSuggestion suggestion={primarySuggestion} targetForm={target_form} />}
       {suggestions.slice(1).map((s, i) => <V2FeedbackSuggestion key={i} suggestion={s} targetForm={null} />)}
 
-      {/* A standalone reference form (no suggestion) — e.g. a different target
-          form with aligned meaning (§13). Never "Resposta correta". */}
+      {/* A standalone reference form (no suggestion). Label comes from the
+          adapter — "Uma forma possível" / "Forma de referência" (§25). */}
       {!primarySuggestion && target_form && (
         <div className="v2lx-fb-note" data-testid="v2lx-fb-target-form">
           <div className="v2lx-fb-note-label">{target_form.label}</div>
@@ -83,7 +117,9 @@ export default function V2FeedbackPanel({ feedback, reducedMotion = false }) {
 
       {target_form_note && <div className="v2lx-fb-body" data-testid="v2lx-fb-target-note" style={{ marginTop: 8, color: 'var(--v2-muted)' }}>{target_form_note}</div>}
 
-      {/* Progressive disclosure — ONLY when real deeper content exists (§8). */}
+      {/* Progressive disclosure — ONLY when real deeper content exists. §21: the
+          revealed text lands DIRECTLY in this panel; no second card, no extra
+          border, just the rise+fade. */}
       {detail && (
         <>
           <button
@@ -96,8 +132,8 @@ export default function V2FeedbackPanel({ feedback, reducedMotion = false }) {
             Entender melhor <span className="v2lx-disclose-chev" aria-hidden="true">›</span>
           </button>
           {open && (
-            <div className={`v2lx-fb-note${reducedMotion ? '' : ' v2lx-rise'}`} data-testid="v2lx-fb-detail">
-              <div className="v2lx-fb-body" style={{ color: 'var(--v2-muted)' }}>{detail}</div>
+            <div className={`v2lx-fb-detail${reducedMotion ? '' : ' v2lx-rise'}`} data-testid="v2lx-fb-detail">
+              {detail}
             </div>
           )}
         </>

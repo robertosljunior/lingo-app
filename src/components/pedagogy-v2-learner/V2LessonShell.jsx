@@ -7,7 +7,7 @@
 //
 // CTA state machine (§31), one primary CTA at a time:
 //   exposure/transition     → Continuar (records exposure, then advances)
-//   recognition             → tap = answer (no footer CTA before feedback)
+//   recognition (incl. context) → tap = answer (no footer CTA before feedback)
 //   check recipes           → Verificar (enabled when the recipe is submittable)
 //   submitting semantic/STT → Processando… (disabled)
 //   feedback shown          → Continuar (advances)
@@ -21,6 +21,10 @@ import V2NewUseBanner from './V2NewUseBanner.jsx'
 import V2PackTransition from './V2PackTransition.jsx'
 
 const CHECK_RECIPES = new Set(['fixed_element_completion', 'word_order_reconstruction', 'guided_production', 'free_production', 'pronunciation'])
+// Recipes that evaluate ON TAP: the contract already submits the choice, so a
+// "Verificar" CTA would be a second, redundant primary action (§31). V2.20 adds
+// the V2.19 `context_recognition` here — it shares the single_choice contract.
+const TAP_RECIPES = new Set(['meaning_recognition', 'listening_recognition', 'context_recognition'])
 
 export default function V2LessonShell({
   state,
@@ -113,7 +117,7 @@ export default function V2LessonShell({
     cta = { label: 'Continuar', disabled: status === 'advancing' || phase === 'out', onClick: () => goNext(advanceIntent), testid: 'v2lx-continue' }
   } else if (recipe === 'exposure') {
     cta = { label: 'Continuar', disabled: busy || phase === 'out', onClick: () => goNext(exposureIntent), testid: 'v2lx-continue' }
-  } else if (recipe === 'meaning_recognition' || recipe === 'listening_recognition') {
+  } else if (TAP_RECIPES.has(recipe)) {
     cta = null // tap = answer (§31)
   } else if (CHECK_RECIPES.has(recipe)) {
     cta = { label: busy ? 'Processando…' : 'Verificar', disabled: busy || !pending, onClick: check, testid: 'v2lx-check' }

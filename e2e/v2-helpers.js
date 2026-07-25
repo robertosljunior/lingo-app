@@ -25,7 +25,10 @@ export async function setDiagnosticsFlag(page, enabled) {
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
 }
 
-// Toggle the Slice V2.17 learner-experience product flag (default false).
+// Toggle the learner-experience product flag EXPLICITLY. Since Slice V2.20 the
+// setting is three-valued: unset means "environment default", and the E2E bundle
+// is built with VITE_V2_DOGFOOD=1, so unset resolves to V2. Passing `false` here
+// is the way a spec pins the legacy V1 hub on purpose (§2).
 export async function setLearnerFlag(page, enabled) {
   await page.evaluate(async (enabled) => {
     await window.__e2e.db.setSetting('v2_learner_experience_enabled', enabled)
@@ -79,7 +82,9 @@ export async function answerLearnerActivity(page) {
     await waitForAdvance(page, counterBefore)
     return recipe
   }
-  if (recipe === 'meaning_recognition' || recipe === 'listening_recognition') {
+  if (recipe === 'meaning_recognition' || recipe === 'listening_recognition' || recipe === 'context_recognition') {
+    // Slice V2.20 §9: context_recognition shares the single_choice contract, so
+    // it evaluates on tap exactly like the other recognition recipes.
     await page.locator('[data-testid^="v2lx-option-"]').first().click() // evaluate on tap
   } else if (recipe === 'completion') {
     const bank = page.locator('[data-testid="v2lx-word-bank"] button')
@@ -258,4 +263,21 @@ export async function seedV2Evidence(page, profileId, rows) {
     }
     await window.__e2e.db.recordLearnerEvidenceBatchV2(events)
   }, { profileId, rows })
+}
+
+
+/**
+ * Slice V2.20 §42/§48 — clear any explicit experience choice so the app falls
+ * back to the ENVIRONMENT default. In the E2E bundle (built with
+ * VITE_V2_DOGFOOD=1) that default is the V2 experience, which is exactly what a
+ * developer sees on a dev server. This is how the dogfood specs prove that
+ * opening Training lands on V2 without touching any hidden flag.
+ */
+export async function clearExperienceChoice(page) {
+  await page.evaluate(async () => {
+    await window.__e2e.db.setSetting('v2_learner_experience_enabled', undefined)
+  })
+  await page.reload()
+  await expect(page.locator('.app-shell')).toBeVisible()
+  await page.waitForFunction(() => window.__e2e && window.__e2e.db)
 }

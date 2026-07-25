@@ -11,8 +11,9 @@
 // thing the caller picks is the Study `mode` (adaptive / explore / review /
 // focused) — the SAME createStudySessionControllerV2, never a parallel one (§12).
 //
-// Gated behind `v2_learner_experience_enabled` (default false). V1 and the
-// diagnostic surfaces (Playground/Inspector/Lab) are untouched.
+// Gated by resolveLearnerExperienceMode (V2.20 §2): explicit setting wins, and an
+// unset flag defaults to V2 in dev/dogfood builds and to V1 in production. V1 and
+// the diagnostic surfaces (Playground/Inspector/Lab) are untouched.
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useApp, SCREENS } from '../store.jsx'
@@ -28,9 +29,12 @@ import { buildLearnerSessionResultV2, resolveLessonModeV2 } from '../lib/pedagog
 import V2LessonShell from '../components/pedagogy-v2-learner/V2LessonShell.jsx'
 import V2SessionSummary from '../components/pedagogy-v2-learner/V2SessionSummary.jsx'
 import { useReducedMotion } from '../components/pedagogy-v2-learner/useReducedMotion.js'
+import { learnerExperienceV2Enabled } from '../lib/pedagogy-v2/learner-experience-mode.js'
 
+// V2.20 §2 — the gate is the shared three-valued resolver, so a dev/dogfood build
+// lands on V2 by default while production keeps its existing rollout.
 export function v2LearnerExperienceEnabled(settings) {
-  return !!settings?.v2_learner_experience_enabled
+  return learnerExperienceV2Enabled(settings)
 }
 
 export default function V2LessonExperience() {
@@ -114,7 +118,7 @@ export default function V2LessonExperience() {
   // arbitrary fallback session (§29).
   if (session.error) {
     return (
-      <div className="phone v2lx" data-testid="v2lx-screen">
+      <div className="phone v2lx" data-testid="v2lx-screen" data-experience="v2" data-surface="lesson">
         <div className="v2lx-scroll"><div className="v2lx-content" style={{ textAlign: 'center', paddingTop: 60 }}>
           <div className="v2lx-card" data-testid="v2lx-mode-error">
             <div style={{ fontWeight: 900, fontSize: 18 }}>Não foi possível abrir esta prática.</div>
@@ -126,7 +130,7 @@ export default function V2LessonExperience() {
   }
 
   return (
-    <div className="phone" data-testid="v2lx-screen" data-mode={session.mode} style={{ overflow: 'hidden' }}>
+    <div className="phone" data-testid="v2lx-screen" data-experience="v2" data-surface="lesson" data-mode={session.mode} style={{ overflow: 'hidden' }}>
       {(!s || s.status === 'idle' || s.status === 'planning') && (
         <div className="screen-body" style={{ justifyContent: 'center', textAlign: 'center' }}>
           <p className="muted" data-testid="v2lx-loading">Preparando sua prática…</p>

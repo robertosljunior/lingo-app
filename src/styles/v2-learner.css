@@ -32,20 +32,46 @@
   --v2-fb-unknown: #64748B;
   --v2-fb-unknown-bg: #F1F3F8;
 
-  /* Shape + elevation (§33) */
+  /* Kicker — V2.20 polish token (§6/§35). Deliberately quieter and wider-tracked
+     than the sentence so it can never compete with the protagonist. */
+  --v2-kicker-color: #9AA3C7;
+  --v2-kicker-tracking: 1px;
+
+  /* Activity identity accents (§13/§14/§35). Guided stays on the primary rail
+     ("ainda dentro do trilho"); free production is violet ("fora do trilho",
+     same family as the new-use signal). Used as a 3px left accent rule — never
+     as a filled card, and never the ONLY carrier of meaning (§37). */
+  --v2-accent-guided: #3E63F2;
+  --v2-accent-free: #7C6BE6;
+  --v2-accent-observe: #3E63F2;
+
+  /* Shape + elevation (§33/§35). V2.20: the feedback card and the answer options
+     both lost radius; the sentence card shadow is gone entirely (§5). */
   --v2-radius-chip: 13px;
-  --v2-radius-option: 16px;
+  --v2-radius-option: 14px;
+  --v2-radius-feedback: 16px;
   --v2-radius-card: 20px;
   --v2-radius-cta: 18px;
   --v2-shadow-card: 0 3px 12px rgba(23, 32, 74, .06);
   --v2-shadow-cta: 0 8px 18px rgba(62, 99, 242, .28);
+  --v2-hairline: rgba(23, 32, 74, .10);
 
-  /* Motion (§29) — durations/easing as tokens so reduced-motion can zero them. */
+  /* Sentence scale by context (§5) — the protagonist, sized per activity rather
+     than hardcoded at each call site. */
+  --v2-sentence-exposure: 34px;
+  --v2-sentence-completion: 29px;
+  --v2-sentence-speaking: 27px;
+  --v2-sentence-prompt: 23px;
+
+  /* Motion (§28) — durations/easing/DISTANCES as tokens so reduced-motion can
+     zero them and the polish pass can retune them in one place. */
   --v2-ease: cubic-bezier(.4, 0, .2, 1);
   --v2-dur-stage-out: 220ms;
   --v2-dur-stage-in: 260ms;
   --v2-dur-feedback: 240ms;
   --v2-dur-disclosure: 200ms;
+  --v2-slide-distance: 4%;
+  --v2-feedback-rise: 10px;
 
   font-family: 'Nunito', system-ui, -apple-system, sans-serif;
   color: var(--v2-ink);
@@ -70,6 +96,11 @@
     --v2-fb-linguistic-bg: #3D1C1A;
     --v2-fb-semantic-bg: #241F3D;
     --v2-fb-unknown-bg: #1F2233;
+    --v2-kicker-color: #8B93AE;
+    --v2-hairline: rgba(255, 255, 255, .14);
+    --v2-accent-guided: #7E9BFF;
+    --v2-accent-free: #A897FF;
+    --v2-accent-observe: #7E9BFF;
   }
 }
 :root[data-theme="dark"] .v2lx {
@@ -88,6 +119,11 @@
   --v2-fb-linguistic-bg: #3D1C1A;
   --v2-fb-semantic-bg: #241F3D;
   --v2-fb-unknown-bg: #1F2233;
+  --v2-kicker-color: #8B93AE;
+  --v2-hairline: rgba(255, 255, 255, .14);
+  --v2-accent-guided: #7E9BFF;
+  --v2-accent-free: #A897FF;
+  --v2-accent-observe: #7E9BFF;
 }
 
 /* ---- layout ---------------------------------------------------------------- */
@@ -108,11 +144,55 @@
 
 .v2lx-footer { flex: none; padding: 12px 20px 22px; background: linear-gradient(0deg, var(--v2-bg) 60%, transparent); }
 
+/* Layout stability (§29): the stage reserves a minimum height so that expanding
+   the feedback below the activity does not yank the sentence to a new position.
+   The reserve is a floor, never a cap — long content simply grows downward. */
+.v2lx-stage { min-height: 58vh; }
+
 .v2lx-card { background: var(--v2-surface); border-radius: var(--v2-radius-card); box-shadow: var(--v2-shadow-card); padding: 20px; }
-.v2lx-sentence { font-weight: 900; font-size: 26px; line-height: 1.3; color: var(--v2-ink); text-wrap: pretty; }
-.v2lx-sentence--display { font-size: 32px; }
-.v2lx-translation { font-weight: 700; font-size: 16px; color: var(--v2-muted); }
-.v2lx-eyebrow { font-weight: 800; font-size: 13px; color: var(--v2-muted-2); letter-spacing: .4px; text-transform: uppercase; }
+
+/* ---- V2Sentence (§5) — the protagonist -------------------------------------
+   V2.20 removed the "in a card" variant entirely: the sentence now sits DIRECTLY
+   on the background in every recipe. Size is a CONTEXT variant, never a repeated
+   inline font-size at the call site (§35). */
+.v2lx-sentence { font-weight: 900; font-size: 26px; line-height: 1.28; color: var(--v2-ink); text-wrap: pretty; letter-spacing: -.4px; overflow-wrap: break-word; }
+.v2lx-sentence--exposure { font-size: var(--v2-sentence-exposure); line-height: 1.22; }
+.v2lx-sentence--completion { font-size: var(--v2-sentence-completion); line-height: 1.5; }
+.v2lx-sentence--speaking { font-size: var(--v2-sentence-speaking); line-height: 1.35; }
+/* A question/instruction that IS the protagonist (recognition, production). */
+.v2lx-sentence--prompt { font-size: var(--v2-sentence-prompt); line-height: 1.28; letter-spacing: -.2px; }
+/* Deprecated alias kept so nothing regresses mid-refactor. */
+.v2lx-sentence--display { font-size: var(--v2-sentence-exposure); }
+
+.v2lx-translation { font-weight: 700; font-size: 16px; color: var(--v2-muted); text-wrap: pretty; }
+
+/* A real instruction line (§6): it sits ABOVE the stimulus and must read as
+   guidance, not as the content. Used whenever the activity already has a
+   protagonist sentence of its own. */
+.v2lx-instruction { font-weight: 700; font-size: 15px; line-height: 1.4; color: var(--v2-muted); margin: 0 0 10px; text-wrap: pretty; }
+
+/* Kicker (§6) — discreet, wide-tracked, uppercase. It must never compete with
+   the sentence, so it is smaller AND lighter in colour than the translation. */
+.v2lx-eyebrow, .v2lx-kicker { font-weight: 800; font-size: 12px; color: var(--v2-kicker-color); letter-spacing: var(--v2-kicker-tracking); text-transform: uppercase; }
+
+/* Accent rule (§7/§13/§14) — a 3px left rule replaces every filled prompt card.
+   The rule is reinforcement; the kicker text always carries the same meaning so
+   colour is never the only signal (§37). */
+.v2lx-accent { border-left: 3px solid var(--v2-accent-guided); padding-left: 14px; text-align: left; }
+.v2lx-accent[data-accent="free"] { border-left-color: var(--v2-accent-free); }
+.v2lx-accent[data-accent="observe"] { border-left-color: var(--v2-accent-observe); }
+.v2lx-accent-label { font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: .4px; color: var(--v2-accent-guided); }
+.v2lx-accent[data-accent="free"] .v2lx-accent-label { color: var(--v2-accent-free); }
+.v2lx-accent[data-accent="observe"] .v2lx-accent-label { color: var(--v2-accent-observe); }
+/* Support line (§13) — plain text with a "◦" marker, never a pill inside a card. */
+.v2lx-support { margin-top: 10px; font-weight: 700; font-size: 13px; color: var(--v2-muted-2); }
+.v2lx-support-dot { color: var(--v2-accent-guided); margin-right: 4px; }
+.v2lx-accent[data-accent="free"] .v2lx-support-dot { color: var(--v2-accent-free); }
+
+/* Audio — secondary "ghost pill" in exposure; PROTAGONIST in listening (§10). */
+.v2lx-audio-pill { display: inline-flex; align-items: center; gap: 8px; border: none; background: var(--v2-surface-alt); color: var(--v2-primary); font-weight: 800; font-size: 15px; padding: 11px 20px; border-radius: 999px; cursor: pointer; font-family: inherit; min-height: 44px; }
+.v2lx-audio-hero { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: none; background: var(--v2-primary); color: var(--v2-on-primary); font-weight: 900; font-size: 17px; padding: 20px 30px; border-radius: 999px; cursor: pointer; font-family: inherit; min-height: 64px; box-shadow: var(--v2-shadow-cta); }
+.v2lx-audio-hero[data-playing="true"] { animation: v2lxPulse 1.4s infinite; }
 
 /* ---- CTA ------------------------------------------------------------------- */
 
@@ -144,22 +224,57 @@
 
 /* ---- options / chips ------------------------------------------------------- */
 
-.v2lx-option { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; text-align: left; border: 2px solid var(--v2-line); background: var(--v2-surface); border-radius: var(--v2-radius-option); padding: 16px 18px; cursor: pointer; font: inherit; font-weight: 800; font-size: 17px; color: var(--v2-ink); min-height: 44px; }
-.v2lx-option[aria-checked="true"] { border-color: var(--v2-primary); }
-.v2lx-option[data-result="correct"] { border-color: var(--v2-fb-correct); background: var(--v2-fb-correct-bg); }
-.v2lx-option[data-result="wrong"] { border-color: var(--v2-fb-linguistic); background: var(--v2-fb-linguistic-bg); }
-.v2lx-option[data-dim="true"] { opacity: .55; }
+/* §8 — an answer list, not a registration form: no idle shadow, transparent
+   fill, 1.5px hairline border, smaller radius. Selected/correct/wrong are always
+   carried by a GLYPH + border weight as well as colour (§37). */
+.v2lx-option { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; text-align: left; border: 1.5px solid var(--v2-line); background: transparent; box-shadow: none; border-radius: var(--v2-radius-option); padding: 15px 16px; cursor: pointer; font: inherit; font-weight: 800; font-size: 17px; line-height: 1.3; color: var(--v2-ink); min-height: 56px; transition: border-color 120ms var(--v2-ease), background-color 120ms var(--v2-ease); }
+.v2lx-option:disabled { cursor: default; }
+.v2lx-option[aria-checked="true"] { border-width: 2px; border-color: var(--v2-primary); background: var(--v2-surface-alt); }
+.v2lx-option[data-result="correct"] { border-width: 2px; border-color: var(--v2-fb-correct); background: var(--v2-fb-correct-bg); }
+.v2lx-option[data-result="wrong"] { border-width: 2px; border-color: var(--v2-fb-linguistic); background: var(--v2-fb-linguistic-bg); }
+.v2lx-option[data-dim="true"] { opacity: .5; }
+.v2lx-option-glyph { flex: none; font-weight: 900; font-size: 18px; }
+/* Context recognition options are whole situations — they read as prose. */
+.v2lx-option--context { font-weight: 700; font-size: 16px; align-items: flex-start; }
 
 .v2lx-chip { border: 2px solid var(--v2-line); background: var(--v2-surface); color: var(--v2-ink); font-weight: 800; font-size: 16px; padding: 10px 15px; border-radius: var(--v2-radius-chip); cursor: pointer; font-family: inherit; min-height: 44px; }
 .v2lx-chip--placed { border: none; background: var(--v2-primary); color: var(--v2-on-primary); }
 
+/* §12 — the assembly area is a single thin border; no inset shadow, and the
+   dashed divider to the bank is gone (whitespace separates the two zones). */
+.v2lx-build { min-height: 92px; border: 1.5px solid var(--v2-line); border-radius: 14px; background: transparent; box-shadow: none; padding: 14px; display: flex; flex-wrap: wrap; gap: 9px; align-content: flex-start; }
+.v2lx-bank { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; margin-top: 22px; }
+.v2lx-build-empty { color: var(--v2-muted-2); font-weight: 700; font-size: 14px; padding: 6px; }
+
+/* §11/§13/§14 — writing, not filling in a form: the textarea keeps only a bottom
+   rule. Focus must therefore be UNMISTAKABLE (handoff §8): 3px accent rule. */
 .v2lx-input { width: 100%; border: 2px solid var(--v2-line); border-radius: 16px; padding: 14px 16px; font-size: 17px; font-weight: 700; color: var(--v2-ink); background: var(--v2-surface); font-family: inherit; }
 .v2lx-input:focus { outline: none; border-color: var(--v2-primary); }
 textarea.v2lx-input { resize: none; }
 
+.v2lx-write { width: 100%; border: none; border-bottom: 2px solid var(--v2-line); border-radius: 0; background: transparent; padding: 8px 2px 14px; font-size: 18px; font-weight: 700; line-height: 1.4; color: var(--v2-ink); font-family: inherit; resize: none; }
+.v2lx-write::placeholder { color: var(--v2-muted-2); font-weight: 600; }
+.v2lx-write:focus { outline: none; border-bottom-width: 3px; border-bottom-color: var(--v2-accent-guided); }
+.v2lx-write:focus-visible { outline: none; border-bottom-width: 3px; border-bottom-color: var(--v2-accent-guided); }
+.v2lx-write[data-accent="free"]:focus, .v2lx-write[data-accent="free"]:focus-visible { border-bottom-color: var(--v2-accent-free); }
+.v2lx-write:disabled { color: var(--v2-muted); }
+
+/* §37 — one strong, consistent focus ring for every interactive V2 affordance. */
+.v2lx button:focus-visible,
+.v2lx [tabindex]:focus-visible { outline: 3px solid var(--v2-primary); outline-offset: 2px; border-radius: 8px; }
+
+/* ---- completion slot (§11) — the gap is PART of the sentence ---------------- */
+.v2lx-slot { border-bottom: 3px solid var(--v2-muted-2); padding: 0 18px; color: var(--v2-muted-2); }
+.v2lx-slot[data-filled="true"] { padding: 0 6px; color: var(--v2-primary); border-bottom-color: var(--v2-primary); }
+.v2lx-slot[data-result="correct"] { color: var(--v2-fb-correct); border-bottom-color: var(--v2-fb-correct); }
+.v2lx-slot[data-result="wrong"] { color: var(--v2-fb-linguistic); border-bottom-color: var(--v2-fb-linguistic); }
+
 /* ---- feedback panel -------------------------------------------------------- */
 
-.v2lx-fb { margin-top: 20px; border-radius: var(--v2-radius-card); padding: 18px 18px 16px; }
+/* §17 — flattened: compact card, 16px radius, and NO nested cards inside. Sub
+   blocks (suggestion / reference form / disclosure) are separated by a hairline
+   divider + spacing + typography instead of another box. */
+.v2lx-fb { margin-top: 24px; border-radius: var(--v2-radius-feedback); padding: 16px 16px 14px; }
 .v2lx-fb[data-tone="correct"] { background: var(--v2-fb-correct-bg); --v2-fb-accent: var(--v2-fb-correct); }
 .v2lx-fb[data-tone="suggestion"] { background: var(--v2-fb-suggestion-bg); --v2-fb-accent: var(--v2-fb-suggestion); }
 .v2lx-fb[data-tone="partial"] { background: var(--v2-fb-partial-bg); --v2-fb-accent: var(--v2-fb-partial); }
@@ -167,13 +282,22 @@ textarea.v2lx-input { resize: none; }
 .v2lx-fb[data-tone="semantic"] { background: var(--v2-fb-semantic-bg); --v2-fb-accent: var(--v2-fb-semantic); }
 .v2lx-fb[data-tone="unknown"] { background: var(--v2-fb-unknown-bg); --v2-fb-accent: var(--v2-fb-unknown); }
 .v2lx-fb-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+/* §19 — `correct` is the fastest feedback to consume: icon + headline, nothing
+   else pushed on the learner, and the CTA stays immediately reachable. */
+.v2lx-fb[data-tone="correct"] { padding: 14px 16px 12px; }
+.v2lx-fb[data-tone="correct"] .v2lx-fb-head { margin-bottom: 6px; }
+/* §22 — semantic is the most compact of all: "outra ideia", not a punishment. */
+.v2lx-fb[data-tone="semantic"] { padding: 14px 16px 12px; }
 .v2lx-fb-icon { width: 30px; height: 30px; border-radius: 10px; background: var(--v2-fb-accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; flex: none; }
 .v2lx-fb-headline { font-weight: 900; font-size: 17px; color: var(--v2-fb-accent); }
 .v2lx-fb-body { font-weight: 700; font-size: 14px; color: var(--v2-ink); line-height: 1.45; }
-.v2lx-fb-note { margin-top: 12px; background: rgba(255, 255, 255, .7); border-radius: 14px; padding: 12px 14px; }
-:root[data-theme="dark"] .v2lx .v2lx-fb-note,
-:root:not([data-theme="light"]) .v2lx .v2lx-fb-note { background: rgba(255, 255, 255, .08); }
-.v2lx-fb-note-label { font-weight: 800; font-size: 12px; color: var(--v2-fb-accent); text-transform: uppercase; letter-spacing: .3px; margin-bottom: 5px; }
+/* The former nested white card. V2.20: a hairline rule + spacing, no background,
+   no border box (§17/§20/§21). */
+.v2lx-fb-note { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--v2-hairline); background: transparent; border-radius: 0; }
+.v2lx-fb-note-label { font-weight: 800; font-size: 11px; color: var(--v2-fb-accent); text-transform: uppercase; letter-spacing: .4px; margin-bottom: 5px; }
+/* Disclosure body (§21): revealed text lands directly in the panel — no second
+   card, no duplicated border, just the rise+fade. */
+.v2lx-fb-detail { margin-top: 10px; font-weight: 700; font-size: 13px; line-height: 1.5; color: var(--v2-muted); }
 .v2lx-fb-target { font-weight: 900; font-size: 17px; color: var(--v2-ink); }
 .v2lx-disclose { margin-top: 12px; border: none; background: transparent; color: var(--v2-fb-accent); font-weight: 800; font-size: 14px; cursor: pointer; padding: 6px 0; display: inline-flex; align-items: center; gap: 5px; min-height: 44px; }
 .v2lx-disclose-chev { display: inline-block; transition: transform var(--v2-dur-disclosure) var(--v2-ease); }
@@ -193,9 +317,12 @@ textarea.v2lx-input { resize: none; }
 
 /* ---- animations (§29) ------------------------------------------------------ */
 
-@keyframes v2lxStageOut { from { transform: none; opacity: 1; } to { transform: translateX(-7%); opacity: 0; } }
-@keyframes v2lxStageIn { from { transform: translateX(7%); opacity: 0; } to { transform: none; opacity: 1; } }
-@keyframes v2lxFbUp { from { transform: translateY(14px); opacity: 0; } to { transform: none; opacity: 1; } }
+/* §28 — the polish pass pulled the slide from 7% to 4% and the feedback rise
+   from 14px to 10px, both via tokens: the transition should read as CONTINUITY,
+   not as a page change. Timing stays at 220–260ms. */
+@keyframes v2lxStageOut { from { transform: none; opacity: 1; } to { transform: translateX(calc(-1 * var(--v2-slide-distance))); opacity: 0; } }
+@keyframes v2lxStageIn { from { transform: translateX(var(--v2-slide-distance)); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes v2lxFbUp { from { transform: translateY(var(--v2-feedback-rise)); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes v2lxRiseFade { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes v2lxPulse { 0% { box-shadow: 0 0 0 0 rgba(62, 99, 242, .35); } 70% { box-shadow: 0 0 0 16px rgba(62, 99, 242, 0); } 100% { box-shadow: 0 0 0 0 rgba(62, 99, 242, 0); } }
 
@@ -220,3 +347,48 @@ textarea.v2lx-input { resize: none; }
 .v2lx[data-reduced-motion="true"] .v2lx-fb,
 .v2lx[data-reduced-motion="true"] .v2lx-rise { animation: none !important; }
 .v2lx[data-reduced-motion="true"] .v2lx-mic[data-mic="listening"] { animation: none !important; }
+
+
+/* ---- Home facts + DEV strip (§32) ------------------------------------------ */
+.v2lx-home-facts { margin-top: 18px; display: flex; flex-direction: column; gap: 6px; }
+.v2lx-home-fact { font-weight: 700; font-size: 13px; color: var(--v2-muted); line-height: 1.45; }
+
+/* Everything below this rule is internal tooling — it is separated from the
+   learner hierarchy by a divider and a DEV label so it can never be mistaken for
+   product surface, and it is not rendered at all in a production build (§32). */
+.v2lx-devstrip { margin-top: 34px; padding-top: 16px; border-top: 1px dashed var(--v2-line); text-align: center; }
+.v2lx-devswitch { text-align: left; }
+.v2lx-devswitch-title { font-weight: 900; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--v2-muted-2); margin-bottom: 8px; }
+.v2lx-devswitch-opts { display: flex; gap: 8px; }
+.v2lx-devswitch-opt { flex: 1; display: flex; align-items: center; gap: 8px; text-align: left; border: 1.5px solid var(--v2-line); background: transparent; border-radius: var(--v2-radius-option); padding: 10px 12px; cursor: pointer; font-family: inherit; color: var(--v2-ink); min-height: 44px; }
+.v2lx-devswitch-opt[data-active] { border-color: var(--v2-primary); background: var(--v2-surface-alt); }
+.v2lx-devswitch-dot { color: var(--v2-primary); font-size: 13px; }
+.v2lx-devswitch-label { display: block; font-weight: 900; font-size: 13px; }
+.v2lx-devswitch-hint { display: block; font-weight: 700; font-size: 11px; color: var(--v2-muted-2); }
+
+/* ---- responsive (§38) ------------------------------------------------------
+   320–430px must never overflow horizontally, and a long sentence must stay
+   readable. Only the protagonist scales down — the hierarchy is preserved. */
+@media (max-width: 380px) {
+  .v2lx {
+    --v2-sentence-exposure: 29px;
+    --v2-sentence-completion: 25px;
+    --v2-sentence-speaking: 24px;
+    --v2-sentence-prompt: 21px;
+  }
+  .v2lx-scroll { padding-left: 16px; padding-right: 16px; }
+  .v2lx-footer { padding-left: 16px; padding-right: 16px; }
+}
+@media (max-width: 340px) {
+  .v2lx {
+    --v2-sentence-exposure: 26px;
+    --v2-sentence-completion: 23px;
+    --v2-sentence-speaking: 22px;
+    --v2-sentence-prompt: 19px;
+  }
+  .v2lx-option { font-size: 16px; padding: 14px; }
+}
+/* Desktop stays a centred reading column — never a dashboard (§38). */
+@media (min-width: 720px) {
+  .v2lx-content { max-width: 560px; }
+}

@@ -56,7 +56,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `npm run build && npm run preview -- --host 127.0.0.1 --port ${PORT} --strictPort`,
+    command: `VITE_V2_DOGFOOD=1 npm run build && npm run preview -- --host 127.0.0.1 --port ${PORT} --strictPort`,
     url: `http://127.0.0.1:${PORT}/`,
     reuseExistingServer: !process.env.CI,
     timeout: 240_000,
