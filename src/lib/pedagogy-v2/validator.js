@@ -373,6 +373,53 @@ export function validatePedagogyV2Pack(pack, opts = {}) {
     if (r.from && r.from === r.to) err('RELATION_SELF', `${where}=${r.from}`)
   })
 
+  // ---- introduction groups (Slice V2.21-R2 §4/§5) -----------------------------
+  // The old invariant was "each new item is introduced by exactly ONE exemplar".
+  // The new one is stricter about structure, not looser: each new item belongs to
+  // exactly ONE canonical introduction group, and every member of a group must be
+  // pedagogically interchangeable at that first contact. Several realizations are
+  // allowed; several UNRELATED introductions are not.
+  {
+    const groupOfItem = new Map()   // item ref → group id
+    const membersOfGroup = new Map() // group id → [exemplar]
+    for (const e of exemplars) {
+      const refs = (e.intended_new_items || []).map((n) => n.ref)
+      if (!refs.length) continue
+      const gid = (typeof e.introduction_group_id === 'string' && e.introduction_group_id)
+        ? e.introduction_group_id
+        : `intro:solo.${e.exemplar_id}`
+      if (!membersOfGroup.has(gid)) membersOfGroup.set(gid, [])
+      membersOfGroup.get(gid).push(e)
+      for (const ref of refs) {
+        const existing = groupOfItem.get(ref)
+        if (existing && existing !== gid) {
+          err('INTRODUCTION_GROUP_AMBIGUOUS', `${ref} introduced by both ${existing} and ${gid}`)
+        } else groupOfItem.set(ref, gid)
+      }
+    }
+    // Signature compatibility: members must introduce the SAME item set, sit at
+    // the same exposure stage, and share the same blocking V2 prerequisites.
+    // A sentence needing past simple must not silently join an A1 be-only group.
+    for (const [gid, members] of membersOfGroup) {
+      if (members.length < 2) continue
+      const sig = (e) => JSON.stringify({
+        items: [...new Set((e.intended_new_items || []).map((n) => `${n.type}:${n.ref}`))].sort(),
+        stage: e.exposure_stage ?? null,
+        prereqs: [...new Set((e.prerequisites || [])
+          .filter((x) => x.type === 'sense' || x.type === 'construction')
+          .map((x) => `${x.type}:${x.ref}`))].sort(),
+        bridges: [...new Set((e.prerequisites || [])
+          .filter((x) => x.type === 'grammar_skill_v1').map((x) => x.ref))].sort(),
+      })
+      const first = sig(members[0])
+      for (const e of members.slice(1)) {
+        if (sig(e) !== first) {
+          err('INTRODUCTION_GROUP_SIGNATURE_MISMATCH', `${gid}: ${e.exemplar_id} is not interchangeable with ${members[0].exemplar_id}`)
+        }
+      }
+    }
+  }
+
   return {
     valid: errors.length === 0,
     pack_id: m?.pack_id || null,

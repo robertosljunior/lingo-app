@@ -80,6 +80,39 @@ export function getIntendedNewItems(exemplar) {
   return exemplar?.intended_new_items || []
 }
 
+/**
+ * INTRODUCTION GROUP (Slice V2.21-R2 §2/§3).
+ *
+ * A sense/construction remains ONE curricular item. What changes is that an item
+ * may own SEVERAL equivalent realizations able to serve its first contact: in a
+ * real trajectory exactly one of them actually presents the item, the others
+ * stay immediately available as alternatives, and the item is never counted as
+ * new again (the engine's budget already keys on the ITEM ref, not the
+ * exemplar).
+ *
+ * Before this, every item had exactly one authored introduction, which
+ * guaranteed by construction that the engine saw a single materializable
+ * realization during the whole pre-consolidation phase — the measured cause of
+ * "I am tired, but I am happy." repeating forever (see
+ * test-evidence/v2-21r1-content-depth-review.md).
+ *
+ * The field is OPTIONAL: an exemplar without it behaves exactly as before (a
+ * singleton group keyed by its own id), so legacy content is untouched.
+ */
+export function getIntroductionGroupId(exemplar) {
+  if (!exemplar) return null
+  if (typeof exemplar.introduction_group_id === 'string' && exemplar.introduction_group_id) {
+    return exemplar.introduction_group_id
+  }
+  return getIntendedNewItems(exemplar).length ? `intro:solo.${exemplar.exemplar_id}` : null
+}
+
+/** Every exemplar of `pack` that can serve the first contact of `groupId`. */
+export function getIntroductionGroupMembers(pack, groupId) {
+  if (!groupId) return []
+  return (pack?.exemplars || []).filter((e) => getIntroductionGroupId(e) === groupId)
+}
+
 // ---- progression ----
 
 // Exemplars ordered by curricular exposure stage (stable within a stage, in

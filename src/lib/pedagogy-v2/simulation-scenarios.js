@@ -88,6 +88,19 @@ const CATALOG = {
     session_rotation_interactions: 12,
     clock: { strategy: 'constant_interval', interval_minutes: 5 }, ...o,
   }),
+  // V2.21-R2 §26 — FOCUSED journeys, one pack at a time (3 sittings x 12). The
+  // adaptive 60 mixes packs and can hide a per-pack bottleneck; these are what
+  // the learner now reaches from the Home's "Escolher prática".
+  ...Object.fromEntries(['still', 'but', 'yet'].map((lemma) => [
+    `${lemma}-focused-36`,
+    (o) => createSimulationScenarioV2({
+      scenario_id: `golden:${lemma}-focused-36`, persona: 'real-successful',
+      mode: 'focused', focused_pack_id: `pedagogy_v2_${lemma}`,
+      seed: `golden-${lemma}-focused`, start_at: T0, maximum_interactions: 36,
+      session_rotation_interactions: 12,
+      clock: { strategy: 'constant_interval', interval_minutes: 5 }, ...o,
+    }),
+  ])),
 }
 
 export const STANDARD_SCENARIO_IDS = Object.keys(CATALOG)

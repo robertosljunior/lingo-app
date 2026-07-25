@@ -504,7 +504,8 @@
       ],
       "usage_notes": "Primeira exposição a yet: estado esperado negado com be, tradução 'ainda não'. Exatamente duas novidades pretendidas.",
       "naturalness_status": "curated",
-      "exposure_stage": "A1"
+      "exposure_stage": "A1",
+      "introduction_group_id": "intro:yet.temporal_be"
     },
     {
       "exemplar_id": "exemplar:yet.002",
@@ -531,6 +532,13 @@
       ],
       "prerequisites": [
         {
+          "type": "grammar_skill_v1",
+          "ref": "verb_to_be",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
           "type": "sense",
           "ref": "sense:yet.temporal_pending"
         },
@@ -539,7 +547,6 @@
           "ref": "construction:yet.subject_be_not_complement_yet"
         }
       ],
-      "intended_new_items": [],
       "context": "No ponto, olhando o horário: o ônibus está atrasado.",
       "context_items": [
         "bus",
@@ -547,7 +554,8 @@
       ],
       "usage_notes": "Mesmo padrão com lugar em vez de qualidade: a espera é por uma CHEGADA. Nenhuma novidade pretendida.",
       "naturalness_status": "curated",
-      "exposure_stage": "A1"
+      "exposure_stage": "A1",
+      "introduction_group_id": "intro:yet.temporal_be"
     },
     {
       "exemplar_id": "exemplar:yet.003",
@@ -574,6 +582,13 @@
       ],
       "prerequisites": [
         {
+          "type": "grammar_skill_v1",
+          "ref": "verb_to_be",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
           "type": "sense",
           "ref": "sense:yet.temporal_pending"
         },
@@ -582,7 +597,6 @@
           "ref": "construction:yet.subject_be_not_complement_yet"
         }
       ],
-      "intended_new_items": [],
       "context": "A casa cheira a comida e alguém já quer sentar à mesa.",
       "context_items": [
         "dinner",
@@ -590,7 +604,8 @@
       ],
       "usage_notes": "A pendência motiva uma ação ('so let's wait'): yet dentro de um turno maior, não em frase isolada.",
       "naturalness_status": "curated",
-      "exposure_stage": "A1"
+      "exposure_stage": "A1",
+      "introduction_group_id": "intro:yet.temporal_be"
     },
     {
       "exemplar_id": "exemplar:yet.004",
@@ -617,6 +632,13 @@
       ],
       "prerequisites": [
         {
+          "type": "grammar_skill_v1",
+          "ref": "verb_to_be",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
           "type": "sense",
           "ref": "sense:yet.temporal_pending"
         },
@@ -625,7 +647,6 @@
           "ref": "construction:yet.subject_be_not_complement_yet"
         }
       ],
-      "intended_new_items": [],
       "context": "Vocês chegaram cedo demais ao shopping e as portas seguem fechadas.",
       "context_items": [
         "store",
@@ -633,7 +654,8 @@
       ],
       "usage_notes": "Horário de funcionamento como expectativa institucional: o esperado tem hora marcada. A tradução usa 'abriu' porque 'está aberta' soaria menos natural aqui — tradução por exemplar, nunca palavra a palavra.",
       "naturalness_status": "curated",
-      "exposure_stage": "A1"
+      "exposure_stage": "A1",
+      "introduction_group_id": "intro:yet.temporal_be"
     },
     {
       "exemplar_id": "exemplar:yet.005",
@@ -1099,7 +1121,14 @@
       "usage_notes": "Mesma pendência de resposta do exemplar 011, agora em registro formal — o contraste de registro é o ponto.",
       "naturalness_status": "curated",
       "exposure_stage": "A2-B1",
-      "semantic_assessment": { "strategy": "equivalent_meaning", "essential_words": ["invitation"], "polarity": "negative", "note": "Contexto fechado: a atividade elicita este significado; palavra essencial minima e curada (Slice V2.14). Ver test-evidence/v2-14-semantic-bridge.md." }
+      "semantic_assessment": {
+        "strategy": "equivalent_meaning",
+        "essential_words": [
+          "invitation"
+        ],
+        "polarity": "negative",
+        "note": "Contexto fechado: a atividade elicita este significado; palavra essencial minima e curada (Slice V2.14). Ver test-evidence/v2-14-semantic-bridge.md."
+      }
     },
     {
       "exemplar_id": "exemplar:yet.015",
@@ -1602,7 +1631,8 @@
       ],
       "usage_notes": "Recorde de série aberta: 'até agora' — e a série continua. O pré-requisito no sentido temporal ancora a leitura 'até o momento'. Duas novidades pretendidas.",
       "naturalness_status": "curated",
-      "exposure_stage": "B1-B2"
+      "exposure_stage": "B1-B2",
+      "introduction_group_id": "intro:yet.maximal_superlative"
     },
     {
       "exemplar_id": "exemplar:yet.026",
@@ -1630,6 +1660,17 @@
       "prerequisites": [
         {
           "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "grammar_skill_v1",
+          "ref": "comparatives",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
+          "type": "sense",
           "ref": "sense:yet.maximal_so_far"
         },
         {
@@ -1637,7 +1678,6 @@
           "ref": "construction:yet.superlative_yet"
         }
       ],
-      "intended_new_items": [],
       "context": "Depois da maratona na serra, comparando com as corridas anteriores.",
       "context_items": [
         "hardest",
@@ -1645,7 +1685,8 @@
       ],
       "usage_notes": "Passado narrativo com recorde aberto: a próxima corrida pode superar.",
       "naturalness_status": "curated",
-      "exposure_stage": "B1-B2"
+      "exposure_stage": "B1-B2",
+      "introduction_group_id": "intro:yet.maximal_superlative"
     },
     {
       "exemplar_id": "exemplar:yet.027",
@@ -1673,6 +1714,17 @@
       "prerequisites": [
         {
           "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "grammar_skill_v1",
+          "ref": "comparatives",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
+          "type": "sense",
           "ref": "sense:yet.maximal_so_far"
         },
         {
@@ -1680,7 +1732,6 @@
           "ref": "construction:yet.superlative_yet"
         }
       ],
-      "intended_new_items": [],
       "context": "Documentário sobre uma expedição mais dura que todas as anteriores.",
       "context_items": [
         "biggest",
@@ -1688,7 +1739,8 @@
       ],
       "usage_notes": "Terceira pessoa plural e tom narrativo: o padrão viaja entre contextos sem trocar apenas o substantivo — muda o tempo, a pessoa e a cena.",
       "naturalness_status": "curated",
-      "exposure_stage": "B1-B2"
+      "exposure_stage": "B1-B2",
+      "introduction_group_id": "intro:yet.maximal_superlative"
     },
     {
       "exemplar_id": "exemplar:yet.028",
@@ -1716,6 +1768,17 @@
       "prerequisites": [
         {
           "type": "sense",
+          "ref": "sense:yet.temporal_pending"
+        },
+        {
+          "type": "grammar_skill_v1",
+          "ref": "comparatives",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
+          "type": "sense",
           "ref": "sense:yet.maximal_so_far"
         },
         {
@@ -1723,7 +1786,6 @@
           "ref": "construction:yet.superlative_yet"
         }
       ],
-      "intended_new_items": [],
       "context": "O comentarista compara a campanha atual com toda a história do clube.",
       "context_items": [
         "strongest",
@@ -1731,7 +1793,8 @@
       ],
       "usage_notes": "Posse + superlativo: retoma o time invicto do exemplar 015 — coerência interna do pack sem repetir frase.",
       "naturalness_status": "curated",
-      "exposure_stage": "B1-B2"
+      "exposure_stage": "B1-B2",
+      "introduction_group_id": "intro:yet.maximal_superlative"
     },
     {
       "exemplar_id": "exemplar:yet.029",
@@ -1785,7 +1848,8 @@
       ],
       "usage_notes": "Quarto núcleo: iteração além do esperado — 'mais um, e olha que já bastava'. Duas novidades pretendidas.",
       "naturalness_status": "curated",
-      "exposure_stage": "B1-B2"
+      "exposure_stage": "B1-B2",
+      "introduction_group_id": "intro:yet.additive_another"
     },
     {
       "exemplar_id": "exemplar:yet.030",
@@ -1812,6 +1876,13 @@
       ],
       "prerequisites": [
         {
+          "type": "grammar_skill_v1",
+          "ref": "past_simple",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
           "type": "sense",
           "ref": "sense:yet.additive_repetition"
         },
@@ -1820,7 +1891,6 @@
           "ref": "construction:yet.yet_another_np"
         }
       ],
-      "intended_new_items": [],
       "context": "Revisão final de um documento que já voltou três vezes.",
       "context_items": [
         "mistake",
@@ -1828,7 +1898,8 @@
       ],
       "usage_notes": "A frustração é parte do sentido: a repetição ultrapassou o tolerável.",
       "naturalness_status": "curated",
-      "exposure_stage": "B1-B2"
+      "exposure_stage": "B1-B2",
+      "introduction_group_id": "intro:yet.additive_another"
     },
     {
       "exemplar_id": "exemplar:yet.031",
@@ -1897,6 +1968,13 @@
       ],
       "prerequisites": [
         {
+          "type": "grammar_skill_v1",
+          "ref": "past_simple",
+          "compat_bridge": true
+        }
+      ],
+      "intended_new_items": [
+        {
           "type": "sense",
           "ref": "sense:yet.additive_repetition"
         },
@@ -1905,7 +1983,6 @@
           "ref": "construction:yet.yet_another_np"
         }
       ],
-      "intended_new_items": [],
       "context": "Cada vez que conta o caso, os detalhes mudam.",
       "context_items": [
         "version",
@@ -1913,7 +1990,8 @@
       ],
       "usage_notes": "Desconfiança construída pela repetição: fecha o quarteto aditivo com objeto abstrato.",
       "naturalness_status": "curated",
-      "exposure_stage": "B1-B2"
+      "exposure_stage": "B1-B2",
+      "introduction_group_id": "intro:yet.additive_another"
     }
   ]
 }

@@ -133,7 +133,9 @@ export default function V2LessonExperience() {
   }
 
   return (
-    <div className="phone" data-testid="v2lx-screen" data-experience="v2" data-surface="lesson" data-mode={session.mode} style={{ overflow: 'hidden' }}>
+    // V2.21-R2 §25: data-pack is the DEV/test marker proving which pack a
+    // focused session is actually serving. Renders nothing for the learner.
+    <div className="phone" data-testid="v2lx-screen" data-experience="v2" data-surface="lesson" data-mode={session.mode} data-pack={s?.plan?.pack_id ?? session.pack ?? null} style={{ overflow: 'hidden' }}>
       {(!s || s.status === 'idle' || s.status === 'planning') && (
         <div className="screen-body" style={{ justifyContent: 'center', textAlign: 'center' }}>
           <p className="muted" data-testid="v2lx-loading">Preparando sua prática…</p>

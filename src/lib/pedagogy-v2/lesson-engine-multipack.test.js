@@ -14,6 +14,7 @@ import { selectNextActivityV2 } from './lesson-engine.js'
 import { validateLessonDecisionV2 } from './lesson-engine-validator.js'
 import { loadPedagogyV2Registry, buildPedagogyV2Registry, resolvePedagogyTarget } from './registry.js'
 
+const BUT_CONTRAST_GROUP = ['exemplar:but.001', 'exemplar:but.002', 'exemplar:but.003', 'exemplar:but.028', 'exemplar:but.029', 'exemplar:but.030', 'exemplar:but.031']
 const registry = loadPedagogyV2Registry()
 const BUT_SCOPE = { registry, pack_id: 'pedagogy_v2_but', lexeme_id: 'lexeme:but' }
 const STILL_SCOPE = { registry, pack_id: 'pedagogy_v2_still', lexeme_id: 'lexeme:still' }
@@ -80,8 +81,10 @@ describe('§25.38–39 — a new but learner starts at exposure, then recognitio
     const d = select({})
     expect(d.status).toBe('activity')
     expect(d.plan.recipe).toBe('exposure')
-    expect(d.plan.exemplar_id).toBe('exemplar:but.001')
-    expect(d.plan.text_en).toBe('I am tired, but I am happy.')
+    // V2.21-R2 §2: the first contact of but.contrast is served by an
+    // INTRODUCTION GROUP, so any interchangeable member is correct here.
+    expect(BUT_CONTRAST_GROUP).toContain(d.plan.exemplar_id)
+    expect(d.plan.text_en).toEqual(expect.stringContaining('but'))
     expect(d.plan.pack_id).toBe('pedagogy_v2_but')
     expect(d.plan.lexeme_id).toBe('lexeme:but')
     expect(d.plan.lexeme_lemma).toBe('but')
@@ -91,8 +94,10 @@ describe('§25.38–39 — a new but learner starts at exposure, then recognitio
   it('39: after exposure, meaning recognition of the same exemplar follows', () => {
     const st = states([...exposureOf(B_CONTRAST), ...exposureOf(B_CLAUSE)])
     const d = select({ learnerStates: st })
-    expect(d.plan.recipe).toBe('meaning_recognition')
-    expect(d.plan.exemplar_id).toBe('exemplar:but.001')
+    // V2.21-R2: with several interchangeable realizations the engine may enter
+    // recognition through either modality; both are the same rung.
+    expect(['meaning_recognition', 'listening_recognition']).toContain(d.plan.recipe)
+    expect(BUT_CONTRAST_GROUP).toContain(d.plan.exemplar_id)
     expect(d.plan.new_item_refs).toEqual([])
   })
 })
@@ -138,7 +143,7 @@ describe('§25.43 — still known, but unknown (case 2 of §11)', () => {
   it('a but session for a still-only learner introduces simple contrast from scratch', () => {
     const d = select({ learnerStates: states(stillSideKnown()) })
     expect(d.plan.recipe).toBe('exposure')
-    expect(d.plan.exemplar_id).toBe('exemplar:but.001')
+    expect(BUT_CONTRAST_GROUP).toContain(d.plan.exemplar_id)
     // Knowing still NEVER implies knowing but: but targets start unknown.
     expect(d.plan.new_item_refs).toEqual(['sense:but.contrast', 'construction:but.clause_but_clause'])
   })
@@ -260,13 +265,17 @@ describe('§25.53–54 — recognition alternatives', () => {
   it('53: options come only from authored but-pack translations', () => {
     const st = states([...exposureOf(B_CONTRAST), ...exposureOf(B_CLAUSE)])
     const d = select({ learnerStates: st })
-    expect(d.plan.recipe).toBe('meaning_recognition')
+    // V2.21-R2: with several interchangeable realizations the engine may enter
+    // recognition through either modality; both are the same rung.
+    expect(['meaning_recognition', 'listening_recognition']).toContain(d.plan.recipe)
     const authoredPt = new Map(butJson.exemplars.map((e) => [e.exemplar_id, e.text_pt]))
     for (const o of d.plan.presentation.options) {
       expect(authoredPt.get(o.source_exemplar_id)).toBe(o.text_pt)
     }
+    // The target translation is the authored pt of whichever group member the
+    // engine picked — never an invented string.
     const target = d.plan.presentation.options.find((o) => o.is_target)
-    expect(target.text_pt).toBe('Estou cansado, mas estou feliz.')
+    expect(target.text_pt).toBe(authoredPt.get(d.plan.exemplar_id))
   })
 
   it('54: without safe alternatives the recipe is excluded and the session degrades to no_eligible_activity', () => {
@@ -305,6 +314,6 @@ describe('§25.55 — planned evidence keeps the correct target ownership', () =
     const sess = session()
     const next = appendActivityToSessionV2(sess, d)
     expect(next.history).toHaveLength(1)
-    expect(next.history[0].exemplar_id).toBe('exemplar:but.001')
+    expect(BUT_CONTRAST_GROUP).toContain(next.history[0].exemplar_id)
   })
 })
