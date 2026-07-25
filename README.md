@@ -4,10 +4,16 @@ Aplicativo **mobile-first** para treino de inglês, construído em **React + Vit
 Sem backend, **funciona offline** (PWA), com correção de linguagem natural rodando
 localmente em um **Web Worker** com **Compromise.js**.
 
-Implementa o design exportado do Claude Design (soft duolingo, acento índigo,
-superfícies em creme quente, Manrope + Geist Mono) e o spec técnico completo:
-importar aulas, responder exercícios, revisar erros e exportar
-resultados/prompts para o tutor ChatGPT.
+O app tem hoje **dois produtos de aprendizagem** convivendo no mesmo binário:
+
+- **V1 (legado)** — importar aulas, responder exercícios, revisar erros e
+  exportar resultados/prompts para o tutor ChatGPT. Design exportado do Claude
+  Design (soft duolingo, acento índigo, superfícies em creme quente,
+  Manrope + Geist Mono). Mantido para regressão.
+- **V2 (Pedagogia V2)** — a experiência atual de aprendizagem, construída sobre
+  um pipeline pedagógico próprio (Planner → Focus Resolver → Lesson Engine →
+  Assessment → Evidence → Learner Model). É o produto em que o desenvolvimento
+  acontece. Ver [Pedagogia V2](#pedagogia-v2) abaixo.
 
 ## Rodando
 
@@ -44,6 +50,62 @@ App publicado: <https://robertosljunior.github.io/lingo-app/>
 Depois de alterar o código, rode `npm run build` e commite o `dist/`
 atualizado junto — é ele que vai ao ar.
 
+## Pedagogia V2
+
+A V2 substitui a ideia de "palavra aprendida/não aprendida" por **usos** de uma
+palavra que o aluno já conhece. Nenhuma decisão pedagógica vive no React: a UI
+apenas apresenta estruturas prontas.
+
+```
+Study Planner → Study Focus Resolver → Lesson Engine → ActivityPlan
+  → resposta → Assessment → Evidence → Learner Model → próximo planejamento
+                                    ↘ Presentation Adapter → React
+```
+
+Código em `src/lib/pedagogy-v2/` (núcleo pedagógico, puro e testado) e
+`src/components/pedagogy-v2-learner/` + `src/screens/V2*.jsx` (apresentação).
+Documentação detalhada em [`docs/`](docs/) — content model, learner model,
+lesson engine, study planner, multipack e observabilidade.
+
+### Qual experiência aparece em Treino
+
+A rota de Treino resolve **um** dos dois produtos, nunca os dois juntos
+(`src/lib/pedagogy-v2/learner-experience-mode.js`):
+
+| `v2_learner_experience_enabled` | dev / build de dogfood | build de produção |
+|---|---|---|
+| `true` (escolha explícita) | V2 | V2 |
+| `false` (escolha explícita) | V1 legado | V1 legado |
+| não definido | **V2** | V1 legado |
+
+Ou seja: **em desenvolvimento você vê a V2 por padrão**, sem precisar descobrir
+nenhuma flag escondida no IndexedDB; a produção mantém o rollout existente
+inalterado. Um build de produção pode entrar em modo dogfood com
+`VITE_V2_DOGFOOD=1` (é assim que o bundle usado pelos testes E2E roda).
+
+Em dev há ainda um seletor visível na Home da V2 (**DEV · Experiência de
+aprendizagem: V2 / Legado V1**) que grava a escolha explícita — o caminho de
+regressão da V1 fica a um toque, sem contaminar a experiência V2.
+
+As raízes learner da V2 carregam `data-experience="v2"` (marcador de
+teste/DEV, invisível para o aluno) para que os E2E provem qual produto renderizou.
+
+### Linguagem visual (V2.20)
+
+O polish pass da V2.20 seguiu o protótipo de UX/UI: **menos container, mais
+conteúdo**. A frase-alvo é a protagonista e fica direto sobre o fundo (sem card),
+com escala por contexto via tokens (`--v2-sentence-exposure/completion/speaking`);
+as opções de reconhecimento leem como lista de resposta (sem sombra, borda fina);
+produção guiada e livre se diferenciam por régua de acento (azul/roxo) em vez de
+cards preenchidos; e o painel de feedback é achatado — sem cards aninhados, só
+divisórias *hairline*. Tokens em `src/styles/v2-learner.css`.
+
+O feedback permanece **na mesma tela**, nunca em modal, e a semântica é a do
+Assessment: naturalidade nunca vira erro, incompatibilidade de sentido nunca vira
+"vocabulário", produção livre nunca diz "resposta correta" (e sim "uma forma
+possível" / "forma de referência"), e ausência de causa estruturada vira uma
+mensagem honestamente inespecífica.
+
 ## Arquitetura
 
 Camada de domínio (`src/lib/`), independente da UI:
@@ -63,7 +125,9 @@ UI (`src/`):
 - `store.jsx` — estado global (navegação, aula ativa, sessão de exercícios, settings) sobre IndexedDB
 - `screens/` — as telas: Home, Import, Exercise, Result, Review, History, Mistakes, Settings, Export
 - `components/` — primitivas compartilhadas (status bar, nav, ícones, anel de score)
-- `styles/tokens.css` — design system portado do handoff (light/dark)
+- `styles/tokens.css` — design system V1 portado do handoff (light/dark)
+- `styles/v2-learner.css` — tokens da camada learner V2 (cor, forma, escala de
+  frase, acentos por atividade, motion), escopados em `.v2lx` (light/dark)
 
 **Diagnóstico**: erros não tratados e rejeições de promise são registrados num
 log persistente (localStorage), visível em Configurações → Diagnóstico
@@ -85,7 +149,30 @@ log em vez de página branca.
 
 A arquitetura está pronta para adicionar **wink-nlp** depois, atrás do mesmo contrato.
 
-## Tipos de exercício suportados
+## Testes
+
+```bash
+npm test                      # unit (vitest)
+npm run test:e2e              # Playwright (build de produção + vite preview)
+
+npm run validate:content-packs
+npm run validate:knowledge-packs
+npm run validate:pedagogy-v2
+npm run simulate:pedagogy-v2 -- --scenario all --check-determinism
+npm run audit:assessment-v2
+npm run audit:practice-variety-v2
+npm run benchmark:semantic
+npm run benchmark:indexeddb
+```
+
+A matriz visual da V2 é regenerada sob demanda:
+
+```bash
+V2_SHOTS=1 npx playwright test pedagogy-v2-20-screenshots --project=chromium-desktop
+# PNGs em test-evidence/v2-20-visual/
+```
+
+## Tipos de exercício suportados (V1)
 
 `translate_natural` · `build_sentence` · `rewrite_natural` · `fill_blank` ·
 `choose_best` · `answer_question` · `listen_type` (ditado: o app fala a frase

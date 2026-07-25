@@ -121,6 +121,14 @@ export async function seedFixtures(page, { active = PROFILE_A } = {}) {
     await put('settings', { key: `skill_profile_rebuild_version:${A}`, value: '1' })
     await put('settings', { key: `skill_profile_rebuild_version:${B}`, value: '1' })
     await put('settings', { key: 'level', value: 'B1' })
+    // Slice V2.20 §2: the E2E bundle is a DOGFOOD build, so an *unset*
+    // learner-experience flag now resolves to V2. Every pre-existing spec was
+    // written against the V1 Training hub, so the fixture pins V1 EXPLICITLY —
+    // each suite therefore states which product it is testing instead of
+    // inheriting an environment default. Specs that want V2 call
+    // setLearnerFlag(page, true); the dogfood specs call clearExperienceChoice()
+    // to remove this pin and assert the environment default itself.
+    await put('settings', { key: 'v2_learner_experience_enabled', value: false })
     db.close()
   }, { active, rows: profileASkillRows(), A: PROFILE_A, B: PROFILE_B })
   await page.reload()
