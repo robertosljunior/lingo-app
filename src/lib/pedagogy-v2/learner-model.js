@@ -12,6 +12,18 @@
 // per capability key (modality_capability) and per lane (overall / independent
 // / supported), because recognition ≠ production, reading ≠ listening and
 // supported ≠ independent.
+//
+// Slice V2.21-R3 (AGGREGATION_VERSION 2) adds `capability_rollups`: the SAME
+// lanes folded per CAPABILITY across its modalities. It exists for exactly one
+// question — "has this target met the bar of a ladder rung, so the next rung
+// may open?" — which is a question about the capability, not about one
+// modality. The R3 measurement showed 5 of 12 targets in the real successful
+// journey carrying enough correct, assessed evidence for the rung while no
+// single modality lane reached the bar, because a learner practising BOTH
+// reading and listening halves each lane. Rollups do NOT replace the per-
+// modality lanes: modality expansion, independence unlock, retention and the
+// review queue all keep reading them, and nothing here merges senses with
+// constructions or creates a global "mastery of the word".
 
 import {
   AGGREGATION_VERSION, LEARNER_MODEL_VERSION,
@@ -205,6 +217,7 @@ export function aggregateTargetEvidence(events, { profile_id, target }) {
     evidence_count: relevant.length,
     exposure: { count: 0, exposure_only_count: 0, first_seen_at: null, last_seen_at: null },
     capabilities: {},
+    capability_rollups: {},
     support_summary: {},
     retention: {},
     updated_at: null,
@@ -237,6 +250,17 @@ export function aggregateTargetEvidence(events, { profile_id, target }) {
     if (INDEPENDENT_TIERS.includes(tier)) foldLane(cap.independent, event, weight, score)
     else foldLane(cap.supported, event, weight, score)
 
+    // The same event, folded once more per CAPABILITY (across its modalities).
+    // Same formulas, same lanes — only the grouping key differs.
+    const capability = event.activity.capability
+    if (!state.capability_rollups[capability]) {
+      state.capability_rollups[capability] = { overall: emptyLane(), independent: emptyLane(), supported: emptyLane() }
+    }
+    const roll = state.capability_rollups[capability]
+    foldLane(roll.overall, event, weight, score)
+    if (INDEPENDENT_TIERS.includes(tier)) foldLane(roll.independent, event, weight, score)
+    else foldLane(roll.supported, event, weight, score)
+
     for (const feature of event.support?.features || []) {
       const acc = supportAcc[feature] || (supportAcc[feature] = { evidence_count: 0, success_sum: 0, last_used_at: null })
       acc.evidence_count += 1
@@ -256,6 +280,14 @@ export function aggregateTargetEvidence(events, { profile_id, target }) {
       overall: finalizeLane(cap.overall),
       independent: finalizeLane(cap.independent),
       supported: finalizeLane(cap.supported),
+    }
+  }
+  for (const capability of Object.keys(state.capability_rollups)) {
+    const roll = state.capability_rollups[capability]
+    state.capability_rollups[capability] = {
+      overall: finalizeLane(roll.overall),
+      independent: finalizeLane(roll.independent),
+      supported: finalizeLane(roll.supported),
     }
   }
   for (const [feature, acc] of Object.entries(supportAcc)) {

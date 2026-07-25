@@ -10,7 +10,13 @@
 
 export const LEARNER_EVIDENCE_SCHEMA_VERSION = 1
 export const LEARNER_MODEL_VERSION = 1
-export const AGGREGATION_VERSION = 1
+// AGGREGATION_VERSION 2 (Slice V2.21-R3): derived target states additionally
+// carry `capability_rollups` — the per-capability fold across modalities — and
+// ladder advancement is read from them instead of from a single modality lane.
+// The evidence schema is UNCHANGED (evidence is immutable); only the
+// interpretation of it moved, so stored states built under version 1 must be
+// rebuilt from evidence rather than read with the old semantics.
+export const AGGREGATION_VERSION = 2
 
 // ---- activities ------------------------------------------------------------
 // V2-native taxonomy. Deliberately NOT the V1 exercise families — a future

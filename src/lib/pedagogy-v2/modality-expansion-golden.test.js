@@ -200,9 +200,17 @@ describe('§22 — production modality expansion golden (speaking → writing)',
       && it.modality === 'speaking' && it.assessment.status === 'assessed').length
     const lane = result.final_learner_states.find((s) => s.target.target_id === B_CONTRAST.target_id)
       ?.capabilities?.speaking_controlled_production?.overall
-    const speakingCtrlServed = result.interactions.filter((it) => it.target.target_id === B_CONTRAST.target_id
-      && it.modality === 'speaking' && it.capability === 'controlled_production' && it.assessment.status === 'assessed').length
-    expect(lane.assessed_evidence_count).toBe(4 + speakingCtrlServed)
+    // Counted from the EVIDENCE, not from the plans' primary targets: an
+    // interaction planned around another target can still yield indirect
+    // evidence here, so a plan-side count is not the same number. The
+    // invariant under test is that every event in the speaking lane really was
+    // a speaking activity.
+    const speakingCtrlEvents = result.evidence_generated.filter((e) => e.target.target_id === B_CONTRAST.target_id
+      && e.activity.modality === 'speaking' && e.activity.capability === 'controlled_production'
+      && ['correct', 'partial', 'incorrect'].includes(e.outcome)).length
+    expect(lane.assessed_evidence_count).toBe(4 + speakingCtrlEvents)
+    expect(result.evidence_generated.some((e) => e.target.target_id === B_CONTRAST.target_id
+      && e.activity.modality === 'writing' && e.activity.capability === 'controlled_production')).toBe(true)
     void speakingServed
   })
 })

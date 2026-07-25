@@ -27,6 +27,7 @@ import { BUILTIN_CONTENT_PACKS, getBuiltinContentPack } from './content-pack-loa
 import { validateContentPacks } from './content-pack-validator.js'
 import { validateLearnerEvidenceBatchV2 } from './pedagogy-v2/learner-evidence-validator.js'
 import { aggregateTargetEvidence } from './pedagogy-v2/learner-model.js'
+import { AGGREGATION_VERSION, LEARNER_MODEL_VERSION } from './pedagogy-v2/learner-model-constants.js'
 import { learnerTargetStateKey } from './pedagogy-v2/learner-evidence-contracts.js'
 import { filterEvidence } from './pedagogy-v2/learner-model-query.js'
 import { createRegistryTargetResolver } from './pedagogy-v2/registry.js'
@@ -46,6 +47,7 @@ function canAccessLesson(lesson, profile_id = null) {
   return !!lesson && (!lesson.owner_profile_id || !profile_id || lesson.owner_profile_id === profile_id)
 }
 export function isLessonAccessDenied(result) { return result?.code === 'LESSON_NOT_ACCESSIBLE' }
+export async function __dbForTests() { return db() }
 export async function __resetDbForTests() { if (dbPromise) { try { (await dbPromise).close() } catch {} } dbPromise = null }
 
 function db() {
@@ -738,9 +740,34 @@ export async function getLearnerTargetStateV2(profile_id, target) {
 }
 
 export async function getLearnerTargetStatesV2(profile_id, { targetType = null } = {}) {
+  await ensureLearnerTargetStatesCurrentV2(profile_id)
   const d = await db()
   const rows = await d.getAllFromIndex('learner_target_states_v2', 'profile_id', profile_id)
   return rows.filter((s) => !targetType || s.target?.target_type === targetType).sort((a, b) => (a.key < b.key ? -1 : 1))
+}
+
+/**
+ * Slice V2.21-R3 §15 — derived-state VERSION reconciliation. Target states are
+ * a pure function of the immutable evidence, so when the aggregation semantics
+ * change (AGGREGATION_VERSION) the stored states are stale DATA, not history:
+ * leaving them alongside freshly-written ones would mean two learners on two
+ * pedagogies. Any state row below the current version triggers a deterministic
+ * rebuild of the whole profile from `learner_evidence_v2`.
+ *
+ * Evidence is never touched, never deleted and never "reset" — the rebuild is
+ * exactly the aggregation that would run on a first-ever import of the same
+ * events, so an upgraded profile equals a rebuilt-from-zero one. The physical
+ * schema is unchanged, hence no DB_VERSION bump.
+ */
+export async function ensureLearnerTargetStatesCurrentV2(profile_id = DEFAULT_PROFILE) {
+  const d = await db()
+  const rows = await d.getAllFromIndex('learner_target_states_v2', 'profile_id', profile_id)
+  if (!rows.length) return { rebuilt: false, reason: 'no_states' }
+  const stale = rows.some((s) => (s.aggregation_version ?? 0) !== AGGREGATION_VERSION
+    || (s.learner_model_version ?? 0) !== LEARNER_MODEL_VERSION)
+  if (!stale) return { rebuilt: false, reason: 'current' }
+  const states = await rebuildLearnerTargetStatesV2(profile_id)
+  return { rebuilt: true, reason: 'aggregation_version_mismatch', state_count: states.length }
 }
 
 /** Rebuild one target state from its stored events. Deletes the state when no

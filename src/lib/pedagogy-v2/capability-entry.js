@@ -26,7 +26,7 @@
 // arrive later via modality-gap expansion (modality-gap.js).
 
 import { getTrainableModalitiesForCapabilityV2 } from './training-affordances.js'
-import { capabilityGateMetV2, getLane, laneMeets } from './lesson-engine-state-queries.js'
+import { capabilityGateMetV2, getLane, capabilityAdvancementMetV2 } from './lesson-engine-state-queries.js'
 
 // The recommended capability progression (shared vocabulary of planner/engine).
 export const CAPABILITY_LADDER = ['recognition', 'comprehension', 'controlled_production', 'free_production', 'pronunciation']
@@ -42,8 +42,9 @@ export function findFirstOpenCapabilityRungV2(state, { engineLevelAffordances, t
   for (let i = 1; i < CAPABILITY_LADDER.length; i++) {
     const prev = CAPABILITY_LADDER[i - 1]
     const next = CAPABILITY_LADDER[i]
-    const prevMet = mods(prev).some((m) => laneMeets(getLane(state, `${m}_${prev}`, 'overall'), thresholds.advancement))
-    if (!prevMet) continue
+    // V2.21-R3 — the rung question is per capability (see
+    // capabilityAdvancementMetV2); the modality only decides how it ENTERS.
+    if (!capabilityAdvancementMetV2(state, prev, thresholds.advancement)) continue
     const nextAssessed = mods(next).some((m) => (getLane(state, `${m}_${next}`, 'overall')?.assessed_evidence_count || 0) > 0)
     if (nextAssessed) continue
     return next

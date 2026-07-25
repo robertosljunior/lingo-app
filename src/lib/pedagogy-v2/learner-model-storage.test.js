@@ -5,6 +5,7 @@ import { openDB } from 'idb'
 import * as storage from '../storage.js'
 import { buildLearnerEvidenceV2 } from './learner-evidence-contracts.js'
 import { compareTargetStates } from './learner-model.js'
+import { AGGREGATION_VERSION } from './learner-model-constants.js'
 
 globalThis.indexedDB = indexedDB
 globalThis.IDBKeyRange = IDBKeyRange
@@ -210,5 +211,40 @@ describe('rebuild equivalence', () => {
     // simulate a stale state for a target whose evidence never existed
     expect(await storage.rebuildLearnerTargetStateV2('p1', C_LEX)).toBeNull()
     expect(await storage.getLearnerTargetStateV2('p1', C_LEX)).toBeNull()
+  })
+})
+
+// ---- Slice V2.21-R3 §15 — derived-state version reconciliation --------------
+
+describe('§15 — stale derived states are rebuilt, evidence is never touched', () => {
+  it('a state persisted under an older aggregation version is rebuilt on read', async () => {
+    const events = [
+      ev({ attribution: 'exposure', outcome: 'observed' }),
+      ...Array.from({ length: 5 }, () => ev()),
+    ]
+    await storage.recordLearnerEvidenceBatchV2(events)
+    const fresh = await storage.getLearnerTargetStateV2('p1', CONT)
+    expect(fresh.aggregation_version).toBe(AGGREGATION_VERSION)
+
+    // Downgrade the PERSISTED state in place: old version stamp, old shape.
+    const d = await storage.__dbForTests()
+    const stale = { ...fresh, aggregation_version: 1 }
+    delete stale.capability_rollups
+    await d.put('learner_target_states_v2', stale)
+    expect((await storage.getLearnerTargetStateV2('p1', CONT)).aggregation_version).toBe(1)
+
+    // Reading through the profile-level API reconciles it.
+    const states = await storage.getLearnerTargetStatesV2('p1')
+    const rebuilt = states.find((s) => s.target.target_id === CONT.target_id)
+    expect(rebuilt.aggregation_version).toBe(AGGREGATION_VERSION)
+    expect(compareTargetStates(rebuilt, fresh).differences).toEqual([])
+
+    // The immutable evidence survived untouched — nothing was reset or cleared.
+    expect((await storage.getLearnerEvidenceV2('p1')).length).toBe(events.length)
+  })
+
+  it('a current profile is not rebuilt', async () => {
+    await storage.recordLearnerEvidenceBatchV2([ev()])
+    expect(await storage.ensureLearnerTargetStatesCurrentV2('p1')).toEqual({ rebuilt: false, reason: 'current' })
   })
 })

@@ -23,7 +23,8 @@ import { deriveSupportTier } from './learner-evidence-contracts.js'
 // / word-order presentation) on top of pedagogical scoring. The pedagogy is
 // unchanged; the realization chosen for a given focus is now varied.
 export const LESSON_ENGINE_V2_VERSION = 3 // 1 was the 7038d70 prototype; 2 = V2.3-R…V2.18
-export const LESSON_ENGINE_POLICY_VERSION = 3
+// 4 = V2.21-R3: recipe-SHARE monotony control inside a capability (§21/§22).
+export const LESSON_ENGINE_POLICY_VERSION = 4
 export const LESSON_SESSION_V2_VERSION = 1
 export const ACTIVITY_PLAN_V2_VERSION = 1
 // 2 (Slice V2.5): declares the multi-pack scope — registry_version,
@@ -239,6 +240,20 @@ export const DEFAULT_LESSON_ENGINE_POLICY_V2 = Object.freeze({
     // same recipe when a valid equivalent alternative recipe exists for the
     // SAME focus (capability/modality/lane/target).
     recipe_streak_max: 2,
+    // Recipe-SHARE control (Slice V2.21-R3 §21/§22). The streak rule above only
+    // sees CONSECUTIVE repeats of one construction, so it never fires when a
+    // recipe monopolizes a capability while the construction rotates — which is
+    // exactly how guided_production came to own controlled_production writing
+    // and word_order_reconstruction was never served. Monotony is therefore
+    // ALSO measured as a share: over the trailing `recipe_share_window`
+    // activities of the anchor's (capability, modality), if the anchor's recipe
+    // already holds more than `recipe_share_max` of them and an equivalent
+    // alternative exists in the acceptable band, the alternative is preferred.
+    // This is opportunity-based, not a forced cadence: with no alternative in
+    // the band nothing changes, and the focus is never altered.
+    recipe_share_window: 8,
+    recipe_share_max: 0.5,
+    recipe_share_min_observations: 3,
     // Master switch — off restores exact V2.18 selection behavior.
     enabled: true,
   }),
