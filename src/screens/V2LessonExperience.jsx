@@ -78,6 +78,34 @@ export default function V2LessonExperience() {
   const c = controllerRef.current
   const s = state
 
+  // ---- E2E-only read hook (Slice V2.22-UX1 §36) ------------------------------
+  // Slice V2.20 documented a real gap in its visual matrix: the harness answered
+  // recognition by tapping the first option — usually wrong — so the seeded
+  // learner never accumulated the correct evidence Capability Entry needs, and
+  // completion / word order / production were unreachable in E2E. That slice
+  // named the two ways out: "a harness that can answer correctly (or a DEV-only
+  // forced-plan route)". A forced plan on a learner-facing route is forbidden
+  // (§36), so this is the other one.
+  //
+  // It PUBLISHES, it does not decide: the Planner still chooses every activity,
+  // the Engine still builds every plan, the Assessment still judges every
+  // answer. It only lets the test act like a learner who knows the material.
+  // Gated behind the same `window.__e2e` object the storage hook uses, which
+  // only exists when a spec set `sessionStorage['e2e:enabled']`.
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.__e2e) return
+    window.__e2e.v2Activity = s?.plan
+      ? {
+        recipe: s.plan.recipe,
+        // What a learner who knows the material would answer. The harness needs
+        // it to produce a `correct` outcome on purpose — a visual matrix that
+        // can only ever photograph wrong answers is not a matrix.
+        text_en: s.plan.text_en ?? null,
+        correct_option_id: s.plan.response_contract?.correct_option_id ?? null,
+      }
+      : null
+  }, [s?.plan])
+
   const presentation = useMemo(() => {
     if (!s || !s.plan) return null
     return buildLearnerPresentationV2({

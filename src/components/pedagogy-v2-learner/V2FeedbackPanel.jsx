@@ -16,6 +16,14 @@
 //
 // It stays BELOW the activity on the SAME screen (never a modal, never a route
 // change) with an aria-live region so it is announced when it expands (§16/§37).
+//
+// V2.22-UX1 (handoff §3.5) adds ONE purely visual thing: a continuity rule down
+// the left edge, tinted by the tone, so the answer above and the feedback below
+// read as one column instead of two unrelated blocks. It carries no meaning of
+// its own — the tone already has a glyph and a headline — and it changes NOTHING
+// about which variant is chosen or what it is allowed to say. The variant, tone,
+// headline, body, issues and suggestions all still arrive fully decided from
+// buildLearnerPresentationV2.
 
 import { useEffect, useRef, useState } from 'react'
 

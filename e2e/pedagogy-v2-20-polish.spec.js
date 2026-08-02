@@ -39,8 +39,7 @@ test.describe('dogfood: Training IS the V2 experience', () => {
     // Nothing is toggled: this is a developer opening the app for the first time.
     await clearExperienceChoice(page)
 
-    await page.getByTestId('open-training-hub').click()
-
+    // V2.20-R made the ROOT Home the V2 Home, so there is nothing to open first.
     // The V2 marker proves WHICH product rendered — it is a data attribute, never
     // visible to the learner (§42).
     const home = page.getByTestId('v2lx-home')
@@ -98,9 +97,14 @@ test.describe('dogfood: Training IS the V2 experience', () => {
     await expect(page.getByTestId('v2lx-dev-experience')).toBeVisible()
 
     await page.getByTestId('v2lx-dev-experience-v1').click()
-    // Explicitly choosing V1 hands Training back to the legacy hub — the V2.20
-    // regression path, still one tap away.
+    // Explicitly choosing V1 hands the surface back to the legacy product — the
+    // V2.20 regression path, still one tap away. Since the V2.20-R cutover the
+    // ROOT is the Home, so choosing V1 lands on the legacy HOME and the V1
+    // training hub is the tap after it (exactly a real V1 learner's route).
     await expect(page.getByTestId('v2lx-home')).toHaveCount(0)
+    const legacyEntry = page.getByTestId('open-training-hub')
+    await expect(legacyEntry).toBeVisible()
+    await legacyEntry.click()
     await expect(page.getByRole('heading', { name: 'Escolha o que treinar' })).toBeVisible()
   })
 

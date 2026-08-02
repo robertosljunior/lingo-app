@@ -18,10 +18,16 @@
 // submits on tap.
 
 import { useEffect, useState } from 'react'
-import { buildMaskedCompletion, presentedOrderTokens } from '../../lib/pedagogy-v2/activity-runtime-contracts.js'
 import { MicButton } from '../mic-button.jsx'
 import V2Sentence from './V2Sentence.jsx'
 import V2AudioControl from './V2AudioControl.jsx'
+import V2SentenceRail from './V2SentenceRail.jsx'
+import V2CompletionSlot from './V2CompletionSlot.jsx'
+import V2WordBank from './V2WordBank.jsx'
+import {
+  completionBankItems, completionClear, completionFill, completionPayload, completionView, splitTrailingPunctuation,
+  wordOrderBank, wordOrderBankItems, wordOrderMove, wordOrderPayload, wordOrderPlace, wordOrderRailItems, wordOrderRemove,
+} from './v2-interaction-state.js'
 
 // ---- Exposure (§7) — observation, not a question -----------------------------
 // Structure: kicker → sentence (34px, on the background) → translation → audio
@@ -151,85 +157,169 @@ function RecognitionActivity({ plan, capabilities, settings, busy, answered, ass
 }
 
 // ---- Completion (§11) — the gap is part of the sentence ----------------------
-function CompletionActivity({ plan, busy, answered, onSubmittable, onSupport }) {
-  const [value, setValue] = useState('')
+function CompletionActivity({ plan, busy, answered, onSubmittable, onSupport, onRequestSubmit }) {
+  const [fills, setFills] = useState({})
+  const [selected, setSelected] = useState(null)
   const [revealed, setRevealed] = useState(false)
-  const { masked_text, expected_tokens } = buildMaskedCompletion(plan)
+  const { chunks, gapCount, expectedTokens } = completionView(plan)
   const hasWordBank = (plan.support.features || []).includes('word_bank')
-  useEffect(() => {
-    onSubmittable(value.trim() ? { type: 'text', payload: { text: value } } : null)
-  }, [value]) // eslint-disable-line react-hooks/exhaustive-deps
+  const locked = answered || busy
 
-  const parts = masked_text.split(/_{3,}/)
+  useEffect(() => {
+    onSubmittable(completionPayload(gapCount, fills))
+  }, [fills, gapCount]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const setGap = (gapIndex, value) => setFills((f) => ({ ...f, [gapIndex]: value }))
+  // Tapping a FILLED slot empties it and makes it the target — the selection is
+  // always reversible and a chip can always be swapped before Verificar (§12).
+  const tapSlot = (gapIndex) => {
+    if (String(fills[gapIndex] ?? '').trim()) {
+      setFills((f) => completionClear(f, gapIndex))
+      setSelected(gapIndex)
+    } else setSelected((s) => (s === gapIndex ? null : gapIndex))
+  }
+  const tapBankChip = (item) => {
+    setFills((f) => completionFill(f, gapCount, item.t, selected))
+    setSelected(null)
+  }
+
+  const bankItems = hasWordBank ? completionBankItems(expectedTokens, fills, gapCount) : []
+  const filledCount = Object.keys(fills).filter((k) => String(fills[k] ?? '').trim()).length
+  const state = busy ? 'submitting'
+    : answered ? 'answered'
+      : filledCount === 0 ? 'empty'
+        : filledCount === gapCount ? 'complete' : 'partial'
+
   return (
-    <div data-testid="v2lx-activity-completion" data-recipe="fixed_element_completion" style={{ paddingTop: 20, textAlign: 'center' }}>
+    <div data-testid="v2lx-activity-completion" data-recipe="fixed_element_completion" data-gaps={gapCount} data-state={state} style={{ paddingTop: 20, textAlign: 'center' }}>
       <div className="v2lx-kicker" style={{ marginBottom: 18 }} data-testid="v2lx-kicker">{plan.presentation.instructions_pt}</div>
 
-      {/* No card: the sentence sits on the background and the slot is visually
-          PART of it — never an input inside a form (§11). */}
+      {/* No card: the sentence sits on the background and EVERY gap is visually
+          PART of it (§11). Each slot is wrapped together with the text that
+          follows it so a line break can never orphan a comma from its slot
+          (handoff §4, callout 5). */}
       <V2Sentence variant="completion" data-testid="v2lx-sentence" style={{ marginBottom: 12 }}>
-        {parts[0]}
-        <span className="v2lx-slot" data-testid="v2lx-slot" data-filled={value ? 'true' : undefined}>{value || '    '}</span>
-        {parts.slice(1).join('_____')}
+        {chunks.map((chunk, i) => {
+          // Punctuation that follows a gap belongs to the sentence, never to the
+          // slot — but it must not be able to wrap away from it either, so it
+          // rides inside the slot's non-wrapping box while the rest of the chunk
+          // flows normally.
+          const [glued, rest] = i > 0 ? splitTrailingPunctuation(chunk) : ['', chunk]
+          return (
+            <span key={i}>
+              {i > 0 && glued}
+              {rest}
+              {i < gapCount && (
+                <span className="v2lx-slot-hold">
+                  <V2CompletionSlot
+                    gapIndex={i}
+                    value={fills[i] ?? ''}
+                    mode={hasWordBank ? 'bank' : 'input'}
+                    active={selected === i}
+                    locked={locked}
+                    onSelect={tapSlot}
+                    onChange={setGap}
+                    onSubmitRequest={onRequestSubmit}
+                  />
+                  {/* the next chunk's leading punctuation, glued to this slot */}
+                  {i + 1 < chunks.length && splitTrailingPunctuation(chunks[i + 1])[0]}
+                </span>
+              )}
+            </span>
+          )
+        })}
       </V2Sentence>
+
+      {/* Honesty guard (§14): a plan whose fixed elements are absent from its own
+          sentence produces no gap. Rather than draw a slot that leads nowhere,
+          say so and stay non-submittable. No authored exemplar in the shipped
+          packs reaches this — it exists so a future one cannot fail silently. */}
+      {gapCount === 0 && (
+        <div className="v2lx-translation" data-testid="v2lx-completion-nogap" style={{ fontSize: 14, marginBottom: 10 }}>
+          Esta frase não tem lacuna para completar.
+        </div>
+      )}
 
       {plan.text_pt && <div className="v2lx-translation" style={{ fontSize: 15, marginBottom: 26 }}>{plan.text_pt}</div>}
 
       {hasWordBank && (
-        <div data-testid="v2lx-word-bank" className="v2lx-bank" style={{ marginTop: 0 }}>
-          {expected_tokens.map((t, i) => (
-            <button key={i} type="button" className="v2lx-chip" data-selected={value === t || undefined}
-              disabled={answered || busy} onClick={() => setValue(t)}>{t}</button>
-          ))}
-        </div>
-      )}
-      {!hasWordBank && (
-        <input className="v2lx-input" data-testid="v2lx-completion-input" value={value} disabled={answered || busy}
-          placeholder="Complete a frase" aria-label="Resposta" onChange={(e) => setValue(e.target.value)} />
+        <V2WordBank items={bankItems} locked={locked} testid="v2lx-word-bank" label="Palavras para completar" onSelect={tapBankChip} />
       )}
 
-      {!answered && !revealed && (
+      {!answered && !revealed && gapCount > 0 && (
         <button type="button" className="v2lx-textbtn" data-testid="v2lx-reveal" style={{ display: 'block', margin: '14px auto 0' }}
           disabled={busy} onClick={() => { setRevealed(true); onSupport('answer_reveal') }}>Ver a resposta</button>
       )}
+      {/* §15 — the reveal is RECORDED support: `onSupport('answer_reveal')` above
+          feeds the runtime's support usage, so the interaction is never scored as
+          an unaided recall. The copy states plainly that this is the answer. */}
       {revealed && <div className="v2lx-translation" data-testid="v2lx-revealed" style={{ marginTop: 10 }}>Resposta: <b style={{ color: 'var(--v2-ink)' }}>{plan.text_en}</b></div>}
     </div>
   )
 }
 
-// ---- Word order (§12) — tap to build ----------------------------------------
+// ---- Word order (§12) — the magnetic rail -----------------------------------
+// V2.22-UX1 implements the recommended Option A: the built sentence is a RAIL
+// with real insertion targets between the words, so a token can go anywhere and
+// come back without penalty. The previous version could only append to the end
+// and remove the last word.
+//
 // The bank order comes from `presentation.presented_tokens` via the runtime
-// contract (V2.19 seeded shuffle). The component NEVER re-shuffles (§43).
+// contract (V2.19 seeded shuffle). The component NEVER re-shuffles (§43), and
+// identity is the POSITION in that order — which is what keeps repeated words
+// independent. Nothing here expresses per-token correctness: the Assessment
+// compares the whole sequence and reports no per-word verdict (§9).
 function WordOrderActivity({ plan, busy, answered, onSubmittable }) {
-  const bank = presentedOrderTokens(plan).map((t, i) => ({ t, i }))
+  const bank = wordOrderBank(plan)
   const [picked, setPicked] = useState([])
-  const remaining = bank.filter((b) => !picked.includes(b.i))
+  const [selected, setSelected] = useState(null) // the targeted insertion gap
+  const locked = answered || busy
+
   useEffect(() => {
-    const complete = picked.length === bank.length && bank.length > 0
-    onSubmittable(complete ? { type: 'token_sequence', payload: { tokens: picked.map((i) => bank.find((x) => x.i === i).t) } } : null)
+    onSubmittable(wordOrderPayload(bank, picked))
   }, [picked]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  const place = (i) => { setPicked((p) => wordOrderPlace(p, i, selected)); setSelected(null) }
+  const remove = (i) => { setPicked((p) => wordOrderRemove(p, i)); setSelected(null) }
+  const move = (i, dir) => setPicked((p) => wordOrderMove(p, i, dir))
+
+  const railItems = wordOrderRailItems(bank, picked, selected)
+  const bankItems = wordOrderBankItems(bank, picked)
+
+  // The visual states of §8, named once and exposed so they are addressable and
+  // testable rather than implied by a combination of props. Presentation only —
+  // none of them is derived from, or reports, correctness.
+  const state = busy ? 'submitting'
+    : answered ? 'answered'
+      : picked.length === 0 ? 'empty'
+        : picked.length === bank.length ? 'complete'
+          : selected != null ? 'reordering' : 'partial'
+
+  const hasTokens = picked.length > 0
+  const actions = (hasTokens && !locked)
+    ? [
+      { label: 'Desfazer último', testid: 'v2lx-undo', variant: 'primary', onClick: () => remove(picked[picked.length - 1]) },
+      { label: 'Recomeçar', testid: 'v2lx-restart', variant: 'muted', onClick: () => { setPicked([]); setSelected(null) } },
+    ]
+    : []
+
   return (
-    <div data-testid="v2lx-activity-word-order" data-recipe="word_order_reconstruction" style={{ paddingTop: 10 }}>
+    <div data-testid="v2lx-activity-word-order" data-recipe="word_order_reconstruction" data-state={state} style={{ paddingTop: 10 }}>
       <div className="v2lx-kicker" style={{ marginBottom: 10 }}>Montar a frase</div>
       <V2Sentence variant="prompt" as="h2" data-testid="v2lx-prompt" style={{ marginBottom: 6 }}>{plan.presentation.instructions_pt}</V2Sentence>
       {plan.text_pt && <div className="v2lx-translation" style={{ fontSize: 14, marginBottom: 22 }}>{plan.text_pt}</div>}
 
-      {/* Thin single border, no inset shadow; whitespace (not a dashed rule)
-          separates the built sentence from the bank (§12). */}
-      <div className="v2lx-build" data-testid="v2lx-token-answer" aria-label="Sua frase">
-        {picked.length === 0 && <span className="v2lx-build-empty">Toque nas palavras para montar</span>}
-        {picked.map((i) => {
-          const b = bank.find((x) => x.i === i)
-          return <button key={i} type="button" className="v2lx-chip v2lx-chip--placed" disabled={answered || busy} aria-label={`Remover ${b.t}`} onClick={() => setPicked((p) => p.filter((x) => x !== i))}>{b.t}</button>
-        })}
-      </div>
+      <V2SentenceRail
+        items={railItems}
+        actions={actions}
+        hint={hasTokens && !locked ? 'Toque em uma palavra para retirar · toque entre palavras para inserir' : ''}
+        locked={locked}
+        onGap={(at) => setSelected((s) => (s === at ? null : at))}
+        onToken={remove}
+        onMove={move}
+      />
 
-      <div className="v2lx-bank" data-testid="v2lx-token-bank" aria-label="Palavras disponíveis">
-        {remaining.map((b) => (
-          <button key={b.i} type="button" className="v2lx-chip" data-testid={`v2lx-token-${b.i}`} disabled={answered || busy} onClick={() => setPicked((p) => [...p, b.i])}>{b.t}</button>
-        ))}
-      </div>
+      <V2WordBank items={bankItems} locked={locked} testid="v2lx-token-bank" label="Palavras disponíveis" onSelect={(it) => place(it.i)} />
     </div>
   )
 }
@@ -281,10 +371,20 @@ function SpeakingControl({ plan, capabilities, busy, answered, isPronunciation, 
   )
 }
 
-// ---- Production writing (§13/§14) --------------------------------------------
+// ---- Production writing (§13/§14/§16) ----------------------------------------
 // Guided and Free share ONE structural family and are told apart by the accent
 // rule colour (blue = still on the rail, violet = off the rail) plus their own
 // kicker text — never by a whole second layout, and never by colour alone (§37).
+//
+// V2.22-UX1 (handoff §5) makes the writing area read as a space for building
+// language rather than a form field: a continuity rule runs down the column from
+// the prompt through the answer to the feedback, the authored model is revealed
+// ON DEMAND instead of sitting on screen for free, and a factual word count sits
+// under the text with no minimum and no warning.
+//
+// The learner's own text is NEVER replaced by the reference after assessment —
+// the textarea keeps its value (disabled, still readable) so the answer and the
+// feedback can be compared in place (§17).
 function ProductionActivity({ plan, capabilities, busy, answered, onSubmittable, onSubmit, onSupport }) {
   const speaking = plan.modality === 'speaking'
   if (speaking) {
@@ -292,9 +392,14 @@ function ProductionActivity({ plan, capabilities, busy, answered, onSubmittable,
   }
   const [value, setValue] = useState('')
   const [hintShown, setHintShown] = useState(false)
+  const [modelShown, setModelShown] = useState(false)
   const features = plan.support.features || []
   const isFree = plan.recipe === 'free_production'
   const accent = isFree ? 'free' : 'guided'
+  // The model is AUTHORED (plan.text_en, declared by the plan's own presentation
+  // contract). Nothing is generated in the client.
+  const canShowModel = features.includes('model_sentence') && !!plan.presentation.model_reference
+  const words = value.trim() ? value.trim().split(/\s+/).length : 0
   useEffect(() => {
     onSubmittable(value.trim() ? { type: 'text', payload: { text: value } } : null)
   }, [value]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -304,11 +409,19 @@ function ProductionActivity({ plan, capabilities, busy, answered, onSubmittable,
       <div className="v2lx-kicker" style={{ marginBottom: 12 }}>{isFree ? 'Produção livre' : 'Produção guiada'}</div>
 
       {/* Accent RULE, not a filled card (§13/§14). */}
-      <div className="v2lx-accent" data-accent={accent} data-testid="v2lx-prompt-accent" style={{ marginBottom: isFree ? 30 : 22 }}>
+      <div className="v2lx-accent" data-accent={accent} data-testid="v2lx-prompt-accent" style={{ marginBottom: isFree ? 22 : 16 }}>
         <V2Sentence variant="prompt" as="h2" data-testid="v2lx-prompt">{plan.context || plan.text_pt}</V2Sentence>
 
-        {/* Support is a plain line with a "◦" marker — never a pill in a card. */}
-        {features.includes('model_sentence') && plan.presentation.model_reference && (
+        {/* §5 — "Ver um modelo" exists ONLY when the plan's support features
+            declare `model_sentence`, and revealing it RECORDS the support. The
+            feature is already part of the plan's baseline support, so the
+            recorded interaction is unchanged whether or not it is tapped; what
+            changes is that the learner now gets to try first. */}
+        {canShowModel && !modelShown && !answered && (
+          <button type="button" className="v2lx-textbtn v2lx-support-btn" data-testid="v2lx-model-reveal"
+            disabled={busy} onClick={() => { setModelShown(true); onSupport('model_sentence') }}>Ver um modelo</button>
+        )}
+        {canShowModel && modelShown && (
           <div className="v2lx-support" data-testid="v2lx-model"><span className="v2lx-support-dot" aria-hidden="true">◦</span>Modelo: {plan.text_en}</div>
         )}
       </div>
@@ -319,20 +432,26 @@ function ProductionActivity({ plan, capabilities, busy, answered, onSubmittable,
       )}
       {hintShown && <div className="v2lx-support" data-testid="v2lx-hint-text"><span className="v2lx-support-dot" aria-hidden="true">◦</span>Dica: {plan.text_pt}</div>}
 
-      {/* The textarea is the protagonist of the interaction: no full border, just
-          a bottom rule that thickens to 3px on focus so the focus state is
-          unmistakable (handoff §8 / spec §37). */}
-      <textarea
-        className="v2lx-write"
-        data-testid="v2lx-production-input"
-        data-accent={accent}
-        rows={isFree ? 4 : 3}
-        value={value}
-        disabled={answered || busy}
-        placeholder="Escreva sua resposta em inglês…"
-        aria-label="Resposta em inglês"
-        onChange={(e) => setValue(e.target.value)}
-      />
+      {/* The continuity rule (handoff §5, callout 1): prompt → answer → feedback
+          read as ONE column. The textarea keeps only a bottom rule, thickening to
+          3px on focus so the focus state is unmistakable (§37). */}
+      <div className="v2lx-write-area" data-testid="v2lx-write-area" data-answered={answered || undefined}>
+        <textarea
+          className="v2lx-write"
+          data-testid="v2lx-production-input"
+          data-accent={accent}
+          rows={isFree ? 4 : 3}
+          value={value}
+          disabled={answered || busy}
+          placeholder="Escreva sua resposta em inglês…"
+          aria-label="Resposta em inglês"
+          onChange={(e) => setValue(e.target.value)}
+        />
+        {/* Factual, no imposed minimum, no alert (handoff §5, callout 5). */}
+        {words > 0 && (
+          <div className="v2lx-write-count" data-testid="v2lx-word-count">{words} {words === 1 ? 'palavra' : 'palavras'}</div>
+        )}
+      </div>
     </div>
   )
 }

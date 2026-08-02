@@ -1,0 +1,43 @@
+{
+  "slice": "V2.22-UX0",
+  "title": "Interactive Exercise Design — Interaction Lab",
+  "source_of_truth": "V2.22-UX0 Interaction Lab.dc.html",
+  "generated_from": "single source; mockup/index.html is a self-contained export, not a rebuild",
+  "dev_hook": "window.__lab (componentDidMount) — drive any state with __lab.setState({...})",
+  "recommended_route": ["wo_a", "comp_b", "writing", "demo"],
+  "screens": [
+    { "id": "categories", "label": "Antes da atividade · categorias", "source": "src/screens/V2LearnerHome.jsx", "class": "A" },
+    { "id": "listen", "label": "Ouvir · listening_recognition", "source": "V2LearnerActivity.jsx → RecognitionActivity + V2AudioControl.jsx", "class": "A" },
+    { "id": "speak", "label": "Falar · com fallback escrito", "source": "SpeakingControl + MicButton", "class": "B" },
+    { "id": "wo_a", "label": "Word Order · A — Magnetic Rail (recomendado)", "source": "V2LearnerActivity.jsx → WordOrderActivity", "class": "A" },
+    { "id": "wo_b", "label": "Word Order · B — Inline Slots (descartado)", "source": "V2LearnerActivity.jsx → WordOrderActivity", "class": "A" },
+    { "id": "wo_dup", "label": "Word Order · palavras repetidas", "source": "V2LearnerActivity.jsx → WordOrderActivity", "class": "A" },
+    { "id": "comp_a", "label": "Completion · A — Elastic Slot", "source": "V2LearnerActivity.jsx → CompletionActivity", "class": "A" },
+    { "id": "comp_b", "label": "Completion · B — Múltiplas lacunas (lacuna auditada)", "source": "V2LearnerActivity.jsx → CompletionActivity", "class": "A" },
+    { "id": "comp_punct", "label": "Completion · pontuação + repetição", "source": "V2Sentence.jsx", "class": "A" },
+    { "id": "comp_input", "label": "Completion · input livre", "source": "V2LearnerActivity.jsx → CompletionActivity", "class": "A" },
+    { "id": "writing", "label": "Guided Writing", "source": "V2LearnerActivity.jsx → ProductionActivity", "class": "A" },
+    { "id": "done", "label": "Fim da sessão · resumo", "source": "V2SessionSummary.jsx", "class": "A" },
+    { "id": "progress", "label": "Histórico e progresso", "source": "src/screens/History.jsx", "class": "B" },
+    { "id": "demo", "label": "Demo concluída · fim da rota", "source": "—", "class": "A" }
+  ],
+  "interaction_states": [
+    "respondendo", "avaliando (submitting)", "feedback", "modelo revelado",
+    "gap de inserção ativo", "banco esgotado (opacidade)", "microfone ouvindo", "fallback escrito"
+  ],
+  "feedback_tones": ["correct", "suggestion", "partial", "semantic", "linguistic", "unknown"],
+  "widths": [320, 375, 430],
+  "themes": ["light", "dark"],
+  "reduced_motion": true,
+  "payloads": {
+    "word_order": "token_sequence",
+    "completion": "text",
+    "writing": "text",
+    "listening": "single_choice",
+    "speaking_fallback": "text"
+  },
+  "production_changes_applied": false,
+  "persistence": "none — sem evidence, sem Learner Model, sem sessão real; frases são fixtures",
+  "screenshots": 29,
+  "sequence_frames": 12
+}
