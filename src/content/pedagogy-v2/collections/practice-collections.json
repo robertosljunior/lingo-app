@@ -1,0 +1,163 @@
+{
+  "contract_version": 1,
+  "collections": [
+    {
+      "collection_id": "collection:everyday_conversation",
+      "title_pt": "Conversas do dia a dia",
+      "description_pt": "Contar o que continua igual, combinar coisas e responder quem pergunta.",
+      "catalog_order": 10,
+      "icon_role": "conversation",
+      "authored_scope": {
+        "exemplar_ids": [
+          "exemplar:but.001",
+          "exemplar:but.003",
+          "exemplar:but.020",
+          "exemplar:but.021",
+          "exemplar:but.028",
+          "exemplar:but.030",
+          "exemplar:still.001",
+          "exemplar:still.002",
+          "exemplar:still.003",
+          "exemplar:still.004",
+          "exemplar:still.005",
+          "exemplar:still.006",
+          "exemplar:still.007",
+          "exemplar:still.008",
+          "exemplar:still.009",
+          "exemplar:still.010",
+          "exemplar:yet.001",
+          "exemplar:yet.002",
+          "exemplar:yet.003",
+          "exemplar:yet.004",
+          "exemplar:yet.005",
+          "exemplar:yet.006",
+          "exemplar:yet.007",
+          "exemplar:yet.008",
+          "exemplar:yet.010",
+          "exemplar:yet.032"
+        ]
+      }
+    },
+    {
+      "collection_id": "collection:work_and_study",
+      "title_pt": "Trabalho e estudos",
+      "description_pt": "Explicar resultados, discordar com educação e falar do que ainda está pendente.",
+      "catalog_order": 20,
+      "icon_role": "work",
+      "authored_scope": {
+        "exemplar_ids": [
+          "exemplar:still.003",
+          "exemplar:still.008",
+          "exemplar:still.011",
+          "exemplar:still.013",
+          "exemplar:still.014",
+          "exemplar:still.016",
+          "exemplar:still.018",
+          "exemplar:but.002",
+          "exemplar:but.004",
+          "exemplar:but.005",
+          "exemplar:but.007",
+          "exemplar:but.010",
+          "exemplar:but.012",
+          "exemplar:but.014",
+          "exemplar:but.015",
+          "exemplar:but.018",
+          "exemplar:but.022",
+          "exemplar:but.023",
+          "exemplar:but.024",
+          "exemplar:but.029",
+          "exemplar:but.031",
+          "exemplar:yet.009",
+          "exemplar:yet.011",
+          "exemplar:yet.013",
+          "exemplar:yet.014",
+          "exemplar:yet.016",
+          "exemplar:yet.022",
+          "exemplar:yet.029",
+          "exemplar:yet.030",
+          "exemplar:yet.031"
+        ]
+      }
+    },
+    {
+      "collection_id": "collection:travel_and_commute",
+      "title_pt": "Viagens e deslocamentos",
+      "description_pt": "Atrasos, imprevistos e o que aconteceu mesmo assim.",
+      "catalog_order": 30,
+      "icon_role": "route",
+      "authored_scope": {
+        "exemplar_ids": [
+          "exemplar:still.010",
+          "exemplar:still.012",
+          "exemplar:still.020",
+          "exemplar:but.006",
+          "exemplar:but.008",
+          "exemplar:but.009",
+          "exemplar:but.011",
+          "exemplar:but.021",
+          "exemplar:but.027",
+          "exemplar:yet.002",
+          "exemplar:yet.024",
+          "exemplar:yet.026"
+        ]
+      }
+    },
+    {
+      "collection_id": "collection:choices_and_decisions",
+      "title_pt": "Escolhas e decisões",
+      "description_pt": "Corrigir um mal-entendido, abrir exceção e dizer o que ainda não foi decidido.",
+      "catalog_order": 40,
+      "icon_role": "decision",
+      "authored_scope": {
+        "exemplar_ids": [
+          "exemplar:still.019",
+          "exemplar:still.022",
+          "exemplar:but.016",
+          "exemplar:but.017",
+          "exemplar:but.018",
+          "exemplar:but.019",
+          "exemplar:but.024",
+          "exemplar:but.025",
+          "exemplar:but.026",
+          "exemplar:yet.012",
+          "exemplar:yet.013",
+          "exemplar:yet.014",
+          "exemplar:yet.016"
+        ]
+      }
+    },
+    {
+      "collection_id": "collection:ideas_and_opinions",
+      "title_pt": "Ideias e opiniões",
+      "description_pt": "Avaliar com ressalva, marcar contraste e comparar com tudo que veio antes.",
+      "catalog_order": 50,
+      "icon_role": "idea",
+      "authored_scope": {
+        "exemplar_ids": [
+          "exemplar:still.015",
+          "exemplar:still.017",
+          "exemplar:still.019",
+          "exemplar:still.020",
+          "exemplar:still.021",
+          "exemplar:still.022",
+          "exemplar:but.012",
+          "exemplar:but.013",
+          "exemplar:but.014",
+          "exemplar:but.015",
+          "exemplar:but.022",
+          "exemplar:but.028",
+          "exemplar:yet.015",
+          "exemplar:yet.017",
+          "exemplar:yet.018",
+          "exemplar:yet.019",
+          "exemplar:yet.020",
+          "exemplar:yet.021",
+          "exemplar:yet.023",
+          "exemplar:yet.025",
+          "exemplar:yet.027",
+          "exemplar:yet.028"
+        ]
+      }
+    }
+  ]
+}

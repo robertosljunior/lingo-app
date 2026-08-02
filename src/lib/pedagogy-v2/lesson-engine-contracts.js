@@ -24,7 +24,8 @@ import { deriveSupportTier } from './learner-evidence-contracts.js'
 // unchanged; the realization chosen for a given focus is now varied.
 export const LESSON_ENGINE_V2_VERSION = 3 // 1 was the 7038d70 prototype; 2 = V2.3-R…V2.18
 // 4 = V2.21-R3: recipe-SHARE monotony control inside a capability (§21/§22).
-export const LESSON_ENGINE_POLICY_VERSION = 4
+// 5 = V2.22-UX2: `recipe_preference`, an ADVISORY score component (never a gate).
+export const LESSON_ENGINE_POLICY_VERSION = 5
 export const LESSON_SESSION_V2_VERSION = 1
 export const ACTIVITY_PLAN_V2_VERSION = 1
 // 2 (Slice V2.5): declares the multi-pack scope — registry_version,
@@ -211,10 +212,20 @@ export const DEFAULT_LESSON_ENGINE_POLICY_V2 = Object.freeze({
     novelty: 1.5,
     diversity: 1,
     remediation: 1.5,
+    // V2.22-UX2 §13 — the learner's "Montar frases / Completar / Escrever"
+    // preference. Deliberately BELOW `need` and `retention`: it tilts the
+    // choice among activities the engine already considers safe, and can never
+    // outweigh a real pedagogical need. Because it is scored AFTER every gate
+    // (prerequisites, runtime, recipe gate, independence), a preference can
+    // never force an impossible activity, skip a prerequisite, or fabricate a
+    // scramble out of ineligible content.
+    recipe_preference: 2,
   }),
   // Optional focus: { target_id } restricts candidates to exemplars declaring
   // that pedagogical target.
   targeted_practice: null,
+  // V2.22-UX2 §12/§13 — { recipe } advisory preference. Never a filter.
+  recipe_preference: null,
   // ---- experience diversity (Slice V2.19) -----------------------------------
   // Controlled variety knobs, all versioned. NEVER change WHAT is trained (the
   // Planner's focus, target, capability, modality, lane are untouched); they

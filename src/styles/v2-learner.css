@@ -516,3 +516,57 @@ textarea.v2lx-input { resize: none; }
 @media (min-width: 720px) {
   .v2lx-content { max-width: 560px; }
 }
+
+/* ---- V2.22-UX2 contextual Home (§7–§10) ------------------------------------
+   The catalogue is a line-drawn list, not a grid of filled tiles: at 4 contexts
+   it reads as a short menu and at 20 it still reads as a list with a single
+   expansion control. Personality comes from the type ramp and the rhythm of the
+   rules between rows — never from decoration (§8). */
+
+.v2lx-contexts { margin-top: 24px; }
+.v2lx-section-title { font-weight: 900; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--v2-muted-2); margin: 0 0 12px; }
+.v2lx-context-list { display: flex; flex-direction: column; gap: 10px; }
+.v2lx-context-card { border: 1px solid var(--v2-line); border-radius: 18px; background: transparent; overflow: hidden; }
+.v2lx-context-main { display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: left; background: transparent; border: none; font: inherit; cursor: pointer; padding: 14px; min-height: 44px; }
+.v2lx-context-main:hover { background: var(--v2-surface-alt); }
+.v2lx-context-main:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: -2px; }
+.v2lx-context-mark { width: 22px; height: 22px; flex: 0 0 22px; color: var(--v2-primary); margin-top: 2px; }
+.v2lx-context-copy { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.v2lx-context-title { font-weight: 900; font-size: 16px; color: var(--v2-ink); letter-spacing: -.2px; }
+.v2lx-context-desc { font-weight: 600; font-size: 12.5px; color: var(--v2-muted-2); line-height: 1.4; text-wrap: pretty; }
+
+/* Format row — quiet by construction: it must never compete with the context
+   above it, and never look like a category of its own (§12). */
+.v2lx-format-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 0 14px 12px; }
+.v2lx-format-lead { font-weight: 700; font-size: 11.5px; color: var(--v2-muted); margin-right: 2px; }
+.v2lx-format-chip { font: inherit; font-weight: 800; font-size: 12px; color: var(--v2-primary-strong); background: var(--v2-surface-alt); border: 1px solid var(--v2-line); border-radius: 999px; padding: 8px 12px; min-height: 34px; cursor: pointer; }
+.v2lx-format-chip:hover { background: var(--v2-surface); }
+.v2lx-format-chip:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: 2px; }
+.v2lx-context-more { display: block; width: 100%; margin-top: 12px; min-height: 44px; }
+
+.v2lx-secondary { margin-top: 24px; }
+
+/* 320px — the format row wraps rather than shrinking below the touch target. */
+@media (max-width: 340px) {
+  .v2lx-context-title { font-size: 15px; }
+  .v2lx-format-chip { padding: 8px 10px; }
+}
+
+/* The context entry banner on the lesson shell (§17): factual, authored title,
+   no pack, no promised count.
+
+   It lives INSIDE the shell's flex column (a `flex: none` row between the header
+   and the scroll area). The shell is `height: 100%` inside an `overflow: hidden`
+   phone, so a banner rendered as a SIBLING above it pushes the footer past the
+   viewport and the Verificar CTA becomes unreachable — the strip has to be part
+   of the column, not stacked on top of it. */
+.v2lx-context-strip { flex: none; padding: 0 20px 10px; }
+.v2lx-context-banner { display: flex; flex-direction: column; gap: 2px; padding: 9px 12px; border-left: 3px solid var(--v2-primary); background: var(--v2-surface-alt); border-radius: 0 12px 12px 0; }
+.v2lx-context-banner-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }
+.v2lx-context-banner-label { font-weight: 700; font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--v2-muted-2); }
+.v2lx-context-banner-title { font-weight: 900; font-size: 14px; color: var(--v2-ink); }
+/* The chosen format, echoed back so the learner can see the preference was
+   registered. Advisory copy lives in the notice below, never here. */
+.v2lx-context-format { font-weight: 800; font-size: 11px; color: var(--v2-primary); }
+.v2lx-context-notice { font-weight: 600; font-size: 12px; color: var(--v2-muted); line-height: 1.4; margin-top: 3px; }
+@media (max-width: 380px) { .v2lx-context-strip { padding-left: 16px; padding-right: 16px; } }

@@ -380,7 +380,15 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
   const nowMs = Date.parse(nowIso)
   const statesById = indexStatesByTargetId(states)
   const history = session?.history || []
-  const exemplars = activePack?.exemplars || []
+  // V2.22-UX2 §5/§29 — optional authored SCOPE. A contextual collection narrows
+  // the exemplar universe before anything else runs, so a scoped session can
+  // never materialize content outside the collection. The engine keeps full
+  // authority over which of the remaining exemplars to use; the scope only says
+  // which ones are on the table. No scope = the whole pack, exactly as before.
+  const scopedExemplarIds = scope?.allowed_exemplar_ids ? new Set(scope.allowed_exemplar_ids) : null
+  const exemplars = scopedExemplarIds
+    ? (activePack?.exemplars || []).filter((e) => scopedExemplarIds.has(e.exemplar_id))
+    : (activePack?.exemplars || [])
   const exemplarById = new Map(exemplars.map((e) => [e.exemplar_id, e]))
 
   // Slice V2.19 — cross-session exemplar recency, derived from the ALREADY
@@ -580,7 +588,15 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     const recentlyMissed = primaries.some((id) => lastOutcome.get(id) === 'incorrect')
     const remediation = recentlyMissed && variant.lane === 'supported' ? 1 : 0
 
-    const components = { need, retention, progression, capability_gap, ladder, independence, novelty, diversity, remediation }
+    // V2.22-UX2 §13 — advisory recipe preference. This is the LAST thing that
+    // touches the decision and it is a score component, not a filter: every
+    // candidate here already passed the prerequisite, runtime, recipe and
+    // independence gates, so preferring one recipe can only reorder legitimate
+    // options. When the preferred recipe has no eligible candidate the session
+    // simply proceeds with the best real activity — never a forced plan.
+    const recipe_preference = p.recipe_preference?.recipe === recipe.recipe ? 1 : 0
+
+    const components = { need, retention, progression, capability_gap, ladder, independence, novelty, diversity, remediation, recipe_preference }
     let score = 0
     for (const [k, v] of Object.entries(components)) score += (p.weights[k] ?? 0) * v
     return {

@@ -109,6 +109,8 @@ export function resolveNextStudyActivityV2({
   enginePolicy = {},
   runtimeAvailability = null,
   allowedPackIds = null,
+  studyScope = null,
+  recipePreference = null,
   profileId = null,
   now,
   makeLessonSessionId,
@@ -139,6 +141,7 @@ export function resolveNextStudyActivityV2({
       registry, learnerStates, recentEvidence, studySession,
       policy: plannerPolicy, runtimeAvailability, allowedPackIds,
       suppressedFocusKeys: suppressed,
+      studyScope,
     })
 
     if (universe === null) universe = candidateUniverseFromTrace(plannerDecision.trace)
@@ -169,11 +172,17 @@ export function resolveNextStudyActivityV2({
 
     // Engine materialization. A pack lesson session at its cap is recreated once
     // (§9) — the STUDY session may continue even when a lesson session is full.
-    const { scope, focus: engineFocus, policyOverride } = studyFocusToLessonScopeV2(focus, registry)
+    const { scope, focus: engineFocus, policyOverride } = studyFocusToLessonScopeV2(focus, registry, studyScope)
     const runEngine = (session) => selectActivity({
       session, scope, focus: engineFocus,
       learnerStates, recentEvidence,
-      policy: { ...enginePolicy, ...policyOverride },
+      // V2.22-UX2 §13 — the advisory recipe preference rides along as POLICY, so
+      // it can only reorder candidates the engine already judged eligible.
+      policy: {
+        ...enginePolicy,
+        ...policyOverride,
+        ...(recipePreference ? { recipe_preference: { recipe: recipePreference } } : {}),
+      },
       runtimeAvailability,
     })
     let lessonSession = lessonSessions[focus.pack_id]

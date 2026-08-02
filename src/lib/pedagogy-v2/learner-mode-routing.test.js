@@ -27,18 +27,35 @@ afterEach(reset)
 // ---- §39 mode resolution (the value that will be delivered) -----------------
 
 describe('§11/§39 — resolveLessonModeV2', () => {
+  // V2.22-UX2 widened the resolved shape with two ADDITIVE fields: the optional
+  // contextual collection and the optional advisory format preference. Both are
+  // null for every pre-UX2 entry point, so the old behaviour is unchanged.
+  const NO_CONTEXT = { collectionId: null, recipePreference: null }
+
   it('no params → adaptive', () => {
-    expect(resolveLessonModeV2({})).toEqual({ mode: 'adaptive', focusedPackId: null })
+    expect(resolveLessonModeV2({})).toEqual({ mode: 'adaptive', focusedPackId: null, ...NO_CONTEXT })
   })
   it('explicit explore / review', () => {
-    expect(resolveLessonModeV2({ mode: 'explore' })).toEqual({ mode: 'explore', focusedPackId: null })
-    expect(resolveLessonModeV2({ mode: 'review' })).toEqual({ mode: 'review', focusedPackId: null })
+    expect(resolveLessonModeV2({ mode: 'explore' })).toEqual({ mode: 'explore', focusedPackId: null, ...NO_CONTEXT })
+    expect(resolveLessonModeV2({ mode: 'review' })).toEqual({ mode: 'review', focusedPackId: null, ...NO_CONTEXT })
   })
   it('focused + pack works', () => {
-    expect(resolveLessonModeV2({ mode: 'focused', pack: 'pedagogy_v2_still' })).toEqual({ mode: 'focused', focusedPackId: 'pedagogy_v2_still' })
+    expect(resolveLessonModeV2({ mode: 'focused', pack: 'pedagogy_v2_still' })).toEqual({ mode: 'focused', focusedPackId: 'pedagogy_v2_still', ...NO_CONTEXT })
   })
   it('a bare pack (no mode) is treated as focused (backwards compatible)', () => {
-    expect(resolveLessonModeV2({ pack: 'pedagogy_v2_still' })).toEqual({ mode: 'focused', focusedPackId: 'pedagogy_v2_still' })
+    expect(resolveLessonModeV2({ pack: 'pedagogy_v2_still' })).toEqual({ mode: 'focused', focusedPackId: 'pedagogy_v2_still', ...NO_CONTEXT })
+  })
+
+  // V2.22-UX2 §5/§6 — a context is a SCOPE on an existing mode, never a mode.
+  it('a collection rides on adaptive and does not become a new mode', () => {
+    expect(resolveLessonModeV2({ mode: 'adaptive', collection: 'collection:work_and_study' }))
+      .toEqual({ mode: 'adaptive', focusedPackId: null, collectionId: 'collection:work_and_study', recipePreference: null })
+  })
+  it('a format maps to a REAL engine recipe, and an unknown one to no preference', () => {
+    expect(resolveLessonModeV2({ collection: 'collection:work_and_study', format: 'scramble' }).recipePreference)
+      .toBe('word_order_reconstruction')
+    expect(resolveLessonModeV2({ format: 'mixed' }).recipePreference).toBeNull()
+    expect(resolveLessonModeV2({ format: 'bogus' }).recipePreference).toBeNull()
   })
   it('focused WITHOUT a pack is a safe structural error — no adaptive fallback (§29)', () => {
     expect(resolveLessonModeV2({ mode: 'focused' })).toEqual({ error: 'FOCUSED_REQUIRES_PACK' })

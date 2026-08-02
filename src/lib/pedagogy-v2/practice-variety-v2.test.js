@@ -145,10 +145,12 @@ describe('cross-session exemplar recency', () => {
 // ---- Part I / R: determinism & version --------------------------------------
 
 describe('determinism and versioning', () => {
-  it('engine version 3, policy version 4 (V2.21-R3 recipe-share control)', () => {
+  // 5 = V2.22-UX2: `recipe_preference` joined the score components. The engine
+  // version is unchanged — the plan shape did not move, only the weighting.
+  it('engine version 3, policy version 5 (V2.22-UX2 advisory recipe preference)', () => {
     const d = pick({ id: 'v' })
     expect(d.engine_version).toBe(3)
-    expect(d.policy_version).toBe(4)
+    expect(d.policy_version).toBe(5)
     expect(validateLessonDecisionV2(d).errors).toEqual([])
   })
 

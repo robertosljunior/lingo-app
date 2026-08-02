@@ -29,7 +29,11 @@
 import { buildV2FeedbackViewModel } from './feedback-view-model.js'
 import { getLexemeAcrossRegistry, getPedagogyPack } from './registry.js'
 
-export const LEARNER_PRESENTATION_VERSION = 1
+// 2 = V2.22-UX2: an optional contextual scope suppresses the internal
+// pack-transition interstitial and renames the focus chip, so a learner
+// practising a CONTEXT never sees the lexeme the curriculum happens to be
+// organised around.
+export const LEARNER_PRESENTATION_VERSION = 2
 
 // The learner-facing presentation buckets (§5). NONE of these is an assessment
 // status — the assessment outcome lives in `feedback.outcome_status`.
@@ -346,16 +350,31 @@ export function buildLearnerPresentationV2({
   registry = null,
   recordedEvidence = null,
   learnerStates = null,
+  // V2.22-UX2 §18 — the authored context this session is scoped to, when there
+  // is one. Presentation only; it never reaches the Planner or the Engine.
+  studyScope = null,
 } = {}) {
   const feedback = buildLearnerFeedback({ plan, response, assessment, recordedEvidence })
-  const focusLabel = lemmaForPack(focus?.pack_id, plan, registry)
+  // §1/§18 — inside a CONTEXT the learner chose, the curriculum's internal
+  // organisation is not their business. The Planner legitimately crosses packs
+  // within one collection, so:
+  //   • the focus chip names the CONTEXT, not the lexeme behind it;
+  //   • the pack-transition interstitial ("Agora vamos praticar “still”.") is
+  //     suppressed entirely — announcing an internal move would expose exactly
+  //     the model UX2 removed from the Home.
+  // Outside a scoped session nothing changes: the lemma chip and the transition
+  // are the V2.17 behaviour, untouched.
+  const scoped = !!studyScope?.collection_id
+  const focusLabel = scoped
+    ? (studyScope.title_pt ?? null)
+    : lemmaForPack(focus?.pack_id, plan, registry)
   return {
     presentation_version: LEARNER_PRESENTATION_VERSION,
     activity: buildActivityPresentation({ plan }),
     focus: focus ? { label: focusLabel } : null,
     feedback,
     new_use: buildNewUse({ focus, plan, registry, learnerStates }),
-    transition: buildTransition({ transition, plan, registry, focus }),
+    transition: scoped ? null : buildTransition({ transition, plan, registry, focus }),
     session_summary: null,
   }
 }
