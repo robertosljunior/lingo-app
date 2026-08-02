@@ -24,7 +24,7 @@ import { test, expect } from '@playwright/test'
 import fs from 'node:fs'
 import path from 'node:path'
 import { enableTestHooks, seedFixtures, PROFILE_A } from './helpers.js'
-import { setLearnerFlag, openV2Home, openLearnerExperience, waitForAdvance, answerLearnerActivity, seedV2Evidence } from './v2-helpers.js'
+import { setLearnerFlag, openV2Home, openLearnerExperience, waitForAdvance, answerLearnerActivity, seedV2Evidence, fillWordOrder, fillCompletion } from './v2-helpers.js'
 
 const OUT = path.resolve('test-evidence/v2-20-visual')
 const enabled = process.env.V2_SHOTS === '1'
@@ -139,12 +139,9 @@ async function walkSession(page, seen) {
     if (recipe === 'fixed_element_completion' || recipe === 'word_order_reconstruction'
         || recipe === 'guided_production' || recipe === 'free_production') {
       if (recipe === 'fixed_element_completion') {
-        const bank = page.locator('[data-testid="v2lx-word-bank"] button')
-        if (await bank.count()) await bank.first().click()
-        else await page.getByTestId('v2lx-completion-input').fill('still')
+        await fillCompletion(page)
       } else if (recipe === 'word_order_reconstruction') {
-        const total = await page.locator('[data-testid="v2lx-token-bank"] button').count()
-        for (let t = 0; t < total; t++) await page.locator('[data-testid="v2lx-token-bank"] button').first().click()
+        await fillWordOrder(page)
       } else {
         const input = page.getByTestId('v2lx-production-input')
         if (!(await input.count())) break

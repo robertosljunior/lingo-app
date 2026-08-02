@@ -8,8 +8,12 @@ import { test, expect } from '@playwright/test'
 import { enableTestHooks, seedFixtures, attachErrorMonitor, PROFILE_A } from './helpers.js'
 import { setLearnerFlag, openV2Home, answerLearnerActivity } from './v2-helpers.js'
 
+// V2.20-R made the ROOT Home the V2 Learner Home, so the legacy Training entry
+// only renders under the explicit V1 opt-out. Click it when it is there; when it
+// is not, the V2 Home is already on screen.
 async function openTraining(page) {
-  await page.getByTestId('open-training-hub').click()
+  const legacyEntry = page.getByTestId('open-training-hub')
+  if (await legacyEntry.count()) await legacyEntry.click()
 }
 
 test.describe('coexistence (§40)', () => {

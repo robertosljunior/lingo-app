@@ -9,8 +9,13 @@
 //   exposure/transition     → Continuar (records exposure, then advances)
 //   recognition (incl. context) → tap = answer (no footer CTA before feedback)
 //   check recipes           → Verificar (enabled when the recipe is submittable)
-//   submitting semantic/STT → Processando… (disabled)
+//   evaluation in flight    → Avaliando… (inert; V2.22-UX1 / handoff §3.4)
 //   feedback shown          → Continuar (advances)
+//
+// V2.22-UX1 §3.4 makes the in-flight state VISIBLE. It already existed as a
+// guard (`busy`); showing it is what makes a double submit impossible by
+// construction rather than by a hidden check — the learner can see that the
+// answer is on its way. The activity itself stays visible and untouched.
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import V2LessonHeader from './V2LessonHeader.jsx'
@@ -120,7 +125,7 @@ export default function V2LessonShell({
   } else if (TAP_RECIPES.has(recipe)) {
     cta = null // tap = answer (§31)
   } else if (CHECK_RECIPES.has(recipe)) {
-    cta = { label: busy ? 'Processando…' : 'Verificar', disabled: busy || !pending, onClick: check, testid: 'v2lx-check' }
+    cta = { label: busy ? 'Avaliando…' : 'Verificar', disabled: busy || !pending, onClick: check, testid: 'v2lx-check' }
   }
 
   return (
@@ -142,6 +147,9 @@ export default function V2LessonShell({
             onSubmit={onSubmit}
             onSupport={onSupport}
             onSubmittable={setPending}
+            // Enter inside a completion slot routes through the SAME guarded
+            // submit the footer CTA uses — never a second, unguarded path (§13).
+            onRequestSubmit={check}
           />
         )}
 

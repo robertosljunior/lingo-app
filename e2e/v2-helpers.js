@@ -43,10 +43,22 @@ export async function openHub(page) {
   await expect(page.getByRole('heading', { name: 'Escolha o que treinar' })).toBeVisible()
 }
 
-// Training → V2 Learner Home (Slice V2.18: with the flag ON, Training IS the V2
-// home, not the legacy hub). Requires v2_learner_experience_enabled.
+// → V2 Learner Home.
+//
+// Slice V2.18 reached it by clicking the legacy Home's "open-training-hub" card
+// (Training rendered the V2 Home when the flag was on). The V2.20-R cutover then
+// made the ROOT Home itself the V2 Learner Home and moved the V1 Home into
+// LegacyHome.jsx — which is the only place `open-training-hub` still lives. This
+// helper was not updated with it, so every spec that reached the V2 surfaces
+// through here has been waiting 180s for a button that no longer renders.
+//
+// Both worlds are handled: when the V2 Home is already the root, nothing needs
+// clicking; when the V1 opt-out is pinned, the legacy Training entry still is.
 export async function openV2Home(page) {
-  await page.getByTestId('open-training-hub').click()
+  if (!(await page.getByTestId('v2lx-home').count())) {
+    const legacyEntry = page.getByTestId('open-training-hub')
+    if (await legacyEntry.count()) await legacyEntry.click()
+  }
   await expect(page.getByTestId('v2lx-home')).toBeVisible()
 }
 
@@ -69,6 +81,45 @@ export async function waitForAdvance(page, counterBefore) {
   }, counterBefore, { timeout: 15000 })
 }
 
+/**
+ * Fill a V2.22 word-order rail by tapping bank chips left to right.
+ *
+ * Since V2.22-UX1 a used chip STAYS in the bank (faded, `data-used`), so the
+ * pre-V2.22 "click the first button N times" loop would re-tap the same spent
+ * chip forever. Target the un-used ones explicitly.
+ */
+export async function fillWordOrder(page) {
+  const free = page.locator('[data-testid="v2lx-token-bank"] button:not([data-used])')
+  for (let guard = 0; guard < 24; guard++) {
+    const n = await free.count()
+    if (!n) break
+    await free.first().click()
+  }
+}
+
+/**
+ * Fill EVERY gap of a completion activity — one slot per masked element since
+ * V2.22-UX1. With a word bank each remaining chip goes into the next empty gap;
+ * with free input each slot is typed into directly.
+ */
+export async function fillCompletion(page, freeText = 'still') {
+  // Which SHAPE the activity has is decided by the plan's support features, so
+  // ask for the bank CONTAINER — not for un-used chips. A bank whose chips are
+  // all spent still means "this is a word-bank activity", and trying to type
+  // into a slot button would throw.
+  if (await page.locator('[data-testid="v2lx-word-bank"]').count()) {
+    const free = page.locator('[data-testid="v2lx-word-bank"] button:not([data-used])')
+    for (let guard = 0; guard < 12; guard++) {
+      if (!(await free.count())) break
+      await free.first().click()
+    }
+    return
+  }
+  const slots = page.locator('[data-testid^="v2lx-slot-"]')
+  const total = await slots.count()
+  for (let i = 0; i < total; i++) await slots.nth(i).fill(freeText)
+}
+
 // Answers whatever learner activity is presenting, then continues to the next
 // and waits for the transition to complete. Returns the recipe answered. Skips
 // (returns null) an un-answerable speaking activity when STT is unavailable.
@@ -87,13 +138,10 @@ export async function answerLearnerActivity(page) {
     // it evaluates on tap exactly like the other recognition recipes.
     await page.locator('[data-testid^="v2lx-option-"]').first().click() // evaluate on tap
   } else if (recipe === 'completion') {
-    const bank = page.locator('[data-testid="v2lx-word-bank"] button')
-    if (await bank.count()) await bank.first().click()
-    else await page.getByTestId('v2lx-completion-input').fill('still')
+    await fillCompletion(page)
     await page.getByTestId('v2lx-check').click()
   } else if (recipe === 'word-order') {
-    const total = await page.locator('[data-testid="v2lx-token-bank"] button').count()
-    for (let i = 0; i < total; i++) await page.locator('[data-testid="v2lx-token-bank"] button').first().click()
+    await fillWordOrder(page)
     await page.getByTestId('v2lx-check').click()
   } else if (recipe === 'guided_production' || recipe === 'free_production') {
     const input = page.getByTestId('v2lx-production-input')

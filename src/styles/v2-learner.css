@@ -73,6 +73,18 @@
   --v2-slide-distance: 4%;
   --v2-feedback-rise: 10px;
 
+  /* V2.22-UX1 motion tokens (handoff design-tokens.md, "proposto" rows). They
+     COEXIST with the ones above — no existing value is redefined. Every one of
+     them is zeroed by the reduced-motion block at the bottom of this file, and
+     none of them carries meaning on its own: each state is also legible from a
+     border, a glyph or an opacity. */
+  --v2-dur-token-move: 160ms;
+  --v2-dur-token-remove: 140ms;
+  --v2-dur-slot-fill: 180ms;
+  --v2-dur-answer-settle: 220ms;
+  --v2-distance-token-lift: 2px;
+  --v2-ease-spring-soft: cubic-bezier(.34, 1.36, .64, 1);
+
   font-family: 'Nunito', system-ui, -apple-system, sans-serif;
   color: var(--v2-ink);
   background: var(--v2-bg);
@@ -198,8 +210,15 @@
 
 .v2lx-cta { width: 100%; border: none; border-radius: var(--v2-radius-cta); font-weight: 900; font-size: 18px; padding: 17px; cursor: pointer; background: var(--v2-primary); color: var(--v2-on-primary); box-shadow: var(--v2-shadow-cta); min-height: 44px; }
 .v2lx-cta:disabled { background: #C9D0E4; color: #fff; box-shadow: none; cursor: not-allowed; }
-:root[data-theme="dark"] .v2lx .v2lx-cta:disabled,
-:root:not([data-theme="light"]) .v2lx .v2lx-cta:disabled { background: #2B2645; color: #6E6A85; }
+/* The dark disabled CTA. `:root:not([data-theme="light"])` matches whenever no
+   explicit theme is pinned, so it MUST stay inside the prefers-color-scheme
+   query — outside it, a light-theme learner got the dark button (visible on the
+   inert "Continuar" during a transition). Every other dark mapping in this file
+   is already wrapped this way; this rule had drifted out of the block. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .v2lx .v2lx-cta:disabled { background: #2B2645; color: #6E6A85; }
+}
+:root[data-theme="dark"] .v2lx .v2lx-cta:disabled { background: #2B2645; color: #6E6A85; }
 /* Secondary CTA — same shape, quieter surface. */
 .v2lx-cta--secondary { background: var(--v2-surface); color: var(--v2-primary); box-shadow: none; border: 2px solid var(--v2-line); }
 /* Text-only affordance (e.g. "Voltar ao início", "Ferramentas V2"). */
@@ -250,13 +269,50 @@
 /* Context recognition options are whole situations — they read as prose. */
 .v2lx-option--context { font-weight: 700; font-size: 16px; align-items: flex-start; }
 
-.v2lx-chip { border: 2px solid var(--v2-line); background: var(--v2-surface); color: var(--v2-ink); font-weight: 800; font-size: 16px; padding: 10px 15px; border-radius: var(--v2-radius-chip); cursor: pointer; font-family: inherit; min-height: 44px; }
-.v2lx-chip--placed { border: none; background: var(--v2-primary); color: var(--v2-on-primary); }
+.v2lx-chip { border: 2px solid var(--v2-line); background: var(--v2-surface); color: var(--v2-ink); font-weight: 800; font-size: 16px; padding: 10px 15px; border-radius: var(--v2-radius-chip); cursor: pointer; font-family: inherit; min-height: 44px; transition: transform var(--v2-dur-token-move) var(--v2-ease-spring-soft), opacity var(--v2-dur-token-remove) var(--v2-ease), border-color var(--v2-dur-token-move) var(--v2-ease); }
+/* A word already on the rail (V2.22-UX1 / handoff §3, callout 5): it FADES and
+   renames itself "já usada" instead of vanishing or being natively disabled, so
+   the learner keeps the reference of what they spent and the tab order does not
+   collapse under them. Cursor + aria-disabled carry the same fact. */
+.v2lx-chip[data-used="true"] { opacity: .32; cursor: default; background: transparent; }
+.v2lx-chip[data-locked="true"] { cursor: default; }
+/* §22 — token lift: a 2px acknowledgement of the touch, never a signal. */
+.v2lx-chip:not([data-used="true"]):not([data-locked="true"]):active { transform: translateY(calc(-1 * var(--v2-distance-token-lift))); }
+.v2lx-chip--placed { border: 2px solid var(--v2-line); border-bottom: 2px solid var(--v2-primary); background: var(--v2-surface); color: var(--v2-ink); box-shadow: 0 2px 6px rgba(23, 32, 74, .08); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .v2lx .v2lx-chip--placed { box-shadow: 0 2px 6px rgba(0, 0, 0, .35); }
+}
+:root[data-theme="dark"] .v2lx .v2lx-chip--placed { box-shadow: 0 2px 6px rgba(0, 0, 0, .35); }
 
-/* §12 — the assembly area is a single thin border; no inset shadow, and the
-   dashed divider to the bank is gone (whitespace separates the two zones). */
-.v2lx-build { min-height: 92px; border: 1.5px solid var(--v2-line); border-radius: 14px; background: transparent; box-shadow: none; padding: 14px; display: flex; flex-wrap: wrap; gap: 9px; align-content: flex-start; }
+/* ---- V2.22-UX1 magnetic rail (handoff §3) ---------------------------------
+   The built sentence is a LINE, underscored by one accent rule — not a bordered
+   box of buttons. `v2lx-token-answer` keeps its testid from V2.20 and, as that
+   slice fixed, still has no inset shadow. */
+.v2lx-rail-wrap { margin-top: 2px; }
+.v2lx-rail { min-height: 96px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 10px 6px; background: transparent; box-shadow: none; border: none; border-bottom: 2px solid var(--v2-primary); border-radius: 0; align-content: flex-start; }
+.v2lx-rail[data-locked="true"] { border-bottom-color: var(--v2-line); }
+.v2lx-rail-empty { color: var(--v2-muted-2); font-weight: 700; font-size: 14px; padding: 6px; }
+/* An insertion gap is a REAL button. Its visible mark is a hairline, but the hit
+   area is padded out; it deliberately stops short of 44px wide because it sits
+   between two ≥44px targets that would otherwise steal each other's taps — and
+   because no function depends on it (tap-to-remove, re-place, undo and the ←/→
+   keys all reach the same result at full size). */
+.v2lx-rail-gap { flex: none; align-self: stretch; min-height: 44px; width: 24px; padding: 0; border: none; background: transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: width var(--v2-dur-token-move) var(--v2-ease); }
+.v2lx-rail-gap-mark { display: block; width: 2px; height: 26px; border-radius: 2px; background: transparent; transition: background-color var(--v2-dur-token-move) var(--v2-ease), height var(--v2-dur-token-move) var(--v2-ease); }
+.v2lx-rail-gap[data-active="true"] { width: 34px; }
+.v2lx-rail-gap[data-active="true"] .v2lx-rail-gap-mark { background: var(--v2-primary); height: 34px; }
+.v2lx-rail-gap:hover .v2lx-rail-gap-mark { background: var(--v2-line); }
+.v2lx-rail-gap[data-active="true"]:hover .v2lx-rail-gap-mark { background: var(--v2-primary); }
+.v2lx-rail-foot { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
+.v2lx-rail-hint { font-weight: 700; font-size: 12px; color: var(--v2-muted-2); line-height: 1.35; flex: 1 1 140px; }
+.v2lx-rail-actions { display: inline-flex; gap: 10px; flex: none; }
+.v2lx-rail-action { font-size: 13px; padding: 6px 2px; min-height: 44px; }
+.v2lx-rail-action[data-variant="primary"] { color: var(--v2-primary); }
+.v2lx-rail-action[data-variant="muted"] { color: var(--v2-muted); }
+
 .v2lx-bank { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; margin-top: 22px; }
+/* Deprecated V2.20 assembly box — kept so nothing regresses mid-refactor. */
+.v2lx-build { min-height: 92px; border: 1.5px solid var(--v2-line); border-radius: 14px; background: transparent; box-shadow: none; padding: 14px; display: flex; flex-wrap: wrap; gap: 9px; align-content: flex-start; }
 .v2lx-build-empty { color: var(--v2-muted-2); font-weight: 700; font-size: 14px; padding: 6px; }
 
 /* §11/§13/§14 — writing, not filling in a form: the textarea keeps only a bottom
@@ -272,13 +328,39 @@ textarea.v2lx-input { resize: none; }
 .v2lx-write[data-accent="free"]:focus, .v2lx-write[data-accent="free"]:focus-visible { border-bottom-color: var(--v2-accent-free); }
 .v2lx-write:disabled { color: var(--v2-muted); }
 
+/* V2.22-UX1 (handoff §5) — the writing area is a space for building language:
+   a continuity rule runs down the column so prompt → answer → feedback read as
+   one thread, and the word count is a plain fact with no minimum and no alert. */
+.v2lx-write-area { border-left: 3px solid var(--v2-line); padding-left: 12px; margin-top: 4px; transition: border-color var(--v2-dur-answer-settle) var(--v2-ease); }
+/* The rule stays NEUTRAL after the answer on purpose. Tinting it by outcome
+   would mean the renderer knows the verdict, and the renderer must not: the
+   tone lives in the feedback panel, which owns it (§18/§20). */
+.v2lx-write-area[data-answered="true"] { border-left-color: var(--v2-muted-2); }
+.v2lx-write-count { text-align: right; font-weight: 700; font-size: 12px; color: var(--v2-muted-2); margin-top: 4px; }
+/* "Ver um modelo" sits under the prompt as a quiet text action, not a pill. */
+.v2lx-support-btn { display: block; padding: 6px 0; font-size: 13px; color: var(--v2-primary); }
+
 /* §37 — one strong, consistent focus ring for every interactive V2 affordance. */
 .v2lx button:focus-visible,
 .v2lx [tabindex]:focus-visible { outline: 3px solid var(--v2-primary); outline-offset: 2px; border-radius: 8px; }
 
-/* ---- completion slot (§11) — the gap is PART of the sentence ---------------- */
-.v2lx-slot { border-bottom: 3px solid var(--v2-muted-2); padding: 0 18px; color: var(--v2-muted-2); }
-.v2lx-slot[data-filled="true"] { padding: 0 6px; color: var(--v2-primary); border-bottom-color: var(--v2-primary); }
+/* ---- completion slots (§11 + V2.22-UX1 §14) --------------------------------
+   ONE slot per masked gap. Each slot inherits the sentence's font and baseline
+   so it reads as part of the sentence, never as a field in a form. Its empty
+   width is a FIXED measure — it must never hint at how long the answer is. */
+.v2lx-slot { display: inline-block; font: inherit; font-weight: inherit; color: var(--v2-muted-2); background: transparent; border: none; border-bottom: 3px solid var(--v2-line); border-radius: 0; padding: 0 6px; min-height: 44px; vertical-align: baseline; transition: border-color var(--v2-dur-slot-fill) var(--v2-ease), color var(--v2-dur-slot-fill) var(--v2-ease); }
+.v2lx-slot-blank { display: inline-block; width: 3.2em; max-width: 22vw; }
+.v2lx-slot--bank { cursor: pointer; text-align: center; }
+.v2lx-slot--bank[data-active="true"] { border-bottom-color: var(--v2-primary); }
+.v2lx-slot--input { text-align: center; outline: none; -webkit-appearance: none; appearance: none; max-width: 100%; }
+.v2lx-slot--input:focus { border-bottom-color: var(--v2-primary); border-bottom-width: 3px; }
+.v2lx-slot[data-filled="true"] { color: var(--v2-primary); border-bottom-color: var(--v2-primary); }
+.v2lx-slot[aria-disabled="true"], .v2lx-slot:disabled { cursor: default; }
+/* A slot and the text that follows it (a comma, a full stop) travel together, so
+   a line break can never leave punctuation orphaned on its own line (§4/§26). */
+.v2lx-slot-hold { white-space: nowrap; display: inline-block; }
+/* Kept from V2.20: post-answer marking of a WHOLE-response result. There is
+   still no per-token verdict anywhere — the assessor does not report one. */
 .v2lx-slot[data-result="correct"] { color: var(--v2-fb-correct); border-bottom-color: var(--v2-fb-correct); }
 .v2lx-slot[data-result="wrong"] { color: var(--v2-fb-linguistic); border-bottom-color: var(--v2-fb-linguistic); }
 
@@ -287,7 +369,11 @@ textarea.v2lx-input { resize: none; }
 /* §17 — flattened: compact card, 16px radius, and NO nested cards inside. Sub
    blocks (suggestion / reference form / disclosure) are separated by a hairline
    divider + spacing + typography instead of another box. */
-.v2lx-fb { margin-top: 24px; border-radius: var(--v2-radius-feedback); padding: 16px 16px 14px; }
+/* V2.22-UX1 (handoff §3.5) — the continuity rule. A 3px left edge tinted by the
+   tone makes the answer above and the feedback below read as ONE column. It is
+   reinforcement only: the tone already carries a glyph and a headline, so this
+   is never the sole carrier of state (§37). */
+.v2lx-fb { margin-top: 20px; border-radius: var(--v2-radius-feedback); padding: 16px 16px 14px; border-left: 3px solid var(--v2-fb-accent); border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
 .v2lx-fb[data-tone="correct"] { background: var(--v2-fb-correct-bg); --v2-fb-accent: var(--v2-fb-correct); }
 .v2lx-fb[data-tone="suggestion"] { background: var(--v2-fb-suggestion-bg); --v2-fb-accent: var(--v2-fb-suggestion); }
 .v2lx-fb[data-tone="partial"] { background: var(--v2-fb-partial-bg); --v2-fb-accent: var(--v2-fb-partial); }
@@ -352,6 +438,17 @@ textarea.v2lx-input { resize: none; }
   .v2lx-fb,
   .v2lx-rise { animation: none !important; }
   .v2lx-mic[data-mic="listening"] { animation: none !important; }
+  /* V2.22-UX1 §24 — a REAL reduction, not a shorter duration. Every new
+     transition is removed and the token lift is zeroed, so a placement, a
+     removal, a reorder, a slot fill and the feedback all land in their final
+     state immediately. Nothing here carried meaning on its own, so nothing is
+     lost: the border, the glyph and the opacity still say everything. */
+  .v2lx-chip,
+  .v2lx-slot,
+  .v2lx-rail-gap,
+  .v2lx-rail-gap-mark,
+  .v2lx-write-area { transition: none !important; }
+  .v2lx-chip:active { transform: none !important; }
 }
 /* The app also exposes an explicit toggle; when set, the shell adds
    `data-reduced-motion="true"` which mirrors the media query (§30). */
@@ -360,6 +457,12 @@ textarea.v2lx-input { resize: none; }
 .v2lx[data-reduced-motion="true"] .v2lx-fb,
 .v2lx[data-reduced-motion="true"] .v2lx-rise { animation: none !important; }
 .v2lx[data-reduced-motion="true"] .v2lx-mic[data-mic="listening"] { animation: none !important; }
+.v2lx[data-reduced-motion="true"] .v2lx-chip,
+.v2lx[data-reduced-motion="true"] .v2lx-slot,
+.v2lx[data-reduced-motion="true"] .v2lx-rail-gap,
+.v2lx[data-reduced-motion="true"] .v2lx-rail-gap-mark,
+.v2lx[data-reduced-motion="true"] .v2lx-write-area { transition: none !important; }
+.v2lx[data-reduced-motion="true"] .v2lx-chip:active { transform: none !important; }
 
 
 /* ---- Home facts + DEV strip (§32) ------------------------------------------ */
@@ -400,6 +503,14 @@ textarea.v2lx-input { resize: none; }
     --v2-sentence-prompt: 19px;
   }
   .v2lx-option { font-size: 16px; padding: 14px; }
+  /* V2.22-UX1 §26 — at 320px the rail must still hold a six-word sentence and
+     two gap targets without pushing the line off-screen. The chips lose padding
+     (never their 44px height) and the gaps narrow; the sentence wraps instead. */
+  .v2lx-chip { font-size: 15px; padding: 8px 11px; }
+  .v2lx-rail { gap: 2px; padding: 8px 2px; }
+  .v2lx-rail-gap { width: 18px; }
+  .v2lx-rail-gap[data-active="true"] { width: 26px; }
+  .v2lx-slot-blank { width: 2.6em; }
 }
 /* Desktop stays a centred reading column — never a dashboard (§38). */
 @media (min-width: 720px) {
