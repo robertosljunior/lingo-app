@@ -24,6 +24,7 @@
     "audit:capability-progression-v2": "node scripts/audit-capability-progression-v2.mjs",
     "audit:adaptive-pacing-v2": "node scripts/audit-adaptive-pacing-v2.mjs",
     "audit:catalog-scale-v2": "node scripts/audit-catalog-scale-v2.mjs",
+    "audit:practice-collections-v2": "node scripts/audit-practice-collections-v2.mjs",
     "benchmark:structural-nlp": "node scripts/benchmark-structural-nlp.mjs",
     "benchmark:semantic": "node scripts/benchmark-semantic.mjs"
   },

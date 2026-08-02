@@ -12,8 +12,10 @@
 
 import { STUDY_MODES } from './study-planner-contracts.js'
 import { buildLearnerSessionSummaryV2 } from './learner-presentation-v2.js'
+import { loadPracticeCollectionsV2 } from './practice-collections.js'
 
-export const LEARNER_HOME_PRESENTATION_VERSION = 1
+// 2 = V2.22-UX2: the contextual catalogue replaces the per-pack category list.
+export const LEARNER_HOME_PRESENTATION_VERSION = 2
 
 /**
  * Resolve the requested Study mode from navigation params (§11/§29). Explicit
@@ -27,7 +29,18 @@ export function resolveLessonModeV2(params = {}) {
   const mode = params?.mode || (pack ? 'focused' : 'adaptive')
   if (!STUDY_MODES.includes(mode)) return { error: 'MODE_INVALID' }
   if (mode === 'focused' && !pack) return { error: 'FOCUSED_REQUIRES_PACK' }
-  return { mode, focusedPackId: mode === 'focused' ? pack : null }
+  // V2.22-UX2 §5/§6 — a contextual collection is NOT a new mode: it rides on the
+  // existing one as an optional scope, and the advisory format preference rides
+  // beside it. Both are validated by the scope builder / the recipe table, not
+  // here, so an unknown value can never silently become "no scope".
+  const collectionId = params?.collection || null
+  const format = params?.format || null
+  return {
+    mode,
+    focusedPackId: mode === 'focused' ? pack : null,
+    collectionId,
+    recipePreference: recipeForPracticeFormatV2(format),
+  }
 }
 
 // The placeholder profile name seeded on first run — treat it as "no name" so
@@ -75,7 +88,15 @@ function greetingFor(profileName) {
  * a category picks the PACK, never a sentence: the Planner and the Engine keep
  * deciding target, recipe and exemplar inside it (§22).
  */
-export function buildPracticeCategoriesV2(registry) {
+/**
+ * DEV/diagnostic ONLY (V2.22-UX2 §22). This used to build the learner-facing
+ * "Escolher prática" list — one entry per authored pack, which is exactly the
+ * model UX2 removes: a learner never decides to study `still`, `but` or `yet`.
+ * The packs still organise the curriculum internally and focused mode still
+ * exists as a diagnostic, so the function stays — but nothing learner-facing may
+ * import it. The production Home uses buildPracticeCollectionCatalogV2.
+ */
+export function buildPracticeCategoriesV2DevOnly(registry) {
   return (registry?.packs || [])
     .map((pack) => {
       const m = pack?.manifest
@@ -157,5 +178,116 @@ export function buildLearnerSessionResultV2({ interactions = [], mode = 'adaptiv
     kind: 'completed',
     mode: safeMode,
     summary: buildLearnerSessionSummaryV2({ interactions, registry }),
+  }
+}
+
+// ---- V2.22-UX2: contextual practice presentation ----------------------------
+// Everything the new Home renders comes from HERE. React never writes a
+// linguistic label, never counts targets and never decides which context a
+// sentence belongs to (§4/§21).
+
+/**
+ * The learner-facing catalogue. Copy is the AUTHORED collection copy; the
+ * internal packs a collection happens to span are deliberately NOT part of the
+ * returned shape, so no screen can render a pack id even by accident (§28.6).
+ */
+// §10 — how many contexts are shown before progressive expansion. It lives HERE
+// rather than in the component so the catalogue reads the same at 4, 8, 12 and
+// 20 collections and the rule can be regression-tested: a short scannable list
+// plus one honest "show the rest" control, never a wall of identical cards and
+// never a mandatory carousel.
+export const CATALOG_INITIAL_VISIBLE = 6
+
+export function buildPracticeCollectionCatalogV2(doc = loadPracticeCollectionsV2(), { expanded = false } = {}) {
+  const collections = doc.collections.map((c) => ({
+    collection_id: c.collection_id,
+    title: c.title_pt,
+    description: c.description_pt,
+    icon_role: c.icon_role ?? 'context',
+  }))
+  const visible = expanded ? collections : collections.slice(0, CATALOG_INITIAL_VISIBLE)
+  return {
+    presentation_version: LEARNER_HOME_PRESENTATION_VERSION,
+    collections,
+    visible,
+    hidden_count: collections.length - visible.length,
+    // The expansion control is the adapter's decision, not the component's.
+    more_label: collections.length - visible.length > 0 ? 'Ver mais contextos' : null,
+  }
+}
+
+/**
+ * Practice FORMATS (§12) — a secondary control, never the main navigation. Each
+ * maps to a real engine recipe; `mixed` is the absence of a preference, which is
+ * the default and the honest one.
+ */
+// The `recipe` values MUST be real engine recipe ids — they are compared against
+// `recipe.recipe` in the engine's scorer, so a name that does not exist in
+// LESSON_RECIPES_V2 silently scores zero forever and leaves a dead chip on the
+// Home, which is exactly what §13 forbids. `recipeForPracticeFormatV2` is
+// regression-tested against the engine's own recipe table for that reason.
+export const PRACTICE_FORMATS = Object.freeze([
+  Object.freeze({ format: 'mixed', label: 'Praticar misturado', recipe: null }),
+  Object.freeze({ format: 'scramble', label: 'Montar frases', recipe: 'word_order_reconstruction' }),
+  Object.freeze({ format: 'completion', label: 'Completar', recipe: 'fixed_element_completion' }),
+  Object.freeze({ format: 'writing', label: 'Escrever', recipe: 'guided_production' }),
+])
+
+export function recipeForPracticeFormatV2(format) {
+  return PRACTICE_FORMATS.find((f) => f.format === format)?.recipe ?? null
+}
+
+export function buildRecipePreferenceOptionsV2() {
+  return {
+    presentation_version: LEARNER_HOME_PRESENTATION_VERSION,
+    // The lead-in is deliberately tentative: a preference is advisory, so the
+    // copy must not promise the format will be served (§13).
+    lead_in: 'Também posso:',
+    options: PRACTICE_FORMATS.map((f) => ({ format: f.format, label: f.label })),
+  }
+}
+
+/**
+ * The brief, factual entry state shown when a context is chosen (§17): the
+ * authored title, no modal, no playlist, no promised activity count, no pack.
+ */
+export function buildContextualSessionEntryV2({ collectionTitle = null, format = 'mixed' } = {}) {
+  const chosen = PRACTICE_FORMATS.find((f) => f.format === format) ?? PRACTICE_FORMATS[0]
+  return {
+    presentation_version: LEARNER_HOME_PRESENTATION_VERSION,
+    context_title: collectionTitle,
+    format_label: chosen.format === 'mixed' ? null : chosen.label,
+  }
+}
+
+/**
+ * §13 — the honest answer when a requested format has not materialized. It is
+ * NOT an error and NOT a dead end: the session is real and running in the same
+ * context, so the copy says what is happening and offers the preparatory work
+ * that is actually being served. It never claims the activity was delivered.
+ */
+export function buildRecipePreferenceNoticeV2({ format = 'mixed', collectionTitle = null } = {}) {
+  const chosen = PRACTICE_FORMATS.find((f) => f.format === format)
+  if (!chosen || !chosen.recipe) return null
+  return {
+    presentation_version: LEARNER_HOME_PRESENTATION_VERSION,
+    headline: `${chosen.label} ainda não está disponível aqui.`,
+    body: collectionTitle
+      ? `Vamos praticar o que prepara esse passo em "${collectionTitle}".`
+      : 'Vamos praticar o que prepara esse passo.',
+  }
+}
+
+/**
+ * Contextual empty state (§19/§20). Honest: it never says the learner forgot
+ * anything, and never promises new material the Planner cannot materialize.
+ */
+export function buildContextualEmptyStateV2({ mode = 'adaptive', collectionTitle = null } = {}) {
+  const base = MODE_EMPTY_STATES[STUDY_MODES.includes(mode) ? mode : 'adaptive'] || MODE_EMPTY_STATES.adaptive
+  return {
+    presentation_version: LEARNER_HOME_PRESENTATION_VERSION,
+    headline: collectionTitle ? `Nada para praticar em "${collectionTitle}" agora.` : base.headline,
+    body: base.body,
+    actions: base.actions,
   }
 }

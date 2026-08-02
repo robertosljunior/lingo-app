@@ -275,7 +275,13 @@ export async function answerCurrentActivity(page) {
 /**
  * Seed valid LearnerEvidenceV2 events straight through the public storage
  * layer. `rows` = [{ target_type, target_id, modality ('reading'|'listening'),
- * outcome?, n? }]; each row expands to n assessed recognition events.
+ * capability?, activity_kind?, outcome?, n? }]; each row expands to n assessed
+ * events.
+ *
+ * `capability` defaults to 'recognition'. `meaning_recognition` legitimately
+ * carries BOTH recognition and comprehension evidence (see ACTIVITY_KIND_RULES),
+ * so a spec can seed a learner who has genuinely worked through the lower rungs
+ * without ever granting a production rung it has not earned.
  */
 export async function seedV2Evidence(page, profileId, rows) {
   await page.evaluate(async ({ profileId, rows }) => {
@@ -285,18 +291,20 @@ export async function seedV2Evidence(page, profileId, rows) {
     for (const row of rows) {
       for (let i = 0; i < (row.n ?? 3); i++) {
         seq++
+        const capability = row.capability ?? 'recognition'
         events.push({
           schema_version: 1,
           learner_model_version: 1,
-          evidence_id: `evidence:e2e.${row.target_id}.${row.modality}.${i}`,
+          evidence_id: `evidence:e2e.${row.target_id}.${row.modality}.${capability}.${i}`,
           profile_id: profileId,
           interaction_id: `interaction:e2e.${seq}`,
           session_id: 'session:e2e-fixture',
           target: { target_type: row.target_type, target_id: row.target_id },
           exemplar_id: null,
           activity: {
-            activity_kind: row.modality === 'listening' ? 'listening_recognition' : 'meaning_recognition',
-            capability: 'recognition',
+            activity_kind: row.activity_kind
+              ?? (row.modality === 'listening' ? 'listening_recognition' : 'meaning_recognition'),
+            capability,
             modality: row.modality,
           },
           attribution: 'direct',

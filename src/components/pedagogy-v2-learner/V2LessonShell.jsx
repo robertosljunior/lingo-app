@@ -38,6 +38,12 @@ export default function V2LessonShell({
   settings,
   reducedMotion = false,
   activityNumber,
+  // V2.22-UX2 §17 — an optional, session-level context strip. It belongs INSIDE
+  // the shell's flex column: the shell is `height:100%` inside an
+  // `overflow:hidden` phone, so a sibling above it would push the footer CTA off
+  // the viewport and make Verificar unreachable. Here it is a `flex:none` row
+  // like the header, and the scroll area absorbs the difference.
+  contextBanner = null,
   onSubmit,
   onAdvance,
   onSupport,
@@ -131,6 +137,12 @@ export default function V2LessonShell({
   return (
     <div className="v2lx-shell v2lx" data-reduced-motion={reducedMotion || undefined} data-testid="v2lx-shell" data-status={status}>
       <V2LessonHeader focusLabel={presentation?.focus?.label} activityNumber={activityNumber} onClose={requestClose} reducedMotion={reducedMotion} />
+
+      {contextBanner && (
+        <div className="v2lx-context-strip">
+          <div className="v2lx-content">{contextBanner}</div>
+        </div>
+      )}
 
       <V2ActivityStage phase={phase} reducedMotion={reducedMotion} onStageEnd={onStageEnd}>
         {presentation?.transition && <V2PackTransition transition={presentation.transition} reducedMotion={reducedMotion} />}

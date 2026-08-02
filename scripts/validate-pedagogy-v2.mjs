@@ -73,8 +73,23 @@ for (const { file, pack } of packs) {
   }
 }
 
+// ---- Practice Collections (Slice V2.22-UX2 §29) -----------------------------
+// The editorial navigation layer is authored by hand against ids a human cannot
+// see, so its structural failures are validation errors, not runtime surprises:
+// a dangling member or a pack name leaking into a learner-facing card would ship
+// a broken or dishonest Home.
+const { auditPracticeCollectionsV2 } = await import('../src/lib/pedagogy-v2/practice-collections-audit.js')
+const collections = auditPracticeCollectionsV2()
+for (const f of collections.failures) {
+  errorCount++
+  console.error(`✗ practice-collections: ${JSON.stringify(f)}`)
+}
+console.log(`\nPractice collections: ${collections.collections.length} contexts, `
+  + `${collections.coverage.exemplars_in_a_collection}/${collections.coverage.authored_exemplars} exemplars covered, `
+  + `all spanning multiple packs: ${collections.collections.every((c) => c.spans_multiple_packs)}`)
+
 if (errorCount) {
   console.error(`\n${errorCount} pedagogy-v2 validation error(s).`)
   process.exit(1)
 }
-console.log('\nAll pedagogy-v2 packs and the registry are valid.')
+console.log('\nAll pedagogy-v2 packs, collections and the registry are valid.')

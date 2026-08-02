@@ -25,7 +25,8 @@ import { detectRuntimeCapabilitiesV2 } from '../lib/pedagogy-v2/runtime-capabili
 import { speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
 import { buildLearnerPresentationV2 } from '../lib/pedagogy-v2/learner-presentation-v2.js'
-import { buildLearnerSessionResultV2, resolveLessonModeV2 } from '../lib/pedagogy-v2/learner-home-presentation.js'
+import { buildLearnerSessionResultV2, resolveLessonModeV2, buildContextualSessionEntryV2, buildRecipePreferenceNoticeV2 } from '../lib/pedagogy-v2/learner-home-presentation.js'
+import { buildStudyScopeFromCollectionV2 } from '../lib/pedagogy-v2/study-scope.js'
 import V2LessonShell from '../components/pedagogy-v2-learner/V2LessonShell.jsx'
 import V2SessionSummary from '../components/pedagogy-v2-learner/V2SessionSummary.jsx'
 import { useReducedMotion } from '../components/pedagogy-v2-learner/useReducedMotion.js'
@@ -46,7 +47,21 @@ export default function V2LessonExperience() {
   // The requested mode is resolved ONCE from the entry params; empty-state
   // actions restart in-place with a new mode via `session` (no re-navigation).
   const initial = useMemo(() => resolveLessonModeV2(params), []) // eslint-disable-line react-hooks/exhaustive-deps
-  const [session, setSession] = useState({ mode: initial.mode, pack: initial.focusedPackId, error: initial.error ?? null, nonce: 0 })
+  // V2.22-UX2 §5 — the contextual scope is resolved ONCE, from the authored
+  // collection, and handed to the SAME controller. An unknown collection is a
+  // structural error surfaced like any other, never a silent full-catalogue
+  // session the learner did not ask for.
+  const studyScope = useMemo(
+    () => buildStudyScopeFromCollectionV2(initial.collectionId, registry),
+    [initial.collectionId, registry],
+  )
+  const scopeError = studyScope?.error ?? null
+  const [session, setSession] = useState({
+    mode: initial.mode,
+    pack: initial.focusedPackId,
+    error: initial.error ?? scopeError ?? null,
+    nonce: 0,
+  })
   const [state, setState] = useState(null)
   const controllerRef = useRef(null)
 
@@ -62,6 +77,10 @@ export default function V2LessonExperience() {
       registry,
       mode: session.mode,
       focusedPackId: session.pack,
+      // Additive: both are null for an ordinary adaptive session, which is byte
+      // for byte the pre-UX2 behaviour.
+      studyScope: scopeError ? null : studyScope,
+      recipePreference: initial.recipePreference,
       buildPlannerContext: (profileId, opts) => buildStudyPlannerContextV2(profileId, opts),
       recordBatch: (events) => db.recordLearnerEvidenceBatchV2(events),
       capabilities,
@@ -102,9 +121,18 @@ export default function V2LessonExperience() {
         // can only ever photograph wrong answers is not a matrix.
         text_en: s.plan.text_en ?? null,
         correct_option_id: s.plan.response_contract?.correct_option_id ?? null,
+        // V2.22-UX2 §28.2 — lets a spec prove the sentence really came from the
+        // chosen collection. Deliberately on the hook and NOT a DOM attribute:
+        // an exemplar id must never be one CSS inspector away from a learner.
+        exemplar_id: s.plan.exemplar_id ?? null,
       }
       : null
-  }, [s?.plan])
+    // The resolved scope, so containment can be asserted against the authored
+    // allow-list rather than re-derived in the test.
+    window.__e2e.v2Scope = (studyScope && !studyScope.error)
+      ? { collection_id: studyScope.collection_id, allowed_exemplar_ids: studyScope.allowed_exemplar_ids }
+      : null
+  }, [s?.plan, studyScope])
 
   const presentation = useMemo(() => {
     if (!s || !s.plan) return null
@@ -119,8 +147,11 @@ export default function V2LessonExperience() {
       // Learner state from the planning context (built BEFORE this activity) —
       // lets the adapter prove real familiarity with the current lexeme.
       learnerStates: s.context?.learner_states ?? null,
+      // §18 — when the session is scoped to a context, the adapter suppresses
+      // the internal pack transition and names the context instead of the lexeme.
+      studyScope: scopeError ? null : studyScope,
     })
-  }, [s?.plan, s?.assessment, s?.pendingResponse, s?.focus, s?.transition, registry, s?.recordedEvents, s?.context])
+  }, [s?.plan, s?.assessment, s?.pendingResponse, s?.focus, s?.transition, registry, s?.recordedEvents, s?.context, studyScope, scopeError])
 
   // Mode-aware session result: a completed factual summary OR an honest empty
   // state (zero activities is NEVER "você praticou 0 atividades") (§18).
@@ -128,6 +159,27 @@ export default function V2LessonExperience() {
     if (s?.status !== 'complete') return null
     return buildLearnerSessionResultV2({ interactions: s.interactions, mode: session.mode, registry })
   }, [s?.status, s?.interactions, session.mode, registry])
+
+  // V2.22-UX2 — contextual chrome, all of it presentation-built.
+  const contextEntry = useMemo(
+    () => buildContextualSessionEntryV2({
+      collectionTitle: scopeError ? null : (studyScope?.title_pt ?? null),
+      format: params?.format ?? 'mixed',
+    }),
+    [studyScope, scopeError, params?.format],
+  )
+  // Honest by construction: the notice is derived from what the Engine ACTUALLY
+  // served. It disappears the moment the preferred recipe materializes, and it
+  // never claims the activity was delivered when it was not (§13).
+  const preferenceNotice = useMemo(() => {
+    if (!initial.recipePreference || !s?.plan) return null
+    if (s.plan.recipe === initial.recipePreference) return null
+    if (s.interactions?.some((it) => it.plan?.recipe === initial.recipePreference)) return null
+    return buildRecipePreferenceNoticeV2({
+      format: params?.format ?? 'mixed',
+      collectionTitle: scopeError ? null : (studyScope?.title_pt ?? null),
+    })
+  }, [initial.recipePreference, s?.plan, s?.interactions, params?.format, studyScope, scopeError])
 
   // V2.20-R §9: closing a lesson and finishing a session return to the ROOT
   // Home, which is the V2 Home now — not to Training. Same destination the
@@ -191,6 +243,26 @@ export default function V2LessonExperience() {
           onSupport={(f) => c.recordSupport(f)}
           onRetry={() => c.retry()}
           onClose={goHome}
+          /* §17 — the contextual entry state: the authored collection title,
+             factual, no pack and no promised exercise count. §13 — the
+             preference notice shows only while the requested format has not been
+             served, so the Home never leaves a dead button behind. */
+          contextBanner={contextEntry?.context_title ? (
+            <div className="v2lx-context-banner" data-testid="v2lx-context-banner" data-collection={initial.collectionId}>
+              <div className="v2lx-context-banner-row">
+                <span className="v2lx-context-banner-label">Contexto</span>
+                <span className="v2lx-context-banner-title">{contextEntry.context_title}</span>
+                {contextEntry.format_label && (
+                  <span className="v2lx-context-format" data-testid="v2lx-context-format">{contextEntry.format_label}</span>
+                )}
+              </div>
+              {preferenceNotice && (
+                <span className="v2lx-context-notice" data-testid="v2lx-preference-notice">
+                  {preferenceNotice.headline} {preferenceNotice.body}
+                </span>
+              )}
+            </div>
+          ) : null}
         />
       )}
     </div>

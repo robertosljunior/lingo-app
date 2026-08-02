@@ -32,6 +32,11 @@ export const STUDY_CONTROLLER_STATES = ['idle', 'planning', 'presenting', 'submi
 export function createStudySessionControllerV2(deps) {
   const {
     profileId, registry, mode, focusedPackId = null,
+    // V2.22-UX2 — optional authored scope (a contextual collection) and the
+    // optional advisory recipe preference. Both are additive: omitting them
+    // reproduces the pre-UX2 session exactly.
+    studyScope = null,
+    recipePreference = null,
     now = () => new Date().toISOString(),
     makeStudySessionId = () => `v2study-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
     makeLessonSessionId = (packId) => `v2lesson-${packId}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
@@ -91,6 +96,8 @@ export function createStudySessionControllerV2(deps) {
       enginePolicy,
       runtimeAvailability: availability,
       allowedPackIds,
+      studyScope,
+      recipePreference,
       profileId,
       now: nowIso,
       makeLessonSessionId,
@@ -266,6 +273,7 @@ export function createStudySessionControllerV2(deps) {
     start, submit, retry, advance, tryAgain, recordSupport,
     getState: () => state,
     getAvailability: () => availability,
+    getStudyScope: () => studyScope,
     subscribe: (l) => { listeners.add(l); return () => listeners.delete(l) },
   }
 }

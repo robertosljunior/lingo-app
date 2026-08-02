@@ -31,6 +31,8 @@ import {
   STUDY_FOCUS_V2_VERSION, STUDY_PLANNER_V2_VERSION, RELATION_PLANNER_POLICY,
   mergeStudyPlannerPolicyV2, effectiveWeight, consecutiveSamePack, consecutiveReviews,
 } from './study-planner-contracts.js'
+// V2.22-UX2 — the optional authored scope of a contextual practice collection.
+import { isStudyScopeV2, scopeAllowsTargetV2, intersectAllowedPackIdsV2 } from './study-scope.js'
 
 const clamp01 = (x) => Math.max(0, Math.min(1, x))
 const round4 = (n) => +Number(n).toFixed(4)
@@ -140,13 +142,17 @@ function lastAssessedByTargetCap(recentEvidence) {
  */
 export function buildStudyCandidatesV2({
   registry, learnerStates = [], recentEvidence = [], policy = {}, allowedPackIds = null, now,
-  runtimeAvailability = null,
+  runtimeAvailability = null, studyScope = null,
 } = {}) {
   const p = mergeStudyPlannerPolicyV2(policy)
   const index = buildPlanningIndex(registry)
   const statesById = indexStatesByTargetId(learnerStates)
   const lastOutcome = lastAssessedByTargetCap(recentEvidence)
-  const allowed = allowedPackIds ? new Set(allowedPackIds) : null
+  // V2.22-UX2 §5 — a scope NARROWS the pack universe; it never widens a focused
+  // session. A collection legitimately spans several internal packs, which is
+  // why this is an intersection and not a single pinned pack.
+  const effectivePackIds = intersectAllowedPackIdsV2(allowedPackIds, studyScope)
+  const allowed = effectivePackIds ? new Set(effectivePackIds) : null
   const packs = index.packs.filter((pk) => !allowed || allowed.has(pk.manifest.pack_id))
   // Single source of truth for "what can actually be trained here" (Slice V2.8).
   // Independence is only a real focus when an executable, unaided, assessed
@@ -167,6 +173,10 @@ export function buildStudyCandidatesV2({
   })
 
   const addCandidate = (c) => {
+    // V2.22-UX2 §29 — a scoped session may only ever plan targets the authored
+    // collection actually declares. Enforced at the single point where every
+    // candidate is created, so no generator can leak past it.
+    if (isStudyScopeV2(studyScope) && !scopeAllowsTargetV2(studyScope, c.target?.target_id ?? null)) return
     const key = `${c.pack_id}|${c.focus_type}|${c.target?.target_id ?? '-'}|${c.capability ?? '-'}|${c.modality ?? '-'}`
     if (!candidates.has(key)) candidates.set(key, { ...c, key, reason_codes: [...new Set(c.reason_codes)].sort() })
   }
@@ -573,6 +583,7 @@ export function scoreStudyCandidateV2(candidate, { policy = {}, mode = 'adaptive
 export function selectNextStudyFocusV2({
   registry, learnerStates = [], recentEvidence = [], studySession, policy = {},
   runtimeAvailability = null, allowedPackIds = null, suppressedFocusKeys = [],
+  studyScope = null,
 } = {}) {
   const p = mergeStudyPlannerPolicyV2(policy)
   const mode = studySession?.mode ?? 'adaptive'
@@ -586,7 +597,7 @@ export function selectNextStudyFocusV2({
     mode,
   }
 
-  const raw = buildStudyCandidatesV2({ registry, learnerStates, recentEvidence, policy: p, allowedPackIds, now, runtimeAvailability })
+  const raw = buildStudyCandidatesV2({ registry, learnerStates, recentEvidence, policy: p, allowedPackIds, now, runtimeAvailability, studyScope })
   const excluded = []
   const exclude = (candidate, reason) => excluded.push({ key: candidate.key, target_id: candidate.target?.target_id ?? null, reason })
 
@@ -827,10 +838,18 @@ export function studyFocusKeyV2(focus) {
  * engine-level focus restriction and the policy override for target-focused
  * practice. The activity choice itself stays entirely in the engine.
  */
-export function studyFocusToLessonScopeV2(focus, registry) {
+export function studyFocusToLessonScopeV2(focus, registry, studyScope = null) {
   if (!focus?.pack_id) throw new Error('STUDY_FOCUS_REQUIRED')
   return {
-    scope: { registry, pack_id: focus.pack_id, lexeme_id: focus.lexeme_id },
+    scope: {
+      registry,
+      pack_id: focus.pack_id,
+      lexeme_id: focus.lexeme_id,
+      // V2.22-UX2 §5 — the authored exemplar universe travels WITH the scope, so
+      // the engine picks a sentence from inside the collection or reports that
+      // it cannot serve this focus. It never substitutes a neighbouring one.
+      ...(isStudyScopeV2(studyScope) ? { allowed_exemplar_ids: studyScope.allowed_exemplar_ids } : {}),
+    },
     focus: {
       target_id: focus.target?.target_id ?? null,
       capability: focus.capability ?? null,
