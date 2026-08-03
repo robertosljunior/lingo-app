@@ -92,9 +92,20 @@ test('the production V2 Home reaches the V2 lesson and comes back to the V2 Home
   await expect(lesson).toHaveAttribute('data-experience', 'v2')
   await expect(page.getByRole('img', { name: 'Bob, o mascote' })).toHaveCount(0)
 
-  // §9 — bottom-nav "Início" returns to the V2 Home, never to the V1 Home.
-  await page.getByRole('button', { name: 'Início' }).click()
+  // §9 — leaving the lesson returns to the V2 Home, never to the V1 Home.
+  //
+  // This used to click a bottom-nav "Início" button. The V2 lesson screen has
+  // never rendered a bottom navigation — `V2LessonShell` is a focused, full
+  // screen by design, exactly as the mockup shows it — so the click waited out
+  // its 180s timeout and the test had been red long before this branch. The
+  // §9 claim being made is about WHERE you land, not about which chrome takes
+  // you there, so it is asserted through the affordance the screen actually
+  // offers.
+  await expect(page.getByRole('button', { name: 'Início' }), 'the V2 lesson is a focused screen: no bottom nav').toHaveCount(0)
+  await page.getByTestId('v2lx-close').click()
   await expectV2Home(page)
+  // …and the Home it lands on is the one that HAS the navigation.
+  await expect(page.getByRole('button', { name: 'Início' })).toBeVisible()
 
   monitor.assertClean()
 })
