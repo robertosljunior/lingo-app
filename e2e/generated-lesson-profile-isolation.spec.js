@@ -3,8 +3,32 @@
 import { test, expect } from '@playwright/test'
 import {
   enableTestHooks, seedFixtures, generateFromHome, readLessonWithQuestions,
-  readStore, switchProfileViaUi, attachErrorMonitor, GEN_SEED, PROFILE_A, PROFILE_B,
+  readStore, attachErrorMonitor, GEN_SEED, PROFILE_A, PROFILE_B,
 } from './helpers.js'
+
+// A reload may first restore a persisted adaptive exercise. Wait until boot has
+// resolved to either that exercise or the actual V1 Home before deciding
+// whether it must be closed; checking `count()` immediately after reload was a
+// race and occasionally waited for a Home hidden behind the restored lesson.
+async function switchProfile(page, profileId) {
+  await page.evaluate((pid) => window.__e2e.db.setSetting('active_profile', pid), profileId)
+  await page.reload()
+  await expect(page.locator('.app-shell')).toBeVisible()
+  await page.waitForFunction(() => window.__e2e && window.__e2e.db)
+
+  const home = page.getByTestId('open-training-hub')
+  const exit = page.getByRole('button', { name: 'Sair da aula' })
+  await expect.poll(async () => {
+    const [homeVisible, exitVisible] = await Promise.all([
+      home.isVisible().catch(() => false),
+      exit.isVisible().catch(() => false),
+    ])
+    return Number(homeVisible) + Number(exitVisible)
+  }).toBeGreaterThan(0)
+
+  if (await exit.isVisible().catch(() => false)) await exit.click()
+  await expect(home).toBeVisible()
+}
 
 test('profile B cannot list, open, export, delete or restore profile A private lesson', async ({ page, context }, testInfo) => {
   const monitor = attachErrorMonitor(page)
@@ -23,8 +47,8 @@ test('profile B cannot list, open, export, delete or restore profile A private l
   expect(sessionA?.session?.profile_id).toBe(PROFILE_A)
   await page.getByRole('button', { name: 'Sair da aula' }).click()
 
-  // Switch to B through the real UI.
-  await switchProfileViaUi(page, 'Perfil B')
+  // Switch to B through the real storage selection used at boot.
+  await switchProfile(page, PROFILE_B)
 
   // Listing: A's lesson does not appear for B (UI + public layer).
   await expect(page.getByText(lessonTitle)).toHaveCount(0)
@@ -63,14 +87,13 @@ test('profile B cannot list, open, export, delete or restore profile A private l
   expect(exportAttempt.code).toBe('LESSON_NOT_ACCESSIBLE')
   expect(exportAttempt.yaml).toBeUndefined()
 
-
   // Planner as B: no question from A's private lesson is ever selected.
   const planB = await page.evaluate(() => window.__e2e.db.getAdaptivePracticePlan('profile-b', { requestedSize: 10 }))
   expect(planB.selected_questions.length).toBeGreaterThan(0)
   expect(planB.selected_questions.some((q) => q.lesson_id === lessonId)).toBe(false)
 
   // Back to A: the lesson is intact, opens, exports and can be deleted by its owner.
-  await switchProfileViaUi(page, 'Perfil A')
+  await switchProfile(page, PROFILE_A)
   await expect(page.getByText(lessonTitle).first()).toBeVisible()
   const asOwner = await page.evaluate(async (lessonId) => {
     const lesson = await window.__e2e.db.getLesson(lessonId)
