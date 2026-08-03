@@ -204,10 +204,16 @@ function CompletionActivity({ plan, busy, answered, onSubmittable, onSupport, on
           // slot — but it must not be able to wrap away from it either, so it
           // rides inside the slot's non-wrapping box while the rest of the chunk
           // flows normally.
-          const [glued, rest] = i > 0 ? splitTrailingPunctuation(chunk) : ['', chunk]
+          const [, rest] = i > 0 ? splitTrailingPunctuation(chunk) : ['', chunk]
           return (
             <span key={i}>
-              {i > 0 && glued}
+              {/* V2.22-UX2-R: the leading punctuation of this chunk is NOT
+                  emitted here. `gapCount === chunks.length - 1`, so for every
+                  `i > 0` the previous iteration already rendered it inside that
+                  slot's non-wrapping hold — emitting it again printed every
+                  post-gap comma and period twice ("I haven't eaten yet .."),
+                  visible on any exemplar whose gap is sentence-final. Only the
+                  remainder of the chunk belongs to this span. */}
               {rest}
               {i < gapCount && (
                 <span className="v2lx-slot-hold">

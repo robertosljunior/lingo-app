@@ -2,6 +2,7 @@
 
 import { I } from './icons.jsx'
 import { useApp } from '../store.jsx'
+import { learnerExperienceV2Enabled } from '../lib/pedagogy-v2/learner-experience-mode.js'
 
 export function AppHeader({ title, onBack, right = null }) {
   return (
@@ -17,7 +18,12 @@ export function AppHeader({ title, onBack, right = null }) {
 
 export function BottomNav({ active, onNavigate }) {
   const { settings } = useApp()
-  const kids = settings?.profile_mode === 'kids'
+  // V2.22-UX2-R §0/§5 — "Kids" must not appear anywhere in V2. A profile created
+  // before the cutover can still carry `profile_mode: 'kids'` in storage, and
+  // that value alone used to swap a V2 learner's Histórico tab for Histórias.
+  // The audience split belongs to the legacy product, so it is resolved away
+  // here rather than by rewriting the learner's stored data.
+  const kids = settings?.profile_mode === 'kids' && !learnerExperienceV2Enabled(settings)
   // Kids get a Stories tab (in place of History); everyone gets Talk-with-Bob.
   const items = kids
     ? [

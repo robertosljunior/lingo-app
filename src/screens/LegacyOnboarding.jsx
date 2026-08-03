@@ -3,8 +3,15 @@ import { useApp } from '../store.jsx'
 import { I } from '../components/icons.jsx'
 import BobMascot from '../components/BobMascot.jsx'
 
-// First-run onboarding (no login). Three quick steps: audience (Kids/Adult),
-// name, and a friendly self-assessment that maps to the starting CEFR level.
+// LEGACY (V1) first-run onboarding. Renamed from `Onboarding.jsx` in
+// V2.22-UX2-R §3: it is no longer "the" onboarding, it is the one belonging to
+// the legacy product, and it is reached ONLY when the learner has explicitly
+// opted out of V2 (`v2_learner_experience_enabled === false`). The V2 first-run
+// is `V2Onboarding.jsx`, which shares none of this: no mascot, no Kids/Adulto
+// split and no CEFR self-assessment.
+//
+// Three quick steps: audience (Kids/Adult), name, and a friendly
+// self-assessment that maps to the starting CEFR level.
 const LEVELS = [
   { id: 'A1', label: 'Não sei quase nada', hint: 'Vamos do começo, no seu ritmo.' },
   { id: 'A2', label: 'Sei algumas palavras', hint: 'Frases curtas do dia a dia.' },

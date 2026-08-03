@@ -24,10 +24,17 @@ test.describe('pack selection', () => {
     await expect(page.getByTestId('v2-pack-but')).toContainText('4 usos · 5 construções')
     await expect(page.getByTestId('v2-pack-still-progress')).toContainText('Ainda não praticado')
 
-    // 4–5: start but → exposure of the first but exemplar, then recognition.
+    // 4–5: start but → exposure of a but exemplar, then recognition.
+    //
+    // Which sentence is NOT pinned, for a second reason on top of the one in
+    // step 8: this spec runs without a generation seed, and the engine rotates
+    // exemplars, so the opening exposure genuinely differs between runs — two
+    // consecutive runs of this very test opened on "She is young, but she is
+    // very responsible." and "The house is small, but it is comfortable."
+    // A hardcoded sentence here was a coin flip, not an assertion.
     await openPackSession(page, 'but')
     await expect(page.getByTestId('v2-activity-exposure')).toBeVisible()
-    await expect(page.getByTestId('v2-text-en')).toContainText('I am tired, but I am happy.')
+    await expect(page.getByTestId('v2-text-en')).toContainText(/\bbut\b/)
     await page.getByTestId('v2-continue').click()
     await continueFromFeedback(page)
     const { recipe } = await answerCurrentV2Activity(page, { fixedElement: 'but' })
@@ -41,8 +48,19 @@ test.describe('pack selection', () => {
 
     // 8: states are independent — but progress never advances still: the
     // still session starts at ITS first exposure.
+    //
+    // The sentence is NOT hardcoded. This assertion used to require
+    // "I still live here." (exemplar:still.001), and V2.21-R2b legitimately
+    // moved it: that fix stopped promotion from reordering authored primary
+    // targets, so still.002/003/005 report their CONSTRUCTION as primary again
+    // and the planner opens the pack on a construction target. The claim here
+    // is independence — a first exposure, on a still exemplar, not a resumed
+    // session — and pinning one sentence made a deliberate pedagogy fix look
+    // like a regression.
     await expect(page.getByTestId('v2-activity-exposure')).toBeVisible()
-    await expect(page.getByTestId('v2-text-en')).toContainText('I still live here.')
+    const stillFirst = await page.getByTestId('v2-text-en').innerText()
+    expect(stillFirst, 'the still session must open on a still exemplar').toMatch(/\bstill\b/i)
+    expect(stillFirst, 'the still session must not open on a but exemplar').not.toMatch(/\bbut\b/i)
 
     // Evidence recorded so far belongs to but targets only.
     const evidence = await readStore(page, 'learner_evidence_v2')
@@ -72,17 +90,24 @@ test.describe('cross-pack persistence', () => {
     await seedFixtures(page, { active: PROFILE_A })
     await setPilotFlag(page, true)
 
-    // 1: record still activity (first exposure).
+    // 1: record still activity (first exposure). The sentence is CAPTURED, not
+    // asserted — step 4 below only needs to know which exposure was seen so it
+    // can prove the session does not come back to it. Hardcoding it made this
+    // test red from V2.21-R2b onwards (see the note in "pack selection").
     await openLab(page)
     await openPackSession(page, 'still')
-    await expect(page.getByTestId('v2-text-en')).toContainText('I still live here.')
+    await expect(page.getByTestId('v2-activity-exposure')).toBeVisible()
+    const stillFirst = await page.getByTestId('v2-text-en').innerText()
+    expect(stillFirst).toMatch(/\bstill\b/i)
     await page.getByTestId('v2-continue').click()
     await continueFromFeedback(page)
     await backToSelection(page)
 
-    // 2: record but activity (first exposure).
+    // 2: record but activity (first exposure). Captured for the same reason.
     await openPackSession(page, 'but')
-    await expect(page.getByTestId('v2-text-en')).toContainText('I am tired, but I am happy.')
+    await expect(page.getByTestId('v2-activity-exposure')).toBeVisible()
+    const butFirst = await page.getByTestId('v2-text-en').innerText()
+    expect(butFirst).toMatch(/\bbut\b/i)
     await page.getByTestId('v2-continue').click()
     await continueFromFeedback(page)
 
@@ -105,7 +130,7 @@ test.describe('cross-pack persistence', () => {
     await expect(page.locator('[data-testid^="v2-activity-"]')).toBeVisible()
     let text = await page.getByTestId('v2-pilot-screen').textContent()
     let testid = await page.locator('[data-testid^="v2-activity-"]').getAttribute('data-testid')
-    expect(testid === 'v2-activity-exposure' && text.includes('I still live here.')).toBe(false)
+    expect(testid === 'v2-activity-exposure' && text.includes(stillFirst)).toBe(false)
     await backToSelection(page)
 
     // …and so does the but session.
@@ -113,7 +138,7 @@ test.describe('cross-pack persistence', () => {
     await expect(page.locator('[data-testid^="v2-activity-"]')).toBeVisible()
     text = await page.getByTestId('v2-pilot-screen').textContent()
     testid = await page.locator('[data-testid^="v2-activity-"]').getAttribute('data-testid')
-    expect(testid === 'v2-activity-exposure' && text.includes('I am tired, but I am happy.')).toBe(false)
+    expect(testid === 'v2-activity-exposure' && text.includes(butFirst)).toBe(false)
   })
 })
 

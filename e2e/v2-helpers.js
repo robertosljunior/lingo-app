@@ -337,3 +337,46 @@ export async function clearExperienceChoice(page) {
   await expect(page.locator('.app-shell')).toBeVisible()
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
 }
+
+// ---- V2.22-UX2-R first-run ---------------------------------------------------
+
+/**
+ * Complete the V2 first-run (§4). This is what a stranger with the public URL
+ * now sees on a clean install: two steps, one question, no audience split and
+ * no CEFR self-assessment.
+ *
+ * Every spec that used to call the legacy `onboarding-*` testids goes through
+ * here instead — and the ones that genuinely test the LEGACY product pin
+ * `v2_learner_experience_enabled = false` first and keep using the old ids.
+ */
+export async function completeV2FirstRun(page, name = 'Rob') {
+  await expect(page.getByTestId('v2lx-onboarding')).toBeVisible({ timeout: 20_000 })
+  await page.getByTestId('v2lxo-continue').click()
+  await page.getByTestId('v2lxo-name-input').fill(name)
+  await page.getByTestId('v2lxo-start').click()
+  await expect(page.getByTestId('v2lx-home')).toBeVisible({ timeout: 20_000 })
+}
+
+/**
+ * Pin the LEGACY product BEFORE the first run, so the legacy onboarding is the
+ * one that renders. Writes the setting straight to IndexedDB and reloads —
+ * `setLearnerFlag` cannot be used for this because it goes through
+ * `window.__e2e`, which is fine, but this variant also works on a page that has
+ * not booted the store yet.
+ */
+export async function pinLegacyBeforeFirstRun(page) {
+  await page.evaluate(async () => {
+    const db = await new Promise((res, rej) => {
+      const r = indexedDB.open('app-idiomas')
+      r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error)
+    })
+    await new Promise((res, rej) => {
+      const tx = db.transaction('settings', 'readwrite')
+      tx.objectStore('settings').put({ key: 'v2_learner_experience_enabled', value: false })
+      tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error)
+    })
+    db.close()
+  })
+  await page.reload()
+  await expect(page.locator('.app-shell')).toBeVisible()
+}

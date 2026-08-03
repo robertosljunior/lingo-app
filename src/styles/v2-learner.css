@@ -85,9 +85,70 @@
   --v2-distance-token-lift: 2px;
   --v2-ease-spring-soft: cubic-bezier(.34, 1.36, .64, 1);
 
-  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  /* Typography roles (V2.22-UX2-R §10). The mockup sets the whole product in
+     Barlow and every heading in Barlow Condensed 600 — the condensed heading
+     against the normal-width body IS the identity. Declared as ROLES so no
+     component names a family, and the fallback stack degrades to system-ui
+     rather than to a second downloaded face. */
+  --v2-font-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --v2-font-display: 'Barlow Condensed', 'Barlow', system-ui, -apple-system, sans-serif;
+  --v2-display-weight: 600;
+  /* Condensed type sets tighter than the body; without this the headings read
+     as loose at display sizes. */
+  --v2-display-tracking: -0.005em;
+  --v2-display-leading: 1.08;
+
+  /* Display scale (V2.22-UX2-R §10). One ramp for every V2 surface — onboarding,
+     Home, lesson, summary — so a heading is the same size in the same role
+     wherever it appears. Fluid between 320px and 430px: the mockup's 320/375/430
+     columns are three samples of this ramp, not three hardcoded layouts. */
+  --v2-type-display: clamp(28px, 7.4vw, 34px);
+  --v2-type-title: clamp(21px, 5.4vw, 25px);
+  --v2-type-section: 17px;
+  --v2-type-body: 15px;
+  --v2-type-meta: 13px;
+  --v2-type-kicker: 11.5px;
+
+  font-family: var(--v2-font-body);
   color: var(--v2-ink);
   background: var(--v2-bg);
+  /* Barlow's default figures are proportional; tabular ones keep counters like
+     "4/12" from reflowing as the activity number changes. */
+  font-variant-numeric: tabular-nums;
+}
+
+/* The display role, in one place (§10). Headings take it by default so a new
+   surface inherits the identity without opting in.
+ *
+ * `.v2lx-sentence` is excluded on purpose. It is the ACTIVITY PROTAGONIST — the
+ * target sentence — and the mockup sets it in the body face at weight 800, not
+ * in the condensed one. V2Sentence renders as a `div` in most activities but as
+ * an `h2` when the prompt itself is the stimulus (listening), so without this
+ * exclusion the very same component would change typeface depending on which
+ * tag the activity happened to pass it. */
+/* `:not()` rather than a counter-rule, so a sentence rendered as a heading is
+   simply never matched here and its own `.v2lx-sentence--*` variant keeps
+   ownership of family, weight, size, leading and tracking alike. */
+.v2lx h1:not(.v2lx-sentence),
+.v2lx h2:not(.v2lx-sentence),
+.v2lx h3:not(.v2lx-sentence),
+.v2lx .v2lx-display {
+  font-family: var(--v2-font-display);
+  font-weight: var(--v2-display-weight);
+  letter-spacing: var(--v2-display-tracking);
+  line-height: var(--v2-display-leading);
+}
+
+/* The kicker: uppercase, tracked, quiet — the mockup's section marker on every
+   surface (APRENDAIDIOMA / ESCOLHER PRÁTICA / MONTAR A FRASE). Never a heading:
+   it labels the block below it and is skipped by the type ramp. */
+.v2lx .v2lx-kicker {
+  font-family: var(--v2-font-body);
+  font-size: var(--v2-type-kicker);
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--v2-kicker-color);
 }
 
 /* Dark theme mapping — keeps the same roles, adjusted for a dark surface. */
@@ -149,7 +210,7 @@
 /* Static decorative divider under the header — fixed, never grows. */
 .v2lx-head-divider { height: 1px; background: var(--v2-line); border-radius: 999px; margin-top: 10px; }
 .v2lx-focus-chip { flex: none; display: inline-flex; align-items: center; gap: 5px; background: var(--v2-surface-alt); color: var(--v2-primary); font-weight: 800; font-size: 12px; padding: 6px 10px; border-radius: 999px; }
-.v2lx-iconbtn { border: none; background: var(--v2-surface-alt); width: 40px; height: 40px; min-width: 44px; min-height: 44px; border-radius: 12px; cursor: pointer; font-size: 18px; font-weight: 900; color: var(--v2-muted); display: inline-flex; align-items: center; justify-content: center; }
+.v2lx-iconbtn { border: none; background: var(--v2-surface-alt); width: 40px; height: 40px; min-width: 44px; min-height: 44px; border-radius: 12px; cursor: pointer; font-size: 18px; font-weight: 800; color: var(--v2-muted); display: inline-flex; align-items: center; justify-content: center; }
 
 .v2lx-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 4px 20px 24px; }
 .v2lx-content { max-width: 560px; margin: 0 auto; width: 100%; }
@@ -167,7 +228,7 @@
    V2.20 removed the "in a card" variant entirely: the sentence now sits DIRECTLY
    on the background in every recipe. Size is a CONTEXT variant, never a repeated
    inline font-size at the call site (§35). */
-.v2lx-sentence { font-weight: 900; font-size: 26px; line-height: 1.28; color: var(--v2-ink); text-wrap: pretty; letter-spacing: -.4px; overflow-wrap: break-word; }
+.v2lx-sentence { font-weight: 800; font-size: 26px; line-height: 1.28; color: var(--v2-ink); text-wrap: pretty; letter-spacing: -.4px; overflow-wrap: break-word; }
 .v2lx-sentence--exposure { font-size: var(--v2-sentence-exposure); line-height: 1.22; }
 .v2lx-sentence--completion { font-size: var(--v2-sentence-completion); line-height: 1.5; }
 .v2lx-sentence--speaking { font-size: var(--v2-sentence-speaking); line-height: 1.35; }
@@ -181,7 +242,7 @@
 /* A real instruction line (§6): it sits ABOVE the stimulus and must read as
    guidance, not as the content. Used whenever the activity already has a
    protagonist sentence of its own. */
-.v2lx-instruction { font-weight: 700; font-size: 15px; line-height: 1.4; color: var(--v2-muted); margin: 0 0 10px; text-wrap: pretty; }
+.v2lx-instruction { font-weight: 500; font-size: var(--v2-type-section); line-height: 1.4; color: var(--v2-muted); margin: 0 0 10px; text-wrap: pretty; }
 
 /* Kicker (§6) — discreet, wide-tracked, uppercase. It must never compete with
    the sentence, so it is smaller AND lighter in colour than the translation. */
@@ -203,12 +264,12 @@
 
 /* Audio — secondary "ghost pill" in exposure; PROTAGONIST in listening (§10). */
 .v2lx-audio-pill { display: inline-flex; align-items: center; gap: 8px; border: none; background: var(--v2-surface-alt); color: var(--v2-primary); font-weight: 800; font-size: 15px; padding: 11px 20px; border-radius: 999px; cursor: pointer; font-family: inherit; min-height: 44px; }
-.v2lx-audio-hero { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: none; background: var(--v2-primary); color: var(--v2-on-primary); font-weight: 900; font-size: 17px; padding: 20px 30px; border-radius: 999px; cursor: pointer; font-family: inherit; min-height: 64px; box-shadow: var(--v2-shadow-cta); }
+.v2lx-audio-hero { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: none; background: var(--v2-primary); color: var(--v2-on-primary); font-family: var(--v2-font-display); font-weight: 700; font-size: 19px; padding: 20px 30px; border-radius: 999px; cursor: pointer; font-family: inherit; min-height: 64px; box-shadow: var(--v2-shadow-cta); }
 .v2lx-audio-hero[data-playing="true"] { animation: v2lxPulse 1.4s infinite; }
 
 /* ---- CTA ------------------------------------------------------------------- */
 
-.v2lx-cta { width: 100%; border: none; border-radius: var(--v2-radius-cta); font-weight: 900; font-size: 18px; padding: 17px; cursor: pointer; background: var(--v2-primary); color: var(--v2-on-primary); box-shadow: var(--v2-shadow-cta); min-height: 44px; }
+.v2lx-cta { width: 100%; border: none; border-radius: var(--v2-radius-cta); font-family: var(--v2-font-display); font-weight: 700; letter-spacing: .01em; font-size: 19px; padding: 17px; cursor: pointer; background: var(--v2-primary); color: var(--v2-on-primary); box-shadow: var(--v2-shadow-cta); min-height: 44px; }
 .v2lx-cta:disabled { background: #C9D0E4; color: #fff; box-shadow: none; cursor: not-allowed; }
 /* The dark disabled CTA. `:root:not([data-theme="light"])` matches whenever no
    explicit theme is pinned, so it MUST stay inside the prefers-color-scheme
@@ -225,20 +286,35 @@
 .v2lx-textbtn { border: none; background: transparent; color: var(--v2-muted); font-weight: 800; font-size: 14px; cursor: pointer; padding: 10px; min-height: 44px; }
 .v2lx-textbtn:hover { color: var(--v2-primary); }
 
-/* ---- V2 Learner Home (§4–§6) ---------------------------------------------- */
-.v2lx-home-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 4px 18px; }
-.v2lx-home-brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 900; font-size: 18px; color: var(--v2-ink); }
-.v2lx-home-logo { width: 34px; height: 34px; border-radius: 11px; background: var(--v2-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; }
-.v2lx-greeting { font-weight: 800; font-size: 15px; color: var(--v2-muted); }
-.v2lx-home-title { font-weight: 900; font-size: 26px; color: var(--v2-ink); letter-spacing: -.3px; line-height: 1.15; margin: 2px 0 18px; }
-.v2lx-hero { background: linear-gradient(135deg, var(--v2-primary), #5B7BFF); border-radius: 26px; padding: 22px; color: #fff; box-shadow: var(--v2-shadow-cta); }
-.v2lx-hero-eyebrow { font-weight: 700; font-size: 13px; opacity: .9; }
-.v2lx-hero-cta { width: 100%; border: none; background: #fff; color: var(--v2-primary-strong); font-weight: 900; font-size: 17px; padding: 16px; border-radius: 16px; cursor: pointer; box-shadow: 0 6px 14px rgba(0, 0, 0, .12); min-height: 44px; margin-top: 16px; }
-.v2lx-action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
-.v2lx-action-card { text-align: left; border: 1px solid var(--v2-line); background: var(--v2-surface); border-radius: 20px; padding: 16px; cursor: pointer; box-shadow: var(--v2-shadow-card); font: inherit; min-height: 44px; }
+/* ---- V2 Learner Home (§4–§6, restyled V2.22-UX2-R §5/§9) -------------------
+   The composition is the mockup's, top to bottom: wordmark kicker → greeting →
+   condensed display question → a WHITE hero card whose only filled element is
+   the CTA → kicker-labelled sections of filled surface cards.
+
+   What changed in UX2-R and why: the hero used to be an indigo gradient block
+   with a white button inside it, which made the CTA the quietest thing in the
+   loudest container. In the mockup the page is calm and the CTA is the only
+   saturated surface on it, so "Praticar agora" is unmistakably the primary
+   action without shouting from a coloured slab. */
+.v2lx-home-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 2px 20px; }
+.v2lx-home-brand { display: inline-flex; align-items: center; gap: 9px; color: var(--v2-kicker-color); font-size: var(--v2-type-kicker); font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+.v2lx-home-logo { width: 26px; height: 26px; border-radius: 8px; background: var(--v2-primary); color: var(--v2-on-primary); display: flex; align-items: center; justify-content: center; font-family: var(--v2-font-display); font-weight: 700; font-size: 15px; letter-spacing: 0; }
+.v2lx-greeting { font-weight: 600; font-size: var(--v2-type-body); color: var(--v2-muted); }
+.v2lx-home-title { font-size: var(--v2-type-display); color: var(--v2-ink); margin: 3px 0 20px; text-wrap: balance; }
+
+/* The hero card. Surface, not accent — see the note above. */
+.v2lx-hero { background: var(--v2-surface); border: 1px solid var(--v2-line); border-radius: var(--v2-radius-card); padding: 18px; box-shadow: var(--v2-shadow-card); }
+.v2lx-hero-eyebrow { font-weight: 500; font-size: var(--v2-type-body); color: var(--v2-muted); line-height: 1.4; }
+.v2lx-hero-cta { width: 100%; border: none; background: var(--v2-primary); color: var(--v2-on-primary); font-family: var(--v2-font-display); font-weight: 700; font-size: 19px; letter-spacing: .01em; padding: 15px; border-radius: var(--v2-radius-cta); cursor: pointer; box-shadow: var(--v2-shadow-cta); min-height: 52px; margin-top: 14px; transition: background var(--v2-dur-disclosure) var(--v2-ease); }
+.v2lx-hero-cta:hover { background: var(--v2-primary-strong); }
+.v2lx-hero-cta:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: 3px; }
+
+.v2lx-action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.v2lx-action-card { text-align: left; border: 1px solid var(--v2-line); background: var(--v2-surface); border-radius: var(--v2-radius-option); padding: 14px; cursor: pointer; box-shadow: var(--v2-shadow-card); font: inherit; min-height: 44px; }
+.v2lx-action-card:hover { border-color: var(--v2-primary); }
 .v2lx-action-card:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: 2px; }
-.v2lx-action-title { font-weight: 900; font-size: 15px; color: var(--v2-ink); }
-.v2lx-action-desc { font-weight: 600; font-size: 12px; color: var(--v2-muted-2); margin-top: 2px; line-height: 1.35; }
+.v2lx-action-title { font-family: var(--v2-font-display); font-weight: var(--v2-display-weight); font-size: var(--v2-type-section); color: var(--v2-ink); }
+.v2lx-action-desc { font-weight: 500; font-size: var(--v2-type-meta); color: var(--v2-muted-2); margin-top: 2px; line-height: 1.35; }
 .v2lx-home-tools { text-align: center; margin-top: 8px; }
 
 /* ---- Escolher prática (V2.21-R2 §19/§23) -----------------------------------
@@ -251,7 +327,7 @@
 .v2lx-category-card { text-align: left; border: 1px solid var(--v2-line); background: transparent; border-radius: 16px; padding: 12px 14px; cursor: pointer; font: inherit; min-height: 44px; box-shadow: none; transition: background-color 120ms var(--v2-ease), border-color 120ms var(--v2-ease); }
 .v2lx-category-card:hover { background: var(--v2-surface-alt); }
 .v2lx-category-card:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: 2px; }
-.v2lx-category-label { font-weight: 900; font-size: 15px; color: var(--v2-ink); }
+.v2lx-category-label { font-family: var(--v2-font-display); font-weight: var(--v2-display-weight); font-size: 18px; color: var(--v2-ink); }
 .v2lx-category-desc { font-weight: 600; font-size: 12px; color: var(--v2-muted-2); margin-top: 2px; line-height: 1.35; }
 
 /* ---- options / chips ------------------------------------------------------- */
@@ -265,7 +341,7 @@
 .v2lx-option[data-result="correct"] { border-width: 2px; border-color: var(--v2-fb-correct); background: var(--v2-fb-correct-bg); }
 .v2lx-option[data-result="wrong"] { border-width: 2px; border-color: var(--v2-fb-linguistic); background: var(--v2-fb-linguistic-bg); }
 .v2lx-option[data-dim="true"] { opacity: .5; }
-.v2lx-option-glyph { flex: none; font-weight: 900; font-size: 18px; }
+.v2lx-option-glyph { flex: none; font-weight: 800; font-size: 18px; }
 /* Context recognition options are whole situations — they read as prose. */
 .v2lx-option--context { font-weight: 700; font-size: 16px; align-items: flex-start; }
 
@@ -387,8 +463,8 @@ textarea.v2lx-input { resize: none; }
 .v2lx-fb[data-tone="correct"] .v2lx-fb-head { margin-bottom: 6px; }
 /* §22 — semantic is the most compact of all: "outra ideia", not a punishment. */
 .v2lx-fb[data-tone="semantic"] { padding: 14px 16px 12px; }
-.v2lx-fb-icon { width: 30px; height: 30px; border-radius: 10px; background: var(--v2-fb-accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; flex: none; }
-.v2lx-fb-headline { font-weight: 900; font-size: 17px; color: var(--v2-fb-accent); }
+.v2lx-fb-icon { width: 30px; height: 30px; border-radius: 10px; background: var(--v2-fb-accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex: none; }
+.v2lx-fb-headline { font-family: var(--v2-font-display); font-weight: var(--v2-display-weight); font-size: 20px; line-height: 1.1; color: var(--v2-fb-accent); }
 .v2lx-fb-body { font-weight: 700; font-size: 14px; color: var(--v2-ink); line-height: 1.45; }
 /* The former nested white card. V2.20: a hairline rule + spacing, no background,
    no border box (§17/§20/§21). */
@@ -397,7 +473,7 @@ textarea.v2lx-input { resize: none; }
 /* Disclosure body (§21): revealed text lands directly in the panel — no second
    card, no duplicated border, just the rise+fade. */
 .v2lx-fb-detail { margin-top: 10px; font-weight: 700; font-size: 13px; line-height: 1.5; color: var(--v2-muted); }
-.v2lx-fb-target { font-weight: 900; font-size: 17px; color: var(--v2-ink); }
+.v2lx-fb-target { font-weight: 700; font-size: 17px; color: var(--v2-ink); }
 .v2lx-disclose { margin-top: 12px; border: none; background: transparent; color: var(--v2-fb-accent); font-weight: 800; font-size: 14px; cursor: pointer; padding: 6px 0; display: inline-flex; align-items: center; gap: 5px; min-height: 44px; }
 .v2lx-disclose-chev { display: inline-block; transition: transform var(--v2-dur-disclosure) var(--v2-ease); }
 .v2lx-disclose[aria-expanded="true"] .v2lx-disclose-chev { transform: rotate(90deg); }
@@ -405,7 +481,7 @@ textarea.v2lx-input { resize: none; }
 /* ---- banners --------------------------------------------------------------- */
 
 .v2lx-banner { display: flex; align-items: center; gap: 10px; background: var(--v2-fb-semantic-bg); border: 1px solid var(--v2-fb-semantic); border-radius: 16px; padding: 12px 14px; margin-bottom: 18px; }
-.v2lx-banner-icon { width: 26px; height: 26px; border-radius: 8px; background: var(--v2-fb-semantic); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; flex: none; }
+.v2lx-banner-icon { width: 26px; height: 26px; border-radius: 8px; background: var(--v2-fb-semantic); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; flex: none; }
 .v2lx-banner-text { font-weight: 800; font-size: 13px; color: var(--v2-fb-semantic); line-height: 1.3; }
 
 /* ---- speaking -------------------------------------------------------------- */
@@ -465,21 +541,116 @@ textarea.v2lx-input { resize: none; }
 .v2lx[data-reduced-motion="true"] .v2lx-chip:active { transform: none !important; }
 
 
+/* ---- Session summary (V2.22-UX2-R §10) -------------------------------------
+   Lifted out of V2SessionSummary.jsx's inline styles so the last screen of a
+   session shares the product's type ramp instead of carrying its own. */
+.v2lx-done-scroll { text-align: center; }
+.v2lx-done-mark { width: 72px; height: 72px; border-radius: 24px; background: var(--v2-primary); color: var(--v2-on-primary); display: flex; align-items: center; justify-content: center; font-size: 34px; margin: 20px auto; box-shadow: var(--v2-shadow-cta); }
+.v2lx-done-mark--empty { width: 68px; height: 68px; border-radius: 22px; background: var(--v2-surface-alt); color: var(--v2-muted-2); border: 1px solid var(--v2-line); box-shadow: none; font-size: 30px; }
+.v2lx-done-title { font-size: var(--v2-type-display); color: var(--v2-ink); margin: 0; }
+.v2lx-done-title--empty { font-size: var(--v2-type-title); }
+.v2lx-done-lede { font-size: var(--v2-type-body); font-weight: 500; line-height: 1.45; color: var(--v2-muted); margin: 7px 0 26px; text-wrap: pretty; }
+.v2lx-done-facts { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+.v2lx-done-fact { display: flex; gap: 13px; align-items: center; background: var(--v2-surface); border: 1px solid var(--v2-line); border-radius: var(--v2-radius-card); box-shadow: var(--v2-shadow-card); padding: 15px 17px; }
+.v2lx-done-fact-icon { width: 36px; height: 36px; border-radius: 11px; background: var(--v2-surface-alt); color: var(--v2-primary); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; flex: none; }
+.v2lx-done-fact-text { font-weight: 500; font-size: var(--v2-type-body); color: var(--v2-ink); line-height: 1.35; }
+.v2lx-done-cta { margin-top: 22px; }
+.v2lx-done-actions { display: flex; flex-direction: column; gap: 10px; }
+.v2lx-done-home { margin-top: 4px; }
+
+/* ---- Shell continuity (V2.22-UX2-R §9) ------------------------------------
+   Everything OUTSIDE the V2 components that the learner still sees: the device
+   frame on desktop, the boot frame, and the bottom navigation. Before this
+   slice the V2 Home floated on the legacy cream ground with a legacy nav bar
+   under it, so two products met on one screen. `data-experience` is written by
+   `App.jsx` from the same resolver that picks the product, so this can never
+   drift out of sync with what is actually rendered. */
+.app-shell[data-experience="v2"] { background: var(--v2-bg, #F7F8FC); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .app-shell[data-experience="v2"] { background: #0E0B1A; }
+}
+:root[data-theme="dark"] .app-shell[data-experience="v2"] { background: #0E0B1A; }
+
+.v2lx-boot { align-items: center; justify-content: center; }
+.v2lx-boot-label { font-size: var(--v2-type-body); font-weight: 500; color: var(--v2-muted-2); }
+
+/* Bottom navigation in the V2 language. Same component, same behaviour — only
+   the surface treatment changes, so no navigation logic is duplicated (§9). */
+.v2lx .bottom-nav {
+  background: var(--v2-surface);
+  border-top: 1px solid var(--v2-line);
+}
+.v2lx .bottom-nav .nav-item {
+  color: var(--v2-muted-2);
+  font-family: var(--v2-font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+.v2lx .bottom-nav .nav-item.active { color: var(--v2-primary); }
+.v2lx .bottom-nav .nav-item:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: -2px; }
+
+/* ---- V2 first-run (V2.22-UX2-R §4) ----------------------------------------
+   The same tokens as every other V2 surface, so the second screen of a clean
+   install does not look like a different product from the first (§9). The page
+   is one column: identity kicker, condensed display line, body, and a single
+   filled CTA pinned to the bottom where the thumb is. */
+.v2lx-onb { display: flex; flex-direction: column; background: var(--v2-bg); }
+.v2lx-onb-body { flex: 1; display: flex; flex-direction: column; overflow-y: auto; padding: 26px 22px 8px; }
+.v2lx-onb-head { display: flex; align-items: center; gap: 9px; }
+/* Top-aligned, with the slack falling between the copy and the CTA. Anchoring
+   the copy to the bottom instead looked deliberate at 812px and broke at 640px,
+   where the void moved above the fold. */
+.v2lx-onb-stage { padding: 34px 0 0; margin-bottom: auto; }
+.v2lx-onb-title { font-size: var(--v2-type-display); color: var(--v2-ink); margin: 0 0 10px; text-wrap: balance; }
+.v2lx-onb-lede { font-size: var(--v2-type-section); font-weight: 400; line-height: 1.45; color: var(--v2-muted); margin: 0; text-wrap: pretty; }
+
+.v2lx-onb-points { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
+.v2lx-onb-points li { font-size: var(--v2-type-body); font-weight: 500; line-height: 1.4; color: var(--v2-ink); padding: 13px 0 13px 18px; border-top: 1px solid var(--v2-line); position: relative; text-wrap: pretty; }
+.v2lx-onb-points li:last-child { border-bottom: 1px solid var(--v2-line); }
+/* A rule, not an icon and not an emoji — the list is marked by the same
+   hairline vocabulary the rest of the product uses (§6). */
+.v2lx-onb-points li::before { content: ''; position: absolute; left: 0; top: 20px; width: 8px; height: 2px; background: var(--v2-primary); }
+
+.v2lx-onb-field { display: flex; flex-direction: column; gap: 7px; margin-top: 26px; }
+.v2lx-onb-input { font: inherit; font-size: 18px; font-weight: 500; color: var(--v2-ink); background: var(--v2-surface); border: 1px solid var(--v2-line); border-radius: var(--v2-radius-option); padding: 0 15px; height: 54px; width: 100%; outline: none; }
+.v2lx-onb-input::placeholder { color: var(--v2-muted-2); font-weight: 400; }
+.v2lx-onb-input:focus { border-color: var(--v2-primary); box-shadow: 0 0 0 3px var(--v2-surface-alt); }
+
+.v2lx-onb-foot { flex: none; padding: 10px 22px 6px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.v2lx-onb-cta { width: 100%; border: none; background: var(--v2-primary); color: var(--v2-on-primary); font-family: var(--v2-font-display); font-weight: 700; font-size: 19px; letter-spacing: .01em; padding: 15px; border-radius: var(--v2-radius-cta); cursor: pointer; box-shadow: var(--v2-shadow-cta); min-height: 52px; transition: background var(--v2-dur-disclosure) var(--v2-ease); }
+.v2lx-onb-cta:hover:not(:disabled) { background: var(--v2-primary-strong); }
+.v2lx-onb-cta:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: 3px; }
+.v2lx-onb-cta:disabled { background: var(--v2-surface-alt); color: var(--v2-muted-2); box-shadow: none; cursor: default; }
+.v2lx-onb-skip { font-weight: 600; font-size: var(--v2-type-meta); }
+
+.v2lx-onb-dots { flex: none; display: flex; justify-content: center; gap: 6px; padding: 8px 0 22px; }
+.v2lx-onb-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--v2-line); transition: background var(--v2-dur-disclosure) var(--v2-ease); }
+.v2lx-onb-dot.is-on { background: var(--v2-primary); }
+@media (prefers-reduced-motion: reduce) { .v2lx-onb-dot, .v2lx-onb-cta, .v2lx-hero-cta { transition: none !important; } }
+
+/* 320px: the display line steps down through the fluid ramp on its own; only
+   the horizontal padding needs tightening so the lede keeps its measure. */
+@media (max-width: 340px) {
+  .v2lx-onb-body { padding-left: 18px; padding-right: 18px; }
+  .v2lx-onb-foot { padding-left: 18px; padding-right: 18px; }
+}
+
 /* ---- Home facts + DEV strip (§32) ------------------------------------------ */
-.v2lx-home-facts { margin-top: 18px; display: flex; flex-direction: column; gap: 6px; }
-.v2lx-home-fact { font-weight: 700; font-size: 13px; color: var(--v2-muted); line-height: 1.45; }
+.v2lx-home-facts { margin-top: 20px; display: flex; flex-direction: column; gap: 5px; }
+.v2lx-home-fact { font-weight: 500; font-size: var(--v2-type-meta); color: var(--v2-muted); line-height: 1.45; }
 
 /* Everything below this rule is internal tooling — it is separated from the
    learner hierarchy by a divider and a DEV label so it can never be mistaken for
    product surface, and it is not rendered at all in a production build (§32). */
 .v2lx-devstrip { margin-top: 34px; padding-top: 16px; border-top: 1px dashed var(--v2-line); text-align: center; }
 .v2lx-devswitch { text-align: left; }
-.v2lx-devswitch-title { font-weight: 900; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--v2-muted-2); margin-bottom: 8px; }
+.v2lx-devswitch-title { font-weight: 800; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--v2-muted-2); margin-bottom: 8px; }
 .v2lx-devswitch-opts { display: flex; gap: 8px; }
 .v2lx-devswitch-opt { flex: 1; display: flex; align-items: center; gap: 8px; text-align: left; border: 1.5px solid var(--v2-line); background: transparent; border-radius: var(--v2-radius-option); padding: 10px 12px; cursor: pointer; font-family: inherit; color: var(--v2-ink); min-height: 44px; }
 .v2lx-devswitch-opt[data-active] { border-color: var(--v2-primary); background: var(--v2-surface-alt); }
 .v2lx-devswitch-dot { color: var(--v2-primary); font-size: 13px; }
-.v2lx-devswitch-label { display: block; font-weight: 900; font-size: 13px; }
+.v2lx-devswitch-label { display: block; font-weight: 800; font-size: 13px; }
 .v2lx-devswitch-hint { display: block; font-weight: 700; font-size: 11px; color: var(--v2-muted-2); }
 
 /* ---- responsive (§38) ------------------------------------------------------
@@ -523,33 +694,43 @@ textarea.v2lx-input { resize: none; }
    expansion control. Personality comes from the type ramp and the rhythm of the
    rules between rows — never from decoration (§8). */
 
-.v2lx-contexts { margin-top: 24px; }
-.v2lx-section-title { font-weight: 900; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--v2-muted-2); margin: 0 0 12px; }
+.v2lx-contexts { margin-top: 26px; }
+/* Section label — the mockup's ESCOLHER PRÁTICA kicker, shared by every V2
+   section heading so "what block am I in" is answered the same way everywhere. */
+.v2lx-section-title { font-family: var(--v2-font-body); font-size: var(--v2-type-kicker); font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--v2-kicker-color); margin: 0 0 12px; }
 .v2lx-context-list { display: flex; flex-direction: column; gap: 10px; }
-.v2lx-context-card { border: 1px solid var(--v2-line); border-radius: 18px; background: transparent; overflow: hidden; }
-.v2lx-context-main { display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: left; background: transparent; border: none; font: inherit; cursor: pointer; padding: 14px; min-height: 44px; }
-.v2lx-context-main:hover { background: var(--v2-surface-alt); }
+/* V2.22-UX2-R: filled surface + hairline + soft shadow, matching the mockup's
+   card treatment. The previous transparent outline read as a form fieldset once
+   the rest of the page gained real surfaces. */
+.v2lx-context-card { border: 1px solid var(--v2-line); border-radius: var(--v2-radius-card); background: var(--v2-surface); box-shadow: var(--v2-shadow-card); overflow: hidden; transition: border-color var(--v2-dur-disclosure) var(--v2-ease); }
+.v2lx-context-card:hover { border-color: var(--v2-primary); }
+.v2lx-context-main { display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: left; background: transparent; border: none; font: inherit; cursor: pointer; padding: 15px 15px 12px; min-height: 44px; }
 .v2lx-context-main:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: -2px; }
-.v2lx-context-mark { width: 22px; height: 22px; flex: 0 0 22px; color: var(--v2-primary); margin-top: 2px; }
-.v2lx-context-copy { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-.v2lx-context-title { font-weight: 900; font-size: 16px; color: var(--v2-ink); letter-spacing: -.2px; }
-.v2lx-context-desc { font-weight: 600; font-size: 12.5px; color: var(--v2-muted-2); line-height: 1.4; text-wrap: pretty; }
+.v2lx-context-mark { width: 22px; height: 22px; flex: 0 0 22px; color: var(--v2-primary); margin-top: 3px; }
+.v2lx-context-copy { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.v2lx-context-title { font-family: var(--v2-font-display); font-weight: var(--v2-display-weight); font-size: var(--v2-type-title); line-height: 1.12; color: var(--v2-ink); }
+.v2lx-context-desc { font-weight: 500; font-size: var(--v2-type-body); color: var(--v2-muted); line-height: 1.4; text-wrap: pretty; }
 
 /* Format row — quiet by construction: it must never compete with the context
    above it, and never look like a category of its own (§12). */
-.v2lx-format-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 0 14px 12px; }
-.v2lx-format-lead { font-weight: 700; font-size: 11.5px; color: var(--v2-muted); margin-right: 2px; }
-.v2lx-format-chip { font: inherit; font-weight: 800; font-size: 12px; color: var(--v2-primary-strong); background: var(--v2-surface-alt); border: 1px solid var(--v2-line); border-radius: 999px; padding: 8px 12px; min-height: 34px; cursor: pointer; }
-.v2lx-format-chip:hover { background: var(--v2-surface); }
+.v2lx-format-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 0 15px 13px; }
+.v2lx-format-lead { font-size: var(--v2-type-kicker); font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase; color: var(--v2-kicker-color); margin-right: 2px; }
+.v2lx-format-chip { font: inherit; font-weight: 600; font-size: var(--v2-type-meta); color: var(--v2-primary-strong); background: var(--v2-surface-alt); border: 1px solid transparent; border-radius: 999px; padding: 8px 12px; min-height: 36px; cursor: pointer; transition: border-color var(--v2-dur-disclosure) var(--v2-ease); }
+.v2lx-format-chip:hover { border-color: var(--v2-primary); }
 .v2lx-format-chip:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: 2px; }
 .v2lx-context-more { display: block; width: 100%; margin-top: 12px; min-height: 44px; }
 
-.v2lx-secondary { margin-top: 24px; }
+.v2lx-secondary { margin-top: 26px; }
+/* Clears the fixed bottom nav. Was an inline `paddingBottom: 100` on the
+   scroller — moved here so the one number that decides whether the last card is
+   reachable lives with the rest of the layout (§10). */
+.v2lx-home-scroll { padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)); }
 
 /* 320px — the format row wraps rather than shrinking below the touch target. */
 @media (max-width: 340px) {
-  .v2lx-context-title { font-size: 15px; }
   .v2lx-format-chip { padding: 8px 10px; }
+  .v2lx-context-main { padding: 14px 13px 11px; }
+  .v2lx-format-row { padding: 0 13px 12px; }
 }
 
 /* The context entry banner on the lesson shell (§17): factual, authored title,
@@ -564,7 +745,7 @@ textarea.v2lx-input { resize: none; }
 .v2lx-context-banner { display: flex; flex-direction: column; gap: 2px; padding: 9px 12px; border-left: 3px solid var(--v2-primary); background: var(--v2-surface-alt); border-radius: 0 12px 12px 0; }
 .v2lx-context-banner-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }
 .v2lx-context-banner-label { font-weight: 700; font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--v2-muted-2); }
-.v2lx-context-banner-title { font-weight: 900; font-size: 14px; color: var(--v2-ink); }
+.v2lx-context-banner-title { font-family: var(--v2-font-display); font-weight: var(--v2-display-weight); font-size: 17px; color: var(--v2-ink); }
 /* The chosen format, echoed back so the learner can see the preference was
    registered. Advisory copy lives in the notice below, never here. */
 .v2lx-context-format { font-weight: 800; font-size: 11px; color: var(--v2-primary); }

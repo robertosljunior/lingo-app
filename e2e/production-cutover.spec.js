@@ -12,6 +12,7 @@
 // (§20).
 import { test, expect } from '@playwright/test'
 import { enableTestHooks, gotoApp, attachErrorMonitor, readStore } from './helpers.js'
+import { completeV2FirstRun } from './v2-helpers.js'
 
 // V1 truths that must not leak into the V2 experience (§10).
 const V1_TRUTHS = [
@@ -22,14 +23,18 @@ const V1_TRUTHS = [
   'Temas, níveis A1–B2',
 ]
 
+// V2.22-UX2-R §3. This used to drive the LEGACY onboarding — and it passed,
+// against a plain production build, because the first-run branch in App.jsx ran
+// before the experience was resolved. That is precisely the defect this slice
+// fixes, so the helper now drives the V2 first-run and this spec is the proof:
+// if the cutover regressed, `v2lx-onboarding` would not exist here.
 async function onboard(page) {
   await gotoApp(page)
-  await page.getByTestId('onboarding-mode-adult').click()
-  await page.getByRole('button', { name: 'Continuar' }).click()
-  await page.getByTestId('onboarding-name').fill('Rob')
-  await page.getByRole('button', { name: 'Continuar' }).click()
-  await page.getByTestId('onboarding-level-A2').click()
-  await page.getByTestId('onboarding-finish').click()
+  await expect(page.getByTestId('v2lx-onboarding')).toBeVisible({ timeout: 20_000 })
+  // The legacy first-run must not be reachable in a plain production build.
+  await expect(page.getByTestId('onboarding-mode-kids')).toHaveCount(0)
+  await expect(page.getByText('Pra quem é esse aprendizado?')).toHaveCount(0)
+  await completeV2FirstRun(page, 'Rob')
 }
 
 async function expectV2Home(page) {
@@ -87,9 +92,20 @@ test('the production V2 Home reaches the V2 lesson and comes back to the V2 Home
   await expect(lesson).toHaveAttribute('data-experience', 'v2')
   await expect(page.getByRole('img', { name: 'Bob, o mascote' })).toHaveCount(0)
 
-  // §9 — bottom-nav "Início" returns to the V2 Home, never to the V1 Home.
-  await page.getByRole('button', { name: 'Início' }).click()
+  // §9 — leaving the lesson returns to the V2 Home, never to the V1 Home.
+  //
+  // This used to click a bottom-nav "Início" button. The V2 lesson screen has
+  // never rendered a bottom navigation — `V2LessonShell` is a focused, full
+  // screen by design, exactly as the mockup shows it — so the click waited out
+  // its 180s timeout and the test had been red long before this branch. The
+  // §9 claim being made is about WHERE you land, not about which chrome takes
+  // you there, so it is asserted through the affordance the screen actually
+  // offers.
+  await expect(page.getByRole('button', { name: 'Início' }), 'the V2 lesson is a focused screen: no bottom nav').toHaveCount(0)
+  await page.getByTestId('v2lx-close').click()
   await expectV2Home(page)
+  // …and the Home it lands on is the one that HAS the navigation.
+  await expect(page.getByRole('button', { name: 'Início' })).toBeVisible()
 
   monitor.assertClean()
 })

@@ -12,12 +12,14 @@ import Settings from './screens/Settings.jsx'
 import TrainingHub from './screens/TrainingHub.jsx'
 import Stories from './screens/Stories.jsx'
 import Talk from './screens/Talk.jsx'
-import Onboarding from './screens/Onboarding.jsx'
+import LegacyOnboarding from './screens/LegacyOnboarding.jsx'
+import V2Onboarding from './screens/V2Onboarding.jsx'
 import PedagogyV2Lab from './screens/PedagogyV2Lab.jsx'
 import PedagogyV2Inspector from './screens/PedagogyV2Inspector.jsx'
 import PedagogyV2Playground from './screens/PedagogyV2Playground.jsx'
 import V2LessonExperience from './screens/V2LessonExperience.jsx'
 import PwaInstallController from './components/PwaInstallController.jsx'
+import { learnerExperienceV2Enabled } from './lib/pedagogy-v2/learner-experience-mode.js'
 
 const SCREEN_COMPONENTS = {
   [SCREENS.HOME]: Home,
@@ -43,22 +45,43 @@ const SCREEN_COMPONENTS = {
 const NEEDS_SESSION = new Set([SCREENS.EXERCISE, SCREENS.RESULT, SCREENS.REVIEW])
 
 export default function App() {
-  const { ready, screen, activeLesson, toast, needsOnboarding } = useApp()
+  const { ready, screen, activeLesson, toast, needsOnboarding, settings } = useApp()
 
+  // V2.22-UX2-R §3 — THE CUTOVER DEFECT THIS FIXES. The first-run branch used to
+  // run before the experience was resolved and hardcoded the legacy onboarding,
+  // so a clean install always opened on V1 — mascot, Kids/Adulto, CEFR — no
+  // matter which product it then went on to render. The very first second of the
+  // app contradicted the product behind it.
+  //
+  // The experience is now resolved FIRST, by the same single source of truth
+  // that decides everything else (`learner-experience-mode.js`), and the first
+  // run belongs to whichever product the learner is actually in:
+  //
+  //   V2 (default, and explicit true) → V2Onboarding
+  //   explicit false                  → LegacyOnboarding
+  //
+  // The condition is deliberately the resolver and not `settings?.x === false`
+  // inline: there is exactly one place in the codebase that decides V1 vs V2.
   if (ready && needsOnboarding) {
+    const V2 = learnerExperienceV2Enabled(settings)
     return (
-      <div className="app-shell">
-        <Onboarding />
+      <div className="app-shell" data-experience={V2 ? 'v2' : 'v1'}>
+        {V2 ? <V2Onboarding /> : <LegacyOnboarding />}
         <Toast show={!!toast}>{toast}</Toast>
       </div>
     )
   }
 
+  // The very first paint of a clean install, before settings are read. It is
+  // styled in the V2 language rather than the legacy one because that is what
+  // resolves a moment later in every environment (§16: the first second must
+  // already be the new product). Its ground comes from the V2 tokens, so it
+  // does not flash a different colour into the onboarding behind it.
   if (!ready) {
     return (
-      <div className="app-shell">
-        <div className="phone" style={{ alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ color: 'var(--ink-3)', fontWeight: 700, fontSize: 14 }}>Carregando…</div>
+      <div className="app-shell" data-experience="v2">
+        <div className="phone v2lx v2lx-boot" data-testid="app-boot">
+          <div className="v2lx-boot-label">Carregando…</div>
         </div>
       </div>
     )
@@ -69,7 +92,7 @@ export default function App() {
   const Screen = SCREEN_COMPONENTS[active] || Home
 
   return (
-    <div className="app-shell">
+    <div className="app-shell" data-experience={learnerExperienceV2Enabled(settings) ? 'v2' : 'v1'}>
       {/* key forces a remount per screen so the entrance animation replays */}
       <Screen key={active} />
       <PwaInstallController />

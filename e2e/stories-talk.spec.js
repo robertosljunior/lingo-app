@@ -1,18 +1,30 @@
 // SLICE UI (Bob) — Kids Stories + Talk-with-Bob. Stories are Kids-only and fully
 // unlocked; Talk is available to everyone.
+//
+// V2.22-UX2-R §13.D: these are LEGACY (V1) features. "Kids" is an audience split
+// the V2 product does not have — §0 forbids it from every V2 screen, and the
+// bottom navigation no longer swaps Histórico for Histórias just because a
+// stored profile says `kids`. So this suite pins the legacy product explicitly
+// instead of inheriting whatever a fresh install resolves to. That is the point
+// of the opt-out: V1 keeps working, exactly as it did, for whoever asks for it.
 import { test, expect } from '@playwright/test'
 import { enableTestHooks, gotoApp, attachErrorMonitor } from './helpers.js'
+import { pinLegacyBeforeFirstRun } from './v2-helpers.js'
+
+async function onboardLegacy(page, { mode, name, level }) {
+  await gotoApp(page)
+  await pinLegacyBeforeFirstRun(page)
+  await page.getByTestId(`onboarding-mode-${mode}`).click()
+  await page.getByRole('button', { name: 'Continuar' }).click()
+  await page.getByTestId('onboarding-name').fill(name)
+  await page.getByRole('button', { name: 'Continuar' }).click()
+  await page.getByTestId(`onboarding-level-${level}`).click()
+  await page.getByTestId('onboarding-finish').click()
+  await expect(page.getByTestId('open-training-hub')).toBeVisible({ timeout: 20_000 })
+}
 
 async function onboardAsKids(page) {
-  await gotoApp(page)
-  await page.getByTestId('onboarding-mode-kids').click()
-  await page.getByRole('button', { name: 'Continuar' }).click()
-  await page.getByTestId('onboarding-name').fill('Lila')
-  await page.getByRole('button', { name: 'Continuar' }).click()
-  await page.getByTestId('onboarding-level-A1').click()
-  await page.getByTestId('onboarding-finish').click()
-  // V2.20-R §5: a fresh install lands on the V2 Home (no experience flag set).
-  await expect(page.getByTestId('v2lx-home')).toBeVisible({ timeout: 15_000 })
+  await onboardLegacy(page, { mode: 'kids', name: 'Lila', level: 'A1' })
 }
 
 test('kids can open and finish an illustrated story', async ({ page, context }) => {
@@ -54,15 +66,7 @@ test('Talk-with-Bob renders the prompt, gloss and audio control', async ({ page,
 
 test('adult mode has no Stories tab', async ({ page, context }) => {
   await enableTestHooks(context)
-  await gotoApp(page)
-  await page.getByTestId('onboarding-mode-adult').click()
-  await page.getByRole('button', { name: 'Continuar' }).click()
-  await page.getByTestId('onboarding-name').fill('Rob')
-  await page.getByRole('button', { name: 'Continuar' }).click()
-  await page.getByTestId('onboarding-level-B1').click()
-  await page.getByTestId('onboarding-finish').click()
-  // V2.20-R §5: a fresh install lands on the V2 Home (no experience flag set).
-  await expect(page.getByTestId('v2lx-home')).toBeVisible({ timeout: 15_000 })
+  await onboardLegacy(page, { mode: 'adult', name: 'Rob', level: 'B1' })
   await expect(page.getByRole('button', { name: 'Histórias' })).toHaveCount(0)
   await expect(page.getByRole('button', { name: 'Fale', exact: true })).toBeVisible()
 })
