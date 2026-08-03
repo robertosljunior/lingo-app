@@ -59,11 +59,16 @@ test.describe('first still session', () => {
     await setPilotFlag(page, true)
     await openStillSession(page)
 
-    // 1st activity for a brand-new learner: exposure of the first exemplar,
-    // full English sentence + translation.
+    // A first contact may use any authored member of the canonical introduction
+    // group. The invariant is the still pack + a complete bilingual exposure,
+    // not one incidental noun realization.
+    await expect(page.getByTestId('v2-pilot-screen')).toHaveAttribute('data-pack-id', 'pedagogy_v2_still')
     await expect(page.getByTestId('v2-activity-exposure')).toBeVisible()
-    await expect(page.getByTestId('v2-text-en')).toContainText('I still live here.')
-    await expect(page.getByTestId('v2-text-pt')).toContainText('Eu ainda moro aqui.')
+    const firstTextEn = (await page.getByTestId('v2-text-en').textContent())?.trim() || ''
+    const firstTextPt = (await page.getByTestId('v2-text-pt').textContent())?.trim() || ''
+    expect(firstTextEn.toLowerCase()).toContain('still')
+    expect(firstTextEn.split(/\s+/).length).toBeGreaterThan(2)
+    expect(firstTextPt.length).toBeGreaterThan(3)
     await page.getByTestId('v2-continue').click()
 
     // Exposure records evidence and advances.
@@ -72,6 +77,7 @@ test.describe('first still session', () => {
     const evidence = await readStore(page, 'learner_evidence_v2')
     expect(evidence.length).toBeGreaterThan(0)
     expect(evidence.every((e) => e.profile_id === PROFILE_A)).toBe(true)
+    expect(evidence.every((e) => e.target.target_id.includes(':still.'))).toBe(true)
 
     // Answer the next activity and observe feedback.
     const { recipe } = await answerCurrentV2Activity(page)
@@ -128,6 +134,10 @@ test.describe('persistence and idempotency', () => {
     await setPilotFlag(page, true)
     await openStillSession(page)
 
+    // Capture the actual authored introduction chosen for this seeded session.
+    await expect(page.getByTestId('v2-activity-exposure')).toBeVisible()
+    const firstExposureText = (await page.getByTestId('v2-text-en').textContent())?.trim() || ''
+
     // Complete exposure + one assessed interaction.
     await page.getByTestId('v2-continue').click()
     await continueFromFeedback(page)
@@ -141,12 +151,15 @@ test.describe('persistence and idempotency', () => {
     await openPackSession(page, 'still')
     await expect(page.locator('[data-testid^="v2-activity-"]')).toBeVisible()
 
-    // Not a brand-new learner anymore: the first activity of the new session
-    // is NOT the exposure of the very first exemplar again.
+    // Not a brand-new learner anymore: the new session must not replay the exact
+    // exposure interaction just completed. Introduction-group alternatives are
+    // allowed; repeating the same authored realization is not.
     const testid = await page.locator('[data-testid^="v2-activity-"]').getAttribute('data-testid')
-    const text = await page.getByTestId('v2-pilot-screen').textContent()
-    const isFirstExposureAgain = testid === 'v2-activity-exposure' && text.includes('I still live here.')
-    expect(isFirstExposureAgain).toBe(false)
+    const visibleText = await page.getByTestId('v2-text-en').count()
+      ? ((await page.getByTestId('v2-text-en').textContent())?.trim() || '')
+      : ''
+    expect(testid === 'v2-activity-exposure' && visibleText === firstExposureText).toBe(false)
+
     // Evidence from the previous session is still there.
     const after = await readStore(page, 'learner_evidence_v2')
     expect(after.length).toBeGreaterThanOrEqual(before.length)
