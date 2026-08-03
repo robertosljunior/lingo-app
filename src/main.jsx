@@ -15,6 +15,10 @@ import '@fontsource/baloo-2/latin-700.css'
 import '@fontsource/baloo-2/latin-800.css'
 
 import './styles/tokens.css'
+// V2.22-UX2-R: the Claude Design typefaces (Barlow / Barlow Condensed), taken
+// from the mockup bundle itself. Must come before v2-learner.css, which binds
+// them to the `--v2-font-*` roles.
+import './styles/v2-type.css'
 import './styles/v2-learner.css'
 import { AppProvider } from './store.jsx'
 import App from './App.jsx'

@@ -382,8 +382,9 @@ export function AppProvider({ children }) {
     setProfiles(await db.getProfiles())
   }, [activeProfile])
 
-  // Finish the first-run onboarding: name the active profile, store the mode
-  // (kids/adult) and starting level, and mark onboarding done.
+  // Finish the LEGACY (V1) first-run onboarding: name the active profile, store
+  // the audience mode (kids/adult) and the self-declared CEFR level, and mark
+  // onboarding done. Reached only when the learner explicitly opted out of V2.
   const completeOnboarding = useCallback(async ({ name, mode = 'adult', level = 'A1' } = {}) => {
     const clean = String(name || '').trim() || 'Você'
     await db.saveProfile({ profile_id: activeProfile, name: clean })
@@ -395,9 +396,32 @@ export function AppProvider({ children }) {
     setNeedsOnboarding(false)
   }, [activeProfile])
 
+  // Finish the V2 first-run (V2.22-UX2-R §4). The V2 product asks for a name and
+  // nothing else: no audience split, no CEFR self-assessment, no "which word do
+  // you want to study". What it does NOT write is the point of this function.
+  //
+  // `profile_mode` is written as the neutral marker `'v2'` purely because legacy
+  // surfaces read the key; every one of them tests `=== 'kids'` and otherwise
+  // takes the adult branch, so a V2 profile degrades correctly without the V2
+  // product ever having asked an audience question or claimed the learner is an
+  // adult. `level` is NOT written at all: `SETTINGS_DEFAULTS.level` already
+  // supplies 'B1' for the V1 generator that still reads it, so nothing is
+  // invented here and no CEFR value is ever presented as a fact about the
+  // learner. The V2 pedagogy lives in the Learner Model, which this does not
+  // touch — a fresh profile starts with no evidence, as it should.
+  const completeV2Onboarding = useCallback(async ({ name } = {}) => {
+    const clean = String(name || '').trim() || 'Você'
+    await db.saveProfile({ profile_id: activeProfile, name: clean })
+    await db.setSetting('profile_mode', 'v2')
+    await db.setSetting('onboarding_completed', true)
+    setSettings((s) => ({ ...s, profile_mode: 'v2', onboarding_completed: true }))
+    setProfiles(await db.getProfiles())
+    setNeedsOnboarding(false)
+  }, [activeProfile])
+
   const value = {
     ready, screen, params, settings,
-    needsOnboarding, completeOnboarding, renameActiveProfile,
+    needsOnboarding, completeOnboarding, completeV2Onboarding, renameActiveProfile,
     lessons, sessions, mistakes, skillProfiles, dueCount,
     profiles, activeProfile, switchProfile, addProfile, removeProfile,
     startReviewSession, startPracticeSession, generateAdaptiveLesson,

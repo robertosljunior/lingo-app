@@ -84,7 +84,7 @@ export default function V2LearnerHome() {
 
   return (
     <div className="phone v2lx" data-testid="v2lx-home" data-experience="v2" data-surface="home" data-home-version="ux2">
-      <div className="v2lx-scroll" style={{ paddingBottom: 100 }}>
+      <div className="v2lx-scroll v2lx-home-scroll">
         <div className="v2lx-content">
           <div className="v2lx-home-head">
             <div className="v2lx-home-brand"><span className="v2lx-home-logo" aria-hidden="true">A</span>AprendaIdioma</div>
@@ -153,8 +153,12 @@ export default function V2LearnerHome() {
             </section>
           )}
 
-          {/* C — Revisão e Explorar. Real study modes, clearly secondary (§9.C). */}
+          {/* C — Revisão e Explorar. Real study modes, clearly secondary (§9.C).
+              The kicker gives the block the same label treatment as the section
+              above it, so the page reads as one system rather than a hero
+              followed by two loose buttons (§9). */}
           <section className="v2lx-secondary" aria-label="Revisão e Explorar">
+            <h2 className="v2lx-section-title">Revisão e exploração</h2>
             <div className="v2lx-action-grid">
               {home.actions.map((a) => (
                 <button key={a.mode} type="button" className="v2lx-action-card" data-testid={`v2lxh-action-${a.mode}`} data-mode={a.mode} onClick={() => startMode(a.mode)}>

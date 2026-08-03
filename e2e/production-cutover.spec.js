@@ -12,6 +12,7 @@
 // (§20).
 import { test, expect } from '@playwright/test'
 import { enableTestHooks, gotoApp, attachErrorMonitor, readStore } from './helpers.js'
+import { completeV2FirstRun } from './v2-helpers.js'
 
 // V1 truths that must not leak into the V2 experience (§10).
 const V1_TRUTHS = [
@@ -22,14 +23,18 @@ const V1_TRUTHS = [
   'Temas, níveis A1–B2',
 ]
 
+// V2.22-UX2-R §3. This used to drive the LEGACY onboarding — and it passed,
+// against a plain production build, because the first-run branch in App.jsx ran
+// before the experience was resolved. That is precisely the defect this slice
+// fixes, so the helper now drives the V2 first-run and this spec is the proof:
+// if the cutover regressed, `v2lx-onboarding` would not exist here.
 async function onboard(page) {
   await gotoApp(page)
-  await page.getByTestId('onboarding-mode-adult').click()
-  await page.getByRole('button', { name: 'Continuar' }).click()
-  await page.getByTestId('onboarding-name').fill('Rob')
-  await page.getByRole('button', { name: 'Continuar' }).click()
-  await page.getByTestId('onboarding-level-A2').click()
-  await page.getByTestId('onboarding-finish').click()
+  await expect(page.getByTestId('v2lx-onboarding')).toBeVisible({ timeout: 20_000 })
+  // The legacy first-run must not be reachable in a plain production build.
+  await expect(page.getByTestId('onboarding-mode-kids')).toHaveCount(0)
+  await expect(page.getByText('Pra quem é esse aprendizado?')).toHaveCount(0)
+  await completeV2FirstRun(page, 'Rob')
 }
 
 async function expectV2Home(page) {

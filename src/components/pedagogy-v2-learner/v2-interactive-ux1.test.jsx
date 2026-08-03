@@ -276,6 +276,27 @@ describe('punctuation never wraps away from its slot (§26)', () => {
     expect(text).toContain('I have')
     expect(text).toContain(', but I will')
     expect(text.match(/but I will/g)).toHaveLength(1)
+    // …exactly ONCE. The comma used to be emitted twice — once glued inside the
+    // slot's hold and once again as the next chunk's leading punctuation — so
+    // the sentence read "… yet ,, but I will".
+    expect(text.match(/,/g)).toHaveLength(1)
+  })
+
+  it('a sentence-FINAL gap does not double its full stop (V2.22-UX2-R)', () => {
+    // `gapCount === chunks.length - 1`, so the leading punctuation of every
+    // chunk after the first was already rendered inside the preceding slot.
+    // Emitting it again printed "I haven't eaten yet .." on screen — reproduced
+    // in the production screenshot matrix, hence this regression.
+    const html = render(plan({
+      recipe: 'fixed_element_completion', text_en: "I haven't eaten yet.",
+      support: { features: ['word_bank'] },
+      presentation: { masked_text_source: { fixed_elements: ['yet'] } },
+    }))
+    // Scope to the SENTENCE: the PT translation rendered below it legitimately
+    // ends in its own full stop.
+    const sentence = /<div[^>]*data-testid="v2lx-sentence"[\s\S]*?<\/div>/.exec(html)[0]
+    const text = sentence.replace(/<[^>]+>/g, '')
+    expect(text.match(/\./g), `full stop rendered more than once in: ${text}`).toHaveLength(1)
   })
 })
 
