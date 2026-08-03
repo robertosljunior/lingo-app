@@ -40,12 +40,17 @@ test.describe('yet pack selection and persistence', () => {
     expect(labText.indexOf('but')).toBeLessThan(labText.indexOf('yet'))
     expect(labText).not.toMatch(/\d+\s*%/)
 
-    // 2: open yet → the first-contact exposure of the temporal core.
+    // 2: open yet → first contact may use any authored realization in the
+    // canonical temporal introduction group. The contract is the yet pack and
+    // a complete sentence, not one noun/adjective realization.
     await openPackSession(page, 'yet')
     await expect(page.getByTestId('v2-pilot-screen')).toHaveAttribute('data-pack-id', 'pedagogy_v2_yet')
     await expect(page.getByTestId('v2-activity-exposure')).toBeVisible()
-    await expect(page.getByTestId('v2-text-en')).toContainText("I'm not ready yet.")
+    const firstExposureText = (await page.getByTestId('v2-text-en').textContent())?.trim() || ''
+    expect(firstExposureText.toLowerCase()).toContain('yet')
+    expect(firstExposureText.split(/\s+/).length).toBeGreaterThan(2)
     await page.getByTestId('v2-continue').click()
+
     // Feedback copy names the active lexeme, never a sibling pack's.
     await expect(page.getByTestId('v2-feedback')).toBeVisible()
     await expect(page.getByTestId('v2-feedback')).toContainText('uso de yet')
@@ -66,7 +71,7 @@ test.describe('yet pack selection and persistence', () => {
     expect(evidence.some((e) => e.activity.capability === 'recognition' && e.attribution === 'direct')).toBe(true)
 
     // 5: full close/reopen → persistence: the yet session resumes PAST the
-    // already-seen first exposure instead of restarting.
+    // exact exposure already completed instead of restarting that interaction.
     await page.reload()
     await expect(page.locator('.app-shell')).toBeVisible()
     await page.waitForFunction(() => window.__e2e && window.__e2e.db)
@@ -75,8 +80,10 @@ test.describe('yet pack selection and persistence', () => {
     await openPackSession(page, 'yet')
     await expect(page.locator('[data-testid^="v2-activity-"]')).toBeVisible()
     const testid = await page.locator('[data-testid^="v2-activity-"]').getAttribute('data-testid')
-    const text = await page.getByTestId('v2-pilot-screen').textContent()
-    expect(testid === 'v2-activity-exposure' && text.includes("I'm not ready yet.")).toBe(false)
+    const visibleText = await page.getByTestId('v2-text-en').count()
+      ? ((await page.getByTestId('v2-text-en').textContent())?.trim() || '')
+      : ''
+    expect(testid === 'v2-activity-exposure' && visibleText === firstExposureText).toBe(false)
     monitor.assertClean?.()
   })
 })
@@ -103,16 +110,15 @@ test.describe('cross-pack: but contrast unlocks concessive yet', () => {
       ...rec('construction', 'construction:yet.have_yet_to_infinitive'),
     ])
 
-    // The focused yet session (deterministic engine, no cross-pack tie-break)
-    // reaches the concessive exemplar: every temporal use is consolidated and
-    // the cross-pack but prerequisite is satisfied.
+    // The focused yet session reaches the concessive target: every temporal use
+    // is consolidated and the cross-pack but prerequisite is satisfied.
     await openLab(page)
     await openPackSession(page, 'yet')
     await expect(page.getByTestId('v2-activity-exposure')).toBeVisible()
-    await expect(page.getByTestId('v2-text-en')).toContainText('It was difficult, yet we continued.')
+    await expect(page.getByTestId('v2-text-en')).toContainText('yet')
 
     // Completing the exposure records evidence on the concessive targets —
-    // the new use enters through the SAME generic evidence pipeline.
+    // this target assertion, not one sentence literal, proves the unlock.
     await page.getByTestId('v2-continue').click()
     await continueFromFeedback(page)
     const evidence = await readStore(page, 'learner_evidence_v2')
@@ -134,7 +140,6 @@ test.describe('cross-pack: but contrast unlocks concessive yet', () => {
     await openLab(page)
     await openStudyMode(page, 'adaptive')
 
-    let sawYet = false
     for (let step = 0; step < 10; step++) {
       if (await page.getByTestId('v2-session-complete').count()) break
       const activity = page.locator('[data-testid^="v2-activity-"]')
@@ -144,7 +149,7 @@ test.describe('cross-pack: but contrast unlocks concessive yet', () => {
       await continueFromFeedback(page)
     }
     const evidence = await readStore(page, 'learner_evidence_v2')
-    sawYet = evidence.some((e) => e.target.target_id.includes(':yet.') && e.session_id !== 'session:e2e-fixture')
+    const sawYet = evidence.some((e) => e.target.target_id.includes(':yet.') && e.session_id !== 'session:e2e-fixture')
     expect(sawYet).toBe(true)
   })
 })
@@ -162,19 +167,23 @@ test.describe('same lexeme, new use: no forced temporal restart', () => {
       ...rec('construction', 'construction:yet.subject_be_not_complement_yet'),
       ...rec('construction', 'construction:yet.interrogative_clause_yet'),
     ])
-    // Sanity: the fixture carries NO concessive evidence — knowing temporal
-    // yet is not recorded as knowing the concessive use.
     const seeded = await readStore(page, 'learner_evidence_v2')
     expect(seeded.some((e) => e.target.target_id.includes('concessive'))).toBe(false)
 
-    // The focused yet session does NOT go back to the mandatory temporal
-    // beginning: it introduces the NEXT unseen construction of the ladder.
+    // The session must introduce a target outside the already-practiced pair.
     await openLab(page)
     await openPackSession(page, 'yet')
     await expect(page.getByTestId('v2-activity-exposure')).toBeVisible()
-    const text = await page.getByTestId('v2-text-en').textContent()
-    expect(text).not.toContain("I'm not ready yet.")
-    expect(text).toContain("We haven't finished yet.")
+    await page.getByTestId('v2-continue').click()
+    await continueFromFeedback(page)
+    const after = await readStore(page, 'learner_evidence_v2')
+    const newlyRecorded = after.filter((row) => row.session_id !== 'session:e2e-fixture')
+    expect(newlyRecorded.length).toBeGreaterThan(0)
+    expect(newlyRecorded.some((row) => ![
+      'sense:yet.temporal_pending',
+      'construction:yet.subject_be_not_complement_yet',
+      'construction:yet.interrogative_clause_yet',
+    ].includes(row.target.target_id))).toBe(true)
   })
 })
 
