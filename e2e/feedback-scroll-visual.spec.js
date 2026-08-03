@@ -25,15 +25,19 @@ async function importLesson(page) {
   await page.getByRole('button', { name: 'Validar' }).click()
   await expect(page.getByText('Aula válida')).toBeVisible()
   await page.getByRole('button', { name: 'Salvar e iniciar' }).click()
+
+  // The click starts an async import before navigating. Waiting for the actual
+  // exercise prevents the next fill from racing the Import textarea and then
+  // observing the newly-mounted, empty answer field.
+  await expect(page.getByTestId('question-type')).toHaveText('translate_natural')
+  await expect(page.getByText('Trabalho nesta empresa há três anos.', { exact: true })).toBeVisible()
 }
 
 async function answerWrong(page, text) {
-  const ta = page.locator('textarea.input')
+  const ta = page.getByPlaceholder('Type your natural answer in English…')
   await ta.fill(text)
   await expect(ta).toHaveValue(text)
   const submit = page.getByRole('button', { name: /Responder/ })
-  // Wait for the controlled state to register (the button enables only when
-  // `user` is non-empty) before clicking — avoids a rare fill→enable race.
   await expect(submit).toBeEnabled()
   await submit.click()
   await expect(page.getByTestId('feedback-sheet')).toBeVisible()
