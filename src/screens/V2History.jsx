@@ -7,6 +7,7 @@ import {
   getDurableStudySessionsV2,
   getDurableLearnerInteractionsV2,
 } from '../lib/pedagogy-v2/durable-interaction-storage.js'
+import { reconcileInterruptedStudySessionsV2 } from '../lib/pedagogy-v2/durable-submission-recovery.js'
 import { buildCombinedV2History } from '../lib/pedagogy-v2/durable-history-presentation.js'
 
 const ACTIVITY_LABELS = Object.freeze({
@@ -65,13 +66,21 @@ export default function V2History() {
     let cancelled = false
     setRecords(null)
     setError(null)
-    Promise.all([
-      getDurableStudySessionsV2(activeProfile),
-      getDurableLearnerInteractionsV2(activeProfile),
-      db.getLearnerEvidenceV2(activeProfile),
-    ]).then(([sessions, interactions, evidence]) => {
-      if (!cancelled) setRecords({ sessions, interactions, evidence })
-    }).catch((e) => { if (!cancelled) setError(String(e?.message || e)) })
+    ;(async () => {
+      try {
+        // History is a recovery boundary too: after a reload the learner can
+        // inspect prior activity without starting another lesson first.
+        await reconcileInterruptedStudySessionsV2(activeProfile)
+        const [sessions, interactions, evidence] = await Promise.all([
+          getDurableStudySessionsV2(activeProfile),
+          getDurableLearnerInteractionsV2(activeProfile),
+          db.getLearnerEvidenceV2(activeProfile),
+        ])
+        if (!cancelled) setRecords({ sessions, interactions, evidence })
+      } catch (e) {
+        if (!cancelled) setError(String(e?.message || e))
+      }
+    })()
     return () => { cancelled = true }
   }, [db, activeProfile])
 
