@@ -50,7 +50,14 @@ test('critical V2 journey survives reload, profile switching and offline boot wi
   await finishFreshV2Onboarding(page, 'Rob')
 
   const initialSettings = await readStore(page, 'settings')
+  const initialProfiles = await readStore(page, 'profiles')
+  expect(initialProfiles).toHaveLength(1)
+  expect(initialProfiles[0]?.name).toBe('Rob')
+  // A fresh install may legitimately use DEFAULT_PROFILE without writing a
+  // redundant active_profile setting. Resolve the same truth the app resolves:
+  // explicit setting first, otherwise the one persisted profile.
   const originalProfileId = initialSettings.find((row) => row.key === 'active_profile')?.value
+    || initialProfiles[0]?.profile_id
   expect(originalProfileId).toBeTruthy()
 
   // Real Planner → Engine → renderer → Assessment → durable journal/evidence.
