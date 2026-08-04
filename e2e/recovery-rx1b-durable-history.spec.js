@@ -39,9 +39,8 @@ test('a real V2 answer survives navigation and appears with durable diagnosis, n
   await chooseWrongAuthoredOption(page)
   await expect(page.getByTestId('v2lx-feedback')).toBeVisible()
 
-  // Closing early intentionally leaves the durable session active. The answered
-  // interaction must still be visible; session finalization is not a prerequisite
-  // for history integrity.
+  // Explicit close now records a factual abandoned boundary. The assessed
+  // interaction and the prior observed exposure must both remain visible.
   await page.getByTestId('v2lx-close').click()
   await expect(page.getByTestId('v2lx-home')).toBeVisible()
 
@@ -50,9 +49,14 @@ test('a real V2 answer survives navigation and appears with durable diagnosis, n
   const session = page.getByTestId('v2-history-session')
   await expect(session).toHaveCount(1)
   await expect(session).toHaveAttribute('data-source', 'durable_journal')
-  await expect(session).toContainText('Sessão não finalizada')
+  await expect(session).toHaveAttribute('data-status', 'abandoned')
+  await expect(session).toContainText('Sessão encerrada antes do fim')
+  await expect(session).toContainText('1 exposição')
+  await expect(session).toContainText('1 resposta avaliada')
+  await expect(session).not.toContainText('resposta preservada sem avaliação')
   await session.getByRole('button').click()
   await expect(page.getByText('Alternativa escolhida registrada.')).toBeVisible()
+  await expect(page.getByTestId('v2-history-recovery-note')).toHaveCount(0)
   await expect(page.getByTestId('v2-history-limited')).toHaveCount(0)
   await expect(page.getByTestId('v2-history-diagnosis')).toBeVisible()
 
