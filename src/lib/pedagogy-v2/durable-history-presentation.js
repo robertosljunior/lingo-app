@@ -1,5 +1,7 @@
-// RX-1B — combine complete durable V2 records with the pre-RX-1A evidence
-// backfill. Durable interaction_ids always win, preventing duplicate activity.
+// RX-1B/RX-1C — combine complete durable V2 records with the pre-RX-1A
+// evidence backfill. Durable interaction_ids always win, preventing duplicate
+// activity. Interrupted write-ahead receipts become not_assessed durable rows:
+// their real response remains visible but never becomes a Review Point.
 
 import {
   buildV2HistoryFromEvidence,
@@ -70,6 +72,7 @@ function durableInteraction(record, exIndex) {
     modality: plan.modality || null,
     response: responseSummary(record),
     diagnosis: diagnosisSummary(record.assessment),
+    recovery_status: record.recovery_status || null,
     collection_id: record.collection_id || null,
     collection_title_pt: record.collection_title_pt || null,
     source: 'durable_journal',
