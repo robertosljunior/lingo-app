@@ -10,6 +10,7 @@ import {
 } from './learner-activity-history.js'
 
 const ASSESSED = new Set(['correct', 'partial', 'incorrect'])
+const HISTORY_OUTCOMES = new Set(['correct', 'partial', 'incorrect', 'observed', 'not_assessed'])
 
 function exemplarIndex(registry) {
   const out = new Map()
@@ -54,6 +55,7 @@ function diagnosisSummary(assessment) {
 function durableInteraction(record, exIndex) {
   const plan = record.plan || {}
   const authored = exIndex.get(plan.exemplar_id) || {}
+  const rawOutcome = record.assessment?.outcome
   return {
     interaction_id: record.interaction_id,
     session_id: record.lesson_session_id || plan.lesson_session_id || null,
@@ -64,8 +66,10 @@ function durableInteraction(record, exIndex) {
       text_en: plan.text_en || authored.text_en || '',
       text_pt: plan.text_pt || authored.text_pt || '',
     },
-    outcome: ASSESSED.has(record.assessment?.outcome) ? record.assessment.outcome : 'not_assessed',
-    has_direct_assessment: record.assessment?.status === 'assessed' && ASSESSED.has(record.assessment?.outcome),
+    // Exposure is a factual observed interaction, not an interrupted assessment.
+    // Only unknown/missing outcome values fall back to not_assessed.
+    outcome: HISTORY_OUTCOMES.has(rawOutcome) ? rawOutcome : 'not_assessed',
+    has_direct_assessment: record.assessment?.status === 'assessed' && ASSESSED.has(rawOutcome),
     activity_kind: plan.activity_kind || null,
     recipe: plan.recipe || null,
     capability: plan.capability || null,
