@@ -5,11 +5,18 @@
 // does not exist. Only the verifiable "Atividade N" is shown, plus a neutral,
 // non-growing divider.
 
-export default function V2LessonHeader({ focusLabel, activityNumber, onClose }) {
+export default function V2LessonHeader({ focusLabel, activityNumber, onClose, closeDisabled = false }) {
   return (
     <div className="v2lx-header">
       <div className="v2lx-headrow">
-        <button type="button" className="v2lx-iconbtn" data-testid="v2lx-close" aria-label="Voltar" onClick={onClose}>✕</button>
+        <button
+          type="button"
+          className="v2lx-iconbtn"
+          data-testid="v2lx-close"
+          aria-label={closeDisabled ? 'Aguarde a resposta ser salva' : 'Voltar'}
+          onClick={onClose}
+          disabled={closeDisabled}
+        >✕</button>
         {/* Neutral spacer — pushes the focus chip to the right. It carries no
             width-based progress meaning (V2.17-R §1). */}
         <div className="v2lx-head-spacer" aria-hidden="true" />
