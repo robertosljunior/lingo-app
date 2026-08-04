@@ -120,4 +120,39 @@ describe('RX-1B durable history presentation', () => {
     expect(points[0]).toMatchObject({ source: 'evidence_backfill', limited: true })
     expect(points[0].response).toBeUndefined()
   })
+
+  it('keeps a normal exposure observed and reserves not_assessed for an interrupted assessment', () => {
+    const exposure = durable({
+      interaction_id: 'i-exposure',
+      occurred_at: '2026-08-03T09:59:30.000Z',
+      plan: {
+        exemplar_id: 'exemplar:a',
+        text_en: 'I am still here.',
+        text_pt: 'Eu ainda estou aqui.',
+        activity_kind: 'exposure',
+        recipe: 'exposure',
+        capability: 'recognition',
+        modality: 'reading',
+      },
+      response: {
+        response_type: 'continue',
+        submitted_at: '2026-08-03T09:59:30.000Z',
+        payload: {},
+      },
+      assessment: { status: 'observed', outcome: 'observed', diagnosis: null },
+      evidence_ids: ['e-exposure'],
+    })
+    const interrupted = durable({
+      interaction_id: 'i-interrupted',
+      recovery_status: 'interrupted_before_assessment',
+      assessment: { status: 'not_assessed', outcome: 'not_assessed', diagnosis: null },
+      evidence_ids: [],
+    })
+
+    const history = buildCombinedV2History({ sessions: [session], interactions: [exposure, interrupted], evidence: [] }, registry)
+    expect(history).toHaveLength(1)
+    expect(history[0].outcomes).toMatchObject({ observed: 1, not_assessed: 1 })
+    expect(history[0].interactions.map((row) => row.outcome)).toEqual(['observed', 'not_assessed'])
+    expect(buildCombinedV2ReviewPoints({ interactions: [exposure, interrupted], evidence: [] }, registry)).toEqual([])
+  })
 })
