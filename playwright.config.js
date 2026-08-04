@@ -1,22 +1,19 @@
 // Playwright E2E configuration.
 //
-// The suite always runs against the production build served by `vite preview`
-// (never `vite dev`): the PWA service worker only behaves like production on
-// the built output. `webServer` rebuilds dist/ before serving so the tested
-// bundle always matches the sources.
+// The required suite always runs against the production build served by
+// `vite preview` (never `vite dev`). Visual evidence lives in
+// playwright.visual.config.js and is not counted as skipped functional tests.
 import { defineConfig, devices } from '@playwright/test'
 
 const PORT = 4173
-// V2.20-R §16: a SECOND server, serving a plain `vite build` (no dogfood env) —
-// the exact bundle GitHub Pages publishes. The production-cutover spec runs
-// against this one; a dogfood bundle could never prove the cutover.
 const PROD_PORT = 4174
 const PROD_DIST = 'dist-production-smoke'
+const VISUAL_SPEC = /screenshots\.spec\.js$/
 
 // Optional local browser override: some sandboxes ship a Chromium revision that
-// differs from the one @playwright/test pins. Set PW_CHROMIUM_EXECUTABLE to that
-// binary. CI leaves it unset and uses Playwright's managed browser.
+// differs from the one @playwright/test pins. CI leaves this unset.
 const executablePath = process.env.PW_CHROMIUM_EXECUTABLE || undefined
+const ci = !!process.env.CI
 
 export default defineConfig({
   testDir: './e2e',
@@ -24,12 +21,22 @@ export default defineConfig({
   timeout: 180_000,
   expect: { timeout: 15_000 },
   fullyParallel: true,
-  workers: process.env.CI ? 2 : 4,
-  retries: 1,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  workers: ci ? 2 : 4,
+  // A retry used to turn a real first-run failure into a green PR. CI now
+  // exposes every flake as a failure. One local retry remains convenient while
+  // debugging, but it is never accepted as remote evidence.
+  retries: ci ? 0 : 1,
+  forbidOnly: ci,
+  reporter: ci
+    ? [
+        ['list'],
+        ['html', { open: 'never' }],
+        ['junit', { outputFile: 'playwright-report/results.xml' }],
+      ]
+    : [['list'], ['html', { open: 'never' }]],
   use: {
     baseURL: `http://127.0.0.1:${PORT}/`,
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
@@ -37,19 +44,16 @@ export default defineConfig({
     {
       name: 'chromium-desktop',
       use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 800 }, launchOptions: { executablePath } },
-      // The real-model spec runs in its own serial project (see below); the
-      // mobile smoke runs in the mobile project.
-      testIgnore: [/mobile-smoke/, /real-model/, /production-cutover/],
+      testIgnore: [VISUAL_SPEC, /mobile-smoke/, /real-model/, /production-cutover/],
     },
     {
-      // Essential smoke on a mobile viewport; the full flows run on desktop.
       name: 'chromium-mobile',
       use: { ...devices['Pixel 7'], launchOptions: { executablePath } },
       testMatch: /mobile-smoke/,
     },
     {
-      // V2.20-R §16 — the production cutover proof: a plain production build,
-      // no VITE_V2_DOGFOOD, no flag. Opening it must land on V2.
+      // Plain production build, no dogfood flag. This is the exact cutover
+      // contract GitHub Pages must satisfy.
       name: 'production-build',
       testMatch: /production-cutover/,
       use: {
@@ -60,11 +64,9 @@ export default defineConfig({
       },
     },
     {
-      // Real Universal Sentence Encoder / structural-NLP specs. One file → one
-      // worker → strictly serial (test.describe.configure serial), and it
-      // `dependencies` on the parallel projects so it only starts once they are
-      // done — no CPU/memory contention from concurrent 25 MB model loads. Part
-      // of the normal `playwright test` command; real model, never skipped/mocked.
+      // Real Universal Sentence Encoder / structural-NLP specs run only after
+      // the parallel functional projects so model loading cannot contend with
+      // ordinary learner journeys.
       name: 'use-model',
       testMatch: /real-model/,
       fullyParallel: false,
@@ -76,15 +78,13 @@ export default defineConfig({
     {
       command: `VITE_V2_DOGFOOD=1 npm run build && npm run preview -- --host 127.0.0.1 --port ${PORT} --strictPort`,
       url: `http://127.0.0.1:${PORT}/`,
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: !ci,
       timeout: 240_000,
     },
     {
-      // Plain production build into its OWN outDir so it never races with the
-      // dogfood bundle in dist/ (which the repo also versions).
       command: `npx vite build --outDir ${PROD_DIST} --emptyOutDir && npx vite preview --outDir ${PROD_DIST} --host 127.0.0.1 --port ${PROD_PORT} --strictPort`,
       url: `http://127.0.0.1:${PROD_PORT}/`,
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: !ci,
       timeout: 240_000,
     },
   ],
