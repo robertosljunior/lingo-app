@@ -146,10 +146,14 @@ export async function recordDurableLearnerInteractionV2(input, opts = {}) {
   if (existingRow) {
     const existing = existingRow.value
     if (JSON.stringify(existing) !== JSON.stringify(interaction)) {
+      // `idb` exposes the aborted transaction as a rejected `tx.done` promise.
+      // Consume that rejection before surfacing the domain collision error so
+      // Vitest/browser runtimes never observe an unrelated unhandled AbortError.
       tx.abort()
+      await tx.done.catch(() => {})
       throw new Error(`DURABLE_INTERACTION_ID_COLLISION:${interaction.interaction_id}`)
     }
-    await tx.done.catch(() => {})
+    await tx.done
     return { recorded: false, interaction_id: interaction.interaction_id, evidence_recorded: [], evidence_skipped: interaction.evidence_ids }
   }
 
