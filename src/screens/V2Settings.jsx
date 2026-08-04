@@ -1,6 +1,12 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useApp } from '../store.jsx'
 import { BottomNav } from '../components/ui.jsx'
+import {
+  deleteProfileData,
+  exportProfileData,
+  importProfileData,
+  previewProfileDataDeletion,
+} from '../lib/profile-data-lifecycle.js'
 
 function Section({ title, children }) {
   return (
@@ -45,17 +51,41 @@ function ToggleRow({ label, description, checked, onChange, testid }) {
   )
 }
 
+function downloadJson(filename, value) {
+  const blob = new Blob([JSON.stringify(value, null, 2)], { type: 'application/json' })
+  const url = URL.createObjectURL(blob)
+  const anchor = document.createElement('a')
+  anchor.href = url
+  anchor.download = filename
+  document.body.appendChild(anchor)
+  anchor.click()
+  anchor.remove()
+  setTimeout(() => URL.revokeObjectURL(url), 0)
+}
+
+function safeFilename(value) {
+  return String(value || 'perfil').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-zA-Z0-9_-]+/g, '-').replace(/^-+|-+$/g, '').toLowerCase() || 'perfil'
+}
+
 export default function V2Settings() {
   const {
-    settings, updateSetting, setTab, SCREENS,
+    settings, updateSetting, setTab, SCREENS, db,
     profiles, activeProfile, switchProfile, addProfile, renameActiveProfile, showToast,
   } = useApp()
   const active = useMemo(
     () => profiles.find((profile) => profile.profile_id === activeProfile) || null,
     [profiles, activeProfile],
   )
+  const replacement = useMemo(
+    () => profiles.find((profile) => profile.profile_id !== activeProfile) || null,
+    [profiles, activeProfile],
+  )
   const [renameValue, setRenameValue] = useState(active?.name || '')
   const [newProfileName, setNewProfileName] = useState('')
+  const [dataBusy, setDataBusy] = useState(false)
+  const [dataMessage, setDataMessage] = useState('')
+  const importInput = useRef(null)
 
   useEffect(() => setRenameValue(active?.name || ''), [active?.profile_id, active?.name])
   if (!settings) return null
@@ -75,6 +105,64 @@ export default function V2Settings() {
     await addProfile(clean)
     setNewProfileName('')
     showToast('Perfil criado')
+  }
+
+  async function exportActiveProfile() {
+    if (!active || dataBusy) return
+    setDataBusy(true)
+    setDataMessage('')
+    try {
+      const bundle = await exportProfileData(active.profile_id)
+      const date = new Date().toISOString().slice(0, 10)
+      downloadJson(`aprendaidioma-${safeFilename(active.name)}-${date}.json`, bundle)
+      setDataMessage('Arquivo criado neste aparelho. Modelos, vozes e conteúdo global não fazem parte da exportação do perfil.')
+    } catch (error) {
+      setDataMessage(`Não foi possível exportar: ${String(error?.message || error)}`)
+    } finally {
+      setDataBusy(false)
+    }
+  }
+
+  async function restoreProfile(event) {
+    const file = event.target.files?.[0]
+    event.target.value = ''
+    if (!file || dataBusy) return
+    setDataBusy(true)
+    setDataMessage('')
+    try {
+      const bundle = JSON.parse(await file.text())
+      const result = await importProfileData(bundle)
+      await db.setSetting('active_profile', result.profile_id)
+      showToast('Perfil restaurado')
+      window.location.reload()
+    } catch (error) {
+      setDataMessage(`Nada foi alterado. O arquivo não pôde ser restaurado: ${String(error?.message || error)}`)
+    } finally {
+      setDataBusy(false)
+    }
+  }
+
+  async function deleteActiveProfile() {
+    if (!active || !replacement || dataBusy) return
+    const preview = await previewProfileDataDeletion(active.profile_id)
+    const typed = window.prompt(
+      `Para excluir o perfil “${active.name || 'Perfil'}” e todos os seus registros, digite exatamente o nome do perfil.\n\nModelos, vozes, conteúdo e preferências globais permanecerão neste aparelho.`,
+      '',
+    )
+    if (typed !== (active.name || '')) {
+      if (typed != null) setDataMessage('O nome não corresponde. Nenhum dado foi excluído.')
+      return
+    }
+    setDataBusy(true)
+    setDataMessage('')
+    try {
+      await deleteProfileData(active.profile_id, { replacementProfileId: replacement.profile_id })
+      showToast(`${preview.profile.name || 'Perfil'} excluído`)
+      window.location.reload()
+    } catch (error) {
+      setDataMessage(`Nenhum dado foi excluído: ${String(error?.message || error)}`)
+      setDataBusy(false)
+    }
   }
 
   return (
@@ -160,9 +248,45 @@ export default function V2Settings() {
             <button type="button" className="v2lx-textbtn" onClick={() => setTab(SCREENS.HISTORY)}>Abrir histórico</button>
             <button type="button" className="v2lx-textbtn" onClick={() => setTab(SCREENS.MISTAKES)}>Abrir revisão</button>
           </div>
-          <p className="muted" style={{ margin: 0, fontSize: 12, lineHeight: 1.45 }}>
-            Exclusão e exportação completas serão oferecidas somente quando puderem abranger todos os registros V2 com segurança.
-          </p>
+
+          <div style={{ borderTop: '1px solid var(--border)', paddingTop: 14, display: 'grid', gap: 10 }}>
+            <strong>Dados do perfil ativo</strong>
+            <p className="muted" style={{ margin: 0, fontSize: 13, lineHeight: 1.45 }}>
+              A exportação inclui respostas, histórico, revisão, progressão V2, sessões interrompidas e aulas privadas deste perfil. Conteúdo, modelos e vozes são compartilhados pelo aplicativo e não entram no arquivo.
+            </p>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <button data-testid="v2-export-profile" type="button" className="v2lx-textbtn" disabled={dataBusy || !active} onClick={exportActiveProfile}>
+                Exportar perfil
+              </button>
+              <button data-testid="v2-import-profile" type="button" className="v2lx-textbtn" disabled={dataBusy} onClick={() => importInput.current?.click()}>
+                Restaurar arquivo
+              </button>
+              <input ref={importInput} data-testid="v2-import-profile-input" type="file" accept="application/json,.json" hidden onChange={restoreProfile} />
+            </div>
+            <p className="muted" style={{ margin: 0, fontSize: 12, lineHeight: 1.45 }}>
+              A restauração nunca sobrescreve dados existentes. Qualquer conflito cancela a operação inteira.
+            </p>
+          </div>
+
+          <div style={{ borderTop: '1px solid var(--border)', paddingTop: 14, display: 'grid', gap: 8 }}>
+            <button
+              data-testid="v2-delete-profile"
+              type="button"
+              className="v2lx-textbtn"
+              disabled={dataBusy || !active || !replacement}
+              onClick={deleteActiveProfile}
+              style={{ color: 'var(--error, #b42318)', justifySelf: 'start' }}
+            >
+              Excluir perfil ativo
+            </button>
+            <p className="muted" style={{ margin: 0, fontSize: 12, lineHeight: 1.45 }}>
+              {replacement
+                ? 'Exclui permanentemente todos os registros V1 e V2 deste perfil. Os dados dos outros perfis e os recursos compartilhados permanecem.'
+                : 'O último perfil não pode ser excluído. Crie outro perfil primeiro.'}
+            </p>
+          </div>
+
+          {dataMessage && <p data-testid="v2-data-message" role="status" style={{ margin: 0, fontSize: 13, lineHeight: 1.45 }}>{dataMessage}</p>}
         </Section>
       </main>
       <BottomNav active="settings" onNavigate={setTab} />
