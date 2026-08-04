@@ -97,18 +97,22 @@ export default function V2LessonShell({
   const exposureIntent = useCallback(async () => { await onSubmit('continue', {}); await onAdvance() }, [onSubmit, onAdvance])
 
   const requestClose = useCallback(() => {
+    // The write-ahead receipt already protects reload/crash. Explicit close is
+    // locked only while assessment is in flight so an abandoned-session write
+    // cannot race the final atomic interaction transaction.
+    if (busy) return
     if (pending && typeof window !== 'undefined' && window.confirm) {
       // §32 — local-first: an unsubmitted answer is discarded after confirmation.
       if (!window.confirm('Sair agora? Sua resposta atual não será salva.')) return
     }
     onClose()
-  }, [pending, onClose])
+  }, [busy, pending, onClose])
 
   // ---- error -----------------------------------------------------------------
   if (status === 'error') {
     return (
       <div className="v2lx-shell v2lx" data-reduced-motion={reducedMotion || undefined} data-testid="v2lx-shell">
-        <V2LessonHeader focusLabel={presentation?.focus?.label} activityNumber={activityNumber} onClose={requestClose} />
+        <V2LessonHeader focusLabel={presentation?.focus?.label} activityNumber={activityNumber} onClose={requestClose} closeDisabled={busy} />
         <div className="v2lx-scroll"><div className="v2lx-content">
           <div className="v2lx-card" data-testid="v2lx-error">
             <div style={{ fontWeight: 900, fontSize: 17 }}>Algo deu errado</div>
@@ -136,7 +140,7 @@ export default function V2LessonShell({
 
   return (
     <div className="v2lx-shell v2lx" data-reduced-motion={reducedMotion || undefined} data-testid="v2lx-shell" data-status={status}>
-      <V2LessonHeader focusLabel={presentation?.focus?.label} activityNumber={activityNumber} onClose={requestClose} reducedMotion={reducedMotion} />
+      <V2LessonHeader focusLabel={presentation?.focus?.label} activityNumber={activityNumber} onClose={requestClose} closeDisabled={busy} reducedMotion={reducedMotion} />
 
       {contextBanner && (
         <div className="v2lx-context-strip">
