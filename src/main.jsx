@@ -20,6 +20,7 @@ import './styles/tokens.css'
 // them to the `--v2-font-*` roles.
 import './styles/v2-type.css'
 import './styles/v2-learner.css'
+import './styles/rx7-global-audio-cards.css'
 import { AppProvider } from './store.jsx'
 import App from './App.jsx'
 import { ErrorBoundary } from './components/error-boundary.jsx'

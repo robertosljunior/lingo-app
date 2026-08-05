@@ -1,0 +1,8 @@
+/* RX-7: global preparation/install cards sit outside the V2 screen tree.
+   Reserve the full BottomNav footprint plus the device safe area so longer
+   progress/fallback copy never intercepts learner navigation. */
+[data-testid="piper-preparation-card"],
+[data-testid="pwa-install-card"],
+.card[style*="position: fixed"][style*="bottom: calc(88px"][style*="z-index: 45"] {
+  bottom: calc(112px + env(safe-area-inset-bottom)) !important;
+}

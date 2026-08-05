@@ -10,17 +10,15 @@ import { deriveSupportTier } from './learner-evidence-contracts.js'
 
 export const ACTIVITY_RESPONSE_VERSION = 1
 
-// Typed response payloads. One per response contract the engine can emit.
 export const RESPONSE_TYPES = [
-  'continue', // exposure acknowledge
-  'single_choice', // meaning/listening recognition
-  'text', // completion, guided/free written production
-  'token_sequence', // word-order reconstruction
-  'speech_transcript', // spoken production via STT
-  'pronunciation_attempt', // pronunciation practice (observed-only in V2.4)
+  'continue',
+  'single_choice',
+  'text',
+  'token_sequence',
+  'speech_transcript',
+  'pronunciation_attempt',
 ]
 
-// recipe → the response types its renderer may legally submit.
 export const RESPONSE_TYPES_FOR_RECIPE = {
   exposure: ['continue'],
   meaning_recognition: ['single_choice'],
@@ -33,13 +31,6 @@ export const RESPONSE_TYPES_FOR_RECIPE = {
   pronunciation: ['pronunciation_attempt'],
 }
 
-// ---- deterministic identity -------------------------------------------------
-// interaction:<session>:<activity>:<attempt>
-// evidence:<interaction>:<target-type>:<sanitized-target-id>
-// Determinism requirements proven by tests: double-click and persistence retry
-// reuse the same ids; a new attempt changes them; planned-evidence order never
-// influences them.
-
 const sanitizeIdPart = (s) => String(s).replace(/[^a-zA-Z0-9:._-]/g, '_')
 
 export function buildInteractionIdV2({ sessionId, activityId, attemptNumber }) {
@@ -49,12 +40,6 @@ export function buildInteractionIdV2({ sessionId, activityId, attemptNumber }) {
 export function buildEvidenceIdV2(interactionId, target) {
   return `evidence:${interactionId}:${target.target_type}:${sanitizeIdPart(target.target_id)}`
 }
-
-// ---- real support usage -----------------------------------------------------
-// The plan declares BASELINE support (inherent to the activity shape); the
-// runtime tracks what the learner actually triggered on top of it. The final
-// event support is baseline ∪ used, with the tier always re-derived through
-// deriveSupportTier — never picked manually.
 
 export function createSupportRuntime(plan, { attemptNumber = 1 } = {}) {
   return {
@@ -67,7 +52,6 @@ export function createSupportRuntime(plan, { attemptNumber = 1 } = {}) {
   }
 }
 
-/** Record a learner-triggered support feature (pure — returns a new runtime). */
 export function useSupportFeature(runtime, feature) {
   const next = {
     ...runtime,
@@ -81,7 +65,6 @@ export function useSupportFeature(runtime, feature) {
   return next
 }
 
-/** Final structured support of the interaction: baseline + actually used. */
 export function finalizeSupportUsage(runtime) {
   const features = [...new Set([...runtime.baseline_features, ...runtime.used_features])].sort()
   const support = { features, hint_count: runtime.hint_count, attempt_number: runtime.attempt_number }
@@ -89,6 +72,29 @@ export function finalizeSupportUsage(runtime) {
 }
 
 // ---- response factory -------------------------------------------------------
+
+/**
+ * Returns the response types a concrete plan may accept. Production recipes
+ * have two legitimate renderers globally, but one materialized plan never has
+ * both: writing accepts `text`; speaking accepts `speech_transcript`.
+ *
+ * This helper is consumed by the runtime validator. The factory below remains
+ * deliberately permissive so tests and recovery code can construct malformed
+ * responses and prove that the boundary rejects them before assessment or
+ * persistence.
+ */
+export function allowedResponseTypesForPlanV2(plan) {
+  const declared = Array.isArray(plan?.response_contract?.accepted_response_types)
+    && plan.response_contract.accepted_response_types.length
+    ? plan.response_contract.accepted_response_types
+    : (RESPONSE_TYPES_FOR_RECIPE[plan?.recipe] || [])
+  let allowed = [...new Set(declared)]
+  if (['guided_production', 'free_production'].includes(plan?.recipe)) {
+    if (plan?.modality === 'speaking') allowed = allowed.filter((type) => type === 'speech_transcript')
+    if (plan?.modality === 'writing') allowed = allowed.filter((type) => type === 'text')
+  }
+  return allowed
+}
 
 export function buildActivityResponseV2({
   plan, responseType, payload, supportRuntime, submittedAt, capabilities = null,
@@ -111,18 +117,9 @@ export function buildActivityResponseV2({
 }
 
 // ---- shared presentation derivations ---------------------------------------
-// Pure helpers used by BOTH the renderer and the assessment adapter so what the
-// learner sees and what is graded can never diverge.
 
 const WORD_RE = (w) => new RegExp(`(^|\\W)(${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(?=\\W|$)`, 'i')
 
-/**
- * Fixed-element completion view of an exemplar: masks ONLY the authorized
- * fixed elements of the construction (plan.presentation.masked_text_source
- * .fixed_elements), never arbitrary tokens. Returns
- * { masked_text, expected_tokens } where expected_tokens are the surface forms
- * removed, in sentence order.
- */
 export function buildMaskedCompletion(plan) {
   const fixed = plan?.presentation?.masked_text_source?.fixed_elements || []
   let masked = plan.text_en
@@ -137,22 +134,14 @@ export function buildMaskedCompletion(plan) {
   return { masked_text: masked, expected_tokens: expected }
 }
 
-/** Canonical token sequence of a word-order plan (text_en_whitespace). */
 export function canonicalOrderTokens(plan) {
   return plan.text_en.trim().split(/\s+/)
 }
 
-/**
- * Initial presentation order of the token bank — comes from the PLAN
- * (presentation_order: 'lexicographic'), so the component never re-shuffles.
- * Contractions and punctuation are preserved verbatim.
- */
 export function presentedOrderTokens(plan) {
   const src = plan?.presentation?.token_source
   const order = src?.presentation_order || 'lexicographic'
   const tokens = canonicalOrderTokens(plan)
-  // Slice V2.19: the plan may carry the FINAL presented order (seeded shuffle);
-  // when it does, trust it verbatim so the renderer never re-shuffles.
   if (order === 'seeded_shuffle' && Array.isArray(src?.presented_tokens)) {
     return src.presented_tokens.slice()
   }
