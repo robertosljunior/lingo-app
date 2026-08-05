@@ -24,11 +24,30 @@
 // about which variant is chosen or what it is allowed to say. The variant, tone,
 // headline, body, issues and suggestions all still arrive fully decided from
 // buildLearnerPresentationV2.
+//
+// Issue #67: suggestions and the authored reference form must remain distinct.
+// A recoverable learner sentence is presented first; the activity model is an
+// optional example, never visually merged into the correction as though it were
+// the only expected answer.
 
 import { useEffect, useRef, useState } from 'react'
 
 const VARIANT_ICON = {
   correct: '✓', suggestion: '✦', partial: '◑', linguistic: '↺', semantic: '↔', unknown: '…',
+}
+
+export function adaptiveSuggestionLabel({ variant, index, authoredLabel }) {
+  if (variant === 'linguistic') return index === 0 ? 'Sua frase corrigida' : 'Exemplo para praticar'
+  if (variant === 'semantic' || variant === 'partial' || variant === 'incorrect_unspecified') {
+    return 'Exemplo para praticar'
+  }
+  return authoredLabel
+}
+
+export function adaptiveTargetFormLabel({ variant, hasSuggestions, authoredLabel }) {
+  if (hasSuggestions && variant === 'linguistic') return 'Outro exemplo válido'
+  if (hasSuggestions) return 'Forma de referência'
+  return authoredLabel
 }
 
 // A single linguistic issue: a short line. The span highlight is intentionally
@@ -42,16 +61,13 @@ function V2FeedbackIssue({ issue }) {
   )
 }
 
-// A naturalness suggestion / reference form block (§20/§25). It is a hairline
-// SECTION of the panel now, not a card inside a card. The label always comes
-// from the adapter — the component never writes "Forma correta" / "Resposta
-// correta" anywhere (§25, mandatory regression gate).
-function V2FeedbackSuggestion({ suggestion, targetForm }) {
+// A naturalness suggestion / corrected learner sentence (§20/§25). It is a
+// hairline SECTION of the panel, never combined with the authored target form.
+function V2FeedbackSuggestion({ suggestion, label }) {
   return (
     <div className="v2lx-fb-note" data-testid="v2lx-fb-suggestion">
-      <div className="v2lx-fb-note-label">{suggestion.label}</div>
-      {suggestion.text && <div className="v2lx-fb-body" style={{ marginBottom: targetForm ? 6 : 0 }}>{suggestion.text}</div>}
-      {targetForm && <div className="v2lx-fb-target">{targetForm.text_en}</div>}
+      <div className="v2lx-fb-note-label">{label}</div>
+      {suggestion.text && <div className="v2lx-fb-target">{suggestion.text}</div>}
     </div>
   )
 }
@@ -79,9 +95,10 @@ export default function V2FeedbackPanel({ feedback, reducedMotion = false }) {
   if (!feedback) return null
   const { visual_variant: variant, tone, headline, body, correct_points, issues, suggestions, target_form, target_form_note, detail } = feedback
   const icon = VARIANT_ICON[tone] || '…'
-  // The reference form shows with the first suggestion when one exists; if there
-  // is a target form but no suggestion, it becomes its own reference section.
-  const primarySuggestion = suggestions[0] || null
+  const hasSuggestions = suggestions.length > 0
+  const targetFormLabel = target_form
+    ? adaptiveTargetFormLabel({ variant, hasSuggestions, authoredLabel: target_form.label })
+    : null
 
   return (
     <div
@@ -110,14 +127,17 @@ export default function V2FeedbackPanel({ feedback, reducedMotion = false }) {
 
       {issues.map((it, i) => <V2FeedbackIssue key={i} issue={it} />)}
 
-      {primarySuggestion && <V2FeedbackSuggestion suggestion={primarySuggestion} targetForm={target_form} />}
-      {suggestions.slice(1).map((s, i) => <V2FeedbackSuggestion key={i} suggestion={s} targetForm={null} />)}
+      {suggestions.map((suggestion, index) => (
+        <V2FeedbackSuggestion
+          key={`${suggestion.text}-${index}`}
+          suggestion={suggestion}
+          label={adaptiveSuggestionLabel({ variant, index, authoredLabel: suggestion.label })}
+        />
+      ))}
 
-      {/* A standalone reference form (no suggestion). Label comes from the
-          adapter — "Uma forma possível" / "Forma de referência" (§25). */}
-      {!primarySuggestion && target_form && (
+      {target_form && (
         <div className="v2lx-fb-note" data-testid="v2lx-fb-target-form">
-          <div className="v2lx-fb-note-label">{target_form.label}</div>
+          <div className="v2lx-fb-note-label">{targetFormLabel}</div>
           <div className="v2lx-fb-target">{target_form.text_en}</div>
           {target_form.text_pt && <div className="v2lx-fb-body" style={{ color: 'var(--v2-muted)' }}>{target_form.text_pt}</div>}
         </div>
