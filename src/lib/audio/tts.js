@@ -1,13 +1,9 @@
 // tts.js — single TTS entry point for the app.
 //
-// Engine 1 (default): Web Speech API — on Android the voices come from the
-// system TTS engine (Google), including several English accents when the
-// corresponding voice packs are installed on the device.
-// Engine 2 (opt-in): Piper neural voices running locally (see tts-piper.js),
-// with automatic fallback to the system engine.
-//
-// The active configuration (accent, voice, rate, engine) is pushed in by the
-// store whenever settings load/change, so callers just speak(text).
+// Piper is preferred when its selected model is ready. Until then the app uses
+// a matching system voice and reports that fallback honestly. Every speak()
+// promise resolves only after playback ends, is interrupted or fails — never
+// merely because HTMLMediaElement.play() accepted the request.
 
 export const ACCENTS = [
   { code: 'en-US', label: 'Americano', flag: '🇺🇸' },
@@ -16,30 +12,31 @@ export const ACCENTS = [
   { code: 'en-IN', label: 'Indiano', flag: '🇮🇳' },
 ]
 
+export const PRIMARY_ENGLISH_PIPER_VOICE_ID = 'en_US-reza_ibrahim-medium'
 export const speechSupported = typeof window !== 'undefined' && 'speechSynthesis' in window
 
 const state = {
-  engine: 'system', // system | piper
+  engine: 'piper',
   accent: 'en-US',
-  voiceURI: '', // '' = auto-pick best for accent
+  voiceURI: '',
   rate: 0.95,
-  piperVoice: '',
+  piperVoice: PRIMARY_ENGLISH_PIPER_VOICE_ID,
   overrideVoiceId: '',
   overrideLang: '',
-  piper: null, // lazy handle to the piper engine module
+  piper: null,
 }
 
-export function configureTts({ tts_engine, tts_accent, tts_voice, tts_rate, piper_voice } = {}) {
+export function configureTts({ tts_engine, tts_accent, tts_voice, tts_rate, piper_voice, english_voice_id } = {}) {
   if (tts_engine) state.engine = tts_engine
   if (tts_accent) state.accent = tts_accent
   state.voiceURI = tts_voice ?? state.voiceURI
   if (tts_rate) state.rate = +tts_rate
-  if (piper_voice) state.piperVoice = piper_voice
+  const selectedPiperVoice = english_voice_id || piper_voice
+  if (selectedPiperVoice) state.piperVoice = selectedPiperVoice
   state.piper?.configurePiper?.({ piper_voice: state.piperVoice })
 }
 
-// ---------- voice enumeration (Web Speech) ----------
-// getVoices() is empty until the async `voiceschanged` event on some browsers.
+// ---------- voice enumeration ------------------------------------------------
 let cachedVoices = []
 let allVoices = []
 const voiceListeners = new Set()
@@ -48,25 +45,19 @@ function refreshVoices() {
   if (!speechSupported) return
   const all = window.speechSynthesis.getVoices() || []
   allVoices = all
-  // The English-only list drives the English accent picker in Settings.
   cachedVoices = all.filter((v) => (v.lang || '').toLowerCase().startsWith('en'))
   voiceListeners.forEach((cb) => cb(cachedVoices))
 }
 
-// Resolve a device (Web Speech) voice for an arbitrary language tag. Unlike
-// listVoices() this is NOT restricted to English — Portuguese explanations must
-// never be spoken with an English voice. Returns null when the device has no
-// voice for that language family (caller then reports audio unavailable rather
-// than silently substituting the wrong language).
 function langFamily(tag) { return String(tag || '').toLowerCase().replace('_', '-').split('-')[0] }
+
 export function resolveDeviceVoiceForLanguage(language) {
   if (!speechSupported) return null
-  refreshVoices() // always read the live list — voices can arrive after import
+  refreshVoices()
   const fam = langFamily(language)
   if (!fam) return null
   const matches = allVoices.filter((v) => langFamily(v.lang) === fam)
   if (!matches.length) return null
-  // Prefer an exact region match (pt-BR over pt-PT), then a local/offline voice.
   const region = String(language || '').toLowerCase().replace('_', '-')
   const exact = matches.filter((v) => (v.lang || '').toLowerCase().replace('_', '-') === region)
   const pool = exact.length ? exact : matches
@@ -78,7 +69,6 @@ if (speechSupported) {
   window.speechSynthesis.addEventListener?.('voiceschanged', refreshVoices)
 }
 
-// English voices available on this device, optionally narrowed to an accent.
 export function listVoices(accent = null) {
   if (cachedVoices.length === 0) refreshVoices()
   if (!accent) return cachedVoices
@@ -86,7 +76,6 @@ export function listVoices(accent = null) {
   return cachedVoices.filter((v) => (v.lang || '').toLowerCase().replace('_', '-') === code)
 }
 
-// Accents that actually have at least one installed voice.
 export function availableAccents() {
   return ACCENTS.filter((a) => listVoices(a.code).length > 0)
 }
@@ -104,43 +93,11 @@ function pickVoice() {
     if (chosen) return chosen
   }
   const forAccent = listVoices(state.accent)
-  if (forAccent.length) {
-    // Prefer local (offline) voices, then Google/network ones.
-    return forAccent.find((v) => v.localService) || forAccent[0]
-  }
+  if (forAccent.length) return forAccent.find((v) => v.localService) || forAccent[0]
   return voices[0] || null
 }
 
-// ---------- speak ----------
-// opts: { slow: bool (turtle mode), rate: override, interrupt: bool }
-export async function speak(text, opts = {}) {
-  const t = String(text || '').trim()
-  if (!t) return false
-
-  const prevOverride = { voice: state.overrideVoiceId, lang: state.overrideLang }
-  state.overrideVoiceId = opts.voiceId || ''
-  state.overrideLang = opts.language || ''
-  let fallbackOpts = opts
-  if (state.engine === 'piper' || opts.voiceId) {
-    const ok = await speakPiper(t, opts)
-    if (ok?.ok || ok === true) { state.overrideVoiceId = prevOverride.voice; state.overrideLang = prevOverride.lang; return { ok: true, engine: 'piper' } } // otherwise fall through to the system engine
-    fallbackOpts = { ...opts, requestedVoiceId: opts.requestedVoiceId || opts.voiceId || state.piperVoice, fallback_used: true, fallback_reason: 'MODEL_NOT_INSTALLED' }
-  }
-  const ok = speakSystem(t, fallbackOpts)
-  state.overrideVoiceId = prevOverride.voice; state.overrideLang = prevOverride.lang
-  if (!ok) {
-    // Record an honest unavailable event so observers never see a wrong-language
-    // substitution — effective voice/language stay empty, not the English voice.
-    recordTtsEvent({
-      requested_voice_id: opts.requestedVoiceId || opts.voiceId || opts.language || '',
-      effective_voice_id: '', language: opts.language || '', role: opts.role,
-      engine: 'system', rate: opts.rate ?? state.rate, fallback_used: true,
-      fallback_reason: 'NO_VOICE_FOR_LANGUAGE', model_state: 'unavailable',
-    })
-  }
-  return ok ? { ok: true, engine: 'system', fallback_used: !!fallbackOpts.fallback_used } : unavailable(opts)
-}
-
+// ---------- observable playback lifecycle -----------------------------------
 function recordTtsEvent(event) {
   if (typeof window === 'undefined' || !window.__LINGO_E2E__?.ttsEvents) return
   window.__LINGO_E2E__.ttsEvents.push({
@@ -153,63 +110,106 @@ function recordTtsEvent(event) {
     fallback_used: !!event.fallback_used,
     fallback_reason: event.fallback_reason || '',
     model_state: event.model_state || '',
+    playback_state: event.playback_state || '',
     timestamp: Date.now(),
   })
 }
 
-function speakSystem(text, opts = {}) {
-  try {
-    if (!speechSupported) return false
-    const reqLang = opts.language || state.overrideLang || ''
-    const fam = langFamily(reqLang)
-    // Non-English requests (Portuguese explanations) must use a matching-language
-    // device voice — never an English one. If the device has no such voice we
-    // report unavailable so the caller can surface "áudio indisponível".
-    if (fam && fam !== 'en') {
-      const nativeVoice = resolveDeviceVoiceForLanguage(reqLang)
-      if (!nativeVoice) return false
-      if (opts.interrupt !== false) window.speechSynthesis.cancel()
-      const u = new SpeechSynthesisUtterance(text)
-      u.voice = nativeVoice
-      u.lang = nativeVoice.lang
-      u.rate = opts.slow ? Math.max(0.5, (opts.rate ?? state.rate) * 0.6) : (opts.rate ?? state.rate)
-      window.speechSynthesis.speak(u)
+let activeSystemPlayback = null
+
+function finishSystemPlayback(playback, result) {
+  if (!playback || playback.settled) return
+  playback.settled = true
+  clearTimeout(playback.timeout)
+  playback.utterance.onend = null
+  playback.utterance.onerror = null
+  if (activeSystemPlayback === playback) activeSystemPlayback = null
+  playback.resolve(result)
+}
+
+function stopSystemPlayback() {
+  const playback = activeSystemPlayback
+  if (!playback) {
+    try { if (speechSupported) window.speechSynthesis.cancel() } catch { /* noop */ }
+    return false
+  }
+  try { window.speechSynthesis.cancel() } catch { /* noop */ }
+  finishSystemPlayback(playback, { ok: false, code: 'TTS_INTERRUPTED', engine: 'system', playback_state: 'interrupted' })
+  return true
+}
+
+async function speakSystem(text, opts = {}) {
+  if (!speechSupported) return null
+  const reqLang = opts.language || state.overrideLang || ''
+  const fam = langFamily(reqLang)
+  let voice = null
+  if (fam && fam !== 'en') {
+    voice = resolveDeviceVoiceForLanguage(reqLang)
+    if (!voice) return null
+  } else {
+    voice = pickVoice()
+  }
+
+  if (opts.interrupt !== false) stopSystemPlayback()
+  const utterance = new SpeechSynthesisUtterance(text)
+  if (voice) {
+    utterance.voice = voice
+    utterance.lang = voice.lang
+  } else {
+    utterance.lang = state.overrideLang || state.accent
+  }
+  const base = opts.rate ?? state.rate
+  utterance.rate = opts.slow ? Math.max(0.5, base * 0.6) : base
+
+  return await new Promise((resolve) => {
+    const playback = { utterance, resolve, settled: false, timeout: null }
+    activeSystemPlayback = playback
+    utterance.onend = () => {
       recordTtsEvent({
-        requested_voice_id: opts.requestedVoiceId || opts.voiceId || reqLang,
-        effective_voice_id: nativeVoice.voiceURI || nativeVoice.lang,
-        language: reqLang, role: opts.role, engine: 'system', rate: u.rate,
-        fallback_used: !!opts.fallback_used, fallback_reason: opts.fallback_reason || '',
-        model_state: 'system_native_voice_selected',
+        requested_voice_id: opts.requestedVoiceId || opts.voiceId || reqLang || state.accent,
+        effective_voice_id: voice?.voiceURI || utterance.lang || state.accent,
+        language: reqLang || utterance.lang || state.accent,
+        role: opts.role,
+        engine: 'system',
+        rate: utterance.rate,
+        fallback_used: !!opts.fallback_used,
+        fallback_reason: opts.fallback_reason || '',
+        model_state: voice ? 'system_voice_selected' : 'system_default',
+        playback_state: 'ended',
       })
-      return true
+      finishSystemPlayback(playback, {
+        ok: true,
+        engine: 'system',
+        fallback_used: !!opts.fallback_used,
+        playback_state: 'ended',
+      })
     }
-    if (opts.interrupt !== false) window.speechSynthesis.cancel()
-    const u = new SpeechSynthesisUtterance(text)
-    const voice = pickVoice()
-    if (voice) {
-      u.voice = voice
-      u.lang = voice.lang
-    } else {
-      u.lang = state.overrideLang || state.accent
-    }
-    const base = opts.rate ?? state.rate
-    u.rate = opts.slow ? Math.max(0.5, base * 0.6) : base
-    window.speechSynthesis.speak(u)
+    utterance.onerror = () => finishSystemPlayback(playback, { ok: false, code: 'SYSTEM_PLAYBACK_FAILED', engine: 'system' })
+    // Browser engines occasionally omit onend after an OS-level TTS failure.
+    // This is a failure timeout, not an optimistic completion signal.
+    playback.timeout = setTimeout(() => {
+      try { window.speechSynthesis.cancel() } catch { /* noop */ }
+      finishSystemPlayback(playback, { ok: false, code: 'SYSTEM_PLAYBACK_TIMEOUT', engine: 'system' })
+    }, Math.min(90000, Math.max(15000, text.length * 320)))
+
     recordTtsEvent({
-      requested_voice_id: opts.requestedVoiceId || opts.voiceId || state.overrideVoiceId || state.voiceURI || state.overrideLang || state.accent,
-      effective_voice_id: voice?.voiceURI || u.lang || state.accent,
-      language: opts.language || u.lang || state.accent,
+      requested_voice_id: opts.requestedVoiceId || opts.voiceId || reqLang || state.accent,
+      effective_voice_id: voice?.voiceURI || utterance.lang || state.accent,
+      language: reqLang || utterance.lang || state.accent,
       role: opts.role,
       engine: 'system',
-      rate: u.rate,
+      rate: utterance.rate,
       fallback_used: !!opts.fallback_used,
       fallback_reason: opts.fallback_reason || '',
       model_state: voice ? 'system_voice_selected' : 'system_default',
+      playback_state: 'playing',
     })
-    return true
-  } catch {
-    return false
-  }
+    try {
+      window.speechSynthesis.speak(utterance)
+    } catch {
+      finishSystemPlayback(playback, { ok: false, code: 'SYSTEM_PLAYBACK_FAILED', engine: 'system' })
+    }
+  })
 }
 
 async function speakPiper(text, opts) {
@@ -218,25 +218,81 @@ async function speakPiper(text, opts) {
       state.piper = await import('./tts-piper.js')
       state.piper.configurePiper?.({ piper_voice: state.piperVoice })
     }
-    return await state.piper.speak(text, { ...opts, rate: opts.rate ?? state.rate, accent: state.accent, voiceId: opts.voiceId || state.piperVoice, requestedVoiceId: opts.requestedVoiceId || opts.voiceId || state.piperVoice, language: opts.language || state.accent })
+    return await state.piper.speak(text, {
+      ...opts,
+      rate: opts.rate ?? state.rate,
+      accent: state.accent,
+      voiceId: opts.voiceId || state.piperVoice,
+      requestedVoiceId: opts.requestedVoiceId || opts.voiceId || state.piperVoice,
+      language: opts.language || state.accent,
+    })
   } catch {
-    return unavailable(opts)
+    return { ok: false, code: 'PIPER_BACKEND_UNAVAILABLE', engine: 'piper' }
   }
 }
-function unavailable(opts = {}) {
-  return { ok: false, code: 'TTS_BACKEND_UNAVAILABLE', requested_voice_id: opts.requestedVoiceId || opts.voiceId || state.piperVoice || state.voiceURI || state.accent, fallback_available: speechSupported, message: 'O áudio não está disponível agora. Você pode continuar a lição normalmente.' }
+
+function unavailable(opts = {}, code = 'TTS_BACKEND_UNAVAILABLE') {
+  return {
+    ok: false,
+    code,
+    requested_voice_id: opts.requestedVoiceId || opts.voiceId || state.piperVoice || state.voiceURI || state.accent,
+    fallback_available: speechSupported,
+    message: 'O áudio não está disponível agora. Você pode continuar a lição normalmente.',
+  }
+}
+
+// opts: { slow, rate, interrupt, voiceId, requestedVoiceId, language, role }
+export async function speak(text, opts = {}) {
+  const clean = String(text || '').trim()
+  if (!clean) return unavailable(opts, 'TTS_TEXT_EMPTY')
+
+  const previousOverride = { voice: state.overrideVoiceId, lang: state.overrideLang }
+  state.overrideVoiceId = opts.voiceId || ''
+  state.overrideLang = opts.language || ''
+  try {
+    let fallbackReason = ''
+    if (state.engine === 'piper' || opts.voiceId) {
+      const piperResult = await speakPiper(clean, opts)
+      if (piperResult?.ok) return piperResult
+      if (piperResult?.code === 'TTS_INTERRUPTED') return piperResult
+      fallbackReason = piperResult?.code || 'PIPER_BACKEND_UNAVAILABLE'
+    }
+
+    const systemResult = await speakSystem(clean, {
+      ...opts,
+      fallback_used: !!fallbackReason,
+      fallback_reason: fallbackReason,
+    })
+    if (systemResult) return systemResult
+
+    recordTtsEvent({
+      requested_voice_id: opts.requestedVoiceId || opts.voiceId || opts.language || '',
+      effective_voice_id: '',
+      language: opts.language || '',
+      role: opts.role,
+      engine: 'system',
+      rate: opts.rate ?? state.rate,
+      fallback_used: true,
+      fallback_reason: 'NO_VOICE_FOR_LANGUAGE',
+      model_state: 'unavailable',
+      playback_state: 'not_started',
+    })
+    return unavailable(opts, 'NO_VOICE_FOR_LANGUAGE')
+  } finally {
+    state.overrideVoiceId = previousOverride.voice
+    state.overrideLang = previousOverride.lang
+  }
 }
 
 export function stopSpeaking() {
   try {
-    if (speechSupported) window.speechSynthesis.cancel()
+    stopSystemPlayback()
     state.piper?.stop?.()
   } catch { /* noop */ }
 }
 
-// Speak a single word slightly slower — used by tap-a-word in diffs/answers.
 export function speakWord(word) {
   const clean = String(word || '').replace(/[.,!?;:"“”()\[\]]/g, '').trim()
-  if (!clean) return false
+  if (!clean) return Promise.resolve(unavailable({}, 'TTS_TEXT_EMPTY'))
   return speak(clean, { rate: Math.min(state.rate, 0.9) })
 }
