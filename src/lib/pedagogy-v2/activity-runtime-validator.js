@@ -4,7 +4,10 @@
 
 import { SUPPORT_FEATURES } from './learner-model-constants.js'
 import {
-  ACTIVITY_RESPONSE_VERSION, RESPONSE_TYPES, RESPONSE_TYPES_FOR_RECIPE,
+  ACTIVITY_RESPONSE_VERSION,
+  RESPONSE_TYPES,
+  RESPONSE_TYPES_FOR_RECIPE,
+  allowedResponseTypesForPlanV2,
   buildInteractionIdV2,
 } from './activity-runtime-contracts.js'
 
@@ -15,10 +18,40 @@ export function validateActivityResponseV2(response, plan) {
   if (!plan || typeof plan !== 'object') return { valid: false, errors: ['PLAN_REQUIRED'] }
 
   if (response.response_version !== ACTIVITY_RESPONSE_VERSION) err('RESPONSE_VERSION_INVALID', String(response.response_version))
-  if (!RESPONSE_TYPES.includes(response.response_type)) err('RESPONSE_TYPE_INVALID', response.response_type)
-  else if (!(RESPONSE_TYPES_FOR_RECIPE[plan.recipe] || []).includes(response.response_type)) {
-    err('RESPONSE_TYPE_INCOMPATIBLE', `${plan.recipe}+${response.response_type}`)
+  if (!RESPONSE_TYPES.includes(response.response_type)) {
+    err('RESPONSE_TYPE_INVALID', response.response_type)
+  } else {
+    const recipeTypes = RESPONSE_TYPES_FOR_RECIPE[plan.recipe] || []
+    if (!recipeTypes.includes(response.response_type)) {
+      err('RESPONSE_TYPE_INCOMPATIBLE', `${plan.recipe}+${response.response_type}`)
+    }
+
+    // An explicitly authored response contract is always binding. For legacy
+    // plans without accepted_response_types, the stricter modality check is
+    // activated when the real runtime capabilities are attached to the
+    // response. This preserves the factory's ability to create malformed test
+    // fixtures while protecting every learner submission at the boundary.
+    const hasExplicitAcceptedTypes = Array.isArray(plan.response_contract?.accepted_response_types)
+      && plan.response_contract.accepted_response_types.length > 0
+    const hasRuntimeCapabilities = response.runtime_capabilities
+      && typeof response.runtime_capabilities === 'object'
+    if ((hasExplicitAcceptedTypes || hasRuntimeCapabilities)
+      && !allowedResponseTypesForPlanV2(plan).includes(response.response_type)) {
+      err('RESPONSE_TYPE_MODALITY_INCOMPATIBLE', `${plan.modality}+${response.response_type}`)
+    }
+
+    const caps = hasRuntimeCapabilities ? response.runtime_capabilities : null
+    if (caps && response.response_type === 'speech_transcript' && caps.speech_input !== true) {
+      err('RESPONSE_RUNTIME_UNAVAILABLE', 'speech_input')
+    }
+    if (caps && response.response_type === 'text' && caps.text_input !== true) {
+      err('RESPONSE_RUNTIME_UNAVAILABLE', 'text_input')
+    }
+    if (caps && response.response_type === 'pronunciation_attempt' && caps.pronunciation_assessment !== true) {
+      err('RESPONSE_RUNTIME_UNAVAILABLE', 'pronunciation_assessment')
+    }
   }
+
   if (response.activity_id !== plan.activity_id) err('RESPONSE_ACTIVITY_MISMATCH', `${response.activity_id} != ${plan.activity_id}`)
   if (response.session_id !== plan.session_id) err('RESPONSE_SESSION_MISMATCH', String(response.session_id))
   if (!Number.isInteger(response.attempt_number) || response.attempt_number < 1) err('RESPONSE_ATTEMPT_INVALID', String(response.attempt_number))
