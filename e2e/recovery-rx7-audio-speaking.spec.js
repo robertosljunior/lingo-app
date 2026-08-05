@@ -101,7 +101,12 @@ test('the learner audio control stays busy until real speech onend, not merely s
 
   await expect(audio).toBeEnabled({ timeout: 3_000 })
   await expect(audio).not.toHaveAttribute('data-playing', 'true')
-  await expect(audio).toHaveAttribute('data-engine', 'system')
+  // Reza was requested but is intentionally absent in this deterministic
+  // browser fixture, so Web Speech is the honest fallback route.
+  await expect(audio).toHaveAttribute('data-engine', 'fallback')
+  const route = page.getByTestId('v2lx-audio-route')
+  await expect(route).toHaveAttribute('data-route', 'fallback')
+  await expect(route).toContainText('voz do aparelho enquanto a voz neural não está pronta')
   expect(await page.evaluate(() => window.__LINGO_E2E__?.rx7Spoken)).toBe(1)
   monitor.assertClean()
 })
