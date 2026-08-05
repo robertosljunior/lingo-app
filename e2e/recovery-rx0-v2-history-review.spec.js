@@ -74,7 +74,8 @@ test('V2 history and review points recover persisted evidence without V1 scores 
   await expect(page.getByTestId('v2-history')).not.toContainText(/A1|A2|B1|B2/)
 
   await page.getByTestId('v2-history-session').getByRole('button').click()
-  await expect(page.getByTestId('v2-history-session')).toContainText('Este registro foi recuperado')
+  await expect(page.getByTestId('v2-history-limited')).toBeVisible()
+  await expect(page.getByTestId('v2-history-limited')).toContainText('Este registro é anterior ao histórico completo')
 
   await page.getByRole('button', { name: 'Erros' }).click()
   await expect(page.getByTestId('v2-review-points')).toBeVisible()

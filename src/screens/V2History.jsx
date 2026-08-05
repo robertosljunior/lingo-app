@@ -3,7 +3,11 @@ import { useApp } from '../store.jsx'
 import { BottomNav } from '../components/ui.jsx'
 import { I } from '../components/icons.jsx'
 import { loadPedagogyV2Registry } from '../lib/pedagogy-v2/registry.js'
-import { buildV2HistoryFromEvidence } from '../lib/pedagogy-v2/learner-activity-history.js'
+import {
+  getDurableStudySessionsV2,
+  getDurableLearnerInteractionsV2,
+} from '../lib/pedagogy-v2/durable-interaction-storage.js'
+import { buildCombinedV2History } from '../lib/pedagogy-v2/durable-history-presentation.js'
 
 const ACTIVITY_LABELS = Object.freeze({
   exposure: 'Leitura e observação',
@@ -33,26 +37,37 @@ function outcomeText(outcomes) {
   return parts.join(' · ') || 'Atividade registrada'
 }
 
+function outcomeLabel(outcome) {
+  if (outcome === 'partial') return 'resposta parcial'
+  if (outcome === 'incorrect') return 'vale tentar de novo'
+  if (outcome === 'correct') return 'resposta alinhada'
+  return 'observada'
+}
+
 export default function V2History() {
   const { db, activeProfile, setTab, SCREENS } = useApp()
   const registry = useMemo(() => loadPedagogyV2Registry(), [])
-  const [events, setEvents] = useState(null)
+  const [records, setRecords] = useState(null)
   const [error, setError] = useState(null)
   const [openSession, setOpenSession] = useState(null)
 
   useEffect(() => {
     let cancelled = false
-    setEvents(null)
+    setRecords(null)
     setError(null)
-    db.getLearnerEvidenceV2(activeProfile)
-      .then((rows) => { if (!cancelled) setEvents(rows || []) })
-      .catch((e) => { if (!cancelled) setError(String(e?.message || e)) })
+    Promise.all([
+      getDurableStudySessionsV2(activeProfile),
+      getDurableLearnerInteractionsV2(activeProfile),
+      db.getLearnerEvidenceV2(activeProfile),
+    ]).then(([sessions, interactions, evidence]) => {
+      if (!cancelled) setRecords({ sessions, interactions, evidence })
+    }).catch((e) => { if (!cancelled) setError(String(e?.message || e)) })
     return () => { cancelled = true }
   }, [db, activeProfile])
 
   const sessions = useMemo(
-    () => events == null ? [] : buildV2HistoryFromEvidence(events, registry),
-    [events, registry],
+    () => records == null ? [] : buildCombinedV2History(records, registry),
+    [records, registry],
   )
 
   return (
@@ -63,10 +78,8 @@ export default function V2History() {
       </header>
 
       <main className="screen-body" style={{ paddingTop: 12, paddingBottom: 112, gap: 12 }}>
-        {events == null && !error && (
-          <div className="v2lx-card" data-testid="v2-history-loading">
-            <p style={{ margin: 0 }}>Carregando suas práticas…</p>
-          </div>
+        {records == null && !error && (
+          <div className="v2lx-card" data-testid="v2-history-loading">Carregando suas práticas…</div>
         )}
 
         {error && (
@@ -76,7 +89,7 @@ export default function V2History() {
           </div>
         )}
 
-        {events != null && !error && sessions.length === 0 && (
+        {records != null && !error && sessions.length === 0 && (
           <section style={{ flex: 1, display: 'grid', placeItems: 'center', textAlign: 'center', padding: '40px 20px' }} data-testid="v2-history-empty">
             <div>
               <div style={{ width: 72, height: 72, borderRadius: 24, background: 'var(--v2-surface-2, var(--bg-alt))', display: 'grid', placeItems: 'center', margin: '0 auto 18px' }}>
@@ -91,8 +104,9 @@ export default function V2History() {
 
         {sessions.map((session) => {
           const expanded = openSession === session.session_id
+          const title = session.collection_title_pt || 'Prática geral'
           return (
-            <section key={session.session_id} className="v2lx-card" data-testid="v2-history-session" style={{ padding: 0, overflow: 'hidden' }}>
+            <section key={session.session_id} className="v2lx-card" data-testid="v2-history-session" data-source={session.source} style={{ padding: 0, overflow: 'hidden' }}>
               <button
                 type="button"
                 onClick={() => setOpenSession(expanded ? null : session.session_id)}
@@ -104,9 +118,10 @@ export default function V2History() {
                     <I.history s={20} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 800, fontSize: 16 }}>Prática registrada</div>
-                    <div className="muted" style={{ fontSize: 12, marginTop: 3 }}>{formatDate(session.ended_at)}</div>
+                    <div style={{ fontWeight: 800, fontSize: 16 }}>{title}</div>
+                    <div className="muted" style={{ fontSize: 12, marginTop: 3 }}>{formatDate(session.last_activity_at || session.ended_at)}</div>
                     <div style={{ fontSize: 13, marginTop: 9 }}>{session.interaction_count} {session.interaction_count === 1 ? 'atividade' : 'atividades'} · {outcomeText(session.outcomes)}</div>
+                    {session.status === 'active' && <div className="muted" style={{ fontSize: 11, marginTop: 5 }}>Sessão não finalizada</div>}
                   </div>
                   <span aria-hidden="true" style={{ transform: expanded ? 'rotate(90deg)' : 'none', transition: 'transform 160ms ease' }}><I.chevR s={18} /></span>
                 </div>
@@ -114,16 +129,27 @@ export default function V2History() {
 
               {expanded && (
                 <div style={{ borderTop: '1px solid var(--border)', padding: '4px 18px 18px' }}>
-                  <p className="muted" style={{ fontSize: 12, lineHeight: 1.5 }}>
-                    Este registro foi recuperado das evidências V2 já salvas. Ele prova quando e como você praticou, mas as versões antigas ainda não guardavam o texto digitado nem o contexto escolhido.
-                  </p>
+                  {session.limited && (
+                    <p className="muted" style={{ fontSize: 12, lineHeight: 1.5 }} data-testid="v2-history-limited">
+                      Este registro é anterior ao histórico completo. Ele preserva a atividade e o resultado, mas não contém sua resposta nem o diagnóstico exibido naquele momento.
+                    </p>
+                  )}
                   <div style={{ display: 'grid', gap: 10 }}>
                     {session.interactions.map((interaction) => (
-                      <div key={interaction.interaction_id} style={{ paddingTop: 10, borderTop: '1px solid var(--border)' }}>
+                      <div key={interaction.interaction_id} style={{ paddingTop: 10, borderTop: '1px solid var(--border)' }} data-testid="v2-history-interaction">
                         <div style={{ fontWeight: 750, lineHeight: 1.35 }}>{interaction.exemplar.text_en || 'Frase registrada'}</div>
                         {interaction.exemplar.text_pt && <div className="muted" style={{ fontSize: 13, marginTop: 3 }}>{interaction.exemplar.text_pt}</div>}
+                        {interaction.response?.text && (
+                          <div style={{ fontSize: 13, marginTop: 8 }} data-testid="v2-history-response"><strong>Sua resposta:</strong> {interaction.response.text}</div>
+                        )}
+                        {interaction.response?.kind === 'choice' && !interaction.response.text && (
+                          <div className="muted" style={{ fontSize: 12, marginTop: 8 }}>Alternativa escolhida registrada.</div>
+                        )}
+                        {interaction.diagnosis?.summary && (
+                          <div className="muted" style={{ fontSize: 12, lineHeight: 1.45, marginTop: 6 }} data-testid="v2-history-diagnosis">{interaction.diagnosis.summary}</div>
+                        )}
                         <div className="muted" style={{ fontSize: 11, marginTop: 7 }}>
-                          {ACTIVITY_LABELS[interaction.activity_kind] || 'Atividade V2'} · {interaction.outcome === 'partial' ? 'resposta parcial' : interaction.outcome === 'incorrect' ? 'precisa de nova tentativa' : interaction.outcome === 'correct' ? 'resposta alinhada' : 'observada'}
+                          {ACTIVITY_LABELS[interaction.activity_kind] || 'Atividade V2'} · {outcomeLabel(interaction.outcome)}
                         </div>
                       </div>
                     ))}
