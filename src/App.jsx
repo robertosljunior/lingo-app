@@ -8,10 +8,10 @@ import Review from './screens/Review.jsx'
 import Export from './screens/Export.jsx'
 import History from './screens/History.jsx'
 import Mistakes from './screens/Mistakes.jsx'
-import Settings from './screens/Settings.jsx'
+import SettingsRouter from './screens/SettingsRouter.jsx'
 import TrainingHub from './screens/TrainingHub.jsx'
 import Stories from './screens/Stories.jsx'
-import Talk from './screens/Talk.jsx'
+import TalkRouter from './screens/TalkRouter.jsx'
 import LegacyOnboarding from './screens/LegacyOnboarding.jsx'
 import V2Onboarding from './screens/V2Onboarding.jsx'
 import PedagogyV2Lab from './screens/PedagogyV2Lab.jsx'
@@ -30,10 +30,10 @@ const SCREEN_COMPONENTS = {
   [SCREENS.EXPORT]: Export,
   [SCREENS.HISTORY]: History,
   [SCREENS.MISTAKES]: Mistakes,
-  [SCREENS.SETTINGS]: Settings,
+  [SCREENS.SETTINGS]: SettingsRouter,
   [SCREENS.TRAINING]: TrainingHub,
   [SCREENS.STORIES]: Stories,
-  [SCREENS.TALK]: Talk,
+  [SCREENS.TALK]: TalkRouter,
   [SCREENS.PEDAGOGY_V2_PILOT]: PedagogyV2Lab,
   [SCREENS.PEDAGOGY_V2_INSPECTOR]: PedagogyV2Inspector,
   [SCREENS.PEDAGOGY_V2_PLAYGROUND]: PedagogyV2Playground,

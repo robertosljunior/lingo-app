@@ -18,28 +18,32 @@ export function AppHeader({ title, onBack, right = null }) {
 
 export function BottomNav({ active, onNavigate }) {
   const { settings } = useApp()
-  // V2.22-UX2-R §0/§5 — "Kids" must not appear anywhere in V2. A profile created
-  // before the cutover can still carry `profile_mode: 'kids'` in storage, and
-  // that value alone used to swap a V2 learner's Histórico tab for Histórias.
-  // The audience split belongs to the legacy product, so it is resolved away
-  // here rather than by rewriting the learner's stored data.
-  const kids = settings?.profile_mode === 'kids' && !learnerExperienceV2Enabled(settings)
-  // Kids get a Stories tab (in place of History); everyone gets Talk-with-Bob.
-  const items = kids
+  const v2 = learnerExperienceV2Enabled(settings)
+  // V2 surfaces must form one product. Talk-with-Bob and Stories remain V1-only;
+  // V2 exposes only destinations with a real V2 implementation and data source.
+  const kids = settings?.profile_mode === 'kids' && !v2
+  const items = v2
     ? [
         { k: 'home', label: 'Início', icon: I.home },
-        { k: 'stories', label: 'Histórias', icon: I.spark },
-        { k: 'talk', label: 'Fale', icon: I.mic },
-        { k: 'mistakes', label: 'Erros', icon: I.mistakes },
-        { k: 'settings', label: 'Ajustes', icon: I.settings },
-      ]
-    : [
-        { k: 'home', label: 'Início', icon: I.home },
-        { k: 'talk', label: 'Fale', icon: I.mic },
         { k: 'history', label: 'Histórico', icon: I.history },
         { k: 'mistakes', label: 'Erros', icon: I.mistakes },
         { k: 'settings', label: 'Ajustes', icon: I.settings },
       ]
+    : kids
+      ? [
+          { k: 'home', label: 'Início', icon: I.home },
+          { k: 'stories', label: 'Histórias', icon: I.spark },
+          { k: 'talk', label: 'Fale', icon: I.mic },
+          { k: 'mistakes', label: 'Erros', icon: I.mistakes },
+          { k: 'settings', label: 'Ajustes', icon: I.settings },
+        ]
+      : [
+          { k: 'home', label: 'Início', icon: I.home },
+          { k: 'talk', label: 'Fale', icon: I.mic },
+          { k: 'history', label: 'Histórico', icon: I.history },
+          { k: 'mistakes', label: 'Erros', icon: I.mistakes },
+          { k: 'settings', label: 'Ajustes', icon: I.settings },
+        ]
   const Item = (it) => (
     <button key={it.k} className={`nav-item ${active === it.k ? 'active' : ''}`}
       onClick={() => onNavigate(it.k)} aria-current={active === it.k ? 'page' : undefined}>
@@ -48,7 +52,7 @@ export function BottomNav({ active, onNavigate }) {
     </button>
   )
   return (
-    <nav className="bottom-nav" aria-label="Navegação principal">
+    <nav className="bottom-nav" aria-label="Navegação principal" data-experience={v2 ? 'v2' : 'v1'}>
       {items.map(Item)}
     </nav>
   )
