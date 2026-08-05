@@ -15,6 +15,8 @@ export const SEVEN_TYPES = [
 ]
 
 // ---------- fixture rows ----------
+// Granular profile required by the slice spec (PARTE 4). The rows carry the
+// full aggregate shape the ranking/planner reads.
 function skillRow(profile_id, skill_id, parent_skill_id, category, label_pt, patch) {
   const now = Date.now()
   return {
@@ -65,20 +67,22 @@ export function profileASkillRows() {
 // ---------- app boot / fixtures ----------
 // Flags the tab for the app's test hooks (public storage layer on
 // window.__e2e, optional deterministic generation seed).
-export async function enableTestHooks(context, { seed = null, pwaInstall = null, voicePreparation = null } = {}) {
-  await context.addInitScript(({ seed, pwaInstall, voicePreparation }) => {
+export async function enableTestHooks(context, { seed = null, pwaInstall = null } = {}) {
+  await context.addInitScript(({ seed, pwaInstall }) => {
     sessionStorage.setItem('e2e:enabled', '1')
     if (seed) sessionStorage.setItem('e2e:generation-seed', seed)
     else sessionStorage.removeItem('e2e:generation-seed')
+    // Pre-seed the deterministic PWA state BEFORE app boot; main.jsx merges the
+    // rest of __LINGO_E2E__ without clobbering this. Defaults to 'disabled' when
+    // a spec does not care about the install prompt.
     window.__LINGO_E2E__ = window.__LINGO_E2E__ || {}
     window.__LINGO_E2E__.pwaInstall = pwaInstall || { mode: 'disabled', promptOutcome: null }
-    // Ordinary specs leave this unset; the production preparation controller
-    // then takes its E2E-safe disabled path and never downloads a 60 MB model.
-    // RX-7 specs opt into deterministic preparing/ready/failure states.
-    if (voicePreparation) window.__LINGO_E2E__.voicePreparation = voicePreparation
-  }, { seed, pwaInstall, voicePreparation })
+  }, { seed, pwaInstall })
 }
 
+// Re-pin the PWA install state for a subsequent navigation/reload. Used by the
+// PWA-specific spec to switch modes (eligible/standalone/manual/disabled) and to
+// set the simulated prompt outcome.
 export async function setPwaInstallState(context, pwaInstall) {
   await context.addInitScript((pwaInstall) => {
     window.__LINGO_E2E__ = window.__LINGO_E2E__ || {}
@@ -92,6 +96,9 @@ export async function gotoApp(page) {
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
 }
 
+// Boots the app once (creating the v3 schema), injects profile A/B and the
+// deterministic granular profile straight into the real IndexedDB, then
+// reloads so the app starts as `active` profile.
 export async function seedFixtures(page, { active = PROFILE_A } = {}) {
   await gotoApp(page)
   await page.evaluate(async ({ active, rows, A, B }) => {
@@ -108,10 +115,19 @@ export async function seedFixtures(page, { active = PROFILE_A } = {}) {
     await put('profiles', { profile_id: B, name: 'Perfil B', created_at: Date.now() - 5_000 })
     for (const row of rows) await put('skill_profiles', row)
     await put('settings', { key: 'active_profile', value: active })
+    // The seeded profiles already exist, so skip the first-run onboarding.
     await put('settings', { key: 'onboarding_completed', value: true })
+    // Mark the profiles as already rebuilt so boot does not wipe the fixture.
     await put('settings', { key: `skill_profile_rebuild_version:${A}`, value: '1' })
     await put('settings', { key: `skill_profile_rebuild_version:${B}`, value: '1' })
     await put('settings', { key: 'level', value: 'B1' })
+    // Slice V2.20 §2: the E2E bundle is a DOGFOOD build, so an *unset*
+    // learner-experience flag now resolves to V2. Every pre-existing spec was
+    // written against the V1 Training hub, so the fixture pins V1 EXPLICITLY —
+    // each suite therefore states which product it is testing instead of
+    // inheriting an environment default. Specs that want V2 call
+    // setLearnerFlag(page, true); the dogfood specs call clearExperienceChoice()
+    // to remove this pin and assert the environment default itself.
     await put('settings', { key: 'v2_learner_experience_enabled', value: false })
     db.close()
   }, { active, rows: profileASkillRows(), A: PROFILE_A, B: PROFILE_B })
@@ -120,6 +136,10 @@ export async function seedFixtures(page, { active = PROFILE_A } = {}) {
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
 }
 
+// Switches the active profile. Profile switching is no longer a user-facing
+// feature (the app is single-user after the Bob redesign), so this drives the
+// active profile through the real storage layer + reload — which is exactly how
+// the app selects a profile at boot. The data-isolation property still holds.
 export async function switchProfileViaUi(page, name) {
   const idByName = { 'Perfil A': PROFILE_A, 'Perfil B': PROFILE_B }
   const profileId = idByName[name] || name
@@ -127,6 +147,8 @@ export async function switchProfileViaUi(page, name) {
   await page.reload()
   await expect(page.locator('.app-shell')).toBeVisible()
   await page.waitForFunction(() => window.__e2e && window.__e2e.db)
+  // Boot may restore a persisted adaptive session and open the exercise; leave it
+  // so the caller lands on Home.
   const exitBtn = page.getByRole('button', { name: 'Sair da aula' })
   if (await exitBtn.count()) await exitBtn.click()
   await expect(page.getByTestId('open-training-hub')).toBeVisible()
@@ -156,23 +178,149 @@ export function dbInfo(page) {
   })
 }
 
-export async function readStore(page, storeName) {
-  return page.evaluate(async (name) => {
-    const db = await new Promise((resolve, reject) => {
-      const request = indexedDB.open('app-idiomas')
-      request.onsuccess = () => resolve(request.result)
-      request.onerror = () => reject(request.error)
+export function readStore(page, storeName) {
+  return page.evaluate(async (storeName) => {
+    const db = await new Promise((res, rej) => {
+      const r = indexedDB.open('app-idiomas')
+      r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error)
     })
-    const rows = await new Promise((resolve, reject) => {
-      const request = db.transaction(name).objectStore(name).getAll()
-      request.onsuccess = () => resolve(request.result)
-      request.onerror = () => reject(request.error)
+    const rows = await new Promise((res, rej) => {
+      const rq = db.transaction(storeName).objectStore(storeName).getAll()
+      rq.onsuccess = () => res(rq.result); rq.onerror = () => rej(rq.error)
     })
     db.close()
     return rows
   }, storeName)
 }
 
-// The remainder of this helper intentionally stays in the existing repository
-// version. This replacement only extends enableTestHooks and preserves the
-// exported fixture/storage contracts used by current suites.
+export async function readLessonWithQuestions(page, lessonId) {
+  const lessons = await readStore(page, 'lessons')
+  const lesson = lessons.find((l) => l.lesson_id === lessonId) || null
+  const questions = (await readStore(page, 'questions'))
+    .filter((q) => q.lesson_id === lessonId)
+    .sort((a, b) => a.id - b.id)
+  return { lesson, questions }
+}
+
+// ---------- console / page error monitoring ----------
+// Known benign noise (documented): nothing app-generated is ignored today.
+const IGNORED_CONSOLE = [
+  /Download the React DevTools/,
+]
+
+export function attachErrorMonitor(page) {
+  const pageErrors = []
+  const consoleErrors = []
+  page.on('pageerror', (err) => pageErrors.push(String(err)))
+  page.on('console', (msg) => {
+    if (msg.type() !== 'error') return
+    const text = msg.text()
+    if (IGNORED_CONSOLE.some((re) => re.test(text))) return
+    consoleErrors.push(text)
+  })
+  return {
+    pageErrors,
+    consoleErrors,
+    assertClean() {
+      expect(pageErrors, `unhandled page errors: ${pageErrors.join('\n')}`).toEqual([])
+      const relevant = consoleErrors.filter((t) => !/net::ERR_INTERNET_DISCONNECTED|Failed to load resource/.test(t))
+      expect(relevant, `console errors: ${relevant.join('\n')}`).toEqual([])
+    },
+  }
+}
+
+// ---------- exercise driving ----------
+function exactWord(w) {
+  return new RegExp(`^${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`)
+}
+
+export function wrongAnswerFor(q) {
+  const a = q.expected_answer || ''
+  if (/been (\w+)ing\b/.test(a)) return a.replace(/been (\w+)ing\b/, 'been $1ed')
+  return `yesterday maybe ${a.split(' ').slice(1).join(' ')}`
+}
+
+// Answers the question currently on screen through the UI. `q` is the
+// persisted question record (read from IndexedDB), which carries the contract
+// (expected answer, options, words). Returns the submitted text.
+export async function answerCurrentQuestion(page, q, { wrong = false } = {}) {
+  const typeChip = page.getByTestId('question-type')
+  await expect(typeChip).toHaveText(q.type)
+
+  let answer = wrong ? wrongAnswerFor(q) : q.expected_answer
+
+  switch (q.type) {
+    case 'translate_natural':
+    case 'rewrite_natural': {
+      await page.locator('textarea.input').fill(answer)
+      break
+    }
+    case 'listen_type': {
+      // Exercise the audio control when the browser exposes TTS; the answer is
+      // always typed manually (real audio is never required).
+      const listen = page.getByRole('button', { name: 'Ouvir frase' })
+      if (await listen.count()) await listen.first().click()
+      await page.locator('textarea.input').fill(answer)
+      break
+    }
+    case 'speak_sentence': {
+      // Exercise the mic control (it must not crash the screen even when no
+      // microphone/recognition backend exists), then fall back to typing.
+      const mic = page.getByRole('button', { name: 'Falar', exact: true })
+      if (await mic.count()) {
+        await mic.click()
+        await page.waitForTimeout(400)
+        await page.getByTestId('speak-type-fallback').click()
+      }
+      await page.locator('textarea.input').fill(answer)
+      break
+    }
+    case 'fill_blank':
+    case 'choose_best': {
+      if (wrong) {
+        const target = q.options.find((o) => o !== q.expected_answer)
+        answer = target
+        await page.locator('button.card').filter({ hasText: exactWord(target) }).first().click()
+      } else {
+        await page.locator('button.card').filter({ hasText: exactWord(q.expected_answer) }).first().click()
+      }
+      break
+    }
+    case 'build_sentence': {
+      const words = q.words || []
+      for (const w of words) {
+        await page.locator('button.word:not(.placed):not(.placed-active)')
+          .filter({ hasText: exactWord(w) }).first().click()
+      }
+      answer = words.join(' ')
+      break
+    }
+    default:
+      throw new Error(`unsupported question type ${q.type}`)
+  }
+
+  await page.getByRole('button', { name: /Responder|Verificar/ }).click()
+  await expect(page.getByTestId('feedback-sheet')).toBeVisible()
+  return answer
+}
+
+export async function goNext(page) {
+  await page.getByTestId('feedback-sheet').getByRole('button', { name: /Próxima/ }).click()
+}
+
+// Generates a lesson from the Home card and returns its persisted lesson_id.
+// Waits on the real IndexedDB write (a fresh created_at stamp), so it is safe
+// to call repeatedly in the same page.
+export async function generateFromHome(page, { count = 30 } = {}) {
+  await expect(page.getByTestId('generation-card')).toBeVisible()
+  if (count !== 30) await page.getByTestId(`gen-count-${count}`).click()
+  const stampOf = (rows) => Math.max(0, ...rows.filter((l) => l.generated).map((l) => l.created_at || 0))
+  const before = stampOf(await readStore(page, 'lessons'))
+  await page.getByTestId('generate-lesson').click()
+  await expect(page.getByTestId('generated-lesson-result')).toBeVisible()
+  await expect.poll(async () => stampOf(await readStore(page, 'lessons')), { timeout: 30_000 })
+    .toBeGreaterThanOrEqual(before)
+  const generated = (await readStore(page, 'lessons')).filter((l) => l.generated)
+  generated.sort((a, b) => b.created_at - a.created_at)
+  return generated[0].lesson_id
+}
