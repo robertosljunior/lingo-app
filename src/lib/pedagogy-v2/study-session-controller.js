@@ -1,19 +1,11 @@
-// study-session-controller.js — runtime orchestration of one STUDY session
-// (Slice V2.6): the in-memory state machine that alternates between the Study
-// Planner (what to study) and the Lesson Engine (how to practice it):
+// study-session-controller.js — runtime orchestration of one STUDY session.
 //
-//   idle → planning (context + focus + activity) → presenting → submitting
-//        → feedback → planning … → complete | error
+//   idle → planning → presenting → submitting → feedback → planning …
 //
-// Hard guarantees (mirroring the pilot controller, proven by tests):
-//   - the focus is RE-EVALUATED after every assessed interaction — no fixed
-//     playlist is ever generated up front;
-//   - StudySessionV2 and LessonSessionV2 never collapse: the study session
-//     tracks focus/pack history and the new-target budget, while each pack
-//     keeps its own lesson session with the activity history;
-//   - no advance without persisted evidence; retry reuses the SAME response
-//     (idempotent ids); a new attempt bumps attempt_number;
-//   - planner and engine cores stay pure — clock and ids live here.
+// RX-1 adds optional durable interaction/session callbacks. The controller
+// remains storage-agnostic: tests and diagnostic surfaces may keep the original
+// evidence-only callback, while the learner-facing product supplies an atomic
+// interaction+evidence writer.
 
 import { appendActivityToSessionV2 } from './lesson-engine-contracts.js'
 import { validateActivityPlanV2 } from './lesson-engine-validator.js'
@@ -23,8 +15,6 @@ import { buildLearnerEvidenceBatchFromInteractionV2 } from './assessment-to-evid
 import { computeRecipeRuntimeAvailability } from './runtime-capabilities.js'
 import { createSupportRuntime, useSupportFeature, buildActivityResponseV2 } from './activity-runtime-contracts.js'
 import { createStudySessionV2, advanceStudySessionV2 } from './study-planner-contracts.js'
-// Slice V2.16: the Planner→Engine materialization walk lives in the SHARED
-// resolver — the controller no longer implements a local suppression loop.
 import { resolveNextStudyActivityV2 } from './study-focus-resolver.js'
 
 export const STUDY_CONTROLLER_STATES = ['idle', 'planning', 'presenting', 'submitting', 'feedback', 'advancing', 'complete', 'error']
@@ -32,15 +22,18 @@ export const STUDY_CONTROLLER_STATES = ['idle', 'planning', 'presenting', 'submi
 export function createStudySessionControllerV2(deps) {
   const {
     profileId, registry, mode, focusedPackId = null,
-    // V2.22-UX2 — optional authored scope (a contextual collection) and the
-    // optional advisory recipe preference. Both are additive: omitting them
-    // reproduces the pre-UX2 session exactly.
     studyScope = null,
     recipePreference = null,
     now = () => new Date().toISOString(),
     makeStudySessionId = () => `v2study-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
     makeLessonSessionId = (packId) => `v2lesson-${packId}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
-    buildPlannerContext, recordBatch,
+    buildPlannerContext,
+    recordBatch,
+    // RX-1: learner-facing production supplies these. `persistInteraction`
+    // owns the atomic interaction+evidence transaction. When omitted the
+    // original evidence-only behavior is preserved byte-for-byte.
+    persistInteraction = null,
+    finalizeSession = null,
     assessmentServices = {},
     capabilities,
     plannerPolicy = {},
@@ -55,14 +48,14 @@ export function createStudySessionControllerV2(deps) {
   let state = {
     status: 'idle',
     studySession: null,
-    lessonSessions: {},     // pack_id → LessonSessionV2
+    lessonSessions: {},
     context: null,
     focus: null,
     plannerDecision: null,
     decision: null,
     plan: null,
-    resolution: null,       // Slice V2.16: last focus-resolution (status + trace)
-    transition: null,       // { from_pack, to_pack, code } for the switch banner
+    resolution: null,
+    transition: null,
     supportRuntime: null,
     assessment: null,
     recordedEvents: null,
@@ -71,20 +64,13 @@ export function createStudySessionControllerV2(deps) {
     interactions: [],
   }
 
-  const emit = () => { for (const l of listeners) l(state) }
+  const emit = () => { for (const listener of listeners) listener(state) }
   const set = (patch) => { state = { ...state, ...patch }; emit() }
 
   const allowedPackIds = mode === 'focused'
     ? (focusedPackId ? [focusedPackId] : [])
     : null
 
-  /**
-   * One planning round, delegated to the SHARED Study Focus Resolver (Slice
-   * V2.16): it walks the planner's ranking, materializes the first focus the
-   * engine can serve, and terminates by CANDIDATE EXHAUSTION — no magic cap.
-   * The controller only adapts the resolver result to its `planned` shape and
-   * keeps the resolution (status + trace) for diagnostics.
-   */
   function planNext(studySession, context, lessonSessions, nowIso) {
     const resolution = resolveNextStudyActivityV2({
       registry,
@@ -112,8 +98,6 @@ export function createStudySessionControllerV2(deps) {
         resolution,
       }
     }
-    // planner_empty and no_materializable_focus both end the session for the
-    // learner, but stay DISTINCT in the resolution trace (§18/§19).
     return { complete: true, plannerDecision: resolution.planner_decision ?? null, resolution }
   }
 
@@ -128,10 +112,10 @@ export function createStudySessionControllerV2(deps) {
       })
       return
     }
-    const v = validateActivityPlanV2(planned.engineDecision.plan)
-    if (!v.valid) {
+    const validation = validateActivityPlanV2(planned.engineDecision.plan)
+    if (!validation.valid) {
       set({
-        status: 'error', error: { code: 'PLAN_INVALID', detail: v.errors.join(','), recoverable: false },
+        status: 'error', error: { code: 'PLAN_INVALID', detail: validation.errors.join(','), recoverable: false },
         studySession, context, interactions: baseInteractions, lessonSessions: baseSessions,
       })
       return
@@ -160,7 +144,10 @@ export function createStudySessionControllerV2(deps) {
       resolution: planned.resolution ?? null,
       transition,
       supportRuntime: createSupportRuntime(planned.engineDecision.plan),
-      assessment: null, recordedEvents: null, pendingResponse: null, error: null,
+      assessment: null,
+      recordedEvents: null,
+      pendingResponse: null,
+      error: null,
       interactions: baseInteractions,
     })
   }
@@ -180,9 +167,8 @@ export function createStudySessionControllerV2(deps) {
       })
       const planned = planNext(studySession, context, {}, nowIso)
       presentPlanned(planned, studySession, context, { interactions: [], lessonSessions: {} })
-      // presentPlanned merges the planned lesson session over the empty map.
-    } catch (e) {
-      set({ status: 'error', error: { code: 'START_FAILED', detail: String(e?.message || e), recoverable: true } })
+    } catch (error) {
+      set({ status: 'error', error: { code: 'START_FAILED', detail: String(error?.message || error), recoverable: true } })
     }
   }
 
@@ -218,35 +204,56 @@ export function createStudySessionControllerV2(deps) {
         activityPlan: state.plan, response, assessment,
         profileId, sessionId: state.plan.session_id,
       })
-      if (events.length) await recordBatch(events)
+
+      if (persistInteraction) {
+        await persistInteraction({
+          profileId,
+          studySession: state.studySession,
+          studyScope,
+          recipePreference,
+          focus: state.focus,
+          plan: state.plan,
+          response,
+          assessment,
+          events,
+        })
+      } else if (events.length) {
+        await recordBatch(events)
+      }
+
       set({ status: 'feedback', assessment, recordedEvents: events, pendingResponse: response })
-    } catch (e) {
-      set({ status: 'error', error: { code: 'SUBMIT_FAILED', detail: String(e?.message || e), recoverable: true } })
+    } catch (error) {
+      set({ status: 'error', error: { code: 'SUBMIT_FAILED', detail: String(error?.message || error), recoverable: true } })
     }
   }
 
   function tryAgain() {
     if (state.status !== 'feedback') return
-    const prev = state.supportRuntime
+    const previous = state.supportRuntime
     set({
       status: 'presenting',
-      supportRuntime: { ...prev, attempt_number: prev.attempt_number + 1 },
+      supportRuntime: { ...previous, attempt_number: previous.attempt_number + 1 },
       assessment: null, recordedEvents: null, pendingResponse: null, error: null,
     })
   }
 
-  /**
-   * After feedback: record the interaction, append to the pack's lesson
-   * session, rebuild the planner context from the FRESH persisted state and
-   * re-plan — the focus decision is recalculated after every assessed
-   * interaction (§21), which may keep or switch the pack.
-   */
+  async function finishSession(studySession, endedAt) {
+    if (!finalizeSession || !studySession?.study_session_id) return
+    await finalizeSession(studySession.study_session_id, {
+      profileId,
+      endedAt,
+      status: 'complete',
+    })
+  }
+
   async function advance() {
     if (state.status !== 'feedback') return
     const interaction = {
       focus: state.focus,
-      plan: state.plan, response: state.pendingResponse,
-      assessment: state.assessment, events: state.recordedEvents,
+      plan: state.plan,
+      response: state.pendingResponse,
+      assessment: state.assessment,
+      events: state.recordedEvents,
       transition: state.transition,
     }
     set({ status: 'advancing' })
@@ -257,15 +264,17 @@ export function createStudySessionControllerV2(deps) {
       const lessonSessions = { ...state.lessonSessions, [packId]: lessonSession }
       const interactions = [...state.interactions, interaction]
       if (interactions.length >= maxActivities) {
+        await finishSession(state.studySession, nowIso)
         set({ status: 'complete', lessonSessions, interactions, plan: null, decision: null, focus: null, transition: null })
         return
       }
       const context = await buildPlannerContext(profileId, { now: nowIso, registry })
       const studySession = { ...state.studySession, now: nowIso }
       const planned = planNext(studySession, context, lessonSessions, nowIso)
+      if (planned.complete) await finishSession(studySession, nowIso)
       presentPlanned(planned, studySession, context, { interactions, lessonSessions })
-    } catch (e) {
-      set({ status: 'error', error: { code: 'ADVANCE_FAILED', detail: String(e?.message || e), recoverable: true } })
+    } catch (error) {
+      set({ status: 'error', error: { code: 'ADVANCE_FAILED', detail: String(error?.message || error), recoverable: true } })
     }
   }
 
@@ -274,7 +283,7 @@ export function createStudySessionControllerV2(deps) {
     getState: () => state,
     getAvailability: () => availability,
     getStudyScope: () => studyScope,
-    subscribe: (l) => { listeners.add(l); return () => listeners.delete(l) },
+    subscribe: (listener) => { listeners.add(listener); return () => listeners.delete(listener) },
   }
 }
 
@@ -283,17 +292,17 @@ export function summarizeStudySessionV2(interactions = []) {
   const packs = new Set(); const exemplars = new Set(); const constructions = new Set()
   const senses = new Set(); const lemmaByPack = new Map()
   let transitions = 0; let assessed = 0; let exposures = 0; let reviews = 0; let introductions = 0
-  for (const it of interactions) {
-    packs.add(it.plan.pack_id)
-    if (it.plan.lexeme_lemma) lemmaByPack.set(it.plan.pack_id, it.plan.lexeme_lemma)
-    exemplars.add(it.plan.exemplar_id)
-    constructions.add(it.plan.construction_id)
-    for (const s of it.plan.sense_ids || []) senses.add(s)
-    if (it.transition) transitions++
-    if (it.assessment?.status === 'assessed') assessed++
-    if (it.plan.recipe === 'exposure') exposures++
-    if (it.focus?.focus_type === 'review' || it.focus?.focus_type === 'remediate') reviews++
-    if (it.focus?.is_new_target) introductions++
+  for (const interaction of interactions) {
+    packs.add(interaction.plan.pack_id)
+    if (interaction.plan.lexeme_lemma) lemmaByPack.set(interaction.plan.pack_id, interaction.plan.lexeme_lemma)
+    exemplars.add(interaction.plan.exemplar_id)
+    constructions.add(interaction.plan.construction_id)
+    for (const sense of interaction.plan.sense_ids || []) senses.add(sense)
+    if (interaction.transition) transitions++
+    if (interaction.assessment?.status === 'assessed') assessed++
+    if (interaction.plan.recipe === 'exposure') exposures++
+    if (interaction.focus?.focus_type === 'review' || interaction.focus?.focus_type === 'remediate') reviews++
+    if (interaction.focus?.is_new_target) introductions++
   }
   return {
     packs_practiced: [...packs].sort(),
