@@ -4,11 +4,13 @@ import {
   detectRuntimeCapabilitiesV2,
   isRecipeExecutable,
 } from './runtime-capabilities.js'
-import { buildActivityResponseV2 } from './activity-runtime-contracts.js'
+import { buildActivityResponseV2, createSupportRuntime } from './activity-runtime-contracts.js'
+import { validateActivityResponseV2 } from './activity-runtime-validator.js'
 
 function plan({ recipe = 'guided_production', modality = 'speaking' } = {}) {
   return {
     activity_id: `activity:${recipe}:${modality}`,
+    session_id: 'session:rx7',
     recipe,
     activity_kind: recipe,
     capability: recipe === 'free_production' ? 'free_production' : 'controlled_production',
@@ -55,11 +57,12 @@ describe('RX-7 — speaking runtime respondibility', () => {
   })
 
   it('does not allow a written response to masquerade as speaking evidence', () => {
-    expect(() => buildActivityResponseV2({
-      plan: plan({ modality: 'speaking' }),
+    const speakingPlan = plan({ modality: 'speaking' })
+    const response = buildActivityResponseV2({
+      plan: speakingPlan,
       responseType: 'text',
       payload: { text: 'I still work here.' },
-      supportRuntime: { used: [] },
+      supportRuntime: createSupportRuntime(speakingPlan),
       submittedAt: '2026-08-05T00:00:00.000Z',
       capabilities: {
         text_input: true,
@@ -68,6 +71,9 @@ describe('RX-7 — speaking runtime respondibility', () => {
         semantic_assessment: true,
         pronunciation_assessment: false,
       },
-    })).toThrow()
+    })
+    const validation = validateActivityResponseV2(response, speakingPlan)
+    expect(validation.valid).toBe(false)
+    expect(validation.errors).toContain('RESPONSE_TYPE_MODALITY_INCOMPATIBLE:speaking+text')
   })
 })
