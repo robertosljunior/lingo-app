@@ -7,6 +7,7 @@ import {
   getDurableStudySessionsV2,
   getDurableLearnerInteractionsV2,
 } from '../lib/pedagogy-v2/durable-interaction-storage.js'
+import { reconcileInterruptedStudySessionsV2 } from '../lib/pedagogy-v2/durable-submission-recovery.js'
 import { buildCombinedV2History } from '../lib/pedagogy-v2/durable-history-presentation.js'
 
 const ACTIVITY_LABELS = Object.freeze({
@@ -31,17 +32,27 @@ function formatDate(ts) {
 function outcomeText(outcomes) {
   const assessed = (outcomes.correct || 0) + (outcomes.partial || 0) + (outcomes.incorrect || 0)
   const observed = outcomes.observed || 0
+  const notAssessed = outcomes.not_assessed || 0
   const parts = []
   if (assessed) parts.push(`${assessed} ${assessed === 1 ? 'resposta avaliada' : 'respostas avaliadas'}`)
   if (observed) parts.push(`${observed} ${observed === 1 ? 'exposição' : 'exposições'}`)
+  if (notAssessed) parts.push(`${notAssessed} ${notAssessed === 1 ? 'resposta preservada sem avaliação' : 'respostas preservadas sem avaliação'}`)
   return parts.join(' · ') || 'Atividade registrada'
 }
 
-function outcomeLabel(outcome) {
+function outcomeLabel(outcome, recoveryStatus) {
+  if (recoveryStatus === 'interrupted_before_assessment') return 'resposta preservada · avaliação interrompida'
   if (outcome === 'partial') return 'resposta parcial'
   if (outcome === 'incorrect') return 'vale tentar de novo'
   if (outcome === 'correct') return 'resposta alinhada'
   return 'observada'
+}
+
+function sessionStatusText(status) {
+  if (status === 'interrupted') return 'Sessão interrompida. O que já havia sido salvo permanece no histórico.'
+  if (status === 'abandoned') return 'Sessão encerrada antes do fim.'
+  if (status === 'active') return 'Sessão em andamento ou ainda não reconciliada.'
+  return null
 }
 
 export default function V2History() {
@@ -55,13 +66,21 @@ export default function V2History() {
     let cancelled = false
     setRecords(null)
     setError(null)
-    Promise.all([
-      getDurableStudySessionsV2(activeProfile),
-      getDurableLearnerInteractionsV2(activeProfile),
-      db.getLearnerEvidenceV2(activeProfile),
-    ]).then(([sessions, interactions, evidence]) => {
-      if (!cancelled) setRecords({ sessions, interactions, evidence })
-    }).catch((e) => { if (!cancelled) setError(String(e?.message || e)) })
+    ;(async () => {
+      try {
+        // History is a recovery boundary too: after a reload the learner can
+        // inspect prior activity without starting another lesson first.
+        await reconcileInterruptedStudySessionsV2(activeProfile)
+        const [sessions, interactions, evidence] = await Promise.all([
+          getDurableStudySessionsV2(activeProfile),
+          getDurableLearnerInteractionsV2(activeProfile),
+          db.getLearnerEvidenceV2(activeProfile),
+        ])
+        if (!cancelled) setRecords({ sessions, interactions, evidence })
+      } catch (e) {
+        if (!cancelled) setError(String(e?.message || e))
+      }
+    })()
     return () => { cancelled = true }
   }, [db, activeProfile])
 
@@ -105,8 +124,9 @@ export default function V2History() {
         {sessions.map((session) => {
           const expanded = openSession === session.session_id
           const title = session.collection_title_pt || 'Prática geral'
+          const statusText = sessionStatusText(session.status)
           return (
-            <section key={session.session_id} className="v2lx-card" data-testid="v2-history-session" data-source={session.source} style={{ padding: 0, overflow: 'hidden' }}>
+            <section key={session.session_id} className="v2lx-card" data-testid="v2-history-session" data-source={session.source} data-status={session.status || undefined} style={{ padding: 0, overflow: 'hidden' }}>
               <button
                 type="button"
                 onClick={() => setOpenSession(expanded ? null : session.session_id)}
@@ -121,7 +141,7 @@ export default function V2History() {
                     <div style={{ fontWeight: 800, fontSize: 16 }}>{title}</div>
                     <div className="muted" style={{ fontSize: 12, marginTop: 3 }}>{formatDate(session.last_activity_at || session.ended_at)}</div>
                     <div style={{ fontSize: 13, marginTop: 9 }}>{session.interaction_count} {session.interaction_count === 1 ? 'atividade' : 'atividades'} · {outcomeText(session.outcomes)}</div>
-                    {session.status === 'active' && <div className="muted" style={{ fontSize: 11, marginTop: 5 }}>Sessão não finalizada</div>}
+                    {statusText && <div className="muted" data-testid="v2-history-session-status" style={{ fontSize: 11, marginTop: 5 }}>{statusText}</div>}
                   </div>
                   <span aria-hidden="true" style={{ transform: expanded ? 'rotate(90deg)' : 'none', transition: 'transform 160ms ease' }}><I.chevR s={18} /></span>
                 </div>
@@ -136,7 +156,7 @@ export default function V2History() {
                   )}
                   <div style={{ display: 'grid', gap: 10 }}>
                     {session.interactions.map((interaction) => (
-                      <div key={interaction.interaction_id} style={{ paddingTop: 10, borderTop: '1px solid var(--border)' }} data-testid="v2-history-interaction">
+                      <div key={interaction.interaction_id} style={{ paddingTop: 10, borderTop: '1px solid var(--border)' }} data-testid="v2-history-interaction" data-recovery-status={interaction.recovery_status || undefined}>
                         <div style={{ fontWeight: 750, lineHeight: 1.35 }}>{interaction.exemplar.text_en || 'Frase registrada'}</div>
                         {interaction.exemplar.text_pt && <div className="muted" style={{ fontSize: 13, marginTop: 3 }}>{interaction.exemplar.text_pt}</div>}
                         {interaction.response?.text && (
@@ -145,11 +165,16 @@ export default function V2History() {
                         {interaction.response?.kind === 'choice' && !interaction.response.text && (
                           <div className="muted" style={{ fontSize: 12, marginTop: 8 }}>Alternativa escolhida registrada.</div>
                         )}
+                        {interaction.recovery_status === 'interrupted_before_assessment' && (
+                          <div className="muted" data-testid="v2-history-recovery-note" style={{ fontSize: 12, lineHeight: 1.45, marginTop: 6 }}>
+                            A resposta foi salva, mas a avaliação foi interrompida. Ela não alterou sua progressão e não foi adicionada aos pontos para revisar.
+                          </div>
+                        )}
                         {interaction.diagnosis?.summary && (
                           <div className="muted" style={{ fontSize: 12, lineHeight: 1.45, marginTop: 6 }} data-testid="v2-history-diagnosis">{interaction.diagnosis.summary}</div>
                         )}
                         <div className="muted" style={{ fontSize: 11, marginTop: 7 }}>
-                          {ACTIVITY_LABELS[interaction.activity_kind] || 'Atividade V2'} · {outcomeLabel(interaction.outcome)}
+                          {ACTIVITY_LABELS[interaction.activity_kind] || 'Atividade V2'} · {outcomeLabel(interaction.outcome, interaction.recovery_status)}
                         </div>
                       </div>
                     ))}

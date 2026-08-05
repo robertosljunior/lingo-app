@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { enableTestHooks, seedFixtures, PROFILE_A } from './helpers.js'
+import { enableTestHooks, seedFixtures, readStore, PROFILE_A } from './helpers.js'
 import { setLearnerFlag, waitForAdvance } from './v2-helpers.js'
 
 const currentRecipe = (page) => page.locator('[data-testid^="v2lx-activity-"]').getAttribute('data-recipe')
@@ -26,7 +26,7 @@ async function chooseWrongAuthoredOption(page) {
   await page.getByTestId(wrong).click()
 }
 
-test('a real V2 answer survives navigation and appears with durable diagnosis, not evidence-only backfill', async ({ page, context }) => {
+test('a V2 response staged before assessment survives reload without becoming evidence or an error', async ({ page, context }) => {
   await enableTestHooks(context)
   await seedFixtures(page, { active: PROFILE_A })
   await setLearnerFlag(page, true)
@@ -36,35 +36,36 @@ test('a real V2 answer survives navigation and appears with durable diagnosis, n
   await page.getByTestId('v2lxh-primary').click()
   await expect(page.getByTestId('v2lx-shell')).toBeVisible()
   await reachRecognition(page)
-  await chooseWrongAuthoredOption(page)
-  await expect(page.getByTestId('v2lx-feedback')).toBeVisible()
 
-  // Explicit close now records a factual abandoned boundary. The assessed
-  // interaction and the prior observed exposure must both remain visible.
-  await page.getByTestId('v2lx-close').click()
+  // Production never sets this. It pauses the real learner flow immediately
+  // after the write-ahead receipt and before controller assessment.
+  await page.evaluate(() => { window.__e2e.v2PauseAfterSubmissionStage = true })
+  await chooseWrongAuthoredOption(page)
+  await page.waitForFunction(() => !!window.__e2e?.v2StagedInteractionId)
+  const stagedInteractionId = await page.evaluate(() => window.__e2e.v2StagedInteractionId)
+  expect(stagedInteractionId).toBeTruthy()
+
+  // Simulate the tab/page disappearing before assessment finishes.
+  await page.reload()
   await expect(page.getByTestId('v2lx-home')).toBeVisible()
 
   await page.getByRole('button', { name: 'Histórico' }).click()
   await expect(page.getByTestId('v2-history')).toBeVisible()
-  const session = page.getByTestId('v2-history-session')
-  await expect(session).toHaveCount(1)
-  await expect(session).toHaveAttribute('data-source', 'durable_journal')
-  await expect(session).toHaveAttribute('data-status', 'abandoned')
-  await expect(session).toContainText('Sessão encerrada antes do fim')
-  await expect(session).toContainText('1 exposição')
-  await expect(session).toContainText('1 resposta avaliada')
-  await expect(session).not.toContainText('resposta preservada sem avaliação')
+  const session = page.getByTestId('v2-history-session').first()
+  await expect(session).toHaveAttribute('data-status', 'interrupted')
+  await expect(session).toContainText('resposta preservada sem avaliação')
+  await expect(session).toContainText('Sessão interrompida')
   await session.getByRole('button').click()
-  await expect(page.getByText('Alternativa escolhida registrada.')).toBeVisible()
-  await expect(page.getByTestId('v2-history-recovery-note')).toHaveCount(0)
-  await expect(page.getByTestId('v2-history-limited')).toHaveCount(0)
-  await expect(page.getByTestId('v2-history-diagnosis')).toBeVisible()
+  await expect(page.getByTestId('v2-history-recovery-note')).toContainText('não alterou sua progressão')
+  await expect(page.getByTestId('v2-history-interaction').filter({ has: page.getByTestId('v2-history-recovery-note') })).toHaveAttribute(
+    'data-recovery-status', 'interrupted_before_assessment',
+  )
+
+  const evidence = await readStore(page, 'learner_evidence_v2')
+  expect(evidence.some((event) => event.interaction_id === stagedInteractionId)).toBe(false)
 
   await page.getByRole('button', { name: 'Erros' }).click()
   await expect(page.getByTestId('v2-review-points')).toBeVisible()
-  const point = page.getByTestId('v2-review-point')
-  await expect(point).toHaveCount(1)
-  await expect(point).toHaveAttribute('data-source', 'durable_journal')
-  await expect(page.getByTestId('v2-review-limited')).toHaveCount(0)
-  await expect(page.getByTestId('v2-review-diagnosis')).toBeVisible()
+  await expect(page.getByTestId('v2-review-point')).toHaveCount(0)
+  await expect(page.getByTestId('v2-review-empty')).toBeVisible()
 })

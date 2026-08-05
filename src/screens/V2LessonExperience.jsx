@@ -8,12 +8,19 @@ import { buildStudyPlannerContextV2 } from '../lib/pedagogy-v2/study-planner-con
 import { createStudySessionControllerV2 } from '../lib/pedagogy-v2/study-session-controller.js'
 import { createProductionAssessmentServicesV2 } from '../lib/pedagogy-v2/production-assessment-service.js'
 import { detectRuntimeCapabilitiesV2 } from '../lib/pedagogy-v2/runtime-capabilities.js'
+import { buildActivityResponseV2 } from '../lib/pedagogy-v2/activity-runtime-contracts.js'
 import { speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
 import { buildLearnerPresentationV2 } from '../lib/pedagogy-v2/learner-presentation-v2.js'
 import { buildLearnerSessionResultV2, resolveLessonModeV2, buildContextualSessionEntryV2, buildRecipePreferenceNoticeV2 } from '../lib/pedagogy-v2/learner-home-presentation.js'
 import { buildStudyScopeFromCollectionV2 } from '../lib/pedagogy-v2/study-scope.js'
 import { recordDurableLearnerInteractionV2, finalizeDurableStudySessionV2 } from '../lib/pedagogy-v2/durable-interaction-storage.js'
+import {
+  stageDurableLearnerSubmissionV2,
+  settleDurableLearnerSubmissionV2,
+  reconcileInterruptedStudySessionsV2,
+  closeDurableStudySessionV2,
+} from '../lib/pedagogy-v2/durable-submission-recovery.js'
 import V2LessonShell from '../components/pedagogy-v2-learner/V2LessonShell.jsx'
 import V2SessionSummary from '../components/pedagogy-v2-learner/V2SessionSummary.jsx'
 import { useReducedMotion } from '../components/pedagogy-v2-learner/useReducedMotion.js'
@@ -42,13 +49,16 @@ export default function V2LessonExperience() {
     nonce: 0,
   })
   const [state, setState] = useState(null)
+  const [submissionPersistenceError, setSubmissionPersistenceError] = useState(null)
   const controllerRef = useRef(null)
+  const submissionLockRef = useRef(false)
 
   const restartWithMode = (mode) => setSession((current) => ({ mode, pack: null, error: null, nonce: current.nonce + 1 }))
 
   useEffect(() => {
     if (!v2LearnerExperienceEnabled(settings)) return undefined
     if (session.error) return undefined
+    let reconciledPreviousRuntime = false
     const controller = createStudySessionControllerV2({
       profileId: activeProfile,
       registry,
@@ -56,18 +66,37 @@ export default function V2LessonExperience() {
       focusedPackId: session.pack,
       studyScope: scopeError ? null : studyScope,
       recipePreference: initial.recipePreference,
-      buildPlannerContext: (profileId, opts) => buildStudyPlannerContextV2(profileId, opts),
+      // RX-1C: the first planner read is also the recovery boundary. Any active
+      // durable session belongs to a previous page/runtime and becomes
+      // interrupted before a new study_session_id is created.
+      buildPlannerContext: async (profileId, opts) => {
+        if (!reconciledPreviousRuntime) {
+          await reconcileInterruptedStudySessionsV2(profileId)
+          reconciledPreviousRuntime = true
+        }
+        return buildStudyPlannerContextV2(profileId, opts)
+      },
       // Kept for diagnostic/controller compatibility. The learner-facing path
       // uses persistInteraction below, which records the interaction and these
       // evidence events in one IndexedDB transaction.
       recordBatch: (events) => db.recordLearnerEvidenceBatchV2(events),
-      persistInteraction: recordDurableLearnerInteractionV2,
+      persistInteraction: async (input) => {
+        const result = await recordDurableLearnerInteractionV2(input)
+        // The receipt is auxiliary. Final interaction + evidence remains the
+        // atomic source of truth; receipt cleanup is idempotent and any crash
+        // here is cleaned by the next reconciliation.
+        await settleDurableLearnerSubmissionV2(input.response.interaction_id, { profileId: input.profileId })
+        return result
+      },
       finalizeSession: finalizeDurableStudySessionV2,
       capabilities,
       assessmentServices: createProductionAssessmentServicesV2(),
     })
     controllerRef.current = controller
-    const unsubscribe = controller.subscribe(setState)
+    const unsubscribe = controller.subscribe((next) => {
+      setState(next)
+      if (next.status !== 'error') setSubmissionPersistenceError(null)
+    })
     setState(controller.getState())
     controller.start()
     return () => { unsubscribe?.(); controllerRef.current = null }
@@ -132,6 +161,62 @@ export default function V2LessonExperience() {
 
   const goHome = () => setTab(SCREENS.HOME)
 
+  async function submitWithWriteAhead(responseType, payload) {
+    if (submissionLockRef.current || !controller || current?.status !== 'presenting' || !current?.plan) return
+    submissionLockRef.current = true
+    setSubmissionPersistenceError(null)
+    try {
+      const receiptResponse = buildActivityResponseV2({
+        plan: current.plan,
+        responseType,
+        payload,
+        supportRuntime: current.supportRuntime,
+        submittedAt: new Date().toISOString(),
+        capabilities,
+      })
+      await stageDurableLearnerSubmissionV2({
+        profileId: activeProfile,
+        studySession: current.studySession,
+        studyScope: scopeError ? null : studyScope,
+        recipePreference: initial.recipePreference,
+        focus: current.focus,
+        plan: current.plan,
+        response: receiptResponse,
+      })
+
+      // Test-only interruption seam: it stops after the real write-ahead receipt
+      // and before controller assessment. Production never sets this flag.
+      if (typeof window !== 'undefined' && window.__e2e?.v2PauseAfterSubmissionStage) {
+        window.__e2e.v2StagedInteractionId = receiptResponse.interaction_id
+        return
+      }
+      await controller.submit(responseType, payload)
+    } catch (error) {
+      setSubmissionPersistenceError(String(error?.message || error))
+    } finally {
+      submissionLockRef.current = false
+    }
+  }
+
+  async function closeToHome() {
+    const snapshot = controller?.getState()
+    const studySessionId = snapshot?.studySession?.study_session_id
+    try {
+      if (studySessionId) {
+        await closeDurableStudySessionV2(studySessionId, {
+          profileId: activeProfile,
+          status: 'abandoned',
+        })
+      }
+    } catch (error) {
+      // Do not claim the session closed when the local journal failed. The
+      // next boot reconciliation remains able to recover the active record.
+      setSubmissionPersistenceError(String(error?.message || error))
+      return
+    }
+    goHome()
+  }
+
   if (!v2LearnerExperienceEnabled(settings)) {
     return (
       <div className="phone">
@@ -158,6 +243,12 @@ export default function V2LessonExperience() {
 
   return (
     <div className="phone" data-testid="v2lx-screen" data-experience="v2" data-surface="lesson" data-mode={session.mode} data-pack={current?.plan?.pack_id ?? session.pack ?? null} style={{ overflow: 'hidden' }}>
+      {submissionPersistenceError && (
+        <div role="alert" data-testid="v2lx-storage-error" style={{ position: 'absolute', zIndex: 20, top: 12, left: 16, right: 16, padding: 12, borderRadius: 12, background: 'var(--error-bg)', color: 'var(--error-ink)', fontSize: 13, fontWeight: 700 }}>
+          Não foi possível salvar esta resposta no aparelho. Tente novamente antes de sair.
+        </div>
+      )}
+
       {(!current || current.status === 'idle' || current.status === 'planning') && (
         <div className="screen-body" style={{ justifyContent: 'center', textAlign: 'center' }}>
           <p className="muted" data-testid="v2lx-loading">Preparando sua prática…</p>
@@ -180,11 +271,11 @@ export default function V2LessonExperience() {
           settings={settings}
           reducedMotion={reducedMotion}
           activityNumber={current.interactions.length + 1}
-          onSubmit={(type, payload) => controller.submit(type, payload)}
+          onSubmit={submitWithWriteAhead}
           onAdvance={() => controller.advance()}
           onSupport={(feature) => controller.recordSupport(feature)}
           onRetry={() => controller.retry()}
-          onClose={goHome}
+          onClose={closeToHome}
           contextBanner={contextEntry?.context_title ? (
             <div className="v2lx-context-banner" data-testid="v2lx-context-banner" data-collection={initial.collectionId}>
               <div className="v2lx-context-banner-row">
