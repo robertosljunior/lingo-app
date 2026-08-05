@@ -74,11 +74,14 @@ export function finalizeSupportUsage(runtime) {
 // ---- response factory -------------------------------------------------------
 
 /**
- * Response types are constrained twice: first by the authored/runtime response
- * contract (when present), then by recipe + modality. Production recipes have
- * two legitimate renderers, but one concrete ActivityPlan never has both:
- * writing accepts `text`; speaking accepts `speech_transcript`. This prevents a
- * UI fallback from silently recording written work as speaking evidence.
+ * Returns the response types a concrete plan may accept. Production recipes
+ * have two legitimate renderers globally, but one materialized plan never has
+ * both: writing accepts `text`; speaking accepts `speech_transcript`.
+ *
+ * This helper is consumed by the runtime validator. The factory below remains
+ * deliberately permissive so tests and recovery code can construct malformed
+ * responses and prove that the boundary rejects them before assessment or
+ * persistence.
  */
 export function allowedResponseTypesForPlanV2(plan) {
   const declared = Array.isArray(plan?.response_contract?.accepted_response_types)
@@ -93,29 +96,9 @@ export function allowedResponseTypesForPlanV2(plan) {
   return allowed
 }
 
-function assertResponseExecutableV2({ plan, responseType, capabilities }) {
-  if (!RESPONSE_TYPES.includes(responseType)) {
-    throw new Error(`ACTIVITY_RESPONSE_TYPE_UNKNOWN:${responseType}`)
-  }
-  const allowed = allowedResponseTypesForPlanV2(plan)
-  if (!allowed.includes(responseType)) {
-    throw new Error(`ACTIVITY_RESPONSE_TYPE_NOT_ALLOWED:${responseType}:${plan?.recipe || 'unknown'}:${plan?.modality || 'unknown'}`)
-  }
-  if (responseType === 'speech_transcript' && capabilities && capabilities.speech_input !== true) {
-    throw new Error('ACTIVITY_RESPONSE_RUNTIME_UNAVAILABLE:speech_input')
-  }
-  if (responseType === 'text' && capabilities && capabilities.text_input !== true) {
-    throw new Error('ACTIVITY_RESPONSE_RUNTIME_UNAVAILABLE:text_input')
-  }
-  if (responseType === 'pronunciation_attempt' && capabilities && capabilities.pronunciation_assessment !== true) {
-    throw new Error('ACTIVITY_RESPONSE_RUNTIME_UNAVAILABLE:pronunciation_assessment')
-  }
-}
-
 export function buildActivityResponseV2({
   plan, responseType, payload, supportRuntime, submittedAt, capabilities = null,
 }) {
-  assertResponseExecutableV2({ plan, responseType, capabilities })
   const attempt = supportRuntime?.attempt_number ?? 1
   return {
     response_version: ACTIVITY_RESPONSE_VERSION,
