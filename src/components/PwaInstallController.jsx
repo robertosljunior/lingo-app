@@ -107,7 +107,7 @@ export default function PwaInstallController() {
 function EnglishVoiceBanner({ state, onRetry }) {
   const status = {
     waiting: 'Aguardando internet — a voz do aparelho continua disponível.',
-    downloading: `Baixando ${state.current_voice_id?.startsWith('en_GB') ? 'a voz britânica' : 'a voz americana'}${state.progress != null ? ` · ${state.progress}%` : ''}`,
+    downloading: `Baixando ${state.current_voice_id?.startsWith('en_GB') ? 'a voz britânica' : 'a voz americana'}${state.progress != null ? ` · ${state.progress}%` : ''}. Enquanto isso, a voz do aparelho continua disponível.`,
     partial: 'A voz americana está pronta. A voz britânica será preparada quando possível.',
     failed: 'Não foi possível preparar a voz neural. A voz do aparelho continua disponível.',
   }[state.status] || 'Preparando a voz neural.'
