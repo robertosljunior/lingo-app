@@ -1,33 +1,40 @@
+import { lazy, Suspense } from 'react'
 import { useApp, SCREENS } from './store.jsx'
 import { Toast } from './components/ui.jsx'
 import Home from './screens/Home.jsx'
-import Import from './screens/Import.jsx'
-import Exercise from './screens/Exercise.jsx'
-import Result from './screens/Result.jsx'
-import Review from './screens/Review.jsx'
-import Export from './screens/Export.jsx'
-import History from './screens/History.jsx'
-import Mistakes from './screens/Mistakes.jsx'
-import SettingsRouter from './screens/SettingsRouter.jsx'
-import TrainingHub from './screens/TrainingHub.jsx'
-import Stories from './screens/Stories.jsx'
-import TalkRouter from './screens/TalkRouter.jsx'
-import LegacyOnboarding from './screens/LegacyOnboarding.jsx'
 import V2Onboarding from './screens/V2Onboarding.jsx'
-import PedagogyV2Lab from './screens/PedagogyV2Lab.jsx'
-import PedagogyV2Inspector from './screens/PedagogyV2Inspector.jsx'
-import PedagogyV2Playground from './screens/PedagogyV2Playground.jsx'
-import V2LessonExperience from './screens/V2LessonExperience.jsx'
 import PwaInstallController from './components/PwaInstallController.jsx'
 import { learnerExperienceV2Enabled } from './lib/pedagogy-v2/learner-experience-mode.js'
 
+// RX-8B: the application previously imported every V1/V2 screen at boot. That
+// made ordinary V2 Home visits download legacy lessons, Stories, Talk, Settings,
+// diagnostic labs and the full exercise surface before any of them was needed.
+// Keep only the default Home and V2 first-run path eager; every other product
+// surface is a route-level chunk loaded when the store actually selects it.
+const ImportScreen = lazy(() => import('./screens/Import.jsx'))
+const Exercise = lazy(() => import('./screens/Exercise.jsx'))
+const Result = lazy(() => import('./screens/Result.jsx'))
+const Review = lazy(() => import('./screens/Review.jsx'))
+const ExportScreen = lazy(() => import('./screens/Export.jsx'))
+const History = lazy(() => import('./screens/History.jsx'))
+const Mistakes = lazy(() => import('./screens/Mistakes.jsx'))
+const SettingsRouter = lazy(() => import('./screens/SettingsRouter.jsx'))
+const TrainingHub = lazy(() => import('./screens/TrainingHub.jsx'))
+const Stories = lazy(() => import('./screens/Stories.jsx'))
+const TalkRouter = lazy(() => import('./screens/TalkRouter.jsx'))
+const LegacyOnboarding = lazy(() => import('./screens/LegacyOnboarding.jsx'))
+const PedagogyV2Lab = lazy(() => import('./screens/PedagogyV2Lab.jsx'))
+const PedagogyV2Inspector = lazy(() => import('./screens/PedagogyV2Inspector.jsx'))
+const PedagogyV2Playground = lazy(() => import('./screens/PedagogyV2Playground.jsx'))
+const V2LessonExperience = lazy(() => import('./screens/V2LessonExperience.jsx'))
+
 const SCREEN_COMPONENTS = {
   [SCREENS.HOME]: Home,
-  [SCREENS.IMPORT]: Import,
+  [SCREENS.IMPORT]: ImportScreen,
   [SCREENS.EXERCISE]: Exercise,
   [SCREENS.RESULT]: Result,
   [SCREENS.REVIEW]: Review,
-  [SCREENS.EXPORT]: Export,
+  [SCREENS.EXPORT]: ExportScreen,
   [SCREENS.HISTORY]: History,
   [SCREENS.MISTAKES]: Mistakes,
   [SCREENS.SETTINGS]: SettingsRouter,
@@ -44,45 +51,38 @@ const SCREEN_COMPONENTS = {
 // back to Home rather than crash.
 const NEEDS_SESSION = new Set([SCREENS.EXERCISE, SCREENS.RESULT, SCREENS.REVIEW])
 
+function ScreenLoading() {
+  return (
+    <div className="phone v2lx v2lx-boot" data-testid="screen-loading" aria-live="polite">
+      <div className="v2lx-boot-label">Carregando…</div>
+    </div>
+  )
+}
+
 export default function App() {
   const { ready, screen, activeLesson, toast, needsOnboarding, settings } = useApp()
 
-  // V2.22-UX2-R §3 — THE CUTOVER DEFECT THIS FIXES. The first-run branch used to
-  // run before the experience was resolved and hardcoded the legacy onboarding,
-  // so a clean install always opened on V1 — mascot, Kids/Adulto, CEFR — no
-  // matter which product it then went on to render. The very first second of the
-  // app contradicted the product behind it.
-  //
-  // The experience is now resolved FIRST, by the same single source of truth
-  // that decides everything else (`learner-experience-mode.js`), and the first
-  // run belongs to whichever product the learner is actually in:
-  //
-  //   V2 (default, and explicit true) → V2Onboarding
-  //   explicit false                  → LegacyOnboarding
-  //
-  // The condition is deliberately the resolver and not `settings?.x === false`
-  // inline: there is exactly one place in the codebase that decides V1 vs V2.
+  // V2.22-UX2-R §3 — resolve the product before choosing first-run UI. V2 is
+  // eager because it is the production default; legacy onboarding is fetched
+  // only for the explicit rollback experience.
   if (ready && needsOnboarding) {
     const V2 = learnerExperienceV2Enabled(settings)
     return (
       <div className="app-shell" data-experience={V2 ? 'v2' : 'v1'}>
-        {V2 ? <V2Onboarding /> : <LegacyOnboarding />}
+        <Suspense fallback={<ScreenLoading />}>
+          {V2 ? <V2Onboarding /> : <LegacyOnboarding />}
+        </Suspense>
         <Toast show={!!toast}>{toast}</Toast>
       </div>
     )
   }
 
   // The very first paint of a clean install, before settings are read. It is
-  // styled in the V2 language rather than the legacy one because that is what
-  // resolves a moment later in every environment (§16: the first second must
-  // already be the new product). Its ground comes from the V2 tokens, so it
-  // does not flash a different colour into the onboarding behind it.
+  // styled in the V2 language because V2 is the default product.
   if (!ready) {
     return (
       <div className="app-shell" data-experience="v2">
-        <div className="phone v2lx v2lx-boot" data-testid="app-boot">
-          <div className="v2lx-boot-label">Carregando…</div>
-        </div>
+        <ScreenLoading />
       </div>
     )
   }
@@ -93,8 +93,10 @@ export default function App() {
 
   return (
     <div className="app-shell" data-experience={learnerExperienceV2Enabled(settings) ? 'v2' : 'v1'}>
-      {/* key forces a remount per screen so the entrance animation replays */}
-      <Screen key={active} />
+      <Suspense fallback={<ScreenLoading />}>
+        {/* key forces a remount per screen so the entrance animation replays */}
+        <Screen key={active} />
+      </Suspense>
       <PwaInstallController />
       <Toast show={!!toast}>{toast}</Toast>
     </div>
