@@ -24,20 +24,145 @@ import { buildMaskedCompletion, presentedOrderTokens } from '../../lib/pedagogy-
 
 // ---- word order -------------------------------------------------------------
 
+const DISTRACTOR_FAMILIES = [
+  ['and', 'but', 'yet', 'still', 'because', 'so'],
+  ['at', 'in', 'on', 'to', 'from', 'for', 'with', 'of'],
+  ['i', 'you', 'he', 'she', 'it', 'we', 'they'],
+  ['a', 'an', 'the'],
+  ['is', 'are', 'was', 'were', 'has', 'have', 'do', 'does', 'did', 'will', 'can'],
+]
+
+const LEVEL_FALLBACKS = {
+  A1: ['but', 'and', 'in', 'on', 'at', 'to', 'he', 'she', 'they', 'the', 'a', 'is', 'are', 'have', 'has'],
+  A2: ['yet', 'still', 'but', 'because', 'in', 'on', 'at', 'for', 'from', 'with', 'he', 'she', 'they', 'have', 'has', 'do', 'does'],
+  B1: ['yet', 'still', 'but', 'because', 'so', 'in', 'on', 'at', 'for', 'from', 'with', 'they', 'we', 'have', 'has', 'did', 'will'],
+  B2: ['yet', 'still', 'but', 'because', 'so', 'in', 'on', 'at', 'for', 'from', 'with', 'of', 'they', 'we', 'did', 'will', 'can'],
+}
+
+const NOUN_NEIGHBORS = {
+  report: ['email', 'project'],
+  email: ['report', 'message'],
+  office: ['home', 'school'],
+  home: ['office', 'work'],
+  work: ['office', 'job'],
+  meeting: ['call', 'email'],
+  train: ['bus', 'flight'],
+  bus: ['train', 'car'],
+  food: ['drinks', 'meal'],
+  drinks: ['food', 'water'],
+  restaurant: ['office', 'store'],
+  store: ['office', 'home'],
+  experience: ['work', 'time'],
+  project: ['report', 'meeting'],
+  phone: ['computer', 'email'],
+  computer: ['phone', 'tablet'],
+}
+
+function normalizeBankToken(value) {
+  return String(value ?? '')
+    .toLowerCase()
+    .replace(/^[^a-z0-9']+|[^a-z0-9']+$/g, '')
+}
+
+function hashString(value) {
+  let hash = 2166136261
+  for (const ch of String(value)) {
+    hash ^= ch.charCodeAt(0)
+    hash = Math.imul(hash, 16777619)
+  }
+  return hash >>> 0
+}
+
+function distractorLimit(targetCount) {
+  const desired = targetCount <= 5 ? 1 : targetCount <= 9 ? 2 : 3
+  return Math.min(desired, Math.max(1, Math.ceil(targetCount * 0.3)))
+}
+
+function planLevel(plan) {
+  const level = String(plan?.level || plan?.cefr_level || plan?.difficulty || 'B1').toUpperCase()
+  return LEVEL_FALLBACKS[level] ? level : 'B1'
+}
+
+function shouldAddWordOrderDistractors(plan) {
+  const source = plan?.presentation?.token_source
+  if (source?.semantic_distractors === false) return false
+  if (source?.semantic_distractors === true) return true
+  // Real learner plans always carry pack_id. Keeping fixture-only plans without
+  // a pack id unchanged preserves the low-level runtime contract tests while
+  // enabling the richer bank on the shipped learner path.
+  return !!plan?.pack_id
+}
+
 /**
- * The token bank exactly as the plan presents it. IDENTITY IS THE POSITION in
- * that order, never the text — which is what makes repeated words ("to … to")
- * independently usable (handoff §3.6).
- * @returns {{ i:number, t:string }[]}
+ * Select a tiny deterministic set of plausible alternatives. Candidates are
+ * biased toward the grammatical families already present in the target, then
+ * toward nearby nouns, then toward level-appropriate fallbacks. Target tokens
+ * (punctuation-insensitive) are always excluded.
+ */
+export function wordOrderDistractors(plan, targetTokens = presentedOrderTokens(plan)) {
+  if (!shouldAddWordOrderDistractors(plan) || !targetTokens.length) return []
+
+  const normalizedTargets = targetTokens.map(normalizeBankToken).filter(Boolean)
+  const forbidden = new Set(normalizedTargets)
+  const candidates = []
+  const add = (token) => {
+    const normalized = normalizeBankToken(token)
+    if (!normalized || forbidden.has(normalized) || candidates.includes(normalized)) return
+    candidates.push(normalized)
+  }
+
+  for (const family of DISTRACTOR_FAMILIES) {
+    if (family.some((token) => forbidden.has(token))) {
+      for (const token of family) add(token)
+    }
+  }
+  for (const token of normalizedTargets) {
+    for (const neighbor of NOUN_NEIGHBORS[token] || []) add(neighbor)
+  }
+  for (const token of LEVEL_FALLBACKS[planLevel(plan)]) add(token)
+
+  const seed = `${plan?.activity_id || ''}|${plan?.pack_id || ''}|${plan?.text_en || targetTokens.join(' ')}`
+  const ordered = candidates
+    .map((token) => ({ token, score: hashString(`${seed}|candidate|${token}`) }))
+    .sort((a, b) => a.score - b.score || a.token.localeCompare(b.token))
+    .map(({ token }) => token)
+
+  return ordered.slice(0, distractorLimit(targetTokens.length))
+}
+
+/**
+ * The token bank as the plan presents it, with a bounded number of semantic
+ * distractors interleaved on the real learner path. Target relative order is
+ * preserved exactly; distractors are inserted deterministically and never alter
+ * `text_en` or the canonical answer.
+ *
+ * IDENTITY IS THE FINAL BANK POSITION, never the text, which keeps repeated
+ * words independently usable.
+ * @returns {{ i:number, t:string, distractor?:boolean }[]}
  */
 export function wordOrderBank(plan) {
-  return presentedOrderTokens(plan).map((t, i) => ({ i, t }))
+  const targetTokens = presentedOrderTokens(plan)
+  const distractors = wordOrderDistractors(plan, targetTokens)
+  if (!distractors.length) return targetTokens.map((t, i) => ({ i, t }))
+
+  const entries = targetTokens.map((t, order) => ({ t, targetOrder: order, distractor: false }))
+  const seed = `${plan?.activity_id || ''}|${plan?.pack_id || ''}|${plan?.text_en || ''}`
+  for (const token of distractors) {
+    const slot = hashString(`${seed}|slot|${token}`) % (entries.length + 1)
+    entries.splice(slot, 0, { t: token, targetOrder: null, distractor: true })
+  }
+  return entries.map((entry, i) => ({ i, t: entry.t, distractor: entry.distractor }))
+}
+
+/** Number of words that belong to the authored target (not distractors). */
+export function wordOrderTargetCount(bank) {
+  return bank.filter((item) => !item.distractor).length
 }
 
 /**
  * Insert bank token `i` into the built sentence at gap `at` (0 = before the
- * first word, bank.length = after the last). `at == null` appends. Returns a NEW
- * array; a token already placed is never duplicated.
+ * first word, picked.length = after the last). `at == null` appends. Returns a
+ * NEW array; a token already placed is never duplicated.
  */
 export function wordOrderPlace(picked, i, at = null) {
   if (picked.includes(i)) return picked
@@ -63,15 +188,21 @@ export function wordOrderMove(picked, i, dir) {
   return next
 }
 
-/** True when every bank token has been placed (the CTA gate, §7). */
+/**
+ * True when the learner has built one sentence-length sequence. Distractors are
+ * choices, not extra required words: selecting one necessarily leaves a target
+ * token unused and therefore yields an assessable but incorrect sequence.
+ */
 export function wordOrderComplete(bank, picked) {
-  return bank.length > 0 && picked.length === bank.length
+  const targetCount = wordOrderTargetCount(bank)
+  return targetCount > 0 && picked.length === targetCount
 }
 
 /**
- * The submittable payload — IDENTICAL to the pre-V2.22 contract:
- * `{ type:'token_sequence', payload:{ tokens } }` with the tokens in the order
- * the learner built. `null` until the sentence is complete.
+ * The submittable payload remains `{ type:'token_sequence', payload:{ tokens } }`.
+ * It becomes available after exactly one target-sentence length has been built,
+ * regardless of whether the learner chose a distractor. Assessment still owns
+ * correctness and compares the whole sequence to the authored target.
  */
 export function wordOrderPayload(bank, picked) {
   if (!wordOrderComplete(bank, picked)) return null
@@ -93,7 +224,6 @@ export function wordOrderRailItems(bank, picked, selected = null) {
   picked.forEach((i, idx) => {
     items.push({
       kind: 'token', i, at: idx, key: `t${i}`, text: bank[i]?.t ?? '',
-      // The position disambiguates repeated words for a screen reader (§10).
       label: `${bank[i]?.t ?? ''}, posição ${idx + 1}. Toque para remover.`,
       canMoveLeft: idx > 0, canMoveRight: idx < picked.length - 1,
     })
@@ -150,12 +280,6 @@ export function completionComplete(gapCount, fills) {
  * `activity-assessment.js` consumes: it splits `payload.text` on whitespace and
  * compares position-by-position against `expected_tokens`. With one gap this is
  * byte-identical to the pre-V2.22 payload.
- *
- * NOTE — the handoff (§4) describes the payload as "the reconstituted
- * masked_text". That is not what the assessor accepts: sending the full sentence
- * makes `given` the whole word list and every completion is scored `incorrect`.
- * Real contract wins over the handoff (slice brief §2 priority 1); proven in
- * v2-interaction-state.test.js.
  */
 export function completionPayload(gapCount, fills) {
   if (!completionComplete(gapCount, fills)) return null
@@ -167,10 +291,6 @@ export function completionPayload(gapCount, fills) {
 /**
  * Split the punctuation that immediately FOLLOWS a gap from the rest of the
  * chunk after it: `", but I will"` → `[',', ' but I will']`.
- *
- * The slot and that punctuation must render inside one non-wrapping box,
- * otherwise a line break can leave a comma stranded at the start of the next
- * line, detached from the word it belongs to (handoff §4, callout 5).
  */
 export function splitTrailingPunctuation(chunk) {
   const m = String(chunk ?? '').match(/^([^\s\w]+)([\s\S]*)$/)
@@ -200,9 +320,7 @@ export function completionFill(fills, gapCount, token, targetGap = null) {
 
 /**
  * The word bank for completion. The chips are EXACTLY the plan's
- * `expected_tokens` — the UI never invents a distractor (§12). A chip counts as
- * used once as many gaps hold that text as the bank offers copies of it, so a
- * sentence masking the same word twice keeps both chips usable.
+ * `expected_tokens` — this PR intentionally changes only word-order scramble.
  */
 export function completionBankItems(expectedTokens, fills, gapCount) {
   const usedCounts = new Map()
