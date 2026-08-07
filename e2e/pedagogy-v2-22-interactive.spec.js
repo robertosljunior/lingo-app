@@ -11,7 +11,7 @@
 
 import { test, expect } from '@playwright/test'
 import { enableTestHooks, seedFixtures, PROFILE_A } from './helpers.js'
-import { setLearnerFlag, waitForAdvance, seedV2Evidence, fillWordOrder, fillCompletion } from './v2-helpers.js'
+import { setLearnerFlag, waitForAdvance, seedV2Evidence, fillWordOrder, fillCompletion, wordOrderTargetTokens } from './v2-helpers.js'
 
 // Since the V2.20-R production cutover the ROOT Home *is* the V2 learner home —
 // there is no Training hub to open first, so these specs enter from the root.
@@ -173,8 +173,8 @@ test('word order: build by tap, remove, re-place, check, feedback in place, cont
   // insertion gap: target position 1, then place a word there
   await page.getByTestId('v2lx-gap-0').click()
   await expect(page.getByTestId('v2lx-gap-0')).toHaveAttribute('data-active', 'true')
-  await fillWordOrder(page)
-  await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(total)
+  const targetTotal = await fillWordOrder(page)
+  await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(targetTotal)
 
   // D. only now is the CTA live
   await expect(page.getByTestId('v2lx-check')).toBeEnabled()
@@ -297,10 +297,14 @@ test('keyboard alone can build and submit a word order (§10)', async ({ page, c
   expect(reached).toBe('word_order_reconstruction')
 
   const bank = page.locator('[data-testid="v2lx-token-bank"] button')
-  const total = await bank.count()
+  const targetTokens = await wordOrderTargetTokens(page)
+  const bankTexts = await bank.allTextContents()
+  const firstTargetIndex = bankTexts.findIndex((text) => text.trim() === targetTokens[0])
+  expect(firstTargetIndex, 'first target token exists in the bank').toBeGreaterThanOrEqual(0)
+  const firstTarget = bank.nth(firstTargetIndex)
 
-  // Enter on a focused bank chip places it; Enter on a placed chip removes it.
-  await bank.first().focus()
+  // Enter on a focused TRUE bank chip places it; Enter on a placed chip removes it.
+  await firstTarget.focus()
   await page.keyboard.press('Enter')
   await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(1)
   await page.locator('[data-testid^="v2lx-placed-"]').first().focus()
@@ -308,16 +312,20 @@ test('keyboard alone can build and submit a word order (§10)', async ({ page, c
   await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(0)
 
   // Space works too, and focus is never thrown to <body> by the move.
-  await bank.first().focus()
+  await firstTarget.focus()
   await page.keyboard.press('Space')
   await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(1)
   expect(await page.evaluate(() => document.activeElement?.tagName)).toBe('BUTTON')
 
-  // Arrow keys reorder a placed word without any drag.
-  for (let i = 1; i < total; i++) {
-    await page.locator('[data-testid="v2lx-token-bank"] button:not([data-used])').first().click()
+  // Add only the remaining TRUE tokens. Distractors stay available by design.
+  for (const token of targetTokens.slice(1)) {
+    const free = page.locator('[data-testid="v2lx-token-bank"] button:not([data-used])')
+    const texts = await free.allTextContents()
+    const at = texts.findIndex((text) => text.trim() === token)
+    expect(at, `target token ${token} remains available`).toBeGreaterThanOrEqual(0)
+    await free.nth(at).click()
   }
-  await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(total)
+  await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(targetTokens.length)
   const order = await page.locator('[data-testid^="v2lx-placed-"]').allInnerTexts()
   const second = page.locator('[data-testid^="v2lx-placed-"]').nth(1)
   await second.focus()
