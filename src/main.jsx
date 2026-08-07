@@ -25,6 +25,7 @@ import { AppProvider } from './store.jsx'
 import App from './App.jsx'
 import { ErrorBoundary } from './components/error-boundary.jsx'
 import { installGlobalErrorLogging } from './lib/error-log.js'
+import { installPwaUpdateIntegrity } from './lib/pwa-update-integrity.js'
 
 // Capture uncaught errors/rejections into the persistent diagnostic log
 // before anything else can fail.
@@ -66,9 +67,10 @@ if (typeof window !== 'undefined' && sessionStorage.getItem('e2e:enabled') === '
   }
 }
 
-// Register the PWA service worker (offline caching).
+// Register the PWA service worker and keep already-open clients synchronized
+// with newly deployed hashed assets. First install is intentionally reload-free.
 import { registerSW } from 'virtual:pwa-register'
-registerSW({ immediate: true })
+installPwaUpdateIntegrity({ registerSW })
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
