@@ -50,13 +50,10 @@ function strategyToMode(strategy) {
  * Validate an authored `semantic_assessment` metadata object against a
  * reference sentence. PURE. Returns { valid, errors: [code], normalized }.
  * Used by the content validator (§25) and, defensively, by the bridge.
- *   errors: INVALID_SEMANTIC_ASSESSMENT_STRATEGY, EQUIVALENT_TARGET_WITHOUT_TEXT,
- *   EQUIVALENT_TARGET_WITHOUT_ESSENTIAL_WORDS, SEMANTIC_TARGET_REFERENCES_NON_AUTHORED_TEXT,
- *   INVALID_REQUESTED_INTENT
  */
 export function validateSemanticAssessmentMetadataV2(meta, { referenceText = null } = {}) {
   const errors = []
-  if (meta == null) return { valid: true, errors, normalized: null } // absence is valid → free
+  if (meta == null) return { valid: true, errors, normalized: null }
   if (typeof meta !== 'object') return { valid: false, errors: ['INVALID_SEMANTIC_ASSESSMENT_STRATEGY'], normalized: null }
   const strategy = meta.strategy
   if (!SEMANTIC_STRATEGIES.includes(strategy)) {
@@ -66,15 +63,11 @@ export function validateSemanticAssessmentMetadataV2(meta, { referenceText = nul
     if (!referenceText || typeof referenceText !== 'string' || !referenceText.trim()) errors.push('EQUIVALENT_TARGET_WITHOUT_TEXT')
     const essential = Array.isArray(meta.essential_words) ? meta.essential_words.filter((w) => typeof w === 'string' && w.trim()) : []
     if (essential.length === 0) errors.push('EQUIVALENT_TARGET_WITHOUT_ESSENTIAL_WORDS')
-    // Each essential word must appear (token boundary, case-insensitive) in the
-    // authored reference — essential words are of the reference, not invented.
     if (referenceText) {
       for (const w of essential) {
         if (!wordInText(referenceText, w)) errors.push('SEMANTIC_TARGET_REFERENCES_NON_AUTHORED_TEXT')
       }
     }
-    // Slice V2.15: optional authored polarity (needed for targets whose meaning
-    // is negative without a negation marker, e.g. "yet"). Only two valid values.
     if (meta.polarity != null && meta.polarity !== 'affirmative' && meta.polarity !== 'negative') {
       errors.push('INVALID_SEMANTIC_POLARITY')
     }
@@ -89,18 +82,18 @@ function wordInText(text, word) {
   return re.test(String(text))
 }
 
-/**
- * Build the SemanticAssessmentRequestV2 for a plan + learner text. PURE.
- *   buildSemanticAssessmentRequestV2({ plan, text, responseType })
- * Falls back to a `free` request whenever metadata is absent or invalid, or the
- * recipe is not a production recipe.
- */
+/** Build the SemanticAssessmentRequestV2 for a plan + learner text. PURE. */
 export function buildSemanticAssessmentRequestV2({ plan, text, responseType = 'text' }) {
   const context = { situation: plan?.context ?? null, text_pt: plan?.text_pt ?? null }
   const provenanceBase = {
     target_id: plan?.primary_target?.target_id ?? null,
     exemplar_id: plan?.exemplar_id ?? null,
     construction_id: plan?.construction_id ?? null,
+    // #72 relevance hardening: recipe is routing metadata, not semantic evidence.
+    // It lets the shared production service apply the conservative relevance
+    // preflight only to guided production, while true free production remains
+    // open-ended.
+    recipe: plan?.recipe ?? null,
   }
   const free = (reason, source = 'fallback') => ({
     bridge_version: SEMANTIC_ASSESSMENT_BRIDGE_VERSION,
