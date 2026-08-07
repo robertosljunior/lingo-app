@@ -34,6 +34,93 @@ export function normalizeCompletionToken(s) {
     .toLowerCase()
 }
 
+// P0 evaluator hardening (#72): production is not allowed to earn mastery just
+// because the semantic engine found the sentence broadly comprehensible. Two
+// deterministic constraints are authoritative before a positive production
+// outcome is accepted:
+//   1) authored construction fixed elements must actually be realized;
+//   2) a spoken transcript may not flip an explicitly negative model sentence
+//      into an affirmative one.
+// These are deliberately narrow gates: they do NOT compare the whole sentence,
+// do NOT require model-answer equality and do NOT penalize harmless ASR lexical
+// variation such as bus/buzz when the pedagogically required structure survives.
+const EXPLICIT_NEGATION_RE = /(?:^|[^a-z])(?:not|never|no|cannot|can't|won't|don't|doesn't|didn't|isn't|aren't|wasn't|weren't|hasn't|haven't|hadn't)(?:$|[^a-z])/i
+
+function hasExplicitNegation(text) {
+  return EXPLICIT_NEGATION_RE.test(String(text || ''))
+}
+
+function containsProductionElement(text, element) {
+  if (!text || !element) return false
+  if (String(element).toLowerCase() === 'not') return hasExplicitNegation(text)
+  const escaped = String(element).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const re = new RegExp(`(?:^|[^a-z0-9])${escaped}(?:$|[^a-z0-9])`, 'i')
+  return re.test(String(text))
+}
+
+function productionGate({ plan, response, text }) {
+  const fixedElements = (plan?.construction_fixed_elements || [])
+    .filter((el) => typeof el === 'string' && el.trim())
+  const missingFixedElements = fixedElements.filter((el) => !containsProductionElement(text, el))
+  if (missingFixedElements.length) {
+    return {
+      code: 'TARGET_FORM_MISSING',
+      kind: 'target_form',
+      confidence: 1,
+      missing_fixed_elements: missingFixedElements,
+    }
+  }
+
+  const spoken = response?.response_type === 'speech_transcript'
+  if (spoken && hasExplicitNegation(plan?.text_en) && !hasExplicitNegation(text)) {
+    return {
+      code: 'SPEECH_POLARITY_MISMATCH',
+      kind: 'semantic_context',
+      confidence: 0.95,
+    }
+  }
+  return null
+}
+
+function semanticResultAfterGate(result, gate) {
+  if (!gate) return result
+  if (gate.kind === 'semantic_context') {
+    const gateError = {
+      error_id: 'speech_reference_polarity_mismatch',
+      category: 'meaning',
+      subtype: 'speech_reference_polarity',
+      severity: 'high',
+      confidence: gate.confidence,
+      message: 'A transcrição mudou a polaridade da frase praticada.',
+      explanation_pt: {
+        title: 'O sentido mudou',
+        summary: 'A frase praticada é negativa, mas a transcrição reconhecida ficou afirmativa. Tente novamente mantendo a negação.',
+      },
+      source: 'assessment_gate',
+    }
+    return {
+      ...result,
+      verdict: 'needs_revision',
+      confidence: Math.max(result?.confidence || 0, gate.confidence),
+      corrected_version: null,
+      natural_alternatives: [],
+      detected_errors: [...(result?.detected_errors || []), gateError],
+    }
+  }
+
+  // Missing fixed elements are already represented independently by the typed
+  // target_form_relation in AssessmentDiagnosisV2. Keep meaning separate rather
+  // than fabricating a grammar/semantic error, but suppress any “natural form”
+  // suggestion from a semantic result that was otherwise permissive.
+  return {
+    ...result,
+    verdict: 'needs_revision',
+    confidence: Math.max(result?.confidence || 0, gate.confidence),
+    corrected_version: null,
+    natural_alternatives: [],
+  }
+}
+
 const base = (plan, response, fields) => ({
   assessment_version: ASSESSMENT_VERSION,
   activity_id: plan.activity_id,
@@ -51,7 +138,7 @@ const directPlannedTargets = (plan) => (plan.planned_evidence || [])
 const primaryTargets = (plan) => [
   plan.primary_target,
   ...(plan.secondary_targets || []).filter((t) => t.role === 'primary'),
-].map((t) => ({ target_type: t.target_type, target_id: t.target_id }))
+].filter(Boolean).map((t) => ({ target_type: t.target_type, target_id: t.target_id }))
 
 // Slice V2.14: the strategy comes from the plan's authored metadata via the
 // bridge — NOT from the recipe name. The complete SemanticAssessmentRequestV2 is
@@ -148,7 +235,7 @@ async function evaluateActivityResponseCoreV2({ activityPlan: plan, response, as
       })
     }
 
-    // ---- guided / free production: existing semantic pipeline -------------
+    // ---- guided / free production: semantic pipeline + hard gates ---------
     case 'guided_production':
     case 'free_production': {
       const spoken = response.response_type === 'speech_transcript'
@@ -175,7 +262,13 @@ async function evaluateActivityResponseCoreV2({ activityPlan: plan, response, as
           __semantic_bridge: bridgeInfo,
         })
       }
-      const mapped = mapSemanticResultToOutcome(result)
+
+      const gate = productionGate({ plan, response, text })
+      const effectiveResult = semanticResultAfterGate(result, gate)
+      const mapped = gate
+        ? { status: 'assessed', outcome: 'incorrect', partial_score: null, assessment_confidence: gate.confidence }
+        : mapSemanticResultToOutcome(effectiveResult)
+
       let confidence = mapped.assessment_confidence
       if (spoken && mapped.status === 'assessed') {
         confidence = combineSpeechConfidence({
@@ -186,6 +279,8 @@ async function evaluateActivityResponseCoreV2({ activityPlan: plan, response, as
           return base(plan, response, {
             status: 'unable_to_assess', outcome: 'not_assessed', assessment_confidence: 0,
             feedback: { kind: 'speech', reason: 'low_confidence' },
+            __semantic_result: effectiveResult,
+            __semantic_bridge: bridgeInfo,
           })
         }
       }
@@ -196,14 +291,15 @@ async function evaluateActivityResponseCoreV2({ activityPlan: plan, response, as
         assessment_confidence: mapped.status === 'assessed' ? confidence : 0,
         feedback: {
           kind: 'semantic',
-          verdict: result.verdict,
-          corrected_version: result.corrected_version || null,
-          detected_errors: (result.detected_errors || []).slice(0, 3),
-          natural_alternatives: (result.natural_alternatives || []).slice(0, 2),
+          verdict: effectiveResult.verdict,
+          corrected_version: effectiveResult.corrected_version || null,
+          detected_errors: (effectiveResult.detected_errors || []).slice(0, 3),
+          natural_alternatives: gate ? [] : (effectiveResult.natural_alternatives || []).slice(0, 2),
+          production_gate: gate,
         },
         target_assessments: mapped.status === 'assessed' ? primaryTargets(plan) : [],
         // Full raw result + bridge carried to the diagnosis layer (in memory only).
-        __semantic_result: result,
+        __semantic_result: effectiveResult,
         __semantic_bridge: bridgeInfo,
       })
     }
