@@ -3,10 +3,10 @@
 import { spawnSync } from 'node:child_process'
 import { writeFileSync } from 'node:fs'
 
-// RX-6 makes the current dependency debt explicit instead of hiding it behind
-// `npm audit fix`. RX-8 owns removal/upgrades. Until then, CI fails on any
-// critical advisory or on growth beyond the reviewed high-severity baseline.
-const BASELINE = Object.freeze({ critical: 0, high: 3 })
+// RX-8A removes the reviewed high-severity dependency debt. From this point
+// forward CI rejects any critical or high advisory instead of carrying a
+// temporary baseline.
+const BASELINE = Object.freeze({ critical: 0, high: 0 })
 
 const result = spawnSync('npm', ['audit', '--json'], {
   encoding: 'utf8',
@@ -61,4 +61,4 @@ if (result.error) {
   process.exit(1)
 }
 
-console.log('Dependency advisory budget respected. Existing high-severity debt remains tracked for RX-8.')
+console.log('Dependency advisory budget respected: zero critical and zero high vulnerabilities.')
