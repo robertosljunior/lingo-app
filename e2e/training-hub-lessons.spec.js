@@ -60,8 +60,9 @@ for (const theme of THEMES) {
       expect(instruction.length, 'instruction not empty').toBeGreaterThan(0)
 
       // Run the whole lesson through the UI. After every Próxima, wait for
-      // evidence from the next persisted question rather than assuming the
-      // route/state transition completed in the same event-loop turn.
+      // deterministic UI evidence that the question index really advanced.
+      // Do not couple this synchronization to persisted prompt text: different
+      // exercise renderers intentionally expose different subsets/forms of it.
       for (let i = 0; i < questions.length; i++) {
         await expect(page.getByTestId('question-type')).toBeVisible()
         await answerCurrentQuestion(page, questions[i])
@@ -69,10 +70,9 @@ for (const theme of THEMES) {
 
         if (i + 1 < questions.length) {
           const next = questions[i + 1]
-          const nextText = visibleQuestionText(next)
           await expect(page.getByTestId('feedback-sheet')).toBeHidden()
+          await expect(page.getByText(`${i + 2}/${questions.length}`, { exact: true })).toBeVisible()
           await expect(page.getByTestId('question-type')).toHaveText(next.type)
-          if (nextText) await expect(page.getByText(nextText, { exact: true }).first()).toBeVisible()
         }
       }
 
