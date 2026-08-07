@@ -26,7 +26,7 @@ import V2CompletionSlot from './V2CompletionSlot.jsx'
 import V2WordBank from './V2WordBank.jsx'
 import {
   completionBankItems, completionClear, completionFill, completionPayload, completionView, splitTrailingPunctuation,
-  wordOrderBank, wordOrderBankItems, wordOrderMove, wordOrderPayload, wordOrderPlace, wordOrderRailItems, wordOrderRemove,
+  wordOrderBank, wordOrderBankItems, wordOrderComplete, wordOrderMove, wordOrderPayload, wordOrderPlace, wordOrderRailItems, wordOrderRemove,
 } from './v2-interaction-state.js'
 
 // ---- Exposure (§7) — observation, not a question -----------------------------
@@ -298,7 +298,7 @@ function WordOrderActivity({ plan, busy, answered, onSubmittable }) {
   const state = busy ? 'submitting'
     : answered ? 'answered'
       : picked.length === 0 ? 'empty'
-        : picked.length === bank.length ? 'complete'
+        : wordOrderComplete(bank, picked) ? 'complete'
           : selected != null ? 'reordering' : 'partial'
 
   const hasTokens = picked.length > 0

@@ -88,13 +88,21 @@ export async function waitForAdvance(page, counterBefore) {
  * pre-V2.22 "click the first button N times" loop would re-tap the same spent
  * chip forever. Target the un-used ones explicitly.
  */
+export async function wordOrderTargetTokens(page) {
+  const text = await page.evaluate(() => window.__e2e?.v2Activity?.text_en || '')
+  return String(text).trim().split(/\s+/).filter(Boolean)
+}
+
 export async function fillWordOrder(page) {
-  const free = page.locator('[data-testid="v2lx-token-bank"] button:not([data-used])')
-  for (let guard = 0; guard < 24; guard++) {
-    const n = await free.count()
-    if (!n) break
-    await free.first().click()
+  const targetTokens = await wordOrderTargetTokens(page)
+  for (const token of targetTokens) {
+    const free = page.locator('[data-testid="v2lx-token-bank"] button:not([data-used])')
+    const texts = await free.allTextContents()
+    const at = texts.findIndex((text) => text.trim() === token)
+    if (at < 0) throw new Error(`Target token not available in scramble bank: ${token}`)
+    await free.nth(at).click()
   }
+  return targetTokens.length
 }
 
 /**
