@@ -1,0 +1,132 @@
+name: fix-scramble-e2e
+
+on:
+  push:
+    branches: [fix/scramble-semantic-distractors]
+    paths:
+      - .github/workflows/fix-scramble-e2e.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/scramble-semantic-distractors
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Make word-order E2E distractor-aware
+        run: |
+          node <<'NODE'
+          const fs = require('fs')
+
+          const helpersPath = 'e2e/v2-helpers.js'
+          let helpers = fs.readFileSync(helpersPath, 'utf8')
+          const oldFill = `export async function fillWordOrder(page) {
+            const free = page.locator('[data-testid="v2lx-token-bank"] button:not([data-used])')
+            for (let guard = 0; guard < 24; guard++) {
+              const n = await free.count()
+              if (!n) break
+              await free.first().click()
+            }
+          }`
+          const newFill = `export async function wordOrderTargetTokens(page) {
+            const text = await page.evaluate(() => window.__e2e?.v2Activity?.text_en || '')
+            return String(text).trim().split(/\\s+/).filter(Boolean)
+          }
+
+          export async function fillWordOrder(page) {
+            const targetTokens = await wordOrderTargetTokens(page)
+            for (const token of targetTokens) {
+              const free = page.locator('[data-testid="v2lx-token-bank"] button:not([data-used])')
+              const texts = await free.allTextContents()
+              const at = texts.findIndex((text) => text.trim() === token)
+              if (at < 0) throw new Error(\`Target token not available in scramble bank: \${token}\`)
+              await free.nth(at).click()
+            }
+            return targetTokens.length
+          }`
+          if (!helpers.includes(oldFill)) throw new Error('fillWordOrder anchor not found')
+          helpers = helpers.replace(oldFill, newFill)
+          fs.writeFileSync(helpersPath, helpers)
+
+          const specPath = 'e2e/pedagogy-v2-22-interactive.spec.js'
+          let spec = fs.readFileSync(specPath, 'utf8')
+          spec = spec.replace(
+            `import { setLearnerFlag, waitForAdvance, seedV2Evidence, fillWordOrder, fillCompletion } from './v2-helpers.js'`,
+            `import { setLearnerFlag, waitForAdvance, seedV2Evidence, fillWordOrder, fillCompletion, wordOrderTargetTokens } from './v2-helpers.js'`,
+          )
+          const oldTap = `  await fillWordOrder(page)
+            await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(total)`
+          const newTap = `  const targetTotal = await fillWordOrder(page)
+            await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(targetTotal)`
+          if (!spec.includes(oldTap)) throw new Error('tap completion anchor not found')
+          spec = spec.replace(oldTap, newTap)
+
+          const oldKeyboardStart = `  const bank = page.locator('[data-testid="v2lx-token-bank"] button')
+            const total = await bank.count()
+
+            // Enter on a focused bank chip places it; Enter on a placed chip removes it.
+            await bank.first().focus()
+            await page.keyboard.press('Enter')
+            await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(1)
+            await page.locator('[data-testid^="v2lx-placed-"]').first().focus()
+            await page.keyboard.press('Enter')
+            await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(0)
+
+            // Space works too, and focus is never thrown to <body> by the move.
+            await bank.first().focus()
+            await page.keyboard.press('Space')
+            await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(1)
+            expect(await page.evaluate(() => document.activeElement?.tagName)).toBe('BUTTON')
+
+            // Arrow keys reorder a placed word without any drag.
+            for (let i = 1; i < total; i++) {
+              await page.locator('[data-testid="v2lx-token-bank"] button:not([data-used])').first().click()
+            }
+            await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(total)`
+          const newKeyboardStart = `  const bank = page.locator('[data-testid="v2lx-token-bank"] button')
+            const targetTokens = await wordOrderTargetTokens(page)
+            const bankTexts = await bank.allTextContents()
+            const firstTargetIndex = bankTexts.findIndex((text) => text.trim() === targetTokens[0])
+            expect(firstTargetIndex, 'first target token exists in the bank').toBeGreaterThanOrEqual(0)
+            const firstTarget = bank.nth(firstTargetIndex)
+
+            // Enter on a focused TRUE bank chip places it; Enter on a placed chip removes it.
+            await firstTarget.focus()
+            await page.keyboard.press('Enter')
+            await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(1)
+            await page.locator('[data-testid^="v2lx-placed-"]').first().focus()
+            await page.keyboard.press('Enter')
+            await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(0)
+
+            // Space works too, and focus is never thrown to <body> by the move.
+            await firstTarget.focus()
+            await page.keyboard.press('Space')
+            await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(1)
+            expect(await page.evaluate(() => document.activeElement?.tagName)).toBe('BUTTON')
+
+            // Add only the remaining TRUE tokens. Distractors stay available by design.
+            for (const token of targetTokens.slice(1)) {
+              const free = page.locator('[data-testid="v2lx-token-bank"] button:not([data-used])')
+              const texts = await free.allTextContents()
+              const at = texts.findIndex((text) => text.trim() === token)
+              expect(at, \`target token \${token} remains available\`).toBeGreaterThanOrEqual(0)
+              await free.nth(at).click()
+            }
+            await expect(page.locator('[data-testid^="v2lx-placed-"]')).toHaveCount(targetTokens.length)`
+          if (!spec.includes(oldKeyboardStart)) throw new Error('keyboard anchor not found')
+          spec = spec.replace(oldKeyboardStart, newKeyboardStart)
+          fs.writeFileSync(specPath, spec)
+          NODE
+      - name: Commit E2E fix
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add e2e/v2-helpers.js e2e/pedagogy-v2-22-interactive.spec.js
+          git commit -m "test: make scramble E2E distractor-aware"
+          git push
