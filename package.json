@@ -6,7 +6,8 @@
   "description": "App Idiomas — treino de inglês mobile-first, offline, com correção NLP local",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run check:bundle",
+    "check:bundle": "node scripts/check-bundle-budget.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:e2e": "playwright test",

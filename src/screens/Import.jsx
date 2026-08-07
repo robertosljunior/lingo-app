@@ -5,7 +5,7 @@ import { validateLesson } from '../lib/lesson-parser.js'
 import { SAMPLE_YAML } from '../lib/sample-lesson.js'
 
 export default function Import() {
-  const { back, db, startLesson, showToast } = useApp()
+  const { setTab, SCREENS, db, startLesson, showToast } = useApp()
   const [text, setText] = useState(SAMPLE_YAML)
   const [result, setResult] = useState(null) // { ok, summary } | { ok:false, error, line }
 
@@ -25,7 +25,7 @@ export default function Import() {
   return (
     <div className="phone">
       <div className="app-header">
-        <button className="back" onClick={() => back()} aria-label="Fechar"><I.close /></button>
+        <button className="back" onClick={() => setTab(SCREENS.HOME)} aria-label="Fechar"><I.close /></button>
         <div style={{ fontWeight: 700, fontSize: 16, letterSpacing: '-0.01em' }}>Importar aula</div>
         <div style={{ width: 40 }} />
       </div>

@@ -28,6 +28,10 @@ async function playedLessonQuestions(page) {
   return readLessonWithQuestions(page, lessons[0].lesson_id)
 }
 
+function visibleQuestionText(q) {
+  return (q.prompt_pt || q.prompt || q.context || '').trim()
+}
+
 for (const theme of THEMES) {
   for (const level of LEVELS) {
     test(`Hub lesson opens and completes for ${theme} / ${level}`, async ({ page, context }) => {
@@ -52,14 +56,24 @@ for (const theme of THEMES) {
       // First question: valid instruction, no answer/transcript leak.
       const first = questions[0]
       expect(questionLanguageIssues(first), `language contract ${first.type}`).toEqual([])
-      const instruction = (first.prompt_pt || first.prompt || '').trim()
+      const instruction = visibleQuestionText(first)
       expect(instruction.length, 'instruction not empty').toBeGreaterThan(0)
 
-      // Run the whole lesson through the UI: submit + Próxima both work.
+      // Run the whole lesson through the UI. After every Próxima, wait for
+      // deterministic UI evidence that the question index really advanced.
+      // Do not couple this synchronization to persisted prompt text: different
+      // exercise renderers intentionally expose different subsets/forms of it.
       for (let i = 0; i < questions.length; i++) {
         await expect(page.getByTestId('question-type')).toBeVisible()
         await answerCurrentQuestion(page, questions[i])
         await goNext(page)
+
+        if (i + 1 < questions.length) {
+          const next = questions[i + 1]
+          await expect(page.getByTestId('feedback-sheet')).toBeHidden()
+          await expect(page.getByText(`${i + 2}/${questions.length}`, { exact: true })).toBeVisible()
+          await expect(page.getByTestId('question-type')).toHaveText(next.type)
+        }
       }
 
       // Result opens.
