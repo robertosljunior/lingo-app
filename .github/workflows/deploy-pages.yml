@@ -1,24 +1,17 @@
 name: Deploy to GitHub Pages
 
-# Faz o BUILD do app a cada push na main e publica dist/ no GitHub Pages usando
-# o deploy oficial de Actions (sem branch gh-pages). Antes, este workflow apenas
-# empurrava o dist/ versionado no repositório para a branch gh-pages — se o
-# dist/ commitado estivesse desatualizado, o site publicado ficava velho mesmo
-# com a main atualizada. Agora o artefato publicado é sempre construído a partir
-# do código da main.
+# Build from main, deploy the generated artifact, then prove that Pages is serving
+# THIS commit and that the deployed service worker can boot the app offline.
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-# Permissões mínimas: ler o código, publicar no Pages e assinar o deployment.
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Um deploy de Pages por vez. Sem cancel-in-progress: um deploy já em andamento
-# deve terminar, senão o site pode ficar em estado parcial.
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -33,7 +26,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22 # mesma versão usada no workflow e2e
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -41,6 +34,11 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Stamp exact source commit
+        shell: bash
+        run: |
+          printf '{"commit":"%s","run_id":"%s"}\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" > dist/build-meta.json
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -56,7 +54,35 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  smoke:
+    name: deployed commit and offline smoke
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout deployed source
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Verify exact commit and offline service-worker boot
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+          EXPECTED_COMMIT: ${{ github.sha }}
+        run: node scripts/smoke-pages-deploy.mjs "$PAGE_URL" "$EXPECTED_COMMIT"
