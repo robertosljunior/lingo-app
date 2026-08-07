@@ -263,11 +263,18 @@ async function evaluateActivityResponseCoreV2({ activityPlan: plan, response, as
         })
       }
 
-      const gate = productionGate({ plan, response, text })
+      const semanticMapped = mapSemanticResultToOutcome(result)
+      // Gates prevent false positive/partial mastery only. If the semantic layer
+      // is itself uncertain/unable to assess, preserve that honest outcome
+      // instead of manufacturing an incorrect verdict from a missing form.
+      const gate = semanticMapped.status === 'assessed'
+        && (semanticMapped.outcome === 'correct' || semanticMapped.outcome === 'partial')
+        ? productionGate({ plan, response, text })
+        : null
       const effectiveResult = semanticResultAfterGate(result, gate)
       const mapped = gate
         ? { status: 'assessed', outcome: 'incorrect', partial_score: null, assessment_confidence: gate.confidence }
-        : mapSemanticResultToOutcome(effectiveResult)
+        : semanticMapped
 
       let confidence = mapped.assessment_confidence
       if (spoken && mapped.status === 'assessed') {
