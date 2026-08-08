@@ -1,10 +1,11 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { useApp, SCREENS } from './store.jsx'
 import { Toast } from './components/ui.jsx'
 import Home from './screens/Home.jsx'
 import V2Onboarding from './screens/V2Onboarding.jsx'
 import PwaInstallController from './components/PwaInstallController.jsx'
 import { learnerExperienceV2Enabled } from './lib/pedagogy-v2/learner-experience-mode.js'
+import { ensureExperienceFonts } from './lib/experience-fonts.js'
 
 // RX-8B: the application previously imported every V1/V2 screen at boot. That
 // made ordinary V2 Home visits download legacy lessons, Stories, Talk, Settings,
@@ -61,12 +62,22 @@ function ScreenLoading() {
 
 export default function App() {
   const { ready, screen, activeLesson, toast, needsOnboarding, settings } = useApp()
+  const V2 = learnerExperienceV2Enabled(settings)
+
+  // RX-8E / REC-245: Barlow is the production-default V2 typography and is
+  // already available from the eager entrypoint. The old Nunito/Baloo/Geist
+  // faces are requested only if the explicit rollback experience resolves to
+  // V1. A font-loading failure never blocks the product: CSS system fallbacks
+  // remain usable and a later navigation can retry the request.
+  useEffect(() => {
+    if (!ready || V2) return
+    ensureExperienceFonts({ v2: false }).catch(() => {})
+  }, [ready, V2])
 
   // V2.22-UX2-R §3 — resolve the product before choosing first-run UI. V2 is
   // eager because it is the production default; legacy onboarding is fetched
   // only for the explicit rollback experience.
   if (ready && needsOnboarding) {
-    const V2 = learnerExperienceV2Enabled(settings)
     return (
       <div className="app-shell" data-experience={V2 ? 'v2' : 'v1'}>
         <Suspense fallback={<ScreenLoading />}>
@@ -92,7 +103,7 @@ export default function App() {
   const Screen = SCREEN_COMPONENTS[active] || Home
 
   return (
-    <div className="app-shell" data-experience={learnerExperienceV2Enabled(settings) ? 'v2' : 'v1'}>
+    <div className="app-shell" data-experience={V2 ? 'v2' : 'v1'}>
       <Suspense fallback={<ScreenLoading />}>
         {/* key forces a remount per screen so the entrance animation replays */}
         <Screen key={active} />
