@@ -24,3 +24,8 @@ Targets REC-243 and REC-244 from recovery issue #58.
 `src/lib/pwa-update-integrity.test.js` proves first-install behavior, stale-client reload, bounded update checks, offline no-op behavior, refresh activation, and cleanup.
 
 `scripts/smoke-pages-deploy.mjs` is the production Pages smoke used by `.github/workflows/deploy-pages.yml`.
+
+## Remote evidence history
+
+- Required run #128 proved the implementation itself is green: dependency audit, all unit tests, pedagogy validation/simulation, production build, IndexedDB benchmark, and the complete Playwright functional suite all passed.
+- Run #128 remained red only because the pull-request event payload was created before the PR body had the required `Known warnings/debt:` metadata field. The PR body was corrected after that event had already been captured, so a fresh head commit is required to create a new event payload and re-evaluate the contract.
