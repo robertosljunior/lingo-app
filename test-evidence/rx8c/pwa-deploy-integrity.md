@@ -10,6 +10,7 @@ Targets REC-243 and REC-244 from recovery issue #58.
 - An already-controlled client must reload exactly once when a newly activated worker takes control, so old hashed JS cannot remain paired with a new cache indefinitely.
 - Update checks run on registration, return to foreground, reconnect, and at a bounded hourly interval while online.
 - Failure to check for an update must never break the current offline-capable client.
+- Functional E2E disables only the controller-triggered reload coordinator because background service-worker activation can otherwise reset an in-flight deterministic browser journey. The coordinator lifecycle remains covered by focused unit tests. Production and the real Pages smoke run without the E2E flag and therefore exercise the production registration path.
 
 ## Deploy contract
 
