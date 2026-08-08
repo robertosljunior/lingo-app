@@ -1,23 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-// Self-hosted fonts (bundled by Vite → available offline).
-import '@fontsource/geist-mono/400.css'
-import '@fontsource/geist-mono/500.css'
-// Bob redesign — playful display + body faces (self-hosted, latin-only so the
-// offline precache stays lean).
-import '@fontsource/nunito/latin-400.css'
-import '@fontsource/nunito/latin-600.css'
-import '@fontsource/nunito/latin-700.css'
-import '@fontsource/nunito/latin-800.css'
-import '@fontsource/baloo-2/latin-500.css'
-import '@fontsource/baloo-2/latin-700.css'
-import '@fontsource/baloo-2/latin-800.css'
-
 import './styles/tokens.css'
 // V2.22-UX2-R: the Claude Design typefaces (Barlow / Barlow Condensed), taken
-// from the mockup bundle itself. Must come before v2-learner.css, which binds
-// them to the `--v2-font-*` roles.
+// from the mockup bundle itself. They are the production-default typography and
+// stay in the core offline precache. Legacy Bob faces are loaded only when V1 is
+// explicitly selected (RX-8E; see experience-fonts.js).
 import './styles/v2-type.css'
 import './styles/v2-learner.css'
 import './styles/rx7-global-audio-cards.css'
