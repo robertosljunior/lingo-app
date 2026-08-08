@@ -25,12 +25,15 @@ import { AppProvider } from './store.jsx'
 import App from './App.jsx'
 import { ErrorBoundary } from './components/error-boundary.jsx'
 import { installGlobalErrorLogging } from './lib/error-log.js'
+import { installPwaUpdateIntegrity } from './lib/pwa-update-integrity.js'
 
 // Capture uncaught errors/rejections into the persistent diagnostic log
 // before anything else can fail.
 installGlobalErrorLogging()
 
-if (typeof window !== 'undefined' && sessionStorage.getItem('e2e:enabled') === '1') {
+const e2eEnabled = typeof window !== 'undefined' && sessionStorage.getItem('e2e:enabled') === '1'
+
+if (e2eEnabled) {
   // Merge defaults without clobbering values a test pre-set via an init script.
   const e2e = (window.__LINGO_E2E__ = window.__LINGO_E2E__ || {})
   e2e.ttsEvents = e2e.ttsEvents || []
@@ -66,9 +69,15 @@ if (typeof window !== 'undefined' && sessionStorage.getItem('e2e:enabled') === '
   }
 }
 
-// Register the PWA service worker (offline caching).
+// Register the PWA service worker. The production coordinator may reload an
+// already-controlled stale client when a new worker takes over. Functional E2E
+// intentionally disables that reload coordinator because every spec controls
+// its own navigation/state and a service-worker activation race can otherwise
+// reset an in-flight generated lesson. The coordinator itself has focused unit
+// coverage, while the real Pages smoke runs without the E2E flag.
 import { registerSW } from 'virtual:pwa-register'
-registerSW({ immediate: true })
+if (e2eEnabled) registerSW({ immediate: true })
+else installPwaUpdateIntegrity({ registerSW })
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
