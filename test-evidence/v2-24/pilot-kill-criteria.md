@@ -7,9 +7,9 @@ This file is committed before the pilot filler/frame banks and candidate allow-l
 Two authoring workflows must be timed by a human editor using the same quality bar:
 
 1. **Manual baseline** — author complete bilingual exemplars from a blank row, including targets/prerequisites/stage/context metadata required for the intended recipe tier.
-2. **Licensed compiler workflow** — review deterministic compiler candidates, reject bad ones, and approve only signatures whose English, pt-BR, selectional constraints and pragmatic frame are acceptable without rewriting the generated realization.
+2. **Licensed compiler workflow** — review deterministic compiler candidates and approve only signatures whose English, pt-BR, selectional constraints, pragmatic frame, calculated stage and composed prerequisites are acceptable without rewriting either the realization or its contract metadata.
 
-Setup/tooling time is reported separately from steady-state review time. Rewriting a rejected candidate into a good sentence counts as manual authorship, not compiler throughput.
+Setup/tooling time is reported separately from steady-state review time. Rewriting a rejected candidate into a good sentence, repairing a missing prerequisite, or correcting its stage counts as manual authorship, not compiler throughput.
 
 ## Frozen numerical thresholds
 
@@ -28,12 +28,14 @@ For both `still` lexical-slot and `unless` clause-frame pilots record:
 
 - reviewed candidate count;
 - approved candidate count;
-- rejected candidate count and reason categories;
+- rejected candidate count and reason categories, separating surface-language and contract-metadata failures;
 - review minutes;
 - approval rate;
 - approved realizations/hour;
 - manual baseline realizations/hour;
 - compiler/manual throughput ratio.
+
+A candidate is not approved merely because its sentence is natural. The reviewer must also confirm that the displayed calculated stage and composed prerequisite list adequately describe the language used by that realization.
 
 No final PASS may be claimed until the human timing rows exist. Technical validation may be green while the economic verdict remains `PENDING_HUMAN_MEASUREMENT`.
 
