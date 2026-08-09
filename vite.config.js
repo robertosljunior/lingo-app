@@ -3,9 +3,9 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 // Relative base so the built app runs from any path and offline (file:// or a
-// static host in a subfolder). The service worker precaches every build asset —
-// including the bundled Compromise worker and self-hosted fonts — so the app is
-// fully usable with no network after the first load.
+// static host in a subfolder). The service worker precaches the core build
+// assets needed by the default V2 experience. Optional runtimes and legacy V1
+// font binaries are cached only on first use.
 export default defineConfig({
   base: './',
   plugins: [
@@ -29,19 +29,17 @@ export default defineConfig({
       includeAssets: ['favicon.svg'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,woff,woff2}'],
-        // The TensorFlow.js + USE runtime (~3.8 MB) is an OPT-IN dependency: it
-        // must NOT bloat every install. It is forced into a single predictable
-        // `semantic-runtime-*.js` chunk (see build.rollupOptions), excluded from
-        // the precache here, and runtime-cached below on first use (which happens
-        // while the user is online downloading the model).
-        // The whole opt-in TensorFlow.js + USE runtime must stay OUT of the base
-        // precache. It now lives in the semantic WORKER graph, which Rollup emits
-        // as several chunks (`semantic-runtime-*`, plus tfjs-converter's
-        // `model-*` / `graph_model-*`). All are runtime-cached below on first use
-        // (which happens online, right after the user downloads the model). The
-        // tiny worker entry itself (`semantic-worker-*`) IS precached so it is
-        // available offline. Users who never download the model pay for none of it.
-        globIgnores: ['**/semantic-runtime-*.js', '**/model-*.js', '**/graph_model-*.js'],
+        // Optional resources must not bloat every V2 installation. Semantic
+        // runtime chunks and legacy Bob typography are runtime-cached on first
+        // use instead of living in the base precache.
+        globIgnores: [
+          '**/semantic-runtime-*.js',
+          '**/model-*.js',
+          '**/graph_model-*.js',
+          '**/*nunito*.woff2',
+          '**/*baloo*.woff2',
+          '**/*geist-mono*.woff2',
+        ],
         // The NLP worker + Compromise bundle can exceed the default 2 MiB cap.
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         // Piper (neural TTS) runtimes come from CDNs; cache them so the
@@ -66,6 +64,18 @@ export default defineConfig({
             options: {
               cacheName: 'semantic-runtime-v1',
               expiration: { maxEntries: 6, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            // RX-8E / REC-245: Nunito, Baloo 2 and Geist Mono belong to the
+            // explicit legacy experience. Their binaries stay out of the base
+            // V2 precache, then become offline-capable after the first V1 use.
+            urlPattern: ({ url }) => url.origin === self.location.origin && /(nunito|baloo|geist-mono).*\.woff2$/i.test(url.pathname),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'legacy-fonts-v1',
+              expiration: { maxEntries: 16, maxAgeSeconds: 60 * 60 * 24 * 365 },
               cacheableResponse: { statuses: [0, 200] },
             },
           },
