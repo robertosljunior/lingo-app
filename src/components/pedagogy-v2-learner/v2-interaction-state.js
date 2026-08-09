@@ -39,6 +39,20 @@ const LEVEL_FALLBACKS = {
   B2: ['yet', 'still', 'but', 'because', 'so', 'in', 'on', 'at', 'for', 'from', 'with', 'of', 'they', 'we', 'did', 'will', 'can'],
 }
 
+// V2 plans carry `exposure_stage`, not the older level/cefr_level/difficulty
+// fields. Transition bands intentionally resolve to their LOWER bound for this
+// presentation-only vocabulary fallback: a B1-B2 exemplar may safely receive
+// B1 distractors, but should not silently introduce B2-only fallback material.
+export const DISTRACTOR_LEVEL_BY_EXPOSURE_STAGE = Object.freeze({
+  A1: 'A1',
+  'A1-A2': 'A1',
+  A2: 'A2',
+  'A2-B1': 'A2',
+  B1: 'B1',
+  'B1-B2': 'B1',
+  B2: 'B2',
+})
+
 const NOUN_NEIGHBORS = {
   report: ['email', 'project'], email: ['report', 'message'], office: ['home', 'school'],
   home: ['office', 'work'], work: ['office', 'job'], meeting: ['call', 'email'],
@@ -66,9 +80,13 @@ function distractorLimit(targetCount) {
   return Math.min(desired, Math.max(1, Math.ceil(targetCount * 0.3)))
 }
 
-function planLevel(plan) {
-  const level = String(plan?.level || plan?.cefr_level || plan?.difficulty || 'B1').toUpperCase()
-  return LEVEL_FALLBACKS[level] ? level : 'B1'
+export function planLevel(plan) {
+  const stage = String(plan?.exposure_stage || '').toUpperCase()
+  if (DISTRACTOR_LEVEL_BY_EXPOSURE_STAGE[stage]) return DISTRACTOR_LEVEL_BY_EXPOSURE_STAGE[stage]
+  // Keep compatibility with fixture/legacy plan shapes that predate V2's
+  // exposure-stage contract. Unknown input keeps the historic B1 fallback.
+  const legacy = String(plan?.level || plan?.cefr_level || plan?.difficulty || 'B1').toUpperCase()
+  return LEVEL_FALLBACKS[legacy] ? legacy : 'B1'
 }
 
 function shouldAddWordOrderDistractors(plan) {
@@ -144,7 +162,7 @@ export function wordOrderRemove(picked, i) {
 export function wordOrderMove(picked, i, dir) {
   const at = picked.indexOf(i)
   const to = at + dir
-  if (at < 0 || to < 0 || to >= picked.length) return picked
+  if (at < 0 || to < 0 || to >= next.length) return picked
   const next = picked.slice()
   next.splice(at, 1)
   next.splice(to, 0, i)
