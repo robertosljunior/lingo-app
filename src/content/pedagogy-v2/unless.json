@@ -1,0 +1,150 @@
+{
+  "manifest": {
+    "schema_version": "1",
+    "pack_id": "pedagogy_v2_unless",
+    "pack_kind": "pedagogical_v2",
+    "title": {
+      "pt": "unless — condição de exceção",
+      "en": "unless — exception condition"
+    },
+    "language_pair": "pt-BR/en",
+    "version": 1,
+    "source": "builtin",
+    "primary_lexeme_id": "lexeme:unless",
+    "catalog_order": 4,
+    "short_description_pt": "Expressar que um resultado vale exceto se uma condição acontecer.",
+    "notes": "Pack mínimo do piloto V2.24. O objetivo é testar licenciamento de frames entre duas orações, não expandir ainda o catálogo amplo de conectores."
+  },
+  "lexemes": [
+    {
+      "lexeme_id": "lexeme:unless",
+      "lemma": "unless",
+      "language": "en",
+      "part_of_speech": ["conjunction"],
+      "glosses_pt": ["a menos que", "a não ser que"],
+      "frequency_band": "high_frequency_functional",
+      "notes": "A progressão pertence ao uso/construção, não ao lexema."
+    }
+  ],
+  "senses": [
+    {
+      "sense_id": "sense:unless.exception_condition",
+      "lexeme_id": "lexeme:unless",
+      "label": "Condição de exceção",
+      "meaning_pt": "O resultado esperado acontece, exceto se a condição introduzida por unless ocorrer.",
+      "gloss_en": "the result holds except if the stated condition occurs",
+      "communicative_function_ids": ["function:express_exception_condition"],
+      "first_exposure_stage": "A2-B1",
+      "related_sense_ids": [],
+      "notes": "Piloto com um sentido dominante para isolar a dificuldade de coerência pragmática entre orações."
+    }
+  ],
+  "communicative_functions": [
+    {
+      "function_id": "function:express_exception_condition",
+      "label_pt": "Expressar condição de exceção",
+      "description_pt": "Dizer que um plano ou resultado continua válido, exceto se uma condição específica acontecer."
+    }
+  ],
+  "constructions": [
+    {
+      "construction_id": "construction:unless.condition_result",
+      "label": "unless + condição, resultado",
+      "pattern": "Unless + CONDITION_CLAUSE + , + RESULT_CLAUSE",
+      "fixed_elements": ["unless"],
+      "slots": [
+        {
+          "slot_id": "condition_clause",
+          "syntactic_role": "subordinate_clause",
+          "semantic_role": "exception_condition",
+          "allowed_forms": ["finite_clause"]
+        },
+        {
+          "slot_id": "result_clause",
+          "syntactic_role": "main_clause",
+          "semantic_role": "expected_result",
+          "allowed_forms": ["finite_clause"]
+        }
+      ],
+      "semantic_relation": {
+        "relation": "result_unless_exception",
+        "cause_slot": "condition_clause",
+        "result_slot": "result_clause"
+      },
+      "sense_ids": ["sense:unless.exception_condition"],
+      "communicative_function_ids": ["function:express_exception_condition"],
+      "prerequisite_construction_ids": [],
+      "recommended_stage": "A2-B1",
+      "notes": "V2.24 licencia pares condition/result apenas dentro de frames pragmáticos autorados; nunca combina orações arbitrariamente."
+    }
+  ],
+  "exemplars": [
+    {
+      "exemplar_id": "exemplar:unless.001",
+      "text_en": "Unless it rains, we'll have lunch outside.",
+      "text_pt": "A menos que chova, vamos almoçar do lado de fora.",
+      "construction_id": "construction:unless.condition_result",
+      "sense_ids": ["sense:unless.exception_condition"],
+      "communicative_function_ids": ["function:express_exception_condition"],
+      "pedagogical_targets": [
+        {"target_type": "construction", "target_id": "construction:unless.condition_result", "role": "primary"},
+        {"target_type": "sense", "target_id": "sense:unless.exception_condition", "role": "primary"}
+      ],
+      "prerequisites": [
+        {"type": "grammar_skill_v1", "ref": "simple_present", "compat_bridge": true}
+      ],
+      "intended_new_items": [
+        {"type": "sense", "ref": "sense:unless.exception_condition"},
+        {"type": "construction", "ref": "construction:unless.condition_result"}
+      ],
+      "context": "O grupo planeja almoçar ao ar livre e só mudará o plano se chover.",
+      "context_items": ["rains", "outside"],
+      "usage_notes": "Semente autorada do frame weather-plan.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:unless.002",
+      "text_en": "Unless the client changes the deadline, I'll finish the report today.",
+      "text_pt": "A menos que o cliente mude o prazo, vou terminar o relatório hoje.",
+      "construction_id": "construction:unless.condition_result",
+      "sense_ids": ["sense:unless.exception_condition"],
+      "communicative_function_ids": ["function:express_exception_condition"],
+      "pedagogical_targets": [
+        {"target_type": "construction", "target_id": "construction:unless.condition_result", "role": "primary"},
+        {"target_type": "sense", "target_id": "sense:unless.exception_condition", "role": "primary"}
+      ],
+      "prerequisites": [
+        {"type": "grammar_skill_v1", "ref": "simple_present", "compat_bridge": true}
+      ],
+      "intended_new_items": [],
+      "context": "Você espera concluir um relatório hoje, salvo se o cliente alterar o prazo combinado.",
+      "context_items": ["client", "deadline", "report", "today"],
+      "usage_notes": "Semente autorada do frame deadline-work.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    },
+    {
+      "exemplar_id": "exemplar:unless.003",
+      "text_en": "Unless the train is delayed, we'll arrive before six.",
+      "text_pt": "A menos que o trem atrase, vamos chegar antes das seis.",
+      "construction_id": "construction:unless.condition_result",
+      "sense_ids": ["sense:unless.exception_condition"],
+      "communicative_function_ids": ["function:express_exception_condition"],
+      "pedagogical_targets": [
+        {"target_type": "construction", "target_id": "construction:unless.condition_result", "role": "primary"},
+        {"target_type": "sense", "target_id": "sense:unless.exception_condition", "role": "primary"}
+      ],
+      "prerequisites": [
+        {"type": "grammar_skill_v1", "ref": "simple_present", "compat_bridge": true}
+      ],
+      "intended_new_items": [],
+      "context": "A previsão é chegar antes das seis, desde que o trem não atrase.",
+      "context_items": ["train", "delayed", "before", "six"],
+      "usage_notes": "Semente autorada do frame transport-plan.",
+      "naturalness_status": "curated",
+      "exposure_stage": "A2-B1"
+    }
+  ],
+  "relations": []
+}

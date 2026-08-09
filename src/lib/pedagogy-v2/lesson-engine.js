@@ -3,8 +3,10 @@
 // model V2 (per-capability-key lanes, exposure, retention, evidence levels).
 //
 // Hard guarantees:
-//   - never generates language: plans present authored exemplar material only;
-//     recognition options come from authored translations (source_exemplar_id);
+//   - never invents learner-facing language: plans use authored exemplars or,
+//     behind the V2.24 pilot flag, pre-approved licensed compositions whose
+//     surfaces/signatures come from authored banks; recognition distractors
+//     still come from authored translations (source_exemplar_id);
 //   - no Math.random, no Date.now in this module: time arrives via the session
 //     (session.now) or context; ties are broken by a seeded deterministic hash
 //     so different seeds may only permute EQUAL-score candidates;
@@ -32,6 +34,8 @@ import { canTrainIndependentV2 } from './training-affordances.js'
 import {
   buildRecentExemplarUsageV2, exemplarRecencyRank, seededShuffle, seededTokenShuffle,
 } from './experience-diversity.js'
+import { isLicensedRealization } from './licensed-realization-contracts.js'
+import { materializeLicensedRealizationsForPack } from './licensed-realizations.js'
 
 export { DEFAULT_LESSON_ENGINE_POLICY_V2, mergeLessonEnginePolicyV2 }
 
@@ -351,7 +355,12 @@ function runtimeUnavailableReason(runtimeAvailability, recipe, modality) {
 // Planner — { target_id, capability, modality }, every field optional. The
 // engine keeps FULL authority over exemplar/recipe/support choice within the
 // restriction; the planner never picks activities.
-export function selectNextActivityV2({ session, scope = null, pack = null, learnerStates, recentEvidence, policy = {}, context = null, resolveV1Skill = null, runtimeAvailability = null, focus = null } = {}) {
+//
+// `licensedRealizations` (optional, V2.24 pilot) is deliberately OUTSIDE the
+// versioned pedagogy policy so `enabled !== true` is byte-for-byte baseline.
+// `{ enabled:true, allow_provisional:true }` exists only for the technical pilot;
+// production must not opt into provisional signatures.
+export function selectNextActivityV2({ session, scope = null, pack = null, learnerStates, recentEvidence, policy = {}, context = null, resolveV1Skill = null, runtimeAvailability = null, focus = null, licensedRealizations = null } = {}) {
   const p = mergeLessonEnginePolicyV2(policy)
 
   // Resolve the active pack: either through the formal multi-pack scope or the
@@ -381,14 +390,21 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
   const statesById = indexStatesByTargetId(states)
   const history = session?.history || []
   // V2.22-UX2 §5/§29 — optional authored SCOPE. A contextual collection narrows
-  // the exemplar universe before anything else runs, so a scoped session can
-  // never materialize content outside the collection. The engine keeps full
-  // authority over which of the remaining exemplars to use; the scope only says
-  // which ones are on the table. No scope = the whole pack, exactly as before.
+  // the authored parent universe before anything else runs. V2.24 derives only
+  // descendants of parents already inside that literal scope; a derived id can
+  // never make an excluded parent eligible.
   const scopedExemplarIds = scope?.allowed_exemplar_ids ? new Set(scope.allowed_exemplar_ids) : null
-  const exemplars = scopedExemplarIds
+  const authoredExemplars = scopedExemplarIds
     ? (activePack?.exemplars || []).filter((e) => scopedExemplarIds.has(e.exemplar_id))
     : (activePack?.exemplars || [])
+  const licensedEnabled = licensedRealizations?.enabled === true
+  const allowedParentIds = new Set(authoredExemplars.map((e) => e.exemplar_id))
+  const derivedExemplars = licensedEnabled
+    ? materializeLicensedRealizationsForPack(activePack, {
+      allowProvisional: licensedRealizations?.allow_provisional === true,
+    }).filter((e) => allowedParentIds.has(e.provenance?.parent_exemplar_id))
+    : []
+  const exemplars = [...authoredExemplars, ...derivedExemplars]
   const exemplarById = new Map(exemplars.map((e) => [e.exemplar_id, e]))
 
   // Slice V2.19 — cross-session exemplar recency, derived from the ALREADY
@@ -504,6 +520,14 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
       }
 
       for (const recipe of LESSON_RECIPES) {
+        // Tier-1 licensed variants have no authored context. Their recipe set is
+        // a derived contract, not a suggestion: exclude unsupported shapes per
+        // exemplar and expose the reason in trace. This check intentionally runs
+        // before presentation_variant_of so context_recognition is observable.
+        if (isLicensedRealization(exemplar)
+          && !(exemplar.eligible_recipes || []).includes(recipe.recipe)) {
+          exclude('recipe_requires_context', recipe.recipe); continue
+        }
         // Presentation-only variants (Slice V2.19 context_recognition) are never
         // scored as independent candidates — they only ever REPLACE a chosen
         // activity's presentation, so they can't change the trained focus.
@@ -527,6 +551,9 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
           if (!recipeGateOpen({ recipe, capability, modality, primaries, presented, statesById, policy: p })) continue
           let options = null
           if (recipe.needs_options) {
+            // Keep V2.25's distractor variable frozen: derived targets use the
+            // existing authored pack as the distractor source. V2.26 owns any
+            // change to recognition-set selection.
             options = buildRecognitionOptions(activePack, exemplar, p.min_recognition_options)
             if (!options) { exclude('no_safe_options', recipe.recipe); continue }
           }
@@ -627,6 +654,11 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     considered: candidates.length,
     frontier_stage: EXPOSURE_STAGES[frontierIdx],
     budget: { limit: p.new_item_budget_per_session, introduced: [...introduced].sort(), remaining_before: budgetRemaining },
+    licensed_realizations: {
+      enabled: licensedEnabled,
+      materialized: derivedExemplars.length,
+      provisional_allowed: licensedEnabled && licensedRealizations?.allow_provisional === true,
+    },
     excluded,
     candidates: compactCandidates,
   }
@@ -696,7 +728,7 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
       && c.modality === anchor.modality
       && c.variant.lane === anchor.variant.lane
     // Within that focus, only candidates inside the pedagogically-acceptable
-    // band may compete, so a clearly weaker realization never wins for novelty.
+    // band may compete, so a clearly-weaker realization never wins for novelty.
     const bandFloor = bestScore * (1 - (diversity.acceptable_score_band ?? 0.15))
     const sameFocusPool = candidates.filter(sameFocus)
     let band = sameFocusPool.filter((c) => c.score >= bandFloor)
@@ -875,6 +907,13 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     text_en: e.text_en,
     text_pt: e.text_pt,
     context: e.context,
+    ...(isLicensedRealization(e) ? {
+      licensed_realization: {
+        slot_signature: e.slot_signature,
+        provenance: e.provenance,
+        eligible_recipes: [...(e.eligible_recipes || [])],
+      },
+    } : {}),
     // Fixed lexical elements of the construction, for a structural target-form
     // check on production (Slice V2.13/§20) — never string equality.
     construction_fixed_elements: construction?.fixed_elements ? [...construction.fixed_elements] : null,
