@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest'
 import stillPack from '../../content/pedagogy-v2/still.json'
 import unlessPack from '../../content/pedagogy-v2/unless.json'
 import { BUILTIN_PEDAGOGY_V2_PACKS } from '../../content/pedagogy-v2/index.js'
+import { UNLESS_CLAUSE_PILOT } from '../../content/pedagogy-v2/licensed/pilot-catalog.js'
+import { getSkill } from '../skill-registry.js'
 import { buildPedagogyV2Registry } from './registry.js'
 import { selectNextActivityV2 } from './lesson-engine.js'
 import { createLessonSessionV2 } from './lesson-engine-contracts.js'
@@ -21,6 +23,9 @@ const lane = {
   assessed_evidence_count: 8,
   effective_evidence_weight: 8,
 }
+
+const SIMPLE_PRESENT_BRIDGE = { type: 'grammar_skill_v1', ref: 'simple_present', compat_bridge: true }
+const FIRST_CONDITIONAL_BRIDGE = { type: 'grammar_skill_v1', ref: 'first_conditional', compat_bridge: true }
 
 function advancedState(targetType, targetId) {
   return {
@@ -110,6 +115,36 @@ describe('V2.24 licensed realization materializer', () => {
     const result = validateLicensedRealizationsV2(stillPack, invalid)
     expect(result.valid).toBe(false)
     expect(result.errors.some((error) => error.startsWith('LICENSED_INTRODUCTION_GROUP_FORBIDDEN:'))).toBe(true)
+  })
+
+  it('declares clause grammar at the source and composes it into every unless realization', () => {
+    expect(getSkill('first_conditional')).toMatchObject({
+      skill_id: 'first_conditional',
+      cefr_start: 'B1',
+      custom: false,
+    })
+
+    for (const exemplar of unlessPack.exemplars) {
+      expect(exemplar.prerequisites).toEqual([SIMPLE_PRESENT_BRIDGE, FIRST_CONDITIONAL_BRIDGE])
+      expect(exemplar.exposure_stage).toBe('B1')
+    }
+
+    for (const frame of UNLESS_CLAUSE_PILOT.frames) {
+      for (const condition of frame.conditions) {
+        expect(condition.prerequisites).toEqual([SIMPLE_PRESENT_BRIDGE])
+      }
+      for (const result of frame.results) {
+        expect(result.prerequisites).toEqual([FIRST_CONDITIONAL_BRIDGE])
+        expect(result.introduced_stage).toBe('B1')
+      }
+    }
+
+    const rows = materializeLicensedRealizationsForPack(unlessPack, { allowProvisional: true })
+    for (const row of rows) {
+      expect(row.prerequisites).toEqual([SIMPLE_PRESENT_BRIDGE, FIRST_CONDITIONAL_BRIDGE])
+      expect(row.exposure_stage).toBe('B1')
+      expect(row.provenance.source_stages).toContain('B1')
+    }
   })
 })
 

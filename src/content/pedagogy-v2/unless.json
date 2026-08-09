@@ -75,7 +75,7 @@
       "communicative_function_ids": ["function:express_exception_condition"],
       "prerequisite_construction_ids": [],
       "recommended_stage": "A2-B1",
-      "notes": "V2.24 licencia pares condition/result apenas dentro de frames pragmáticos autorados; nunca combina orações arbitrariamente."
+      "notes": "V2.24 licencia pares condition/result apenas dentro de frames pragmáticos autorados; nunca combina orações arbitrariamente. Os exemplares do piloto usam presente na condição e will no resultado, então declaram as pontes V1 simple_present + first_conditional."
     }
   ],
   "exemplars": [
@@ -91,7 +91,8 @@
         {"target_type": "sense", "target_id": "sense:unless.exception_condition", "role": "primary"}
       ],
       "prerequisites": [
-        {"type": "grammar_skill_v1", "ref": "simple_present", "compat_bridge": true}
+        {"type": "grammar_skill_v1", "ref": "simple_present", "compat_bridge": true},
+        {"type": "grammar_skill_v1", "ref": "first_conditional", "compat_bridge": true}
       ],
       "intended_new_items": [
         {"type": "sense", "ref": "sense:unless.exception_condition"},
@@ -101,7 +102,7 @@
       "context_items": ["rains", "outside"],
       "usage_notes": "Semente autorada do frame weather-plan.",
       "naturalness_status": "curated",
-      "exposure_stage": "A2-B1"
+      "exposure_stage": "B1"
     },
     {
       "exemplar_id": "exemplar:unless.002",
@@ -115,14 +116,15 @@
         {"target_type": "sense", "target_id": "sense:unless.exception_condition", "role": "primary"}
       ],
       "prerequisites": [
-        {"type": "grammar_skill_v1", "ref": "simple_present", "compat_bridge": true}
+        {"type": "grammar_skill_v1", "ref": "simple_present", "compat_bridge": true},
+        {"type": "grammar_skill_v1", "ref": "first_conditional", "compat_bridge": true}
       ],
       "intended_new_items": [],
       "context": "Você espera concluir um relatório hoje, salvo se o cliente alterar o prazo combinado.",
       "context_items": ["client", "deadline", "report", "today"],
       "usage_notes": "Semente autorada do frame deadline-work.",
       "naturalness_status": "curated",
-      "exposure_stage": "A2-B1"
+      "exposure_stage": "B1"
     },
     {
       "exemplar_id": "exemplar:unless.003",
@@ -136,14 +138,15 @@
         {"target_type": "sense", "target_id": "sense:unless.exception_condition", "role": "primary"}
       ],
       "prerequisites": [
-        {"type": "grammar_skill_v1", "ref": "simple_present", "compat_bridge": true}
+        {"type": "grammar_skill_v1", "ref": "simple_present", "compat_bridge": true},
+        {"type": "grammar_skill_v1", "ref": "first_conditional", "compat_bridge": true}
       ],
       "intended_new_items": [],
       "context": "A previsão é chegar antes das seis, desde que o trem não atrase.",
       "context_items": ["train", "delayed", "before", "six"],
       "usage_notes": "Semente autorada do frame transport-plan.",
       "naturalness_status": "curated",
-      "exposure_stage": "A2-B1"
+      "exposure_stage": "B1"
     }
   ],
   "relations": []

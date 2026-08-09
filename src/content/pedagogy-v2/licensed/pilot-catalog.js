@@ -26,6 +26,9 @@ export const STILL_LEXICAL_PILOT = Object.freeze({
   ]),
 })
 
+const SIMPLE_PRESENT_BRIDGE = Object.freeze({ type: 'grammar_skill_v1', ref: 'simple_present', compat_bridge: true })
+const FIRST_CONDITIONAL_BRIDGE = Object.freeze({ type: 'grammar_skill_v1', ref: 'first_conditional', compat_bridge: true })
+
 export const UNLESS_CLAUSE_PILOT = Object.freeze({
   strategy: 'clause_frame',
   pack_id: 'pedagogy_v2_unless',
@@ -41,12 +44,12 @@ export const UNLESS_CLAUSE_PILOT = Object.freeze({
       introduced_stage: 'A2-B1',
       prerequisites: [],
       conditions: [
-        { filler_id: 'unless.weather.rains', en: 'it rains', pt: 'chova', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['rains'] },
-        { filler_id: 'unless.weather.worse', en: 'the weather gets worse', pt: 'o tempo piore', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['weather', 'worse'] },
+        { filler_id: 'unless.weather.rains', en: 'it rains', pt: 'chova', introduced_stage: 'A2-B1', prerequisites: [SIMPLE_PRESENT_BRIDGE], context_items: ['rains'] },
+        { filler_id: 'unless.weather.worse', en: 'the weather gets worse', pt: 'o tempo piore', introduced_stage: 'A2-B1', prerequisites: [SIMPLE_PRESENT_BRIDGE], context_items: ['weather', 'worse'] },
       ],
       results: [
-        { filler_id: 'unless.weather.eat_outside', en: "we'll eat outside", pt: 'vamos comer do lado de fora', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['eat', 'outside'] },
-        { filler_id: 'unless.weather.walk', en: "we'll go for a walk", pt: 'vamos sair para caminhar', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['walk'] },
+        { filler_id: 'unless.weather.eat_outside', en: "we'll eat outside", pt: 'vamos comer do lado de fora', introduced_stage: 'B1', prerequisites: [FIRST_CONDITIONAL_BRIDGE], context_items: ['eat', 'outside'] },
+        { filler_id: 'unless.weather.walk', en: "we'll go for a walk", pt: 'vamos sair para caminhar', introduced_stage: 'B1', prerequisites: [FIRST_CONDITIONAL_BRIDGE], context_items: ['walk'] },
       ],
     },
     {
@@ -55,12 +58,12 @@ export const UNLESS_CLAUSE_PILOT = Object.freeze({
       introduced_stage: 'A2-B1',
       prerequisites: [],
       conditions: [
-        { filler_id: 'unless.work.deadline_changes', en: 'the client changes the deadline', pt: 'o cliente mude o prazo', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['client', 'deadline'] },
-        { filler_id: 'unless.work.urgent', en: 'something urgent comes up', pt: 'apareça algo urgente', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['urgent'] },
+        { filler_id: 'unless.work.deadline_changes', en: 'the client changes the deadline', pt: 'o cliente mude o prazo', introduced_stage: 'A2-B1', prerequisites: [SIMPLE_PRESENT_BRIDGE], context_items: ['client', 'deadline'] },
+        { filler_id: 'unless.work.urgent', en: 'something urgent comes up', pt: 'apareça algo urgente', introduced_stage: 'A2-B1', prerequisites: [SIMPLE_PRESENT_BRIDGE], context_items: ['urgent'] },
       ],
       results: [
-        { filler_id: 'unless.work.send_update', en: "we'll send the update this afternoon", pt: 'vamos enviar a atualização esta tarde', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['update', 'afternoon'] },
-        { filler_id: 'unless.work.close_task', en: "I'll finish the task before dinner", pt: 'vou terminar a tarefa antes do jantar', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['task', 'dinner'] },
+        { filler_id: 'unless.work.send_update', en: "we'll send the update this afternoon", pt: 'vamos enviar a atualização esta tarde', introduced_stage: 'B1', prerequisites: [FIRST_CONDITIONAL_BRIDGE], context_items: ['update', 'afternoon'] },
+        { filler_id: 'unless.work.close_task', en: "I'll finish the task before dinner", pt: 'vou terminar a tarefa antes do jantar', introduced_stage: 'B1', prerequisites: [FIRST_CONDITIONAL_BRIDGE], context_items: ['task', 'dinner'] },
       ],
     },
     {
@@ -69,12 +72,12 @@ export const UNLESS_CLAUSE_PILOT = Object.freeze({
       introduced_stage: 'A2-B1',
       prerequisites: [],
       conditions: [
-        { filler_id: 'unless.transport.train_delayed', en: 'the train is delayed', pt: 'o trem atrase', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['train', 'delayed'] },
-        { filler_id: 'unless.transport.traffic_worse', en: 'traffic gets much worse', pt: 'o trânsito piore muito', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['traffic', 'worse'] },
+        { filler_id: 'unless.transport.train_delayed', en: 'the train is delayed', pt: 'o trem atrase', introduced_stage: 'A2-B1', prerequisites: [SIMPLE_PRESENT_BRIDGE], context_items: ['train', 'delayed'] },
+        { filler_id: 'unless.transport.traffic_worse', en: 'traffic gets much worse', pt: 'o trânsito piore muito', introduced_stage: 'A2-B1', prerequisites: [SIMPLE_PRESENT_BRIDGE], context_items: ['traffic', 'worse'] },
       ],
       results: [
-        { filler_id: 'unless.transport.on_time', en: "I'll be there on time", pt: 'vou chegar no horário', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['time'] },
-        { filler_id: 'unless.transport.morning_meeting', en: "we'll make the morning meeting", pt: 'vamos chegar a tempo para a reunião da manhã', introduced_stage: 'A2-B1', prerequisites: [], context_items: ['morning', 'meeting'] },
+        { filler_id: 'unless.transport.on_time', en: "I'll be there on time", pt: 'vou chegar no horário', introduced_stage: 'B1', prerequisites: [FIRST_CONDITIONAL_BRIDGE], context_items: ['time'] },
+        { filler_id: 'unless.transport.morning_meeting', en: "we'll make the morning meeting", pt: 'vamos chegar a tempo para a reunião da manhã', introduced_stage: 'B1', prerequisites: [FIRST_CONDITIONAL_BRIDGE], context_items: ['morning', 'meeting'] },
       ],
     },
   ]),
