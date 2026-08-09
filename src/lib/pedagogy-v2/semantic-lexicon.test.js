@@ -135,6 +135,19 @@ describe('semantic lexicon V1 contracts', () => {
     ])
   })
 
+  it('rejects authored projections and same-surface metadata as schema violations', () => {
+    const invalid = structuredClone(places)
+    invalid.units[0].projections = { point: { en: 'at the office', pt: 'no escritório' } }
+    invalid.units[1].crosslingual.same_surface = true
+
+    const result = validateSemanticLexicon(invalid)
+    expect(result.valid).toBe(false)
+    expect(result.errors).toEqual(expect.arrayContaining([
+      'LEXICON_PROJECTIONS_FORBIDDEN:lex:place.office',
+      'LEXICON_SAME_SURFACE_MUST_BE_DERIVED:lex:place.hospital',
+    ]))
+  })
+
   it('exposes Portuguese translation collisions only after rendering', () => {
     const point = renderLexiconRelation(places, 'lex:place.office', 'point')
     const interior = renderLexiconRelation(places, 'lex:place.office', 'interior')
