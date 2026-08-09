@@ -199,10 +199,12 @@ function computeMetrics({ firsts, sessionRows, eligibleMax, optionPositions, inS
   const uniqueTexts = sessionRows.map((s) => new Set(s.activities.map((x) => x.text_en)).size)
   const consecutiveExemplars = sessionRows.map((s) => maxConsecutive(s.activities, 'exemplar_id'))
   const floors = sessionRows.map((s) => s.theoretical_floor).filter(Number.isFinite)
+  const actualLengths = sessionRows.map((s) => s.activities.length)
   const gt = (n) => exemplarMaxima.filter((v) => v > n).length
 
   return {
     sessions: valid.length,
+    session_activity_count: summarize(actualLengths),
     eligible_exemplar_count: eligibleMax,
     immediate_exemplar_repeat_rate: round(ex.length > 1 ? immediateRepeats / (ex.length - 1) : 0),
     exemplar_repeat_rate: round(ex.length ? 1 - unique / ex.length : 0),
@@ -254,6 +256,8 @@ for (const [label, focus] of Object.entries(FOCUSES)) {
   ]
   console.log('metric'.padEnd(42), 'BEFORE (V2.18)'.padEnd(18), 'AFTER (current)')
   for (const k of keys) console.log(k.padEnd(42), String(before[k]).padEnd(18), String(after[k]))
+  console.log('session_activity_count BEFORE', JSON.stringify(before.session_activity_count),
+    ' AFTER', JSON.stringify(after.session_activity_count))
   console.log('unique_text_en_per_session BEFORE', JSON.stringify(before.unique_text_en_per_session),
     ' AFTER', JSON.stringify(after.unique_text_en_per_session))
   console.log('theoretical_floor_per_session BEFORE', JSON.stringify(before.theoretical_floor_per_session),
@@ -271,13 +275,15 @@ const targetedConstruction = 'construction:still.subject_still_lexical_verb'
 const triage = [
   ['default 12 / broad comprehension focus', { focus: FOCUSES['comprehension/reading'], activitiesPerSession: 12, policyOverrides: {} }],
   ['default 12 / target construction', { focus: { ...FOCUSES['comprehension/reading'], target_id: targetedConstruction }, activitiesPerSession: 12, policyOverrides: {} }],
-  ['24 activities / broad comprehension focus', { focus: FOCUSES['comprehension/reading'], activitiesPerSession: 24, policyOverrides: {} }],
+  // Long-session probe is an explicit policy experiment, not the production default.
+  ['max_activities=24 / broad comprehension focus', { focus: FOCUSES['comprehension/reading'], activitiesPerSession: 24, policyOverrides: { max_activities_per_session: 24 } }],
   ['cooldown=1 / 12 activities', { focus: FOCUSES['comprehension/reading'], activitiesPerSession: 12, policyOverrides: { exemplar_cooldown: 1 } }],
 ]
 for (const [label, config] of triage) {
   const m = runConsecutiveSessions({ ...config, sessions: 20, diversityEnabled: true })
   console.log(label)
   console.log(JSON.stringify({
+    session_activity_count: m.session_activity_count,
     max_exemplar_occurrences_per_session: m.max_exemplar_occurrences_per_session,
     max_text_occurrences_per_session: m.max_text_occurrences_per_session,
     max_construction_occurrences_per_session: m.max_construction_occurrences_per_session,
