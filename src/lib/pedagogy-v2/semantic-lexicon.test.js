@@ -36,6 +36,18 @@ describe('semantic lexicon V1 contracts', () => {
     ]))
   })
 
+  it('lets a frame choose an article reading without hard-coding a theme', () => {
+    expect(renderLexiconRelation(places, 'lex:place.school', 'point')).toMatchObject({
+      en: 'at school',
+      article_profile: 'institutional',
+    })
+    expect(renderLexiconRelation(places, 'lex:place.school', 'point', { articleProfile: 'definite' })).toMatchObject({
+      en: 'at the school',
+      pt: 'na escola',
+      article_profile: 'definite',
+    })
+  })
+
   it('renders regular, institutional, bare and overridden surfaces from relation + affordance', () => {
     expect(renderLexiconRelation(places, 'lex:place.office', 'point')).toMatchObject({
       en: 'at the office',
@@ -44,10 +56,6 @@ describe('semantic lexicon V1 contracts', () => {
     expect(renderLexiconRelation(places, 'lex:place.office', 'interior')).toMatchObject({
       en: 'in the office',
       pt: 'no escritório',
-    })
-    expect(renderLexiconRelation(places, 'lex:place.school', 'point')).toMatchObject({
-      en: 'at school',
-      pt: 'na escola',
     })
     expect(renderLexiconRelation(places, 'lex:place.school', 'interior')).toMatchObject({
       en: 'in the school',
