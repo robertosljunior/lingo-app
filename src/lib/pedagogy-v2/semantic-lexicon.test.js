@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import places from '../../content/lexicon/places.v1.json'
 import {
+  compileLexiconFrameSurfaces,
   compileLexiconSlotCandidates,
   deriveSameSurface,
   renderLexiconRelation,
@@ -34,6 +35,45 @@ describe('semantic lexicon V1 contracts', () => {
       'lex:place.bus_stop',
       'lex:place.train_station',
     ]))
+  })
+
+  it('compiles frame surfaces for work, leisure and travel through the same generic path', () => {
+    const work = compileLexiconFrameSurfaces(places, {
+      frameId: 'frame:test.work',
+      relation: 'point',
+      requireRoles: ['workplace'],
+      articleProfile: 'definite',
+      template: {
+        en: 'They still work {{slot}}.',
+        pt: 'Eles ainda trabalham {{slot}}.',
+      },
+    })
+    const leisure = compileLexiconFrameSurfaces(places, {
+      frameId: 'frame:test.leisure',
+      relation: 'point',
+      requireDomains: ['leisure'],
+      template: {
+        en: 'They are still {{slot}}.',
+        pt: 'Eles ainda estão {{slot}}.',
+      },
+    })
+    const travel = compileLexiconFrameSurfaces(places, {
+      frameId: 'frame:test.travel',
+      relation: 'destination',
+      requireDomains: ['travel'],
+      template: {
+        en: 'They are going {{slot}}.',
+        pt: 'Eles estão indo {{slot}}.',
+      },
+    })
+
+    expect(work).toHaveLength(35)
+    expect(work.find((row) => row.unit_id === 'lex:place.office')).toMatchObject({
+      text_en: 'They still work at the office.',
+      text_pt: 'Eles ainda trabalham no escritório.',
+    })
+    expect(leisure.length).toBeGreaterThan(1)
+    expect(travel.length).toBeGreaterThan(1)
   })
 
   it('lets a frame choose an article reading without hard-coding a theme', () => {
