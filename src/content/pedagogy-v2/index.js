@@ -14,13 +14,15 @@
 import pedagogy_v2_still from './still.json' with { type: 'json' }
 import pedagogy_v2_but from './but.json' with { type: 'json' }
 import pedagogy_v2_yet from './yet.json' with { type: 'json' }
-import pedagogy_v2_unless from './unless.json' with { type: 'json' }
 
+// V2.24 deliberately keeps its `unless` clause-frame pilot OUT of this product
+// registry until the human approval/economics gate passes. The compiler/tests
+// import that pilot pack explicitly; compiler OFF therefore preserves the exact
+// shipped three-pack catalogue and its existing goldens.
 export const BUILTIN_PEDAGOGY_V2_PACKS = [
   pedagogy_v2_still,
   pedagogy_v2_but,
   pedagogy_v2_yet,
-  pedagogy_v2_unless,
 ]
 
 export function pedagogyV2PackById(id) {
