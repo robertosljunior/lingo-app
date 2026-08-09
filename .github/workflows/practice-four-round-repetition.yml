@@ -7,6 +7,12 @@ on:
     paths:
       - .github/workflows/practice-four-round-repetition.yml
       - e2e/practice-four-round-repetition.spec.js
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/practice-four-round-repetition.yml
+      - e2e/practice-four-round-repetition.spec.js
   workflow_dispatch:
 
 permissions:
