@@ -6,7 +6,9 @@ import stillPack from '../../content/pedagogy-v2/still.json'
 import butPack from '../../content/pedagogy-v2/but.json'
 import { buildLearnerEvidenceV2 } from './learner-evidence-contracts.js'
 import { aggregateProfileEvidence } from './learner-model.js'
-import { createLessonSessionV2, DEFAULT_LESSON_ENGINE_POLICY_V2 } from './lesson-engine-contracts.js'
+import {
+  createLessonSessionV2, appendActivityToSessionV2, DEFAULT_LESSON_ENGINE_POLICY_V2,
+} from './lesson-engine-contracts.js'
 import { selectNextActivityV2 } from './lesson-engine.js'
 import { indexStatesByTargetId } from './lesson-engine-state-queries.js'
 import { getPrimaryTargets } from './query.js'
@@ -166,7 +168,7 @@ describe('#106 — recipe eligibility distinguishes curated from licensed tier-1
   })
 })
 
-describe('#106 — selected word order survives materialization and renderer dispatch', () => {
+describe('#106 — selected word order survives selection, materialization and renderer dispatch', () => {
   it('materializes a real ordered-token plan under explicit high recognition mastery', () => {
     const exemplar = stillPack.exemplars.find((row) => row.exemplar_id === 'exemplar:still.001')
     const targets = getPrimaryTargets(exemplar).map((target) => ({ target_type: target.target_type, target_id: target.target_id }))
@@ -199,6 +201,43 @@ describe('#106 — selected word order survives materialization and renderer dis
     expect(trace.fallback_detected).toBe(false)
     expect(trace.word_order_contract_valid).toBe(true)
     expect(trace.accepted_response_types).toContain('token_sequence')
+  })
+
+  it('word order wins at least one baseline selector slot without recipe preference', () => {
+    const exemplar = stillPack.exemplars.find((row) => row.exemplar_id === 'exemplar:still.001')
+    const targets = getPrimaryTargets(exemplar).map((target) => ({ target_type: target.target_type, target_id: target.target_id }))
+    const learnerStates = aggregateProfileEvidence(evidenceForTargets(targets, { recognition: true, comprehension: true }))
+    const focusTarget = targets.find((target) => target.target_type === 'construction') ?? targets[0]
+    let session = createLessonSessionV2({
+      session_id: 'session:p0-baseline-selector', profile_id: 'p0-gate', now: iso(600), seed: 'p0-baseline-selector',
+    })
+    const recipes = []
+
+    for (let i = 0; i < 12; i++) {
+      const decision = selectNextActivityV2({
+        session,
+        pack: stillPack,
+        learnerStates,
+        recentEvidence: [],
+        runtimeAvailability,
+        focus: { target_id: focusTarget.target_id, capability: 'controlled_production', modality: 'writing' },
+        policy: {
+          new_item_budget_per_session: 0,
+          targeted_practice: { target_id: focusTarget.target_id },
+        },
+      })
+      expect(decision.status).toBe('activity')
+      recipes.push(decision.plan.recipe)
+      const materialization = recipeMaterializationTraceV2({
+        selectedRecipe: decision.plan.recipe,
+        plan: decision.plan,
+        rendererRecipe: decision.plan.recipe,
+      })
+      expect(materialization.fallback_detected).toBe(false)
+      session = appendActivityToSessionV2(session, decision)
+    }
+
+    expect(recipes).toContain('word_order_reconstruction')
   })
 
   it('the learner renderer maps word order explicitly and has no option-select fallback', () => {
