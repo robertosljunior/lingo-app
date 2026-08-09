@@ -48,7 +48,7 @@ export function selectLexiconUnits(lexicon, {
   })
 }
 
-export function renderLexiconRelation(lexicon, unitOrId, relation) {
+export function renderLexiconRelation(lexicon, unitOrId, relation, { articleProfile = null } = {}) {
   const unit = typeof unitOrId === 'string' ? indexLexiconUnits(lexicon).get(unitOrId) : unitOrId
   if (!unit) throw new Error(`LEXICON_UNIT_NOT_FOUND:${unitOrId}`)
   if (!(unit.affordances?.location_relations || []).includes(relation)) {
@@ -57,7 +57,7 @@ export function renderLexiconRelation(lexicon, unitOrId, relation) {
 
   const rule = lexicon?.renderer_rules?.[relation]
   if (!rule?.en || !rule?.pt) throw new Error(`LEXICON_RENDER_RULE_MISSING:${relation}`)
-  const profileId = unit.affordances?.article_profile
+  const profileId = articleProfile || unit.affordances?.article_profile
   const profile = lexicon?.article_profiles?.[profileId]
   if (!profile) throw new Error(`LEXICON_ARTICLE_PROFILE_MISSING:${unit.unit_id}:${profileId}`)
 
@@ -85,6 +85,7 @@ export function renderLexiconRelation(lexicon, unitOrId, relation) {
     lexical_stage: unit.lexical_stage,
     roles: [...(unit.roles || [])],
     domains: [...(unit.domains || [])],
+    article_profile: profileId,
   }
 }
 
@@ -95,6 +96,7 @@ export function compileLexiconSlotCandidates(lexicon, {
   requireDomains = [],
   anyDomains = [],
   seedGroups = [],
+  articleProfile = null,
 } = {}) {
   if (!relation) throw new Error('LEXICON_FRAME_RELATION_REQUIRED')
   return selectLexiconUnits(lexicon, {
@@ -104,7 +106,7 @@ export function compileLexiconSlotCandidates(lexicon, {
     anyDomains,
     relation,
     seedGroups,
-  }).map((unit) => renderLexiconRelation(lexicon, unit, relation))
+  }).map((unit) => renderLexiconRelation(lexicon, unit, relation, { articleProfile }))
 }
 
 export function normalizeCrosslingualSurface(value) {
