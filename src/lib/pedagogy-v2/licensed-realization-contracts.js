@@ -1,6 +1,6 @@
 import { EXPOSURE_STAGES, stageIndex } from './contracts.js'
 
-export const LICENSED_REALIZATION_GENERATOR_VERSION = 'v2.24-pilot-1'
+export const LICENSED_REALIZATION_GENERATOR_VERSION = 'v2.24-pilot-2'
 export const LICENSED_REALIZATION_PROVENANCE_KIND = 'licensed_variant'
 
 // Tier 1 deliberately has no authored context. These are the only recipes whose
