@@ -80,6 +80,8 @@ export async function getDeviceStorageSnapshot() {
   const [estimate, model, voices, packs, cacheNames] = await Promise.all([
     storageEstimate(), installedModel(), installedVoices(), installedPacks(), managedCaches(),
   ])
+  const reclaimablePacks = packs.filter((pack) => pack.reclaimable)
+  const preservedImportedPacks = packs.filter((pack) => !pack.reclaimable)
   const knownBytes = [model?.size_bytes, ...voices.map((voice) => voice.size_bytes)]
     .filter(Number.isFinite).reduce((sum, bytes) => sum + bytes, 0)
   return {
@@ -88,9 +90,12 @@ export async function getDeviceStorageSnapshot() {
     known_resource_bytes: knownBytes,
     semantic_model: model,
     voices,
-    knowledge_packs: packs,
-    reclaimable_knowledge_packs: packs.filter((pack) => pack.reclaimable),
-    preserved_imported_packs: packs.filter((pack) => !pack.reclaimable),
+    // Backward-compatible field used by the Settings count: contains only
+    // reclaimable/downloaded packs. User-imported packs are intentionally split
+    // out because they may not be recoverable after deletion.
+    knowledge_packs: reclaimablePacks,
+    reclaimable_knowledge_packs: reclaimablePacks,
+    preserved_imported_packs: preservedImportedPacks,
     managed_cache_names: cacheNames,
   }
 }
