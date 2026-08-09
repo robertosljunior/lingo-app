@@ -10,6 +10,8 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { validatePedagogyV2Registry } from '../src/lib/pedagogy-v2/validator.js'
 import { auditRecognitionOptionsV2 } from '../src/lib/pedagogy-v2/options-audit.js'
+import { materializeLicensedRealizationsForPack } from '../src/lib/pedagogy-v2/licensed-realizations.js'
+import { validateLicensedRealizationsV2 } from '../src/lib/pedagogy-v2/licensed-realization-validator.js'
 
 const dir = join(dirname(fileURLToPath(import.meta.url)), '../src/content/pedagogy-v2')
 const files = readdirSync(dir).filter((f) => f.endsWith('.json')).sort()
@@ -48,6 +50,23 @@ for (const err of result.errors) {
   errorCount++
   console.error(`✗ ${err}`)
 }
+
+// V2.24 pilot: materialize the deterministic provisional allow-list only for
+// validation. Production runtime still refuses provisional signatures unless an
+// explicit technical-pilot flag is supplied. This validator locks the derived
+// entity invariants before any human approval can promote them.
+let licensedCount = 0
+for (const { file, pack } of packs) {
+  const licensed = materializeLicensedRealizationsForPack(pack, { allowProvisional: true })
+  if (!licensed.length) continue
+  const licensedResult = validateLicensedRealizationsV2(pack, licensed)
+  licensedCount += licensed.length
+  for (const err of licensedResult.errors) {
+    errorCount++
+    console.error(`✗ ${join(dir, file)}: ${err}`)
+  }
+}
+console.log(`\nLicensed V2.24 pilot realizations validated: ${licensedCount}`)
 
 // Structural audit of authored recognition alternatives. Slice V2.6 promotes
 // the OBJECTIVE hazards to CI errors: identical translation, normalized-
@@ -92,4 +111,4 @@ if (errorCount) {
   console.error(`\n${errorCount} pedagogy-v2 validation error(s).`)
   process.exit(1)
 }
-console.log('\nAll pedagogy-v2 packs, collections and the registry are valid.')
+console.log('\nAll pedagogy-v2 packs, licensed pilot realizations, collections and the registry are valid.')
