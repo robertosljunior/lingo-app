@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import stillPack from '../../content/pedagogy-v2/still.json'
 import unlessPack from '../../content/pedagogy-v2/unless.json'
+import { BUILTIN_PEDAGOGY_V2_PACKS } from '../../content/pedagogy-v2/index.js'
 import { buildPedagogyV2Registry } from './registry.js'
 import { selectNextActivityV2 } from './lesson-engine.js'
 import { createLessonSessionV2 } from './lesson-engine-contracts.js'
@@ -53,6 +54,15 @@ function session(seed = 'v224') {
 }
 
 describe('V2.24 licensed realization materializer', () => {
+  it('keeps the clause-frame pilot out of the shipped builtin catalogue before human/economic approval', () => {
+    expect(BUILTIN_PEDAGOGY_V2_PACKS.map((pack) => pack.manifest.pack_id)).toEqual([
+      'pedagogy_v2_still',
+      'pedagogy_v2_but',
+      'pedagogy_v2_yet',
+    ])
+    expect(BUILTIN_PEDAGOGY_V2_PACKS.some((pack) => pack.manifest.pack_id === 'pedagogy_v2_unless')).toBe(false)
+  })
+
   it('enumerates deterministically while runtime ships no provisional variant by default', () => {
     expect(enumerateLicensedPilotCandidates(stillPack)).toHaveLength(16)
     expect(enumerateLicensedPilotCandidates(unlessPack)).toHaveLength(12)
@@ -79,9 +89,10 @@ describe('V2.24 licensed realization materializer', () => {
     }
   })
 
-  it('keeps realization ids stable by content signature, independent of enumeration order', () => {
+  it('keeps identities AND materialized content byte-stable for identical inputs/allow-list', () => {
     const a = materializeLicensedRealizationsForPack(stillPack, { allowProvisional: true })
     const b = materializeLicensedRealizationsForPack(stillPack, { allowProvisional: true })
+    expect(JSON.stringify(b)).toBe(JSON.stringify(a))
     expect(b.map((x) => x.exemplar_id)).toEqual(a.map((x) => x.exemplar_id))
     for (const row of a) expect(row.exemplar_id).toContain(stableSignatureHash(row.slot_signature))
   })
@@ -91,6 +102,14 @@ describe('V2.24 licensed realization materializer', () => {
       const rows = materializeLicensedRealizationsForPack(pack, { allowProvisional: true })
       expect(validateLicensedRealizationsV2(pack, rows)).toEqual({ valid: true, errors: [], count: 12 })
     }
+  })
+
+  it('explicitly rejects a licensed variant that is placed into an introduction group', () => {
+    const rows = materializeLicensedRealizationsForPack(stillPack, { allowProvisional: true })
+    const invalid = [{ ...rows[0], introduction_group_id: 'introduction:forbidden' }, ...rows.slice(1)]
+    const result = validateLicensedRealizationsV2(stillPack, invalid)
+    expect(result.valid).toBe(false)
+    expect(result.errors.some((error) => error.startsWith('LICENSED_INTRODUCTION_GROUP_FORBIDDEN:'))).toBe(true)
   })
 })
 
