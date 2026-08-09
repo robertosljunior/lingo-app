@@ -24,6 +24,11 @@ function fillTokens(template, values) {
   })
 }
 
+function fillFrameTemplate(template, surface) {
+  if (!String(template).includes('{{slot}}')) throw new Error('LEXICON_FRAME_SLOT_TOKEN_REQUIRED')
+  return String(template).replace(/\{\{slot\}\}/g, surface)
+}
+
 export function indexLexiconUnits(lexicon) {
   return new Map((lexicon?.units || []).map((unit) => [unit.unit_id, unit]))
 }
@@ -107,6 +112,41 @@ export function compileLexiconSlotCandidates(lexicon, {
     relation,
     seedGroups,
   }).map((unit) => renderLexiconRelation(lexicon, unit, relation, { articleProfile }))
+}
+
+export function compileLexiconFrameSurfaces(lexicon, {
+  frameId,
+  relation,
+  template,
+  type = lexicon?.entity_type || null,
+  requireRoles = [],
+  requireDomains = [],
+  anyDomains = [],
+  seedGroups = [],
+  articleProfile = null,
+} = {}) {
+  if (!frameId) throw new Error('LEXICON_FRAME_ID_REQUIRED')
+  if (!template?.en || !template?.pt) throw new Error(`LEXICON_FRAME_TEMPLATE_REQUIRED:${frameId}`)
+  const slots = compileLexiconSlotCandidates(lexicon, {
+    relation,
+    type,
+    requireRoles,
+    requireDomains,
+    anyDomains,
+    seedGroups,
+    articleProfile,
+  })
+  return slots.map((slot) => ({
+    frame_id: frameId,
+    unit_id: slot.unit_id,
+    relation,
+    text_en: fillFrameTemplate(template.en, slot.en),
+    text_pt: fillFrameTemplate(template.pt, slot.pt),
+    slot_surface: { en: slot.en, pt: slot.pt },
+    lexical_stage: slot.lexical_stage,
+    roles: [...slot.roles],
+    domains: [...slot.domains],
+  }))
 }
 
 export function normalizeCrosslingualSurface(value) {
