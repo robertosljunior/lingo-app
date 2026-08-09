@@ -97,6 +97,30 @@ function summarize(values) {
   }
 }
 
+function firstPrimaryTargetId(exemplar) {
+  return (exemplar?.pedagogical_targets || []).find((t) => t.role === 'primary')?.target_id || null
+}
+
+// `trace.candidates` is the broad pre-anchor pool and can contain exemplars for
+// several primary targets. The repetition floor must use DISTINCT realizations
+// that can serve the selected anchor focus (target/capability/modality/lane),
+// otherwise a broad pool makes the lower bound artificially optimistic.
+function sameFocusRealizationCount(decision) {
+  const selected = decision?.plan
+  if (!selected) return 0
+  const selectedLane = selected.support?.derived_tier === 'none' ? 'independent' : 'supported'
+  const selectedTarget = selected.primary_target?.target_id
+  const ids = new Set(
+    (decision.trace?.candidates || [])
+      .filter((candidate) => candidate.capability === selected.capability
+        && candidate.modality === selected.modality
+        && candidate.lane === selectedLane
+        && firstPrimaryTargetId(exemplarById.get(candidate.exemplar_id)) === selectedTarget)
+      .map((candidate) => candidate.exemplar_id),
+  )
+  return ids.size
+}
+
 // Runs real engine sessions and records EVERY emitted activity. The historical
 // first-of-session metrics are preserved so V2.19 BEFORE/AFTER remains legible.
 function runConsecutiveSessions({
@@ -126,14 +150,16 @@ function runConsecutiveSessions({
     let streak = 1
     let prevRecipe = null
     const activities = []
-    let sessionEligibleMax = 0
+    let sessionFocusEligibleMax = 0
 
     for (let a = 0; a < activitiesPerSession; a++) {
       const d = selectNextActivityV2({ session, pack: stillPack, learnerStates: states, recentEvidence: recent.slice(-100), policy, focus })
       if (d.status !== 'activity') break
       const eligible = new Set((d.trace.candidates || []).map((c) => c.exemplar_id))
+      const focusEligible = sameFocusRealizationCount(d)
+      const sameFocusCandidateRows = d.trace?.experience_diversity?.pool?.same_focus_candidates ?? null
       eligibleMax = Math.max(eligibleMax, eligible.size)
-      sessionEligibleMax = Math.max(sessionEligibleMax, eligible.size)
+      sessionFocusEligibleMax = Math.max(sessionFocusEligibleMax, focusEligible)
 
       const recentIdsBeforePick = session.history
         .slice(-mergedPolicy.exemplar_cooldown)
@@ -148,7 +174,9 @@ function runConsecutiveSessions({
         recipe: d.plan.recipe,
         capability: d.plan.capability,
         modality: d.plan.modality,
-        eligible_exemplars: eligible.size,
+        eligible_exemplars_pre_focus: eligible.size,
+        same_focus_candidate_rows: sameFocusCandidateRows,
+        eligible_realizations_for_floor: focusEligible,
         cooldown_bypass: cooldownBypass,
       }
       activities.push(row)
@@ -166,10 +194,15 @@ function runConsecutiveSessions({
     }
 
     if (!firstRecorded) firsts.push(null)
-    const floor = sessionEligibleMax > 0 && activities.length > 0
-      ? Math.ceil(activities.length / sessionEligibleMax)
+    const floor = sessionFocusEligibleMax > 0 && activities.length > 0
+      ? Math.ceil(activities.length / sessionFocusEligibleMax)
       : null
-    sessionRows.push({ session_id: session.session_id, activities, eligible_realizations: sessionEligibleMax, theoretical_floor: floor })
+    sessionRows.push({
+      session_id: session.session_id,
+      activities,
+      eligible_realizations: sessionFocusEligibleMax,
+      theoretical_floor: floor,
+    })
   }
 
   return computeMetrics({ firsts, sessionRows, eligibleMax, optionPositions, inSessionStreakMax, cooldownBypassCount })
@@ -199,6 +232,7 @@ function computeMetrics({ firsts, sessionRows, eligibleMax, optionPositions, inS
   const uniqueTexts = sessionRows.map((s) => new Set(s.activities.map((x) => x.text_en)).size)
   const consecutiveExemplars = sessionRows.map((s) => maxConsecutive(s.activities, 'exemplar_id'))
   const floors = sessionRows.map((s) => s.theoretical_floor).filter(Number.isFinite)
+  const focusEligible = sessionRows.map((s) => s.eligible_realizations).filter((v) => Number.isFinite(v) && v > 0)
   const actualLengths = sessionRows.map((s) => s.activities.length)
   const gt = (n) => exemplarMaxima.filter((v) => v > n).length
 
@@ -228,6 +262,7 @@ function computeMetrics({ firsts, sessionRows, eligibleMax, optionPositions, inS
     max_text_occurrences_per_session: textMaxima.length ? Math.max(...textMaxima) : 0,
     max_construction_occurrences_per_session: constructionMaxima.length ? Math.max(...constructionMaxima) : 0,
     max_consecutive_same_exemplar: consecutiveExemplars.length ? Math.max(...consecutiveExemplars) : 0,
+    eligible_realizations_per_focus: summarize(focusEligible),
     minimum_possible_max_repeat: floors.length ? Math.max(...floors) : null,
     theoretical_floor_per_session: summarize(floors),
     cooldown_bypass_count: cooldownBypassCount,
@@ -260,6 +295,8 @@ for (const [label, focus] of Object.entries(FOCUSES)) {
     ' AFTER', JSON.stringify(after.session_activity_count))
   console.log('unique_text_en_per_session BEFORE', JSON.stringify(before.unique_text_en_per_session),
     ' AFTER', JSON.stringify(after.unique_text_en_per_session))
+  console.log('eligible_realizations_per_focus BEFORE', JSON.stringify(before.eligible_realizations_per_focus),
+    ' AFTER', JSON.stringify(after.eligible_realizations_per_focus))
   console.log('theoretical_floor_per_session BEFORE', JSON.stringify(before.theoretical_floor_per_session),
     ' AFTER', JSON.stringify(after.theoretical_floor_per_session))
   console.log('option_target_position BEFORE', JSON.stringify(before.option_target_position_distribution),
@@ -288,7 +325,8 @@ for (const [label, config] of triage) {
     max_text_occurrences_per_session: m.max_text_occurrences_per_session,
     max_construction_occurrences_per_session: m.max_construction_occurrences_per_session,
     max_consecutive_same_exemplar: m.max_consecutive_same_exemplar,
-    eligible_exemplar_count: m.eligible_exemplar_count,
+    eligible_exemplar_count_pre_focus: m.eligible_exemplar_count,
+    eligible_realizations_per_focus: m.eligible_realizations_per_focus,
     minimum_possible_max_repeat: m.minimum_possible_max_repeat,
     cooldown_bypass_count: m.cooldown_bypass_count,
   }, null, 2))
