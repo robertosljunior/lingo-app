@@ -162,7 +162,7 @@ export function wordOrderRemove(picked, i) {
 export function wordOrderMove(picked, i, dir) {
   const at = picked.indexOf(i)
   const to = at + dir
-  if (at < 0 || to < 0 || to >= next.length) return picked
+  if (at < 0 || to < 0 || to >= picked.length) return picked
   const next = picked.slice()
   next.splice(at, 1)
   next.splice(to, 0, i)
