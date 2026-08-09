@@ -1,4 +1,7 @@
 import { describe, expect, it } from 'vitest'
+import stillPack from '../../content/pedagogy-v2/still.json'
+import butPack from '../../content/pedagogy-v2/but.json'
+import yetPack from '../../content/pedagogy-v2/yet.json'
 import {
   DISTRACTOR_LEVEL_BY_EXPOSURE_STAGE,
   planLevel,
@@ -35,9 +38,9 @@ describe('V2.23 — semantic-distractor level mapping', () => {
 })
 
 describe('V2.23 — existing PR #70 distractor bounds', () => {
-  const plan = (stage, text) => ({
-    activity_id: `audit:${stage}:${text}`,
-    pack_id: 'pedagogy_v2_still',
+  const plan = (stage, text, packId = 'pedagogy_v2_still', id = 'fixture') => ({
+    activity_id: `audit:${id}`,
+    pack_id: packId,
     exposure_stage: stage,
     text_en: text,
     presentation: { token_source: { semantic_distractors: true } },
@@ -60,5 +63,25 @@ describe('V2.23 — existing PR #70 distractor bounds', () => {
     const tokens = ['She', 'still', 'works', 'here']
     const p = plan('A2', tokens.join(' '))
     expect(wordOrderDistractors(p, tokens)).toEqual(wordOrderDistractors(p, tokens))
+  })
+
+  it('keeps every shipped still/but/yet exemplar inside PR #70 bounds with the real V2 stage active', () => {
+    for (const pack of [stillPack, butPack, yetPack]) {
+      const packId = pack.manifest?.pack_id || pack.pack_id
+      for (const exemplar of pack.exemplars || []) {
+        const tokens = String(exemplar.text_en || '').trim().split(/\s+/).filter(Boolean)
+        const distractors = wordOrderDistractors(
+          plan(exemplar.exposure_stage, exemplar.text_en, packId, exemplar.exemplar_id),
+          tokens,
+        )
+        const desired = tokens.length <= 5 ? 1 : tokens.length <= 9 ? 2 : 3
+        const maxAllowed = Math.min(desired, Math.max(1, Math.ceil(tokens.length * 0.3)))
+        expect(distractors.length, exemplar.exemplar_id).toBeGreaterThanOrEqual(1)
+        expect(distractors.length, exemplar.exemplar_id).toBeLessThanOrEqual(3)
+        expect(distractors.length, exemplar.exemplar_id).toBeLessThanOrEqual(maxAllowed)
+        expect(planLevel({ exposure_stage: exemplar.exposure_stage }), exemplar.exemplar_id)
+          .toBe(DISTRACTOR_LEVEL_BY_EXPOSURE_STAGE[exemplar.exposure_stage])
+      }
+    }
   })
 })
