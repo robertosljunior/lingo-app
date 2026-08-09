@@ -24,9 +24,23 @@ export function formatStorageBytes(bytes) {
   return `${value >= 10 ? value.toFixed(0) : value.toFixed(1)} ${unit}`
 }
 
+export function isReclaimableKnowledgePack(pack) {
+  return pack?.source !== 'imported'
+}
+
+export function describeKnowledgePack(row) {
+  const source = row?.source || 'unknown'
+  return {
+    id: row?.pack_id,
+    label: row?.pack?.manifest?.name || row?.pack_id,
+    source,
+    reclaimable: isReclaimableKnowledgePack({ source }),
+  }
+}
+
 async function storageEstimate() {
   try {
-    if (!navigator?.storage?.estimate) return { usage: null, quota: null }
+    if (typeof navigator === 'undefined' || !navigator.storage?.estimate) return { usage: null, quota: null }
     const estimate = await navigator.storage.estimate()
     return { usage: finiteBytes(estimate?.usage), quota: finiteBytes(estimate?.quota) }
   } catch { return { usage: null, quota: null } }
@@ -51,8 +65,7 @@ async function installedModel() {
 
 async function installedPacks() {
   try {
-    const packs = await listInstalledPacks()
-    return packs.map((row) => ({ id: row.pack_id, label: row.pack?.manifest?.name || row.pack_id }))
+    return (await listInstalledPacks()).map(describeKnowledgePack)
   } catch { return [] }
 }
 
@@ -76,6 +89,8 @@ export async function getDeviceStorageSnapshot() {
     semantic_model: model,
     voices,
     knowledge_packs: packs,
+    reclaimable_knowledge_packs: packs.filter((pack) => pack.reclaimable),
+    preserved_imported_packs: packs.filter((pack) => !pack.reclaimable),
     managed_cache_names: cacheNames,
   }
 }
@@ -97,11 +112,13 @@ export async function clearDownloadedResources({ snapshot = null } = {}) {
     try { await removeModel(before.semantic_model.id); resetSemanticEncoder() }
     catch (error) { failures.push(`semantic:${String(error?.message || error)}`) }
   }
-  for (const voice of before.voices) {
+  for (const voice of before.voices || []) {
     try { await removeVoice(voice.id) }
     catch (error) { failures.push(`voice:${voice.id}:${String(error?.message || error)}`) }
   }
-  for (const pack of before.knowledge_packs) {
+  const reclaimablePacks = before.reclaimable_knowledge_packs
+    || (before.knowledge_packs || []).filter(isReclaimableKnowledgePack)
+  for (const pack of reclaimablePacks) {
     try { await removeKnowledgePack(pack.id) }
     catch (error) { failures.push(`pack:${pack.id}:${String(error?.message || error)}`) }
   }
