@@ -1,0 +1,275 @@
+{
+  "schema_version": "1",
+  "lexicon_id": "lexicon.verbs.pilot.v1",
+  "entity_type": "verb",
+  "en_variant": "en_US",
+  "pt_variant": "pt_BR",
+  "units": [
+    {
+      "unit_id": "lex:verb.check",
+      "lemma_en": "check",
+      "lemma_pt": "verificar",
+      "type": "verb",
+      "lexical_stage": "A1",
+      "frequency_tier": 1,
+      "forms": { "en": { "base": "check", "3sg": "checks", "past": "checked", "ing": "checking", "pp": "checked" }, "pt_BR": { "present_1sg": "verifico" } },
+      "senses": [
+        {
+          "sense_id": "lex:sense.check.consult",
+          "gloss_pt": "consultar ou verificar informação disponível",
+          "first_exposure_stage": "A1",
+          "argument_frames": [
+            {
+              "frame_id": "argframe:check.consult.direct_object",
+              "syntax_family": "V_NP",
+              "fixed_features": {},
+              "negotiable_features": ["tense", "polarity", "person", "number"],
+              "complements": [
+                { "slot": "object", "syntactic_type": "direct_object", "required": true, "entity_sources": ["entities"], "require_roles": ["consultable"], "determiner": "definite" }
+              ]
+            }
+          ]
+        }
+      ],
+      "crosslingual_error_patterns": []
+    },
+    {
+      "unit_id": "lex:verb.show",
+      "lemma_en": "show",
+      "lemma_pt": "mostrar",
+      "type": "verb",
+      "lexical_stage": "A1",
+      "frequency_tier": 1,
+      "forms": { "en": { "base": "show", "3sg": "shows", "past": "showed", "ing": "showing", "pp": "shown" }, "pt_BR": { "present_1sg": "mostro" } },
+      "senses": [
+        {
+          "sense_id": "lex:sense.show.present",
+          "gloss_pt": "apresentar algo para inspeção",
+          "first_exposure_stage": "A1",
+          "argument_frames": [
+            {
+              "frame_id": "argframe:show.present.direct_object",
+              "syntax_family": "V_NP",
+              "fixed_features": {},
+              "negotiable_features": ["tense", "polarity", "person", "number"],
+              "complements": [
+                { "slot": "object", "syntactic_type": "direct_object", "required": true, "entity_sources": ["entities"], "require_roles": ["presentable"], "determiner": "definite" }
+              ]
+            }
+          ]
+        }
+      ],
+      "crosslingual_error_patterns": []
+    },
+    {
+      "unit_id": "lex:verb.find",
+      "lemma_en": "find",
+      "lemma_pt": "encontrar",
+      "type": "verb",
+      "lexical_stage": "A1",
+      "frequency_tier": 1,
+      "forms": { "en": { "base": "find", "3sg": "finds", "past": "found", "ing": "finding", "pp": "found" }, "pt_BR": { "present_1sg": "encontro" } },
+      "senses": [
+        {
+          "sense_id": "lex:sense.find.locate",
+          "gloss_pt": "localizar uma entidade ou lugar",
+          "first_exposure_stage": "A1",
+          "argument_frames": [
+            {
+              "frame_id": "argframe:find.locate.entity",
+              "syntax_family": "V_NP",
+              "fixed_features": {},
+              "negotiable_features": ["tense", "polarity", "person", "number"],
+              "complements": [
+                { "slot": "object", "syntactic_type": "direct_object", "required": true, "entity_sources": ["entities"], "require_roles": ["locatable_reference"], "determiner": "definite" }
+              ]
+            },
+            {
+              "frame_id": "argframe:find.locate.place",
+              "syntax_family": "V_NP",
+              "fixed_features": {},
+              "negotiable_features": ["tense", "polarity", "person", "number"],
+              "complements": [
+                { "slot": "object", "syntactic_type": "direct_object", "required": true, "entity_sources": ["places"], "require_roles": [], "determiner": "definite" }
+              ]
+            }
+          ]
+        }
+      ],
+      "crosslingual_error_patterns": []
+    },
+    {
+      "unit_id": "lex:verb.arrive",
+      "lemma_en": "arrive",
+      "lemma_pt": "chegar",
+      "type": "verb",
+      "lexical_stage": "A1",
+      "frequency_tier": 1,
+      "forms": { "en": { "base": "arrive", "3sg": "arrives", "past": "arrived", "ing": "arriving", "pp": "arrived" }, "pt_BR": { "present_1sg": "chego" } },
+      "senses": [
+        {
+          "sense_id": "lex:sense.arrive.reach_destination",
+          "gloss_pt": "chegar a um destino",
+          "first_exposure_stage": "A1",
+          "argument_frames": [
+            {
+              "frame_id": "argframe:arrive.reach_destination.place",
+              "syntax_family": "V_PLACE_RELATION",
+              "fixed_features": {},
+              "negotiable_features": ["tense", "polarity", "person", "number"],
+              "complements": [
+                { "slot": "destination", "syntactic_type": "place_relation", "required": true, "entity_sources": ["places"], "require_roles": [], "relation": "point" }
+              ]
+            }
+          ]
+        }
+      ],
+      "crosslingual_error_patterns": [
+        { "error_id": "error:arrive.direct_object_place", "sense_id": "lex:sense.arrive.reach_destination", "syntactic_type": "direct_object", "entity_source": "places", "reason": "direct_object_not_licensed", "pt_interference": "chegar em/a" }
+      ]
+    },
+    {
+      "unit_id": "lex:verb.wait",
+      "lemma_en": "wait",
+      "lemma_pt": "esperar",
+      "type": "verb",
+      "lexical_stage": "A1",
+      "frequency_tier": 1,
+      "forms": { "en": { "base": "wait", "3sg": "waits", "past": "waited", "ing": "waiting", "pp": "waited" }, "pt_BR": { "present_1sg": "espero" } },
+      "senses": [
+        {
+          "sense_id": "lex:sense.wait.await",
+          "gloss_pt": "aguardar uma pessoa, coisa ou transporte",
+          "first_exposure_stage": "A1",
+          "argument_frames": [
+            {
+              "frame_id": "argframe:wait.await.for_object",
+              "syntax_family": "V_PREP_NP",
+              "fixed_features": {},
+              "negotiable_features": ["tense", "polarity", "person", "number"],
+              "complements": [
+                { "slot": "object", "syntactic_type": "prepositional_object", "required": true, "entity_sources": ["entities"], "require_roles": ["awaited_entity"], "preposition_en": "for", "preposition_pt": "por", "determiner": "definite" }
+              ]
+            }
+          ]
+        }
+      ],
+      "crosslingual_error_patterns": [
+        { "error_id": "error:wait.direct_object", "sense_id": "lex:sense.wait.await", "syntactic_type": "direct_object", "entity_source": "entities", "require_roles": ["awaited_entity"], "reason": "required_preposition_for", "pt_interference": "esperar o ônibus/trem" }
+      ]
+    },
+    {
+      "unit_id": "lex:verb.pay",
+      "lemma_en": "pay",
+      "lemma_pt": "pagar",
+      "type": "verb",
+      "lexical_stage": "A1",
+      "frequency_tier": 1,
+      "forms": { "en": { "base": "pay", "3sg": "pays", "past": "paid", "ing": "paying", "pp": "paid" }, "pt_BR": { "present_1sg": "pago" } },
+      "senses": [
+        {
+          "sense_id": "lex:sense.pay.payment",
+          "gloss_pt": "efetuar um pagamento",
+          "first_exposure_stage": "A1",
+          "argument_frames": [
+            {
+              "frame_id": "argframe:pay.payment.direct_object",
+              "syntax_family": "V_NP",
+              "fixed_features": {},
+              "negotiable_features": ["tense", "polarity", "person", "number"],
+              "complements": [
+                { "slot": "object", "syntactic_type": "direct_object", "required": true, "entity_sources": ["entities"], "require_roles": ["payable_obligation"], "determiner": "definite" }
+              ]
+            },
+            {
+              "frame_id": "argframe:pay.payment.for_object",
+              "syntax_family": "V_PREP_NP",
+              "fixed_features": {},
+              "negotiable_features": ["tense", "polarity", "person", "number"],
+              "complements": [
+                { "slot": "object", "syntactic_type": "prepositional_object", "required": true, "entity_sources": ["entities"], "require_roles": ["payable_item"], "preposition_en": "for", "preposition_pt": "por", "determiner": "definite" }
+              ]
+            }
+          ]
+        }
+      ],
+      "crosslingual_error_patterns": []
+    },
+    {
+      "unit_id": "lex:verb.take",
+      "lemma_en": "take",
+      "lemma_pt": "tomar",
+      "type": "verb",
+      "lexical_stage": "A1",
+      "frequency_tier": 1,
+      "forms": { "en": { "base": "take", "3sg": "takes", "past": "took", "ing": "taking", "pp": "taken" }, "pt_BR": { "present_1sg": "tomo" } },
+      "senses": [
+        {
+          "sense_id": "lex:sense.take.consume_medicine",
+          "gloss_pt": "tomar medicamento",
+          "first_exposure_stage": "A1",
+          "pt_lemma": "tomar",
+          "pt_present_1sg": "tomo",
+          "argument_frames": [
+            {
+              "frame_id": "argframe:take.consume_medicine.direct_object",
+              "syntax_family": "V_NP",
+              "fixed_features": {},
+              "negotiable_features": ["tense", "polarity", "person", "number"],
+              "complements": [
+                { "slot": "object", "syntactic_type": "direct_object", "required": true, "entity_sources": ["entities"], "require_roles": ["medication_consumable"], "determiner": "definite" }
+              ]
+            }
+          ]
+        },
+        {
+          "sense_id": "lex:sense.take.transport",
+          "gloss_pt": "pegar ou usar um meio de transporte",
+          "first_exposure_stage": "A1",
+          "pt_lemma": "pegar",
+          "pt_present_1sg": "pego",
+          "argument_frames": [
+            {
+              "frame_id": "argframe:take.transport.direct_object",
+              "syntax_family": "V_NP",
+              "fixed_features": {},
+              "negotiable_features": ["tense", "polarity", "person", "number"],
+              "complements": [
+                { "slot": "object", "syntactic_type": "direct_object", "required": true, "entity_sources": ["entities"], "require_roles": ["transport_mode"], "determiner": "definite" }
+              ]
+            }
+          ]
+        }
+      ],
+      "crosslingual_error_patterns": []
+    },
+    {
+      "unit_id": "lex:verb.use",
+      "lemma_en": "use",
+      "lemma_pt": "usar",
+      "type": "verb",
+      "lexical_stage": "A1",
+      "frequency_tier": 1,
+      "forms": { "en": { "base": "use", "3sg": "uses", "past": "used", "ing": "using", "pp": "used" }, "pt_BR": { "present_1sg": "uso" } },
+      "senses": [
+        {
+          "sense_id": "lex:sense.use.instrument",
+          "gloss_pt": "usar algo como instrumento",
+          "first_exposure_stage": "A1",
+          "argument_frames": [
+            {
+              "frame_id": "argframe:use.instrument.direct_object",
+              "syntax_family": "V_NP",
+              "fixed_features": {},
+              "negotiable_features": ["tense", "polarity", "person", "number"],
+              "complements": [
+                { "slot": "object", "syntactic_type": "direct_object", "required": true, "entity_sources": ["entities"], "require_roles": ["usable"], "determiner": "definite" }
+              ]
+            }
+          ]
+        }
+      ],
+      "crosslingual_error_patterns": []
+    }
+  ]
+}
