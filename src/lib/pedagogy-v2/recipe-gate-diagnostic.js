@@ -1,15 +1,12 @@
 // recipe-gate-diagnostic.js — P0/#106 read-only diagnostics.
 //
-// This module does not change planner/engine behavior. It exposes the exact
-// capability-gate predicates, recipe eligibility inputs and post-selection
-// materialization contract so diagnostics can distinguish:
+// This module does not change planner/engine behavior. It consumes the gate's
+// own source-of-truth trace and adds recipe/materialization diagnostics so the
+// causal chain can distinguish:
 //   planner/gate exclusion -> candidate loses -> materialization fallback.
 
 import { LESSON_RECIPES, mergeLessonEnginePolicyV2 } from './lesson-engine-contracts.js'
-import {
-  capabilityGateMetV2, capabilityAdvancementMetV2, exposureCount,
-  getCapabilityRollup, getLane, laneMeets, PRODUCTION_CAPABILITY_KEYS,
-} from './lesson-engine-state-queries.js'
+import { capabilityGateMetV2, capabilityGateTraceV2 } from './lesson-engine-state-queries.js'
 import { getPrimaryTargets } from './query.js'
 import { isLicensedRealization } from './licensed-realization-contracts.js'
 import { isRecipeExecutable } from './runtime-capabilities.js'
@@ -19,108 +16,16 @@ export const RECIPE_GATE_DIAGNOSTIC_VERSION = 1
 
 const LEVEL_RANK = Object.freeze({ insufficient: 0, emerging: 1, established: 2 })
 
-function laneSnapshot(lane) {
-  return {
-    present: !!lane,
-    mastery_estimate: lane?.mastery_estimate ?? null,
-    evidence_level: lane?.evidence_level ?? 'insufficient',
-    assessed_evidence_count: lane?.assessed_evidence_count ?? 0,
-    effective_evidence_weight: lane?.effective_evidence_weight ?? 0,
-  }
-}
-
-function thresholdSnapshot(threshold) {
-  return {
-    min_mastery: threshold?.min_mastery ?? null,
-    min_evidence_level: threshold?.min_evidence_level ?? null,
-  }
-}
-
-function thresholdPredicate(name, lane, threshold, source) {
-  const actual = laneSnapshot(lane)
-  const required = thresholdSnapshot(threshold)
-  return {
-    predicate: name,
-    source,
-    actual,
-    required,
-    met: laneMeets(lane, threshold),
-  }
-}
-
-function recognitionAdvancementPredicate(state, threshold) {
-  const rollup = getCapabilityRollup(state, 'recognition', 'overall')
-  if (rollup) return thresholdPredicate('recognition_advancement', rollup, threshold, 'capability_rollup.recognition.overall')
-  const keys = ['reading_recognition', 'listening_recognition', 'multimodal_recognition']
-  const lanes = keys.map((key) => ({ key, ...laneSnapshot(getLane(state, key, 'overall')) }))
-  return {
-    predicate: 'recognition_advancement',
-    source: 'pre_rollup_modality_fallback',
-    actual: { lanes },
-    required: thresholdSnapshot(threshold),
-    met: capabilityAdvancementMetV2(state, 'recognition', threshold),
-  }
-}
-
 /**
- * Explain the exact boolean used by capabilityGateMetV2 without guessing what
- * "production ready" means. Every predicate carries actual + required values.
+ * Public #106 diagnostic wrapper around the SAME trace used by runtime. The
+ * agreement field is intentionally redundant: if a future edit bypasses the
+ * source-of-truth helper, the diagnostic regression fails loudly.
  */
 export function capabilityGatePredicateTraceV2(state, capability, modality, thresholds) {
-  const advancement = thresholds.advancement
-  const predicates = []
-
-  if (capability === 'recognition') {
-    const count = exposureCount(state)
-    predicates.push({
-      predicate: 'has_exposure', actual: { exposure_count: count },
-      required: { min_exposure_count: 1 }, met: count >= 1,
-    })
-  } else if (capability === 'comprehension') {
-    const count = exposureCount(state)
-    predicates.push({
-      predicate: 'has_exposure', actual: { exposure_count: count },
-      required: { min_exposure_count: 1 }, met: count >= 1,
-    })
-    predicates.push(recognitionAdvancementPredicate(state, advancement))
-    const lane = getLane(state, `${modality}_recognition`, 'overall')
-    const assessed = lane?.assessed_evidence_count ?? 0
-    predicates.push({
-      predicate: 'same_modality_recognition_evidence',
-      actual: { capability_key: `${modality}_recognition`, assessed_evidence_count: assessed },
-      required: { min_assessed_evidence_count: 1 }, met: assessed >= 1,
-    })
-  } else if (capability === 'controlled_production') {
-    predicates.push(recognitionAdvancementPredicate(state, advancement))
-  } else if (capability === 'free_production') {
-    const key = `${modality}_controlled_production`
-    predicates.push(thresholdPredicate(
-      'same_modality_controlled_production_advancement',
-      getLane(state, key, 'overall'), advancement, `capabilities.${key}.overall`,
-    ))
-  } else if (capability === 'pronunciation') {
-    const lanes = PRODUCTION_CAPABILITY_KEYS.map((key) => ({
-      key,
-      ...laneSnapshot(getLane(state, key, 'overall')),
-      meets_advancement: laneMeets(getLane(state, key, 'overall'), advancement),
-    }))
-    predicates.push({
-      predicate: 'any_production_advancement',
-      actual: { lanes }, required: thresholdSnapshot(advancement),
-      met: lanes.some((lane) => lane.meets_advancement),
-    })
-  } else {
-    predicates.push({ predicate: 'known_capability', actual: { capability }, required: { known: true }, met: false })
-  }
-
-  const runtimeTruth = capabilityGateMetV2(state, capability, modality, thresholds)
-  const predicateTruth = predicates.every((row) => row.met)
+  const trace = capabilityGateTraceV2(state, capability, modality, thresholds)
   return {
-    capability,
-    modality,
-    met: runtimeTruth,
-    predicates,
-    diagnostic_agrees_with_runtime: runtimeTruth === predicateTruth,
+    ...trace,
+    diagnostic_agrees_with_runtime: trace.met === capabilityGateMetV2(state, capability, modality, thresholds),
   }
 }
 
