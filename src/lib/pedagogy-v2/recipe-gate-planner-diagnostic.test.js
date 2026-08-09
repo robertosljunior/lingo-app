@@ -50,36 +50,49 @@ function exposure(target) {
   })
 }
 
-describe('#106 — planner reachability is measured separately from engine selection', () => {
-  it('emits controlled-production focus candidates after lower receptive rungs are established', () => {
-    const registry = loadPedagogyV2Registry()
-    const exemplar = stillPack.exemplars.find((row) => row.exemplar_id === 'exemplar:still.001')
-    const targets = getPrimaryTargets(exemplar).map((target) => ({ target_type: target.target_type, target_id: target.target_id }))
-    const events = []
-    for (const target of targets) {
-      events.push(exposure(target))
-      events.push(...evidence(target, 'recognition', 'reading'), ...evidence(target, 'recognition', 'listening'))
+const runtimeAvailability = computeRecipeRuntimeAvailability({
+  text_input: true,
+  audio_output: true,
+  speech_input: false,
+  semantic_assessment: true,
+  pronunciation_assessment: false,
+})
+
+const registry = loadPedagogyV2Registry()
+const exemplar = stillPack.exemplars.find((row) => row.exemplar_id === 'exemplar:still.001')
+const targets = getPrimaryTargets(exemplar).map((target) => ({ target_type: target.target_type, target_id: target.target_id }))
+const focusTargetIds = new Set(targets.map((target) => target.target_id))
+
+function plannerCandidates({ includeComprehension }) {
+  const events = []
+  for (const target of targets) {
+    events.push(exposure(target))
+    events.push(...evidence(target, 'recognition', 'reading'), ...evidence(target, 'recognition', 'listening'))
+    if (includeComprehension) {
       events.push(...evidence(target, 'comprehension', 'reading'), ...evidence(target, 'comprehension', 'listening'))
     }
-    const learnerStates = aggregateProfileEvidence(events)
-    const runtimeAvailability = computeRecipeRuntimeAvailability({
-      text_input: true,
-      audio_output: true,
-      speech_input: false,
-      semantic_assessment: true,
-      pronunciation_assessment: false,
-    })
+  }
+  return buildStudyCandidatesV2({
+    registry,
+    learnerStates: aggregateProfileEvidence(events),
+    recentEvidence: events,
+    allowedPackIds: [stillPack.manifest.pack_id],
+    now: iso(500),
+    runtimeAvailability,
+  })
+}
 
-    const candidates = buildStudyCandidatesV2({
-      registry,
-      learnerStates,
-      recentEvidence: events,
-      allowedPackIds: [stillPack.manifest.pack_id],
-      now: iso(500),
-      runtimeAvailability,
-    })
+describe('#106 — planner reachability is measured separately from engine selection', () => {
+  it('keeps the active frontier on comprehension when recognition is established but comprehension is not', () => {
+    const candidates = plannerCandidates({ includeComprehension: false })
+    const inFocus = candidates.filter((row) => focusTargetIds.has(row.target?.target_id))
 
-    const focusTargetIds = new Set(targets.map((target) => target.target_id))
+    expect(inFocus.some((row) => row.capability === 'comprehension')).toBe(true)
+    expect(inFocus.some((row) => row.capability === 'controlled_production')).toBe(false)
+  })
+
+  it('emits controlled-production writing candidates after recognition and comprehension are established', () => {
+    const candidates = plannerCandidates({ includeComprehension: true })
     const production = candidates.filter((row) =>
       focusTargetIds.has(row.target?.target_id)
       && row.capability === 'controlled_production'
