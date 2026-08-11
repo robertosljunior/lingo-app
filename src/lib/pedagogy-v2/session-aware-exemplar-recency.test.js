@@ -62,7 +62,15 @@ function advancedStates() {
 }
 
 const STATES = advancedStates()
-const FOCUS = { capability: 'comprehension', modality: 'reading' }
+// Explicitly pin the high-frequency continuity sense. Unlike a generic
+// comprehension focus, this has several genuinely equivalent authored
+// realizations (still.001/.002/.003/.005 etc.), so an anti-repeat assertion is
+// meaningful rather than demanding variety from a single-exemplar focus.
+const MULTI_FOCUS = {
+  target_id: 'sense:still.continuity',
+  capability: 'comprehension',
+  modality: 'reading',
+}
 const lessonSession = (id, seed = 'fixed-seed') => createLessonSessionV2({
   session_id: id,
   profile_id: 'p1',
@@ -70,14 +78,18 @@ const lessonSession = (id, seed = 'fixed-seed') => createLessonSessionV2({
   seed,
 })
 
-function pick({ id, recentEvidence = [] }) {
+function pick({ id, recentEvidence = [], focus = MULTI_FOCUS }) {
   return selectNextActivityV2({
     session: lessonSession(id),
     pack: stillPack,
     learnerStates: STATES,
     recentEvidence,
-    focus: FOCUS,
+    focus,
   })
+}
+
+function bandExemplars(decision) {
+  return decision.trace?.experience_diversity?.pool?.band_exemplars || []
 }
 
 describe('session-aware exemplar recency — P0 anti-loop', () => {
@@ -120,19 +132,33 @@ describe('session-aware exemplar recency — P0 anti-loop', () => {
     expect(usage.latest_session_exemplar_ids).toHaveLength(9)
   })
 
-  it('prevents the previous session opener from immediately winning again when an equivalent fresh exemplar exists', () => {
+  it('uses a fresh same-focus exemplar before replaying one already used in the current lesson session', () => {
+    const first = pick({ id: 'lesson:current' })
+    expect(first.status).toBe('activity')
+    expect(bandExemplars(first).length).toBeGreaterThan(1)
+
+    const recent = [evidence({ exemplarId: first.plan.exemplar_id, sessionId: 'lesson:current' })]
+    const second = pick({ id: 'lesson:current', recentEvidence: recent })
+
+    expect(second.status).toBe('activity')
+    expect(second.plan.exemplar_id).not.toBe(first.plan.exemplar_id)
+    expect(second.plan.primary_target.target_id).toBe(first.plan.primary_target.target_id)
+    expect(second.plan.capability).toBe(first.plan.capability)
+    expect(second.plan.modality).toBe(first.plan.modality)
+  })
+
+  it('prevents the previous session opener from immediately winning again after >4 later interactions when a real in-band alternative exists', () => {
     const baseline = pick({ id: 'lesson:baseline' })
     expect(baseline.status).toBe('activity')
     const opener = baseline.plan.exemplar_id
-    const equivalentAlternatives = new Set((baseline.trace.candidates || [])
-      .filter((candidate) => candidate.capability === baseline.plan.capability
-        && candidate.modality === baseline.plan.modality
-        && candidate.exemplar_id !== opener)
-      .map((candidate) => candidate.exemplar_id))
-    expect(equivalentAlternatives.size).toBeGreaterThan(0)
+    const alternatives = bandExemplars(baseline).filter((x) => x !== opener)
+    expect(alternatives.length).toBeGreaterThan(0)
 
     // The previous opener is deliberately >4 interactions behind. Before this
     // hotfix it became "fresh" again and the fixed seed could restart on it.
+    // The filler interactions use non-candidate IDs: they advance interaction
+    // distance without falsely claiming that the real alternative was already
+    // consumed by this lesson session.
     const recent = [
       evidence({ exemplarId: opener, sessionId: 'lesson:previous' }),
       evidence({ exemplarId: 'exemplar:outside.1', sessionId: 'lesson:previous' }),
@@ -145,8 +171,26 @@ describe('session-aware exemplar recency — P0 anti-loop', () => {
 
     expect(next.status).toBe('activity')
     expect(next.plan.exemplar_id).not.toBe(opener)
+    expect(next.plan.primary_target.target_id).toBe(baseline.plan.primary_target.target_id)
     expect(next.plan.capability).toBe(baseline.plan.capability)
     expect(next.plan.modality).toBe(baseline.plan.modality)
+  })
+
+  it('does not fake variety when the planner focus has only one eligible exemplar', () => {
+    const soleFocus = {
+      target_id: 'function:introduce_concession',
+      capability: 'comprehension',
+      modality: 'reading',
+    }
+    const first = pick({ id: 'lesson:sole.1', focus: soleFocus })
+    expect(first.status).toBe('activity')
+    const repeated = pick({
+      id: 'lesson:sole.2',
+      focus: soleFocus,
+      recentEvidence: [evidence({ exemplarId: first.plan.exemplar_id, sessionId: 'lesson:sole.previous' })],
+    })
+    expect(repeated.status).toBe('activity')
+    expect(repeated.plan.exemplar_id).toBe(first.plan.exemplar_id)
   })
 
   it('falls back to the original interaction-only behavior for legacy evidence with no session_id', () => {
