@@ -98,6 +98,15 @@ left and no policy can create variety from it.
 After the fix, **8 of 51** observed focus signatures still never exceeded a single
 interchangeable exemplar. Those are supply, not scheduling. See §5.
 
+There is a visible symptom of that floor. When the cooldown removes every
+candidate the engine re-admits them on purpose (`buildCandidates(true)` —
+"repeating beats stalling the session"), which on a one-exemplar focus produces
+the same sentence twice in a row. Observed once in 60 activities in one browser
+run of the E2E and not at all in six others. The spec therefore asserts the
+contract — a back-to-back repeat is only allowed when the band held no
+alternative — rather than asserting that repeats never happen, which the engine
+does not and should not guarantee at that supply level.
+
 ### E — persistence/context: ELIMINATED
 
 Checked end to end in the real flow, not in a unit fixture:

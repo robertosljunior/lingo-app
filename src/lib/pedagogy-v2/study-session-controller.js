@@ -24,6 +24,9 @@ export function createStudySessionControllerV2(deps) {
     profileId, registry, mode, focusedPackId = null,
     studyScope = null,
     recipePreference = null,
+    // V2.25 (#82): opt-in realization supply. Null = authored exemplars only,
+    // which is what every learner surface does today.
+    licensedRealizations = null,
     now = () => new Date().toISOString(),
     makeStudySessionId = () => `v2study-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
     makeLessonSessionId = (packId) => `v2lesson-${packId}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
@@ -84,6 +87,7 @@ export function createStudySessionControllerV2(deps) {
       allowedPackIds,
       studyScope,
       recipePreference,
+      licensedRealizations,
       profileId,
       now: nowIso,
       makeLessonSessionId,

@@ -9,6 +9,9 @@ const PORT = 4173
 const PROD_PORT = 4174
 const PROD_DIST = 'dist-production-smoke'
 const VISUAL_SPEC = /screenshots\.spec\.js$/
+// Multi-session learner journeys: correct but CPU-hungry, so they get their own
+// serial project instead of competing with the ordinary functional specs.
+const LONG_JOURNEY_SPEC = /practice-repetition-across-sessions\.spec\.js$/
 
 // Optional local browser override: some sandboxes ship a Chromium revision that
 // differs from the one @playwright/test pins. CI leaves this unset.
@@ -44,7 +47,7 @@ export default defineConfig({
     {
       name: 'chromium-desktop',
       use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 800 }, launchOptions: { executablePath } },
-      testIgnore: [VISUAL_SPEC, /mobile-smoke/, /real-model/, /production-cutover/],
+      testIgnore: [VISUAL_SPEC, /mobile-smoke/, /real-model/, /production-cutover/, LONG_JOURNEY_SPEC],
     },
     {
       name: 'chromium-mobile',
@@ -69,6 +72,20 @@ export default defineConfig({
       // ordinary learner journeys.
       name: 'use-model',
       testMatch: /real-model/,
+      fullyParallel: false,
+      dependencies: ['chromium-desktop', 'chromium-mobile', 'production-build'],
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 800 }, launchOptions: { executablePath } },
+    },
+    {
+      // Same reasoning as `use-model`, for the same reason. The anti-repetition
+      // journey drives five COMPLETE learner sessions — 60 activities through
+      // the real assessment pipeline, semantic analysis included — in one test.
+      // Run alongside the ordinary journeys it does not fail itself, but it
+      // starves them: a run with it in the parallel pool timed out an unrelated
+      // double-submit spec after 5.4m that passes in 53s on its own. Retries are
+      // zero by contract, so the fix is to stop the contention, not to absorb it.
+      name: 'long-journey',
+      testMatch: LONG_JOURNEY_SPEC,
       fullyParallel: false,
       dependencies: ['chromium-desktop', 'chromium-mobile', 'production-build'],
       use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 800 }, launchOptions: { executablePath } },

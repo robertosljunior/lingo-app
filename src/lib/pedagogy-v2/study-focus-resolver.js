@@ -112,6 +112,14 @@ export function resolveNextStudyActivityV2({
   studyScope = null,
   recipePreference = null,
   profileId = null,
+  // V2.25 (#82) supply experiment seam. The engine has always accepted
+  // `licensedRealizations`, but no production path forwarded it, so the
+  // learner-facing flow ran with `licensedEnabled === false` and
+  // `derivedExemplars === []` — authored exemplars only. Forwarding it here is
+  // the explicit adapter #98 asks for, at the licensed-realization boundary and
+  // NOT at the semantic network (which stays isolated). Default null keeps the
+  // current behaviour byte-for-byte: supply only changes when a caller opts in.
+  licensedRealizations = null,
   now,
   makeLessonSessionId,
   // Internal seams (default to the real planner/engine). Injected only by the
@@ -184,6 +192,7 @@ export function resolveNextStudyActivityV2({
         ...(recipePreference ? { recipe_preference: { recipe: recipePreference } } : {}),
       },
       runtimeAvailability,
+      licensedRealizations,
     })
     let lessonSession = lessonSessions[focus.pack_id]
       ?? createLessonSessionV2({ session_id: makeLessonSessionId(focus.pack_id), profile_id: profileId, now })

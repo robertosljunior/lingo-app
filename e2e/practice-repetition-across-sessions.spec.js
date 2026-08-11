@@ -193,6 +193,13 @@ test.describe('Praticar — repetition across consecutive sessions', () => {
     const avoidable = []
     const staler = []
     let backToBack = 0
+    // A back-to-back repeat is NOT unconditionally a defect. When the cooldown
+    // removes every candidate the engine deliberately re-admits them
+    // ("repeating beats stalling the session"), which a focus whose reachable
+    // supply is a single exemplar can legitimately reach. What must never
+    // happen is repeating a sentence immediately while the band still held
+    // another one.
+    const avoidableBackToBack = []
     rows.forEach((row, i) => {
       const band = row.band_exemplars || []
       const window = row.recent_window ?? 4
@@ -205,7 +212,12 @@ test.describe('Praticar — repetition across consecutive sessions', () => {
       if (band.length > 1 && mine < stalest) {
         staler.push({ at: `S${row.session_number}.${row.activity_number}`, exemplar_id: row.exemplar_id, since_seen: mine, stalest })
       }
-      if (i > 0 && rows[i - 1].text_en === row.text_en) backToBack += 1
+      if (i > 0 && rows[i - 1].text_en === row.text_en) {
+        backToBack += 1
+        if (band.length > 1) {
+          avoidableBackToBack.push({ at: `S${row.session_number}.${row.activity_number}`, text_en: row.text_en, band })
+        }
+      }
     })
     const tally = (list) => Object.entries(list.reduce((m, x) => ({ ...m, [x]: (m[x] || 0) + 1 }), {}))
       .sort((a, b) => b[1] - a[1])
@@ -255,6 +267,7 @@ test.describe('Praticar — repetition across consecutive sessions', () => {
         avoidable_exact_repeat_detail: avoidable,
         chose_a_staler_alternative_was_available: staler.length,
         back_to_back_identical_text: backToBack,
+        avoidable_back_to_back_identical_text: avoidableBackToBack,
       },
       unanswerable_in_this_runtime: unanswerable,
       activities: rows,
@@ -285,9 +298,12 @@ test.describe('Praticar — repetition across consecutive sessions', () => {
     }
 
     // THE CONTRACT: a sentence only comes back when the engine had nothing
-    // fresher to offer inside its own acceptable band.
+    // fresher to offer inside its own acceptable band. Note what is NOT
+    // asserted — that repeats never happen. A focus whose reachable supply is
+    // one exemplar must repeat, and the raw counts stay in the report so that
+    // supply pressure is visible instead of being asserted away.
     expect(report.global.avoidable_exact_repeat_detail).toEqual([])
-    expect(report.global.back_to_back_identical_text).toBe(0)
+    expect(report.global.avoidable_back_to_back_identical_text).toEqual([])
 
     monitor.assertClean?.()
   })
