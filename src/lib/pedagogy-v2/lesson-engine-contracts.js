@@ -18,11 +18,20 @@ import {
 } from './learner-model-constants.js'
 import { deriveSupportTier } from './learner-evidence-contracts.js'
 
+// ENGINE version — the SELECTION semantics a decision trace must be read
+// against. 1 was the 7038d70 prototype; 2 = V2.3-R…V2.18.
 // 3 (Slice V2.19): selection now applies EXPERIENCE DIVERSITY (cross-session
 // exemplar recency, least-recent fallback, recipe-streak control, seeded option
 // / word-order presentation) on top of pedagogical scoring. The pedagogy is
 // unchanged; the realization chosen for a given focus is now varied.
-export const LESSON_ENGINE_V2_VERSION = 3 // 1 was the 7038d70 prototype; 2 = V2.3-R…V2.18
+// 4: the same-focus band is keyed on primary-target MEMBERSHIP instead of the
+// authored array position, and `interactions_since_seen` now ORDERS the pool of
+// equally-scored realizations (least recent first, never-seen first of all)
+// instead of only breaking the all-recent fallback. The plan also keeps
+// reporting the ANCHOR's target as primary_target across a diversity swap.
+export const LESSON_ENGINE_V2_VERSION = 4
+// POLICY version — the tuning knobs below. Deliberately independent of the
+// engine version: engine 4 changed no knob, so this stays at 5.
 // 4 = V2.21-R3: recipe-SHARE monotony control inside a capability (§21/§22).
 // 5 = V2.22-UX2: `recipe_preference`, an ADVISORY score component (never a gate).
 export const LESSON_ENGINE_POLICY_VERSION = 5

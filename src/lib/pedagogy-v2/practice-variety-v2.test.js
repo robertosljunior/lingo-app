@@ -147,9 +147,12 @@ describe('cross-session exemplar recency', () => {
 describe('determinism and versioning', () => {
   // 5 = V2.22-UX2: `recipe_preference` joined the score components. The engine
   // version is unchanged — the plan shape did not move, only the weighting.
-  it('engine version 3, policy version 5 (V2.22-UX2 advisory recipe preference)', () => {
+  // Engine 4 moved SELECTION (same-focus band membership + least-recent
+  // ordering) without moving the plan shape or any policy knob, so the policy
+  // version legitimately stays at 5.
+  it('engine version 4, policy version 5 (V2.22-UX2 advisory recipe preference)', () => {
     const d = pick({ id: 'v' })
-    expect(d.engine_version).toBe(3)
+    expect(d.engine_version).toBe(4)
     expect(d.policy_version).toBe(5)
     expect(validateLessonDecisionV2(d).errors).toEqual([])
   })
