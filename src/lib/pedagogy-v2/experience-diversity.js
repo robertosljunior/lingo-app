@@ -51,15 +51,30 @@ export function seededShuffle(items, seedStr) {
 // must be counted per interaction, never per event — otherwise a 4-target
 // exemplar would look 4× more "recent" than a 1-target one.
 //
+// P0 anti-loop hardening: learner-facing evidence also carries `session_id`.
+// Interaction-only distance is not enough for a 12-activity session: the opener
+// is already 11 interactions old when the next session begins and therefore
+// used to become "fresh" again under a small interaction window. We keep the
+// interaction metric, but also protect every exemplar used in the most recent
+// persisted lesson session. If all equivalent exemplars were used there, the
+// session opener is deliberately treated as MOST recent so least-recent fallback
+// does not start the next session with the same sentence again.
+//
 // recentEvidence is expected in chronological order (as storage returns it:
 // sorted by occurred_at, then evidence_id). Returns:
 //   Map<exemplar_id, { last_seen_index, interactions_since_seen,
-//                      recent_interaction_count }>
+//                      recent_interaction_count, in_latest_session,
+//                      is_latest_session_opener }>
+// plus map metadata:
+//   total_interactions, latest_session_id,
+//   latest_session_opener_exemplar_id, latest_session_exemplar_ids.
 // where indices count DISTINCT interactions (0 = oldest interaction seen).
 export function buildRecentExemplarUsageV2(recentEvidence, { window = Infinity } = {}) {
   const usage = new Map()
   const seenInteractions = new Set()
   const interactionExemplar = [] // ordered list of exemplar_id per distinct interaction
+  const sessionOrder = []
+  const sessionInteractions = new Map()
 
   for (const ev of recentEvidence || []) {
     const iid = ev?.interaction_id
@@ -68,6 +83,15 @@ export function buildRecentExemplarUsageV2(recentEvidence, { window = Infinity }
     if (seenInteractions.has(iid)) continue // same interaction: already counted
     seenInteractions.add(iid)
     interactionExemplar.push(xid)
+
+    const sid = typeof ev?.session_id === 'string' && ev.session_id ? ev.session_id : null
+    if (sid) {
+      if (!sessionInteractions.has(sid)) {
+        sessionInteractions.set(sid, [])
+        sessionOrder.push(sid)
+      }
+      sessionInteractions.get(sid).push({ interaction_id: iid, exemplar_id: xid })
+    }
   }
 
   const total = interactionExemplar.length
@@ -84,25 +108,46 @@ export function buildRecentExemplarUsageV2(recentEvidence, { window = Infinity }
     entry.interactions_since_seen = total - 1 - entry.last_seen_index
   }
 
-  // Also expose which exemplars fall inside the recency window, for callers
-  // that just need the membership test.
+  const latestSessionId = sessionOrder.length ? sessionOrder[sessionOrder.length - 1] : null
+  const latestSessionRows = latestSessionId ? (sessionInteractions.get(latestSessionId) || []) : []
+  const latestSessionExemplars = new Set(latestSessionRows.map((row) => row.exemplar_id))
+  const latestSessionOpener = latestSessionRows[0]?.exemplar_id ?? null
+
+  // Session-aware membership is additive to the existing interaction window.
+  // Evidence produced before session_id was introduced remains byte-compatible:
+  // latestSessionId is null and only the original interaction rule applies.
   usage.forEach((entry, xid) => {
-    entry.within_window = entry.interactions_since_seen < window
+    entry.in_latest_session = latestSessionExemplars.has(xid)
+    entry.is_latest_session_opener = latestSessionOpener === xid
+    entry.within_window = entry.interactions_since_seen < window || entry.in_latest_session
     usage.set(xid, entry)
   })
   usage.total_interactions = total
+  usage.latest_session_id = latestSessionId
+  usage.latest_session_opener_exemplar_id = latestSessionOpener
+  usage.latest_session_exemplar_ids = [...latestSessionExemplars]
   return usage
 }
 
 // Recency tier for a single exemplar id given usage + window. Lower is fresher
 // to present: 0 = never seen (or beyond window), otherwise the number of
 // interactions since it was last seen is used so LEAST-RECENT wins the fallback.
+//
+// Session-aware correction: an exemplar from the latest persisted lesson
+// session remains recent even when it is outside the interaction window. The
+// opener gets a synthetic rank of -1 only for fallback ordering: that makes it
+// the LAST recently-seen exemplar to be replayed, preventing deterministic
+// same-opener loops without making any valid activity ineligible.
 export function exemplarRecencyRank(usage, exemplarId, window) {
   const entry = usage?.get?.(exemplarId)
   if (!entry) return { within_window: false, interactions_since_seen: Infinity }
+  const sessionProtected = entry.in_latest_session === true
+  const openerProtected = entry.is_latest_session_opener === true
   return {
-    within_window: entry.interactions_since_seen < window,
-    interactions_since_seen: entry.interactions_since_seen,
+    within_window: sessionProtected || entry.interactions_since_seen < window,
+    interactions_since_seen: openerProtected ? -1 : entry.interactions_since_seen,
+    session_protected: sessionProtected,
+    session_opener_protected: openerProtected,
   }
 }
 
@@ -114,7 +159,7 @@ export function exemplarRecencyRank(usage, exemplarId, window) {
 // that accidentally reproduces the correct sentence: when it does and more than
 // one distinct permutation exists, it advances to the next seeded permutation.
 export function seededTokenShuffle(tokens, seedStr) {
-  const canonical = tokens.join('')
+  const canonical = tokens.join('\u0001')
   const distinct = new Set(tokens)
   // A single distinct token, or fewer than 2 tokens: only one meaningful
   // presentation exists — return canonical, documented safe behavior.
@@ -126,7 +171,7 @@ export function seededTokenShuffle(tokens, seedStr) {
   // and each attempt uses a distinct seed so the walk is deterministic.
   while (attempt < tokens.length + 8) {
     const shuffled = seededShuffle(tokens, `${seedStr}#${attempt}`)
-    if (shuffled.join('') !== canonical) return shuffled
+    if (shuffled.join('\u0001') !== canonical) return shuffled
     attempt += 1
   }
   // Extremely short/ambiguous fallback: reverse (guaranteed non-canonical for
