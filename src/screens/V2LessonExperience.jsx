@@ -8,7 +8,7 @@ import { buildStudyPlannerContextV2 } from '../lib/pedagogy-v2/study-planner-con
 import { createStudySessionControllerV2 } from '../lib/pedagogy-v2/study-session-controller.js'
 import { createProductionAssessmentServicesV2 } from '../lib/pedagogy-v2/production-assessment-service.js'
 import { detectRuntimeCapabilitiesV2 } from '../lib/pedagogy-v2/runtime-capabilities.js'
-import { buildActivityResponseV2 } from '../lib/pedagogy-v2/activity-runtime-contracts.js'
+import { buildActivityResponseV2, buildMaskedCompletion } from '../lib/pedagogy-v2/activity-runtime-contracts.js'
 import { speechSupported } from '../lib/audio/tts.js'
 import { sttSupported } from '../lib/audio/stt.js'
 import { buildLearnerPresentationV2 } from '../lib/pedagogy-v2/learner-presentation-v2.js'
@@ -106,14 +106,56 @@ export default function V2LessonExperience() {
   const controller = controllerRef.current
   const current = state
 
+  // E2E-only decision telemetry. Present exclusively when `window.__e2e` exists
+  // (the harness sets `sessionStorage['e2e:enabled']` before boot), so no
+  // learner build carries it. Everything here is READ from the plan the real
+  // pipeline already produced — the hook observes the decision, it never
+  // influences it. The anti-repetition E2E needs the selection trace as well as
+  // the answer key: a harness that clicks "the first option" measures a learner
+  // who is guessing, not one who is getting it right.
   useEffect(() => {
     if (typeof window === 'undefined' || !window.__e2e) return
-    window.__e2e.v2Activity = current?.plan
+    const plan = current?.plan
+    const diversity = plan?.selection_trace?.experience_diversity ?? null
+    window.__e2e.v2Activity = plan
       ? {
-        recipe: current.plan.recipe,
-        text_en: current.plan.text_en ?? null,
-        correct_option_id: current.plan.response_contract?.correct_option_id ?? null,
-        exemplar_id: current.plan.exemplar_id ?? null,
+        recipe: plan.recipe,
+        text_en: plan.text_en ?? null,
+        correct_option_id: plan.response_contract?.correct_option_id ?? null,
+        exemplar_id: plan.exemplar_id ?? null,
+        // identity of the decision
+        study_session_id: current.studySession?.study_session_id ?? null,
+        lesson_session_id: plan.session_id ?? null,
+        activity_id: plan.activity_id ?? null,
+        planner_focus_key: current.focus
+          ? [current.focus.pack_id, current.focus.focus_type, current.focus.target?.target_id ?? '-',
+            current.focus.capability ?? '-', current.focus.modality ?? '-'].join('|')
+          : null,
+        focus_type: current.focus?.focus_type ?? null,
+        pack_id: plan.pack_id ?? null,
+        target_id: plan.primary_target?.target_id ?? null,
+        capability: plan.capability ?? null,
+        modality: plan.modality ?? null,
+        lane: plan.support?.derived_tier === 'none' ? 'independent' : 'supported',
+        construction_id: plan.construction_id ?? null,
+        engine_version: plan.selection_trace?.engine_version ?? null,
+        policy_version: plan.selection_trace?.policy_version ?? null,
+        // pool / band observability (V2.21 §9)
+        total_candidates: diversity?.pool?.total_candidates ?? null,
+        same_focus_candidates: diversity?.pool?.same_focus_candidates ?? null,
+        band_size: diversity?.pool?.band_size ?? null,
+        band_exemplars: diversity?.pool?.band_exemplars ?? [],
+        band_recipes: diversity?.pool?.band_recipes ?? [],
+        fresh_candidates: diversity?.pool?.fresh_candidates ?? null,
+        selected_exemplar_recent: diversity?.exemplar_within_recent_window ?? null,
+        interactions_since_seen: diversity?.interactions_since_seen ?? null,
+        recent_window: diversity?.recent_window ?? null,
+        // answer keys, so the harness can respond CORRECTLY rather than guess
+        response_type: plan.response_contract?.response_type ?? null,
+        canonical_tokens: plan.text_en ? plan.text_en.trim().split(/\s+/) : null,
+        expected_completion_tokens: plan.recipe === 'fixed_element_completion'
+          ? buildMaskedCompletion(plan).expected_tokens
+          : null,
       }
       : null
     window.__e2e.v2Scope = (studyScope && !studyScope.error)
