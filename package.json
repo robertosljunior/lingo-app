@@ -32,7 +32,8 @@
     "audit:catalog-scale-v2": "node scripts/audit-catalog-scale-v2.mjs",
     "audit:practice-collections-v2": "node scripts/audit-practice-collections-v2.mjs",
     "benchmark:structural-nlp": "node scripts/benchmark-structural-nlp.mjs",
-    "benchmark:semantic": "node scripts/benchmark-semantic.mjs"
+    "benchmark:semantic": "node scripts/benchmark-semantic.mjs",
+    "audit:combinatorial-supply-v3": "node scripts/audit-combinatorial-supply-v3.mjs"
   },
   "dependencies": {
     "@fontsource/baloo-2": "^5.2.7",
