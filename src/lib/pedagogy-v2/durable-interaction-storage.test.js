@@ -174,3 +174,17 @@ describe('RX-1 durable interaction journal', () => {
     expect((await getDurableStudySessionsV2('p1'))[0]).toMatchObject({ status: 'complete', ended_at: AT })
   })
 })
+
+it('persists V3 identity in the existing journal across database reopen and isolates profiles', async () => {
+  const record = input()
+  record.plan.realization_id = 'realization:v3.test'
+  record.plan.combinatorial_focus_id = 'v3.still.continuity_general'
+  await recordDurableLearnerInteractionV2(record)
+  await storage.__resetDbForTests()
+  const rows = await getDurableLearnerInteractionsV2('p1')
+  expect(rows[0].plan.realization_id).toBe('realization:v3.test')
+  expect(rows[0].plan.combinatorial_focus_id).toBe('v3.still.continuity_general')
+  expect(rows[0].plan.text_en).toBe(record.plan.text_en)
+  expect(rows[0].assessment.outcome).toBe('correct')
+  expect(await getDurableLearnerInteractionsV2('other-profile')).toEqual([])
+})

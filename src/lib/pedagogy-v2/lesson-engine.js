@@ -1,3 +1,4 @@
+import { materializeV3ForPack, isV3, assertNoAvoidableLiteralRepeatV3 } from '../pedagogy-v3/combinatorial-focus-adapter.js'
 // lesson-engine.js — lesson engine V2 (Slice V2.3-R): pure, deterministic
 // next-activity selection over authored V2 content and the APPROVED learner
 // model V2 (per-capability-key lanes, exposure, retention, evidence levels).
@@ -360,7 +361,7 @@ function runtimeUnavailableReason(runtimeAvailability, recipe, modality) {
 // versioned pedagogy policy so `enabled !== true` is byte-for-byte baseline.
 // `{ enabled:true, allow_provisional:true }` exists only for the technical pilot;
 // production must not opt into provisional signatures.
-export function selectNextActivityV2({ session, scope = null, pack = null, learnerStates, recentEvidence, policy = {}, context = null, resolveV1Skill = null, runtimeAvailability = null, focus = null, licensedRealizations = null } = {}) {
+export function selectNextActivityV2({ session, scope = null, pack = null, learnerStates, recentEvidence, policy = {}, context = null, resolveV1Skill = null, runtimeAvailability = null, focus = null, licensedRealizations = null, combinatorialSupplyV3 = null, supplyHistory = [] } = {}) {
   const p = mergeLessonEnginePolicyV2(policy)
 
   // Resolve the active pack: either through the formal multi-pack scope or the
@@ -404,7 +405,11 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
       allowProvisional: licensedRealizations?.allow_provisional === true,
     }).filter((e) => allowedParentIds.has(e.provenance?.parent_exemplar_id))
     : []
-  const exemplars = [...authoredExemplars, ...derivedExemplars]
+  const v3Enabled = combinatorialSupplyV3?.enabled === true
+  const v3Exemplars = v3Enabled ? materializeV3ForPack(activePack, allowedParentIds) : []
+  const seenTexts = new Set(supplyHistory.map(row => row.plan?.text_en).filter(Boolean))
+  const seenIds = new Set(supplyHistory.map(row => row.plan?.realization_id).filter(Boolean))
+  const exemplars = [...authoredExemplars, ...derivedExemplars, ...v3Exemplars]
   const exemplarById = new Map(exemplars.map((e) => [e.exemplar_id, e]))
 
   // Slice V2.19 — cross-session exemplar recency, derived from the ALREADY
@@ -524,7 +529,7 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
         // a derived contract, not a suggestion: exclude unsupported shapes per
         // exemplar and expose the reason in trace. This check intentionally runs
         // before presentation_variant_of so context_recognition is observable.
-        if (isLicensedRealization(exemplar)
+        if ((isLicensedRealization(exemplar) || isV3(exemplar))
           && !(exemplar.eligible_recipes || []).includes(recipe.recipe)) {
           exclude('recipe_requires_context', recipe.recipe); continue
         }
@@ -634,10 +639,24 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
   }
 
   let candidates = buildCandidates(false)
+  let cooldownBypass = false
   if (!candidates.length && excluded.some((x) => x.reason === 'exemplar_cooldown')) {
-    candidates = buildCandidates(true) // repeating beats stalling the session
+    candidates = buildCandidates(true) // unchanged V2 fallback; V3 strict filtering follows
+    cooldownBypass = true
   }
 
+  const compatibleCandidates = candidates
+  const tuple = c => `${c.recipe.recipe}|${c.capability}|${c.modality}`
+  const v3Tuples = new Set(candidates.filter(c => isV3(c.exemplar)).map(tuple))
+  if (v3Enabled) {
+    candidates = candidates.filter(c => {
+      if (isV3(c.exemplar) && (seenTexts.has(c.exemplar.text_en) || seenIds.has(c.exemplar.realization_id))) return false
+      // For supported tuples, consume the entire unseen supply before reuse.
+      if (v3Tuples.has(tuple(c)) && seenTexts.has(c.exemplar.text_en)) return false
+      return true
+    })
+  }
+  const exhausted = v3Enabled && compatibleCandidates.length > 0 && candidates.length === 0
   const compactCandidates = candidates.map((c) => ({
     exemplar_id: c.exemplar.exemplar_id,
     recipe: c.recipe.recipe,
@@ -652,6 +671,15 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     engine_version: LESSON_ENGINE_V2_VERSION,
     policy_version: p.policy_version,
     considered: candidates.length,
+    cooldown_bypass: cooldownBypass && !v3Enabled,
+    combinatorial_supply_v3: {
+      enabled: v3Enabled, strict_unseen: v3Enabled,
+      requested_focus: focus,
+      mapped_focus_ids: [...new Set(v3Exemplars.map(e => e.focus_id))],
+      materialized: v3Exemplars.length,
+      already_seen: v3Exemplars.filter(e => seenIds.has(e.realization_id) || seenTexts.has(e.text_en)).length,
+      focus_exhausted: exhausted,
+    },
     frontier_stage: EXPOSURE_STAGES[frontierIdx],
     budget: { limit: p.new_item_budget_per_session, introduced: [...introduced].sort(), remaining_before: budgetRemaining },
     licensed_realizations: {
@@ -664,7 +692,7 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
   }
 
   if (!candidates.length) {
-    return { ...baseDecision, status: 'no_eligible_activity', plan: null, trace: traceBase }
+    return { ...baseDecision, status: exhausted ? 'focus_exhausted' : 'no_eligible_activity', plan: null, trace: traceBase }
   }
 
   // Deterministic pick. Baseline pedagogy is unchanged: the highest score is
@@ -882,6 +910,22 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     }
   }
 
+  const selectionPool = compatibleCandidates.filter(c => (contextSwapApplied ? c.recipe.recipe === 'meaning_recognition' && !!c.exemplar.context && c.capability === best.capability && c.modality === best.modality : tuple(c) === tuple(best)) && c.primaries.includes(anchorTarget))
+  const unseenPool = selectionPool.filter(c => !seenTexts.has(c.exemplar.text_en))
+  if (v3Enabled && v3Tuples.has(tuple(best))) {
+    assertNoAvoidableLiteralRepeatV3({ selected: best, seenTexts, candidates: selectionPool, focus })
+  }
+  traceBase.cooldown_bypass = cooldownBypass && recentExemplars.includes(best.exemplar.exemplar_id)
+  traceBase.supply_selection = {
+    eligible_supply_count: new Set(selectionPool.map(c => c.exemplar.text_en)).size,
+    unseen_supply_count: new Set(unseenPool.map(c => c.exemplar.text_en)).size,
+    candidate_ids: [...new Set(selectionPool.map(c => c.exemplar.exemplar_id))],
+    unseen_candidate_ids: [...new Set(unseenPool.map(c => c.exemplar.exemplar_id))],
+    v3_eligible_count: new Set(selectionPool.filter(c => isV3(c.exemplar)).map(c => c.exemplar.realization_id)).size,
+    v3_unseen_count: new Set(unseenPool.filter(c => isV3(c.exemplar)).map(c => c.exemplar.realization_id)).size,
+    selection_reason: v3Enabled && v3Tuples.has(tuple(best)) ? 'strict_unseen_compatible_supply' : 'v2_selection',
+  }
+
   // Per-activity presentation seed (Slice V2.19): session seed + sequence index
   // + exemplar id. Same input → same order; different session → may differ.
   const presentationSeed = `${seed}|${sequence_index}|${e.exemplar_id}`
@@ -944,6 +988,9 @@ export function selectNextActivityV2({ session, scope = null, pack = null, learn
     lexeme_id: activeLexemeId,
     lexeme_lemma: activeLexeme?.lemma ?? null,
     exemplar_id: e.exemplar_id,
+    realization_id: e.realization_id ?? null,
+    combinatorial_focus_id: e.focus_id ?? null,
+    approval_status: e.approval_status ?? null,
     construction_id: e.construction_id,
     sense_ids: [...(e.sense_ids || [])],
     communicative_function_ids: [...(e.communicative_function_ids || [])],

@@ -1,0 +1,35 @@
+| Metric | V2 OFF | V3 ON |
+|---|---:|---:|
+| total_activities | 240 | 240 |
+| distinct_exact_EN_texts | 31 | 108 |
+| exact_repeat_slots | 209 | 132 |
+| exact_repeat_rate | 0.8708333333333333 | 0.55 |
+| most_repeated_text_count | 21 | 23 |
+| distinct_realization_IDs | 0 | 82 |
+| distinct_exemplar_IDs | 31 | 108 |
+| distinct_focuses | 89 | 92 |
+| distinct_constructions | 9 | 9 |
+| distinct_recipes | 7 | 7 |
+| distinct_modalities | 3 | 3 |
+| distinct_capabilities | 4 | 4 |
+| max_occurrences_one_text_per_session | 4 | 4 |
+| max_occurrences_one_text_across_20_sessions | 21 | 23 |
+| sessions_with_zero_new_text | 10 | 0 |
+| session_opener_repeat_rate | 0.85 | 0.55 |
+| consecutive_exact_repeats | 11 | 8 |
+| avoidable_exact_repeats | 1 | 6 |
+| v3_compatible_avoidable_exact_repeats | 0 | 0 |
+| cooldown_bypass_count | 24 | 24 |
+| focus_exhausted_count | 0 | 0 |
+| focus_switches_caused_by_exhaustion | 0 | 0 |
+| minimum_eligible_supply_per_focus | 1 | 1 |
+| median_eligible_supply_per_focus | 3 | 4 |
+| minimum_unseen_supply_at_selection | 0 | 0 |
+| repeated_texts_2x | 2 | 1 |
+| repeated_texts_3x | 0 | 9 |
+| repeated_texts_4x_plus | 22 | 10 |
+| top_focus_share | 0.05 | 0.04583333333333333 |
+| top_3_focus_share | 0.13333333333333333 | 0.12916666666666668 |
+| top_construction_share | 0.3125 | 0.2833333333333333 |
+| top_3_construction_share | 0.7833333333333333 | 0.7458333333333333 |
+| activities_using_V3 | 0 | 82 |

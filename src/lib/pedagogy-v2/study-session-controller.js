@@ -38,6 +38,7 @@ export function createStudySessionControllerV2(deps) {
     capabilities,
     plannerPolicy = {},
     enginePolicy = {},
+    combinatorialSupplyV3 = null,
     assessmentPolicy = undefined,
     maxActivities = 12,
   } = deps
@@ -80,6 +81,8 @@ export function createStudySessionControllerV2(deps) {
       lessonSessions,
       plannerPolicy,
       enginePolicy,
+      combinatorialSupplyV3,
+      supplyHistory: context.supply_history ?? [],
       runtimeAvailability: availability,
       allowedPackIds,
       studyScope,

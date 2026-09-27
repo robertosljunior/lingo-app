@@ -1,0 +1,39 @@
+{
+  "source_base_commit": "47ea550d24dfb6b6827fff4228c98673cc01503a",
+  "app_source_tree_sha256": "7a6d4450b2c4122c47c36e2c0fe09cf31e271ac314a5fbbc7afa67e158fa099a",
+  "source_file_count": 364,
+  "node": "v24.19.0",
+  "browser": "Chromium 153.0.8010.0 (local executable override; CI uses Playwright pinned Chromium)",
+  "seed": 20260927,
+  "initial_date": "2026-09-27T12:00:00Z",
+  "session_spacing": "one simulated day; one minute per interaction; fixed Date, real timers",
+  "local_unit_tests": {
+    "files_passed": 72,
+    "tests_passed": 1071
+  },
+  "dependency_audit": {
+    "high": 4,
+    "high_baseline": 0,
+    "moderate": 3,
+    "status": "failed_unchanged_gate"
+  },
+  "preliminary_run": {
+    "baseline_unique": 31,
+    "v3_unique": 108,
+    "note": "Final rerun adds complete telemetry without changing selection; final JSON/metrics are authoritative."
+  },
+  "final_learner_run": {
+    "status": "passed",
+    "baseline_activities": 240,
+    "v3_activities": 240,
+    "baseline_correct": 230,
+    "baseline_observed": 10,
+    "v3_correct": 231,
+    "v3_observed": 9,
+    "persisted_interactions_per_arm": 240,
+    "sessions_per_arm": 20,
+    "indexeddb_reset_between_sessions": false,
+    "v3_cooldown_bypasses": 0,
+    "all_cooldown_bypasses_per_arm": 24
+  }
+}

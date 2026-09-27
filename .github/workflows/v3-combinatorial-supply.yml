@@ -5,6 +5,11 @@ on:
     paths:
       - 'src/content/pedagogy-v3/**'
       - 'src/lib/pedagogy-v3/**'
+      - 'src/lib/pedagogy-v2/**'
+      - 'src/screens/V2LessonExperience.jsx'
+      - 'e2e/*combinatorial*'
+      - 'scripts/*combinatorial*'
+      - 'playwright.combinatorial.config.js'
       - 'scripts/audit-combinatorial-supply-v3.mjs'
       - 'package.json'
       - '.github/workflows/v3-combinatorial-supply.yml'
@@ -16,7 +21,7 @@ jobs:
   supply:
     name: 2000+ unique realizations and no-repeat selector
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,6 +30,20 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Focused V3 unit tests
-        run: npx vitest run src/lib/pedagogy-v3/combinatorial-supply.test.js
+        run: npx vitest run src/lib/pedagogy-v3 src/lib/pedagogy-v2/study-session-controller.test.js src/lib/pedagogy-v2/durable-interaction-storage.test.js
       - name: Supply audit
         run: npm run audit:combinatorial-supply-v3
+      - name: Recipe coverage, quality findings, editorial sample and performance
+        run: npm run audit:combinatorial-practice-supply-v3
+      - run: npx playwright install --with-deps chromium
+      - name: Real Praticar comparison (240 OFF + 240 ON, no retries)
+        run: npm run simulate:combinatorial-practice-v3
+      - name: Upload actual evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v3-combinatorial-practice-evidence
+          path: |
+            test-evidence/v3-*.json
+            test-evidence/v3-*.md
+            test-results/

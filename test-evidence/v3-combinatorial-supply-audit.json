@@ -1,0 +1,6128 @@
+{
+  "generator_version": "v3.0-combinatorial-1",
+  "total_realizations": 3072,
+  "distinct_english_texts": 3072,
+  "distinct_focuses": 48,
+  "min_realizations_per_focus": 64,
+  "max_realizations_per_focus": 64,
+  "by_stage": {
+    "A1": 832,
+    "A1-A2": 448,
+    "A2": 1152,
+    "A2-B1": 320,
+    "B1": 320
+  },
+  "by_category": {
+    "aspect_adverb": 192,
+    "be": 64,
+    "comparison": 64,
+    "conditionals": 128,
+    "connectors": 256,
+    "degree": 128,
+    "directions": 64,
+    "existence": 128,
+    "future": 128,
+    "have": 64,
+    "modal_advice": 64,
+    "modal_can": 64,
+    "modal_intent": 64,
+    "modal_need": 64,
+    "modal_obligation": 64,
+    "negation": 128,
+    "offers": 64,
+    "preferences": 64,
+    "prepositions": 192,
+    "present_continuous": 64,
+    "present_perfect": 128,
+    "quantity": 128,
+    "questions": 320,
+    "requests": 128,
+    "simple_past": 64,
+    "simple_present": 64,
+    "time_clauses": 128,
+    "used_to": 64
+  },
+  "focus_counts": {
+    "v3.already.completed": 64,
+    "v3.and.sequence": 64,
+    "v3.be.location": 64,
+    "v3.because.cannot_reason": 64,
+    "v3.before.sequence": 64,
+    "v3.but.simple_contrast": 64,
+    "v3.can.ability": 64,
+    "v3.comparative.common": 64,
+    "v3.directions.how_to_get": 64,
+    "v3.first_conditional.unless": 64,
+    "v3.future.going_to": 64,
+    "v3.future.question": 64,
+    "v3.future.will": 64,
+    "v3.have_to.obligation": 64,
+    "v3.have.possession": 64,
+    "v3.if.first_conditional": 64,
+    "v3.location.in": 64,
+    "v3.location.next_to": 64,
+    "v3.location.on": 64,
+    "v3.need.to_action": 64,
+    "v3.not_enough_time": 64,
+    "v3.offer.would_you_like": 64,
+    "v3.or.choice": 64,
+    "v3.polite_request.could_you": 64,
+    "v3.prefer.preference": 64,
+    "v3.present_continuous.now": 64,
+    "v3.present_continuous.question": 64,
+    "v3.present_perfect.duration": 64,
+    "v3.present_perfect.ever_question": 64,
+    "v3.present_perfect.experience": 64,
+    "v3.quantity.how_many": 64,
+    "v3.quantity.how_much": 64,
+    "v3.should.advice": 64,
+    "v3.simple_past.affirmative": 64,
+    "v3.simple_past.negative": 64,
+    "v3.simple_past.question": 64,
+    "v3.simple_present.frequency": 64,
+    "v3.simple_present.negative": 64,
+    "v3.simple_present.question": 64,
+    "v3.still.continuity_general": 64,
+    "v3.there_are.plural": 64,
+    "v3.there_is.singular": 64,
+    "v3.too_busy_to": 64,
+    "v3.used_to.past_habit": 64,
+    "v3.want.to_action": 64,
+    "v3.when.future_sequence": 64,
+    "v3.would_like.request": 64,
+    "v3.yet.question": 64
+  },
+  "active_v2_mapped_realizations": 192,
+  "active_v2_mapped_focuses": 3,
+  "bindings": [
+    {
+      "focus_id": "v3.still.continuity_general",
+      "parent_id": "exemplar:still.001",
+      "construction_id": "construction:still.subject_still_lexical_verb"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "parent_id": "exemplar:but.001",
+      "construction_id": "construction:but.clause_but_clause"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "parent_id": "exemplar:yet.008",
+      "construction_id": "construction:yet.interrogative_clause_yet"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "parent_id": "exemplar:unless.001",
+      "construction_id": "construction:unless.condition_result"
+    }
+  ],
+  "eligibility": [
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.be.location",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have.possession",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.want.to_action",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.need.to_action",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.can.ability",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.should.advice",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.have_to.obligation",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.frequency",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.question",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_present.negative",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.now",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_continuous.question",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.affirmative",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.question",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.simple_past.negative",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.going_to",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.will",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.future.question",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_is.singular",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.there_are.plural",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.on",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.in",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.location.next_to",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.directions.how_to_get",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.polite_request.could_you",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.would_like.request",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.offer.would_you_like",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_many",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.quantity.how_much",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.comparative.common",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.because.cannot_reason",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.if.first_conditional",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.when.future_sequence",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.before.sequence",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.used_to.past_habit",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.experience",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.duration",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.present_perfect.ever_question",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.prefer.preference",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.too_busy_to",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.not_enough_time",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.but.simple_contrast",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.and.sequence",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.or.choice",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.still.continuity_general",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.already.completed",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "AUTHORED_CONTEXT_REQUIRED"
+    },
+    {
+      "focus_id": "v3.yet.question",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 64,
+      "reason": "CONTENT_COMPATIBLE_RUNTIME_AND_LEARNER_GATES_STILL_APPLY"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "exposure",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "meaning_recognition",
+      "capability": "recognition",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "meaning_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "context_recognition",
+      "capability": "comprehension",
+      "modality": "reading",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "listening_recognition",
+      "capability": "recognition",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "listening_recognition",
+      "capability": "comprehension",
+      "modality": "listening",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "fixed_element_completion",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "word_order_reconstruction",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "guided_production",
+      "capability": "controlled_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "writing",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "free_production",
+      "capability": "free_production",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    },
+    {
+      "focus_id": "v3.first_conditional.unless",
+      "recipe": "pronunciation",
+      "capability": "pronunciation",
+      "modality": "speaking",
+      "eligible_realizations": 0,
+      "reason": "NO_ACTIVE_V2_TARGET_BINDING"
+    }
+  ],
+  "quality": {
+    "method": "bounded mechanical rules and explicit semantic counterexamples; absence of a finding is NOT approval",
+    "coverage": [
+      "duplicate English",
+      "empty Portuguese",
+      "verb form",
+      "subject/verb",
+      "article",
+      "preposition",
+      "semantic plausibility",
+      "punctuation",
+      "question structure",
+      "placeholders",
+      "surface identity"
+    ],
+    "findings": [
+      {
+        "realization_id": "realization:v3.be801c5b00b1c344",
+        "focus_id": "v3.there_is.singular",
+        "text_en": "There is a bus upstairs.",
+        "code": "SEMANTICALLY_IMPLAUSIBLE_COMBINATION",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.af45b1c5a4372576",
+        "focus_id": "v3.there_is.singular",
+        "text_en": "There is a bus at the end of the hall.",
+        "code": "SEMANTICALLY_IMPLAUSIBLE_COMBINATION",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.ba9c46fbef368c74",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the park.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.ba9c46fbef368c74",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the park.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.bf05dffbf95a05a0",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the museum.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.bf05dffbf95a05a0",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the museum.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.70cc1bcd15b14792",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the hospital.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.70cc1bcd15b14792",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the hospital.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.de6ed12228a72177",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the library.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.de6ed12228a72177",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the library.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.c3cb1453075cdb18",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the school.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.c3cb1453075cdb18",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the school.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.4ecc784583e4700e",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the mall.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.4ecc784583e4700e",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the mall.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.23600c740c0cab9f",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the cinema.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.23600c740c0cab9f",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the cinema.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.ee3c82263f893f59",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the bridge.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.ee3c82263f893f59",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The café is next to to the bridge.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.4488664628ff3eff",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the park.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.4488664628ff3eff",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the park.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.5070813e7d592987",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the museum.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.5070813e7d592987",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the museum.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.8b754ce48e63e539",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the hospital.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.8b754ce48e63e539",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the hospital.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.e44b01e927c65e56",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the library.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.e44b01e927c65e56",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the library.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.7838200261ff324f",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the school.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.7838200261ff324f",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the school.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.e253bc682b409e01",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the mall.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.e253bc682b409e01",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the mall.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.329237095b84ff20",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the cinema.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.329237095b84ff20",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the cinema.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.b3b1c21fce227592",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the bridge.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.b3b1c21fce227592",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The hotel is next to to the bridge.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.6627e9fafcb77e5d",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the park.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.6627e9fafcb77e5d",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the park.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.d684696a8e0800b9",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the museum.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.d684696a8e0800b9",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the museum.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.24df9e70778c7faf",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the hospital.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.24df9e70778c7faf",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the hospital.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.6c9dc76dfafe5b1c",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the library.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.6c9dc76dfafe5b1c",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the library.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.5052ff4e26032e5d",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the school.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.5052ff4e26032e5d",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the school.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.ebf6c424bb3f3d47",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the mall.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.ebf6c424bb3f3d47",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the mall.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.738c4405de320db6",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the cinema.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.738c4405de320db6",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the cinema.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.0f447eebc337944c",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the bridge.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.0f447eebc337944c",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The bank is next to to the bridge.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.3d349c5393f768e0",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the park.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.3d349c5393f768e0",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the park.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.763027033dfd70f4",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the museum.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.763027033dfd70f4",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the museum.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.8cbddb15ba835e16",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the hospital.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.8cbddb15ba835e16",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the hospital.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.c49938aaf4234ea3",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the library.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.c49938aaf4234ea3",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the library.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.3bdcd3fb6f4ed06c",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the school.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.3bdcd3fb6f4ed06c",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the school.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.be2a809d7df8e152",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the mall.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.be2a809d7df8e152",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the mall.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.7366792cebfe69f3",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the cinema.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.7366792cebfe69f3",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the cinema.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.9a8ee75e49cde8ad",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the bridge.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.9a8ee75e49cde8ad",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The pharmacy is next to to the bridge.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.90d99aacb5bd2b99",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the park.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.90d99aacb5bd2b99",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the park.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.8b01dd688f26d33d",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the museum.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.8b01dd688f26d33d",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the museum.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.98d5451a794643b3",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the hospital.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.98d5451a794643b3",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the hospital.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.fc835fbf9e486ee8",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the library.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.fc835fbf9e486ee8",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the library.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.c3b2144026f1d7f1",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the school.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.c3b2144026f1d7f1",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the school.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.933bd4865bc777ab",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the mall.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.933bd4865bc777ab",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the mall.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.45a179f7cc31a1fa",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the cinema.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.45a179f7cc31a1fa",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the cinema.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.839223317550bb40",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the bridge.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.839223317550bb40",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The station is next to to the bridge.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.1ad0f85041ed27eb",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the park.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.1ad0f85041ed27eb",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the park.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.3310fcc42ef0f1cb",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the museum.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.3310fcc42ef0f1cb",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the museum.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.774783e630e07e9d",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the hospital.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.774783e630e07e9d",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the hospital.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.c78065d322508152",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the library.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.c78065d322508152",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the library.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.d741333ce10afce3",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the school.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.d741333ce10afce3",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the school.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.9a605642cc9c9eb5",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the mall.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.9a605642cc9c9eb5",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the mall.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.78a4cf23eec78fe4",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the cinema.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.78a4cf23eec78fe4",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the cinema.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.9b7f9dfd16e76b36",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the bridge.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.9b7f9dfd16e76b36",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The office is next to to the bridge.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.c2dde65912895f26",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the park.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.c2dde65912895f26",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the park.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.7d5407fd84f2909e",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the museum.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.7d5407fd84f2909e",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the museum.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.1cb121734441c0c4",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the hospital.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.1cb121734441c0c4",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the hospital.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.2854b6a87f5b51c9",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the library.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.2854b6a87f5b51c9",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the library.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.dfa1a6b12f18a9e2",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the school.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.dfa1a6b12f18a9e2",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the school.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.61360e6b095a2b48",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the mall.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.61360e6b095a2b48",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the mall.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.33f0a4bae5278869",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the cinema.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.33f0a4bae5278869",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the cinema.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.77c43d0039ffb7ff",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the bridge.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.77c43d0039ffb7ff",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The restaurant is next to to the bridge.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.21aabb38b9eb7eb3",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the park.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.21aabb38b9eb7eb3",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the park.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.bd6e42dc2c2bbd63",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the museum.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.bd6e42dc2c2bbd63",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the museum.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.bbfb767e18bd3875",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the hospital.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.bbfb767e18bd3875",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the hospital.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.a618c1cb96641b8a",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the library.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.a618c1cb96641b8a",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the library.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.7086d6b43e96c85b",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the school.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.7086d6b43e96c85b",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the school.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.a1befe2a57a127fd",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the mall.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.a1befe2a57a127fd",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the mall.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.abb7de8b87088f0c",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the cinema.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.abb7de8b87088f0c",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the cinema.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.323c3d45cf225f3e",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the bridge.",
+        "code": "INVALID_PREPOSITION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.323c3d45cf225f3e",
+        "focus_id": "v3.location.next_to",
+        "text_en": "The market is next to to the bridge.",
+        "code": "GRAMMATICALLY_INVALID_COMBINATION",
+        "severity": "error"
+      },
+      {
+        "realization_id": "realization:v3.e86baca7f39a0b2e",
+        "focus_id": "v3.directions.how_to_get",
+        "text_en": "How do I get to the airport from the airport?",
+        "code": "SAME_ORIGIN_DESTINATION",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.0715eb5bba29321e",
+        "focus_id": "v3.directions.how_to_get",
+        "text_en": "How do I get to the museum from the museum?",
+        "code": "SAME_ORIGIN_DESTINATION",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.e7908987468d8f5e",
+        "focus_id": "v3.directions.how_to_get",
+        "text_en": "How do I get to the hotel from the hotel?",
+        "code": "SAME_ORIGIN_DESTINATION",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.6e8319597b4462e8",
+        "focus_id": "v3.comparative.common",
+        "text_en": "This hotel is faster than the old one.",
+        "code": "SEMANTICALLY_IMPLAUSIBLE_COMBINATION",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.fd21e0c2d72fa4ed",
+        "focus_id": "v3.comparative.common",
+        "text_en": "This room is faster than the old one.",
+        "code": "SEMANTICALLY_IMPLAUSIBLE_COMBINATION",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.48438d94d9c1e77f",
+        "focus_id": "v3.too_busy_to",
+        "text_en": "I am too busy to meet today today.",
+        "code": "SEMANTICALLY_IMPLAUSIBLE_COMBINATION",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.0138a0faa421cc9f",
+        "focus_id": "v3.but.simple_contrast",
+        "text_en": "I am tired, but it is comfortable.",
+        "code": "UNRESOLVED_SEMANTIC_REFERENT",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.3354c96c3f7d4969",
+        "focus_id": "v3.but.simple_contrast",
+        "text_en": "I am tired, but it works well.",
+        "code": "UNRESOLVED_SEMANTIC_REFERENT",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.9c1184eddd662266",
+        "focus_id": "v3.but.simple_contrast",
+        "text_en": "I am busy, but it is comfortable.",
+        "code": "UNRESOLVED_SEMANTIC_REFERENT",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.2fc38f4b70f8e310",
+        "focus_id": "v3.but.simple_contrast",
+        "text_en": "I am busy, but it works well.",
+        "code": "UNRESOLVED_SEMANTIC_REFERENT",
+        "severity": "editorial_review"
+      },
+      {
+        "realization_id": "realization:v3.6e53937e44d72a83",
+        "focus_id": "v3.but.simple_contrast",
+        "text_en": "The ticket is expensive, but it is sunny.",
+        "code": "SEMANTICALLY_IMPLAUSIBLE_COMBINATION",
+        "severity": "editorial_review"
+      }
+    ]
+  },
+  "performance": {
+    "runtime": "v24.19.0",
+    "platform": "linux",
+    "materialize_ms": 34.128297999999994,
+    "approximate_heap_delta_bytes": 6233056,
+    "serialized_bytes": 1607833,
+    "select_median_ms": 0.3372190000000046,
+    "select_p95_ms": 0.5637109999999836,
+    "note": "Node host measurement; no mobile benchmark claim; heap delta includes allocations and GC noise"
+  }
+}
