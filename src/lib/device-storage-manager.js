@@ -24,9 +24,23 @@ export function formatStorageBytes(bytes) {
   return `${value >= 10 ? value.toFixed(0) : value.toFixed(1)} ${unit}`
 }
 
+export function isReclaimableKnowledgePack(pack) {
+  return pack?.source !== 'imported'
+}
+
+export function describeKnowledgePack(row) {
+  const source = row?.source || 'unknown'
+  return {
+    id: row?.pack_id,
+    label: row?.pack?.manifest?.name || row?.pack_id,
+    source,
+    reclaimable: isReclaimableKnowledgePack({ source }),
+  }
+}
+
 async function storageEstimate() {
   try {
-    if (!navigator?.storage?.estimate) return { usage: null, quota: null }
+    if (typeof navigator === 'undefined' || !navigator.storage?.estimate) return { usage: null, quota: null }
     const estimate = await navigator.storage.estimate()
     return { usage: finiteBytes(estimate?.usage), quota: finiteBytes(estimate?.quota) }
   } catch { return { usage: null, quota: null } }
@@ -51,8 +65,7 @@ async function installedModel() {
 
 async function installedPacks() {
   try {
-    const packs = await listInstalledPacks()
-    return packs.map((row) => ({ id: row.pack_id, label: row.pack?.manifest?.name || row.pack_id }))
+    return (await listInstalledPacks()).map(describeKnowledgePack)
   } catch { return [] }
 }
 
@@ -67,6 +80,8 @@ export async function getDeviceStorageSnapshot() {
   const [estimate, model, voices, packs, cacheNames] = await Promise.all([
     storageEstimate(), installedModel(), installedVoices(), installedPacks(), managedCaches(),
   ])
+  const reclaimablePacks = packs.filter((pack) => pack.reclaimable)
+  const preservedImportedPacks = packs.filter((pack) => !pack.reclaimable)
   const knownBytes = [model?.size_bytes, ...voices.map((voice) => voice.size_bytes)]
     .filter(Number.isFinite).reduce((sum, bytes) => sum + bytes, 0)
   return {
@@ -75,7 +90,12 @@ export async function getDeviceStorageSnapshot() {
     known_resource_bytes: knownBytes,
     semantic_model: model,
     voices,
-    knowledge_packs: packs,
+    // Backward-compatible field used by the Settings count: contains only
+    // reclaimable/downloaded packs. User-imported packs are intentionally split
+    // out because they may not be recoverable after deletion.
+    knowledge_packs: reclaimablePacks,
+    reclaimable_knowledge_packs: reclaimablePacks,
+    preserved_imported_packs: preservedImportedPacks,
     managed_cache_names: cacheNames,
   }
 }
@@ -97,11 +117,13 @@ export async function clearDownloadedResources({ snapshot = null } = {}) {
     try { await removeModel(before.semantic_model.id); resetSemanticEncoder() }
     catch (error) { failures.push(`semantic:${String(error?.message || error)}`) }
   }
-  for (const voice of before.voices) {
+  for (const voice of before.voices || []) {
     try { await removeVoice(voice.id) }
     catch (error) { failures.push(`voice:${voice.id}:${String(error?.message || error)}`) }
   }
-  for (const pack of before.knowledge_packs) {
+  const reclaimablePacks = before.reclaimable_knowledge_packs
+    || (before.knowledge_packs || []).filter(isReclaimableKnowledgePack)
+  for (const pack of reclaimablePacks) {
     try { await removeKnowledgePack(pack.id) }
     catch (error) { failures.push(`pack:${pack.id}:${String(error?.message || error)}`) }
   }
