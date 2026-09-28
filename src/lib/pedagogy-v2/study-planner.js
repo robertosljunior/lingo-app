@@ -15,7 +15,6 @@
 import { stageIndex, EXPOSURE_STAGES } from './contracts.js'
 import { resolvePedagogyEntity } from './registry.js'
 import { V3_CURRICULUM_PACK_ID, V3_CURRICULUM_BINDINGS } from '../pedagogy-v3/combinatorial-curriculum.js'
-import { LESSON_RECIPES } from './lesson-engine-contracts.js'
 import { V3_ELIGIBLE_RECIPES } from '../pedagogy-v3/combinatorial-focus-adapter.js'
 import { getV2Prerequisites, getIntendedNewItems, getPrimaryTargets, exposureProgression } from './query.js'
 import {
