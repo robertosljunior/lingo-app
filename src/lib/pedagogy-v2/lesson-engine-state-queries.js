@@ -121,6 +121,139 @@ const CAPABILITY_MODALITY_KEYS = {
   pronunciation: ['speaking_pronunciation'],
 }
 
+// ---- capability-gate diagnostics (#106) ------------------------------------
+// These rows are the gate itself made observable, not a second implementation.
+// capabilityGateMetV2 delegates to capabilityGateTraceV2 below, so a diagnostic
+// can never report a threshold different from the predicate used by runtime.
+
+function thresholdView(threshold) {
+  return {
+    min_mastery: threshold?.min_mastery ?? null,
+    min_evidence_level: threshold?.min_evidence_level ?? null,
+  }
+}
+
+function laneView(lane) {
+  return {
+    present: !!lane,
+    mastery_estimate: lane?.mastery_estimate ?? null,
+    evidence_level: lane?.evidence_level ?? 'insufficient',
+    assessed_evidence_count: lane?.assessed_evidence_count ?? 0,
+    effective_evidence_weight: lane?.effective_evidence_weight ?? 0,
+  }
+}
+
+function lanePredicate(predicate, lane, threshold, source) {
+  return {
+    predicate,
+    source,
+    actual: laneView(lane),
+    required: thresholdView(threshold),
+    met: laneMeets(lane, threshold),
+  }
+}
+
+function capabilityAdvancementPredicate(state, capability, threshold, lane = 'overall') {
+  const rollup = getCapabilityRollup(state, capability, lane)
+  if (rollup) {
+    return lanePredicate(
+      `${capability}_advancement`, rollup, threshold,
+      `capability_rollups.${capability}.${lane}`,
+    )
+  }
+  const keys = CAPABILITY_MODALITY_KEYS[capability] || []
+  const lanes = keys.map((key) => ({
+    capability_key: key,
+    ...laneView(getLane(state, key, lane)),
+    meets_threshold: laneMeets(getLane(state, key, lane), threshold),
+  }))
+  return {
+    predicate: `${capability}_advancement`,
+    source: 'pre_rollup_modality_fallback',
+    actual: { lanes },
+    required: thresholdView(threshold),
+    met: lanes.some((row) => row.meets_threshold),
+  }
+}
+
+/**
+ * Exact per-target capability-gate decision with machine-readable predicates.
+ * Every failed row reports the current value and the required threshold/count.
+ */
+export function capabilityGateTraceV2(state, capability, modality, thresholds) {
+  const adv = thresholds.advancement
+  const predicates = []
+
+  switch (capability) {
+    case 'recognition': {
+      const count = exposureCount(state)
+      predicates.push({
+        predicate: 'has_exposure',
+        actual: { exposure_count: count },
+        required: { min_exposure_count: 1 },
+        met: count > 0,
+      })
+      break
+    }
+    case 'comprehension': {
+      const count = exposureCount(state)
+      predicates.push({
+        predicate: 'has_exposure',
+        actual: { exposure_count: count },
+        required: { min_exposure_count: 1 },
+        met: count > 0,
+      })
+      predicates.push(capabilityAdvancementPredicate(state, 'recognition', adv))
+      const key = `${modality}_recognition`
+      const assessed = getLane(state, key, 'overall')?.assessed_evidence_count || 0
+      predicates.push({
+        predicate: 'same_modality_recognition_evidence',
+        actual: { capability_key: key, assessed_evidence_count: assessed },
+        required: { min_assessed_evidence_count: 1 },
+        met: assessed > 0,
+      })
+      break
+    }
+    case 'controlled_production':
+      predicates.push(capabilityAdvancementPredicate(state, 'recognition', adv))
+      break
+    case 'free_production': {
+      const key = `${modality}_controlled_production`
+      predicates.push(lanePredicate(
+        'same_modality_controlled_production_advancement',
+        getLane(state, key, 'overall'), adv, `capabilities.${key}.overall`,
+      ))
+      break
+    }
+    case 'pronunciation': {
+      const lanes = PRODUCTION_CAPABILITY_KEYS.map((key) => ({
+        capability_key: key,
+        ...laneView(getLane(state, key, 'overall')),
+        meets_threshold: laneMeets(getLane(state, key, 'overall'), adv),
+      }))
+      predicates.push({
+        predicate: 'any_production_advancement',
+        actual: { lanes },
+        required: thresholdView(adv),
+        met: lanes.some((row) => row.meets_threshold),
+      })
+      break
+    }
+    default:
+      predicates.push({
+        predicate: 'known_capability', actual: { capability },
+        required: { known_capability: true }, met: false,
+      })
+  }
+
+  return {
+    capability,
+    modality,
+    met: predicates.length > 0 && predicates.every((row) => row.met),
+    predicates,
+  }
+}
+
 /**
  * SINGLE SOURCE of the per-capability curriculum gate for one target state
  * (Slice V2.9). Says whether `capability` may be practiced in `modality` given
@@ -136,40 +269,15 @@ const CAPABILITY_MODALITY_KEYS = {
  * Slice V2.21-R3 changed ONE clause. Comprehension used to require the SAME
  * modality's recognition lane to carry the whole advancement bar; a learner
  * spreading correct answers over reading and listening halves each lane and so
- * opened neither rung, while having demonstrably recognised the target (the
- * measured case: 5 of 12 targets in the real successful journey). It now
- * requires BOTH
- *   - recognition met on the CAPABILITY rollup (all modalities together), and
- *   - some assessed recognition evidence in THIS modality.
- * The modality axis is therefore not collapsed: a learner who has only ever
- * read still does not walk into listening comprehension. What changed is that
- * the modality no longer has to clear the bar on its own.
+ * opened neither rung, while having demonstrably recognised the target. It now
+ * requires BOTH recognition at the capability rollup and some assessed
+ * recognition evidence in THIS modality.
  *
- * Free production deliberately KEEPS its same-modality prerequisite: writing
- * fluently is not unlocked by having spoken (V2.9/V2.10 decision, with its own
- * regressions). Receptive modalities inform one capability; productive ones
- * are separate skills.
+ * #106 makes this predicate observable through capabilityGateTraceV2. The
+ * boolean behavior remains defined by this same source of truth.
  */
 export function capabilityGateMetV2(state, capability, modality, thresholds) {
-  const adv = thresholds.advancement
-  switch (capability) {
-    case 'recognition':
-      return exposureCount(state) > 0
-    case 'comprehension':
-      return exposureCount(state) > 0
-        && capabilityAdvancementMetV2(state, 'recognition', adv)
-        && (getLane(state, `${modality}_recognition`, 'overall')?.assessed_evidence_count || 0) > 0
-    case 'controlled_production':
-      // Unchanged in effect: this clause was already cross-modality
-      // (anyKeyMeets over the recognition keys); the rollup states it directly.
-      return capabilityAdvancementMetV2(state, 'recognition', adv)
-    case 'free_production':
-      return laneMeets(getLane(state, `${modality}_controlled_production`, 'overall'), adv)
-    case 'pronunciation':
-      return anyKeyMeets(state, PRODUCTION_CAPABILITY_KEYS, adv)
-    default:
-      return false
-  }
+  return capabilityGateTraceV2(state, capability, modality, thresholds).met
 }
 
 /**
