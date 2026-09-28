@@ -4,7 +4,7 @@ import {
   COMBINATORIAL_V3_MINIMUM_REALIZATIONS,
 } from '../../content/pedagogy-v3/combinatorial-catalog.js'
 
-export const COMBINATORIAL_SUPPLY_GENERATOR_VERSION = 'v3.0-combinatorial-1'
+export const COMBINATORIAL_SUPPLY_GENERATOR_VERSION = 'v3.1-combinatorial-2'
 
 function fnv32(text, seed) {
   let h = seed >>> 0

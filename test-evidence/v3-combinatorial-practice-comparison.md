@@ -1,4 +1,6 @@
-# V3 — comparação real de Praticar: resultado insuficiente
+# V3 — comparação anterior de Praticar (PR #113)
+
+> Este documento descreve a medição anterior, com apenas três bindings no currículo V2 (31 vs. 108 textos únicos). A nova trilha de 48 construções em `agent/v3-coherent-variety` exige outra comparação learner-facing de 240 atividades por braço. Não atribua os números abaixo à nova implementação. O workflow V3 publica a nova evidência como artefato do PR separado.
 
 ## Stack
 

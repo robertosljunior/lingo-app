@@ -103,6 +103,9 @@ export default function V2Settings() {
       </Section>
       <Section title="Aparência"><ChoiceRow label="Tema" value={settings.theme} options={[{ value: 'system', label: 'Sistema' }, { value: 'light', label: 'Claro' }, { value: 'dark', label: 'Escuro' }]} onChange={(value) => updateSetting('theme', value)} /></Section>
       <Section title="Áudio"><ToggleRow testid="v2-setting-autoplay-answer" label="Ler a frase depois da resposta" description="Usa a voz disponível neste aparelho. A atividade continua utilizável sem áudio." checked={settings.auto_read_correct_answer} onChange={(value) => updateSetting('auto_read_correct_answer', value)} /><ToggleRow testid="v2-setting-autoplay-explanation" label="Ler explicações automaticamente" description="Pode ser desligado sem alterar sua progressão ou seus registros." checked={settings.auto_read_explanations} onChange={(value) => updateSetting('auto_read_explanations', value)} /></Section>
+      <Section title="Trilha experimental">
+        <ToggleRow testid="v2-setting-combinatorial-v3" label="Explorar novas construções e frases" description="Ativa 48 focos com frases combinadas para a prática. O conteúdo ainda está em revisão editorial. Você pode desligar a trilha a qualquer momento; seu histórico permanece salvo." checked={settings.combinatorialSupplyV3?.enabled === true} onChange={(enabled) => updateSetting('combinatorialSupplyV3', { enabled, strict_unseen: true })} />
+      </Section>
       <Section title="Armazenamento neste aparelho">
         <div data-testid="v2-storage-summary" style={{ display: 'grid', gap: 6 }}>
           <strong>{storage?.usage_bytes != null ? `${formatStorageBytes(storage.usage_bytes)} usados` : 'Uso total não informado pelo navegador'}</strong>

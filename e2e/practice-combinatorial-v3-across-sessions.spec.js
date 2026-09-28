@@ -64,6 +64,8 @@ for (const enabled of [false, true]) {
           if (row.supply?.v3_eligible_count > 0 && row.supply?.unseen_supply_count > 0) expect(seen.has(row.text_en), 'V3_AVOIDABLE_LITERAL_REPEAT').toBe(false)
           seen.add(row.text_en)
         }
+        expect(seen.size, 'V3_DISTINCT_TEXT_TARGET_200').toBeGreaterThanOrEqual(200)
+        expect(rows.filter((row, index) => index && row.text_en === rows[index - 1].text_en), 'V3_CONSECUTIVE_LITERAL_REPEAT').toHaveLength(0)
       }
     } finally {
       writeFileSync(path, JSON.stringify({ enabled, seed: 20260927, runtime, rows }, null, 2))

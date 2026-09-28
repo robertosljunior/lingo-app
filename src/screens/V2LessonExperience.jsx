@@ -3,7 +3,8 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useApp, SCREENS } from '../store.jsx'
-import { loadPedagogyV2Registry } from '../lib/pedagogy-v2/registry.js'
+import { loadPedagogyV2Registry, createRegistryTargetResolver } from '../lib/pedagogy-v2/registry.js'
+import { loadCombinatorialCurriculumRegistryV3 } from '../lib/pedagogy-v3/combinatorial-curriculum.js'
 import { buildStudyPlannerContextV2 } from '../lib/pedagogy-v2/study-planner-context.js'
 import { createStudySessionControllerV2 } from '../lib/pedagogy-v2/study-session-controller.js'
 import { createProductionAssessmentServicesV2 } from '../lib/pedagogy-v2/production-assessment-service.js'
@@ -32,7 +33,8 @@ export function v2LearnerExperienceEnabled(settings) {
 
 export default function V2LessonExperience() {
   const { settings, activeProfile, db, setTab, params } = useApp()
-  const registry = useMemo(() => loadPedagogyV2Registry(), [])
+  const registry = useMemo(() => settings?.combinatorialSupplyV3?.enabled === true
+    ? loadCombinatorialCurriculumRegistryV3() : loadPedagogyV2Registry(), [settings?.combinatorialSupplyV3?.enabled])
   const capabilities = useMemo(() => detectRuntimeCapabilitiesV2({ ttsSupported: speechSupported, sttSupported }), [])
   const reducedMotion = useReducedMotion(settings?.reduced_motion)
 
@@ -85,7 +87,7 @@ export default function V2LessonExperience() {
       // evidence events in one IndexedDB transaction.
       recordBatch: (events) => db.recordLearnerEvidenceBatchV2(events),
       persistInteraction: async (input) => {
-        const result = await recordDurableLearnerInteractionV2(input)
+        const result = await recordDurableLearnerInteractionV2(input, { targetResolver: createRegistryTargetResolver(registry) })
         // The receipt is auxiliary. Final interaction + evidence remains the
         // atomic source of truth; receipt cleanup is idempotent and any crash
         // here is cleaned by the next reconciliation.
