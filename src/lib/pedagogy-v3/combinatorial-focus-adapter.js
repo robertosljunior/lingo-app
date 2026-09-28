@@ -2,6 +2,7 @@
 // unrelated V2 target. Context-dependent recipes stay unsupported in this pilot.
 import { materializeCombinatorialCorpusV3 } from './combinatorial-supply.js'
 import { LICENSED_TIER1_ELIGIBLE_RECIPES } from '../pedagogy-v2/licensed-realization-contracts.js'
+import { V3_CURRICULUM_BINDINGS } from './combinatorial-curriculum.js'
 
 export const V3_FOCUS_BINDINGS = Object.freeze([
   { focus_id: 'v3.still.continuity_general', parent_id: 'exemplar:still.001', construction_id: 'construction:still.subject_still_lexical_verb' },
@@ -11,13 +12,20 @@ export const V3_FOCUS_BINDINGS = Object.freeze([
 ])
 export const V3_ELIGIBLE_RECIPES = LICENSED_TIER1_ELIGIBLE_RECIPES
 let corpus
+const materializedByPack = new WeakMap()
 export function materializeV3ForPack(pack, allowedParentIds = null) {
-  const bindings = V3_FOCUS_BINDINGS.filter(b => pack.exemplars.some(e => e.exemplar_id === b.parent_id)
-    && (!allowedParentIds || allowedParentIds.has(b.parent_id)))
+  if (!pack) return []
+  if (!materializedByPack.has(pack)) materializedByPack.set(pack, materializeAllForPack(pack))
+  const all = materializedByPack.get(pack)
+  return allowedParentIds ? all.filter(row => allowedParentIds.has(row.provenance.parent_exemplar_id)) : all
+}
+function materializeAllForPack(pack) {
+  const parents = new Map(pack.exemplars.map(e => [e.exemplar_id, e]))
+  const bindings = [...V3_FOCUS_BINDINGS, ...V3_CURRICULUM_BINDINGS].filter(b => parents.has(b.parent_id))
   if (!bindings.length) return []
   corpus ??= materializeCombinatorialCorpusV3()
   return bindings.flatMap(binding => {
-    const parent = pack.exemplars.find(e => e.exemplar_id === binding.parent_id)
+    const parent = parents.get(binding.parent_id)
     if (parent.construction_id !== binding.construction_id) throw new Error('V3_BINDING_CONSTRUCTION_DRIFT')
     return corpus.filter(row => row.focus_id === binding.focus_id).map(row => ({
       ...row,

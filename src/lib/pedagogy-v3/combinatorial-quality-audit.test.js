@@ -1,9 +1,9 @@
 import { it, expect } from 'vitest'
 import { auditV3Quality } from './combinatorial-quality-audit.js'
 import { materializeCombinatorialCorpusV3 } from './combinatorial-supply.js'
-it('reports the known doubled preposition rather than blessing the corpus', () => {
+it('has no detected structural or semantic quality findings in the current corpus', () => {
  const findings = auditV3Quality(materializeCombinatorialCorpusV3()).findings
- expect(findings.filter(f=>f.code==='INVALID_PREPOSITION')).toHaveLength(64)
+ expect(findings).toEqual([])
 })
 it('detects structural corruptions and identity collisions', () => {
  const en=['He have a idea..','They is on on {{place}}.','Did you worked yesterday','How do I get to the hotel from the hotel?','The ticket is expensive, but it is sunny.']

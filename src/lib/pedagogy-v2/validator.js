@@ -51,17 +51,19 @@ export function validatePedagogyV2Pack(pack, opts = {}) {
 
   // ---- manifest (invariant 1) ----
   const m = pack.manifest
+  const combinatorialGrammar = m?.pack_kind === 'combinatorial_v3'
   const dependencies = Array.isArray(m?.dependencies) ? m.dependencies : []
   if (!m) {
     err('MANIFEST_REQUIRED')
   } else {
-    if (m.pack_kind !== PEDAGOGY_V2_PACK_KIND) err('PACK_KIND_INVALID', `manifest.pack_kind=${m.pack_kind ?? 'missing'}`)
+    if (m.pack_kind !== PEDAGOGY_V2_PACK_KIND && !combinatorialGrammar) err('PACK_KIND_INVALID', `manifest.pack_kind=${m.pack_kind ?? 'missing'}`)
     if (m.schema_version !== PEDAGOGY_V2_SCHEMA_VERSION) err('SCHEMA_VERSION_INVALID', `manifest.schema_version=${m.schema_version ?? 'missing'}`)
     if (!m.pack_id) err('PACK_ID_REQUIRED', 'manifest')
     if (!(m.version >= 1)) err('VERSION_INVALID', 'manifest')
     // Slice V2.5: every pack must declare its principal lexeme (validated as
     // OWNED below) — a pedagogy pack without a main lexeme is unnavigable.
-    if (!isV2Id('lexeme', m.primary_lexeme_id)) err('PACK_PRIMARY_LEXEME_REQUIRED', `manifest.primary_lexeme_id=${m.primary_lexeme_id ?? 'missing'}`)
+    if (!combinatorialGrammar && !isV2Id('lexeme', m.primary_lexeme_id)) err('PACK_PRIMARY_LEXEME_REQUIRED', `manifest.primary_lexeme_id=${m.primary_lexeme_id ?? 'missing'}`)
+    if (combinatorialGrammar && m.primary_lexeme_id != null) err('GRAMMAR_PACK_LEXEME_FORBIDDEN', 'manifest.primary_lexeme_id')
     // Slice V2.6: purely presentational catalog order (an EDITORIAL choice for
     // the selection screen) — never a level, never planner input.
     if (m.catalog_order != null && (!Number.isInteger(m.catalog_order) || m.catalog_order < 0)) {
@@ -173,8 +175,8 @@ export function validatePedagogyV2Pack(pack, opts = {}) {
     if (!c.label) err('CONSTRUCTION_LABEL_REQUIRED', where)
     if (!c.pattern) err('CONSTRUCTION_PATTERN_REQUIRED', where)
     if (!Array.isArray(c.fixed_elements)) err('CONSTRUCTION_FIXED_ELEMENTS_REQUIRED', where)
-    if (!Array.isArray(c.sense_ids) || !c.sense_ids.length) err('CONSTRUCTION_WITHOUT_SENSE', where)
-    if (!Array.isArray(c.communicative_function_ids) || !c.communicative_function_ids.length) err('CONSTRUCTION_WITHOUT_FUNCTION', where)
+    if (!combinatorialGrammar && (!Array.isArray(c.sense_ids) || !c.sense_ids.length)) err('CONSTRUCTION_WITHOUT_SENSE', where)
+    if (!combinatorialGrammar && (!Array.isArray(c.communicative_function_ids) || !c.communicative_function_ids.length)) err('CONSTRUCTION_WITHOUT_FUNCTION', where)
     ;(c.sense_ids || []).forEach((sid) => {
       if (!senseById.has(sid) && !externalCandidate('sense', sid, `${where}.sense_ids`)) err('CONSTRUCTION_SENSE_UNRESOLVED', `${where}→${sid}`)
     })
@@ -297,7 +299,7 @@ export function validatePedagogyV2Pack(pack, opts = {}) {
 
     // Senses / functions must resolve; the declared lexeme use must actually
     // appear in the sentence (invariant 17).
-    if (!Array.isArray(e.sense_ids) || !e.sense_ids.length) err('EXEMPLAR_SENSE_REQUIRED', where)
+    if (!combinatorialGrammar && (!Array.isArray(e.sense_ids) || !e.sense_ids.length)) err('EXEMPLAR_SENSE_REQUIRED', where)
     ;(e.sense_ids || []).forEach((sid) => {
       if (!senseById.has(sid)) {
         if (!externalCandidate('sense', sid, `${where}.sense_ids`)) err('EXEMPLAR_SENSE_UNRESOLVED', `${where}→${sid}`)
