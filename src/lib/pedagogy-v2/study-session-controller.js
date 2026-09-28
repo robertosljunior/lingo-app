@@ -167,6 +167,7 @@ export function createStudySessionControllerV2(deps) {
       const context = await buildPlannerContext(profileId, { now: nowIso, registry })
       const studySession = createStudySessionV2({
         study_session_id: makeStudySessionId(), mode, profile_id: profileId, now: nowIso,
+        ...(combinatorialSupplyV3?.enabled === true ? { newTargetMaximum: 2 } : {}),
       })
       const planned = planNext(studySession, context, {}, nowIso)
       presentPlanned(planned, studySession, context, { interactions: [], lessonSessions: {} })

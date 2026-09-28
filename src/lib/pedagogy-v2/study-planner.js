@@ -14,6 +14,9 @@
 
 import { stageIndex, EXPOSURE_STAGES } from './contracts.js'
 import { resolvePedagogyEntity } from './registry.js'
+import { V3_CURRICULUM_PACK_ID, V3_CURRICULUM_BINDINGS } from '../pedagogy-v3/combinatorial-curriculum.js'
+import { LESSON_RECIPES } from './lesson-engine-contracts.js'
+import { V3_ELIGIBLE_RECIPES } from '../pedagogy-v3/combinatorial-focus-adapter.js'
 import { getV2Prerequisites, getIntendedNewItems, getPrimaryTargets, exposureProgression } from './query.js'
 import {
   indexStatesByTargetId, getLane, laneMeets, exposureCount, assessTargetPrerequisite,
@@ -583,9 +586,11 @@ export function scoreStudyCandidateV2(candidate, { policy = {}, mode = 'adaptive
 export function selectNextStudyFocusV2({
   registry, learnerStates = [], recentEvidence = [], studySession, policy = {},
   runtimeAvailability = null, allowedPackIds = null, suppressedFocusKeys = [],
-  studyScope = null,
+  studyScope = null, combinatorialSupplyV3 = null, supplyHistory = [],
 } = {}) {
-  const p = mergeStudyPlannerPolicyV2(policy)
+  const v3Enabled = combinatorialSupplyV3?.enabled === true
+  const p = mergeStudyPlannerPolicyV2(v3Enabled
+    ? { ...policy, limits: { ...policy.limits, working_set_size: 12 } } : policy)
   const mode = studySession?.mode ?? 'adaptive'
   const now = studySession?.now
   const statesById = indexStatesByTargetId(learnerStates)
@@ -707,6 +712,25 @@ export function selectNextStudyFocusV2({
   // Fallback: if the review cap starved the session, reviewing again beats stalling.
   const pool = eligible.length ? eligible : reviewLimited
 
+  // Opportunity belongs to the explicitly bound grammar pack and to a tuple
+  // the existing recipe contract can execute. Journal use is durable across
+  // sessions. Remediation remains prioritary. This policy is opt-in only.
+  const v3Targets = new Set(V3_CURRICULUM_BINDINGS.map(b => b.construction_id))
+  const seenByTarget = new Map()
+  if (v3Enabled) for (const row of supplyHistory) {
+    const id = row.plan?.construction_id
+    if (v3Targets.has(id) && row.plan?.text_en) {
+      if (!seenByTarget.has(id)) seenByTarget.set(id, new Set())
+      seenByTarget.get(id).add(row.plan.text_en)
+    }
+  }
+  const urgentRemediation = pool.some(c => c.focus_type === 'remediate' && c.components.recent_failure > 0)
+  const opportunity = c => v3Enabled && !urgentRemediation && mode !== 'review'
+    && c.pack_id === V3_CURRICULUM_PACK_ID && v3Targets.has(c.target?.target_id)
+    && (seenByTarget.get(c.target.target_id)?.size ?? 0) < 64
+    && (c.is_new_target || LESSON_RECIPES.some(r => V3_ELIGIBLE_RECIPES.includes(r.recipe)
+      && r.pairs.some(([cap, mod]) => cap === c.capability && mod === c.modality)))
+
   // ---- scoring + interleaving control (§14) ----
   const seed = String(studySession?.seed ?? '')
   const scored = pool.map((candidate) => {
@@ -735,7 +759,9 @@ export function selectNextStudyFocusV2({
       // After too long in one pack, coherence stops suppressing the switch.
       if (samePackRun >= p.limits.max_consecutive_same_pack) { adjusted = score; coherencePenalized = false }
     }
-    return { candidate, score, adjusted: round4(adjusted), isSwitch, coherencePenalized }
+    const freshSupplyOpportunity = opportunity(candidate)
+    if (freshSupplyOpportunity) adjusted += 4
+    return { candidate, score, adjusted: round4(adjusted), isSwitch, coherencePenalized, freshSupplyOpportunity }
   })
 
   const viable = scored.filter((s) => s.adjusted !== -Infinity)
@@ -758,6 +784,7 @@ export function selectNextStudyFocusV2({
       score: s.score,
       adjusted_score: s.adjusted === -Infinity ? null : s.adjusted,
       is_pack_switch: s.isSwitch,
+      fresh_supply_opportunity: !!s.freshSupplyOpportunity,
     })),
   }
 

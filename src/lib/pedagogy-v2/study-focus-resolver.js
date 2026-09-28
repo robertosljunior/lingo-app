@@ -144,6 +144,7 @@ export function resolveNextStudyActivityV2({
     const plannerDecision = selectFocus({
       registry, learnerStates, recentEvidence, studySession,
       policy: plannerPolicy, runtimeAvailability, allowedPackIds,
+      combinatorialSupplyV3, supplyHistory,
       suppressedFocusKeys: suppressed,
       studyScope,
     })
