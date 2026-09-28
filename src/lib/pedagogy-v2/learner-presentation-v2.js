@@ -227,6 +227,7 @@ function lemmaForPack(packId, plan, registry) {
   if (!registry || !packId) return null
   const pack = getPedagogyPack(packId, registry)
   const lexId = pack?.manifest?.primary_lexeme_id
+  if (pack?.manifest?.pack_kind === 'combinatorial_v3') return pack.manifest.title?.pt ?? 'Novas construções'
   return getLexemeAcrossRegistry(lexId, registry)?.lexeme?.lemma ?? lexId ?? null
 }
 

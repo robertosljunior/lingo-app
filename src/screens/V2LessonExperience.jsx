@@ -3,7 +3,8 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useApp, SCREENS } from '../store.jsx'
-import { loadPedagogyV2Registry } from '../lib/pedagogy-v2/registry.js'
+import { loadPedagogyV2Registry, createRegistryTargetResolver } from '../lib/pedagogy-v2/registry.js'
+import { loadCombinatorialCurriculumRegistryV3 } from '../lib/pedagogy-v3/combinatorial-curriculum.js'
 import { buildStudyPlannerContextV2 } from '../lib/pedagogy-v2/study-planner-context.js'
 import { createStudySessionControllerV2 } from '../lib/pedagogy-v2/study-session-controller.js'
 import { createProductionAssessmentServicesV2 } from '../lib/pedagogy-v2/production-assessment-service.js'
@@ -14,7 +15,7 @@ import { sttSupported } from '../lib/audio/stt.js'
 import { buildLearnerPresentationV2 } from '../lib/pedagogy-v2/learner-presentation-v2.js'
 import { buildLearnerSessionResultV2, resolveLessonModeV2, buildContextualSessionEntryV2, buildRecipePreferenceNoticeV2 } from '../lib/pedagogy-v2/learner-home-presentation.js'
 import { buildStudyScopeFromCollectionV2 } from '../lib/pedagogy-v2/study-scope.js'
-import { recordDurableLearnerInteractionV2, finalizeDurableStudySessionV2 } from '../lib/pedagogy-v2/durable-interaction-storage.js'
+import { getDurableLearnerInteractionsV2, recordDurableLearnerInteractionV2, finalizeDurableStudySessionV2 } from '../lib/pedagogy-v2/durable-interaction-storage.js'
 import {
   stageDurableLearnerSubmissionV2,
   settleDurableLearnerSubmissionV2,
@@ -32,7 +33,8 @@ export function v2LearnerExperienceEnabled(settings) {
 
 export default function V2LessonExperience() {
   const { settings, activeProfile, db, setTab, params } = useApp()
-  const registry = useMemo(() => loadPedagogyV2Registry(), [])
+  const registry = useMemo(() => settings?.combinatorialSupplyV3?.enabled === true
+    ? loadCombinatorialCurriculumRegistryV3() : loadPedagogyV2Registry(), [settings?.combinatorialSupplyV3?.enabled])
   const capabilities = useMemo(() => detectRuntimeCapabilitiesV2({ ttsSupported: speechSupported, sttSupported }), [])
   const reducedMotion = useReducedMotion(settings?.reduced_motion)
 
@@ -61,6 +63,7 @@ export default function V2LessonExperience() {
     let reconciledPreviousRuntime = false
     const controller = createStudySessionControllerV2({
       profileId: activeProfile,
+      combinatorialSupplyV3: settings?.combinatorialSupplyV3,
       registry,
       mode: session.mode,
       focusedPackId: session.pack,
@@ -74,14 +77,17 @@ export default function V2LessonExperience() {
           await reconcileInterruptedStudySessionsV2(profileId)
           reconciledPreviousRuntime = true
         }
-        return buildStudyPlannerContextV2(profileId, opts)
+        const context = await buildStudyPlannerContextV2(profileId, opts)
+        // Existing durable journal: full history, not the 100-event evidence tail.
+        context.supply_history = await getDurableLearnerInteractionsV2(profileId)
+        return context
       },
       // Kept for diagnostic/controller compatibility. The learner-facing path
       // uses persistInteraction below, which records the interaction and these
       // evidence events in one IndexedDB transaction.
       recordBatch: (events) => db.recordLearnerEvidenceBatchV2(events),
       persistInteraction: async (input) => {
-        const result = await recordDurableLearnerInteractionV2(input)
+        const result = await recordDurableLearnerInteractionV2(input, { targetResolver: createRegistryTargetResolver(registry) })
         // The receipt is auxiliary. Final interaction + evidence remains the
         // atomic source of truth; receipt cleanup is idempotent and any crash
         // here is cleaned by the next reconciliation.
@@ -120,6 +126,13 @@ export default function V2LessonExperience() {
     window.__e2e.v2Activity = plan
       ? {
         recipe: plan.recipe,
+        text_pt: plan.text_pt,
+        realization_id: plan.realization_id,
+        combinatorial_focus_id: plan.combinatorial_focus_id,
+        supply: plan.selection_trace?.supply_selection,
+        combinatorial_supply: plan.selection_trace?.combinatorial_supply_v3,
+        cooldown_bypass: plan.selection_trace?.cooldown_bypass,
+        resolution_trace: current.resolution?.resolution_trace,
         text_en: plan.text_en ?? null,
         correct_option_id: plan.response_contract?.correct_option_id ?? null,
         exemplar_id: plan.exemplar_id ?? null,
@@ -218,6 +231,7 @@ export default function V2LessonExperience() {
       })
       await stageDurableLearnerSubmissionV2({
         profileId: activeProfile,
+      combinatorialSupplyV3: settings?.combinatorialSupplyV3,
         studySession: current.studySession,
         studyScope: scopeError ? null : studyScope,
         recipePreference: initial.recipePreference,
@@ -247,6 +261,7 @@ export default function V2LessonExperience() {
       if (studySessionId) {
         await closeDurableStudySessionV2(studySessionId, {
           profileId: activeProfile,
+      combinatorialSupplyV3: settings?.combinatorialSupplyV3,
           status: 'abandoned',
         })
       }

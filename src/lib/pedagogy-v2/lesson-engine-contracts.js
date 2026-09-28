@@ -41,7 +41,7 @@ export const ACTIVITY_PLAN_V2_VERSION = 1
 // active_pack_id, active_lexeme_id, dependencies, external prerequisite targets.
 export const LESSON_ENGINE_CONTEXT_V2_VERSION = 2
 
-export const DECISION_STATUSES = ['activity', 'no_eligible_activity', 'session_complete']
+export const DECISION_STATUSES = ['activity', 'no_eligible_activity', 'session_complete', 'focus_exhausted']
 export const PREREQUISITE_STATUSES = ['met', 'unmet', 'unknown']
 export const PLAN_LANES = ['supported', 'independent']
 

@@ -47,6 +47,8 @@ function compactPlan(plan) {
     lesson_session_id: plan.session_id,
     pack_id: plan.pack_id ?? null,
     exemplar_id: plan.exemplar_id ?? null,
+    realization_id: plan.realization_id ?? null,
+    combinatorial_focus_id: plan.combinatorial_focus_id ?? null,
     recipe: plan.recipe ?? null,
     activity_kind: plan.activity_kind ?? null,
     capability: plan.capability ?? null,

@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "App Idiomas — treino de inglês mobile-first, offline, com correção NLP local",
+  "description": "App Idiomas \u2014 treino de ingl\u00eas mobile-first, offline, com corre\u00e7\u00e3o NLP local",
   "scripts": {
     "dev": "vite",
     "build": "vite build && npm run check:bundle",
@@ -32,7 +32,10 @@
     "audit:catalog-scale-v2": "node scripts/audit-catalog-scale-v2.mjs",
     "audit:practice-collections-v2": "node scripts/audit-practice-collections-v2.mjs",
     "benchmark:structural-nlp": "node scripts/benchmark-structural-nlp.mjs",
-    "benchmark:semantic": "node scripts/benchmark-semantic.mjs"
+    "benchmark:semantic": "node scripts/benchmark-semantic.mjs",
+    "audit:combinatorial-supply-v3": "node scripts/audit-combinatorial-supply-v3.mjs",
+    "audit:combinatorial-practice-supply-v3": "node scripts/audit-combinatorial-practice-supply-v3.mjs",
+    "simulate:combinatorial-practice-v3": "node scripts/simulate-combinatorial-practice-v3.mjs"
   },
   "dependencies": {
     "@fontsource/baloo-2": "^5.2.7",

@@ -1,0 +1,1800 @@
+{
+  "baseline": {
+    "metrics": {
+      "total_activities": 240,
+      "distinct_exact_EN_texts": 31,
+      "exact_repeat_slots": 209,
+      "exact_repeat_rate": 0.8708333333333333,
+      "most_repeated_text_count": 21,
+      "distinct_realization_IDs": 0,
+      "distinct_exemplar_IDs": 31,
+      "distinct_focuses": 89,
+      "distinct_constructions": 9,
+      "distinct_recipes": 7,
+      "distinct_modalities": 3,
+      "distinct_capabilities": 4,
+      "max_occurrences_one_text_per_session": 4,
+      "max_occurrences_one_text_across_20_sessions": 21,
+      "sessions_with_zero_new_text": 10,
+      "session_opener_repeat_rate": 0.85,
+      "consecutive_exact_repeats": 11,
+      "avoidable_exact_repeats": 1,
+      "v3_compatible_avoidable_exact_repeats": 0,
+      "cooldown_bypass_count": 24,
+      "focus_exhausted_count": 0,
+      "focus_switches_caused_by_exhaustion": 0,
+      "minimum_eligible_supply_per_focus": 1,
+      "median_eligible_supply_per_focus": 3,
+      "minimum_unseen_supply_at_selection": 0,
+      "repeated_texts_2x": 2,
+      "repeated_texts_3x": 0,
+      "repeated_texts_4x_plus": 22,
+      "top_focus_share": 0.05,
+      "top_3_focus_share": 0.13333333333333333,
+      "top_construction_share": 0.3125,
+      "top_3_construction_share": 0.7833333333333333,
+      "activities_using_V3": 0
+    },
+    "most_repeated_text": "It was difficult, but I still tried.",
+    "top_texts": [
+      [
+        "It was difficult, but I still tried.",
+        21
+      ],
+      [
+        "They still play soccer on Sundays.",
+        14
+      ],
+      [
+        "She still works at the hospital.",
+        14
+      ],
+      [
+        "I still live here.",
+        14
+      ],
+      [
+        "We still talk every week.",
+        13
+      ],
+      [
+        "I'm not ready yet.",
+        12
+      ],
+      [
+        "The bus isn't here yet.",
+        12
+      ],
+      [
+        "Dinner isn't ready yet, so let's wait.",
+        12
+      ],
+      [
+        "I tried, but it was difficult.",
+        12
+      ],
+      [
+        "The store isn't open yet.",
+        11
+      ],
+      [
+        "Do you still have my book?",
+        11
+      ],
+      [
+        "It was difficult, yet we continued.",
+        11
+      ],
+      [
+        "The house is small, but it is comfortable.",
+        9
+      ],
+      [
+        "The bread is cheap here, but the coffee is expensive.",
+        9
+      ],
+      [
+        "She is young, but she is very responsible.",
+        8
+      ],
+      [
+        "I am tired, but I am happy.",
+        8
+      ],
+      [
+        "The film is long, but the ending is worth it.",
+        8
+      ],
+      [
+        "My job is stressful, but the team is great.",
+        8
+      ],
+      [
+        "His accent is strong, but his grammar is perfect.",
+        8
+      ],
+      [
+        "Is dinner ready yet?",
+        5
+      ]
+    ],
+    "perSession": [
+      {
+        "session": 1,
+        "new_texts": 8,
+        "distinct_texts": 8,
+        "max_text_count": 2
+      },
+      {
+        "session": 2,
+        "new_texts": 6,
+        "distinct_texts": 8,
+        "max_text_count": 2
+      },
+      {
+        "session": 3,
+        "new_texts": 1,
+        "distinct_texts": 8,
+        "max_text_count": 2
+      },
+      {
+        "session": 4,
+        "new_texts": 0,
+        "distinct_texts": 12,
+        "max_text_count": 1
+      },
+      {
+        "session": 5,
+        "new_texts": 3,
+        "distinct_texts": 11,
+        "max_text_count": 2
+      },
+      {
+        "session": 6,
+        "new_texts": 0,
+        "distinct_texts": 11,
+        "max_text_count": 2
+      },
+      {
+        "session": 7,
+        "new_texts": 3,
+        "distinct_texts": 12,
+        "max_text_count": 1
+      },
+      {
+        "session": 8,
+        "new_texts": 3,
+        "distinct_texts": 9,
+        "max_text_count": 4
+      },
+      {
+        "session": 9,
+        "new_texts": 1,
+        "distinct_texts": 11,
+        "max_text_count": 2
+      },
+      {
+        "session": 10,
+        "new_texts": 0,
+        "distinct_texts": 10,
+        "max_text_count": 3
+      },
+      {
+        "session": 11,
+        "new_texts": 0,
+        "distinct_texts": 9,
+        "max_text_count": 3
+      },
+      {
+        "session": 12,
+        "new_texts": 0,
+        "distinct_texts": 11,
+        "max_text_count": 2
+      },
+      {
+        "session": 13,
+        "new_texts": 0,
+        "distinct_texts": 11,
+        "max_text_count": 2
+      },
+      {
+        "session": 14,
+        "new_texts": 1,
+        "distinct_texts": 10,
+        "max_text_count": 2
+      },
+      {
+        "session": 15,
+        "new_texts": 0,
+        "distinct_texts": 9,
+        "max_text_count": 3
+      },
+      {
+        "session": 16,
+        "new_texts": 0,
+        "distinct_texts": 9,
+        "max_text_count": 4
+      },
+      {
+        "session": 17,
+        "new_texts": 0,
+        "distinct_texts": 9,
+        "max_text_count": 3
+      },
+      {
+        "session": 18,
+        "new_texts": 1,
+        "distinct_texts": 8,
+        "max_text_count": 3
+      },
+      {
+        "session": 19,
+        "new_texts": 4,
+        "distinct_texts": 9,
+        "max_text_count": 3
+      },
+      {
+        "session": 20,
+        "new_texts": 0,
+        "distinct_texts": 11,
+        "max_text_count": 2
+      }
+    ],
+    "perFocus": [
+      {
+        "focus": "pedagogy_v2_but|review|construction:but.clause_but_clause|controlled_production|writing",
+        "count": 12,
+        "eligible_supply": 8
+      },
+      {
+        "focus": "pedagogy_v2_but|review|sense:but.contrast|recognition|listening",
+        "count": 10,
+        "eligible_supply": 8
+      },
+      {
+        "focus": "pedagogy_v2_still|review|construction:still.subject_still_lexical_verb|controlled_production|writing",
+        "count": 10,
+        "eligible_supply": 5
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|comprehension|reading",
+        "count": 8,
+        "eligible_supply": 7
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|recognition|listening",
+        "count": 6,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|comprehension|reading",
+        "count": 6,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|comprehension|listening",
+        "count": 6,
+        "eligible_supply": 7
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.continuity|comprehension|listening",
+        "count": 6,
+        "eligible_supply": 5
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|sense:yet.temporal_pending|controlled_production|writing",
+        "count": 6,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.concessive|recognition|listening",
+        "count": 6,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|comprehension|reading",
+        "count": 5,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|review|function:express_result_despite_obstacle|recognition|reading",
+        "count": 5,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|construction:yet.subject_be_not_complement_yet|controlled_production|writing",
+        "count": 5,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_but|review|sense:but.contrast|free_production|writing",
+        "count": 5,
+        "eligible_supply": 8
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|recognition|reading",
+        "count": 4,
+        "eligible_supply": 7
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|sense:yet.temporal_pending|recognition|reading",
+        "count": 4,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|recognition|listening",
+        "count": 4,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|recognition|reading",
+        "count": 4,
+        "eligible_supply": 5
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.temporal_pending|recognition|listening",
+        "count": 4,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_but|review|sense:but.contrast|recognition|reading",
+        "count": 4,
+        "eligible_supply": 7
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|sense:but.contrast|controlled_production|writing",
+        "count": 4,
+        "eligible_supply": 7
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.temporal_pending|comprehension|listening",
+        "count": 4,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.continuity|comprehension|reading",
+        "count": 4,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|free_production|writing",
+        "count": 4,
+        "eligible_supply": 5
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.continuity|free_production|writing",
+        "count": 4,
+        "eligible_supply": 5
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|recognition|reading",
+        "count": 3,
+        "eligible_supply": 2
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|controlled_production|writing",
+        "count": 3,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|comprehension|listening",
+        "count": 3,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.continuity|recognition|listening",
+        "count": 3,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.continuity|recognition|reading",
+        "count": 3,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.temporal_pending|recognition|reading",
+        "count": 3,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|construction:yet.clause_yet_clause|recognition|listening",
+        "count": 3,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|review|construction:still.clause_but_subject_still_verb|recognition|reading",
+        "count": 3,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|sense:but.contrast|free_production|writing",
+        "count": 3,
+        "eligible_supply": 6
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|function:express_result_despite_obstacle|controlled_production|writing",
+        "count": 3,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|review|sense:but.counter_expectation|recognition|reading",
+        "count": 3,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|sense:but.contrast|recognition|listening",
+        "count": 2,
+        "eligible_supply": 6
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|sense:but.contrast|recognition|reading",
+        "count": 2,
+        "eligible_supply": 6
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|recognition|listening",
+        "count": 2,
+        "eligible_supply": 7
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|comprehension|listening",
+        "count": 2,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|comprehension|listening",
+        "count": 2,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.temporal_pending|comprehension|reading",
+        "count": 2,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_but|review|sense:but.contrast|comprehension|listening",
+        "count": 2,
+        "eligible_supply": 8
+      },
+      {
+        "focus": "pedagogy_v2_but|review|sense:but.contrast|comprehension|reading",
+        "count": 2,
+        "eligible_supply": 7
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|function:express_result_despite_obstacle|recognition|listening",
+        "count": 2,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|function:express_result_despite_obstacle|comprehension|listening",
+        "count": 2,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|function:express_result_despite_obstacle|comprehension|reading",
+        "count": 2,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|function:ask_about_expected_completion|recognition|reading",
+        "count": 2,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|sense:yet.temporal_pending|free_production|writing",
+        "count": 2,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.counter_expectation|controlled_production|writing",
+        "count": 2,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|introduce|sense:still.continuity|-|-",
+        "count": 1,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|recognition|-",
+        "count": 1,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_but|introduce|sense:but.contrast|-|-",
+        "count": 1,
+        "eligible_supply": 7
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|recognition|-",
+        "count": 1,
+        "eligible_supply": 6
+      },
+      {
+        "focus": "pedagogy_v2_yet|introduce|sense:yet.temporal_pending|-|-",
+        "count": 1,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|recognition|-",
+        "count": 1,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|recognition|listening",
+        "count": 1,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|comprehension|reading",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|recognition|reading",
+        "count": 1,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|sense:yet.temporal_pending|comprehension|listening",
+        "count": 1,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|sense:but.contrast|comprehension|listening",
+        "count": 1,
+        "eligible_supply": 6
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_be_still_complement|recognition|-",
+        "count": 1,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|review|construction:still.subject_be_still_complement|recognition|reading",
+        "count": 1,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|free_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|cross_pack_progression|construction:still.clause_but_subject_still_verb|-|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|cross_pack_progression|sense:yet.concessive|-|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.clause_but_subject_still_verb|recognition|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.clause_yet_clause|recognition|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|controlled_production|writing",
+        "count": 1,
+        "eligible_supply": 2
+      },
+      {
+        "focus": "pedagogy_v2_still|review|construction:still.subject_still_lexical_verb|free_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.adjective_but_adjective|recognition|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|free_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|independence|construction:but.clause_but_clause|controlled_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|review|construction:but.clause_but_clause|free_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|independence|construction:still.subject_still_lexical_verb|free_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.counter_expectation|recognition|reading",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.interrogative_clause_yet|recognition|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|independence|construction:but.clause_but_clause|free_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|independence|sense:but.contrast|free_production|writing",
+        "count": 1,
+        "eligible_supply": 5
+      },
+      {
+        "focus": "pedagogy_v2_yet|independence|construction:yet.subject_be_not_complement_yet|controlled_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|construction:yet.interrogative_clause_yet|recognition|reading",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|independence|sense:still.continuity|free_production|writing",
+        "count": 1,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.counter_expectation|comprehension|reading",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|sense:but.counter_expectation|recognition|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|cross_pack_progression|construction:yet.and_yet_clause|-|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.and_yet_clause|recognition|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|review|function:express_result_despite_obstacle|recognition|listening",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.counter_expectation|comprehension|listening",
+        "count": 1,
+        "eligible_supply": 2
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.counter_expectation|comprehension|reading",
+        "count": 1,
+        "eligible_supply": 3
+      }
+    ],
+    "recipe_distribution": [
+      [
+        "listening_recognition",
+        78
+      ],
+      [
+        "meaning_recognition",
+        78
+      ],
+      [
+        "free_production",
+        26
+      ],
+      [
+        "guided_production",
+        22
+      ],
+      [
+        "fixed_element_completion",
+        15
+      ],
+      [
+        "word_order_reconstruction",
+        11
+      ],
+      [
+        "exposure",
+        10
+      ]
+    ],
+    "construction_distribution": [
+      [
+        "construction:but.clause_but_clause",
+        75
+      ],
+      [
+        "construction:still.subject_still_lexical_verb",
+        66
+      ],
+      [
+        "construction:yet.subject_be_not_complement_yet",
+        47
+      ],
+      [
+        "construction:still.clause_but_subject_still_verb",
+        26
+      ],
+      [
+        "construction:yet.clause_yet_clause",
+        11
+      ],
+      [
+        "construction:yet.interrogative_clause_yet",
+        5
+      ],
+      [
+        "construction:still.subject_be_still_complement",
+        4
+      ],
+      [
+        "construction:but.adjective_but_adjective",
+        4
+      ],
+      [
+        "construction:yet.and_yet_clause",
+        2
+      ]
+    ],
+    "target_distribution": [
+      [
+        "construction:but.clause_but_clause",
+        62
+      ],
+      [
+        "construction:still.subject_still_lexical_verb",
+        49
+      ],
+      [
+        "construction:yet.subject_be_not_complement_yet",
+        40
+      ],
+      [
+        "sense:still.counter_expectation",
+        21
+      ],
+      [
+        "sense:still.continuity",
+        17
+      ],
+      [
+        "sense:yet.concessive",
+        13
+      ],
+      [
+        "sense:yet.temporal_pending",
+        12
+      ],
+      [
+        "sense:but.contrast",
+        8
+      ],
+      [
+        "construction:still.clause_but_subject_still_verb",
+        5
+      ],
+      [
+        "sense:but.counter_expectation",
+        5
+      ],
+      [
+        "construction:still.subject_be_still_complement",
+        4
+      ],
+      [
+        "construction:but.adjective_but_adjective",
+        4
+      ]
+    ],
+    "v3_focus_distribution": [],
+    "avoidable": [
+      {
+        "session": 7,
+        "activity": 9,
+        "text_en": "My job is stressful, but the team is great.",
+        "v3_compatible": false
+      }
+    ],
+    "consecutive": [
+      {
+        "session": 9,
+        "activity": 10,
+        "text_en": "The plan is simple but effective."
+      },
+      {
+        "session": 10,
+        "activity": 12,
+        "text_en": "It was difficult, but I still tried."
+      },
+      {
+        "session": 11,
+        "activity": 10,
+        "text_en": "It was difficult, yet we continued."
+      },
+      {
+        "session": 12,
+        "activity": 10,
+        "text_en": "It was difficult, yet we continued."
+      },
+      {
+        "session": 14,
+        "activity": 5,
+        "text_en": "Is dinner ready yet?"
+      },
+      {
+        "session": 16,
+        "activity": 7,
+        "text_en": "It was difficult, but I still tried."
+      },
+      {
+        "session": 16,
+        "activity": 8,
+        "text_en": "It was difficult, but I still tried."
+      },
+      {
+        "session": 17,
+        "activity": 12,
+        "text_en": "Is dinner ready yet?"
+      },
+      {
+        "session": 18,
+        "activity": 7,
+        "text_en": "It was difficult, but I still tried."
+      },
+      {
+        "session": 18,
+        "activity": 11,
+        "text_en": "I was tired, but I finished the work."
+      },
+      {
+        "session": 18,
+        "activity": 12,
+        "text_en": "I was tired, but I finished the work."
+      }
+    ],
+    "runtime": {
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.7827.55 Safari/537.36",
+      "speech_input": false,
+      "audio_output": true
+    }
+  },
+  "v3": {
+    "metrics": {
+      "total_activities": 240,
+      "distinct_exact_EN_texts": 108,
+      "exact_repeat_slots": 132,
+      "exact_repeat_rate": 0.55,
+      "most_repeated_text_count": 23,
+      "distinct_realization_IDs": 82,
+      "distinct_exemplar_IDs": 108,
+      "distinct_focuses": 92,
+      "distinct_constructions": 9,
+      "distinct_recipes": 7,
+      "distinct_modalities": 3,
+      "distinct_capabilities": 4,
+      "max_occurrences_one_text_per_session": 4,
+      "max_occurrences_one_text_across_20_sessions": 23,
+      "sessions_with_zero_new_text": 0,
+      "session_opener_repeat_rate": 0.55,
+      "consecutive_exact_repeats": 8,
+      "avoidable_exact_repeats": 6,
+      "v3_compatible_avoidable_exact_repeats": 0,
+      "cooldown_bypass_count": 24,
+      "focus_exhausted_count": 0,
+      "focus_switches_caused_by_exhaustion": 0,
+      "minimum_eligible_supply_per_focus": 1,
+      "median_eligible_supply_per_focus": 4,
+      "minimum_unseen_supply_at_selection": 0,
+      "repeated_texts_2x": 1,
+      "repeated_texts_3x": 9,
+      "repeated_texts_4x_plus": 10,
+      "top_focus_share": 0.04583333333333333,
+      "top_3_focus_share": 0.12916666666666668,
+      "top_construction_share": 0.2833333333333333,
+      "top_3_construction_share": 0.7458333333333333,
+      "activities_using_V3": 82
+    },
+    "most_repeated_text": "It was difficult, but I still tried.",
+    "top_texts": [
+      [
+        "It was difficult, but I still tried.",
+        23
+      ],
+      [
+        "I'm not ready yet.",
+        15
+      ],
+      [
+        "The bus isn't here yet.",
+        15
+      ],
+      [
+        "Dinner isn't ready yet, so let's wait.",
+        15
+      ],
+      [
+        "The store isn't open yet.",
+        14
+      ],
+      [
+        "Do you still have my book?",
+        11
+      ],
+      [
+        "It was difficult, yet we continued.",
+        10
+      ],
+      [
+        "I tried, but it was difficult.",
+        8
+      ],
+      [
+        "Is dinner ready yet?",
+        8
+      ],
+      [
+        "They still play soccer on Sundays.",
+        4
+      ],
+      [
+        "He is still at work.",
+        3
+      ],
+      [
+        "The store is still open.",
+        3
+      ],
+      [
+        "I still live here.",
+        3
+      ],
+      [
+        "The coffee is still hot.",
+        3
+      ],
+      [
+        "She still works at the hospital.",
+        3
+      ],
+      [
+        "I am still tired.",
+        3
+      ],
+      [
+        "We still talk every week.",
+        3
+      ],
+      [
+        "The plan is simple but effective.",
+        3
+      ],
+      [
+        "We haven't finished yet.",
+        3
+      ],
+      [
+        "The bread is cheap here, but the coffee is expensive.",
+        2
+      ]
+    ],
+    "perSession": [
+      {
+        "session": 1,
+        "new_texts": 12,
+        "distinct_texts": 12,
+        "max_text_count": 1
+      },
+      {
+        "session": 2,
+        "new_texts": 6,
+        "distinct_texts": 8,
+        "max_text_count": 2
+      },
+      {
+        "session": 3,
+        "new_texts": 12,
+        "distinct_texts": 12,
+        "max_text_count": 1
+      },
+      {
+        "session": 4,
+        "new_texts": 9,
+        "distinct_texts": 12,
+        "max_text_count": 1
+      },
+      {
+        "session": 5,
+        "new_texts": 10,
+        "distinct_texts": 12,
+        "max_text_count": 1
+      },
+      {
+        "session": 6,
+        "new_texts": 10,
+        "distinct_texts": 12,
+        "max_text_count": 1
+      },
+      {
+        "session": 7,
+        "new_texts": 6,
+        "distinct_texts": 11,
+        "max_text_count": 2
+      },
+      {
+        "session": 8,
+        "new_texts": 3,
+        "distinct_texts": 9,
+        "max_text_count": 2
+      },
+      {
+        "session": 9,
+        "new_texts": 5,
+        "distinct_texts": 9,
+        "max_text_count": 4
+      },
+      {
+        "session": 10,
+        "new_texts": 8,
+        "distinct_texts": 10,
+        "max_text_count": 2
+      },
+      {
+        "session": 11,
+        "new_texts": 4,
+        "distinct_texts": 10,
+        "max_text_count": 3
+      },
+      {
+        "session": 12,
+        "new_texts": 4,
+        "distinct_texts": 10,
+        "max_text_count": 2
+      },
+      {
+        "session": 13,
+        "new_texts": 1,
+        "distinct_texts": 9,
+        "max_text_count": 3
+      },
+      {
+        "session": 14,
+        "new_texts": 5,
+        "distinct_texts": 9,
+        "max_text_count": 3
+      },
+      {
+        "session": 15,
+        "new_texts": 4,
+        "distinct_texts": 10,
+        "max_text_count": 2
+      },
+      {
+        "session": 16,
+        "new_texts": 1,
+        "distinct_texts": 10,
+        "max_text_count": 2
+      },
+      {
+        "session": 17,
+        "new_texts": 3,
+        "distinct_texts": 9,
+        "max_text_count": 4
+      },
+      {
+        "session": 18,
+        "new_texts": 1,
+        "distinct_texts": 9,
+        "max_text_count": 4
+      },
+      {
+        "session": 19,
+        "new_texts": 2,
+        "distinct_texts": 9,
+        "max_text_count": 3
+      },
+      {
+        "session": 20,
+        "new_texts": 2,
+        "distinct_texts": 8,
+        "max_text_count": 4
+      }
+    ],
+    "perFocus": [
+      {
+        "focus": "pedagogy_v2_yet|review|construction:yet.subject_be_not_complement_yet|controlled_production|writing",
+        "count": 11,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_still|review|construction:still.subject_still_lexical_verb|controlled_production|writing",
+        "count": 10,
+        "eligible_supply": 5
+      },
+      {
+        "focus": "pedagogy_v2_still|review|construction:still.subject_be_still_complement|recognition|reading",
+        "count": 10,
+        "eligible_supply": 5
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.continuity|comprehension|listening",
+        "count": 9,
+        "eligible_supply": 68
+      },
+      {
+        "focus": "pedagogy_v2_but|review|sense:but.contrast|recognition|listening",
+        "count": 7,
+        "eligible_supply": 70
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|comprehension|reading",
+        "count": 6,
+        "eligible_supply": 67
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|comprehension|reading",
+        "count": 6,
+        "eligible_supply": 71
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|construction:yet.subject_be_not_complement_yet|free_production|writing",
+        "count": 6,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|recognition|reading",
+        "count": 5,
+        "eligible_supply": 68
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.continuity|recognition|listening",
+        "count": 5,
+        "eligible_supply": 68
+      },
+      {
+        "focus": "pedagogy_v2_but|review|sense:but.contrast|recognition|reading",
+        "count": 5,
+        "eligible_supply": 70
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.concessive|recognition|listening",
+        "count": 5,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.temporal_pending|free_production|writing",
+        "count": 5,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|sense:yet.temporal_pending|recognition|reading",
+        "count": 4,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|recognition|listening",
+        "count": 4,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.temporal_pending|recognition|listening",
+        "count": 4,
+        "eligible_supply": 6
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|comprehension|listening",
+        "count": 4,
+        "eligible_supply": 69
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.temporal_pending|recognition|reading",
+        "count": 4,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.temporal_pending|comprehension|listening",
+        "count": 4,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_still|review|construction:still.subject_still_lexical_verb|free_production|writing",
+        "count": 4,
+        "eligible_supply": 5
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.temporal_pending|comprehension|reading",
+        "count": 4,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|free_production|writing",
+        "count": 4,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|recognition|reading",
+        "count": 3,
+        "eligible_supply": 66
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|recognition|listening",
+        "count": 3,
+        "eligible_supply": 65
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|recognition|reading",
+        "count": 3,
+        "eligible_supply": 70
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|controlled_production|writing",
+        "count": 3,
+        "eligible_supply": 67
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|sense:but.contrast|controlled_production|writing",
+        "count": 3,
+        "eligible_supply": 70
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.continuity|comprehension|reading",
+        "count": 3,
+        "eligible_supply": 68
+      },
+      {
+        "focus": "pedagogy_v2_but|review|construction:but.clause_but_clause|controlled_production|writing",
+        "count": 3,
+        "eligible_supply": 70
+      },
+      {
+        "focus": "pedagogy_v2_but|review|sense:but.contrast|comprehension|listening",
+        "count": 3,
+        "eligible_supply": 69
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.continuity|free_production|writing",
+        "count": 3,
+        "eligible_supply": 5
+      },
+      {
+        "focus": "pedagogy_v2_still|review|function:express_result_despite_obstacle|recognition|listening",
+        "count": 3,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|function:ask_about_expected_completion|recognition|reading",
+        "count": 3,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.counter_expectation|comprehension|reading",
+        "count": 3,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|function:express_result_despite_obstacle|controlled_production|writing",
+        "count": 3,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|sense:but.contrast|recognition|listening",
+        "count": 2,
+        "eligible_supply": 69
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|sense:but.contrast|recognition|reading",
+        "count": 2,
+        "eligible_supply": 69
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|recognition|listening",
+        "count": 2,
+        "eligible_supply": 70
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|comprehension|listening",
+        "count": 2,
+        "eligible_supply": 65
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|comprehension|listening",
+        "count": 2,
+        "eligible_supply": 68
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|sense:yet.temporal_pending|comprehension|listening",
+        "count": 2,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|comprehension|reading",
+        "count": 2,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.continuity|recognition|reading",
+        "count": 2,
+        "eligible_supply": 68
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|free_production|writing",
+        "count": 2,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|sense:yet.temporal_pending|controlled_production|writing",
+        "count": 2,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|free_production|writing",
+        "count": 2,
+        "eligible_supply": 5
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|controlled_production|writing",
+        "count": 2,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_but|review|sense:but.contrast|comprehension|reading",
+        "count": 2,
+        "eligible_supply": 70
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.counter_expectation|recognition|listening",
+        "count": 2,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|sense:yet.temporal_pending|free_production|writing",
+        "count": 2,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|function:express_result_despite_obstacle|recognition|reading",
+        "count": 2,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.counter_expectation|recognition|reading",
+        "count": 2,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|function:express_result_despite_obstacle|comprehension|listening",
+        "count": 2,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|introduce|sense:still.continuity|-|-",
+        "count": 1,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_still_lexical_verb|recognition|-",
+        "count": 1,
+        "eligible_supply": 67
+      },
+      {
+        "focus": "pedagogy_v2_but|introduce|sense:but.contrast|-|-",
+        "count": 1,
+        "eligible_supply": 7
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|recognition|-",
+        "count": 1,
+        "eligible_supply": 69
+      },
+      {
+        "focus": "pedagogy_v2_yet|introduce|sense:yet.temporal_pending|-|-",
+        "count": 1,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|recognition|-",
+        "count": 1,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|recognition|listening",
+        "count": 1,
+        "eligible_supply": 67
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.continuity|comprehension|reading",
+        "count": 1,
+        "eligible_supply": 65
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|recognition|reading",
+        "count": 1,
+        "eligible_supply": 4
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|sense:but.contrast|comprehension|listening",
+        "count": 1,
+        "eligible_supply": 69
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.subject_be_not_complement_yet|comprehension|listening",
+        "count": 1,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|construction:still.subject_be_still_complement|recognition|-",
+        "count": 1,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|sense:yet.temporal_pending|comprehension|reading",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|cross_pack_progression|construction:still.clause_but_subject_still_verb|-|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|cross_pack_progression|sense:yet.concessive|-|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.clause_yet_clause|recognition|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|construction:yet.clause_yet_clause|recognition|listening",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.clause_but_clause|controlled_production|writing",
+        "count": 1,
+        "eligible_supply": 69
+      },
+      {
+        "focus": "pedagogy_v2_still|independence|construction:still.subject_still_lexical_verb|free_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|construction:but.adjective_but_adjective|recognition|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.counter_expectation|recognition|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|review|construction:still.clause_but_subject_still_verb|recognition|listening",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|independence|construction:yet.subject_be_not_complement_yet|controlled_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.interrogative_clause_yet|recognition|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|construction:yet.negative_perfect_yet|recognition|-",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|construction:yet.interrogative_clause_yet|recognition|reading",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|construction:yet.negative_perfect_yet|recognition|listening",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|independence|construction:but.clause_but_clause|controlled_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|review|construction:but.adjective_but_adjective|recognition|listening",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|deepen|sense:yet.concessive|recognition|reading",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|independence|sense:still.continuity|free_production|writing",
+        "count": 1,
+        "eligible_supply": 3
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|sense:yet.concessive|recognition|reading",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_but|deepen|sense:but.contrast|free_production|writing",
+        "count": 1,
+        "eligible_supply": 7
+      },
+      {
+        "focus": "pedagogy_v2_but|independence|construction:but.clause_but_clause|free_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|deepen|sense:still.counter_expectation|controlled_production|writing",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|review|function:express_result_despite_obstacle|recognition|reading",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_yet|review|function:ask_about_expected_completion|recognition|listening",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|review|sense:still.counter_expectation|comprehension|listening",
+        "count": 1,
+        "eligible_supply": 1
+      },
+      {
+        "focus": "pedagogy_v2_still|review|function:express_result_despite_obstacle|comprehension|reading",
+        "count": 1,
+        "eligible_supply": 1
+      }
+    ],
+    "recipe_distribution": [
+      [
+        "listening_recognition",
+        81
+      ],
+      [
+        "meaning_recognition",
+        77
+      ],
+      [
+        "free_production",
+        32
+      ],
+      [
+        "fixed_element_completion",
+        17
+      ],
+      [
+        "word_order_reconstruction",
+        13
+      ],
+      [
+        "guided_production",
+        11
+      ],
+      [
+        "exposure",
+        9
+      ]
+    ],
+    "construction_distribution": [
+      [
+        "construction:still.subject_still_lexical_verb",
+        68
+      ],
+      [
+        "construction:yet.subject_be_not_complement_yet",
+        59
+      ],
+      [
+        "construction:but.clause_but_clause",
+        52
+      ],
+      [
+        "construction:still.clause_but_subject_still_verb",
+        24
+      ],
+      [
+        "construction:still.subject_be_still_complement",
+        13
+      ],
+      [
+        "construction:yet.clause_yet_clause",
+        10
+      ],
+      [
+        "construction:yet.interrogative_clause_yet",
+        8
+      ],
+      [
+        "construction:but.adjective_but_adjective",
+        3
+      ],
+      [
+        "construction:yet.negative_perfect_yet",
+        3
+      ]
+    ],
+    "target_distribution": [
+      [
+        "sense:still.continuity",
+        47
+      ],
+      [
+        "construction:yet.subject_be_not_complement_yet",
+        47
+      ],
+      [
+        "sense:but.contrast",
+        39
+      ],
+      [
+        "sense:yet.temporal_pending",
+        23
+      ],
+      [
+        "sense:still.counter_expectation",
+        23
+      ],
+      [
+        "construction:still.subject_still_lexical_verb",
+        21
+      ],
+      [
+        "construction:but.clause_but_clause",
+        13
+      ],
+      [
+        "construction:still.subject_be_still_complement",
+        13
+      ],
+      [
+        "sense:yet.concessive",
+        10
+      ],
+      [
+        "construction:but.adjective_but_adjective",
+        3
+      ],
+      [
+        "construction:still.clause_but_subject_still_verb",
+        1
+      ]
+    ],
+    "v3_focus_distribution": [
+      [
+        "v3.still.continuity_general",
+        44
+      ],
+      [
+        "v3.but.simple_contrast",
+        38
+      ]
+    ],
+    "avoidable": [
+      {
+        "session": 7,
+        "activity": 1,
+        "text_en": "Do you still have my book?",
+        "v3_compatible": false
+      },
+      {
+        "session": 7,
+        "activity": 8,
+        "text_en": "They still play soccer on Sundays.",
+        "v3_compatible": false
+      },
+      {
+        "session": 8,
+        "activity": 2,
+        "text_en": "Do you still have my book?",
+        "v3_compatible": false
+      },
+      {
+        "session": 19,
+        "activity": 2,
+        "text_en": "I tried, but it was difficult.",
+        "v3_compatible": false
+      },
+      {
+        "session": 19,
+        "activity": 3,
+        "text_en": "The bread is cheap here, but the coffee is expensive.",
+        "v3_compatible": false
+      },
+      {
+        "session": 19,
+        "activity": 12,
+        "text_en": "He is still at work.",
+        "v3_compatible": false
+      }
+    ],
+    "consecutive": [
+      {
+        "session": 10,
+        "activity": 9,
+        "text_en": "The plan is simple but effective."
+      },
+      {
+        "session": 17,
+        "activity": 11,
+        "text_en": "It was difficult, but I still tried."
+      },
+      {
+        "session": 17,
+        "activity": 12,
+        "text_en": "It was difficult, but I still tried."
+      },
+      {
+        "session": 18,
+        "activity": 11,
+        "text_en": "It was difficult, but I still tried."
+      },
+      {
+        "session": 19,
+        "activity": 10,
+        "text_en": "It was difficult, but I still tried."
+      },
+      {
+        "session": 19,
+        "activity": 11,
+        "text_en": "It was difficult, but I still tried."
+      },
+      {
+        "session": 20,
+        "activity": 11,
+        "text_en": "It was difficult, but I still tried."
+      },
+      {
+        "session": 20,
+        "activity": 12,
+        "text_en": "It was difficult, but I still tried."
+      }
+    ],
+    "runtime": {
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.7827.55 Safari/537.36",
+      "speech_input": false,
+      "audio_output": true
+    }
+  },
+  "definitions": {
+    "exact_repeat_slots": "240 minus distinct exact text_en strings; first occurrence excluded",
+    "avoidable": "Previously shown exact text with unseen eligible text in the observed same focus/recipe/capability/modality pool; not merely the score band",
+    "per_focus_supply": "Maximum observed eligible count for each planner focus, then minimum/median across focuses. Content-only eligibility is audited separately.",
+    "opener": "Already seen before the session opener / all 20 sessions",
+    "repeat_distribution": "Number of distinct texts occurring exactly 2, exactly 3, or at least 4 times"
+  }
+}

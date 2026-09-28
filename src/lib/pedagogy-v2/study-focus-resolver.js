@@ -28,6 +28,7 @@ export const STUDY_FOCUS_RESOLVER_VERSION = 1
 // Structured engine-rejection reason codes (§8). Never parsed from free text —
 // derived from the engine decision's STRUCTURED status/reason/excluded enums.
 export const RESOLVER_REJECTION_REASON_CODES = Object.freeze([
+  'V3_FOCUS_EXHAUSTED',
   'ENGINE_NO_ELIGIBLE_EXEMPLAR',
   'ENGINE_NO_SAFE_RECIPE',
   'ENGINE_PREREQUISITE_UNMET',
@@ -69,6 +70,7 @@ function candidateUniverseFromTrace(trace) {
 // reason codes. Uses the engine's OWN structured enums — no text parsing.
 export function engineRejectionReasonCodesV2(engineDecision) {
   const status = engineDecision?.status
+  if (status === 'focus_exhausted') return ['V3_FOCUS_EXHAUSTED']
   if (status === 'session_complete') return ['ENGINE_SESSION_EXHAUSTED']
   if (status === 'focus_not_executable') {
     return engineDecision?.reason === 'FOCUS_INDEPENDENCE_NOT_EXECUTABLE'
@@ -107,6 +109,8 @@ export function resolveNextStudyActivityV2({
   lessonSessions = {},
   plannerPolicy = {},
   enginePolicy = {},
+  combinatorialSupplyV3 = null,
+  supplyHistory = [],
   runtimeAvailability = null,
   allowedPackIds = null,
   studyScope = null,
@@ -140,6 +144,7 @@ export function resolveNextStudyActivityV2({
     const plannerDecision = selectFocus({
       registry, learnerStates, recentEvidence, studySession,
       policy: plannerPolicy, runtimeAvailability, allowedPackIds,
+      combinatorialSupplyV3, supplyHistory,
       suppressedFocusKeys: suppressed,
       studyScope,
     })
@@ -175,7 +180,7 @@ export function resolveNextStudyActivityV2({
     const { scope, focus: engineFocus, policyOverride } = studyFocusToLessonScopeV2(focus, registry, studyScope)
     const runEngine = (session) => selectActivity({
       session, scope, focus: engineFocus,
-      learnerStates, recentEvidence,
+      learnerStates, recentEvidence, combinatorialSupplyV3, supplyHistory,
       // V2.22-UX2 §13 — the advisory recipe preference rides along as POLICY, so
       // it can only reorder candidates the engine already judged eligible.
       policy: {
@@ -211,6 +216,7 @@ export function resolveNextStudyActivityV2({
       planner_rank: rank,
       result: 'rejected',
       engine_status: engineDecision.status,
+      supply_trace: engineDecision.trace?.combinatorial_supply_v3 ?? null,
       reason_codes: engineRejectionReasonCodesV2(engineDecision),
     })
     suppressed.push(key)

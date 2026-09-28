@@ -38,6 +38,7 @@ export function createStudySessionControllerV2(deps) {
     capabilities,
     plannerPolicy = {},
     enginePolicy = {},
+    combinatorialSupplyV3 = null,
     assessmentPolicy = undefined,
     maxActivities = 12,
   } = deps
@@ -80,6 +81,8 @@ export function createStudySessionControllerV2(deps) {
       lessonSessions,
       plannerPolicy,
       enginePolicy,
+      combinatorialSupplyV3,
+      supplyHistory: context.supply_history ?? [],
       runtimeAvailability: availability,
       allowedPackIds,
       studyScope,
@@ -164,6 +167,7 @@ export function createStudySessionControllerV2(deps) {
       const context = await buildPlannerContext(profileId, { now: nowIso, registry })
       const studySession = createStudySessionV2({
         study_session_id: makeStudySessionId(), mode, profile_id: profileId, now: nowIso,
+        ...(combinatorialSupplyV3?.enabled === true ? { newTargetMaximum: 2 } : {}),
       })
       const planned = planNext(studySession, context, {}, nowIso)
       presentPlanned(planned, studySession, context, { interactions: [], lessonSessions: {} })
